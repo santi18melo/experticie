@@ -12,7 +12,7 @@ export const useAuth = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("role");
-    localStorage.removeItem("user"); // opcional si guardas datos del usuario
+    localStorage.removeItem("user");
 
     setUserRole(null);
     navigate("/login", { replace: true });
@@ -41,16 +41,14 @@ export const useAuth = () => {
   };
 
   // 🔥 ENDPOINT UNIVERSAL QUE FUNCIONA SEGÚN EL ROL
-  // si es admin, cliente, vendedor o logístico, siempre responde
   const authPing = async () => {
-    return api.getMisTiendas(); // 💡 este endpoint ya funciona para todos
+    return api.getMisTiendas();
   };
 
   // 🛡️ VERIFICAR AUTENTICACIÓN
   const checkAuth = async () => {
     let token = localStorage.getItem("accessToken");
 
-    // No hay token → intentar refrescar
     if (!token) {
       const refreshed = await refreshToken();
       if (!refreshed) {
@@ -62,11 +60,9 @@ export const useAuth = () => {
     }
 
     try {
-      // Intentar validar token con endpoint universal
       await authPing();
       setUserRole(localStorage.getItem("role"));
     } catch {
-      // Token falló → intentar refrescar una vez
       const refreshed = await refreshToken();
 
       if (refreshed) {
@@ -90,3 +86,6 @@ export const useAuth = () => {
 
   return { userRole, loading, logout };
 };
+
+// ✅ Export default usando el MISMO hook
+export default useAuth;

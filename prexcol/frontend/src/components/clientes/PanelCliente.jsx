@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';  // ← AGREGADO useCallback
 import api from '../../services/api.js';
-import './PanelCliente.css';
+import '../../styles/PanelCliente.css';
 
 function PanelCliente() {
   const [pedidos, setPedidos] = useState([]);
@@ -15,22 +15,28 @@ function PanelCliente() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const token = localStorage.getItem('token');
 
-  useEffect(() => {
-    cargarDatos();
-  }, []);
+  const cargarProductosPorTienda = useCallback(async (tiendaId) => {
+    try {
+      const data = await api.getProductosPorTienda(token, tiendaId);
+      setProductos(Array.isArray(data) ? data : []);
+      setCarrito([]);
+    } catch (err) {
+      console.error('Error cargando productos:', err);
+    }
+  }, [token]);
 
-  const cargarDatos = async () => {
+  const cargarDatos = useCallback(async () => {
     setLoading(true);
     try {
       const resPedidos = await api.getMisPedidos(token);
       setPedidos(Array.isArray(resPedidos) ? resPedidos : []);
-      
+
       const resTiendas = await api.getTiendas(token);
       const tiendas = resTiendas.results ? resTiendas.results : resTiendas;
       setTiendas(Array.isArray(tiendas) ? tiendas : []);
-      
+
       if (tiendas.length > 0) {
-        cargarProductosPorTienda(tiendas[0].id);
+        await cargarProductosPorTienda(tiendas[0].id);
         setTiendaSeleccionada(tiendas[0].id);
       }
     } catch (err) {
@@ -39,62 +45,12 @@ function PanelCliente() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token, cargarProductosPorTienda]);
 
-  const cargarProductosPorTienda = async (tiendaId) => {
-    try {
-      const data = await api.getProductosPorTienda(token, tiendaId);
-      setProductos(Array.isArray(data) ? data : []);
-      setCarrito([]);
-    } catch (err) {
-      console.error('Error cargando productos:', err);
-    }
-  };
+  useEffect(() => {
+    cargarDatos();
+  }, [cargarDatos]);
 
-  const agregarAlCarrito = (producto) => {
-    const existe = carrito.find(p => p.id === producto.id);
-    if (existe) {
-      if (existe.cantidad < producto.stock) {
-        setCarrito(carrito.map(p => 
-          p.id === producto.id ? { ...p, cantidad: p.cantidad + 1 } : p
-        ));
-      }
-    } else {
-      setCarrito([...carrito, { ...producto, cantidad: 1 }]);
-    }
-  };
-
-  const eliminarDelCarrito = (productoId) => {
-    setCarrito(carrito.filter(p => p.id !== productoId));
-  };
-
-  const crearPedido = async () => {
-    if (carrito.length === 0) {
-      setError('El carrito está vacío');
-      return;
-    }
-
-    try {
-      const detalles = carrito.map(p => ({ producto: p.id, cantidad: p.cantidad }));
-      const response = await api.crearPedido(token, {
-        tienda_id: tiendaSeleccionada,
-        detalles,
-        notas: 'Pedido desde panel cliente'
-      });
-
-      setExito(`✓ Pedido #${response.id} creado exitosamente`);
-      setCarrito([]);
-      setMostrarFormulario(false);
-      setTimeout(() => {
-        cargarDatos();
-        setExito("");
-      }, 2000);
-    } catch (err) {
-      setError('Error al crear pedido: ' + (err.response?.data?.error || err.message));
-    }
-  };
-
-  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
 
   if (loading) return <div className="panel-cliente"><p>Cargando...</p></div>;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api.js';
-import './ProveedorPanel.css';
+import '../../styles/ProveedorPanel.css/';
 
 function PanelProveedor() {
   const [productos, setProductos] = useState([]);

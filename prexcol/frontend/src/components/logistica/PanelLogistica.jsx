@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
-import './PanelLogistica.css';
+import '../../styles/PanelLogistica.css';
 
 function PanelLogistica() {
   const [pedidos, setPedidos] = useState([]);
@@ -29,9 +29,15 @@ function PanelLogistica() {
           const tiene_basicos = dets.some(d => d.es_basico);
           const tiene_no_basicos = dets.some(d => !d.es_basico);
           return { ...p, tiene_basicos, tiene_no_basicos };
-        } catch (err) {
-          return { ...p, tiene_basicos: false, tiene_no_basicos: false };
-        }
+} catch {
+  return {
+    ...p,
+    tiene_basicos: false,
+    tiene_no_basicos: false,
+  };
+}
+
+
       }));
       setPedidos(marcados);
     } catch (err) {

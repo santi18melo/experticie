@@ -1,6 +1,6 @@
 // src/components/usuarios/Loader.jsx
 import React from "react";
-import "./Loader.css"; // estilos separados, sin insertRule
+import "../styles/Loader.css/";
 
 export default function Loader() {
 return (
