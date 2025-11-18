@@ -10,23 +10,32 @@ from .views import (
     tienda_cliente,
     UsuarioViewSet,
 )
+from .view_password import forgot_password, reset_password
 
-# Crear el router
 router = DefaultRouter()
-router.register(r'usuarios', UsuarioViewSet, basename='usuario')
+router.register(r"usuarios", UsuarioViewSet, basename="usuario")
 
 urlpatterns = [
-    path('', api_root, name='api-root'),
+    # API ROOT
+    path("", api_root, name="api-root"),
 
-    # Autenticación
-    path('auth/register/', register_user, name='register'),
-    path('auth/login/', login_user, name='login'),
-    path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # ====== AUTH ======
+    path("auth/register/", register_user, name="register"),
+    path("auth/login/", login_user, name="login"),
+    path("auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("auth/forgot-password/", forgot_password, name="forgot_password"),
+    path(
+        "auth/reset-password/<uidb64>/<token>/",
+        reset_password,
+        name="reset_password"
+    ),
 
-    # Rutas según rol
-    path('dashboard/admin/', dashboard_admin, name='dashboard-admin'),
-    path('cliente/tienda/', tienda_cliente, name='tienda-cliente'),
+    # ====== ADMIN ======
+    path("dashboard/admin/", dashboard_admin, name="dashboard_admin"),
 
-    # Incluir rutas del router
-    path('', include(router.urls)),
+    # ====== CLIENTE ======
+    path("cliente/tienda/", tienda_cliente, name="tienda_cliente"),
+
+    # ====== CRUD Usuarios ======
+    path("", include(router.urls)),
 ]

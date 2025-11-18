@@ -1,4 +1,3 @@
-// src/components/usuarios/ProveedorPanel.jsx
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api.js';
 import './ProveedorPanel.css';
