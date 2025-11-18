@@ -1,10 +1,17 @@
 // src/routes/AuthApp.jsx
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import Login from "../pages/Login.jsx"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
+
+import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
 import ForgotPassword from "../components/ForgotPassword.jsx";
 import ResetPassword from "../components/ResetPassword.jsx";
-import ProtectedRoute from "../routes/ProtectedRoute.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 import Home from "../pages/Home.jsx";
 import Dashboard from "../components/Dashboard.jsx";
@@ -19,6 +26,7 @@ function AuthApp() {
 
   return (
     <Routes>
+      {/* Público */}
       <Route path="/" element={<Home />} />
 
       {/* Auth */}
@@ -26,6 +34,8 @@ function AuthApp() {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
+
+      {/* Redirección admin legacy */}
       <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
 
       {/* App interna */}

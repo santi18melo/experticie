@@ -1,21 +1,20 @@
-# usuarios/serializers.py
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate
+
 from .models import Usuario
 
 
+# ------------------------------------------------------------
+#   SERIALIZER PARA MOSTRAR USUARIOS
+# ------------------------------------------------------------
 class UsuarioSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(
-        write_only=True, required=False, allow_blank=False, min_length=6
-    )
-
     class Meta:
         model = Usuario
         fields = [
             "id",
             "email",
             "nombre",
-            "password",
             "rol",
             "telefono",
             "direccion",
@@ -23,61 +22,62 @@ class UsuarioSerializer(serializers.ModelSerializer):
             "fecha_creacion",
             "ultimo_ingreso",
         ]
-        read_only_fields = [
-            "id",
-            "fecha_creacion",
-            "ultimo_ingreso",
-        ]  # NO incluir 'email' aquí
+        read_only_fields = ["id", "fecha_creacion", "ultimo_ingreso"]
+
+
+# ------------------------------------------------------------
+#   SERIALIZER PARA REGISTRO
+# ------------------------------------------------------------
+class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, min_length=6)
+
+    class Meta:
+        model = Usuario
+        fields = ["email", "nombre", "password", "rol"]
 
     def create(self, validated_data):
-        password = validated_data.pop("password", None)
-        # Usar el manager para crear usuario (normaliza email, maneja password)
-        user = Usuario.objects.create_user(
-            email=validated_data.get("email"),
-            nombre=validated_data.get("nombre"),
-            password=password,
-            **{k: v for k, v in validated_data.items() if k not in ("email", "nombre")},
-        )
+        password = validated_data.pop("password")
+        user = Usuario.objects.create_user(**validated_data)
+        user.set_password(password)
+        user.save()
         return user
 
-    def update(self, instance, validated_data):
-        password = validated_data.pop("password", None)
-        # Evitar actualizar email por seguridad si quieres; si lo permites, quítalo de validated_data o valídalo
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        if password:
-            instance.set_password(password)
-        instance.save()
-        return instance
 
-
+# ------------------------------------------------------------
+#   SERIALIZER PARA LOGIN
+# ------------------------------------------------------------
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
 
-    def validate(self, attrs):
-        email = attrs.get("email")
-        password = attrs.get("password")
-
-        # No usamos Usuario.objects.get + check_password directamente; usamos authenticate
-        from django.contrib.auth import authenticate
+    def validate(self, data):
+        email = data.get("email")
+        password = data.get("password")
 
         user = authenticate(username=email, password=password)
 
         if not user:
-            raise serializers.ValidationError("Email o contraseña incorrectos")
+            raise serializers.ValidationError("Credenciales inválidas")
 
-        if not user.is_active:
-            raise serializers.ValidationError("Cuenta inactiva")
+        data["user"] = user
+        return data
 
-        refresh = RefreshToken.for_user(user)
-        return {
-            "refresh": str(refresh),
-            "access": str(refresh.access_token),
-            "user": {
-                "id": user.id,
-                "email": user.email,
-                "nombre": user.nombre,
-                "rol": user.rol,
-            },
-        }
+
+# ------------------------------------------------------------
+#   SERIALIZER PARA DEVOLVER TOKEN + DATOS DEL USUARIO
+# ------------------------------------------------------------
+class UserTokenSerializer(serializers.ModelSerializer):
+    access = serializers.CharField(source="token.access_token", read_only=True)
+    refresh = serializers.CharField(source="token.refresh_token", read_only=True)
+
+    class Meta:
+        model = Usuario
+        fields = ["id", "email", "nombre", "rol", "access", "refresh"]
+
+
+def generate_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+    return {
+        "refresh": str(refresh),
+        "access": str(refresh.access_token),
+    }

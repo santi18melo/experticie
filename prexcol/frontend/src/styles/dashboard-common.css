@@ -1,0 +1,27 @@
+.table-wrapper {
+width: 100%;
+overflow-x: auto;
+}
+
+.adm-table {
+width: 100%;
+border-collapse: collapse;
+background: white;
+border-radius: 8px;
+}
+
+.adm-table th,
+.adm-table td {
+padding: 12px;
+border-bottom: 1px solid #e5e7eb;
+}
+
+.adm-table th {
+background: #f3f4f6;
+text-align: left;
+font-weight: bold;
+}
+
+.adm-table tr:hover {
+background: #f9fafb;
+}

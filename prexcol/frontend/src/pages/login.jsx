@@ -12,39 +12,41 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrorMsg("");
-    setLoading(true);  // ← ACTIVA LOADER
+  e.preventDefault();
+  setErrorMsg("");
+  setLoading(true);
 
-    try {
-      const data = await api.login(email, password);
+  try {
+    const data = await api.login(email, password);
 
-      // Guardar tokens
-      localStorage.setItem("accessToken", data.access);
-      localStorage.setItem("refreshToken", data.refresh);
+    // Guardar tokens
+    localStorage.setItem("accessToken", data.access);
+    localStorage.setItem("refreshToken", data.refresh);
 
-      // Guardar info usuario
-      localStorage.setItem("role", data.user.rol);
-      localStorage.setItem("userName", data.user.nombre);
-      localStorage.setItem("userId", data.user.id);
+    // Guardar info usuario
+    localStorage.setItem("role", data.user.rol);
+    localStorage.setItem("userName", data.user.nombre);
+    localStorage.setItem("userId", data.user.id);
 
-      // Redirección según el rol
-      switch (data.user.rol) {
-        case "admin": navigate("/admin"); break;
-        case "comprador": navigate("/comprador"); break;
-        case "proveedor": navigate("/proveedor"); break;
-        case "logistica": navigate("/logistica"); break;
-        case "cliente": navigate("/cliente"); break;
-        default: navigate("/");
-      }
-
-    } catch (error) {
-      console.error("Login error:", error);
-      setErrorMsg("Credenciales incorrectas o error en el servidor.");
+    // Redirección según el rol
+    switch (data.user.rol) {
+      case "admin": navigate("/admin"); break;
+      case "comprador": navigate("/comprador"); break;
+      case "proveedor": navigate("/proveedor"); break;
+      case "logistica": navigate("/logistica"); break;
+      case "cliente": navigate("/cliente"); break;
+      default: navigate("/");
     }
+  } catch (error) {
+    console.error("Login error:", error);
+    // Mejor mensaje con info
+    const msg = error?.response?.data?.detail || error?.response?.data?.message || "Credenciales incorrectas o error en el servidor.";
+    setErrorMsg(msg);
+  } finally {
+    setLoading(false);
+  }
+};
 
-    setLoading(false);  // ← DESACTIVA LOADER
-  };
 
   return (
     <div style={styles.container}>

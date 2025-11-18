@@ -48,9 +48,8 @@ authAxios.interceptors.response.use(
 
           return authAxios(originalRequest);
         } catch (err) {
-  console.error("Error cargando usuarios:", err);
-}
-
+          console.error("Error refrescando token:", err);
+        }
       }
     }
 
@@ -59,7 +58,7 @@ authAxios.interceptors.response.use(
 );
 
 // ---- EXPORT PRINCIPAL ----
-export default authAxios;
+export { authAxios };
 
 // ================= AUTH =================
 
