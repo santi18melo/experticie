@@ -1,68 +1,66 @@
-# PREXCOL - Plataforma de Comercio Electrónico
+ PREXCOL - Plataforma de Comercio Electrónico
 
-## 📋 Requisitos
+##  Requisitos
 
 - Python 3.11+
 - Node.js 18+
 - npm o yarn
 
-## 🚀 Instalación y Ejecución
+##  Instalación y Ejecución
 
 ### Backend (Django)
 
 1. **Crear y activar entorno virtual:**
-```bash
-python -m venv venv
-# En Windows:
-venv\Scripts\activate
-```
+   ```bash
+   python -m venv venv
+   # En Windows:
+   venv\Scripts\activate
+Instalar dependencias:
 
-2. **Instalar dependencias:**
-```bash
+bash
+Copiar código
 pip install -r requirements.txt
-```
+Ejecutar migraciones:
 
-3. **Ejecutar migraciones:**
-```bash
+bash
+Copiar código
 python manage.py migrate
-```
+Crear superusuario (opcional):
 
-4. **Crear superusuario (opcional):**
-```bash
+bash
+Copiar código
 python manage.py createsuperuser
-```
+Iniciar servidor Django:
 
-5. **Iniciar servidor Django:**
-```bash
+bash
+Copiar código
 python manage.py runserver
-```
+El servidor estará disponible en: http://127.0.0.1:8000
 
-El servidor estará disponible en: `http://127.0.0.1:8000`
+Frontend (React + Vite)
+Instalar dependencias:
 
-### Frontend (React + Vite)
-
-1. **Instalar dependencias:**
-```bash
+bash
+Copiar código
 cd frontend
 npm install
-```
+Iniciar servidor de desarrollo:
 
-2. **Iniciar servidor de desarrollo:**
-```bash
+bash
+Copiar código
 npm run dev
-```
+El frontend estará disponible en: http://localhost:5173
 
-El frontend estará disponible en: `http://localhost:5173`
+ Credenciales de Prueba
+Usuario Admin:
 
-## 🔐 Credenciales de Prueba
+Email: admin@example.com
 
-**Usuario Admin:**
-- Email: `admin@example.com`
-- Contraseña: `admin123`
+Contraseña: admin123
 
-## 📚 Estructura del Proyecto
-
-```
+ Estructura del Proyecto
+bash
+Copiar código
 prexcol/
 ├── backend/              # Configuración principal Django
 ├── usuarios/             # App de gestión de usuarios
@@ -80,38 +78,29 @@ prexcol/
 │       ├── components/   # Componentes reutilizables
 │       └── services/     # Servicios API
 └── manage.py             # Herramienta de gestión Django
-```
+🔌 API Endpoints
+Autenticación
+Método	Ruta	Descripción
+POST	/api/auth/register/	Registrar nuevo usuario
+POST	/api/auth/login/	Obtener token JWT
+POST	/api/auth/refresh/	Refrescar token expirado
 
-## 🔌 API Endpoints
+Dashboard
+Método	Ruta	Descripción	Requiere
+GET	/api/dashboard/admin/	Dashboard admin con estadísticas	Token + Admin
+GET	/api/cliente/tienda/	Información tienda cliente	Token + Cliente
 
-### Autenticación
+Usuarios
+Método	Ruta	Descripción	Requiere
+GET	/api/usuarios/	Listar todos los usuarios	Token + Admin
+GET	/api/usuarios/{id}/	Obtener usuario específico	Token + Admin
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| POST | `/api/auth/register/` | Registrar nuevo usuario |
-| POST | `/api/auth/login/` | Obtener token JWT |
-| POST | `/api/auth/refresh/` | Refrescar token expirado |
+🔍 Pruebas
+Usando curl
+Registrar usuario:
 
-### Dashboard
-
-| Método | Ruta | Descripción | Requiere |
-|--------|------|-------------|----------|
-| GET | `/api/dashboard/admin/` | Dashboard admin con estadísticas | Token + Admin |
-| GET | `/api/cliente/tienda/` | Información tienda cliente | Token + Cliente |
-
-### Usuarios
-
-| Método | Ruta | Descripción | Requiere |
-|--------|------|-------------|----------|
-| GET | `/api/usuarios/` | Listar todos los usuarios | Token + Admin |
-| GET | `/api/usuarios/{id}/` | Obtener usuario específico | Token + Admin |
-
-## 🔍 Pruebas
-
-### Usando curl
-
-**Registrar usuario:**
-```bash
+bash
+Copiar código
 curl -X POST http://127.0.0.1:8000/api/auth/register/ \
   -H "Content-Type: application/json" \
   -d '{
@@ -120,44 +109,38 @@ curl -X POST http://127.0.0.1:8000/api/auth/register/ \
     "password":"password123",
     "rol":"cliente"
   }'
-```
+Login:
 
-**Login:**
-```bash
+bash
+Copiar código
 curl -X POST http://127.0.0.1:8000/api/auth/login/ \
   -H "Content-Type: application/json" \
   -d '{
     "email":"admin@example.com",
     "password":"admin123"
   }'
-```
+Acceder al dashboard (reemplazar TOKEN):
 
-**Acceder al dashboard (reemplazar TOKEN):**
-```bash
+bash
+Copiar código
 curl -H "Authorization: Bearer TOKEN" \
   http://127.0.0.1:8000/api/dashboard/admin/
-```
-
-### Usando Python
-
-```bash
+Usando Python
+bash
+Copiar código
 python test_api.py
-```
+ Desarrollo
+Variables de Entorno
+Crear archivo .env en la raíz (opcional):
 
-## 🛠️ Desarrollo
-
-### Variables de Entorno
-
-Crear archivo `.env` en la raíz (opcional):
-```
+ini
+Copiar código
 DEBUG=True
 SECRET_KEY=tu-clave-secreta
 ALLOWED_HOSTS=localhost,127.0.0.1
-```
-
-### Comandos Útiles
-
-```bash
+Comandos Útiles
+bash
+Copiar código
 # Crear migraciones
 python manage.py makemigrations
 
@@ -172,26 +155,27 @@ python manage.py shell
 
 # Ejecutar tests
 python manage.py test
-```
-
-## 🐛 Solución de Problemas
-
-### Error: ModuleNotFoundError
+ Solución de Problemas
+Error: ModuleNotFoundError
 Asegúrate de estar en el entorno virtual activado y haber instalado las dependencias.
 
-### Error: CORS
-Verifica que `CORS_ALLOWED_ORIGINS` en `backend/settings.py` incluya la URL del frontend.
+Error: CORS
+Verifica que CORS_ALLOWED_ORIGINS en backend/settings.py incluya la URL del frontend.
 
-### Error: No module named 'rest_framework_simplejwt'
-Instala las dependencias: `pip install -r requirements.txt`
+Error: No module named 'rest_framework_simplejwt'
+Instala las dependencias: pip install -r requirements.txt
 
-## 📝 Cambios Recientes
+ Cambios Recientes
+✅ Configuración completa de JWT para autenticación.
 
-- ✅ Configuración completa de JWT para autenticación
-- ✅ Serializer corregido con hash de contraseñas
-- ✅ Dashboard admin con estadísticas reales
-- ✅ Manejo de errores mejorado en el frontend
-- ✅ Interceptor de tokens con refresh automático
-- ✅ CORS configurado correctamente
+✅ Serializer corregido con hash de contraseñas.
 
-Ver `BACKEND_FIXES.md` para más detalles técnicos.
+✅ Dashboard admin con estadísticas reales.
+
+✅ Manejo de errores mejorado en el frontend.
+
+✅ Interceptor de tokens con refresh automático.
+
+✅ CORS configurado correctamente.
+
+Ver BACKEND_FIXES.md para más detalles técnicos.
