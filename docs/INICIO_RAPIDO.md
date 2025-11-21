@@ -1,28 +1,41 @@
 GUÍA RÁPIDA DE INICIO Paso 1: Verificar que Todo Esté Correcto cd /ruta/a/tu/proyecto
 
+Instalar venv
+python -m venv .venv
 Activar entorno virtual
 .\.venv\Scripts\Activate.ps1
 
 Ejecutar verificación
 python verificar_backend.py Resultado esperado: 8/8 verificaciones pasadas Paso 2: Iniciar Backend (Terminal 1)
 
+En caso de que no lo verifique:
+Get-ChildItem -Path C:\experticie -Recurse -Filter "verificar_backend.py"
+
 Si no está activado el venv
-cd /ruta/a/tu/proyecto .venv\Scripts\Activate.ps1
+cd C:\experticie .venv\Scripts\Activate.ps1
+
+Instalar dependencias:
+pip install -r requirements.txt
 
 Iniciar servidor Django
+cd C:\experticie\prexcol
 python manage.py runserver
 
 Salida esperada:
 
 Salga del servidor con CTRL+BREAK. Iniciando servidor de desarrollo en http://127.0.0.1:8000/
 
-Paso 3: Iniciar Frontend (Terminal 2) cd /ruta/a/tu/proyecto/frontend
+Paso 3: Iniciar Frontend (Terminal 2) cd C:\experticie\prexcol
 
 Instalar dependencias si aún no están instaladas
+C:\experticie\prexcol\frontend> 
 npm install
 
 Iniciar Vite
 npm run dev
+
+Para iniciar Vite en celular: 
+npm run dev -- --host
 
 Salida esperada:
 

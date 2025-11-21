@@ -1,0 +1,52 @@
+
+========================================
+ GUÍA DE USO DEL ORGANIZADOR DE PROYECTO
+========================================
+
+Este script organiza automáticamente proyectos Django + React/Vite.
+
+INSTRUCCIONES DE USO:
+---------------------
+
+1. Ejecuta el archivo en la raíz del proyecto:
+    python organizar_proyecto.py
+
+2. El script hará:
+    - Crear carpetas principales:
+        backend/
+        frontend/
+        docs/
+        scripts/
+    - Mover archivos del backend Django a backend/
+    - Mover archivos del frontend React/Vite a frontend/
+    - Eliminar archivos basura:
+        *.pyc, *.log, *.tmp
+        .DS_Store
+        Thumbs.db
+    - Generar archivo de registro organizador_log.txt
+
+3. NO borra ni toca:
+    - La carpeta .venv
+    - Librerías instaladas
+    - Configuraciones sensibles
+
+ALTERNATIVAS:
+-------------
+
+- Si deseas organizar solo el backend:
+    python organizar_proyecto.py --backend
+
+- Solo frontend:
+    python organizar_proyecto.py --frontend
+
+- Limpiar basura únicamente:
+    python organizar_proyecto.py --clean
+
+ARCHIVOS GENERADOS:
+-------------------
+- INSTRUCCIONES_EJECUCION.txt → Esta guía
+- organizador_log.txt → Registro de acciones realizadas
+
+----------------------------------------
+    Script generado automáticamente.
+----------------------------------------
