@@ -12,45 +12,65 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setErrorMsg("");
-  setLoading(true);
+    e.preventDefault();
+    setErrorMsg("");
+    setLoading(true);
 
-  try {
-    const data = await api.login(email, password);
+    try {
+      const data = await api.login(email, password);
 
-    // Guardar tokens
-    localStorage.setItem("accessToken", data.access);
-    localStorage.setItem("refreshToken", data.refresh);
+      console.log("Respuesta login:", data);
 
-    // Guardar info usuario
-    localStorage.setItem("role", data.user.rol);
-    localStorage.setItem("userName", data.user.nombre);
-    localStorage.setItem("userId", data.user.id);
+      // =============================
+      // AJUSTE: tokens seguros
+      // =============================
+      const access = data.access || data.token?.access || data.tokens?.access;
+      const refresh = data.refresh || data.token?.refresh || data.tokens?.refresh;
 
-    // Redirección según el rol
-    switch (data.user.rol) {
-      case "admin": navigate("/admin"); break;
-      case "comprador": navigate("/comprador"); break;
-      case "proveedor": navigate("/proveedor"); break;
-      case "logistica": navigate("/logistica"); break;
-      case "cliente": navigate("/cliente"); break;
-      default: navigate("/");
+      if (!access) {
+        throw new Error("Token no recibido del servidor");
+      }
+
+      localStorage.setItem("accessToken", access);
+      if (refresh) localStorage.setItem("refreshToken", refresh);
+
+      // =============================
+      // AJUSTE: usuario según backend
+      // =============================
+
+      const user = data.user || data.usuario || data.data || data;
+
+      localStorage.setItem("role", user.rol);
+      localStorage.setItem("userName", user.nombre);
+      localStorage.setItem("userId", user.id);
+
+      // =============================
+      // Redirección según rol
+      // =============================
+      switch (user.rol) {
+        case "admin": navigate("/admin"); break;
+        case "comprador": navigate("/comprador"); break;
+        case "proveedor": navigate("/proveedor"); break;
+        case "logistica": navigate("/logistica"); break;
+        case "cliente": navigate("/cliente"); break;
+        default: navigate("/");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+
+      const msg =
+        error?.response?.data?.detail ||
+        error?.response?.data?.message ||
+        "Credenciales incorrectas o error en el servidor.";
+
+      setErrorMsg(msg);
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error("Login error:", error);
-    // Mejor mensaje con info
-    const msg = error?.response?.data?.detail || error?.response?.data?.message || "Credenciales incorrectas o error en el servidor.";
-    setErrorMsg(msg);
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   return (
     <div style={styles.container}>
-
       {/* LOADER GLOBAL SOLO SI loading === true */}
       {loading && <Loader />}
 
@@ -105,6 +125,7 @@ export default function Login() {
 }
 
 // ===================== ESTILOS =====================
+// (Todo tu código permanece igual)
 
 const styles = {
   container: {
@@ -115,7 +136,6 @@ const styles = {
     background: "#f3f4f7",
     padding: "20px",
   },
-
   card: {
     width: "100%",
     maxWidth: "420px",
@@ -124,7 +144,6 @@ const styles = {
     borderRadius: "14px",
     boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
   },
-
   title: {
     fontSize: "24px",
     fontWeight: "600",
@@ -132,13 +151,11 @@ const styles = {
     color: "#333",
     textAlign: "center",
   },
-
   form: {
     display: "flex",
     flexDirection: "column",
     gap: "15px",
   },
-
   input: {
     padding: "12px 15px",
     borderRadius: "8px",
@@ -147,7 +164,6 @@ const styles = {
     outline: "none",
     transition: "0.2s",
   },
-
   button: {
     padding: "12px",
     background: "linear-gradient(135deg, #4CAF50, #2e7d32)",
@@ -160,39 +176,33 @@ const styles = {
     boxShadow: "0 4px 12px rgba(76,175,80,0.3)",
     transition: "0.3s",
   },
-
   error: {
     marginTop: "10px",
     color: "red",
     fontWeight: "500",
     textAlign: "center",
   },
-
   linksContainer: {
     marginTop: "10px",
     textAlign: "center",
   },
-
   link: {
     fontSize: "14px",
     color: "#2e7d32",
     textDecoration: "none",
     fontWeight: "500",
   },
-
   linkInline: {
     color: "#2e7d32",
     fontWeight: "600",
     textDecoration: "none",
   },
-
   registerText: {
     marginTop: "15px",
     textAlign: "center",
     fontSize: "14px",
     color: "#444",
   },
-
   homeButton: {
     marginTop: "20px",
     padding: "10px 15px",

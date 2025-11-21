@@ -1,5 +1,5 @@
 from django.urls import path
-from .views.views import login_view, forgot_password, reset_password
+from ..prexcol.views import login_view, forgot_password, reset_password
 
 urlpatterns = [
     path("login/", login_view),

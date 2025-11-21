@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
+    "core",
     "frontend",
     "usuarios",
     "productos",
@@ -176,7 +177,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "melosanchezsantiago@gmail.com"
-EMAIL_HOST_PASSWORD = "pmnv dcvx psyd brdl"
+EMAIL_HOST_PASSWORD = "pmnvdcvxpsydbrdl"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # URL del frontend (para construir el enlace en el correo)
 FRONTEND_URL = 'http://192.168.1.78:5173'
+

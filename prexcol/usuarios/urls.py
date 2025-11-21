@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from .views.views import (
+from ..prexcol.views import (
     register_user,
     login_user,
     api_root,

@@ -151,7 +151,7 @@ def test_views():
     """Verificar vistas"""
     print_header("✅ VERIFICANDO VISTAS")
     try:
-        from prexcol.usuarios.views.views import (
+        from prexcol.prexcol.views import (
             register_user, 
             dashboard_admin, 
             tienda_cliente,

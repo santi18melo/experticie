@@ -63,7 +63,7 @@ except Exception as e:
 # 4. Simular request GET a /api/usuarios/
 print("\n=== [4] Simulando GET /api/usuarios/ ===")
 try:
-    from prexcol.usuarios.views.views import UsuarioViewSet
+    from prexcol.prexcol.views import UsuarioViewSet
     from rest_framework.test import APIRequestFactory
     
     factory = APIRequestFactory()

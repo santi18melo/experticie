@@ -1,24 +1,33 @@
-from django.urls import path, include
+from django.urls import path, include 
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from .views.views import register_user, login_user, api_root
-from .views.view_password import forgot_password, reset_password
+from .views.views_auth import login_user, register_user
+from .views.view_password import ForgotPasswordView, ResetPasswordView   # ← IMPORTA LA VISTA
 from .views.views_usuario import UsuarioViewSet
+
+from django.contrib import admin
+from core.views import server_info
 
 router = DefaultRouter()
 router.register(r"usuarios", UsuarioViewSet, basename="usuarios")
 
 urlpatterns = [
-    path("", api_root, name="api-root"),
+    path('admin/', admin.site.urls),
 
-    # AUTH INDEXADO DENTRO DE /api/
-    path("auth/register/", register_user, name="register"),
-    path("auth/login/", login_user, name="login"),
-    path("auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("auth/forgot-password/", forgot_password, name="forgot_password"),
-    path("auth/reset-password/<uidb64>/<token>/", reset_password, name="reset_password"),
+    # SERVER INFO
+    path('api/server-info/', server_info),
 
-    # API CRUD USERS
-    path("", include(router.urls)),
+    # AUTH — TODAS con /api/auth/
+    path('api/auth/register/', register_user, name='register'),
+    path('api/auth/login/', login_user, name='login'),
+    path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    # PASSWORD RESET
+    path("api/auth/forgot-password/", ForgotPasswordView.as_view(), name="forgot_password"),
+    path('api/auth/reset-password/<uidb64>/<token>/', ResetPasswordView.as_view(), name='reset_password'),
+
+
+    # CRUD USERS
+    path('api/', include(router.urls)),
 ]

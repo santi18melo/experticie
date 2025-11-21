@@ -24,11 +24,20 @@ export default function Register() {
       await register(formValues);
       setSuccess("Registro exitoso. Redirigiendo...");
       setTimeout(() => navigate("/login"), 2000);
+    
     } catch (error) {
-      console.error(error);
-      setErrorMsg("Ocurrió un error en el registro.");
+      console.error("Error durante el registro:", error);
+    
+      const backendError =
+        error?.response?.data?.detail ||
+        error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        error?.message ||
+        "Ocurrió un error en el registro.";
+    
+      setErrorMsg(backendError);
     }
-  };
+    
 
   return (
     <div style={styles.container}>
@@ -205,3 +214,4 @@ const styles = {
     marginBottom: "10px",
   },
 };
+}

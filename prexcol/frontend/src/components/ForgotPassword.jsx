@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export default function ForgotPassword() {
@@ -14,9 +13,25 @@ export default function ForgotPassword() {
     e.preventDefault();
 
     try {
-      await api.requestPasswordReset(email);
+      const response = await fetch("http://127.0.0.1:8000/api/auth/forgot-password/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      setMessage("Se ha enviado un enlace a tu correo.");
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.log("Backend error:", errorData);
+        throw new Error("Error en la API");
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+      setMessage(data.message);
+
+      // Iniciar cuenta regresiva
       setStartCountdown(true);
 
     } catch (error) {
@@ -25,7 +40,7 @@ export default function ForgotPassword() {
     }
   };
 
-  // Barra de progreso profesional animada
+  // Animación barra de progreso
   useEffect(() => {
     if (!startCountdown) return;
 
@@ -70,7 +85,6 @@ export default function ForgotPassword() {
           </p>
         )}
 
-        {/* Barra de Progreso Profesional */}
         {startCountdown && (
           <div style={styles.progressBarContainer}>
             <div
@@ -78,7 +92,7 @@ export default function ForgotPassword() {
                 ...styles.progressBarFill,
                 width: `${progress}%`,
               }}
-            ></div>
+            />
           </div>
         )}
       </div>
@@ -86,82 +100,62 @@ export default function ForgotPassword() {
   );
 }
 
-// ===================== ESTILOS PROFESIONALES =====================
 const styles = {
   container: {
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
-    background: "#f3f4f7",
-    padding: "20px",
+    justifyContent: "center",
+    minHeight: "100vh",
+    backgroundColor: "#f5f5f5",
   },
-
   card: {
-    width: "100%",
-    maxWidth: "420px",
+    width: "400px",
+    backgroundColor: "#fff",
     padding: "30px",
-    background: "#fff",
-    borderRadius: "14px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-  },
-
-  title: {
-    fontSize: "24px",
-    fontWeight: "600",
-    marginBottom: "20px",
-    color: "#333",
+    borderRadius: "10px",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
     textAlign: "center",
   },
-
+  title: {
+    marginBottom: "20px",
+    fontSize: "24px",
+    fontWeight: "bold",
+  },
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "15px",
+    gap: "10px",
   },
-
   input: {
-    padding: "12px 15px",
-    borderRadius: "8px",
-    border: "1px solid #d0d0d0",
-    fontSize: "15px",
-    outline: "none",
-    transition: "0.2s",
+    padding: "12px",
+    fontSize: "16px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
   },
-
   button: {
     padding: "12px",
-    background: "linear-gradient(135deg, #4CAF50, #2e7d32)",
-    color: "white",
-    fontSize: "15px",
-    fontWeight: "600",
-    borderRadius: "8px",
+    backgroundColor: "#4CAF50",
     border: "none",
+    color: "white",
+    fontSize: "16px",
+    borderRadius: "5px",
     cursor: "pointer",
-    boxShadow: "0 4px 12px rgba(76,175,80,0.3)",
-    transition: "0.3s",
   },
-
   message: {
-    textAlign: "center",
-    marginTop: "10px",
-    fontWeight: "500",
+    marginTop: "15px",
+    fontSize: "14px",
   },
-
   progressBarContainer: {
-    marginTop: "18px",
+    marginTop: "20px",
     width: "100%",
-    height: "10px",
-    background: "#e6e6e6",
-    borderRadius: "50px",
+    height: "8px",
+    backgroundColor: "#ddd",
+    borderRadius: "4px",
     overflow: "hidden",
   },
-
   progressBarFill: {
     height: "100%",
-    background: "linear-gradient(90deg, #4CAF50, #66bb6a)",
-    borderRadius: "50px",
+    backgroundColor: "#4CAF50",
     transition: "width 0.1s linear",
-    boxShadow: "0 4px 10px rgba(76,175,80,0.4)",
   },
 };
