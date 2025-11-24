@@ -1,0 +1,208 @@
+from playwright.sync_api import sync_playwright
+import time
+import json
+from pathlib import Path
+import requests
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# ---------------- CONFIG ----------------
+BACKEND_URL = "http://localhost:8000"
+FRONTEND_URL = "http://localhost:5173"
+LOG_FILE = Path("c:/experticie-1/prexcol/e2e_test_report.json")
+SCREENSHOTS_DIR = Path("c:/experticie-1/prexcol/e2e_screenshots")
+SCREENSHOTS_DIR.mkdir(exist_ok=True)
+
+# Discord Webhook
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/XXXX/YYYY"
+
+# Email config
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+EMAIL_FROM = "tuemail@gmail.com"
+EMAIL_PASSWORD = "app_password_aquí"
+EMAIL_TO = ["destinatario@dominio.com"]
+
+# Credenciales de prueba
+USERS = {
+    "admin": {"email": "admin@prexcol.com", "password": "Prexcol123!", "role": "admin"},
+    "personal": {"email": "personal1@prexcol.com", "password": "Personal123!", "role": "personal"},
+    "cliente": {"email": "test@prexcol.com", "password": "Test123!", "role": "cliente"}
+}
+
+ENDPOINTS = ["/api/users/me/", "/api/products/", "/api/orders/", "/api/orders/history/", "/api/cart/", "/api/dashboard/stats/"]
+
+# ---------------- FUNCIONES ----------------
+def send_discord_alert(message, screenshot_path=None):
+    data = {"content": message}
+    files = {}
+    if screenshot_path and Path(screenshot_path).exists():
+        files = {"file": open(screenshot_path, "rb")}
+    try:
+        requests.post(DISCORD_WEBHOOK_URL, data=data, files=files)
+    except Exception as e:
+        print(f"Error enviando alerta Discord: {e}")
+
+def take_screenshot(page, name):
+    path = SCREENSHOTS_DIR / f"{name}.png"
+    page.screenshot(path=str(path))
+    return path
+
+def send_email(subject, body):
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_FROM
+    msg['To'] = ", ".join(EMAIL_TO)
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'html'))
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(EMAIL_FROM, EMAIL_PASSWORD)
+        server.send_message(msg)
+        server.quit()
+        print("Email enviado correctamente")
+    except Exception as e:
+        print(f"Error enviando email: {e}")
+
+def generate_email_body(results):
+    body = "<h2>Reporte E2E PREXCOL</h2>"
+    for user in results["tests"]:
+        body += f"<h3>Rol: {user['role']}</h3><ul>"
+        for step in user["steps"]:
+            status = "✅" if step["status"] else "❌"
+            screenshot = f' (<a href="file://{step["screenshot"]}">screenshot</a>)' if "screenshot" in step else ""
+            body += f"<li>{status} {step['step']}{screenshot}</li>"
+        body += "</ul>"
+    return body
+
+# ---------------- TESTS ----------------
+def run_e2e_tests():
+    results = {"tests": []}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)  # HEADLESS ahora
+        page = browser.new_page()
+
+        for user_key, user in USERS.items():
+            user_result = {"role": user["role"], "steps": []}
+            try:
+                # Login
+                page.goto(f"{FRONTEND_URL}/login")
+                page.fill("input[name=email]", user["email"])
+                page.fill("input[name=password]", user["password"])
+                page.click("button[type=submit]")
+                page.wait_for_timeout(2000)
+                current_url = page.url
+                status_ok = current_url.endswith(f"/{user['role']}")
+                screenshot = take_screenshot(page, f"{user['role']}_login")
+                user_result["steps"].append({
+                    "step": "Login",
+                    "expected": f"{FRONTEND_URL}/{user['role']}",
+                    "actual": current_url,
+                    "status": status_ok,
+                    "screenshot": str(screenshot)
+                })
+                if not status_ok:
+                    send_discord_alert(f"🚨 Login fallido para {user['role']}", screenshot)
+
+                # Verificar endpoints
+                for endpoint in ENDPOINTS:
+                    try:
+                        resp = page.request.get(BACKEND_URL + endpoint)
+                        step_status = resp.status in [200, 201]
+                        user_result["steps"].append({
+                            "step": f"Endpoint {endpoint}",
+                            "status": step_status,
+                            "status_code": resp.status
+                        })
+                        if not step_status:
+                            send_discord_alert(f"🚨 Endpoint {endpoint} fallido para {user['role']} (status {resp.status})", screenshot)
+                    except Exception as e:
+                        user_result["steps"].append({
+                            "step": f"Endpoint {endpoint} Exception",
+                            "status": False,
+                            "error": str(e)
+                        })
+                        send_discord_alert(f"🚨 Endpoint {endpoint} Exception: {e}", screenshot)
+
+                # Cliente: Productos → Carrito → Checkout
+                if user["role"] == "cliente":
+                    page.goto(f"{FRONTEND_URL}/productos")
+                    time.sleep(1)
+                    first_product = page.query_selector("button.add-to-cart")
+                    step_status = first_product is not None
+                    if step_status:
+                        first_product.click()
+                    screenshot = take_screenshot(page, f"{user['role']}_add_to_cart")
+                    user_result["steps"].append({
+                        "step": "Agregar producto al carrito",
+                        "status": step_status,
+                        "screenshot": str(screenshot)
+                    })
+                    if not step_status:
+                        send_discord_alert(f"🚨 No se pudo agregar producto al carrito para {user['role']}", screenshot)
+
+                    page.goto(f"{FRONTEND_URL}/cart")
+                    time.sleep(1)
+                    cart_items = page.query_selector_all(".cart-item")
+                    screenshot = take_screenshot(page, f"{user['role']}_cart")
+                    user_result["steps"].append({
+                        "step": "Verificar carrito",
+                        "status": len(cart_items) > 0,
+                        "items_count": len(cart_items),
+                        "screenshot": str(screenshot)
+                    })
+                    if len(cart_items) == 0:
+                        send_discord_alert(f"🚨 Carrito vacío para {user['role']}", screenshot)
+
+                    page.goto(f"{FRONTEND_URL}/checkout")
+                    page.fill("input[name=address]", "Calle 123, Bogotá")
+                    page.fill("input[name=notes]", "Llamar antes de entregar")
+                    page.select_option("select[name=payment_method]", "tarjeta")
+                    page.click("button[type=submit]")
+                    page.wait_for_timeout(2000)
+                    screenshot = take_screenshot(page, f"{user['role']}_checkout")
+                    user_result["steps"].append({
+                        "step": "Checkout completo",
+                        "status": page.url.endswith("/orders"),
+                        "screenshot": str(screenshot)
+                    })
+                    if not page.url.endswith("/orders"):
+                        send_discord_alert(f"🚨 Checkout fallido para {user['role']}", screenshot)
+
+                # Pantallas generales
+                screens = [("profile", "Perfil"), ("settings", "SettingsScreen"), 
+                           ("notifications", "NotificationsScreen"), ("payment-status", "PaymentStatusScreen")]
+                for route, name in screens:
+                    page.goto(f"{FRONTEND_URL}/{route}")
+                    time.sleep(1)
+                    exists = page.query_selector("form, .payment-status, .notification-item") is not None
+                    screenshot = take_screenshot(page, f"{user['role']}_{name}")
+                    user_result["steps"].append({
+                        "step": f"{name} cargado",
+                        "status": exists,
+                        "screenshot": str(screenshot)
+                    })
+                    if not exists:
+                        send_discord_alert(f"🚨 {name} no cargó correctamente para {user['role']}", screenshot)
+
+            except Exception as e:
+                screenshot = take_screenshot(page, f"{user['role']}_exception")
+                send_discord_alert(f"🚨 Exception flujo {user['role']}: {e}", screenshot)
+                user_result["steps"].append({"step": "Exception", "status": False, "error": str(e), "screenshot": str(screenshot)})
+
+            results["tests"].append(user_result)
+
+        browser.close()
+
+    # Guardar reporte
+    LOG_FILE.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    print(f"E2E testing complete. Report saved to {LOG_FILE}")
+
+    # Enviar email con reporte
+    email_body = generate_email_body(results)
+    send_email("Reporte Diario E2E PREXCOL", email_body)
+
+# ---------------- MAIN ----------------
+if __name__ == "__main__":
+    run_e2e_tests()

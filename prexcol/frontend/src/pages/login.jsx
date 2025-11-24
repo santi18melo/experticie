@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
-import Loader from "../components/Loader"; // IMPORTANTE
+import { useAuth } from "../context/AuthContext";
+import Loader from "../components/Loader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);  // ← AQUÍ SÍ VA
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -19,10 +21,8 @@ export default function Login() {
     try {
       const data = await api.login(email, password);
 
-      console.log("Respuesta login:", data);
-
       // =============================
-      // AJUSTE: tokens seguros
+      // Tokens seguros
       // =============================
       const access = data.access || data.token?.access || data.tokens?.access;
       const refresh = data.refresh || data.token?.refresh || data.tokens?.refresh;
@@ -31,29 +31,37 @@ export default function Login() {
         throw new Error("Token no recibido del servidor");
       }
 
-      localStorage.setItem("accessToken", access);
-      if (refresh) localStorage.setItem("refreshToken", refresh);
-
       // =============================
-      // AJUSTE: usuario según backend
+      // Usuario según backend
       // =============================
-
       const user = data.user || data.usuario || data.data || data;
 
-      localStorage.setItem("role", user.rol);
-      localStorage.setItem("userName", user.nombre);
-      localStorage.setItem("userId", user.id);
+      // =============================
+      // AuthContext
+      // =============================
+      login(user, { access, refresh });
 
       // =============================
       // Redirección según rol
       // =============================
       switch (user.rol) {
-        case "admin": navigate("/admin"); break;
-        case "comprador": navigate("/comprador"); break;
-        case "proveedor": navigate("/proveedor"); break;
-        case "logistica": navigate("/logistica"); break;
-        case "cliente": navigate("/cliente"); break;
-        default: navigate("/");
+        case "admin":
+          navigate("/admin");
+          break;
+        case "comprador":
+          navigate("/comprador");
+          break;
+        case "proveedor":
+          navigate("/proveedor");
+          break;
+        case "logistica":
+          navigate("/logistica");
+          break;
+        case "cliente":
+          navigate("/cliente");
+          break;
+        default:
+          navigate("/");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -69,9 +77,80 @@ export default function Login() {
     }
   };
 
+  const styles = {
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      backgroundColor: "#f5f5f5",
+    },
+    card: {
+      backgroundColor: "#fff",
+      padding: "2rem",
+      borderRadius: "12px",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+      width: "100%",
+      maxWidth: "400px",
+      textAlign: "center",
+    },
+    title: {
+      marginBottom: "1.5rem",
+      fontSize: "1.5rem",
+      fontWeight: "bold",
+    },
+    form: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "1rem",
+    },
+    input: {
+      padding: "0.75rem",
+      borderRadius: "8px",
+      border: "1px solid #ccc",
+      fontSize: "1rem",
+    },
+    button: {
+      padding: "0.75rem",
+      borderRadius: "8px",
+      border: "none",
+      backgroundColor: "#007bff",
+      color: "#fff",
+      fontSize: "1rem",
+      cursor: "pointer",
+    },
+    homeButton: {
+      marginTop: "1rem",
+      padding: "0.5rem 1rem",
+      borderRadius: "8px",
+      border: "1px solid #007bff",
+      backgroundColor: "#fff",
+      color: "#007bff",
+      cursor: "pointer",
+    },
+    error: {
+      color: "red",
+      marginTop: "1rem",
+    },
+    linksContainer: {
+      marginTop: "1rem",
+    },
+    link: {
+      color: "#007bff",
+      textDecoration: "none",
+    },
+    linkInline: {
+      color: "#007bff",
+      textDecoration: "underline",
+    },
+    registerText: {
+      marginTop: "1rem",
+    },
+  };
+
   return (
     <div style={styles.container}>
-      {/* LOADER GLOBAL SOLO SI loading === true */}
+      {/* Loader global */}
       {loading && <Loader />}
 
       <div style={styles.card}>
@@ -96,8 +175,8 @@ export default function Login() {
             style={styles.input}
           />
 
-          <button type="submit" style={styles.button}>
-            Entrar
+          <button type="submit" style={styles.button} disabled={loading}>
+            {loading ? "Cargando..." : "Entrar"}
           </button>
         </form>
 

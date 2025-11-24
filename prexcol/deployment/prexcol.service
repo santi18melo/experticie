@@ -1,0 +1,51 @@
+# Systemd Service File for PREXCOL Backend
+# Place in: /etc/systemd/system/prexcol.service
+# 
+# Commands:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable prexcol
+#   sudo systemctl start prexcol
+#   sudo systemctl status prexcol
+#   sudo systemctl restart prexcol
+#   sudo journalctl -u prexcol -f  # View logs
+
+[Unit]
+Description=PREXCOL Backend - Gunicorn Service
+After=network.target postgresql.service  # Or mysql.service for MySQL
+
+[Service]
+Type=notify
+User=prexcol
+Group=prexcol
+WorkingDirectory=/opt/prexcol-backend/backend
+Environment="PATH=/opt/prexcol-backend/venv/bin"
+EnvironmentFile=/opt/prexcol-backend/.env
+
+# Gunicorn command
+ExecStart=/opt/prexcol-backend/venv/bin/gunicorn \
+    --config /opt/prexcol-backend/deployment/gunicorn.conf.py \
+    --workers 3 \
+    --bind 127.0.0.1:8000 \
+    wsgi:application
+
+# Process management
+Restart=on-failure
+RestartSec=5s
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=30
+
+# Security
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/prexcol-backend/media /var/log/prexcol
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=prexcol
+
+[Install]
+WantedBy=multi-user.target

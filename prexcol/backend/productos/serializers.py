@@ -1,14 +1,27 @@
 from rest_framework import serializers
 from .models import Tienda, Producto, Pedido, DetallePedido
 from usuarios.serializers import UsuarioSerializer
+from usuarios.models import Usuario
 
 
 class TiendaSerializer(serializers.ModelSerializer):
-    administrador = UsuarioSerializer(read_only=True)
+    administrador_detalle = UsuarioSerializer(source='administrador', read_only=True)
+    administrador = serializers.PrimaryKeyRelatedField(
+        queryset=Usuario.objects.filter(rol='admin')
+    )
 
     class Meta:
         model = Tienda
-        fields = "__all__"
+        fields = ['id', 'nombre', 'direccion', 'telefono', 'administrador', 'administrador_detalle', 'activa', 'fecha_creacion', 'fecha_actualizacion']
+        read_only_fields = ['activa', 'fecha_creacion', 'fecha_actualizacion']
+
+    def to_representation(self, instance):
+        """Override to show nested administrador in GET responses"""
+        ret = super().to_representation(instance)
+        # Remove the ID-only administrador and keep only the detailed version
+        if 'administrador' in ret and 'administrador_detalle' in ret:
+            ret['administrador'] = ret.pop('administrador_detalle')
+        return ret
 
 
 class ProductoSerializer(serializers.ModelSerializer):    
@@ -48,10 +61,24 @@ class PedidoSerializer(serializers.ModelSerializer):
         fields = "__all__"
         
 
-class PedidoCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pedido
-        fields = "__all__"  # o los campos que quieras permitir al crear
+class PedidoCreateSerializer(serializers.Serializer):
+    """Custom serializer for crear_pedido endpoint"""
+    tienda_id = serializers.IntegerField(required=True)
+    detalles = serializers.ListField(
+        child=serializers.DictField(),
+        required=True,
+        allow_empty=False
+    )
+    notas = serializers.CharField(required=False, allow_blank=True)
+
+    def validate_detalles(self, value):
+        """Validate that each detalle has producto and cantidad"""
+        for detalle in value:
+            if 'producto' not in detalle or 'cantidad' not in detalle:
+                raise serializers.ValidationError(
+                    "Cada detalle debe tener 'producto' y 'cantidad'"
+                )
+        return value
 
 class PedidoUpdateEstadoSerializer(serializers.ModelSerializer):
     class Meta:

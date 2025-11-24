@@ -56,6 +56,10 @@ class ProductoViewSet(viewsets.ModelViewSet):
     serializer_class = ProductoSerializer
 
     def get_queryset(self):
+        # Allow public access to all active products
+        if not self.request.user.is_authenticated:
+            return Producto.objects.filter(activo=True)
+        
         rol = getattr(self.request.user, "rol", None)
         if rol in ["admin"] or self.request.user.is_superuser:
             return Producto.objects.filter(activo=True)
@@ -63,7 +67,7 @@ class ProductoViewSet(viewsets.ModelViewSet):
             return Producto.objects.filter(proveedor=self.request.user, activo=True)
         if rol == "cliente":
             return Producto.objects.filter(activo=True)
-        return Producto.objects.none()
+        return Producto.objects.filter(activo=True)  # Default to all
 
     def get_serializer_class(self):
         if self.action == "list":
@@ -71,7 +75,9 @@ class ProductoViewSet(viewsets.ModelViewSet):
         return ProductoSerializer
 
     def get_permissions(self):
-        if self.action in ["list", "retrieve", "por_tienda", "mis_productos"]:
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []  # Public access for viewing products
+        elif self.action in ["por_tienda"]:
             permission_classes = [IsAuthenticated]
         elif self.action in ["create", "destroy"]:
             permission_classes = [IsAdmin]
@@ -79,6 +85,8 @@ class ProductoViewSet(viewsets.ModelViewSet):
             permission_classes = [IsProductoOwnerOrAdmin]
         elif self.action == "ajustar_stock":
             permission_classes = [IsAdmin | IsProveedor]
+        elif self.action == "mis_productos":
+            permission_classes = [IsProveedor]
         else:
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
@@ -223,8 +231,15 @@ class PedidoViewSet(viewsets.ModelViewSet):
 
                 detalles_data = serializer.validated_data["detalles"]
                 for detalle_data in detalles_data:
-                    producto = detalle_data["producto"]
+                    producto_id = detalle_data["producto"]
                     cantidad = detalle_data["cantidad"]
+                    
+                    # Fetch the product object
+                    try:
+                        producto = Producto.objects.get(id=producto_id)
+                    except Producto.DoesNotExist:
+                        raise ValueError(f"Producto {producto_id} no existe")
+                    
                     producto.reducir_stock(cantidad)
                     DetallePedido.objects.create(
                         pedido=pedido,

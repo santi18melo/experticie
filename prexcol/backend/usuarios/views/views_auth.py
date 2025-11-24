@@ -1,9 +1,10 @@
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework import generics, status
 from django.contrib.auth import authenticate
 from ..models import Usuario
-from ..serializers import UsuarioSerializer
+from ..serializers import UsuarioSerializer, LogoutSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -35,3 +36,13 @@ def login_user(request):
         "refresh": str(refresh),
         "user": UsuarioSerializer(user).data
     })
+
+class LogoutView(generics.GenericAPIView):
+    serializer_class = LogoutSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"message": "Sesión cerrada correctamente"}, status=status.HTTP_204_NO_CONTENT)

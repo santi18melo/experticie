@@ -1,44 +1,50 @@
-// src/routes/AuthApp.jsx
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import Login from "../pages/Login.jsx"
+// src/routes/App.jsx - Updated with all new routes
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AppProviders from "../context/AppProviders";
+import ProtectedRoute from "./ProtectedRoute";
+
+// Auth pages
+import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
+import Home from "../pages/Home.jsx";
 import ForgotPassword from "../components/ForgotPassword.jsx";
 import ResetPassword from "../components/ResetPassword.jsx";
-import ProtectedRoute from "../routes/ProtectedRoute.jsx";
 
-import PanelCliente from "../components/clientes/PanelCliente";
-import PanelLogistica from "../components/logistica/PanelLogistica";
-import PanelComprador from "../components/usuarios/PanelComprador";
-import ProveedorPanel from "../components/usuarios/ProveedorPanel";
+// Dashboards
+import AdminDashboard from "../pages/dashboardAdmin.jsx";
+import CompradorDashboard from "../pages/CompradorDashboard.jsx";
+import PanelCliente from "../components/clientes/PanelCliente.jsx";
+import PanelLogistica from "../components/logistica/PanelLogistica.jsx";
+import ProveedorPanel from "../components/usuarios/ProveedorPanel.jsx";
 
+// New Components
+import Cart from "../pages/Cart.jsx";
+import Checkout from "../pages/Checkout.jsx";
+import OrderHistory from "../pages/OrderHistory.jsx";
+import Profile from "../pages/Profile.jsx";
+import Notifications from "../pages/Notifications.jsx";
+import Settings from "../pages/Settings.jsx";
+import PaymentStatus from "../pages/PaymentStatus.jsx";
 
-import Home from "../pages/Home.jsx";
-import Dashboard from "../components/Dashboard.jsx";
+// Products
+import Catalogo from "../components/productos/Catalogo.jsx";
+import DetalleProducto from "../components/productos/DetalleProducto.jsx";
 
-import AppRoutes from "./App.jsx"; // Tus rutas internas
-import AdminDashboard from "../pages/DashboardAdmin.jsx"; // IMPORTANTE
-
-function AuthApp() {
-  const navigate = useNavigate();
-
-  const handleLoginSuccess = () => {
-    navigate("/app");
-  };
-
+function AppRoutes() {
   return (
     <Routes>
-
-      {/* PÚBLICAS */}
+      {/* Public Routes */}
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login onSuccess={handleLoginSuccess} />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
 
-      {/* 🔥 RUTAS INTERNAS */}
-      <Route path="/app/*" element={<AppRoutes />} />
+      {/* Public Product Routes */}
+      <Route path="/productos" element={<Catalogo />} />
+      <Route path="/productos/:id" element={<DetalleProducto />} />
 
-      {/* 🔥 RUTA ADMIN FUNCIONANDO */}
+      {/* Protected Routes - Admin */}
       <Route
         path="/admin"
         element={
@@ -48,24 +54,127 @@ function AuthApp() {
         }
       />
 
-      {/* DASHBOARD GENERAL */}
+      {/* Protected Routes - Comprador */}
       <Route
-        path="/dashboard"
+        path="/comprador"
         element={
-          <ProtectedRoute roles={["admin", "proveedor"]}>
-            <Dashboard />
+          <ProtectedRoute roles={["comprador"]}>
+            <CompradorDashboard />
           </ProtectedRoute>
         }
       />
 
+      {/* Protected Routes - Cliente */}
+      <Route
+        path="/cliente"
+        element={
+          <ProtectedRoute roles={["cliente"]}>
+            <PanelCliente />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Logística */}
+      <Route
+        path="/logistica"
+        element={
+          <ProtectedRoute roles={["logistica"]}>
+            <PanelLogistica />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Proveedor */}
+      <Route
+        path="/proveedor"
+        element={
+          <ProtectedRoute roles={["proveedor"]}>
+            <ProveedorPanel />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Cart & Checkout */}
+      <Route
+        path="/cart"
+        element={
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/checkout"
+        element={
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Orders */}
+      <Route
+        path="/orders"
+        element={
+          <ProtectedRoute>
+            <OrderHistory />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Profile */}
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Notifications */}
+      <Route
+        path="/notifications"
+        element={
+          <ProtectedRoute>
+            <Notifications />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Settings */}
+      <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Payment Status */}
+      <Route
+        path="/payment/:paymentId"
+        element={
+          <ProtectedRoute>
+            <PaymentStatus />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Fallback - 404 */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
 
-export default function AuthAppWrapper() {
+export default function App() {
   return (
     <Router>
-      <AuthApp />
+      <AppProviders>
+        <AppRoutes />
+      </AppProviders>
     </Router>
   );
 }

@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ["*", "testserver"]
 # Application definition
 
 INSTALLED_APPS = [
+    "usuarios",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -29,10 +30,12 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
-    "frontend",
-    "usuarios",
+    "rest_framework_simplejwt.token_blacklist",
+    "core",
     "productos",
     "ventas",
+    "pagos",
+    "notificaciones",
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"
@@ -50,7 +53,7 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = "prexcol.urls"
+ROOT_URLCONF = "urls"
 
 TEMPLATES = [
     {
@@ -67,9 +70,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "prexcol.wsgi.application"
+WSGI_APPLICATION = "wsgi.application"
 
-ASGI_APPLICATION = 'prexcol.asgi.application'
+ASGI_APPLICATION = 'asgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
