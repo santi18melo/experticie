@@ -1,0 +1,137 @@
+from playwright.sync_api import sync_playwright
+import requests
+import json
+from pathlib import Path
+import plotly.graph_objects as go
+
+# ---------------- CONFIG ----------------
+BACKEND_URL = "http://localhost:8000/api"
+FRONTEND_URL = "http://localhost:5173"
+LOG_FILE = Path("c:/experticie-1/prexcol/e2e_test_report_v3.json")
+MEDIA_DIR = Path("c:/experticie-1/prexcol/e2e_media_v3")
+MEDIA_DIR.mkdir(exist_ok=True)
+
+USERS = {
+    "admin": {"email": "admin@prexcol.com", "password": "Prexcol123!", "role": "admin"},
+    "personal": {"email": "personal1@prexcol.com", "password": "Personal123!", "role": "personal"},
+    "cliente": {"email": "test@prexcol.com", "password": "Test123!", "role": "cliente"}
+}
+
+ENDPOINTS = [
+    "/users/me/", "/products/", "/orders/", "/orders/history/", "/cart/", "/dashboard/stats/"
+]
+
+# ---------------- FUNCIONES ----------------
+def take_screenshot(page, name):
+    path = MEDIA_DIR / f"{name}.png"
+    page.screenshot(path=path)
+    return str(path)
+
+def api_request(method, endpoint, token=None, data=None):
+    headers = {"Authorization": f"Bearer {token}"} if token else {}
+    url = f"{BACKEND_URL}{endpoint}"
+    try:
+        resp = requests.request(method, url, headers=headers, json=data, timeout=10)
+        return {"status": resp.status_code, "data": resp.json() if resp.content else None}
+    except Exception as e:
+        return {"status": None, "error": str(e)}
+
+def simulate_checkout(page, token):
+    """Agrega productos al carrito, hace checkout y simula pago."""
+    steps = []
+    try:
+        # Ir a catálogo
+        page.goto(f"{FRONTEND_URL}/productos")
+        page.wait_for_timeout(1000)
+
+        # Agregar primer producto al carrito
+        page.click(".product-card button.add-to-cart")  # asumiendo botón
+        steps.append("Producto agregado al carrito")
+        take_screenshot(page, "checkout_step1")
+
+        # Ir a checkout
+        page.goto(f"{FRONTEND_URL}/checkout")
+        page.wait_for_timeout(1000)
+        # Completar formulario ficticio
+        page.fill("input[name=address]", "Calle 123, Bogotá")
+        page.fill("input[name=payment]", "4111111111111111")
+        page.fill("input[name=notes]", "Llamar antes de entregar")
+        page.click("button[type=submit]")
+        page.wait_for_timeout(2000)
+        steps.append("Checkout completado")
+        take_screenshot(page, "checkout_step2")
+
+        # Verificar estado de pedido en API
+        orders = api_request("GET", "/orders/history/", token)
+        steps.append(f"Pedidos actuales: {len(orders.get('data', []))}")
+    except Exception as e:
+        steps.append(f"Error en checkout: {e}")
+    return steps
+
+def test_user_flow(page, user):
+    result = {"ui": [], "api": {}, "checkout_steps": []}
+    try:
+        # Login UI
+        page.goto(f"{FRONTEND_URL}/login")
+        page.fill("input[name=email]", user["email"])
+        page.fill("input[name=password]", user["password"])
+        page.click("button[type=submit]")
+        page.wait_for_timeout(2000)
+        result["ui"].append({
+            "step": "Login UI",
+            "url": page.url,
+            "status": page.url.endswith(f"/{user['role']}"),
+            "screenshot": take_screenshot(page, f"{user['role']}_login_ui")
+        })
+
+        # API login
+        api_login = api_request("POST", "/auth/login/", data={"email": user["email"], "password": user["password"]})
+        token = api_login["data"]["access"] if api_login.get("data") else None
+        result["api"]["login"] = api_login
+
+        # Test endpoints
+        for endpoint in ENDPOINTS:
+            api_resp = api_request("GET", endpoint, token=token)
+            result["api"][endpoint] = api_resp
+
+        # Checkout solo para cliente
+        if user["role"] == "cliente" and token:
+            result["checkout_steps"] = simulate_checkout(page, token)
+
+    except Exception as e:
+        result["ui"].append({"step": "Exception", "error": str(e)})
+    return result
+
+def generate_dashboard(report_file):
+    with open(report_file) as f:
+        data = json.load(f)
+
+    roles = list(data["results"].keys())
+    passed = [sum(1 for step in data["results"][r]["ui"] if step.get("status")) for r in roles]
+    failed = [len(data["results"][r]["ui"]) - p for r, p in zip(roles, passed)]
+
+    fig = go.Figure()
+    fig.add_trace(go.Bar(name="Passed", x=roles, y=passed, marker_color='green'))
+    fig.add_trace(go.Bar(name="Failed", x=roles, y=failed, marker_color='red'))
+    fig.update_layout(barmode='stack', title="PREXCOL E2E v3.0 Results")
+    fig.show()
+
+def run_e2e_v3():
+    report = {"results": {}}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+
+        for role, user in USERS.items():
+            report["results"][role] = test_user_flow(page, user)
+
+        browser.close()
+
+    LOG_FILE.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    print(f"E2E v3 testing complete. Report saved to {LOG_FILE}")
+    print(f"Screenshots/videos saved in {MEDIA_DIR}")
+
+    generate_dashboard(LOG_FILE)
+
+if __name__ == "__main__":
+    run_e2e_v3()
