@@ -1,0 +1,40 @@
+# PREXCOL Backend - Production Requirements
+# Python 3.11+
+
+# Django Core
+Django==5.0.1
+djangorestframework==3.14.0
+
+# Authentication & JWT
+djangorestframework-simplejwt==5.3.1
+
+# CORS Headers
+django-cors-headers==4.3.1
+
+# Database
+psycopg2-binary==2.9.11  # PostgreSQL adapter
+# mysqlclient==2.2.1    # Uncomment for MySQL
+
+# Production Server
+gunicorn==21.2.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Security
+django-environ==0.11.2
+
+# Static Files (optional but recommended)
+whitenoise==6.6.0
+
+# Monitoring & Logging (optional)
+# sentry-sdk==1.39.1
+# django-debug-toolbar==4.2.0  # Only for development
+
+# Performance (optional)
+# redis==5.0.1
+# django-redis==5.4.0
+
+# Testing (optional for production, but good to have)
+# pytest==7.4.3
+# pytest-django==4.7.0

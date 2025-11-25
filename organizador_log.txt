@@ -1,0 +1,10 @@
+2025-11-21 13:38:20.785722 - ========== INICIO DEL ORGANIZADOR ==========
+2025-11-21 13:38:20.787014 - Archivo de instrucciones creado.
+2025-11-21 13:38:20.787788 - Carpeta creada: frontend
+2025-11-21 13:38:20.981686 - Error moviendo prexcol: Destination path 'backend\prexcol\prexcol' already exists
+2025-11-21 13:38:20.982738 - Movido src → frontend\src
+2025-11-21 13:38:20.983152 - ========== PROCESO FINALIZADO ==========
+2025-11-21 13:39:13.800509 - ========== INICIO DEL ORGANIZADOR ==========
+2025-11-21 13:39:13.801528 - Archivo de instrucciones creado.
+2025-11-21 13:39:13.992241 - Error moviendo prexcol: Destination path 'backend\prexcol\prexcol' already exists
+2025-11-21 13:39:13.995199 - ========== PROCESO FINALIZADO ==========

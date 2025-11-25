@@ -1,0 +1,13 @@
+Watching for file changes with StatReloader
+C:\experticie1\prexcol\backend\usuarios\urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+November 24, 2025 - 18:38:05
+Django version 5.0.1, using settings 'settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+Watching for file changes with StatReloader
+[24/Nov/2025 18:54:55] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[24/Nov/2025 18:55:20] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0

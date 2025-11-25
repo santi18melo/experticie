@@ -1,0 +1,11 @@
+Watching for file changes with StatReloader
+C:\experticie1\prexcol\backend\usuarios\urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+November 24, 2025 - 18:48:14
+Django version 5.0.1, using settings 'settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+Watching for file changes with StatReloader
