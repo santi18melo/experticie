@@ -1,15 +1,22 @@
-import os   
+import os
 import sys
-import django
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-s$@eyh9rphi9t6--4z6k!s1!a-!@hj^xy64hl7zs_0mveew(fg"
-DEBUG = True
+# Load environment variables
+env_path = Path(__file__).resolve().parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
-ALLOWED_HOSTS = ["*", "testserver"]
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-fallback-dev-key-change-in-prod")
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv("DEBUG", "True") == "True"
+
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testserver").split(",")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -28,27 +35,24 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
 
     # Apps internas
-    'usuarios.apps.UsuariosConfig',
-    "core",
-    "productos",
-    "ventas",
-    "pagos",
-    "notificaciones",
+    'apps.usuarios.apps.UsuariosConfig',
+    "apps.productos",
+    "apps.ventas",
+    "apps.pagos",
+    "apps.notificaciones",
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"
 
-# CRITICAL: Django authentication backend configuration
-# EmailBackend must come FIRST to handle email-based login
+# Authentication Backends
 AUTHENTICATION_BACKENDS = [
-    "usuarios.backends.EmailBackend",  # Custom backend for email auth
-    "django.contrib.auth.backends.ModelBackend",  # Fallback
+    "apps.usuarios.backends.EmailBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
-
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # MUST be FIRST
-    "django.middleware.common.CommonMiddleware",  # MUST be SECOND for CORS
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -76,12 +80,26 @@ TEMPLATES = [
 WSGI_APPLICATION = "wsgi.application"
 ASGI_APPLICATION = 'asgi.application'
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+# Database
+# Uses SQLite by default, checks for POSTGRES_DB env var to switch
+if os.getenv("POSTGRES_DB"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("POSTGRES_DB"),
+            "USER": os.getenv("POSTGRES_USER", "postgres"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD", "postgres"),
+            "HOST": os.getenv("POSTGRES_HOST", "localhost"),
+            "PORT": os.getenv("POSTGRES_PORT", "5432"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -90,14 +108,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-LANGUAGE_CODE = "en-us"
-TIME_ZONE = "UTC"
+LANGUAGE_CODE = "es-co"
+TIME_ZONE = "America/Bogota"
 USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# REST Framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -106,6 +125,7 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
+# Simple JWT
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -113,15 +133,12 @@ SIMPLE_JWT = {
     "SIGNING_KEY": SECRET_KEY,
 }
 
-# ---------------------------
-# 🔥 CORS / CSRF CONFIGURACIÓN - FIXED
-# ---------------------------
-
-# CRITICAL: Allow all origins and credentials for development
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS / CSRF
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:5175,http://127.0.0.1:5175").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:5175,http://127.0.0.1:5175").split(",")
 
-# CRITICAL: Explicitly allow all headers including content-type
+# Allow all headers
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -134,51 +151,16 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-# Allow all methods
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-]
-
-# Allowed origins for local dev
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "http://localhost:5175",
-    "http://localhost:5176",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:5174",
-    "http://127.0.0.1:5175",
-    "http://127.0.0.1:5176",
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "http://localhost:5175",
-    "http://localhost:5176",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:5174",
-    "http://127.0.0.1:5175",
-    "http://127.0.0.1:5176",
-]
-
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
-
-# ---------------------------
-# 🔥 EMAIL CONFIG GMAIL
-# ---------------------------
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "melosanchezsantiago@gmail.com"
-EMAIL_HOST_PASSWORD = "24NT74G0M!012"
+# Email
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-FRONTEND_URL = "http://localhost:5176"
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5175")

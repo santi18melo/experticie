@@ -1,7 +1,7 @@
 // tests/e2e/login-simple.spec.js
 import { test, expect } from '@playwright/test';
 
-const FRONTEND_URL = 'http://localhost:5176';
+const FRONTEND_URL = 'http://localhost:5175';
 
 test.describe('PREXCOL Login Test', () => {
   
@@ -12,12 +12,12 @@ test.describe('PREXCOL Login Test', () => {
     // Wait for page to load
     await page.waitForLoadState('networkidle');
     
-    // Fill login form using actual input types from Login.jsx
-    await page.fill('input[type="email"]', 'admin@prexcol.com');
-    await page.fill('input[type="password"]', 'Prexcol123!');
+    // Fill login form using data-testid selectors
+    await page.fill('[data-testid="login-email"]', 'admin@prexcol.com');
+    await page.fill('[data-testid="login-password"]', 'Prexcol123!');
     
     // Click submit button
-    await page.click('button[type="submit"]');
+    await page.click('[data-testid="login-submit"]');
     
     // Wait for navigation (either to /admin or error)
     await page.waitForTimeout(3000);
@@ -47,9 +47,9 @@ test.describe('PREXCOL Login Test', () => {
     await page.waitForLoadState('networkidle');
     
     // Try invalid credentials
-    await page.fill('input[type="email"]', 'invalid@test.com');
-    await page.fill('input[type="password"]', 'wrongpassword');
-    await page.click('button[type="submit"]');
+    await page.fill('[data-testid="login-email"]', 'invalid@test.com');
+    await page.fill('[data-testid="login-password"]', 'wrongpassword');
+    await page.click('[data-testid="login-submit"]');
     
     await page.waitForTimeout(2000);
     

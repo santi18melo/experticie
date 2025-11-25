@@ -1,5 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Helper function for API calls - could be moved to a separate service file for larger applications
+const sendPasswordResetEmail = async (email) => {
+  const response = await fetch("http://127.0.0.1:8000/api/auth/forgot-password/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({ detail: "No se pudo parsear la respuesta del servidor." }));
+    throw new Error(errorData.detail || "Error en la API");
+  }
+
+  return response.json();
+};
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -9,51 +27,38 @@ export default function ForgotPassword() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
+    setMessage(""); // Clear previous messages
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auth/forgot-password/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        // Backend error logged to monitoring
-        throw new Error("Error en la API");
-      }
-
-      const data = await response.json();
-      // Password reset link sent
+      const data = await sendPasswordResetEmail(email);
       setMessage(data.message);
-
-      // Iniciar cuenta regresiva
       setStartCountdown(true);
-
     } catch (error) {
-      console.error("Error:", error);
-      setMessage("Hubo un error. Inténtalo de nuevo.");
+      console.error("Error:", error.message);
+      setMessage(error.message || "Hubo un error. Inténtalo de nuevo.");
     }
-  };
+  }, [email]); // Recreate handleSubmit only if email changes
 
   // Animación barra de progreso
   useEffect(() => {
     if (!startCountdown) return;
 
     let time = 0;
-    const interval = setInterval(() => {
-      time += 100;
-      setProgress((time / 3000) * 100);
+    // Define countdown duration as a constant for easier modification
+    const COUNTDOWN_DURATION = 3000; // milliseconds
+    const INTERVAL_STEP = 100; // milliseconds
 
-      if (time >= 3000) {
+    const interval = setInterval(() => {
+      time += INTERVAL_STEP;
+      setProgress((time / COUNTDOWN_DURATION) * 100);
+
+      if (time >= COUNTDOWN_DURATION) {
         clearInterval(interval);
         navigate("/login");
       }
-    }, 100);
+    }, INTERVAL_STEP);
 
     return () => clearInterval(interval);
   }, [startCountdown, navigate]);

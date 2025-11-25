@@ -1,0 +1,1 @@
+# Productos tests initialization

@@ -14,6 +14,7 @@ const ForgotPassword = lazy(() => import("../components/ForgotPassword.jsx"));
 const ResetPassword = lazy(() => import("../components/ResetPassword.jsx"));
 
 // Dashboards
+const Dashboard = lazy(() => import("../pages/Dashboard.jsx"));
 const AdminDashboard = lazy(() => import("../pages/DashboardAdmin.jsx"));
 const CompradorDashboard = lazy(() => import("../pages/CompradorDashboard.jsx"));
 const PanelCliente = lazy(() => import("../components/clientes/PanelCliente.jsx"));
@@ -47,6 +48,16 @@ function AppRoutes() {
       {/* Public Product Routes */}
       <Route path="/productos" element={<Catalogo />} />
       <Route path="/productos/:id" element={<DetalleProducto />} />
+
+      {/* Protected Routes - General Dashboard */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Protected Routes - Admin */}
       <Route

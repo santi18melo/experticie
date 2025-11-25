@@ -31,7 +31,7 @@ const refreshToken = async () => {
   if (!refresh) return false;
 
   try {
-    const resp = await axiosInstance.post("/auth/refresh/", { refresh });
+    const resp = await axiosInstance.post("/auth/token/refresh/", { refresh });
     const newAccess = resp.data?.access;
     if (!newAccess) return false;
 

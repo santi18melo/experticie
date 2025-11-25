@@ -1,0 +1,177 @@
+// frontend/src/pages/Dashboard.jsx
+import React from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
+export default function Dashboard() {
+  const { user, userRole, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  return (
+    <div style={{ maxWidth: 1200, margin: '0 auto', padding: 40 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
+        <h1>Dashboard - PREXCOL</h1>
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: '10px 20px',
+            background: '#dc2626',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 6,
+            cursor: 'pointer'
+          }}
+        >
+          Cerrar Sesión
+        </button>
+      </div>
+
+      <div style={{ 
+        background: '#f9fafb', 
+        padding: 30, 
+        borderRadius: 8, 
+        border: '1px solid #e5e7eb',
+        marginBottom: 20 
+      }}>
+        <h2>Bienvenido, {user?.nombre || 'Usuario'}!</h2>
+        <p style={{ marginTop: 10, color: '#6b7280' }}>
+          <strong>Email:</strong> {user?.email}
+        </p>
+        <p style={{ color: '#6b7280' }}>
+          <strong>Rol:</strong> {userRole || 'No especificado'}
+        </p>
+        <p style={{ color: '#6b7280' }}>
+          <strong>Teléfono:</strong> {user?.telefono || 'No especificado'}
+        </p>
+        <p style={{ color: '#6b7280' }}>
+          <strong>Dirección:</strong> {user?.direccion || 'No especificado'}
+        </p>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
+        <button
+          onClick={() => navigate('/profile')}
+          style={{
+            padding: 20,
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: 8,
+            cursor: 'pointer',
+            textAlign: 'left'
+          }}
+        >
+          <h3 style={{ marginBottom: 10 }}>👤 Perfil</h3>
+          <p style={{ color: '#6b7280', fontSize: 14 }}>Ver y editar tu perfil</p>
+        </button>
+
+        <button
+          onClick={() => navigate('/orders')}
+          style={{
+            padding: 20,
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: 8,
+            cursor: 'pointer',
+            textAlign: 'left'
+          }}
+        >
+          <h3 style={{ marginBottom: 10 }}>📦 Pedidos</h3>
+          <p style={{ color: '#6b7280', fontSize: 14 }}>Ver historial de pedidos</p>
+        </button>
+
+        <button
+          onClick={() => navigate('/notifications')}
+          style={{
+            padding: 20,
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: 8,
+            cursor: 'pointer',
+            textAlign: 'left'
+          }}
+        >
+          <h3 style={{ marginBottom: 10 }}>🔔 Notificaciones</h3>
+          <p style={{ color: '#6b7280', fontSize: 14 }}>Ver notificaciones</p>
+        </button>
+
+        <button
+          onClick={() => navigate('/settings')}
+          style={{
+            padding: 20,
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: 8,
+            cursor: 'pointer',
+            textAlign: 'left'
+          }}
+        >
+          <h3 style={{ marginBottom: 10 }}>⚙️ Configuración</h3>
+          <p style={{ color: '#6b7280', fontSize: 14 }}>Ajustes de cuenta</p>
+        </button>
+
+        {(userRole === 'cliente' || userRole === 'comprador') && (
+          <>
+            <button
+              onClick={() => navigate('/productos')}
+              style={{
+                padding: 20,
+                background: '#fff',
+                border: '1px solid #e5e7eb',
+                borderRadius: 8,
+                cursor: 'pointer',
+                textAlign: 'left'
+              }}
+            >
+              <h3 style={{ marginBottom: 10 }}>🛍️ Productos</h3>
+              <p style={{ color: '#6b7280', fontSize: 14 }}>Ver catálogo de productos</p>
+            </button>
+
+            <button
+              onClick={() => navigate('/cart')}
+              style={{
+                padding: 20,
+                background: '#fff',
+                border: '1px solid #e5e7eb',
+                borderRadius: 8,
+                cursor: 'pointer',
+                textAlign: 'left'
+              }}
+            >
+              <h3 style={{ marginBottom: 10 }}>🛒 Carrito</h3>
+              <p style={{ color: '#6b7280', fontSize: 14 }}>Ver carrito de compras</p>
+            </button>
+          </>
+        )}
+
+        {userRole === 'admin' && (
+          <button
+            onClick={() => navigate('/admin')}
+            style={{
+              padding: 20,
+              background: '#2563eb',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              textAlign: 'left'
+            }}
+          >
+            <h3 style={{ marginBottom: 10 }}>⚡ Panel Admin</h3>
+            <p style={{ fontSize: 14 }}>Ir al panel de administración</p>
+          </button>
+        )}
+      </div>
+
+      <div style={{ marginTop: 40, padding: 20, background: '#fef3c7', borderRadius: 8, border: '1px solid #fbbf24' }}>
+        <h3 style={{ marginBottom: 10 }}>ℹ️ Información del Sistema</h3>
+        <p style={{ fontSize: 14, color: '#78350f' }}>
+          El sistema de autenticación está funcionando correctamente. Puedes navegar a las diferentes secciones usando los botones de arriba.
+        </p>
+      </div>
+    </div>
+  );
+}

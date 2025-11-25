@@ -71,8 +71,11 @@ export function AuthProvider({ children }) {
 
   // ALWAYS render children - never return null or loading screen
 
+  // Compute userRole from user object
+  const userRole = user?.rol || null;
+
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
+    <AuthContext.Provider value={{ user, userRole, loading, error, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
