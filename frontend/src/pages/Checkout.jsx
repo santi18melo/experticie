@@ -10,7 +10,7 @@ export default function Checkout() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  
+
   // Form data
   const [formData, setFormData] = useState({
     tienda_id: 1, // Default store ID - ajustar según lógica de negocio
@@ -61,12 +61,12 @@ export default function Checkout() {
         notas: formData.notas || "",
       };
 
-      console.log("Enviando pedido:", orderData);
+      // Sending order to backend
 
       // Create order
       const response = await OrderService.createOrder(orderData);
-      
-      console.log("Pedido creado:", response);
+
+      // Order created successfully
 
       // Clear cart
       CartService.clearCart();

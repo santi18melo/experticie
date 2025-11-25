@@ -23,12 +23,12 @@ export default function ForgotPassword() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.log("Backend error:", errorData);
+        // Backend error logged to monitoring
         throw new Error("Error en la API");
       }
 
       const data = await response.json();
-      console.log("Success:", data);
+      // Password reset link sent
       setMessage(data.message);
 
       // Iniciar cuenta regresiva

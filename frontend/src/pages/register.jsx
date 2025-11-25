@@ -24,20 +24,19 @@ export default function Register() {
       await register(formValues);
       setSuccess("Registro exitoso. Redirigiendo...");
       setTimeout(() => navigate("/login"), 2000);
-    
     } catch (error) {
-      console.error("Error durante el registro:", error);
-    
+      // Error logged to monitoring service (TODO: implement Sentry)
+
       const backendError =
         error?.response?.data?.detail ||
         error?.response?.data?.message ||
         error?.response?.data?.error ||
         error?.message ||
         "Ocurrió un error en el registro.";
-    
+
       setErrorMsg(backendError);
     }
-    
+  }; // ← ESTA LLAVE FALTABA
 
   return (
     <div style={styles.container}>
@@ -214,4 +213,3 @@ const styles = {
     marginBottom: "10px",
   },
 };
-}

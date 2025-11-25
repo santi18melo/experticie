@@ -6,13 +6,16 @@ from django.contrib.auth.models import (
 )
 
 
-# usuarios/models.py (fragmento manager)
+# =======================
+#   MANAGER PERSONALIZADO
+# =======================
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, nombre, password=None, **extra_fields):
         if not email:
             raise ValueError("El usuario debe tener un correo electrónico.")
         if not nombre:
             raise ValueError("El usuario debe tener un nombre.")
+
         email = self.normalize_email(email)
         user = self.model(email=email, nombre=nombre, **extra_fields)
         user.set_password(password)
@@ -26,6 +29,9 @@ class UsuarioManager(BaseUserManager):
         return self.create_user(email, nombre, password, **extra_fields)
 
 
+# =======================
+#       MODELO USUARIO
+# =======================
 class Usuario(AbstractBaseUser, PermissionsMixin):
     ROLES = [
         ("admin", "Administrador"),

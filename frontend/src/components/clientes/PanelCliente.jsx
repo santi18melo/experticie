@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';  // ← AGREGADO useCallback
+import React, { useEffect, useState, useCallback } from 'react';
 import api from '../../services/api.js';
 import '../../styles/PanelCliente.css';
 
@@ -15,16 +15,22 @@ function PanelCliente() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const token = localStorage.getItem('token');
 
+  // =============================
+  // CARGAR PRODUCTOS POR TIENDA
+  // =============================
   const cargarProductosPorTienda = useCallback(async (tiendaId) => {
     try {
       const data = await api.getProductosPorTienda(token, tiendaId);
       setProductos(Array.isArray(data) ? data : []);
       setCarrito([]);
     } catch (err) {
-      console.error('Error cargando productos:', err);
+      setError('Error cargando productos');
     }
   }, [token]);
 
+  // =============================
+  // CARGAR DATOS INICIALES
+  // =============================
   const cargarDatos = useCallback(async () => {
     setLoading(true);
     try {
@@ -40,17 +46,74 @@ function PanelCliente() {
         setTiendaSeleccionada(tiendas[0].id);
       }
     } catch (err) {
-      console.error('Error cargando datos:', err);
       setError('Error al cargar datos: ' + (err.response?.data?.detail || err.message));
     } finally {
       setLoading(false);
     }
   }, [token, cargarProductosPorTienda]);
 
+  // =============================
+  // AGREGAR AL CARRITO
+  // =============================
+  const agregarAlCarrito = (producto) => {
+    const existente = carrito.find(item => item.id === producto.id);
+
+    if (existente) {
+      setCarrito(carrito.map(item =>
+        item.id === producto.id
+          ? { ...item, cantidad: item.cantidad + 1 }
+          : item
+      ));
+    } else {
+      setCarrito([...carrito, { ...producto, cantidad: 1 }]);
+    }
+  };
+
+  // =============================
+  // ELIMINAR DEL CARRITO
+  // =============================
+  const eliminarDelCarrito = (id) => {
+    setCarrito(carrito.filter(item => item.id !== id));
+  };
+
+  // =============================
+  // CALCULAR TOTAL
+  // =============================
+  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+
+  // =============================
+  // CREAR PEDIDO
+  // =============================
+  const crearPedido = async () => {
+    if (carrito.length === 0) {
+      setError('El carrito está vacío');
+      return;
+    }
+
+    try {
+      const detalles = carrito.map(item => ({
+        producto: item.id,
+        cantidad: item.cantidad,
+      }));
+
+      await api.crearPedido({
+        tienda: tiendaSeleccionada,
+        detalles: detalles
+      }, token);
+
+      setExito('✓ Pedido creado exitosamente');
+      setCarrito([]);
+      await cargarDatos();
+
+      setTimeout(() => setExito(''), 3000);
+    } catch (err) {
+      setError('Error al crear pedido: ' + (err.response?.data?.detail || err.message));
+    }
+  };
+
   useEffect(() => {
     cargarDatos();
   }, [cargarDatos]);
-
 
   if (loading) return <div className="panel-cliente"><p>Cargando...</p></div>;
 
@@ -139,7 +202,7 @@ function PanelCliente() {
             <div className="productos-seccion">
               <h3>Productos Disponibles</h3>
               <div className="grid-productos">
-                  {productos.length > 0 ? (
+                {productos.length > 0 ? (
                   productos
                     .filter(p => {
                       if (filtroCategoria === 'basicos') return p.es_basico;
@@ -147,25 +210,25 @@ function PanelCliente() {
                       return true;
                     })
                     .map(producto => (
-                    <div key={producto.id} className="producto-card">
-                      <h4>{producto.nombre}</h4>
-                      <p className="descripcion">{producto.descripcion}</p>
-                      <p className="precio">${producto.precio}</p>
-                      <p className={`categoria ${producto.es_basico ? 'basico' : 'no-basico'}`}>
-                        {producto.es_basico ? '🔹 Necesidad Básica' : '✨ No Básico'}
-                      </p>
-                      <p className={`stock ${producto.stock > 0 ? 'disponible' : 'agotado'}`}>
-                        Stock: {producto.stock}
-                      </p>
-                      <button
-                        onClick={() => agregarAlCarrito(producto)}
-                        disabled={producto.stock === 0}
-                        className="btn-agregar"
-                      >
-                        {producto.stock > 0 ? 'Agregar' : 'Agotado'}
-                      </button>
-                    </div>
-                  ))
+                      <div key={producto.id} className="producto-card">
+                        <h4>{producto.nombre}</h4>
+                        <p className="descripcion">{producto.descripcion}</p>
+                        <p className="precio">${producto.precio}</p>
+                        <p className={`categoria ${producto.es_basico ? 'basico' : 'no-basico'}`}>
+                          {producto.es_basico ? '🔹 Necesidad Básica' : '✨ No Básico'}
+                        </p>
+                        <p className={`stock ${producto.stock > 0 ? 'disponible' : 'agotado'}`}>
+                          Stock: {producto.stock}
+                        </p>
+                        <button
+                          onClick={() => agregarAlCarrito(producto)}
+                          disabled={producto.stock === 0}
+                          className="btn-agregar"
+                        >
+                          {producto.stock > 0 ? 'Agregar' : 'Agotado'}
+                        </button>
+                      </div>
+                    ))
                 ) : (
                   <p>No hay productos en esta tienda</p>
                 )}

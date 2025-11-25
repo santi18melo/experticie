@@ -1,5 +1,6 @@
 import React from 'react';
-import DashboardAdmin from './DashboardAdmin.jsx';
-export default function DashboardComprador() {
-return <DashboardAdmin />; // simple reuse; customize as needed
+import AdminDashboard from './dashboardAdmin.jsx';
+
+export default function CompradorDashboard() {
+    return <AdminDashboard />;
 }

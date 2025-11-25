@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Loader from "../components/Loader";
 
@@ -9,8 +9,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
 
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,19 +22,40 @@ export default function Login() {
       const data = await api.login(email, password);
 
       // =============================
-      // Tokens seguros
+      // Tokens (con prioridades claras)
       // =============================
-      const access = data.access || data.token?.access || data.tokens?.access;
-      const refresh = data.refresh || data.token?.refresh || data.tokens?.refresh;
+      const access =
+        data.access ||
+        data.token?.access ||
+        data.tokens?.access ||
+        null;
+
+      const refresh =
+        data.refresh ||
+        data.token?.refresh ||
+        data.tokens?.refresh ||
+        null;
 
       if (!access) {
         throw new Error("Token no recibido del servidor");
       }
 
       // =============================
-      // Usuario según backend
+      // Usuario según backend (más seguro)
       // =============================
-      const user = data.user || data.usuario || data.data || data;
+      const user =
+        data.user ||
+        data.usuario ||
+        data.data ||
+        data ||
+        {};
+
+      const rol =
+        user.rol ||
+        user.role ||
+        user.tipo ||
+        user.perfil ||
+        "cliente";
 
       // =============================
       // AuthContext
@@ -42,29 +63,19 @@ export default function Login() {
       login(user, { access, refresh });
 
       // =============================
-      // Redirección según rol
+      // Redirección
       // =============================
-      switch (user.rol) {
-        case "admin":
-          navigate("/admin");
-          break;
-        case "comprador":
-          navigate("/comprador");
-          break;
-        case "proveedor":
-          navigate("/proveedor");
-          break;
-        case "logistica":
-          navigate("/logistica");
-          break;
-        case "cliente":
-          navigate("/cliente");
-          break;
-        default:
-          navigate("/");
-      }
+      const rutas = {
+        admin: "/admin",
+        comprador: "/comprador",
+        proveedor: "/proveedor",
+        logistica: "/logistica",
+        cliente: "/cliente",
+      };
+
+      navigate(rutas[rol] || "/");
     } catch (error) {
-      console.error("Login error:", error);
+      // Error logged to monitoring service (TODO: implement Sentry)
 
       const msg =
         error?.response?.data?.detail ||
@@ -77,80 +88,8 @@ export default function Login() {
     }
   };
 
-  const styles = {
-    container: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      backgroundColor: "#f5f5f5",
-    },
-    card: {
-      backgroundColor: "#fff",
-      padding: "2rem",
-      borderRadius: "12px",
-      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-      width: "100%",
-      maxWidth: "400px",
-      textAlign: "center",
-    },
-    title: {
-      marginBottom: "1.5rem",
-      fontSize: "1.5rem",
-      fontWeight: "bold",
-    },
-    form: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "1rem",
-    },
-    input: {
-      padding: "0.75rem",
-      borderRadius: "8px",
-      border: "1px solid #ccc",
-      fontSize: "1rem",
-    },
-    button: {
-      padding: "0.75rem",
-      borderRadius: "8px",
-      border: "none",
-      backgroundColor: "#007bff",
-      color: "#fff",
-      fontSize: "1rem",
-      cursor: "pointer",
-    },
-    homeButton: {
-      marginTop: "1rem",
-      padding: "0.5rem 1rem",
-      borderRadius: "8px",
-      border: "1px solid #007bff",
-      backgroundColor: "#fff",
-      color: "#007bff",
-      cursor: "pointer",
-    },
-    error: {
-      color: "red",
-      marginTop: "1rem",
-    },
-    linksContainer: {
-      marginTop: "1rem",
-    },
-    link: {
-      color: "#007bff",
-      textDecoration: "none",
-    },
-    linkInline: {
-      color: "#007bff",
-      textDecoration: "underline",
-    },
-    registerText: {
-      marginTop: "1rem",
-    },
-  };
-
   return (
     <div style={styles.container}>
-      {/* Loader global */}
       {loading && <Loader />}
 
       <div style={styles.card}>
@@ -183,16 +122,16 @@ export default function Login() {
         {errorMsg && <p style={styles.error}>{errorMsg}</p>}
 
         <div style={styles.linksContainer}>
-          <a href="/forgot-password" style={styles.link}>
+          <Link to="/forgot-password" style={styles.link}>
             ¿Olvidaste tu contraseña?
-          </a>
+          </Link>
         </div>
 
         <p style={styles.registerText}>
           ¿No tienes cuenta?{" "}
-          <a href="/register" style={styles.linkInline}>
+          <Link to="/register" style={styles.linkInline}>
             Regístrate
-          </a>
+          </Link>
         </p>
 
         <button onClick={() => navigate("/")} style={styles.homeButton}>
@@ -203,9 +142,7 @@ export default function Login() {
   );
 }
 
-// ===================== ESTILOS =====================
-// (Todo tu código permanece igual)
-
+// ===================== ESTILOS (una sola sección limpia) =====================
 const styles = {
   container: {
     display: "flex",

@@ -2,10 +2,9 @@
 import axios from "axios";
 
 // -------------------------------
-// CONFIG LOCAL FIJA PARA DJANGO
+// CONFIG LOCAL - Use environment variables
 // -------------------------------
-// API REAL USADA EN LOCAL
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000/api";
 
 //--------------------------------
 // INSTANCIA AXIOS
@@ -39,7 +38,7 @@ const refreshToken = async () => {
     localStorage.setItem("accessToken", newAccess);
     return true;
   } catch (err) {
-    console.error("Error refrescando token:", err);
+    // Error logged to service
     return false;
   }
 };

@@ -2,10 +2,11 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import AppProviders from "../context/AppProviders";
 import ProtectedRoute from "./ProtectedRoute";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 // Auth pages
-import Login from "../pages/Login.jsx";
-import Register from "../pages/Register.jsx";
+import Login from "../pages/login.jsx";
+import Register from "../pages/register.jsx";
 import Home from "../pages/Home.jsx";
 import ForgotPassword from "../components/ForgotPassword.jsx";
 import ResetPassword from "../components/ResetPassword.jsx";
@@ -171,10 +172,12 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <Router>
-      <AppProviders>
-        <AppRoutes />
-      </AppProviders>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <AppProviders>
+          <AppRoutes />
+        </AppProviders>
+      </Router>
+    </ErrorBoundary>
   );
 }
