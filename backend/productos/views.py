@@ -225,16 +225,30 @@ class PedidoViewSet(viewsets.ModelViewSet):
             with transaction.atomic():
                 tienda_id = serializer.validated_data["tienda_id"]
                 notas = serializer.validated_data.get("notas", "")
+                metodo_pago_nombre = serializer.validated_data["metodo_pago"]
+                monto_pago = serializer.validated_data["monto_pago"]
+
+                # 1. Validar Método de Pago
+                from pagos.models import MetodoPago, EstadoPago, Pago
+                try:
+                    metodo_pago = MetodoPago.objects.get(nombre__iexact=metodo_pago_nombre, activo=True)
+                except MetodoPago.DoesNotExist:
+                    raise ValueError(f"Método de pago '{metodo_pago_nombre}' no válido o inactivo")
+
+                # 2. Obtener Estado de Pago Inicial (Pendiente)
+                estado_pendiente, _ = EstadoPago.objects.get_or_create(nombre="Pendiente")
+
+                # 3. Crear Pedido
                 pedido = Pedido.objects.create(
                     cliente=request.user, tienda_id=tienda_id, notas=notas
                 )
 
+                # 4. Crear Detalles y Actualizar Stock
                 detalles_data = serializer.validated_data["detalles"]
                 for detalle_data in detalles_data:
                     producto_id = detalle_data["producto"]
                     cantidad = detalle_data["cantidad"]
                     
-                    # Fetch the product object
                     try:
                         producto = Producto.objects.get(id=producto_id)
                     except Producto.DoesNotExist:
@@ -248,7 +262,23 @@ class PedidoViewSet(viewsets.ModelViewSet):
                         precio_unitario=producto.precio,
                     )
 
-                pedido.calcular_total()
+                # 5. Calcular Total del Pedido
+                total_pedido = pedido.calcular_total()
+
+                # 6. Validar Monto del Pago (Debe coincidir con el total)
+                # Nota: En un escenario real, esto podría variar (pagos parciales), pero por ahora exigimos exactitud.
+                if float(monto_pago) != float(total_pedido):
+                     raise ValueError(f"El monto del pago ({monto_pago}) no coincide con el total del pedido ({total_pedido})")
+
+                # 7. Crear Registro de Pago
+                Pago.objects.create(
+                    usuario=request.user,
+                    pedido=pedido,
+                    monto=monto_pago,
+                    estado=estado_pendiente,
+                    metodo_pago=metodo_pago
+                )
+
                 return Response(
                     PedidoSerializer(pedido).data, status=status.HTTP_201_CREATED
                 )

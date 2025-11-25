@@ -156,51 +156,22 @@ function Catalogo() {
             cursor: "pointer"
           }}
         >
-          {mostrarBasicos ? "Mostrando: Básicos" : "Mostrando: Todos"}
+          {mostrarBasicos ? "Mostrar todos" : "Mostrar solo básicos"}
         </button>
       </div>
 
       {/* Productos */}
       <div className="productos">
-        {productosFiltrados.map(producto => (
-          <div key={producto.id} className="producto-card">
-            {producto.imagen_url && (
-              <img
-                src={producto.imagen_url}
-                alt={producto.nombre}
-                style={{ width: "120px", height: "120px", objectFit: "cover", borderRadius: "8px" }}
-              />
-            )}
-
-            <h3>{producto.nombre}</h3>
-            <p>${producto.precio}</p>
-            <p>Stock: {producto.stock}</p>
-            <button
-              onClick={() => agregarAlCarrito(producto)}
-              disabled={producto.stock === 0}
-            >
-              Agregar al carrito
-            </button>
+        {productosFiltrados.map(p => (
+          <div key={p.id} className="producto">
+            <img src={p.imagen} alt={p.nombre} />
+            <h2>{p.nombre}</h2>
+            <p>{p.categoria}</p>
+            <p>${p.precio}</p>
+            <button onClick={() => agregarAlCarrito(p)}>Agregar al carrito</button>
           </div>
         ))}
-      </div>
-
-      {/* Carrito */}
-      <div className="carrito">
-        <h2>Carrito ({carrito.length})</h2>
-        <ul>
-          {carrito.map(item => (
-            <li key={item.id}>
-              {item.nombre} x{item.cantidad} = ${item.precio * item.cantidad}
-            </li>
-          ))}
-        </ul>
-        <button onClick={crearPedido} disabled={carrito.length === 0}>
-          Crear Pedido
-        </button>
       </div>
     </div>
   );
 }
-
-export default Catalogo;

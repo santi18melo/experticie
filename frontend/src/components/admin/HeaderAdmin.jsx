@@ -1,17 +1,18 @@
 import React from "react";
-import { logout } from "../../services/authservices";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function HeaderAdmin({
 title = "Panel Prexcol",
 role = "Admin",
 }) {
-const navigate = useNavigate();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
-const handleLogout = () => {
+  const handleLogout = () => {
     logout();
     navigate("/login");
-};
+  };
 
 return (
     <header className="adm-header">

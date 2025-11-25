@@ -70,6 +70,8 @@ class PedidoCreateSerializer(serializers.Serializer):
         allow_empty=False
     )
     notas = serializers.CharField(required=False, allow_blank=True)
+    metodo_pago = serializers.CharField(required=True)
+    monto_pago = serializers.DecimalField(max_digits=12, decimal_places=2, required=True)
 
     def validate_detalles(self, value):
         """Validate that each detalle has producto and cantidad"""

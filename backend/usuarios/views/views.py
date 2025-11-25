@@ -64,11 +64,12 @@ def login_user(request):
 
     tokens = generate_tokens_for_user(user)
 
+    # CRITICAL: Frontend expects 'access' and 'refresh' keys, not 'tokens'
     return Response(
         {
-            "message": "Login exitoso",
+            "access": tokens["access"],
+            "refresh": tokens["refresh"],
             "user": UsuarioSerializer(user).data,
-            "tokens": tokens,
         },
         status=status.HTTP_200_OK,
     )

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../services/authservices";
+import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -15,13 +15,13 @@ export default function Register() {
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = React.useCallback(async (e) => {
     e.preventDefault();
     setErrorMsg("");
     setSuccess("");
 
     try {
-      await register(formValues);
+      await api.register(formValues);
       setSuccess("Registro exitoso. Redirigiendo...");
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
@@ -36,7 +36,7 @@ export default function Register() {
 
       setErrorMsg(backendError);
     }
-  }; // ← ESTA LLAVE FALTABA
+  }, [formValues, navigate]);
 
   return (
     <div style={styles.container}>

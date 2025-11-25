@@ -51,7 +51,8 @@ export default function Checkout() {
         throw new Error("La dirección de envío es requerida");
       }
 
-      // Prepare order data for backend
+      // Prepare order data for backend (with payment info)
+      const total = CartService.getCartTotal();
       const orderData = {
         tienda_id: formData.tienda_id,
         detalles: cartItems.map((item) => ({
@@ -59,6 +60,9 @@ export default function Checkout() {
           cantidad: item.quantity,
         })),
         notas: formData.notas || "",
+        metodo_pago: formData.metodo_pago === "tarjeta" ? "Tarjeta de Crédito" : 
+                     formData.metodo_pago === "efectivo" ? "Efectivo" : "Transferencia",
+        monto_pago: total,
       };
 
       // Sending order to backend
@@ -130,26 +134,6 @@ export default function Checkout() {
             </div>
           </div>
 
-          {/* Checkout Form */}
-          <div style={styles.formSection}>
-            <form onSubmit={handleSubmitOrder}>
-              <div style={styles.formGroup}>
-                <label style={styles.label}>Dirección de Envío *</label>
-                <textarea
-                  name="direccion_envio"
-                  value={formData.direccion_envio}
-                  onChange={handleInputChange}
-                  required
-                  rows="3"
-                  style={styles.textarea}
-                  placeholder="Ingrese su dirección completa"
-                />
-              </div>
-
-              <div style={styles.formGroup}>
-                <label style={styles.label}>Método de Pago</label>
-                <select
-                  name="metodo_pago"
                   value={formData.metodo_pago}
                   onChange={handleInputChange}
                   style={styles.select}

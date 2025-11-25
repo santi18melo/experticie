@@ -1,231 +1,102 @@
-import React, { useState } from "react";
-import api from "../services/api";
-import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import Loader from "../components/Loader";
+// frontend/src/pages/Login.jsx
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const { login, loading, error } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  const [localError, setLocalError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg("");
-    setLoading(true);
+    setLocalError(null);
+
+    if (!email || !password) {
+      setLocalError("Por favor ingresa email y contraseña.");
+      return;
+    }
 
     try {
-      const data = await api.login(email, password);
-
-      // =============================
-      // Tokens (con prioridades claras)
-      // =============================
-      const access =
-        data.access ||
-        data.token?.access ||
-        data.tokens?.access ||
-        null;
-
-      const refresh =
-        data.refresh ||
-        data.token?.refresh ||
-        data.tokens?.refresh ||
-        null;
-
-      if (!access) {
-        throw new Error("Token no recibido del servidor");
+      const res = await login(email.trim(), password);
+      if (res && res.ok) {
+        // login already navigates by role in AuthContext, but keep fallback
+        const user = res.user || JSON.parse(localStorage.getItem("user") || "null");
+        if (user && (user.rol === "admin" || user.role === "admin")) {
+          navigate("/admin");
+        } else {
+          navigate("/dashboard");
+        }
+      } else {
+        // muestra error ya seteado en AuthContext o local
+        setLocalError(res?.error || "Credenciales incorrectas o error de servidor.");
       }
-
-      // =============================
-      // Usuario según backend (más seguro)
-      // =============================
-      const user =
-        data.user ||
-        data.usuario ||
-        data.data ||
-        data ||
-        {};
-
-      const rol =
-        user.rol ||
-        user.role ||
-        user.tipo ||
-        user.perfil ||
-        "cliente";
-
-      // =============================
-      // AuthContext
-      // =============================
-      login(user, { access, refresh });
-
-      // =============================
-      // Redirección
-      // =============================
-      const rutas = {
-        admin: "/admin",
-        comprador: "/comprador",
-        proveedor: "/proveedor",
-        logistica: "/logistica",
-        cliente: "/cliente",
-      };
-
-      navigate(rutas[rol] || "/");
-    } catch (error) {
-      // Error logged to monitoring service (TODO: implement Sentry)
-
-      const msg =
-        error?.response?.data?.detail ||
-        error?.response?.data?.message ||
-        "Credenciales incorrectas o error en el servidor.";
-
-      setErrorMsg(msg);
-    } finally {
-      setLoading(false);
+    } catch (err) {
+      console.error("Login unexpected error:", err);
+      setLocalError("Error inesperado al iniciar sesión.");
     }
   };
 
   return (
-    <div style={styles.container}>
-      {loading && <Loader />}
+    <div style={{ maxWidth: 420, margin: "40px auto", padding: 20, border: "1px solid #ddd", borderRadius: 8 }}>
+      <h2 style={{textAlign:'center', marginBottom:16}}>Iniciar sesión</h2>
 
-      <div style={styles.card}>
-        <h2 style={styles.title}>Iniciar sesión</h2>
-
-        <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit}>
+        <label style={{ display: "block", marginBottom: 8 }}>
+          Email
           <input
             type="email"
-            placeholder="Correo electrónico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            style={{ width: "100%", padding: 8, marginTop: 6, boxSizing: "border-box" }}
+            data-testid="login-email"
             required
-            style={styles.input}
           />
+        </label>
 
+        <label style={{ display: "block", marginBottom: 8 }}>
+          Contraseña
           <input
             type="password"
-            placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            style={{ width: "100%", padding: 8, marginTop: 6, boxSizing: "border-box" }}
+            data-testid="login-password"
             required
-            style={styles.input}
           />
+        </label>
 
-          <button type="submit" style={styles.button} disabled={loading}>
-            {loading ? "Cargando..." : "Entrar"}
+        <div style={{ marginTop: 12 }}>
+          <button
+            type="submit"
+            disabled={loading}
+            data-testid="login-submit"
+            style={{
+              width: "100%",
+              padding: 10,
+              background: "#2563eb",
+              color: "#fff",
+              border: "none",
+              borderRadius: 6,
+              cursor: loading ? "not-allowed" : "pointer",
+            }}
+          >
+            {loading ? "Entrando..." : "Entrar"}
           </button>
-        </form>
-
-        {errorMsg && <p style={styles.error}>{errorMsg}</p>}
-
-        <div style={styles.linksContainer}>
-          <Link to="/forgot-password" style={styles.link}>
-            ¿Olvidaste tu contraseña?
-          </Link>
         </div>
 
-        <p style={styles.registerText}>
-          ¿No tienes cuenta?{" "}
-          <Link to="/register" style={styles.linkInline}>
-            Regístrate
-          </Link>
-        </p>
+        <div style={{ marginTop: 12, minHeight: 20 }}>
+          {localError && <div style={{ color: "crimson" }}>{localError}</div>}
+          {!localError && error && <div style={{ color: "crimson" }}>{error}</div>}
+        </div>
 
-        <button onClick={() => navigate("/")} style={styles.homeButton}>
-          Volver al Inicio
-        </button>
-      </div>
+        <div style={{ marginTop: 12, textAlign: "center" }}>
+          <a href="/register">¿No tienes cuenta? Regístrate</a> · <a href="/forgot-password">Olvidé mi contraseña</a>
+        </div>
+      </form>
     </div>
   );
 }
-
-// ===================== ESTILOS (una sola sección limpia) =====================
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    background: "#f3f4f7",
-    padding: "20px",
-  },
-  card: {
-    width: "100%",
-    maxWidth: "420px",
-    padding: "30px",
-    background: "#fff",
-    borderRadius: "14px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-  },
-  title: {
-    fontSize: "24px",
-    fontWeight: "600",
-    marginBottom: "20px",
-    color: "#333",
-    textAlign: "center",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-  },
-  input: {
-    padding: "12px 15px",
-    borderRadius: "8px",
-    border: "1px solid #d0d0d0",
-    fontSize: "15px",
-    outline: "none",
-    transition: "0.2s",
-  },
-  button: {
-    padding: "12px",
-    background: "linear-gradient(135deg, #4CAF50, #2e7d32)",
-    color: "white",
-    fontSize: "15px",
-    fontWeight: "600",
-    borderRadius: "8px",
-    border: "none",
-    cursor: "pointer",
-    boxShadow: "0 4px 12px rgba(76,175,80,0.3)",
-    transition: "0.3s",
-  },
-  error: {
-    marginTop: "10px",
-    color: "red",
-    fontWeight: "500",
-    textAlign: "center",
-  },
-  linksContainer: {
-    marginTop: "10px",
-    textAlign: "center",
-  },
-  link: {
-    fontSize: "14px",
-    color: "#2e7d32",
-    textDecoration: "none",
-    fontWeight: "500",
-  },
-  linkInline: {
-    color: "#2e7d32",
-    fontWeight: "600",
-    textDecoration: "none",
-  },
-  registerText: {
-    marginTop: "15px",
-    textAlign: "center",
-    fontSize: "14px",
-    color: "#444",
-  },
-  homeButton: {
-    marginTop: "20px",
-    padding: "10px 15px",
-    backgroundColor: "#555",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-  },
-};

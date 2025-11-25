@@ -1,39 +1,42 @@
 // src/routes/App.jsx - Updated with all new routes
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import AppProviders from "../context/AppProviders";
 import ProtectedRoute from "./ProtectedRoute";
 import ErrorBoundary from "../components/ErrorBoundary";
+import Loader from "../components/Loader";
 
 // Auth pages
-import Login from "../pages/login.jsx";
-import Register from "../pages/register.jsx";
-import Home from "../pages/Home.jsx";
-import ForgotPassword from "../components/ForgotPassword.jsx";
-import ResetPassword from "../components/ResetPassword.jsx";
+const Login = lazy(() => import("../pages/Login.jsx"));
+const Register = lazy(() => import("../pages/Register.jsx"));
+const Home = lazy(() => import("../pages/Home.jsx"));
+const ForgotPassword = lazy(() => import("../components/ForgotPassword.jsx"));
+const ResetPassword = lazy(() => import("../components/ResetPassword.jsx"));
 
 // Dashboards
-import AdminDashboard from "../pages/dashboardAdmin.jsx";
-import CompradorDashboard from "../pages/CompradorDashboard.jsx";
-import PanelCliente from "../components/clientes/PanelCliente.jsx";
-import PanelLogistica from "../components/logistica/PanelLogistica.jsx";
-import ProveedorPanel from "../components/usuarios/ProveedorPanel.jsx";
+const AdminDashboard = lazy(() => import("../pages/DashboardAdmin.jsx"));
+const CompradorDashboard = lazy(() => import("../pages/CompradorDashboard.jsx"));
+const PanelCliente = lazy(() => import("../components/clientes/PanelCliente.jsx"));
+const PanelLogistica = lazy(() => import("../components/logistica/PanelLogistica.jsx"));
+const ProveedorPanel = lazy(() => import("../components/usuarios/ProveedorPanel.jsx"));
 
 // New Components
-import Cart from "../pages/Cart.jsx";
-import Checkout from "../pages/Checkout.jsx";
-import OrderHistory from "../pages/OrderHistory.jsx";
-import Profile from "../pages/Profile.jsx";
-import Notifications from "../pages/Notifications.jsx";
-import Settings from "../pages/Settings.jsx";
-import PaymentStatus from "../pages/PaymentStatus.jsx";
+const Cart = lazy(() => import("../pages/Cart.jsx"));
+const Checkout = lazy(() => import("../pages/Checkout.jsx"));
+const OrderHistory = lazy(() => import("../pages/OrderHistory.jsx"));
+const Profile = lazy(() => import("../pages/Profile.jsx"));
+const Notifications = lazy(() => import("../pages/Notifications.jsx"));
+const Settings = lazy(() => import("../pages/Settings.jsx"));
+const PaymentStatus = lazy(() => import("../pages/PaymentStatus.jsx"));
 
 // Products
-import Catalogo from "../components/productos/Catalogo.jsx";
-import DetalleProducto from "../components/productos/DetalleProducto.jsx";
+const Catalogo = lazy(() => import("../components/productos/Catalogo.jsx"));
+const DetalleProducto = lazy(() => import("../components/productos/DetalleProducto.jsx"));
 
 function AppRoutes() {
   return (
-    <Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
@@ -166,7 +169,8 @@ function AppRoutes() {
 
       {/* Fallback - 404 */}
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </Suspense>
   );
 }
 

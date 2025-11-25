@@ -12,7 +12,6 @@ DEBUG = True
 ALLOWED_HOSTS = ["*", "testserver"]
 
 INSTALLED_APPS = [
-    "usuarios",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -29,6 +28,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
 
     # Apps internas
+    'usuarios.apps.UsuariosConfig',
     "core",
     "productos",
     "ventas",
@@ -38,11 +38,19 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = "usuarios.Usuario"
 
+# CRITICAL: Django authentication backend configuration
+# EmailBackend must come FIRST to handle email-based login
+AUTHENTICATION_BACKENDS = [
+    "usuarios.backends.EmailBackend",  # Custom backend for email auth
+    "django.contrib.auth.backends.ModelBackend",  # Fallback
+]
+
+
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # IMPORTANTE: siempre primero
+    "corsheaders.middleware.CorsMiddleware",  # MUST be FIRST
+    "django.middleware.common.CommonMiddleware",  # MUST be SECOND for CORS
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -106,31 +114,61 @@ SIMPLE_JWT = {
 }
 
 # ---------------------------
-# 🔥 CORS / CSRF CONFIGURACIÓN
+# 🔥 CORS / CSRF CONFIGURACIÓN - FIXED
 # ---------------------------
 
-CSRF_TRUSTED_ORIGINS = [
+# CRITICAL: Allow all origins and credentials for development
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+# CRITICAL: Explicitly allow all headers including content-type
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+# Allow all methods
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# Allowed origins for local dev
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:5174",
     "http://localhost:5175",
+    "http://localhost:5176",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
     "http://127.0.0.1:5175",
-    "http://172.30.7.92:5175",
-    "http://172.30.7.92:8000",
+    "http://127.0.0.1:5176",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175",
+    "http://localhost:5176",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+    "http://127.0.0.1:5175",
+    "http://127.0.0.1:5176",
 ]
 
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
-
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5175",
-    "http://127.0.0.1:5175",
-    "http://172.30.7.92:5175",
-    "http://172.30.7.92:8000",
-]
-
-# Permitir todos los headers y métodos (evita errores OPTIONS)
-CORS_ALLOW_HEADERS = ["*"]
-CORS_ALLOW_METHODS = ["*"]
 
 # ---------------------------
 # 🔥 EMAIL CONFIG GMAIL
@@ -140,7 +178,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "melosanchezsantiago@gmail.com"
-EMAIL_HOST_PASSWORD = "pmnvdcvxpsydbrdl"
+EMAIL_HOST_PASSWORD = "24NT74G0M!012"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-FRONTEND_URL = "http://172.30.7.92:5743"
+FRONTEND_URL = "http://localhost:5176"

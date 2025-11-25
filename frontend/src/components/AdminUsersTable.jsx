@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import authApi from "../services/authservices";
+import UserService from "../services/userService";
 
 export default function AdminUsersTable() {
 const [users, setUsers] = useState([]);
@@ -7,10 +7,10 @@ const [loading, setLoading] = useState(true);
 
 const loadUsers = async () => {
     try {
-    const res = await authApi.get("/usuarios/");
-    const data = Array.isArray(res.data)
-        ? res.data
-        : res.data?.results || [];
+    const res = await UserService.getAllUsers();
+    const data = Array.isArray(res)
+        ? res
+        : res.results || [];
 
     setUsers(data);
     } catch (err) {

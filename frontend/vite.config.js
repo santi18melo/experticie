@@ -13,5 +13,11 @@ export default defineConfig({
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/tests/setup.js',
+    css: true,
   }
 })

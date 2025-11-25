@@ -6,6 +6,6 @@ urlpatterns = [
     path('api/auth/', include('usuarios.urls')),
     path('api/', include('productos.urls')),
     path('api/', include('ventas.urls')),
-    path('api/', include('pagos.urls')),  # Router already includes 'pagos'
-    path('api/', include('notificaciones.urls')),  # Router already includes 'notificaciones'
+    path('api/', include('pagos.urls')),
+    path('api/', include('notificaciones.urls')),
 ]

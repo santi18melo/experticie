@@ -2,13 +2,13 @@
 import axios from "axios";
 
 // -------------------------------
-// CONFIG LOCAL - Use environment variables
+// CONFIG - Base URL
 // -------------------------------
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000/api";
 
-//--------------------------------
-// INSTANCIA AXIOS
-//--------------------------------
+// -------------------------------
+// AXIOS INSTANCE
+// -------------------------------
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
@@ -20,8 +20,8 @@ const axiosInstance = axios.create({
 // -------------------------------
 // TOKEN HELPERS
 // -------------------------------
-const getAccessToken = () => localStorage.getItem("accessToken") || "";
-const getRefreshToken = () => localStorage.getItem("refreshToken") || "";
+const getAccessToken = () => localStorage.getItem("token") || localStorage.getItem("accessToken") || "";
+const getRefreshToken = () => localStorage.getItem("refresh") || localStorage.getItem("refreshToken") || "";
 
 // -------------------------------
 // REFRESH TOKEN FUNCTION
@@ -35,40 +35,80 @@ const refreshToken = async () => {
     const newAccess = resp.data?.access;
     if (!newAccess) return false;
 
+    localStorage.setItem("token", newAccess);
     localStorage.setItem("accessToken", newAccess);
     return true;
   } catch (err) {
-    // Error logged to service
+    console.error("[API] Refresh token failed:", err);
     return false;
   }
 };
 
 // -------------------------------
-// INTERCEPTOR: añade Authorization
+// INTERCEPTOR: Add Authorization Header
 // -------------------------------
-axiosInstance.interceptors.request.use((config) => {
-  const token = getAccessToken();
-  if (token) {
-    config.headers = config.headers || {};
-    config.headers.Authorization = `Bearer ${token}`;
+axiosInstance.interceptors.request.use(
+  (config) => {
+    console.log("[🔵 AXIOS REQ]", config.method?.toUpperCase(), config.url, config.data);
+    
+    const token = getAccessToken();
+    if (token) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    console.error("[🔴 AXIOS REQ ERROR]", error);
+    return Promise.reject(error);
   }
-  return config;
-});
+);
 
 // -------------------------------
-// INTERCEPTOR: 401 → refresh
+// INTERCEPTOR: Handle Responses
 // -------------------------------
 axiosInstance.interceptors.response.use(
-  (res) => res,
+  (response) => {
+    console.log("[✅ AXIOS SUCCESS]", response.status, response.config.url);
+    return response;
+  },
   async (error) => {
+    console.error("[❌ AXIOS ERROR]", {
+      status: error.response?.status,
+      url: error.config?.url,
+      data: error.response?.data,
+      message: error.message
+    });
+
     const originalReq = error.config;
 
-    if (error.response?.status === 401 && !originalReq._retry) {
-      originalReq._retry = true;
+    // Handle 401 - Unauthorized
+    if (error.response?.status === 401) {
+      // If it's a refresh token failure or we've already retried, logout
+      if (originalReq.url.includes('/token/refresh/') || originalReq._retry) {
+        console.warn("[🔒 AUTH] Session expired. Logging out...");
+        localStorage.removeItem("token");
+        localStorage.removeItem("refresh");
+        localStorage.removeItem("user");
+        window.location.href = "/login"; // Force redirect
+        return Promise.reject(error);
+      }
 
-      if (await refreshToken()) {
+      // Try to refresh token
+      originalReq._retry = true;
+      const refreshed = await refreshToken();
+      
+      if (refreshed) {
         originalReq.headers.Authorization = `Bearer ${getAccessToken()}`;
         return axiosInstance(originalReq);
+      } else {
+        // Refresh failed
+        console.warn("[🔒 AUTH] Refresh failed. Logging out...");
+        localStorage.removeItem("token");
+        localStorage.removeItem("refresh");
+        localStorage.removeItem("user");
+        window.location.href = "/login";
+        return Promise.reject(error);
       }
     }
 
@@ -76,26 +116,9 @@ axiosInstance.interceptors.response.use(
   }
 );
 
+
 // -------------------------------
-// API WRAPPER (AUTH)
+// EXPORT DEFAULT
 // -------------------------------
-const api = {
-  login: (email, password) =>
-    axiosInstance.post("/auth/login/", { email, password }).then((r) => r.data),
-
-  register: (data) =>
-    axiosInstance.post("/auth/register/", data).then((r) => r.data),
-
-  requestPasswordReset: (email) =>
-    axiosInstance.post("/auth/forgot-password/", { email }).then((r) => r.data),
-
-  resetPassword: (uid, token, newPassword) =>
-    axiosInstance
-      .post(`/auth/reset-password/${uid}/${token}/`, {
-        password: newPassword,
-      })
-      .then((r) => r.data),
-};
-
-export default api;
+export default axiosInstance;
 export { axiosInstance, API_BASE_URL };

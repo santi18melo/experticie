@@ -1,12 +1,12 @@
 import json
 from django.http import JsonResponse
-from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+from usuarios.models import Usuario  # Use custom Usuario model
 
 token_generator = PasswordResetTokenGenerator()
 
@@ -16,12 +16,12 @@ def forgot_password(request):
     if request.method != "POST":
         return JsonResponse({"error": "Método no permitido"}, status=405)
 
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     email = data.get("email")
 
     try:
-        user = User.objects.get(email=email)
-    except User.DoesNotExist:
+        user = Usuario.objects.get(email=email)
+    except Usuario.DoesNotExist:
         return JsonResponse({"message": "Si el correo existe, enviaremos un mensaje."})
 
     uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -55,7 +55,7 @@ def reset_password(request, uidb64, token):
 
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
-        user = User.objects.get(pk=uid)
+        user = Usuario.objects.get(pk=uid)
     except Exception:
         return JsonResponse({"error": "Token inválido"}, status=400)
 

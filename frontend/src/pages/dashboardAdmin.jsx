@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { authAxios, logout } from "../services/authservices";
+import { axiosInstance } from "../services/api";
+import { useAuth } from "../context/AuthContext";
 import "../styles/dashboardAdmin.css";
 import HeaderAdmin from "../components/admin/HeaderAdmin";
 import { useNavigate } from "react-router-dom";
 
 export default function AdminDashboard() {
+  const { logout } = useAuth();
+
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -25,18 +28,18 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   // ===================== LOGOUT ======================
-  const handleLogout = () => {
+  const handleLogout = React.useCallback(() => {
     logout();
     navigate("/login");
-  };
+  }, [logout, navigate]);
 
   // ===================== FETCH USUARIOS ======================
-  const fetchUsuarios = async () => {
+  const fetchUsuarios = React.useCallback(async () => {
     setLoading(true);
     setError("");
 
     try {
-      const res = await authAxios.get("/usuarios/");
+      const res = await axiosInstance.get("/usuarios/");
       const data = res.data.results ? res.data.results : res.data;
       setUsuarios(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -50,16 +53,16 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   // ===================== SUBMIT FORM ======================
-const handleSubmit = async (e) => {
+const handleSubmit = React.useCallback(async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
     try {
-        await authAxios.post("/usuarios/", formValues);
+        await axiosInstance.post("/usuarios/", formValues);
         setSuccess("Usuario creado exitosamente");
 
         setTimeout(() => {
@@ -77,38 +80,38 @@ const handleSubmit = async (e) => {
 
         setError("❌ Error: " + errorMsg);
     }
-};
+}, [formValues, fetchUsuarios]);
 
   // ===================== EDITAR ======================
-  const handleEdit = (user) => {
+  const handleEdit = React.useCallback((user) => {
     setFormValues({ ...user, password: "" });
     setIsEditing(true);
     setError("");
     setSuccess("");
-  };
+  }, []);
 
   // ===================== ELIMINAR ======================
-  const handleDelete = async (id) => {
+  const handleDelete = React.useCallback(async (id) => {
     if (!window.confirm("¿Seguro que deseas eliminar este usuario?")) return;
 
     setError("");
     setSuccess("");
 
     try {
-      await authAxios.delete(`/usuarios/${id}/`);
+      await axiosInstance.delete(`/usuarios/${id}/`);
       setSuccess("Usuario eliminado exitosamente");
       setTimeout(fetchUsuarios, 500);
     } catch (err) {
       const errorMsg = err.response?.data?.detail || err.message;
       setError("❌ Error al eliminar: " + errorMsg);
     }
-  };
+  }, [fetchUsuarios]);
 
   // ===================== TOGGLE ESTADO ======================
-  const toggleEstado = async (id, currentEstado) => {
+  const toggleEstado = React.useCallback(async (id, currentEstado) => {
     try {
       const newEstado = !currentEstado;
-      await authAxios.patch(`/usuarios/${id}/`, { estado: newEstado });
+      await axiosInstance.patch(`/usuarios/${id}/`, { estado: newEstado });
 
       setSuccess(currentEstado ? "✓ Usuario desactivado" : "✓ Usuario activado");
       setTimeout(fetchUsuarios, 500);
@@ -116,7 +119,7 @@ const handleSubmit = async (e) => {
       const errorMsg = err.response?.data?.detail || err.message;
       setError("❌ Error al cambiar estado: " + errorMsg);
     }
-  };
+  }, [fetchUsuarios]);
 
   // ===================== RESET FORM ======================
   const resetForm = () => {

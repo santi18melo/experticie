@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PREXCOL Login Test - Standalone</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+        input { margin: 5px 0; padding: 8px; width: 300px; }
+        button { padding: 10px 20px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🔬 PREXCOL Authentication Test</h1>
+    
+    <div>
+        <input type="email" id="email" placeholder="Email" value="admin@prexcol.com">
+        <input type="password" id="password" placeholder="Password" value="Prexcol123!">
+        <button onclick="testLogin()">Test Login</button>
+    </div>
+    
+    <div id="result" class="result"></div>
+    
+    <script>
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = 'Testing...';
+            resultDiv.className = 'result';
+            
+            try {
+                console.log('🔵 Sending request...', { email, password });
+                
+                const response = await fetch('http://127.0.0.1:8000/api/auth/login/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({ email, password })
+                });
+                
+                console.log('📥 Response received:', response.status, response.statusText);
+                
+                const data = await response.json();
+                console.log('📋 Response data:', data);
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ SUCCESS!</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Access Token:</strong> ${data.access?.substring(0, 50)}...</p>
+                        <p><strong>Refresh Token:</strong> ${data.refresh?.substring(0, 50)}...</p>
+                        <p><strong>User:</strong> ${JSON.stringify(data.user, null, 2)}</p>
+                        <p><strong>Saved to localStorage:</strong> ${localStorage.setItem('testToken', data.access) || 'Done'}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ FAILED</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Error:</strong> ${JSON.stringify(data, null, 2)}</p>
+                    `;
+                }
+            } catch (error) {
+                console.error('💥 Exception:', error);
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>💥 EXCEPTION</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>Type:</strong> ${error.name}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

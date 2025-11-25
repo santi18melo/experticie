@@ -1,7 +1,7 @@
 // src/components/ResetPassword.jsx
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { resetPassword } from "../services/authservices";
+import api from "../services/api";
 
 export default function ResetPassword() {
   const { uid, token } = useParams();
@@ -25,7 +25,7 @@ export default function ResetPassword() {
 
     try {
       setLoading(true);
-      await resetPassword(uid, token, pass1);
+      await api.resetPassword(uid, token, pass1);
 
       setMsg("✅ Contraseña restablecida. Redirigiendo...");
       setTimeout(() => navigate("/login"), 1500);
