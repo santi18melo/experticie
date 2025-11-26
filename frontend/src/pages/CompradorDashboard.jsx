@@ -77,19 +77,6 @@ export default function CompradorDashboard() {
 
   if (loading && pedidos.length === 0) {
     return (
-      <div className="comprador-dashboard">
-        <div className="loading-container">
-          <div className="spinner"></div>
-          <p>Cargando pedidos...</p>
-        </div>
-      </div>
-      )}
-      {success && (
-        <div className="alert alert-success">
-          <span>✓</span> {success}
-        </div>
-      )}
-
       {/* ESTADÍSTICAS */}
       <div className="stats-grid">
         <div className="stat-card">
