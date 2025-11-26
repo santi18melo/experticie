@@ -42,9 +42,9 @@ test.describe('Full User Journey: Register -> Login -> Dashboard -> Logout', () 
     await page.fill('[data-testid="login-password"]', user.password);
     await page.click('[data-testid="login-submit"]');
 
-    // Wait for redirection to dashboard
-    await page.waitForURL('**/dashboard', { timeout: 10000 });
-    console.log('Logged in and redirected to dashboard.');
+    // Wait for redirection to cliente dashboard (default role for registration)
+    await page.waitForURL('**/cliente', { timeout: 10000 });
+    console.log('Logged in and redirected to cliente dashboard.');
 
     // Verify user info on dashboard
     await expect(page.locator('h2')).toContainText(user.nombre);

@@ -23,15 +23,34 @@ export default function Login() {
     try {
       const res = await login(email.trim(), password);
       if (res && res.ok) {
-        // login already navigates by role in AuthContext, but keep fallback
         const user = res.user || JSON.parse(localStorage.getItem("user") || "null");
-        if (user && (user.rol === "admin" || user.role === "admin")) {
-          navigate("/admin");
+        
+        // Redirect based on user role
+        if (user && user.rol) {
+          switch(user.rol) {
+            case 'admin':
+              navigate("/admin");
+              break;
+            case 'cliente':
+              navigate("/cliente");
+              break;
+            case 'comprador':
+              navigate("/comprador");
+              break;
+            case 'proveedor':
+              navigate("/proveedor");
+              break;
+            case 'logistica':
+              navigate("/logistica");
+              break;
+            default:
+              navigate("/dashboard");
+          }
         } else {
+          // Fallback to general dashboard
           navigate("/dashboard");
         }
       } else {
-        // muestra error ya seteado en AuthContext o local
         setLocalError(res?.error || "Credenciales incorrectas o error de servidor.");
       }
     } catch (err) {

@@ -1,8 +1,8 @@
 # 🚀 GUÍA DE INICIO RÁPIDO - PREXCOL
 
-**Última actualización:** 2025-11-25 22:00:00  
+**Última actualización:** 2025-11-25 22:10:00  
 **Estado del Sistema:** ✅ 100% Operativo  
-**Versión:** 2.0 - Autenticación Completa
+**Versión:** 2.1 - Dashboards Específicos por Rol
 
 ---
 
@@ -63,29 +63,30 @@ Todos los usuarios siguen el patrón: `{rol}@prexcol.com` / `{Rol}123!`
 | Rol | Email | Password | Dashboard |
 |-----|-------|----------|-----------|
 | **Admin** | admin@prexcol.com | Prexcol123! | /admin |
-| **Cliente** | cliente1@prexcol.com | Cliente123! | /dashboard |
-| **Comprador** | comprador1@prexcol.com | Comprador123! | /dashboard |
-| **Proveedor** | proveedor1@prexcol.com | Proveedor123! | /dashboard |
-| **Logística** | logistica1@prexcol.com | Logistica123! | /dashboard |
+| **Cliente** | cliente1@prexcol.com | Cliente123! | /cliente |
+| **Comprador** | comprador1@prexcol.com | Comprador123! | /comprador |
+| **Proveedor** | proveedor1@prexcol.com | Proveedor123! | /proveedor |
+| **Logística** | logistica1@prexcol.com | Logistica123! | /logistica |
+
+> **Nota:** Cada rol tiene su propio dashboard específico con funcionalidades adaptadas a sus necesidades.
 
 ---
 
 ## 🎯 FLUJO DE USUARIO COMPLETO
 
 ```
-1. Registro
+1. Registro (rol por defecto: cliente)
    ↓
-2. Login (automático o manual)
+2. Login
    ↓
-3. Dashboard (según rol)
+3. Redirección automática al dashboard específico del rol:
+   - Admin → /admin
+   - Cliente → /cliente
+   - Comprador → /comprador
+   - Proveedor → /proveedor
+   - Logística → /logistica
    ↓
-4. Navegación:
-   - Perfil (/profile)
-   - Pedidos (/orders)
-   - Notificaciones (/notifications)
-   - Configuración (/settings)
-   - Productos (/productos) - Cliente/Comprador
-   - Carrito (/cart) - Cliente/Comprador
+4. Navegación (según permisos del rol)
    ↓
 5. Logout
 ```
@@ -305,7 +306,16 @@ experticie-2/
 │   │   ├── pages/
 │   │   │   ├── Login.jsx          # Página de login
 │   │   │   ├── Register.jsx       # Página de registro
-│   │   │   └── Dashboard.jsx      # Dashboard general
+│   │   │   ├── Dashboard.jsx      # Dashboard general
+│   │   │   ├── DashboardAdmin.jsx # Dashboard Admin
+│   │   │   └── CompradorDashboard.jsx # Dashboard Comprador
+│   │   ├── components/
+│   │   │   ├── clientes/
+│   │   │   │   └── PanelCliente.jsx    # Panel Cliente
+│   │   │   ├── logistica/
+│   │   │   │   └── PanelLogistica.jsx  # Panel Logística
+│   │   │   └── usuarios/
+│   │   │       └── ProveedorPanel.jsx  # Panel Proveedor
 │   │   ├── context/
 │   │   │   └── AuthContext.jsx    # Estado de autenticación
 │   │   ├── services/
@@ -350,15 +360,16 @@ experticie-2/
 - ✅ CORS configurado correctamente
 - ✅ CSRF protection habilitado
 - ✅ Validación de datos en backend
+- ✅ Rutas protegidas por rol
 
 ---
 
 ## 🚀 PRÓXIMOS PASOS
 
-1. **Explorar el Dashboard**
+1. **Explorar Dashboards Específicos**
    - Login con diferentes roles
-   - Probar navegación entre secciones
-   - Verificar permisos por rol
+   - Verificar funcionalidades específicas de cada dashboard
+   - Probar permisos por rol
 
 2. **Crear Nuevos Usuarios**
    - Usar formulario de registro
@@ -371,7 +382,7 @@ experticie-2/
    - Pruebas continuas
 
 4. **Desarrollo**
-   - Crear páginas para Profile, Orders, etc.
+   - Personalizar dashboards específicos
    - Implementar funcionalidades de negocio
    - Agregar más tests
 
@@ -426,4 +437,4 @@ Si encuentras problemas:
 
 **¡Sistema listo para desarrollo!** 🎉
 
-Todos los componentes están operativos y probados. Comienza a desarrollar con confianza.
+Todos los componentes están operativos y probados. Cada rol tiene su dashboard específico con redirección automática.
