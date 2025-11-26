@@ -70,6 +70,16 @@ function Catalogo() {
     if (existe) {
       setCarrito(carrito.map(p =>
         p.id === producto.id ? { ...p, cantidad: p.cantidad + 1 } : p
+      ));
+    } else {
+      setCarrito([...carrito, { ...producto, cantidad: 1 }]);
+    }
+  };
+
+  return (
+    <div className="catalogo">
+      <h1>Catálogo de Productos</h1>
+
       <div className="filtros" style={{ marginBottom: "20px" }}>
 
         {/* FILTRO POR TIENDA */}

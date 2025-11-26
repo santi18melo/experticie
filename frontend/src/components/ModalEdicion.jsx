@@ -309,6 +309,8 @@ export default function ModalEdicion({
                 </label>
               </div>
             </>
+          )}
+
           {/* FORMULARIO PEDIDO */}
           {tipo === 'Pedido' && (
             <>

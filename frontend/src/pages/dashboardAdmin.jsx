@@ -7,8 +7,6 @@ import {
   crearTienda,
   getProductos,
   crearProducto,
-  getProductos,
-  crearProducto,
   getPedidos,
 } from "../services/productosService";
 import OrderService from "../services/orderService";
