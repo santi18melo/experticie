@@ -1,46 +1,55 @@
 #  GUÍA DE INICIO RÁPIDO - PREXCOL
 
-**Última actualización:** 2025-11-25 22:10:00  
+**Última actualización:** 2025-11-26 15:00:00  
 **Estado del Sistema:** ✅ 100% Operativo  
-**Versión:** 2.1 - Dashboards Específicos por Rol
+**Versión:** 2.2 - Dependencias Completas y Scripts de Configuración
 
 ---
 
 ##  REQUISITOS PREVIOS
 
-- Python 3.8+ instalado
+- Python 3.11+ instalado (compatible hasta Python 3.14+)
 - Node.js 16+ y npm instalados
 - Git instalado
 - Editor de código (VS Code recomendado)
 
 ---
 
-## ⚡ INICIO RÁPIDO (3 PASOS)
+## ⚡ INICIO RÁPIDO (2 PASOS)
 
-### 1️⃣ **Clonar e Instalar**
+### 1️⃣ **Clonar e Instalar (MÉTODO AUTOMÁTICO)**
 
 ```powershell
 # Clonar repositorio
 git clone https://github.com/santi18melo/experticie.git
 cd experticie-2
 
+# Instalar TODAS las dependencias (Backend + Frontend) automáticamente
+.\\setup_project.bat
+```
+
+**O manualmente (paso a paso):**
+
+```powershell
 # Backend - Instalar dependencias
 cd backend
 python -m venv .venv
-
-.\.venv\Scripts\Activate.ps1; pip install -r requirements.txt
+.\\.venv\\Scripts\\Activate.ps1
+python -m pip install -r requirements.txt
 
 # Frontend - Instalar dependencias
-cd ..\frontend
+cd ..\\frontend
 npm install
 ```
+
+> **💡 Nuevo:** El script `setup_project.bat` instala automáticamente todas las dependencias de backend y frontend en un solo paso.
 
 ### 2️⃣ **Iniciar Servicios**
 
 **Terminal 1 - Backend:**
 ```powershell
 cd backend
-.\.venv\Scripts\Activate.ps1
+.\\.venv\\Scripts\\Activate.ps1
 python manage.py runserver 0.0.0.0:8000
 ```
 
@@ -53,6 +62,45 @@ npm run dev
 ### 3️⃣ **Acceder a la Aplicación**
 
 Abre tu navegador en: **http://localhost:5175**
+
+---
+
+## 📦 DEPENDENCIAS DEL PROYECTO
+
+### Backend (Python)
+
+| Categoría | Paquete | Versión | Propósito |
+|-----------|---------|---------|-----------|
+| **Framework** | Django | 5.0.1 | Framework web |
+| | djangorestframework | 3.14.0 | API REST |
+| **Autenticación** | djangorestframework-simplejwt | 5.3.1 | Tokens JWT |
+| **CORS** | django-cors-headers | 4.3.1 | Solicitudes entre dominios |
+| **Base de Datos** | psycopg2-binary | 2.9.11 | Adaptador PostgreSQL |
+| **Servidor** | gunicorn | 21.2.0 | Servidor WSGI |
+| **Configuración** | python-dotenv | 1.0.0 | Variables de entorno |
+| | django-environ | 0.11.2 | Gestión de configuración |
+| **Archivos Estáticos** | whitenoise | 6.6.0 | Servir archivos estáticos |
+| **Media** | Pillow | >=10.2.0 | Procesamiento de imágenes |
+| **HTTP Client** | requests | 2.31.0 | Peticiones HTTP |
+| **Testing** | pytest | 7.4.3 | Framework de testing |
+| | pytest-django | 4.7.0 | Testing para Django |
+
+**Total:** 13 dependencias principales
+
+### Frontend (Node.js)
+
+| Categoría | Paquete | Versión | Propósito |
+|-----------|---------|---------|-----------|
+| **Framework** | react | ^19.2.0 | Biblioteca UI |
+| | react-dom | ^19.2.0 | Renderizado React |
+| **Routing** | react-router-dom | ^7.9.6 | Navegación SPA |
+| **HTTP Client** | axios | ^1.13.2 | Peticiones HTTP |
+| **Build Tool** | vite | ^7.2.2 | Bundler y dev server |
+| **Testing** | @playwright/test | ^1.57.0 | Testing E2E |
+| | vitest | ^4.0.13 | Testing unitario |
+| | @testing-library/react | ^16.3.0 | Testing de componentes |
+
+**Total:** 8 dependencias principales + 7 dev dependencies
 
 ---
 
@@ -105,7 +153,7 @@ python manage.py createsuperuser
 python manage.py migrate
 
 # Crear usuarios de prueba
-python scripts\create_test_users.py
+python scripts\\create_test_users.py
 
 # Ejecutar tests
 python manage.py test apps.usuarios.tests
@@ -246,8 +294,13 @@ localStorage.getItem('user')
 
 ### Error: "Módulo no encontrado"
 ```powershell
+# Reinstalar dependencias backend
 cd backend
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+
+# Reinstalar dependencias frontend
+cd frontend
+npm install
 ```
 
 ### Error: "CORS Policy"
@@ -280,6 +333,13 @@ npx playwright install
 npx playwright test --timeout=60000
 ```
 
+### Error: "Pillow build failed" (Python 3.14+)
+```powershell
+# El sistema instalará automáticamente una versión compatible
+# Si persiste el error, instalar Pillow manualmente:
+python -m pip install Pillow
+```
+
 ---
 
 ## 📁 ESTRUCTURA DEL PROYECTO
@@ -288,14 +348,18 @@ npx playwright test --timeout=60000
 experticie-2/
 ├── backend/
 │   ├── apps/
-│   │   └── usuarios/
-│   │       ├── models.py          # Modelo Usuario
-│   │       ├── serializers.py     # Validación de datos
-│   │       ├── views/
-│   │       │   ├── views_auth.py  # Login, Register, Logout
-│   │       │   └── view_password.py # Recuperación de contraseña
-│   │       ├── urls.py            # Rutas de API
-│   │       └── tests/             # Tests unitarios
+│   │   ├── usuarios/
+│   │   │   ├── models.py          # Modelo Usuario
+│   │   │   ├── serializers.py     # Validación de datos
+│   │   │   ├── views/
+│   │   │   │   ├── views_auth.py  # Login, Register, Logout
+│   │   │   │   └── view_password.py # Recuperación de contraseña
+│   │   │   ├── urls.py            # Rutas de API
+│   │   │   └── tests/             # Tests unitarios
+│   │   ├── productos/             # Módulo productos
+│   │   ├── ventas/                # Módulo ventas
+│   │   ├── pagos/                 # Módulo pagos
+│   │   └── notificaciones/        # Módulo notificaciones
 │   ├── scripts/
 │   │   └── create_test_users.py   # Crear usuarios de prueba
 │   ├── settings.py                # Configuración Django
@@ -331,11 +395,14 @@ experticie-2/
 │   ├── run_continuous_tests.py    # Script de pruebas continuas
 │   └── package.json
 │
+├── requirements.txt               # Dependencias Python (ACTUALIZADO)
+├── setup_project.bat             # Script instalación Windows (NUEVO)
+├── setup_project.sh              # Script instalación Unix/Linux (NUEVO)
+│
 └── docs/
-    ├── ESTADO_SISTEMA_FINAL.md           # Estado actual
-    ├── REPORTE_PRUEBAS_AUTENTICACION.md  # Validación
-    ├── RESUMEN_VALIDACION.md             # Resumen
-    └── MANUAL_AUTH_TESTING_GUIDE.md      # Guía de pruebas
+    ├── INICIO_RAPIDO.md          # Esta guía
+    ├── ESTADO_SISTEMA_FINAL.md   # Estado actual
+    └── REPORTE_PRUEBAS_AUTENTICACION.md  # Validación
 ```
 
 ---
@@ -344,6 +411,7 @@ experticie-2/
 
 | Documento | Descripción |
 |-----------|-------------|
+| `INICIO_RAPIDO.md` | Guía de inicio rápido (este documento) |
 | `ESTADO_SISTEMA_FINAL.md` | Estado completo del sistema con métricas |
 | `REPORTE_PRUEBAS_AUTENTICACION.md` | Validación detallada de autenticación |
 | `RESUMEN_VALIDACION.md` | Resumen ejecutivo con credenciales |
@@ -361,6 +429,7 @@ experticie-2/
 - ✅ CSRF protection habilitado
 - ✅ Validación de datos en backend
 - ✅ Rutas protegidas por rol
+- ✅ Procesamiento seguro de imágenes (Pillow)
 
 ---
 
@@ -390,13 +459,14 @@ experticie-2/
 
 ## 💡 CONSEJOS PRO
 
-1. **Mantén ambos servidores corriendo** mientras desarrollas
-2. **Usa DevTools (F12)** para ver requests/responses
-3. **Revisa logs regularmente** en ambas terminales
-4. **Haz commits frecuentes** después de cambios importantes
-5. **Ejecuta tests antes de cada commit** para evitar regresiones
-6. **Usa data-testid** en elementos interactivos para testing
-7. **Consulta la documentación** en la carpeta `docs/`
+1. **Usa el script de instalación automática** (`setup_project.bat`) para configurar el proyecto en segundos
+2. **Mantén ambos servidores corriendo** mientras desarrollas
+3. **Usa DevTools (F12)** para ver requests/responses
+4. **Revisa logs regularmente** en ambas terminales
+5. **Haz commits frecuentes** después de cambios importantes
+6. **Ejecuta tests antes de cada commit** para evitar regresiones
+7. **Usa data-testid** en elementos interactivos para testing
+8. **Consulta la documentación** en la carpeta `docs/`
 
 ---
 
@@ -416,7 +486,7 @@ cd frontend
 npx playwright test tests/e2e/login-simple.spec.js
 
 # 4. Usuarios creados
-cd ..\backend
+cd ..\\backend
 python manage.py shell
 >>> from apps.usuarios.models import Usuario
 >>> print(f"Total usuarios: {Usuario.objects.count()}")
@@ -432,9 +502,26 @@ Si encuentras problemas:
 2. Consulta los logs en las terminales
 3. Verifica la documentación en `docs/`
 4. Revisa los tests para ver ejemplos de uso
+5. Ejecuta `setup_project.bat` para reinstalar dependencias
+
+---
+
+## 📝 CHANGELOG
+
+### Versión 2.2 (2025-11-26)
+- ✨ Agregado `setup_project.bat` y `setup_project.sh` para instalación automática
+- ✨ Agregadas dependencias: `Pillow` (manejo de imágenes) y `requests` (cliente HTTP)
+- 📝 Actualizada documentación de dependencias
+- 🐛 Mejorada compatibilidad con Python 3.14+
+- 📦 Limpieza y optimización de `requirements.txt`
+
+### Versión 2.1 (2025-11-25)
+- ✨ Dashboards específicos por rol
+- ✨ Redirección automática según rol de usuario
+- 🎨 Interface profesionalizada
 
 ---
 
 **¡Sistema listo para desarrollo!** 🎉
 
-Todos los componentes están operativos y probados. Cada rol tiene su dashboard específico con redirección automática.
+Todos los componentes están operativos y probados. Cada rol tiene su dashboard específico con redirección automática. Ejecuta `setup_project.bat` para instalar todas las dependencias automáticamente.
