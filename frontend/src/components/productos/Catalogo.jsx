@@ -70,33 +70,6 @@ function Catalogo() {
     if (existe) {
       setCarrito(carrito.map(p =>
         p.id === producto.id ? { ...p, cantidad: p.cantidad + 1 } : p
-      ));
-    } else {
-      setCarrito([...carrito, { ...producto, cantidad: 1 }]);
-    }
-  };
-
-  const crearPedido = async () => {
-    const detalles = carrito.map(p => ({ producto: p.id, cantidad: p.cantidad }));
-    const response = await api.crearPedido(token, {
-      tienda_id: tiendaId,
-      detalles,
-      notas: 'Pedido desde React'
-    });
-
-    if (response.id) {
-      alert(`✓ Pedido creado #${response.id}`);
-      setCarrito([]);
-    } else {
-      alert(`✗ Error: ${JSON.stringify(response)}`);
-    }
-  };
-
-  return (
-    <div className="catalogo">
-      <h1>Catálogo de Productos</h1>
-
-      {/* Controles de filtro */}
       <div className="filtros" style={{ marginBottom: "20px" }}>
 
         {/* FILTRO POR TIENDA */}
