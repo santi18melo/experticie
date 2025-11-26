@@ -64,17 +64,119 @@
 .stock-bar{ flex:1; height:10px; background:#eef2f7; border-radius:999px; overflow:hidden }
 .stock-filled{ height:100%; background:linear-gradient(90deg,#10b981,#06b6d4); transition:width .35s ease }
 
-.control-stock{ display:flex; gap:10px; align-items:center; margin-top:12px }
+.control-stock{ display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap: wrap; }
 .cantidad-quick{ display:flex; gap:8px; align-items:center }
 .quick-btn{ background:#f3f4f6; border:1px solid #e5e7eb; padding:6px 8px; border-radius:8px; cursor:pointer }
 .input-cantidad{ width:84px; padding:8px 10px; border-radius:8px; border:1px solid #e6e9ef }
 .accion-buttons{ display:flex; gap:8px }
-.btn{ padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:700; border:none }
+.btn{ padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:700; border:none; transition: all 0.2s; }
 .btn-aumentar{ background:#065f46; color:white }
 .btn-reducir{ background:#b91c1c; color:white }
+.btn-edit { background: #4f46e5; color: white; width: 100%; margin-top: 10px; }
 .btn:disabled{ opacity:0.6; cursor:not-allowed }
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
 .tienda-info{ margin-top:12px; font-size:13px; color:#6b7280 }
 .sin-productos{ background:#fff; padding:28px; border-radius:12px; text-align:center; color:#6b7280 }
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #111827;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.image-upload-container {
+  margin-top: 10px;
+}
+
+.image-preview {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 2px dashed #e5e7eb;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.btn-cancel {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.btn-save {
+  background: #4f46e5;
+  color: white;
+}
 
 @media (max-width:900px){ .resumen-inventario{ grid-template-columns:1fr } .resumen-categorias{ grid-template-columns:1fr } }
