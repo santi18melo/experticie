@@ -33,6 +33,11 @@ export default function Checkout() {
     }
     setCartItems(items);
     setTotal(CartService.getCartTotal());
+
+    // Set tienda_id from the first item if available
+    if (items.length > 0 && items[0].product.tienda) {
+      setFormData(prev => ({ ...prev, tienda_id: items[0].product.tienda }));
+    }
   };
 
   const handleInputChange = (e) => {
