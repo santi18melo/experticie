@@ -453,7 +453,8 @@ export default function DashboardAdmin() {
       setTimeout(() => setSuccess(""), 3000);
     } catch (err) {
       console.error("Error actualizando pedido:", err);
-      setError("Error al actualizar el pedido");
+      const errorMsg = err.response?.data?.error || "Error al actualizar el pedido";
+      setError(errorMsg);
       setTimeout(() => setError(""), 5000);
     }
   };
