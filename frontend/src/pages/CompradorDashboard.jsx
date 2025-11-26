@@ -70,19 +70,6 @@ export default function CompradorDashboard() {
 
   // ==================== ESTADÍSTICAS ====================
   const stats = {
-    totalPedidos: pedidos.length,
-    pendientes: pedidos.filter((p) => p.estado === "pendiente").length,
-    preparando: pedidos.filter((p) => p.estado === "preparando").length,
-  };
-
-  if (loading && pedidos.length === 0) {
-    return (
-      {/* ESTADÍSTICAS */}
-      <div className="stats-grid">
-        <div className="stat-card">
-          <div className="stat-icon">📋</div>
-          <div className="stat-content">
-            <h3>{stats.totalPedidos}</h3>
             <p>Total Pedidos</p>
             <span className="stat-detail">En gestión</span>
           </div>
