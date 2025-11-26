@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
-import '../styles/Auth.css';
+import '../styles/ForgotPassword.css';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -40,26 +40,26 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-background">
-        <div className="auth-shape shape-1"></div>
-        <div className="auth-shape shape-2"></div>
-        <div className="auth-shape shape-3"></div>
+    <div className="forgot-container">
+      <div className="forgot-bg">
+        <div className="shape shape-1"></div>
+        <div className="shape shape-2"></div>
+        <div className="shape shape-3"></div>
       </div>
 
-      <div className="auth-card">
-        <div className="auth-header">
-          <div className="auth-logo">
+      <div className="forgot-card">
+        <div className="forgot-header">
+          <div className="forgot-logo">
             <div className="logo-icon">🏪</div>
             <h1>PREXCOL</h1>
           </div>
           <h2>Recuperar Contraseña</h2>
-          <p className="auth-subtitle">
+          <p className="forgot-subtitle">
             Ingresa tu correo y te enviaremos instrucciones
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form onSubmit={handleSubmit} className="forgot-form">
           <div className="form-group">
             <label htmlFor="email">
               <span className="label-icon">📧</span>
@@ -77,14 +77,14 @@ export default function ForgotPassword() {
           </div>
 
           {error && (
-            <div className="auth-error" role="alert">
+            <div className="forgot-alert error" role="alert">
               <span className="error-icon">⚠️</span>
               {error}
             </div>
           )}
 
           {success && (
-            <div className="auth-success" role="alert">
+            <div className="forgot-alert success" role="alert">
               <span className="success-icon">✓</span>
               {success}
             </div>
@@ -92,7 +92,7 @@ export default function ForgotPassword() {
 
           <button
             type="submit"
-            className="auth-button"
+            className="forgot-button"
             disabled={loading}
           >
             {loading ? (
@@ -108,17 +108,17 @@ export default function ForgotPassword() {
             )}
           </button>
 
-          <div className="auth-links">
-            <Link to="/login" className="auth-link">
+          <div className="forgot-links">
+            <Link to="/login" className="forgot-link">
               ← Volver al inicio de sesión
             </Link>
           </div>
 
-          <div className="auth-divider">
+          <div className="forgot-divider">
             <span>o</span>
           </div>
 
-          <div className="auth-footer">
+          <div className="forgot-footer">
             <p>
               ¿No tienes una cuenta?{" "}
               <Link to="/register" className="auth-link-primary">
@@ -128,13 +128,13 @@ export default function ForgotPassword() {
           </div>
         </form>
 
-        <div className="auth-info">
+        <div className="forgot-info">
           <div className="info-box">
             <p className="info-title">
               <span className="info-icon">💡</span>
               ¿Cómo funciona?
             </p>
-            <ol className="info-list">
+            <ol>
               <li>Ingresa tu correo electrónico registrado</li>
               <li>Recibirás un enlace de recuperación</li>
               <li>Haz clic en el enlace para crear una nueva contraseña</li>
