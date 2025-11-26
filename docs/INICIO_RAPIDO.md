@@ -1,225 +1,429 @@
-GUÍA RÁPIDA DE INICIO Paso 1: Verificar que Todo Esté Correcto cd /ruta/a/tu/proyecto
+# 🚀 GUÍA DE INICIO RÁPIDO - PREXCOL
 
-Instalar venv
+**Última actualización:** 2025-11-25 22:00:00  
+**Estado del Sistema:** ✅ 100% Operativo  
+**Versión:** 2.0 - Autenticación Completa
+
+---
+
+## 📋 REQUISITOS PREVIOS
+
+- Python 3.8+ instalado
+- Node.js 16+ y npm instalados
+- Git instalado
+- Editor de código (VS Code recomendado)
+
+---
+
+## ⚡ INICIO RÁPIDO (3 PASOS)
+
+### 1️⃣ **Clonar e Instalar**
+
+```powershell
+# Clonar repositorio
+git clone https://github.com/santi18melo/experticie.git
+cd experticie-2
+
+# Backend - Instalar dependencias
+cd backend
 python -m venv .venv
-Activar entorno virtual
 .\.venv\Scripts\Activate.ps1
-
-Ejecutar verificación
-python verificar_backend.py Resultado esperado: 8/8 verificaciones pasadas Paso 2: Iniciar Backend (Terminal 1)
-
-En caso de que no lo verifique:
-Get-ChildItem -Path C:\experticie -Recurse -Filter "verificar_backend.py"
-
-Si no está activado el venv
-cd C:\experticie .venv\Scripts\Activate.ps1
-
-Instalar dependencias:
 pip install -r requirements.txt
 
-Iniciar servidor Django
-cd C:\experticie\prexcol
-python manage.py runserver
-
-Salida esperada:
-
-Salga del servidor con CTRL+BREAK. Iniciando servidor de desarrollo en http://127.0.0.1:8000/
-
-Paso 3: Iniciar Frontend (Terminal 2) cd C:\experticie\prexcol
-
-Instalar dependencias si aún no están instaladas
-C:\experticie\prexcol\frontend> 
+# Frontend - Instalar dependencias
+cd ..\frontend
 npm install
+```
 
-Iniciar Vite
+### 2️⃣ **Iniciar Servicios**
+
+**Terminal 1 - Backend:**
+```powershell
+cd backend
+.\.venv\Scripts\Activate.ps1
+python manage.py runserver 0.0.0.0:8000
+```
+
+**Terminal 2 - Frontend:**
+```powershell
+cd frontend
+npm run dev
+```
+
+### 3️⃣ **Acceder a la Aplicación**
+
+Abre tu navegador en: **http://localhost:5175**
+
+---
+
+## 👥 USUARIOS DE PRUEBA
+
+Todos los usuarios siguen el patrón: `{rol}@prexcol.com` / `{Rol}123!`
+
+| Rol | Email | Password | Dashboard |
+|-----|-------|----------|-----------|
+| **Admin** | admin@prexcol.com | Prexcol123! | /admin |
+| **Cliente** | cliente1@prexcol.com | Cliente123! | /dashboard |
+| **Comprador** | comprador1@prexcol.com | Comprador123! | /dashboard |
+| **Proveedor** | proveedor1@prexcol.com | Proveedor123! | /dashboard |
+| **Logística** | logistica1@prexcol.com | Logistica123! | /dashboard |
+
+---
+
+## 🎯 FLUJO DE USUARIO COMPLETO
+
+```
+1. Registro
+   ↓
+2. Login (automático o manual)
+   ↓
+3. Dashboard (según rol)
+   ↓
+4. Navegación:
+   - Perfil (/profile)
+   - Pedidos (/orders)
+   - Notificaciones (/notifications)
+   - Configuración (/settings)
+   - Productos (/productos) - Cliente/Comprador
+   - Carrito (/cart) - Cliente/Comprador
+   ↓
+5. Logout
+```
+
+---
+
+## 🔧 COMANDOS ÚTILES
+
+### Backend (Django)
+
+```powershell
+# Crear superusuario
+python manage.py createsuperuser
+
+# Ejecutar migraciones
+python manage.py migrate
+
+# Crear usuarios de prueba
+python scripts\create_test_users.py
+
+# Ejecutar tests
+python manage.py test apps.usuarios.tests
+
+# Verificar configuración
+python manage.py check
+```
+
+### Frontend (React + Vite)
+
+```powershell
+# Modo desarrollo
 npm run dev
 
-Para iniciar Vite en celular: 
+# Modo desarrollo (accesible desde red)
 npm run dev -- --host
 
-Salida esperada:
+# Build para producción
+npm run build
 
-➜ Local: http://localhost:5173/ ➜ Pulsa h para ver la ayuda
+# Preview de producción
+npm run preview
 
-Paso 4: Acceder a la Aplicación
+# Ejecutar tests E2E
+npx playwright test
 
-Visitantemente, la misma ciudadana de la ciudad fue una vez más común en la misma zona de distribución de alimentos.
+# Ejecutar test específico
+npx playwright test tests/e2e/full-user-journey.spec.js
 
-URL: http://localhost:5173
+# Ejecutar tests en modo headed (visible)
+npx playwright test --headed
 
-Iniciar sesión con credenciales de administrador
+# Ver reporte de tests
+npx playwright show-report
+```
 
-Correo electrónico: admin@example.com
+### Tests Automatizados
 
-Contraseña: admin123
+```powershell
+# Ejecutar pruebas continuas por 3 horas
+cd frontend
+python run_continuous_tests.py 3
 
-Ver panel de control
+# Ejecutar pruebas por 30 minutos
+python run_continuous_tests.py 0.5
+```
 
-del sistema
+---
 
-investigadores activos
+## 🌐 ENDPOINTS DE API
 
-distribución de roles
+### Autenticación
 
-Pruebas de API (Terminal 3) Opción A: Usar el script de prueba cd /ruta/a/tu/proyecto python test_api.py
+```bash
+# Registro
+POST http://127.0.0.1:8000/api/auth/register/
+Content-Type: application/json
+{
+  "nombre": "Nuevo Usuario",
+  "email": "nuevo@example.com",
+  "password": "Password123!",
+  "telefono": "3001234567",
+  "direccion": "Calle 123"
+}
 
-Opción B: Usar curl
+# Login
+POST http://127.0.0.1:8000/api/auth/login/
+Content-Type: application/json
+{
+  "email": "admin@prexcol.com",
+  "password": "Prexcol123!"
+}
 
-Registrar nuevo usuario:
-curl -X POST http://127.0.0.1:8000/api/auth/register/ ^ -H "Content-Type: application/json" ^ -d "{"email":" nuevo@example.com ","nombre":"Nuevo Usuario","password":"pass123","rol":"cliente"}"
+# Refresh Token
+POST http://127.0.0.1:8000/api/auth/token/refresh/
+Content-Type: application/json
+{
+  "refresh": "YOUR_REFRESH_TOKEN"
+}
 
-Acceso:
-curl -X POST http://127.0.0.1:8000/api/auth/login/ ^ -H "Content-Type: application/json" ^ -d "{"email: admin@example.com ","password: admin123"}"
+# Logout
+POST http://127.0.0.1:8000/api/auth/logout/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+{
+  "refresh": "YOUR_REFRESH_TOKEN"
+}
 
-Acceder al panel (reemplazar TOKEN):
-curl -H "Autorización: Token de portador" ^ http://127.0.0.1:8000/api/dashboard/admin/
+# Recuperar contraseña
+POST http://127.0.0.1:8000/api/auth/forgot-password/
+Content-Type: application/json
+{
+  "email": "admin@prexcol.com"
+}
 
-Opción C: Usar Postman
+# Restablecer contraseña
+POST http://127.0.0.1:8000/api/auth/reset-password/{uid}/{token}/
+Content-Type: application/json
+{
+  "password": "NewPassword123!"
+}
+```
 
-Importar colección o crear manualmente
+---
 
-Puntos de conexión disponibles:
+## 🔍 VERIFICACIÓN DEL SISTEMA
 
-POST /api/auth/register/
+### Verificar Backend
 
-POST /api/auth/login/
-
-POST /api/auth/refresh/
-
-GET /api/dashboard/admin/ (requiere administrador de token)
-
-GET /api/cliente/tienda/ (requiere token)
-
-Administrador de Django
-
-Acceda a: http://127.0.0.1:8000/admin
-
-Credenciales:
-
-Usuario: admin@example.com
-
-Contraseña: admin123
-
-Aquí puedes:
-
-Gestionar usuarios
-
-Ver registros
-
-Cambiar roles
-
-Activar/desactivar usuarios
-
-Depuración Si algo no funciona...
-
-Verificar que los servicios estén corriendo
-El backend debe estar en puerto 8000
+```powershell
+# Verificar que el servidor esté corriendo
 netstat -ano | findstr :8000
 
-El frontend debe estar en puerto 5173
-netstat -ano | findstr :5173
+# Probar endpoint de salud
+curl http://127.0.0.1:8000/api/auth/login/
 
-Ver registros de Django
-Revisar la salida en la terminal del backend
+# Ver usuarios en la base de datos
+python manage.py shell
+>>> from apps.usuarios.models import Usuario
+>>> Usuario.objects.all()
+```
 
-Ver registros del navegador
-Abrir DevTools (F12) → Consola
+### Verificar Frontend
 
-Verificar BD python manage.py shell from usuarios.models import Usuario print(Usuario.objects.all())
+```powershell
+# Verificar que Vite esté corriendo
+netstat -ano | findstr :5175
 
-Verificar tokens
-
-En la consola del navegador
+# Ver tokens en navegador (F12 → Console)
 localStorage.getItem('token')
+localStorage.getItem('refresh')
+localStorage.getItem('user')
+```
 
-Archivos de Configuración Importantes backend/settings.py ← Configuración global Django usuarios/models.py ← Modelo Usuario usuarios/serializers.py ← Validación de datos usuarios/views.py ← Lógica de endpoints usuarios/permissions.py ← Permisos por rol usuarios/urls.py ← Rutas de API
+---
 
-frontend/src/App.jsx ← Aplicación principal React frontend/src/main.jsx ← Punto de entrada frontend/vite.config.js ← Configuración de Vite
+## 🐛 SOLUCIÓN DE PROBLEMAS
 
-Problemas Comunes y Soluciones Error: "Módulo no encontrado" pip install -r requisitos.txt
+### Error: "Módulo no encontrado"
+```powershell
+cd backend
+pip install -r requirements.txt
+```
 
-Error: "Error CORS"
+### Error: "CORS Policy"
+- Verificar que el frontend esté en `http://localhost:5175`
+- Revisar `CORS_ALLOWED_ORIGINS` en `backend/settings.py`
 
-Verifique que el frontend esté en http://localhost:5173
+### Error: "401 Unauthorized"
+- El token expiró (válido por 1 hora)
+- Hacer login nuevamente o usar refresh token
 
-Revisar CORS_ALLOWED_ORIGINS en backend/settings.py
+### Error: "Puerto ya en uso"
+```powershell
+# Backend en otro puerto
+python manage.py runserver 8001
 
-Error: "401 No autorizado"
+# Frontend en otro puerto
+npm run dev -- --port 5174
+```
 
-El token expiró (válido 1 hora)
+### Error: "Database is locked"
+- Cerrar todas las conexiones a la BD
+- Reiniciar el servidor Django
 
-Haz iniciar sesión nuevamente
+### Tests E2E fallan
+```powershell
+# Instalar navegadores de Playwright
+npx playwright install
 
-Error: "Puerto ya en uso"
+# Ejecutar con más tiempo de espera
+npx playwright test --timeout=60000
+```
 
-Backend: Python Manage.py RunServer 8001
+---
 
-Frontend: npm run dev -- --port 5174
+## 📁 ESTRUCTURA DEL PROYECTO
 
-Error: "Base de datos bloqueada"
+```
+experticie-2/
+├── backend/
+│   ├── apps/
+│   │   └── usuarios/
+│   │       ├── models.py          # Modelo Usuario
+│   │       ├── serializers.py     # Validación de datos
+│   │       ├── views/
+│   │       │   ├── views_auth.py  # Login, Register, Logout
+│   │       │   └── view_password.py # Recuperación de contraseña
+│   │       ├── urls.py            # Rutas de API
+│   │       └── tests/             # Tests unitarios
+│   ├── scripts/
+│   │   └── create_test_users.py   # Crear usuarios de prueba
+│   ├── settings.py                # Configuración Django
+│   └── manage.py
+│
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Login.jsx          # Página de login
+│   │   │   ├── Register.jsx       # Página de registro
+│   │   │   └── Dashboard.jsx      # Dashboard general
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx    # Estado de autenticación
+│   │   ├── services/
+│   │   │   ├── api.js             # Axios configurado
+│   │   │   └── authService.js     # Servicios de auth
+│   │   └── routes/
+│   │       ├── App.jsx            # Rutas principales
+│   │       └── ProtectedRoute.jsx # Protección por rol
+│   ├── tests/
+│   │   └── e2e/
+│   │       ├── login-simple.spec.js      # Test de login
+│   │       └── full-user-journey.spec.js # Test completo
+│   ├── run_continuous_tests.py    # Script de pruebas continuas
+│   └── package.json
+│
+└── docs/
+    ├── ESTADO_SISTEMA_FINAL.md           # Estado actual
+    ├── REPORTE_PRUEBAS_AUTENTICACION.md  # Validación
+    ├── RESUMEN_VALIDACION.md             # Resumen
+    └── MANUAL_AUTH_TESTING_GUIDE.md      # Guía de pruebas
+```
 
-Cierra todas las conexiones a la BD
+---
 
-Intenta nuevamente
+## 🎓 DOCUMENTACIÓN ADICIONAL
 
-Documentación Adicional
+| Documento | Descripción |
+|-----------|-------------|
+| `ESTADO_SISTEMA_FINAL.md` | Estado completo del sistema con métricas |
+| `REPORTE_PRUEBAS_AUTENTICACION.md` | Validación detallada de autenticación |
+| `RESUMEN_VALIDACION.md` | Resumen ejecutivo con credenciales |
+| `REPORTE_AUTOMATIZACION.md` | Documentación de tests automáticos |
+| `MANUAL_AUTH_TESTING_GUIDE.md` | Guía paso a paso de pruebas manuales |
 
-README.md - Guía completa
+---
 
-BACKEND_FIXES.md - Detalles técnicos
+## 🔐 SEGURIDAD
 
-RESUMEN_EJECUTIVO.md - Resumen ejecutivo
+- ✅ Passwords hasheados con PBKDF2 (Django)
+- ✅ JWT con expiración (1h access, 1d refresh)
+- ✅ Tokens blacklisted en logout
+- ✅ CORS configurado correctamente
+- ✅ CSRF protection habilitado
+- ✅ Validación de datos en backend
 
-CORRECTIONS_CHECKLIST.md - Lista de verificación detallada
+---
 
-Flujo de Uso
+## 🚀 PRÓXIMOS PASOS
 
-Abre http://localhost:5173 ↓
-Ves página de login ↓
-Haz clic en "Regístrate" o inicia sesión con admin ↓
-Si registras:
-Formulario completo
-El backend valida y hashea contraseña
-Te redirige a login ↓
-Acceso:
-Envía correo electrónico + contraseña
-Verificación de backend
-tokens JWT de Retorna
-Se guardan en localStorage ↓
-Acceda a un panel de control:
-Frontend envía token en encabezado
-token de validación de backend
-Retorna
-Se muestran en pantalla ↓
-El token caduca después de 1 hora
-El frontend detecta un error 401.
-Usa el token de actualización automáticamente
-Obtén un nuevo token de acceso
-Reintentas la request
-Próximos Pasos
+1. **Explorar el Dashboard**
+   - Login con diferentes roles
+   - Probar navegación entre secciones
+   - Verificar permisos por rol
 
-Después de verificar que todo funciona:
+2. **Crear Nuevos Usuarios**
+   - Usar formulario de registro
+   - Probar con diferentes roles
+   - Verificar emails en consola (DEBUG mode)
 
-Crear más usuarios con diferentes roles
+3. **Ejecutar Tests**
+   - Tests unitarios backend
+   - Tests E2E frontend
+   - Pruebas continuas
 
-Probar las rutas según el rol
+4. **Desarrollo**
+   - Crear páginas para Profile, Orders, etc.
+   - Implementar funcionalidades de negocio
+   - Agregar más tests
 
-Explorar la BD en el admin
+---
 
-Hacer cambios en el frontend/backend
+## 💡 CONSEJOS PRO
 
-Integrar otras apps (pedidos, productos, ventas)
+1. **Mantén ambos servidores corriendo** mientras desarrollas
+2. **Usa DevTools (F12)** para ver requests/responses
+3. **Revisa logs regularmente** en ambas terminales
+4. **Haz commits frecuentes** después de cambios importantes
+5. **Ejecuta tests antes de cada commit** para evitar regresiones
+6. **Usa data-testid** en elementos interactivos para testing
+7. **Consulta la documentación** en la carpeta `docs/`
 
-Consejos
+---
 
-Mantén ambos servidores corriendo mientras desarrollas
+## 🎯 VERIFICACIÓN RÁPIDA
 
-Usa DevTools para ver las solicitudes/respuestas
+Ejecuta estos comandos para verificar que todo funciona:
 
-Usa Django admin para gestionar datos
+```powershell
+# 1. Backend funcionando
+curl http://127.0.0.1:8000/api/auth/login/
 
-Revisa los registros regularmente
+# 2. Frontend funcionando
+# Abrir http://localhost:5175 en navegador
 
-Haz commit después de cambios importantes
+# 3. Tests pasando
+cd frontend
+npx playwright test tests/e2e/login-simple.spec.js
 
-¡Todo está listo! Comienza a desarrollarse.
+# 4. Usuarios creados
+cd ..\backend
+python manage.py shell
+>>> from apps.usuarios.models import Usuario
+>>> print(f"Total usuarios: {Usuario.objects.count()}")
+```
+
+---
+
+## 📞 SOPORTE
+
+Si encuentras problemas:
+
+1. Revisa la sección de **Solución de Problemas**
+2. Consulta los logs en las terminales
+3. Verifica la documentación en `docs/`
+4. Revisa los tests para ver ejemplos de uso
+
+---
+
+**¡Sistema listo para desarrollo!** 🎉
+
+Todos los componentes están operativos y probados. Comienza a desarrollar con confianza.
