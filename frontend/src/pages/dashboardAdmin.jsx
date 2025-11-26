@@ -595,21 +595,31 @@ export default function DashboardAdmin() {
       {/* HEADER */}
       <div className="admin-header">
         <div className="header-content">
-          <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            {user?.imagen ? (
-              <img 
-                src={user.imagen} 
-                alt="Perfil" 
-                style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover', border: '2px solid white', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }} 
-              />
-            ) : (
-              <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>
-                👤
+          <div 
+            className="header-left admin-profile-section" 
+            onClick={() => navigate('/profile')}
+            title="Clic para editar perfil"
+          >
+            <div className="profile-image-container">
+              {user?.imagen ? (
+                <img 
+                  src={user.imagen} 
+                  alt="Perfil" 
+                  className="profile-image"
+                />
+              ) : (
+                <div className="profile-placeholder">
+                  👤
+                </div>
+              )}
+              <div className="profile-edit-overlay">
+                <span>✏️</span>
               </div>
-            )}
-            <div>
+            </div>
+            <div className="profile-info">
               <h1>⚡ Panel de Administración</h1>
               <p>Bienvenido, <strong>{user?.nombre}</strong></p>
+              <span className="edit-hint">Editar perfil</span>
             </div>
           </div>
           <button onClick={handleLogout} className="btn-logout">
