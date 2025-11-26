@@ -7,8 +7,11 @@ import {
   crearTienda,
   getProductos,
   crearProducto,
+  getProductos,
+  crearProducto,
   getPedidos,
 } from "../services/productosService";
+import OrderService from "../services/orderService";
 import { axiosInstance } from "../services/api";
 import ModalEdicion from "../components/ModalEdicion";
 import "../styles/DashboardAdmin.css";
@@ -399,6 +402,9 @@ export default function DashboardAdmin() {
         break;
       case 'Producto':
         handleActualizarProducto(formData);
+        break;
+      case 'Pedido':
+        handleActualizarPedido(formData);
         break;
       default:
         break;
@@ -1094,6 +1100,7 @@ export default function DashboardAdmin() {
                     <th>Total</th>
                     <th>Estado</th>
                     <th>Fecha</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -1110,6 +1117,18 @@ export default function DashboardAdmin() {
                       </td>
                       <td>
                         {new Date(pedido.fecha_creacion).toLocaleDateString()}
+                      </td>
+                      <td>
+                        <button
+                          className="btn-edit-small"
+                          onClick={() => setModalEdicion({
+                            visible: true,
+                            tipo: 'Pedido',
+                            datos: pedido
+                          })}
+                        >
+                          ✏️
+                        </button>
                       </td>
                     </tr>
                   ))}

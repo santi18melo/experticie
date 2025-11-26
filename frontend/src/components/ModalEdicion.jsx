@@ -309,6 +309,35 @@ export default function ModalEdicion({
                 </label>
               </div>
             </>
+          {/* FORMULARIO PEDIDO */}
+          {tipo === 'Pedido' && (
+            <>
+              <div className="form-group">
+                <label>ID Pedido</label>
+                <input
+                  type="text"
+                  value={formData.id || ''}
+                  disabled
+                  style={{ background: '#f0f0f0' }}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Estado *</label>
+                <select
+                  name="estado"
+                  value={formData.estado || ''}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="pendiente">Pendiente</option>
+                  <option value="preparando">Preparando</option>
+                  <option value="en_transito">En Tránsito</option>
+                  <option value="entregado">Entregado</option>
+                  <option value="cancelado">Cancelado</option>
+                </select>
+              </div>
+            </>
           )}
 
           <div className="modal-actions">

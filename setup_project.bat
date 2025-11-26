@@ -4,7 +4,7 @@ echo PREXCOL - Setup Project (Windows)
 echo ==========================================
 
 echo [1/3] Installing Backend Dependencies...
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 if %errorlevel% neq 0 (
     echo Error installing backend dependencies.
     pause

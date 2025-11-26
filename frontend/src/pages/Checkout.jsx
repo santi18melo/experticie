@@ -139,10 +139,29 @@ export default function Checkout() {
             </div>
           </div>
 
-                  value={formData.metodo_pago}
-                  onChange={handleInputChange}
-                  style={styles.select}
-                >
+            <div style={styles.formSection}>
+              <form onSubmit={handleSubmitOrder}>
+                <div style={styles.formGroup}>
+                  <label style={styles.label}>Dirección de Envío</label>
+                  <textarea
+                    name="direccion_envio"
+                    value={formData.direccion_envio}
+                    onChange={handleInputChange}
+                    rows="3"
+                    style={styles.textarea}
+                    placeholder="Calle, Número, Ciudad, Código Postal"
+                    required
+                  />
+                </div>
+
+                <div style={styles.formGroup}>
+                  <label style={styles.label}>Método de Pago</label>
+                  <select
+                    name="metodo_pago"
+                    value={formData.metodo_pago}
+                    onChange={handleInputChange}
+                    style={styles.select}
+                  >
                   <option value="tarjeta">Tarjeta de Crédito/Débito</option>
                   <option value="efectivo">Efectivo contra entrega</option>
                   <option value="transferencia">Transferencia Bancaria</option>
