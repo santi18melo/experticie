@@ -328,24 +328,6 @@ npm run dev -- --port 5174
 ```powershell
 # Instalar navegadores de Playwright
 npx playwright install
-
-# Ejecutar con más tiempo de espera
-npx playwright test --timeout=60000
-```
-
-### Error: "Pillow build failed" (Python 3.14+)
-```powershell
-# El sistema instalará automáticamente una versión compatible
-# Si persiste el error, instalar Pillow manualmente:
-python -m pip install Pillow
-```
-
----
-
-## 📁 ESTRUCTURA DEL PROYECTO
-
-```
-experticie-2/
 ├── backend/
 │   ├── apps/
 │   │   ├── usuarios/

@@ -52,6 +52,13 @@ def login_user(request):
 
     user = serializer.validated_data["user"]
 
+    # Verificar que el usuario esté activo
+    if not user.estado:
+        return Response(
+            {"error": "Tu cuenta ha sido desactivada. Contacta al administrador."},
+            status=status.HTTP_403_FORBIDDEN,
+        )
+
     # Actualizar último ingreso
     user.ultimo_ingreso = timezone.now()
     user.save()

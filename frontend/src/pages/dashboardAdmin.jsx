@@ -152,6 +152,11 @@ export default function DashboardAdmin() {
   // ==================== CREAR USUARIO ====================
   const handleCrearUsuario = async (e) => {
     e.preventDefault();
+    
+    if (!window.confirm("¿Estás seguro de crear este nuevo usuario?")) {
+      return;
+    }
+    
     setError("");
     setSuccess("");
 
@@ -197,6 +202,11 @@ export default function DashboardAdmin() {
   // ==================== CREAR TIENDA ====================
   const handleCrearTienda = async (e) => {
     e.preventDefault();
+    
+    if (!window.confirm("¿Estás seguro de crear esta nueva tienda?")) {
+      return;
+    }
+    
     setError("");
     setSuccess("");
 
@@ -218,6 +228,11 @@ export default function DashboardAdmin() {
   // ==================== CREAR PRODUCTO ====================
   const handleCrearProducto = async (e) => {
     e.preventDefault();
+    
+    if (!window.confirm("¿Estás seguro de crear este nuevo producto?")) {
+      return;
+    }
+    
     setError("");
     setSuccess("");
 
@@ -311,8 +326,35 @@ export default function DashboardAdmin() {
     navigate("/login");
   };
 
+  // ==================== TOGGLE ESTADO USUARIO ====================
+  const handleToggleEstadoUsuario = async (usuario) => {
+    const nuevoEstado = !usuario.estado;
+    const accion = nuevoEstado ? "activar" : "desactivar";
+    
+    if (!window.confirm(`¿Estás seguro de ${accion} al usuario ${usuario.nombre}?`)) {
+      return;
+    }
+
+    try {
+      await axiosInstance.patch(`/usuarios/${usuario.id}/`, {
+        estado: nuevoEstado
+      });
+      setSuccess(`✓ Usuario ${nuevoEstado ? 'activado' : 'desactivado'} correctamente`);
+      await cargarUsuarios();
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (err) {
+      console.error("Error cambiando estado del usuario:", err.response?.data);
+      setError("Error al cambiar el estado del usuario");
+      setTimeout(() => setError(""), 5000);
+    }
+  };
+
   // ==================== ACTUALIZAR (UPDATE) ====================
   const handleActualizarUsuario = async (formData) => {
+    if (!window.confirm("¿Estás seguro de actualizar este usuario?")) {
+      return;
+    }
+    
     try {
       const dataToSend = new FormData();
       dataToSend.append('nombre', formData.nombre);
@@ -348,6 +390,10 @@ export default function DashboardAdmin() {
   };
 
   const handleActualizarTienda = async (formData) => {
+    if (!window.confirm("¿Estás seguro de actualizar esta tienda?")) {
+      return;
+    }
+    
     try {
       await axiosInstance.patch(`/productos/tiendas/${formData.id}/`, {
         nombre: formData.nombre,
@@ -367,6 +413,10 @@ export default function DashboardAdmin() {
   };
 
   const handleActualizarProducto = async (formData) => {
+    if (!window.confirm("¿Estás seguro de actualizar este producto?")) {
+      return;
+    }
+    
     try {
       await axiosInstance.patch(`/productos/productos/${formData.id}/`, {
         nombre: formData.nombre,
@@ -807,6 +857,14 @@ export default function DashboardAdmin() {
                           style={{ marginRight: '8px' }}
                         >
                           ✏️
+                        </button>
+                        <button
+                          className={usuario.estado ? "btn-warning-small" : "btn-success-small"}
+                          onClick={() => handleToggleEstadoUsuario(usuario)}
+                          style={{ marginRight: '8px' }}
+                          title={usuario.estado ? "Desactivar usuario" : "Activar usuario"}
+                        >
+                          {usuario.estado ? '🔒' : '🔓'}
                         </button>
                         <button
                           className="btn-delete-small"
