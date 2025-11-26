@@ -3,18 +3,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
-  getTiendas,
-  crearTienda,
-  getProductos,
-  crearProducto,
-  getPedidos,
-} from "../services/productosService";
-import OrderService from "../services/orderService";
-import { axiosInstance } from "../services/api";
-import ModalEdicion from "../components/ModalEdicion";
-import "../styles/DashboardAdmin.css";
-
-export default function DashboardAdmin() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -593,40 +581,7 @@ export default function DashboardAdmin() {
   return (
     <div className="admin-dashboard">
       {/* HEADER */}
-      <div className="admin-header">
-        <div className="header-content">
-          <div 
-            className="header-left admin-profile-section" 
-            onClick={() => navigate('/profile')}
-            title="Clic para editar perfil"
-          >
-            <div className="profile-image-container">
-              {user?.imagen ? (
-                <img 
-                  src={user.imagen.startsWith('http') ? user.imagen : `http://127.0.0.1:8000${user.imagen}`} 
-                  alt="Perfil" 
-                  className="profile-image"
-                />
-              ) : (
-                <div className="profile-placeholder">
-                  👤
-                </div>
-              )}
-              <div className="profile-edit-overlay">
-                <span>✏️</span>
-              </div>
-            </div>
-            <div className="profile-info">
-              <h1>⚡ Panel de Administración</h1>
-              <p>Bienvenido, <strong>{user?.nombre}</strong></p>
-              <span className="edit-hint">Editar perfil</span>
-            </div>
-          </div>
-          <button onClick={handleLogout} className="btn-logout">
-            🚪 Cerrar Sesión
-          </button>
-        </div>
-      </div>
+      <DashboardHeader title="⚡ Panel de Administración" />
 
       {/* ALERTS */}
       {error && (
