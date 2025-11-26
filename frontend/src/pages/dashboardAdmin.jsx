@@ -603,7 +603,7 @@ export default function DashboardAdmin() {
             <div className="profile-image-container">
               {user?.imagen ? (
                 <img 
-                  src={user.imagen} 
+                  src={user.imagen.startsWith('http') ? user.imagen : `http://127.0.0.1:8000${user.imagen}`} 
                   alt="Perfil" 
                   className="profile-image"
                 />

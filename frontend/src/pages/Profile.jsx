@@ -154,7 +154,11 @@ export default function Profile() {
             <div className="profile-image-section">
                <div className="image-wrapper">
                   {previewImage ? (
-                    <img src={previewImage} alt="Perfil" className="profile-img-large" />
+                    <img 
+                    src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://127.0.0.1:8000${previewImage}`} 
+                    alt="Perfil" 
+                    className="profile-img-large" 
+                  />
                   ) : (
                     <div className="profile-placeholder-large">
                       {profileData.nombre?.charAt(0) || "U"}
