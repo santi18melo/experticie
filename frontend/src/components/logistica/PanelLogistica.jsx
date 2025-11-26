@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import '../../styles/PanelLogistica.css';
+import DashboardHeader from '../DashboardHeader';
 
 function PanelLogistica() {
   const [pedidos, setPedidos] = useState([]);
@@ -90,7 +91,7 @@ function PanelLogistica() {
 
   return (
     <div className="panel-logistica">
-      <h1>🚚 Panel de Logística</h1>
+      <DashboardHeader title="🚚 Panel de Logística" />
 
       {error && <div className="alert alert-error">{error}</div>}
       {mensaje && <div className="alert alert-success">{mensaje}</div>}

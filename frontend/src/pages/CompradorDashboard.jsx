@@ -7,6 +7,7 @@ import {
   cambiarEstadoPedido,
 } from "../services/productosService";
 import "../styles/CompradorDashboard.css";
+import DashboardHeader from "../components/DashboardHeader";
 
 export default function CompradorDashboard() {
   const { user, logout } = useAuth();
@@ -82,31 +83,6 @@ export default function CompradorDashboard() {
           <p>Cargando pedidos...</p>
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div className="comprador-dashboard">
-      {/* HEADER */}
-      <div className="comprador-header">
-        <div className="header-content">
-          <div className="header-left">
-            <h1>📦 Panel de Comprador</h1>
-            <p>
-              Bienvenido, <strong>{user?.nombre}</strong>
-            </p>
-          </div>
-          <button onClick={handleLogout} className="btn-logout">
-            🚪 Cerrar Sesión
-          </button>
-        </div>
-      </div>
-
-      {/* ALERTS */}
-      {error && (
-        <div className="alert alert-error">
-          <span>⚠️</span> {error}
-        </div>
       )}
       {success && (
         <div className="alert alert-success">

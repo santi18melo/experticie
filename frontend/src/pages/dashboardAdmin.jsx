@@ -3,6 +3,19 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
+  getTiendas,
+  crearTienda,
+  getProductos,
+  crearProducto,
+  getPedidos,
+} from "../services/productosService";
+import OrderService from "../services/orderService";
+import { axiosInstance } from "../services/api";
+import ModalEdicion from "../components/ModalEdicion";
+import "../styles/DashboardAdmin.css";
+import DashboardHeader from "../components/DashboardHeader";
+
+export default function DashboardAdmin() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 

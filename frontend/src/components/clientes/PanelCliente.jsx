@@ -9,6 +9,7 @@ import {
   getMetodosPago
 } from '../../services/productosService';
 import '../../styles/PanelCliente.css';
+import DashboardHeader from '../DashboardHeader';
 
 function PanelCliente() {
   const navigate = useNavigate();
@@ -221,15 +222,8 @@ function PanelCliente() {
   return (
     <div className="panel-cliente">
       {/* Header con información del usuario y logout */}
-      <div className="panel-header">
-        <div className="user-info">
-          <h1>👤 Mi Panel Cliente</h1>
-          <p className="welcome-text">Bienvenido, <strong>{user?.nombre || 'Usuario'}</strong></p>
-        </div>
-        <button onClick={handleLogout} className="btn-logout" data-testid="dashboard-logout">
-          🚪 Cerrar Sesión
-        </button>
-      </div>
+      {/* Header con información del usuario y logout */}
+      <DashboardHeader title="👤 Mi Panel Cliente" />
 
       {error && <div className="alert alert-error">{error}</div>}
       {exito && <div className="alert alert-success">{exito}</div>}

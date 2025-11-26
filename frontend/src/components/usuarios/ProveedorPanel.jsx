@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api.js';
 import '../../styles/ProveedorPanel.css/';
+import DashboardHeader from '../DashboardHeader';
 
 function PanelProveedor() {
   const [productos, setProductos] = useState([]);
@@ -86,7 +87,7 @@ function PanelProveedor() {
 
   return (
     <div className="panel-proveedor">
-      <h1>📦 Mi Inventario de Productos</h1>
+      <DashboardHeader title="📦 Panel de Proveedor" />
 
       {error && <div className="alert alert-error">{error}</div>}
       {mensaje && <div className="alert alert-success">{mensaje}</div>}

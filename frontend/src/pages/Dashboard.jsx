@@ -13,45 +13,7 @@ export default function Dashboard() {
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: 40 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
-        <h1>Dashboard - PREXCOL</h1>
-        <button
-          onClick={handleLogout}
-          style={{
-            padding: '10px 20px',
-            background: '#dc2626',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 6,
-            cursor: 'pointer'
-          }}
-          data-testid="dashboard-logout"
-        >
-          Cerrar Sesión
-        </button>
-      </div>
-
-      <div style={{ 
-        background: '#f9fafb', 
-        padding: 30, 
-        borderRadius: 8, 
-        border: '1px solid #e5e7eb',
-        marginBottom: 20 
-      }}>
-        <h2>Bienvenido, {user?.nombre || 'Usuario'}!</h2>
-        <p style={{ marginTop: 10, color: '#6b7280' }}>
-          <strong>Email:</strong> {user?.email}
-        </p>
-        <p style={{ color: '#6b7280' }}>
-          <strong>Rol:</strong> {userRole || 'No especificado'}
-        </p>
-        <p style={{ color: '#6b7280' }}>
-          <strong>Teléfono:</strong> {user?.telefono || 'No especificado'}
-        </p>
-        <p style={{ color: '#6b7280' }}>
-          <strong>Dirección:</strong> {user?.direccion || 'No especificado'}
-        </p>
-      </div>
+      <DashboardHeader title="Dashboard - PREXCOL" />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
         <button
