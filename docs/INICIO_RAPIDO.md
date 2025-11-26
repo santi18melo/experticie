@@ -1,4 +1,4 @@
-# 🚀 GUÍA DE INICIO RÁPIDO - PREXCOL
+#  GUÍA DE INICIO RÁPIDO - PREXCOL
 
 **Última actualización:** 2025-11-25 22:10:00  
 **Estado del Sistema:** ✅ 100% Operativo  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 REQUISITOS PREVIOS
+##  REQUISITOS PREVIOS
 
 - Python 3.8+ instalado
 - Node.js 16+ y npm instalados
@@ -27,8 +27,8 @@ cd experticie-2
 # Backend - Instalar dependencias
 cd backend
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+
+.\.venv\Scripts\Activate.ps1; pip install -r ..\requirements.txt
 
 # Frontend - Instalar dependencias
 cd ..\frontend
@@ -72,7 +72,7 @@ Todos los usuarios siguen el patrón: `{rol}@prexcol.com` / `{Rol}123!`
 
 ---
 
-## 🎯 FLUJO DE USUARIO COMPLETO
+##  FLUJO DE USUARIO COMPLETO
 
 ```
 1. Registro (rol por defecto: cliente)

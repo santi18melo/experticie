@@ -10,8 +10,8 @@ import Loader from "../components/Loader";
 const Login = lazy(() => import("../pages/Login.jsx"));
 const Register = lazy(() => import("../pages/Register.jsx"));
 const Home = lazy(() => import("../pages/Home.jsx"));
-const ForgotPassword = lazy(() => import("../components/ForgotPassword.jsx"));
-const ResetPassword = lazy(() => import("../components/ResetPassword.jsx"));
+const ForgotPassword = lazy(() => import("../pages/ForgotPassword.jsx"));
+const ResetPassword = lazy(() => import("../pages/ResetPassword.jsx"));
 
 // Dashboards
 const Dashboard = lazy(() => import("../pages/Dashboard.jsx"));

@@ -18,7 +18,7 @@ const OrderService = {
    */
   async createOrder(orderData) {
     try {
-      const response = await axiosInstance.post("/pedidos/crear_pedido/", orderData);
+      const response = await axiosInstance.post("/productos/pedidos/crear_pedido/", orderData);
       return response.data;
     } catch (error) {
       console.error("Error creating order:", error);
@@ -32,7 +32,7 @@ const OrderService = {
    */
   async getOrderHistory() {
     try {
-      const response = await axiosInstance.get("/pedidos/");
+      const response = await axiosInstance.get("/productos/pedidos/");
       return response.data;
     } catch (error) {
       console.error("Error fetching order history:", error);
@@ -47,7 +47,7 @@ const OrderService = {
    */
   async getOrder(orderId) {
     try {
-      const response = await axiosInstance.get(`/pedidos/${orderId}/`);
+      const response = await axiosInstance.get(`/productos/pedidos/${orderId}/`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching order ${orderId}:`, error);
@@ -64,7 +64,7 @@ const OrderService = {
   async updateOrderStatus(orderId, newStatus) {
     try {
       const response = await axiosInstance.put(
-        `/pedidos/${orderId}/cambiar_estado/`,
+        `/productos/pedidos/${orderId}/cambiar_estado/`,
         { estado: newStatus }
       );
       return response.data;

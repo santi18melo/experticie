@@ -25,6 +25,8 @@ class TiendaSerializer(serializers.ModelSerializer):
 
 
 class ProductoSerializer(serializers.ModelSerializer):    
+    tienda_nombre = serializers.ReadOnlyField(source='tienda.nombre')
+    
     class Meta:
         model = Producto
         fields = "__all__"

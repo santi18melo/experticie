@@ -33,10 +33,30 @@ class UsuarioSerializer(serializers.ModelSerializer):
             "telefono",
             "direccion",
             "estado",
+            "imagen",
+            "password",
             "fecha_creacion",
             "ultimo_ingreso",
         ]
+        extra_kwargs = {'password': {'write_only': True, 'required': False}}
         read_only_fields = ["id", "fecha_creacion", "ultimo_ingreso"]
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        # create_user handles password hashing internally if passed as argument
+        # but here we are passing it via kwargs or setting it later
+        # Let's use the standard way:
+        user = Usuario.objects.create_user(password=password, **validated_data)
+        return user
+
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        if password:
+            instance.set_password(password)
+        instance.save()
+        return instance
 
 
 # ------------------------------------------------------------

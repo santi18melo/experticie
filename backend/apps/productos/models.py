@@ -62,6 +62,12 @@ class Producto(models.Model):
         help_text="Categoría del producto (por ejemplo: alimentos, bebidas, aseo, dulces, ferretería, etc.)",
     )
 
+    # Nuevos campos solicitados
+    imagen1 = models.ImageField(upload_to='productos/', null=True, blank=True)
+    imagen2 = models.ImageField(upload_to='productos/', null=True, blank=True)
+    imagen3 = models.ImageField(upload_to='productos/', null=True, blank=True)
+    caracteristicas = models.TextField(blank=True, null=True, help_text="Características detalladas del producto")
+
     activo = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)

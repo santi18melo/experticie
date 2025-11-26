@@ -89,7 +89,7 @@ export default function Register() {
                 type="text"
                 value={formValues.nombre}
                 onChange={handleChange}
-                placeholder="Juan Pérez"
+                placeholder="Ingresa nombres y apellidos"
                 data-testid="register-nombre"
                 required
               />
@@ -106,7 +106,7 @@ export default function Register() {
                 type="email"
                 value={formValues.email}
                 onChange={handleChange}
-                placeholder="tu@email.com"
+                placeholder="Ingresa tu correo electrónico"
                 data-testid="register-email"
                 required
               />
@@ -180,7 +180,7 @@ export default function Register() {
                 type="tel"
                 value={formValues.telefono}
                 onChange={handleChange}
-                placeholder="3001234567"
+                placeholder="Número de teléfono"
                 data-testid="register-telefono"
               />
             </div>
@@ -196,7 +196,7 @@ export default function Register() {
                 type="text"
                 value={formValues.direccion}
                 onChange={handleChange}
-                placeholder="Calle 123 #45-67"
+                placeholder="Calle 12 #45-67"
                 data-testid="register-direccion"
               />
             </div>

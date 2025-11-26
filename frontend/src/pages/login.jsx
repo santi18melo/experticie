@@ -1,17 +1,30 @@
 // frontend/src/pages/Login.jsx - PROFESSIONAL VERSION
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import '../styles/Auth.css';
 
 export default function Login() {
   const { login, loading, error } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [localError, setLocalError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+
+  // Check for success message from navigation state
+  useEffect(() => {
+    if (location.state?.message) {
+      setSuccessMessage(location.state.message);
+      // Clear the message after 5 seconds
+      setTimeout(() => setSuccessMessage(null), 5000);
+      // Clear the state to prevent showing again on refresh
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,7 +102,7 @@ export default function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@email.com"
+              placeholder="Correo electrónico"
               data-testid="login-email"
               required
               autoComplete="email"
@@ -130,6 +143,13 @@ export default function Login() {
             </div>
           )}
 
+          {successMessage && (
+            <div className="auth-success" role="alert">
+              <span className="success-icon">✓</span>
+              {successMessage}
+            </div>
+          )}
+
           <button
             type="submit"
             className="auth-button"
@@ -137,15 +157,15 @@ export default function Login() {
             data-testid="login-submit"
           >
             {loading ? (
-              <>
+              <React.Fragment key="loading">
                 <span className="spinner-small"></span>
-                Iniciando sesión...
-              </>
+                <span>Iniciando sesión...</span>
+              </React.Fragment>
             ) : (
-              <>
+              <React.Fragment key="ready">
                 <span>Entrar</span>
                 <span className="button-arrow">→</span>
-              </>
+              </React.Fragment>
             )}
           </button>
 

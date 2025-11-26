@@ -47,9 +47,11 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     telefono = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.TextField(blank=True, null=True)
     estado = models.BooleanField(default=True)
+    imagen = models.ImageField(upload_to='perfiles/', null=True, blank=True)
 
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     ultimo_ingreso = models.DateTimeField(null=True, blank=True)
+    last_activity = models.DateTimeField(null=True, blank=True)
 
     is_staff = models.BooleanField(default=False)
 

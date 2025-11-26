@@ -46,6 +46,32 @@ export const crearTienda = async (tiendaData) => {
   }
 };
 
+/**
+ * Actualizar una tienda
+ */
+export const actualizarTienda = async (tiendaId, tiendaData) => {
+  try {
+    const response = await api.patch(`/productos/tiendas/${tiendaId}/`, tiendaData);
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error updating tienda:', error);
+    throw error;
+  }
+};
+
+/**
+ * Eliminar una tienda
+ */
+export const eliminarTienda = async (tiendaId) => {
+  try {
+    const response = await api.delete(`/productos/tiendas/${tiendaId}/`);
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error deleting tienda:', error);
+    throw error;
+  }
+};
+
 // ==================== PRODUCTOS ====================
 
 /**
@@ -109,6 +135,19 @@ export const actualizarProducto = async (productoId, productoData) => {
     return response.data;
   } catch (error) {
     console.error('[productosService] Error updating producto:', error);
+    throw error;
+  }
+};
+
+/**
+ * Eliminar un producto
+ */
+export const eliminarProducto = async (productoId) => {
+  try {
+    const response = await api.delete(`/productos/productos/${productoId}/`);
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error deleting producto:', error);
     throw error;
   }
 };
@@ -234,6 +273,8 @@ export default {
   getTiendas,
   getMisTiendas,
   crearTienda,
+  actualizarTienda,
+  eliminarTienda,
   
   // Productos
   getProductos,
@@ -241,6 +282,7 @@ export default {
   getProducto,
   crearProducto,
   actualizarProducto,
+  eliminarProducto,
   
   // Pedidos
   getMisPedidos,

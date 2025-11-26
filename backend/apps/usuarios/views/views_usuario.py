@@ -3,6 +3,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from ..serializers import UsuarioSerializer
@@ -15,16 +16,9 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UsuarioSerializer
+    permission_classes = [IsAuthenticated]
 
-    def create(self, request, *args, **kwargs):
-        # Sobrescribimos create para encriptar la contraseña
-        data = request.data.copy()
-        if 'password' in data:
-            data['password'] = make_password(data['password'])
-        serializer = self.get_serializer(data=data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
     @action(detail=False, methods=['get'])
     def me(self, request):

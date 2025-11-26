@@ -70,7 +70,7 @@ export default function ForgotPassword() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@email.com"
+              placeholder="Ingresa tu correo electrónico"
               required
               autoComplete="email"
             />
@@ -96,15 +96,15 @@ export default function ForgotPassword() {
             disabled={loading}
           >
             {loading ? (
-              <>
+              <React.Fragment key="loading">
                 <span className="spinner-small"></span>
-                Enviando...
-              </>
+                <span>Enviando...</span>
+              </React.Fragment>
             ) : (
-              <>
+              <React.Fragment key="ready">
                 <span>Enviar Instrucciones</span>
                 <span className="button-arrow">→</span>
-              </>
+              </React.Fragment>
             )}
           </button>
 
