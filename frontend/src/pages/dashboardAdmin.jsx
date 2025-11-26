@@ -438,6 +438,8 @@ export default function DashboardAdmin() {
       setError(err.response?.data?.detail || "Error al actualizar producto");
       setTimeout(() => setError(""), 5000);
     }
+  };
+
   const handleActualizarPedido = async (formData) => {
     if (!window.confirm(`¿Estás seguro de cambiar el estado del pedido #${formData.id} a "${formData.estado}"?`)) {
       return;
