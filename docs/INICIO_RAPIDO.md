@@ -28,7 +28,7 @@ cd experticie-2
 cd backend
 python -m venv .venv
 
-.\.venv\Scripts\Activate.ps1; pip install -r ..\requirements.txt
+.\.venv\Scripts\Activate.ps1; pip install -r requirements.txt
 
 # Frontend - Instalar dependencias
 cd ..\frontend

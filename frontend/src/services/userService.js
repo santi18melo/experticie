@@ -32,7 +32,10 @@ const UserService = {
    */
   async updateProfile(profileData) {
     try {
-      const response = await axiosInstance.put("/usuarios/me/", profileData);
+      const isFormData = profileData instanceof FormData;
+      const config = isFormData ? { headers: { "Content-Type": "multipart/form-data" } } : {};
+      
+      const response = await axiosInstance.put("/usuarios/me/", profileData, config);
       return response.data;
     } catch (error) {
       console.error("Error updating user profile:", error);

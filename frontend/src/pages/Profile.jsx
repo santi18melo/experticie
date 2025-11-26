@@ -17,7 +17,10 @@ export default function Profile() {
     telefono: "",
     direccion: "",
     rol: "",
+    imagen: null, // URL or File object
   });
+  
+  const [previewImage, setPreviewImage] = useState(null);
 
   const navigate = useNavigate();
 
@@ -36,7 +39,11 @@ export default function Profile() {
         telefono: data.telefono || "",
         direccion: data.direccion || "",
         rol: data.rol || "",
+        imagen: data.imagen || null,
       });
+      if (data.imagen) {
+        setPreviewImage(data.imagen);
+      }
     } catch (err) {
       console.error("Error loading profile:", err);
       setError("Error al cargar el perfil. Intente nuevamente.");
@@ -48,6 +55,14 @@ export default function Profile() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfileData({ ...profileData, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfileData({ ...profileData, imagen: file });
+      setPreviewImage(URL.createObjectURL(file));
+    }
   };
 
   const handleSave = async (e) => {
@@ -65,8 +80,20 @@ export default function Profile() {
         throw new Error("El email es requerido");
       }
 
+      // Prepare FormData
+      const formData = new FormData();
+      formData.append("nombre", profileData.nombre);
+      formData.append("email", profileData.email);
+      formData.append("telefono", profileData.telefono);
+      formData.append("direccion", profileData.direccion);
+      
+      // Only append image if it's a File object (new upload)
+      if (profileData.imagen instanceof File) {
+        formData.append("imagen", profileData.imagen);
+      }
+
       // Update profile
-      const updated = await UserService.updateProfile(profileData);
+      const updated = await UserService.updateProfile(formData);
       
       setProfileData({
         nombre: updated.nombre || "",
@@ -74,7 +101,12 @@ export default function Profile() {
         telefono: updated.telefono || "",
         direccion: updated.direccion || "",
         rol: updated.rol || "",
+        imagen: updated.imagen || null,
       });
+      
+      if (updated.imagen) {
+        setPreviewImage(updated.imagen);
+      }
 
       setSuccess("Perfil actualizado correctamente");
       setEditing(false);
@@ -116,6 +148,30 @@ export default function Profile() {
         </div>
 
         <form onSubmit={handleSave}>
+          <div style={styles.profileHeader}>
+             <div style={styles.imageContainer}>
+                {previewImage ? (
+                  <img src={previewImage} alt="Perfil" style={styles.profileImage} />
+                ) : (
+                  <div style={styles.placeholderImage}>{profileData.nombre?.charAt(0) || "U"}</div>
+                )}
+                {editing && (
+                  <div style={styles.imageUpload}>
+                    <label htmlFor="imagen-upload" style={styles.uploadLabel}>
+                      Cambiar Foto
+                    </label>
+                    <input
+                      id="imagen-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      style={{ display: "none" }}
+                    />
+                  </div>
+                )}
+             </div>
+          </div>
+
           <div style={styles.formGrid}>
             <div style={styles.formGroup}>
               <label style={styles.label}>Nombre Completo *</label>
@@ -230,9 +286,56 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: "30px",
+    marginBottom: "20px",
     borderBottom: "2px solid #f0f0f0",
     paddingBottom: "15px",
+  },
+  profileHeader: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "30px",
+  },
+  imageContainer: {
+    position: "relative",
+    width: "120px",
+    height: "120px",
+  },
+  profileImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "50%",
+    objectFit: "cover",
+    border: "4px solid #f0f0f0",
+  },
+  placeholderImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "50%",
+    background: "#007bff",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "48px",
+    fontWeight: "bold",
+    border: "4px solid #f0f0f0",
+  },
+  imageUpload: {
+    position: "absolute",
+    bottom: "0",
+    right: "0",
+    background: "white",
+    borderRadius: "50%",
+    padding: "5px",
+    boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+  },
+  uploadLabel: {
+    cursor: "pointer",
+    fontSize: "12px",
+    background: "#007bff",
+    color: "white",
+    padding: "4px 8px",
+    borderRadius: "12px",
   },
   editButton: {
     padding: "8px 16px",
@@ -340,7 +443,7 @@ const styles = {
   backButton: {
     padding: "10px 20px",
     background: "#f8f9fa",
-    color: "#333",
+    color: "white",
     border: "1px solid #ddd",
     borderRadius: "6px",
     cursor: "pointer",
