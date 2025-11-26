@@ -137,28 +137,29 @@ export default function Profile() {
   }
 
   return (
+  return (
     <div className="profile-container">
       <div className="profile-card">
-        <div className="profile-header-section">
-          <h2>👤 Mi Perfil</h2>
+        {/* Cover Image / Header */}
+        <div className="profile-cover">
           {!editing && (
-            <button onClick={() => setEditing(true)} className="btn-edit-profile">
-              ✏️ Editar
+            <button onClick={() => setEditing(true)} className="btn-edit-profile-floating">
+              ✏️ Editar Perfil
             </button>
           )}
         </div>
 
         <div className="profile-content">
           <form onSubmit={handleSave}>
-            {/* Image Section */}
-            <div className="profile-image-section">
+            {/* Profile Picture Section */}
+            <div className="profile-header-info">
                <div className="image-wrapper">
                   {previewImage ? (
                     <img 
-                    src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://127.0.0.1:8000${previewImage}`} 
-                    alt="Perfil" 
-                    className="profile-img-large" 
-                  />
+                      src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://127.0.0.1:8000${previewImage}`} 
+                      alt="Perfil" 
+                      className="profile-img-large" 
+                    />
                   ) : (
                     <div className="profile-placeholder-large">
                       {profileData.nombre?.charAt(0) || "U"}
@@ -178,6 +179,26 @@ export default function Profile() {
                     </label>
                   )}
                </div>
+
+               {/* Name and Role Display (View Mode) */}
+               {!editing ? (
+                 <div className="profile-identity">
+                   <h1 className="profile-name">{profileData.nombre}</h1>
+                   <span className="profile-role-badge">{profileData.rol.toUpperCase()}</span>
+                 </div>
+               ) : (
+                 <div className="profile-identity-edit">
+                   <input
+                     type="text"
+                     name="nombre"
+                     value={profileData.nombre}
+                     onChange={handleInputChange}
+                     className="form-input input-name-edit"
+                     placeholder="Tu Nombre"
+                     required
+                   />
+                 </div>
+               )}
             </div>
 
             {/* Alerts */}
@@ -192,69 +213,58 @@ export default function Profile() {
               </div>
             )}
 
-            {/* Form Fields */}
-            <div className="profile-form-grid">
-              <div className="form-group">
-                <label>Nombre Completo *</label>
-                <input
-                  type="text"
-                  name="nombre"
-                  value={profileData.nombre}
-                  onChange={handleInputChange}
-                  disabled={!editing}
-                  required
-                  className="form-input"
-                />
-              </div>
+            {/* Info Section */}
+            <div className="profile-details-section">
+              <h3 className="section-title">Información de Contacto</h3>
+              
+              <div className="profile-form-grid">
+                <div className="form-group">
+                  <label>Email</label>
+                  <div className="input-with-icon">
+                    <span className="input-icon">✉️</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={profileData.email}
+                      onChange={handleInputChange}
+                      disabled={!editing}
+                      required
+                      className="form-input"
+                    />
+                  </div>
+                </div>
 
-              <div className="form-group">
-                <label>Email *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={profileData.email}
-                  onChange={handleInputChange}
-                  disabled={!editing}
-                  required
-                  className="form-input"
-                />
-              </div>
+                <div className="form-group">
+                  <label>Teléfono</label>
+                  <div className="input-with-icon">
+                    <span className="input-icon">📱</span>
+                    <input
+                      type="tel"
+                      name="telefono"
+                      value={profileData.telefono}
+                      onChange={handleInputChange}
+                      disabled={!editing}
+                      className="form-input"
+                      placeholder="Agrega un teléfono"
+                    />
+                  </div>
+                </div>
 
-              <div className="form-group">
-                <label>Teléfono</label>
-                <input
-                  type="tel"
-                  name="telefono"
-                  value={profileData.telefono}
-                  onChange={handleInputChange}
-                  disabled={!editing}
-                  className="form-input"
-                  placeholder="Ej: +57 300 1234567"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Rol</label>
-                <input
-                  type="text"
-                  name="rol"
-                  value={profileData.rol.toUpperCase()}
-                  disabled
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-group full-width">
-                <label>Dirección</label>
-                <textarea
-                  name="direccion"
-                  value={profileData.direccion}
-                  onChange={handleInputChange}
-                  disabled={!editing}
-                  rows="3"
-                  className="form-input form-textarea"
-                  placeholder="Ingrese su dirección completa"
-                />
+                <div className="form-group full-width">
+                  <label>Dirección</label>
+                  <div className="input-with-icon">
+                    <span className="input-icon">📍</span>
+                    <textarea
+                      name="direccion"
+                      value={profileData.direccion}
+                      onChange={handleInputChange}
+                      disabled={!editing}
+                      rows="2"
+                      className="form-input form-textarea"
+                      placeholder="Agrega tu dirección"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -277,8 +287,8 @@ export default function Profile() {
           </form>
 
           <div className="back-section">
-            <button onClick={() => navigate(-1)} className="btn-back">
-              ← Volver
+            <button onClick={() => navigate("/")} className="btn-back">
+              ← Volver al Inicio
             </button>
           </div>
         </div>
