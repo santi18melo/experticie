@@ -20,10 +20,19 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 
 
 
-    @action(detail=False, methods=['get'])
+    @action(detail=False, methods=['get', 'put', 'patch'])
     def me(self, request):
         """
-        Retorna los datos del usuario autenticado
+        Retorna o actualiza los datos del usuario autenticado
         """
-        serializer = self.get_serializer(request.user)
+        user = request.user
+        if request.method == 'GET':
+            serializer = self.get_serializer(user)
+            return Response(serializer.data)
+        
+        # Para PUT y PATCH
+        partial = request.method == 'PATCH'
+        serializer = self.get_serializer(user, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data)

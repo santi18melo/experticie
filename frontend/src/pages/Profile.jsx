@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../services/userService";
 import Loader from "../components/Loader";
+import "../styles/Profile.css";
 
 export default function Profile() {
   const [loading, setLoading] = useState(true);
@@ -136,317 +137,148 @@ export default function Profile() {
   }
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <div style={styles.header}>
-          <h2>Mi Perfil</h2>
+    <div className="profile-container">
+      <div className="profile-card">
+        <div className="profile-header-section">
+          <h2>👤 Mi Perfil</h2>
           {!editing && (
-            <button onClick={() => setEditing(true)} style={styles.editButton}>
+            <button onClick={() => setEditing(true)} className="btn-edit-profile">
               ✏️ Editar
             </button>
           )}
         </div>
 
-        <form onSubmit={handleSave}>
-          <div style={styles.profileHeader}>
-             <div style={styles.imageContainer}>
-                {previewImage ? (
-                  <img src={previewImage} alt="Perfil" style={styles.profileImage} />
-                ) : (
-                  <div style={styles.placeholderImage}>{profileData.nombre?.charAt(0) || "U"}</div>
-                )}
-                {editing && (
-                  <div style={styles.imageUpload}>
-                    <label htmlFor="imagen-upload" style={styles.uploadLabel}>
-                      Cambiar Foto
+        <div className="profile-content">
+          <form onSubmit={handleSave}>
+            {/* Image Section */}
+            <div className="profile-image-section">
+               <div className="image-wrapper">
+                  {previewImage ? (
+                    <img src={previewImage} alt="Perfil" className="profile-img-large" />
+                  ) : (
+                    <div className="profile-placeholder-large">
+                      {profileData.nombre?.charAt(0) || "U"}
+                    </div>
+                  )}
+                  
+                  {editing && (
+                    <label htmlFor="imagen-upload" className="image-upload-btn" title="Cambiar foto">
+                      <span>📷</span>
+                      <input
+                        id="imagen-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        style={{ display: "none" }}
+                      />
                     </label>
-                    <input
-                      id="imagen-upload"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                )}
-             </div>
+                  )}
+               </div>
+            </div>
+
+            {/* Alerts */}
+            {error && (
+              <div className="alert alert-error">
+                <span>⚠️</span> {error}
+              </div>
+            )}
+            {success && (
+              <div className="alert alert-success">
+                <span>✓</span> {success}
+              </div>
+            )}
+
+            {/* Form Fields */}
+            <div className="profile-form-grid">
+              <div className="form-group">
+                <label>Nombre Completo *</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  value={profileData.nombre}
+                  onChange={handleInputChange}
+                  disabled={!editing}
+                  required
+                  className="form-input"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={profileData.email}
+                  onChange={handleInputChange}
+                  disabled={!editing}
+                  required
+                  className="form-input"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Teléfono</label>
+                <input
+                  type="tel"
+                  name="telefono"
+                  value={profileData.telefono}
+                  onChange={handleInputChange}
+                  disabled={!editing}
+                  className="form-input"
+                  placeholder="Ej: +57 300 1234567"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Rol</label>
+                <input
+                  type="text"
+                  name="rol"
+                  value={profileData.rol.toUpperCase()}
+                  disabled
+                  className="form-input"
+                />
+              </div>
+
+              <div className="form-group full-width">
+                <label>Dirección</label>
+                <textarea
+                  name="direccion"
+                  value={profileData.direccion}
+                  onChange={handleInputChange}
+                  disabled={!editing}
+                  rows="3"
+                  className="form-input form-textarea"
+                  placeholder="Ingrese su dirección completa"
+                />
+              </div>
+            </div>
+
+            {/* Actions */}
+            {editing && (
+              <div className="form-actions">
+                <button
+                  type="button"
+                  onClick={handleCancel}
+                  className="btn-cancel"
+                  disabled={saving}
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className="btn-save" disabled={saving}>
+                  {saving ? "Guardando..." : "💾 Guardar Cambios"}
+                </button>
+              </div>
+            )}
+          </form>
+
+          <div className="back-section">
+            <button onClick={() => navigate(-1)} className="btn-back">
+              ← Volver
+            </button>
           </div>
-
-          <div style={styles.formGrid}>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Nombre Completo *</label>
-              <input
-                type="text"
-                name="nombre"
-                value={profileData.nombre}
-                onChange={handleInputChange}
-                disabled={!editing}
-                required
-                style={editing ? styles.input : styles.inputDisabled}
-              />
-            </div>
-
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Email *</label>
-              <input
-                type="email"
-                name="email"
-                value={profileData.email}
-                onChange={handleInputChange}
-                disabled={!editing}
-                required
-                style={editing ? styles.input : styles.inputDisabled}
-              />
-            </div>
-
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Teléfono</label>
-              <input
-                type="tel"
-                name="telefono"
-                value={profileData.telefono}
-                onChange={handleInputChange}
-                disabled={!editing}
-                style={editing ? styles.input : styles.inputDisabled}
-                placeholder="Ej: +57 300 1234567"
-              />
-            </div>
-
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Rol</label>
-              <input
-                type="text"
-                name="rol"
-                value={profileData.rol}
-                disabled
-                style={styles.inputDisabled}
-              />
-            </div>
-
-            <div style={{ ...styles.formGroup, gridColumn: "1 / -1" }}>
-              <label style={styles.label}>Dirección</label>
-              <textarea
-                name="direccion"
-                value={profileData.direccion}
-                onChange={handleInputChange}
-                disabled={!editing}
-                rows="3"
-                style={editing ? styles.textarea : styles.textareaDisabled}
-                placeholder="Ingrese su dirección completa"
-              />
-            </div>
-          </div>
-
-          {error && <div style={styles.error}>{error}</div>}
-          {success && <div style={styles.success}>{success}</div>}
-
-          {editing && (
-            <div style={styles.actions}>
-              <button
-                type="button"
-                onClick={handleCancel}
-                style={styles.cancelButton}
-                disabled={saving}
-              >
-                Cancelar
-              </button>
-              <button type="submit" style={styles.saveButton} disabled={saving}>
-                {saving ? "Guardando..." : "Guardar Cambios"}
-              </button>
-            </div>
-          )}
-        </form>
-
-        <div style={styles.additionalActions}>
-          <button
-            onClick={() => navigate("/")}
-            style={styles.backButton}
-          >
-            ← Volver al Inicio
-          </button>
         </div>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    padding: "20px",
-    maxWidth: "800px",
-    margin: "0 auto",
-  },
-  card: {
-    background: "#fff",
-    borderRadius: "12px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    padding: "30px",
-  },
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "20px",
-    borderBottom: "2px solid #f0f0f0",
-    paddingBottom: "15px",
-  },
-  profileHeader: {
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "30px",
-  },
-  imageContainer: {
-    position: "relative",
-    width: "120px",
-    height: "120px",
-  },
-  profileImage: {
-    width: "100%",
-    height: "100%",
-    borderRadius: "50%",
-    objectFit: "cover",
-    border: "4px solid #f0f0f0",
-  },
-  placeholderImage: {
-    width: "100%",
-    height: "100%",
-    borderRadius: "50%",
-    background: "#007bff",
-    color: "white",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "48px",
-    fontWeight: "bold",
-    border: "4px solid #f0f0f0",
-  },
-  imageUpload: {
-    position: "absolute",
-    bottom: "0",
-    right: "0",
-    background: "white",
-    borderRadius: "50%",
-    padding: "5px",
-    boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-  },
-  uploadLabel: {
-    cursor: "pointer",
-    fontSize: "12px",
-    background: "#007bff",
-    color: "white",
-    padding: "4px 8px",
-    borderRadius: "12px",
-  },
-  editButton: {
-    padding: "8px 16px",
-    background: "#007bff",
-    color: "white",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontSize: "14px",
-  },
-  formGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "20px",
-    marginBottom: "20px",
-  },
-  formGroup: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  label: {
-    marginBottom: "8px",
-    fontWeight: "600",
-    color: "#333",
-  },
-  input: {
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #ddd",
-    fontSize: "15px",
-  },
-  inputDisabled: {
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #e0e0e0",
-    fontSize: "15px",
-    background: "#f8f9fa",
-    color: "#666",
-  },
-  textarea: {
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #ddd",
-    fontSize: "15px",
-    fontFamily: "inherit",
-    resize: "vertical",
-  },
-  textareaDisabled: {
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #e0e0e0",
-    fontSize: "15px",
-    fontFamily: "inherit",
-    background: "#f8f9fa",
-    color: "#666",
-    resize: "vertical",
-  },
-  error: {
-    padding: "15px",
-    background: "#f8d7da",
-    color: "#721c24",
-    borderRadius: "8px",
-    marginBottom: "20px",
-    border: "1px solid #f5c6cb",
-  },
-  success: {
-    padding: "15px",
-    background: "#d4edda",
-    color: "#155724",
-    borderRadius: "8px",
-    marginBottom: "20px",
-    border: "1px solid #c3e6cb",
-  },
-  actions: {
-    display: "flex",
-    gap: "15px",
-    justifyContent: "flex-end",
-    marginTop: "30px",
-  },
-  cancelButton: {
-    padding: "12px 24px",
-    background: "#6c757d",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    fontSize: "16px",
-  },
-  saveButton: {
-    padding: "12px 32px",
-    background: "linear-gradient(135deg, #28a745, #20c997)",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    fontSize: "16px",
-    fontWeight: "600",
-    boxShadow: "0 4px 12px rgba(40,167,69,0.3)",
-  },
-  additionalActions: {
-    marginTop: "30px",
-    paddingTop: "20px",
-    borderTop: "1px solid #e0e0e0",
-  },
-  backButton: {
-    padding: "10px 20px",
-    background: "#f8f9fa",
-    color: "white",
-    border: "1px solid #ddd",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontSize: "14px",
-  },
-};
