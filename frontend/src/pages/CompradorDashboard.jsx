@@ -62,42 +62,6 @@ export default function CompradorDashboard() {
     navigate("/login");
   };
 
-  // ==================== FILTRAR PEDIDOS ====================
-  const pedidosFiltrados = pedidos.filter((pedido) => {
-    if (filtroEstado === "todos") return true;
-    return pedido.estado === filtroEstado;
-  });
-
-  // ==================== ESTADÍSTICAS ====================
-  const stats = {
-            <p>Total Pedidos</p>
-            <span className="stat-detail">En gestión</span>
-          </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-icon">⏳</div>
-          <div className="stat-content">
-            <h3>{stats.pendientes}</h3>
-            <p>Pendientes</p>
-            <span className="stat-detail">Por procesar</span>
-          </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-icon">⚙️</div>
-          <div className="stat-content">
-            <h3>{stats.preparando}</h3>
-            <p>Preparando</p>
-            <span className="stat-detail">En proceso</span>
-          </div>
-        </div>
-      </div>
-
-      {/* FILTROS */}
-      <div className="filtros-container">
-        <div className="filtros">
-          <button
             className={`filtro-btn ${filtroEstado === "todos" ? "active" : ""}`}
             onClick={() => setFiltroEstado("todos")}
           >
