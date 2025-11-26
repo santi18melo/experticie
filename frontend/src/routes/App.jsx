@@ -31,6 +31,7 @@ const Settings = lazy(() => import("../pages/Settings.jsx"));
 const PaymentStatus = lazy(() => import("../pages/PaymentStatus.jsx"));
 const PaymentHistory = lazy(() => import("../pages/PaymentHistory.jsx"));
 const PaymentDetail = lazy(() => import("../pages/PaymentDetail.jsx"));
+const AsignarProductos = lazy(() => import("../components/admin/AsignarProductos.jsx"));
 
 // Products
 const Catalogo = lazy(() => import("../components/productos/Catalogo.jsx"));
@@ -166,6 +167,16 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <Settings />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Protected Routes - Asignar Productos (Admin only) */}
+      <Route
+        path="/admin/asignar-productos"
+        element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AsignarProductos />
           </ProtectedRoute>
         }
       />

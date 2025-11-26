@@ -56,6 +56,20 @@ const UserService = {
       throw error;
     }
   },
+
+  /**
+   * Get all active providers (Admin only)
+   * @returns {Promise<Array>} List of providers
+   */
+  async getProveedores() {
+    try {
+      const response = await axiosInstance.get("/usuarios/proveedores/");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching providers:", error);
+      throw error;
+    }
+  },
 };
 
 export default UserService;

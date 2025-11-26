@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from '../../services/api';
+import OrderService from '../../services/orderService';
 import '../../styles/PanelLogistica.css';
 import DashboardHeader from '../DashboardHeader';
 
@@ -20,12 +20,12 @@ function PanelLogistica() {
     setLoading(true);
     setError('');
     try {
-      const data = await api.getPedidosEnPreparacion(token);
+      const data = await OrderService.getPedidosEnPreparacion();
       const lista = Array.isArray(data) ? data : [];
       // Marcar categorías por pedido: si contienen básicos / no básicos (obtener detalles)
       const marcados = await Promise.all(lista.map(async p => {
         try {
-          const detalles = await api.getDetallesPedido(token, p.id);
+          const detalles = await OrderService.getDetallesPedido(p.id);
           const dets = Array.isArray(detalles) ? detalles : [];
           const tiene_basicos = dets.some(d => d.es_basico);
           const tiene_no_basicos = dets.some(d => !d.es_basico);
@@ -54,7 +54,7 @@ function PanelLogistica() {
 
   const cargarDetalles = async (pedidoId) => {
     try {
-      const data = await api.getDetallesPedido(token, pedidoId);
+      const data = await OrderService.getDetallesPedido(pedidoId);
       setDetalles(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error('Error cargando detalles:', err);
@@ -72,7 +72,7 @@ function PanelLogistica() {
     setError('');
     setMensaje('');
     try {
-      await api.cambiarEstadoPedido(token, pedidoId, nuevoEstado);
+      await OrderService.cambiarEstadoPedido(pedidoId, nuevoEstado);
       setMensaje(`✓ Pedido actualizado a ${nuevoEstado}`);
       
       setTimeout(() => {

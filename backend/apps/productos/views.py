@@ -160,6 +160,39 @@ class ProductoViewSet(viewsets.ModelViewSet):
         except ValueError as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(detail=True, methods=["post"], permission_classes=[IsAdmin])
+    def asignar_proveedor(self, request, pk=None):
+        """Asignar o cambiar el proveedor de un producto (solo admin)"""
+        producto = self.get_object()
+        proveedor_id = request.data.get("proveedor_id")
+
+        if not proveedor_id:
+            return Response(
+                {"error": "Se requiere proveedor_id"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            from apps.usuarios.models import Usuario
+            proveedor = Usuario.objects.get(id=proveedor_id, rol="proveedor", estado=True)
+        except Usuario.DoesNotExist:
+            return Response(
+                {"error": "Proveedor no encontrado o inactivo"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        producto.proveedor = proveedor
+        producto.save()
+
+        return Response(
+            {
+                "mensaje": f"Producto '{producto.nombre}' asignado a '{proveedor.nombre}'",
+                "producto_id": producto.id,
+                "proveedor_id": proveedor.id,
+                "proveedor_nombre": proveedor.nombre,
+            }
+        )
+
 
 # ======================== PEDIDO VIEWSET ========================
 

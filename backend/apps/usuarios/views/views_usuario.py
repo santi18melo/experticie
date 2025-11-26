@@ -36,3 +36,19 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
+    def proveedores(self, request):
+        """
+        Retorna lista de proveedores activos (solo para admin)
+        """
+        if not (request.user.is_superuser or request.user.rol == 'admin'):
+            return Response(
+                {"error": "No tiene permisos para ver esta información"},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        proveedores = User.objects.filter(rol='proveedor', estado=True)
+        serializer = self.get_serializer(proveedores, many=True)
+        return Response(serializer.data)
+

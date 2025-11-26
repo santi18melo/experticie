@@ -73,6 +73,46 @@ const OrderService = {
       throw error;
     }
   },
+
+  /**
+   * Get orders in preparation state (for logistics panel)
+   * @returns {Promise<Array>} List of orders in preparation
+   */
+  async getPedidosEnPreparacion() {
+    try {
+      const response = await axiosInstance.get("/productos/pedidos/?estado=en_preparacion");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching orders in preparation:", error);
+      throw error;
+    }
+  },
+
+  /**
+   * Get order details (detalles) by order ID
+   * @param {number} pedidoId - Order ID
+   * @returns {Promise<Array>} Order details/items
+   */
+  async getDetallesPedido(pedidoId) {
+    try {
+      const response = await axiosInstance.get(`/productos/pedidos/${pedidoId}/`);
+      // Return the detalles array from the order object
+      return response.data.detalles || [];
+    } catch (error) {
+      console.error(`Error fetching order details for ${pedidoId}:`, error);
+      throw error;
+    }
+  },
+
+  /**
+   * Change order status (alias for updateOrderStatus for logistics panel compatibility)
+   * @param {number} pedidoId - Order ID
+   * @param {string} nuevoEstado - New status
+   * @returns {Promise<Object>} Updated order
+   */
+  async cambiarEstadoPedido(pedidoId, nuevoEstado) {
+    return this.updateOrderStatus(pedidoId, nuevoEstado);
+  },
 };
 
 export default OrderService;

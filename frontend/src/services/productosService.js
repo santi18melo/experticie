@@ -201,6 +201,21 @@ export const subirImagenProducto = async (productoId, formData) => {
   }
 };
 
+/**
+ * Asignar proveedor a un producto (solo admin)
+ */
+export const asignarProveedor = async (productoId, proveedorId) => {
+  try {
+    const response = await api.post(`/productos/productos/${productoId}/asignar_proveedor/`, {
+      proveedor_id: proveedorId
+    });
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error assigning provider:', error);
+    throw error;
+  }
+};
+
 // ==================== PEDIDOS ====================
 
 /**
@@ -335,6 +350,7 @@ export default {
   getMisProductos,
   ajustarStock,
   subirImagenProducto,
+  asignarProveedor,
   
   // Pedidos
   getMisPedidos,

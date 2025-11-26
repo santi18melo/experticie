@@ -692,12 +692,21 @@ export default function DashboardAdmin() {
           <div className="content-section">
             <div className="section-header">
               <h2>Gestión de Usuarios</h2>
-              <button
-                className="btn-primary"
-                onClick={() => setShowUserForm(!showUserForm)}
-              >
-                {showUserForm ? "✕ Cancelar" : "+ Nuevo Usuario"}
-              </button>
+              <div style={{display: 'flex', gap: '12px'}}>
+                <button
+                  className="btn-secondary"
+                  onClick={() => navigate('/admin/asignar-productos')}
+                  style={{background: '#10b981', color: 'white'}}
+                >
+                  🔗 Asignar Productos
+                </button>
+                <button
+                  className="btn-primary"
+                  onClick={() => setShowUserForm(!showUserForm)}
+                >
+                  {showUserForm ? "✕ Cancelar" : "+ Nuevo Usuario"}
+                </button>
+              </div>
             </div>
 
             {showUserForm && (
