@@ -438,6 +438,22 @@ export default function DashboardAdmin() {
       setError(err.response?.data?.detail || "Error al actualizar producto");
       setTimeout(() => setError(""), 5000);
     }
+  const handleActualizarPedido = async (formData) => {
+    if (!window.confirm(`¿Estás seguro de cambiar el estado del pedido #${formData.id} a "${formData.estado}"?`)) {
+      return;
+    }
+
+    try {
+      await OrderService.updateOrderStatus(formData.id, formData.estado);
+      setSuccess(`✓ Pedido #${formData.id} actualizado a ${formData.estado}`);
+      await cargarPedidos();
+      setModalEdicion({ visible: false, tipo: '', datos: null });
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (err) {
+      console.error("Error actualizando pedido:", err);
+      setError("Error al actualizar el pedido");
+      setTimeout(() => setError(""), 5000);
+    }
   };
 
   const handleSubmitEdicion = (formData) => {
@@ -576,9 +592,22 @@ export default function DashboardAdmin() {
       {/* HEADER */}
       <div className="admin-header">
         <div className="header-content">
-          <div className="header-left">
-            <h1>⚡ Panel de Administración</h1>
-            <p>Bienvenido, <strong>{user?.nombre}</strong></p>
+          <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            {user?.imagen ? (
+              <img 
+                src={user.imagen} 
+                alt="Perfil" 
+                style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover', border: '2px solid white', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }} 
+              />
+            ) : (
+              <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>
+                👤
+              </div>
+            )}
+            <div>
+              <h1>⚡ Panel de Administración</h1>
+              <p>Bienvenido, <strong>{user?.nombre}</strong></p>
+            </div>
           </div>
           <button onClick={handleLogout} className="btn-logout">
             🚪 Cerrar Sesión

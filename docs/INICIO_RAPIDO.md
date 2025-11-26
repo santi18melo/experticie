@@ -1,6 +1,6 @@
 #  GUÍA DE INICIO RÁPIDO - PREXCOL
 
-**Última actualización:** 2025-11-26 15:00:00  
+**Última actualización:** 2025-11-26 15:55:00  
 **Estado del Sistema:** ✅ 100% Operativo  
 **Versión:** 2.2 - Dependencias Completas y Scripts de Configuración
 
@@ -15,53 +15,48 @@
 
 ---
 
-## ⚡ INICIO RÁPIDO (2 PASOS)
+## ⚡ INICIO RÁPIDO (3 OPCIONES)
 
-### 1️⃣ **Clonar e Instalar (MÉTODO AUTOMÁTICO)**
+### OPCIÓN 1: Instalación y Ejecución Automática (RECOMENDADO)
+
+Este script hace TODO por ti: instala dependencias, configura la base de datos, crea usuarios y abre el sistema.
 
 ```powershell
-# Clonar repositorio
+# 1. Clonar repositorio
 git clone https://github.com/santi18melo/experticie.git
 cd experticie-2
 
-# Instalar TODAS las dependencias (Backend + Frontend) automáticamente
-.\\setup_project.bat
+# 2. Ejecutar script maestro
+.\start_system.bat
 ```
 
-**O manualmente (paso a paso):**
+### OPCIÓN 2: Solo Instalación Automática
+
+Si prefieres instalar todo automáticamente pero ejecutar los servidores manualmente:
 
 ```powershell
-# Backend - Instalar dependencias
-cd backend
-python -m venv .venv
-.\\.venv\\Scripts\\Activate.ps1
-python -m pip install -r requirements.txt
-
-# Frontend - Instalar dependencias
-cd ..\\frontend
-npm install
+# Instalar TODAS las dependencias (Backend + Frontend)
+.\setup_project.bat
 ```
 
-> **💡 Nuevo:** El script `setup_project.bat` instala automáticamente todas las dependencias de backend y frontend en un solo paso.
-
-### 2️⃣ **Iniciar Servicios**
+### OPCIÓN 3: Instalación Manual (Paso a Paso)
 
 **Terminal 1 - Backend:**
 ```powershell
 cd backend
-.\\.venv\\Scripts\\Activate.ps1
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
 **Terminal 2 - Frontend:**
 ```powershell
 cd frontend
+npm install
 npm run dev
 ```
-
-### 3️⃣ **Acceder a la Aplicación**
-
-Abre tu navegador en: **http://localhost:5175**
 
 ---
 
@@ -153,7 +148,7 @@ python manage.py createsuperuser
 python manage.py migrate
 
 # Crear usuarios de prueba
-python scripts\\create_test_users.py
+python scripts\create_test_users.py
 
 # Ejecutar tests
 python manage.py test apps.usuarios.tests
@@ -328,6 +323,37 @@ npm run dev -- --port 5174
 ```powershell
 # Instalar navegadores de Playwright
 npx playwright install
+
+# Ejecutar con más tiempo de espera
+npx playwright test --timeout=60000
+```
+
+### Error: "Pillow build failed" (Python 3.14+)
+```powershell
+# El sistema instalará automáticamente una versión compatible
+# Si persiste el error, instalar Pillow manualmente:
+python -m pip install Pillow
+```
+
+### Error: "IndentationError" o "expected an indented block"
+```powershell
+# Limpiar archivos .pyc corruptos
+cd backend
+Get-ChildItem -Recurse -Filter *.pyc | Remove-Item -Force
+
+# Verificar sintaxis
+python manage.py check
+
+# Si el error persiste, verificar apps/productos/serializers.py
+# Debe tener todas las clases completas sin duplicados
+```
+
+---
+
+## 📁 ESTRUCTURA DEL PROYECTO
+
+```
+experticie-2/
 ├── backend/
 │   ├── apps/
 │   │   ├── usuarios/
@@ -380,6 +406,7 @@ npx playwright install
 ├── requirements.txt               # Dependencias Python (ACTUALIZADO)
 ├── setup_project.bat             # Script instalación Windows (NUEVO)
 ├── setup_project.sh              # Script instalación Unix/Linux (NUEVO)
+├── start_system.bat              # Script inicio completo (NUEVO)
 │
 └── docs/
     ├── INICIO_RAPIDO.md          # Esta guía
@@ -441,7 +468,7 @@ npx playwright install
 
 ## 💡 CONSEJOS PRO
 
-1. **Usa el script de instalación automática** (`setup_project.bat`) para configurar el proyecto en segundos
+1. **Usa el script maestro** (`start_system.bat`) para iniciar todo en segundos
 2. **Mantén ambos servidores corriendo** mientras desarrollas
 3. **Usa DevTools (F12)** para ver requests/responses
 4. **Revisa logs regularmente** en ambas terminales
@@ -468,7 +495,7 @@ cd frontend
 npx playwright test tests/e2e/login-simple.spec.js
 
 # 4. Usuarios creados
-cd ..\\backend
+cd ..\backend
 python manage.py shell
 >>> from apps.usuarios.models import Usuario
 >>> print(f"Total usuarios: {Usuario.objects.count()}")
@@ -491,6 +518,7 @@ Si encuentras problemas:
 ## 📝 CHANGELOG
 
 ### Versión 2.2 (2025-11-26)
+- ✨ Agregado `start_system.bat` para inicio completo del sistema
 - ✨ Agregado `setup_project.bat` y `setup_project.sh` para instalación automática
 - ✨ Agregadas dependencias: `Pillow` (manejo de imágenes) y `requests` (cliente HTTP)
 - 📝 Actualizada documentación de dependencias
@@ -505,5 +533,3 @@ Si encuentras problemas:
 ---
 
 **¡Sistema listo para desarrollo!** 🎉
-
-Todos los componentes están operativos y probados. Cada rol tiene su dashboard específico con redirección automática. Ejecuta `setup_project.bat` para instalar todas las dependencias automáticamente.
