@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../services/api";
+import { registerService } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -20,19 +20,17 @@ export default function Register() {
     setErrorMsg("");
     setSuccess("");
 
-    try {
-      await api.register(formValues);
+    const res = await registerService(formValues);
+    
+    if (res.ok) {
       setSuccess("Registro exitoso. Redirigiendo...");
       setTimeout(() => navigate("/login"), 2000);
-    } catch (error) {
-      // Error logged to monitoring service (TODO: implement Sentry)
-
+    } else {
       const backendError =
-        error?.response?.data?.detail ||
-        error?.response?.data?.message ||
-        error?.response?.data?.error ||
-        error?.message ||
-        "Ocurrió un error en el registro.";
+        res.error?.detail ||
+        res.error?.message ||
+        res.error?.error ||
+        (typeof res.error === 'string' ? res.error : "Ocurrió un error en el registro.");
 
       setErrorMsg(backendError);
     }
@@ -56,6 +54,7 @@ export default function Register() {
             }
             required
             style={styles.input}
+            data-testid="register-nombre"
           />
 
           <input
@@ -67,6 +66,7 @@ export default function Register() {
             }
             required
             style={styles.input}
+            data-testid="register-email"
           />
 
           <input
@@ -78,6 +78,7 @@ export default function Register() {
             }
             required
             style={styles.input}
+            data-testid="register-password"
           />
 
           <input
@@ -88,6 +89,7 @@ export default function Register() {
               setFormValues({ ...formValues, telefono: e.target.value })
             }
             style={styles.input}
+            data-testid="register-telefono"
           />
 
           <input
@@ -98,9 +100,10 @@ export default function Register() {
               setFormValues({ ...formValues, direccion: e.target.value })
             }
             style={styles.input}
+            data-testid="register-direccion"
           />
 
-          <button type="submit" style={styles.buttonPrimary}>
+          <button type="submit" style={styles.buttonPrimary} data-testid="register-submit">
             Registrar
           </button>
         </form>

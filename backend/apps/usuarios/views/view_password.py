@@ -19,6 +19,7 @@ def forgot_password(request):
     data = json.loads(request.body.decode('utf-8'))
     email = data.get("email")
 
+
     try:
         user = Usuario.objects.get(email=email)
     except Usuario.DoesNotExist:

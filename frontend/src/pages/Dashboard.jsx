@@ -25,6 +25,7 @@ export default function Dashboard() {
             borderRadius: 6,
             cursor: 'pointer'
           }}
+          data-testid="dashboard-logout"
         >
           Cerrar Sesión
         </button>
@@ -63,6 +64,7 @@ export default function Dashboard() {
             cursor: 'pointer',
             textAlign: 'left'
           }}
+          data-testid="dashboard-profile"
         >
           <h3 style={{ marginBottom: 10 }}>👤 Perfil</h3>
           <p style={{ color: '#6b7280', fontSize: 14 }}>Ver y editar tu perfil</p>
@@ -78,6 +80,7 @@ export default function Dashboard() {
             cursor: 'pointer',
             textAlign: 'left'
           }}
+          data-testid="dashboard-orders"
         >
           <h3 style={{ marginBottom: 10 }}>📦 Pedidos</h3>
           <p style={{ color: '#6b7280', fontSize: 14 }}>Ver historial de pedidos</p>
@@ -93,6 +96,7 @@ export default function Dashboard() {
             cursor: 'pointer',
             textAlign: 'left'
           }}
+          data-testid="dashboard-notifications"
         >
           <h3 style={{ marginBottom: 10 }}>🔔 Notificaciones</h3>
           <p style={{ color: '#6b7280', fontSize: 14 }}>Ver notificaciones</p>
@@ -108,6 +112,7 @@ export default function Dashboard() {
             cursor: 'pointer',
             textAlign: 'left'
           }}
+          data-testid="dashboard-settings"
         >
           <h3 style={{ marginBottom: 10 }}>⚙️ Configuración</h3>
           <p style={{ color: '#6b7280', fontSize: 14 }}>Ajustes de cuenta</p>
@@ -125,6 +130,7 @@ export default function Dashboard() {
                 cursor: 'pointer',
                 textAlign: 'left'
               }}
+              data-testid="dashboard-products"
             >
               <h3 style={{ marginBottom: 10 }}>🛍️ Productos</h3>
               <p style={{ color: '#6b7280', fontSize: 14 }}>Ver catálogo de productos</p>
@@ -140,6 +146,7 @@ export default function Dashboard() {
                 cursor: 'pointer',
                 textAlign: 'left'
               }}
+              data-testid="dashboard-cart"
             >
               <h3 style={{ marginBottom: 10 }}>🛒 Carrito</h3>
               <p style={{ color: '#6b7280', fontSize: 14 }}>Ver carrito de compras</p>
@@ -159,6 +166,7 @@ export default function Dashboard() {
               cursor: 'pointer',
               textAlign: 'left'
             }}
+            data-testid="dashboard-admin"
           >
             <h3 style={{ marginBottom: 10 }}>⚡ Panel Admin</h3>
             <p style={{ fontSize: 14 }}>Ir al panel de administración</p>
