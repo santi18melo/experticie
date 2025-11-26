@@ -70,3 +70,9 @@ whitenoise==6.6.0
 # Testing (optional for production, but good to have)
 pytest==7.4.3
 pytest-django==4.7.0
+
+# Media Handling
+Pillow==10.2.0
+
+# HTTP Client
+requests==2.31.0
