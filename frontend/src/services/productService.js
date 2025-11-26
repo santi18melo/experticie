@@ -18,7 +18,7 @@ const ProductService = {
    */
   async listProducts() {
     try {
-      const response = await axiosInstance.get("/productos/");
+      const response = await axiosInstance.get("/productos/productos/");
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -33,7 +33,7 @@ const ProductService = {
    */
   async getProduct(productId) {
     try {
-      const response = await axiosInstance.get(`/productos/${productId}/`);
+      const response = await axiosInstance.get(`/productos/productos/${productId}/`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching product ${productId}:`, error);
@@ -48,7 +48,7 @@ const ProductService = {
    */
   async searchProducts(query) {
     try {
-      const response = await axiosInstance.get(`/productos/?search=${query}`);
+      const response = await axiosInstance.get(`/productos/productos/?search=${query}`);
       return response.data;
     } catch (error) {
       console.error("Error searching products:", error);
@@ -63,7 +63,7 @@ const ProductService = {
    */
   async createProduct(productData) {
     try {
-      const response = await axiosInstance.post("/productos/", productData);
+      const response = await axiosInstance.post("/productos/productos/", productData);
       return response.data;
     } catch (error) {
       console.error("Error creating product:", error);
@@ -79,7 +79,7 @@ const ProductService = {
    */
   async updateProduct(productId, productData) {
     try {
-      const response = await axiosInstance.put(`/productos/${productId}/`, productData);
+      const response = await axiosInstance.put(`/productos/productos/${productId}/`, productData);
       return response.data;
     } catch (error) {
       console.error(`Error updating product ${productId}:`, error);
@@ -94,7 +94,7 @@ const ProductService = {
    */
   async deleteProduct(productId) {
     try {
-      await axiosInstance.delete(`/productos/${productId}/`);
+      await axiosInstance.delete(`/productos/productos/${productId}/`);
     } catch (error) {
       console.error(`Error deleting product ${productId}:`, error);
       throw error;

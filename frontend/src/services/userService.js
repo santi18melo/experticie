@@ -17,7 +17,7 @@ const UserService = {
   async getProfile() {
     try {
       // Note: This endpoint needs to be created in Django backend
-      const response = await axiosInstance.get("/users/me/");
+      const response = await axiosInstance.get("/usuarios/me/");
       return response.data;
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -32,7 +32,7 @@ const UserService = {
    */
   async updateProfile(profileData) {
     try {
-      const response = await axiosInstance.put("/users/me/", profileData);
+      const response = await axiosInstance.put("/usuarios/me/", profileData);
       return response.data;
     } catch (error) {
       console.error("Error updating user profile:", error);

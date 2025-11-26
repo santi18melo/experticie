@@ -38,3 +38,25 @@ export async function logoutService() {
   localStorage.removeItem("user");
   return { ok: true };
 }
+
+export async function forgotPasswordService(email) {
+  console.log("[AUTH] forgot password attempt", email);
+  try {
+    const resp = await api.post("/auth/forgot-password/", { email });
+    return { ok: true, data: resp.data };
+  } catch (err) {
+    console.error("[AUTH] forgot password error", err.response?.data);
+    return { ok: false, error: err.response?.data || err.message };
+  }
+}
+
+export async function resetPasswordService(uidb64, token, password) {
+  console.log("[AUTH] reset password attempt");
+  try {
+    const resp = await api.post(`/auth/reset-password/${uidb64}/${token}/`, { password });
+    return { ok: true, data: resp.data };
+  } catch (err) {
+    console.error("[AUTH] reset password error", err.response?.data);
+    return { ok: false, error: err.response?.data || err.message };
+  }
+}
