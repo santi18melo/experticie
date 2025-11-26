@@ -7,7 +7,7 @@ import { axiosInstance } from "./api";
  * - POST /api/pedidos/crear_pedido/ - Create new order
  * - GET /api/pedidos/ - List user's orders
  * - GET /api/pedidos/<id>/ - Get order detail
- * - PUT /api/pedidos/<id>/cambiar_estado/ - Update order status
+ * - POST /api/pedidos/<id>/cambiar_estado/ - Update order status
  */
 
 const OrderService = {

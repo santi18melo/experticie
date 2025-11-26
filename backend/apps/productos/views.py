@@ -287,7 +287,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
 
     @action(
         detail=True,
-        methods=["post"],
+        methods=["post", "put", "patch"],
         permission_classes=[IsAdmin | IsComprador | IsLogistica],
     )
     def cambiar_estado(self, request, pk=None):
