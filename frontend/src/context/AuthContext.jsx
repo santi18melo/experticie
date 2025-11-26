@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
     return { ok: true, access: res.access, refresh: res.refresh, user: finalUser };
   }
 
-  const msg = res.error?.detail || res.error?.message || res.error || "Credenciales incorrectas";
+  const msg = res.error?.error || res.error?.detail || res.error?.message || (typeof res.error === 'string' ? res.error : "Credenciales incorrectas");
   console.error("[AuthContext] login failed:", msg);
   setError(msg);
   return { ok: false, error: msg };
