@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prexcol API - Backend</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: var(--surface);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .links {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .link-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .link-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .link-card span:last-child {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prexcol API</h1>
+        <div class="status-badge">● Sistema Operativo</div>
+        
+        <p>El backend está funcionando correctamente. Esta es la API REST que alimenta la aplicación frontend.</p>
+
+        <div class="links">
+            <a href="/admin/" class="link-card">
+                <span>Panel de Administración</span>
+                <span>→</span>
+            </a>
+            <a href="/api/" class="link-card">
+                <span>API Root</span>
+                <span>→</span>
+            </a>
+            <a href="http://localhost:5175" class="link-card" target="_blank">
+                <span>Ir al Frontend</span>
+                <span>↗</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Experticie v2.1 • Django REST Framework</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,9 +2,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import render
+
+def api_root(request):
+    return render(request, 'index.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', api_root, name='api-root'),
     
     # Auth routes (login, register, etc.)
     path('api/auth/', include('apps.usuarios.urls_auth')),

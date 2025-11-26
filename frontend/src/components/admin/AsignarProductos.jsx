@@ -10,6 +10,7 @@ function AsignarProductos() {
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
   const [filtro, setFiltro] = useState('todos'); // 'todos', 'con_proveedor', 'sin_proveedor'
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     cargarDatos();
@@ -17,17 +18,28 @@ function AsignarProductos() {
 
   const cargarDatos = async () => {
     setLoading(true);
+    setError('');
     try {
       const [productosData, proveedoresData] = await Promise.all([
         productosService.getProductos(),
         UserService.getProveedores()
       ]);
       
+      console.log('Productos cargados:', productosData);
+      console.log('Proveedores cargados:', proveedoresData);
+      
       setProductos(Array.isArray(productosData) ? productosData : []);
       setProveedores(Array.isArray(proveedoresData) ? proveedoresData : []);
+      
+      if (!Array.isArray(productosData) || productosData.length === 0) {
+        setError('No se encontraron productos. Asegúrate de crear productos primero.');
+      }
+      if (!Array.isArray(proveedoresData) || proveedoresData.length === 0) {
+        setError('No se encontraron proveedores. Asegúrate de crear usuarios con rol "proveedor" primero.');
+      }
     } catch (err) {
       console.error('Error cargando datos:', err);
-      setError('Error al cargar los datos');
+      setError(err.response?.data?.error || 'Error al cargar los datos. Verifica tu conexión.');
     } finally {
       setLoading(false);
     }
@@ -36,10 +48,12 @@ function AsignarProductos() {
   const handleAsignar = async (productoId, proveedorId) => {
     if (!proveedorId) {
       setError('Selecciona un proveedor');
+      setTimeout(() => setError(''), 3000);
       return;
     }
 
     try {
+      setError('');
       const resultado = await productosService.asignarProveedor(productoId, proveedorId);
       setMensaje(resultado.mensaje || 'Proveedor asignado correctamente');
       
@@ -58,16 +72,60 @@ function AsignarProductos() {
     }
   };
 
+  const handleAsignarMasivo = async (proveedorId) => {
+    if (!proveedorId) {
+      setError('Selecciona un proveedor para asignación masiva');
+      setTimeout(() => setError(''), 3000);
+      return;
+    }
+
+    const productosSinProveedor = productos.filter(p => !p.proveedor);
+    if (productosSinProveedor.length === 0) {
+      setError('No hay productos sin proveedor');
+      setTimeout(() => setError(''), 3000);
+      return;
+    }
+
+    if (!window.confirm(`¿Asignar ${productosSinProveedor.length} productos sin proveedor a este proveedor?`)) {
+      return;
+    }
+
+    let exitosos = 0;
+    let fallidos = 0;
+
+    for (const producto of productosSinProveedor) {
+      try {
+        await handleAsignar(producto.id, proveedorId);
+        exitosos++;
+      } catch {
+        fallidos++;
+      }
+    }
+
+    setMensaje(`Asignación masiva completada: ${exitosos} exitosos, ${fallidos} fallidos`);
+    setTimeout(() => setMensaje(''), 5000);
+  };
+
   const productosFiltrados = productos.filter(p => {
-    if (filtro === 'con_proveedor') return p.proveedor;
-    if (filtro === 'sin_proveedor') return !p.proveedor;
-    return true;
+    const matchesFiltro = 
+      filtro === 'todos' ? true :
+      filtro === 'con_proveedor' ? p.proveedor :
+      filtro === 'sin_proveedor' ? !p.proveedor :
+      true;
+    
+    const matchesSearch = searchTerm === '' || 
+      p.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (p.categoria && p.categoria.toLowerCase().includes(searchTerm.toLowerCase()));
+    
+    return matchesFiltro && matchesSearch;
   });
 
   if (loading) {
     return (
       <div className="asignar-productos-container">
-        <p>Cargando...</p>
+        <div className="loading-spinner">
+          <p>Cargando productos y proveedores...</p>
+        </div>
       </div>
     );
   }
@@ -81,6 +139,32 @@ function AsignarProductos() {
 
       {error && <div className="alert alert-error">{error}</div>}
       {mensaje && <div className="alert alert-success">{mensaje}</div>}
+
+      {/* Barra de búsqueda y asignación masiva */}
+      <div className="controls-section">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Buscar productos por nombre o categoría..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        
+        <div className="masivo-container">
+          <select 
+            className="proveedor-select"
+            onChange={(e) => e.target.value && handleAsignarMasivo(e.target.value)}
+            defaultValue=""
+          >
+            <option value="">Asignación masiva...</option>
+            {proveedores.map(prov => (
+              <option key={prov.id} value={prov.id}>
+                {prov.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       {/* Filtros */}
       <div className="filtros-container">
@@ -122,7 +206,7 @@ function AsignarProductos() {
             {productosFiltrados.length === 0 ? (
               <tr>
                 <td colSpan="7" style={{textAlign: 'center', padding: '40px'}}>
-                  No hay productos para mostrar
+                  {searchTerm ? 'No se encontraron productos con ese criterio' : 'No hay productos para mostrar'}
                 </td>
               </tr>
             ) : (
@@ -138,12 +222,42 @@ function AsignarProductos() {
           </tbody>
         </table>
       </div>
+
+      {/* Estadísticas */}
+      <div className="stats-section">
+        <div className="stat-card">
+          <span className="stat-value">{productos.length}</span>
+          <span className="stat-label">Total Productos</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-value">{productos.filter(p => p.proveedor).length}</span>
+          <span className="stat-label">Con Proveedor</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-value">{productos.filter(p => !p.proveedor).length}</span>
+          <span className="stat-label">Sin Proveedor</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-value">{proveedores.length}</span>
+          <span className="stat-label">Proveedores Activos</span>
+        </div>
+      </div>
     </div>
   );
 }
 
 function ProductoRow({ producto, proveedores, onAsignar }) {
   const [selectedProveedor, setSelectedProveedor] = useState(producto.proveedor || '');
+  const [isAssigning, setIsAssigning] = useState(false);
+
+  const handleAsignarClick = async () => {
+    setIsAssigning(true);
+    try {
+      await onAsignar(producto.id, selectedProveedor);
+    } finally {
+      setIsAssigning(false);
+    }
+  };
 
   return (
     <tr>
@@ -151,11 +265,17 @@ function ProductoRow({ producto, proveedores, onAsignar }) {
       <td>
         <div className="producto-info">
           <strong>{producto.nombre}</strong>
-          <span className="categoria-badge">{producto.categoria || 'general'}</span>
+          {producto.categoria && (
+            <span className="categoria-badge">{producto.categoria}</span>
+          )}
         </div>
       </td>
       <td>${Number(producto.precio).toFixed(2)}</td>
-      <td>{producto.stock}</td>
+      <td>
+        <span className={producto.stock < 10 ? 'stock-bajo' : ''}>
+          {producto.stock}
+        </span>
+      </td>
       <td>
         {producto.proveedor_nombre ? (
           <span className="proveedor-badge">{producto.proveedor_nombre}</span>
@@ -168,6 +288,7 @@ function ProductoRow({ producto, proveedores, onAsignar }) {
           className="proveedor-select"
           value={selectedProveedor}
           onChange={(e) => setSelectedProveedor(e.target.value)}
+          disabled={isAssigning}
         >
           <option value="">Seleccionar...</option>
           {proveedores.map(prov => (
@@ -180,10 +301,10 @@ function ProductoRow({ producto, proveedores, onAsignar }) {
       <td>
         <button 
           className="btn-asignar"
-          onClick={() => onAsignar(producto.id, selectedProveedor)}
-          disabled={!selectedProveedor || selectedProveedor == producto.proveedor}
+          onClick={handleAsignarClick}
+          disabled={!selectedProveedor || selectedProveedor == producto.proveedor || isAssigning}
         >
-          Asignar
+          {isAssigning ? 'Asignando...' : 'Asignar'}
         </button>
       </td>
     </tr>

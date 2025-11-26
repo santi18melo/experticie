@@ -1,5 +1,43 @@
 
+#  GUÍA DE INICIO RÁPIDO
+
+##  INSTALACIÓN INICIAL
+
+### Opción A: Automática (Recomendada)
+Ejecuta el script de configuración que instalará todas las dependencias:
+```powershell
+.\setup_project.bat
 ```
+
+### Opción B: Manual
+Si prefieres configurar manualmente:
+
+1. **Backend**
+```powershell
+# Crear entorno virtual
+python -m venv .venv
+
+# Activar entorno virtual
+.venv\Scripts\activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Migraciones y usuarios
+python manage.py migrate
+python scripts\create_test_users.py
+```
+
+2. **Frontend**
+```powershell
+cd frontend
+npm install
+```
+
+---
+
+## s FLUJO DE USUARIO
+
 1. Registro (rol por defecto: cliente)
    ↓
 2. Login
@@ -39,9 +77,139 @@ python manage.py test apps.usuarios.tests
 python manage.py check
 ```
 
-### Frontend (React + Vite)
+Ejecutar Backend — Guía completa
+
+Desarrollo (rápido, local)
 
 ```powershell
+# 1) Activar venv (PowerShell)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+.\.venv\Scripts\Activate
+# o si lo creaste dentro de backend:
+.\backend\.venv\Scripts\Activate
+
+# 2) Instalar dependencias (si no está hecho)
+pip install -r requirements.txt
+
+# 3) Migraciones y datos iniciales
+python manage.py migrate
+python scripts\create_test_users.py
+
+# 4) Ejecutar servidor de desarrollo (accesible solo localmente)
+python manage.py runserver
+
+# 4b) Ejecutar en todas las interfaces (útil para pruebas en red)
+python manage.py runserver 0.0.0.0:8000
+
+# 5) Si prefieres ejecutar desde un CMD (Windows) y no PowerShell:
+& ".\.venv\Scripts\activate.bat"
+cd backend
+python manage.py runserver
+```
+
+Producción (ejemplo con Gunicorn en Linux):
+
+```bash
+# Crear venv y activar (bash)
+python -m venv venv
+source venv/bin/activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Migraciones y collectstatic
+python manage.py migrate --noinput
+python manage.py collectstatic --noinput
+
+# Ejecutar con gunicorn (ejecutar desde el directorio `backend` si el wsgi está ahí)
+gunicorn -c deployment/gunicorn.conf.py backend.wsgi:application
+
+# (Alternativa sencilla)
+gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 3
+```
+
+Notas y recomendaciones
+- Variables de entorno: exporta `DJANGO_SETTINGS_MODULE`, `DATABASE_URL`, `SECRET_KEY` y otras variables necesarias antes de arrancar en producción.
+- Base de datos: este proyecto puede usar SQLite por defecto (`db.sqlite3`) pero para producción se recomienda Postgres/MySQL; ajustar `DATABASES` en `backend/settings.py`.
+- Logs: en producción usa `gunicorn` + `systemd` + `nginx` según `deployment/` y los `*.service` ya incluidos en el repo.
+- Si tu prompt ya muestra `(.venv)` no hace falta reactivar el entorno.
+- Si necesitas ejecutar tareas en background (Linux): usa `nohup` o `systemd` en vez de `&`.
+
+### Frontend (React + Vite)
+
+Antes de iniciar el frontend, activa el entorno virtual del backend para que la API local esté disponible.
+
+Nota importante sobre PowerShell: en Windows PowerShell la ejecución de scripts (.ps1) puede estar deshabilitada por la política de ejecución del sistema, por eso podrías ver un error como:
+
+```
+.\.venv\Scripts\Activate : No se puede cargar el archivo C:\experticie\.venv\Scripts\Activate.ps1 porque la ejecución de scripts está deshabilitada en este sistema.
+```
+
+Por qué ocurre: PowerShell aplica políticas de ejecución (Execution Policies) que bloquean la ejecución de scripts no firmados o remotos por seguridad. `Activate.ps1` es un script local y puede ser bloqueado por la política por defecto.
+
+Soluciones (elige una) y comprobaciones previas:
+
+1) Comprobar si la ruta del `venv` existe
+
+```powershell
+# Listar contenido de backend (verifica si existe backend\.venv)
+Get-ChildItem -Path .\backend -Force -ErrorAction SilentlyContinue
+
+# Comprobaciones puntuales (devuelven True/False)
+Test-Path .\backend\.venv\Scripts\Activate.ps1
+Test-Path .\.venv\Scripts\Activate.ps1
+```
+
+Si los tests devuelven `False`, la ruta no existe y debes crear el `venv` en la ubicación que prefieras (raíz o dentro de `backend`).
+
+```powershell
+# Crear venv en la raíz
+python -m venv .venv
+
+# O crear venv dentro de backend
+python -m venv backend/.venv
+```
+
+2) Formas correctas de activar el `venv`
+
+- Activar en PowerShell (si `Activate.ps1` está presente):
+
+```powershell
+# Si el venv está en la raíz
+.\.venv\Scripts\Activate
+
+# Si el venv está dentro de backend
+.\backend\.venv\Scripts\Activate
+```
+
+- Ejecutar el `.bat` desde PowerShell: usa el operador `&` para invocar ejecutables o scripts por ruta (evita el error "no se reconoce como nombre de un cmdlet"):
+
+```powershell
+# Ejecutar el .bat directamente desde PowerShell (ruta correcta requerida)
+& ".\backend\.venv\Scripts\activate.bat"
+
+# o si está en la raíz
+& ".\.venv\Scripts\activate.bat"
+```
+
+Nota sobre `cmd /c`: también funciona si la ruta existe, pero el error "El sistema no puede encontrar la ruta especificada" indica que la ruta indicada no existe. Asegúrate de que `backend\.venv\Scripts\activate.bat` exista antes de usar `cmd /c`.
+
+- Alternativa: ejecutar PowerShell con política temporal para un comando concreto (menos necesaria si usas la opción `Set-ExecutionPolicy -Scope Process`):
+
+```powershell
+powershell -ExecutionPolicy Bypass -Command ".\backend\.venv\Scripts\Activate.ps1"
+```
+
+3) Observación práctica: si tu prompt ya muestra `(.venv)` —p.ej. `(.venv) PS C:\experticie>`— significa que el entorno ya está activado y no necesitas volver a ejecutar el activador.
+
+Resumen: los errores que mostraste pueden deberse a dos causas diferentes:
+- "No se puede cargar el archivo ... porque la ejecución de scripts está deshabilitada" → la política de ejecución bloquea `Activate.ps1` (solución: `Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned`).
+- "El sistema no puede encontrar la ruta especificada" o "no se reconoce como nombre de un cmdlet" → la ruta al `.bat`/`.ps1` es incorrecta o no existe; comprueba con `Test-Path`/`Get-ChildItem` y crea el `venv` si falta.
+
+```powershell
+# IMPORTANTE: ejecuta los comandos de npm desde la carpeta `frontend`
+cd frontend
+
 # Modo desarrollo
 npm run dev
 
@@ -172,8 +340,8 @@ localStorage.getItem('user')
 ### Error: "Módulo no encontrado"
 ```powershell
 # Reinstalar dependencias backend
-cd backend
-python -m pip install -r requirements.txt
+# Asegúrate de estar en la raíz del proyecto y con el entorno virtual activo
+pip install -r requirements.txt
 
 # Reinstalar dependencias frontend
 cd frontend
