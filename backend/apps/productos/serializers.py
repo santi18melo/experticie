@@ -27,21 +27,6 @@ class TiendaSerializer(serializers.ModelSerializer):
 class ProductoSerializer(serializers.ModelSerializer):    
     tienda_nombre = serializers.ReadOnlyField(source='tienda.nombre')
     
-    class Meta:
-        model = Producto
-        fields = "__all__"
-
-
-class ProductoListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Producto
-        fields = ['id', 'nombre', 'precio']  # solo los campos que quieras mostrar en listados
-
-class DetallePedidoSerializer(serializers.ModelSerializer):
-    producto = ProductoSerializer(read_only=True)
-    subtotal = serializers.DecimalField(
-        max_digits=12, decimal_places=2, read_only=True
-    )
 
     class Meta:
         model = DetallePedido
