@@ -1,29 +1,47 @@
+// frontend/src/pages/Register.jsx - PROFESSIONAL VERSION
 import React, { useState } from "react";
 import { registerService } from "../services/authService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import '../styles/Auth.css';
 
 export default function Register() {
+  const navigate = useNavigate();
+  
   const [formValues, setFormValues] = useState({
     nombre: "",
     email: "",
     password: "",
+    confirmPassword: "",
     telefono: "",
     direccion: "",
   });
 
   const [errorMsg, setErrorMsg] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmit = React.useCallback(async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg("");
     setSuccess("");
 
-    const res = await registerService(formValues);
+    // Validaciones
+    if (formValues.password !== formValues.confirmPassword) {
+      setErrorMsg("Las contraseñas no coinciden");
+      return;
+    }
+
+    if (formValues.password.length < 6) {
+      setErrorMsg("La contraseña debe tener al menos 6 caracteres");
+      return;
+    }
+
+    const { confirmPassword, ...dataToSend } = formValues;
+    const res = await registerService(dataToSend);
     
     if (res.ok) {
-      setSuccess("Registro exitoso. Redirigiendo...");
+      setSuccess("✓ Registro exitoso. Redirigiendo al login...");
       setTimeout(() => navigate("/login"), 2000);
     } else {
       const backendError =
@@ -34,185 +52,200 @@ export default function Register() {
 
       setErrorMsg(backendError);
     }
-  }, [formValues, navigate]);
+  };
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h2 style={styles.title}>Crear una cuenta</h2>
+    <div className="auth-container">
+      <div className="auth-background">
+        <div className="auth-shape shape-1"></div>
+        <div className="auth-shape shape-2"></div>
+        <div className="auth-shape shape-3"></div>
+      </div>
 
-        {errorMsg && <p style={styles.error}>{errorMsg}</p>}
-        {success && <p style={styles.success}>{success}</p>}
+      <div className="auth-card auth-card-wide">
+        <div className="auth-header">
+          <div className="auth-logo">
+            <div className="logo-icon">🏪</div>
+            <h1>PREXCOL</h1>
+          </div>
+          <h2>Crear Cuenta</h2>
+          <p className="auth-subtitle">Únete a nuestra plataforma</p>
+        </div>
 
-        <form onSubmit={handleSubmit} style={styles.form}>
-          <input
-            type="text"
-            placeholder="Nombre completo"
-            value={formValues.nombre}
-            onChange={(e) =>
-              setFormValues({ ...formValues, nombre: e.target.value })
-            }
-            required
-            style={styles.input}
-            data-testid="register-nombre"
-          />
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="nombre">
+                <span className="label-icon">👤</span>
+                Nombre Completo
+              </label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                value={formValues.nombre}
+                onChange={handleChange}
+                placeholder="Juan Pérez"
+                data-testid="register-nombre"
+                required
+              />
+            </div>
 
-          <input
-            type="email"
-            placeholder="Correo electrónico"
-            value={formValues.email}
-            onChange={(e) =>
-              setFormValues({ ...formValues, email: e.target.value })
-            }
-            required
-            style={styles.input}
-            data-testid="register-email"
-          />
+            <div className="form-group">
+              <label htmlFor="email">
+                <span className="label-icon">📧</span>
+                Correo Electrónico
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formValues.email}
+                onChange={handleChange}
+                placeholder="tu@email.com"
+                data-testid="register-email"
+                required
+              />
+            </div>
+          </div>
 
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={formValues.password}
-            onChange={(e) =>
-              setFormValues({ ...formValues, password: e.target.value })
-            }
-            required
-            style={styles.input}
-            data-testid="register-password"
-          />
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="password">
+                <span className="label-icon">🔒</span>
+                Contraseña
+              </label>
+              <div className="password-input-wrapper">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formValues.password}
+                  onChange={handleChange}
+                  placeholder="••••••••"
+                  data-testid="register-password"
+                  required
+                  minLength={6}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
+            </div>
 
-          <input
-            type="text"
-            placeholder="Teléfono"
-            value={formValues.telefono}
-            onChange={(e) =>
-              setFormValues({ ...formValues, telefono: e.target.value })
-            }
-            style={styles.input}
-            data-testid="register-telefono"
-          />
+            <div className="form-group">
+              <label htmlFor="confirmPassword">
+                <span className="label-icon">🔐</span>
+                Confirmar Contraseña
+              </label>
+              <div className="password-input-wrapper">
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  value={formValues.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="••••••••"
+                  required
+                  minLength={6}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
+            </div>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Dirección"
-            value={formValues.direccion}
-            onChange={(e) =>
-              setFormValues({ ...formValues, direccion: e.target.value })
-            }
-            style={styles.input}
-            data-testid="register-direccion"
-          />
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="telefono">
+                <span className="label-icon">📱</span>
+                Teléfono
+              </label>
+              <input
+                id="telefono"
+                name="telefono"
+                type="tel"
+                value={formValues.telefono}
+                onChange={handleChange}
+                placeholder="3001234567"
+                data-testid="register-telefono"
+              />
+            </div>
 
-          <button type="submit" style={styles.buttonPrimary} data-testid="register-submit">
-            Registrar
+            <div className="form-group">
+              <label htmlFor="direccion">
+                <span className="label-icon">📍</span>
+                Dirección
+              </label>
+              <input
+                id="direccion"
+                name="direccion"
+                type="text"
+                value={formValues.direccion}
+                onChange={handleChange}
+                placeholder="Calle 123 #45-67"
+                data-testid="register-direccion"
+              />
+            </div>
+          </div>
+
+          {errorMsg && (
+            <div className="auth-error" role="alert">
+              <span className="error-icon">⚠️</span>
+              {errorMsg}
+            </div>
+          )}
+
+          {success && (
+            <div className="auth-success" role="alert">
+              <span className="success-icon">✓</span>
+              {success}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="auth-button"
+            data-testid="register-submit"
+          >
+            <span>Crear Cuenta</span>
+            <span className="button-arrow">→</span>
           </button>
+
+          <div className="auth-divider">
+            <span>o</span>
+          </div>
+
+          <div className="auth-footer">
+            <p>
+              ¿Ya tienes una cuenta?{" "}
+              <Link to="/login" className="auth-link-primary">
+                Inicia sesión aquí
+              </Link>
+            </p>
+          </div>
         </form>
 
-        <p style={styles.loginText}>
-          ¿Ya tienes una cuenta?{" "}
-          <a href="/login" style={styles.linkInline}>
-            Iniciar sesión
-          </a>
-        </p>
-
-        <button onClick={() => navigate("/")} style={styles.homeButton}>
-          Volver al Inicio
-        </button>
+        <div className="auth-info">
+          <p className="info-text">
+            <span className="info-icon">🔒</span>
+            Tus datos están protegidos y encriptados
+          </p>
+        </div>
       </div>
     </div>
   );
 }
-
-// ========================================================
-//                      ESTILOS PROFESIONALES
-// ========================================================
-
-const styles = {
-  container: {
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#f3f4f7",
-    padding: "20px",
-  },
-
-  card: {
-    width: "100%",
-    maxWidth: "460px",
-    padding: "35px",
-    background: "#fff",
-    borderRadius: "14px",
-    textAlign: "center",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-  },
-
-  title: {
-    fontSize: "24px",
-    fontWeight: "700",
-    color: "#333",
-    marginBottom: "20px",
-  },
-
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "14px",
-  },
-
-  input: {
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-    fontSize: "15px",
-  },
-
-  buttonPrimary: {
-    marginTop: "10px",
-    width: "100%",
-    padding: "12px",
-    fontSize: "16px",
-    fontWeight: "600",
-    color: "#fff",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    background: "linear-gradient(135deg, #4CAF50, #2e7d32)",
-    boxShadow: "0 4px 12px rgba(76,175,80,0.25)",
-    transition: "0.3s",
-  },
-
-  loginText: {
-    marginTop: "20px",
-    fontSize: "14px",
-    color: "#444",
-  },
-
-  linkInline: {
-    color: "#2e7d32",
-    fontWeight: "600",
-    textDecoration: "none",
-  },
-
-  homeButton: {
-    marginTop: "20px",
-    padding: "10px 15px",
-    backgroundColor: "#555",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    width: "100%",
-    fontWeight: "600",
-  },
-
-  error: {
-    color: "red",
-    marginBottom: "10px",
-  },
-
-  success: {
-    color: "green",
-    marginBottom: "10px",
-  },
-};

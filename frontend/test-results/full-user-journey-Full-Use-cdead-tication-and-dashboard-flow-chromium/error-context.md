@@ -1,0 +1,71 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e8]:
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: 🏪
+      - heading "PREXCOL" [level=1] [ref=e12]
+    - heading "Crear Cuenta" [level=2] [ref=e13]
+    - paragraph [ref=e14]: Únete a nuestra plataforma
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: 👤
+          - text: Nombre Completo
+        - textbox "👤 Nombre Completo" [ref=e20]:
+          - /placeholder: Juan Pérez
+          - text: Test User 1764128131607
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: 📧
+          - text: Correo Electrónico
+        - textbox "📧 Correo Electrónico" [ref=e24]:
+          - /placeholder: tu@email.com
+          - text: user1764128131607@test.com
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]: 🔒
+          - text: Contraseña
+        - generic [ref=e29]:
+          - textbox "🔒 Contraseña" [ref=e30]:
+            - /placeholder: ••••••••
+            - text: TestUser123!
+          - button "👁️‍🗨️" [ref=e31] [cursor=pointer]
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: 🔐
+          - text: Confirmar Contraseña
+        - generic [ref=e35]:
+          - textbox "🔐 Confirmar Contraseña" [active] [ref=e36]:
+            - /placeholder: ••••••••
+          - button "👁️‍🗨️" [ref=e37] [cursor=pointer]
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]: 📱
+          - text: Teléfono
+        - textbox "📱 Teléfono" [ref=e42]:
+          - /placeholder: "3001234567"
+          - text: "3001234567"
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e45]: 📍
+          - text: Dirección
+        - textbox "📍 Dirección" [ref=e46]:
+          - /placeholder: "Calle 123 #45-67"
+          - text: Calle Test 123
+    - button "Crear Cuenta →" [ref=e47] [cursor=pointer]:
+      - generic [ref=e48]: Crear Cuenta
+      - generic [ref=e49]: →
+    - generic [ref=e51]: o
+    - paragraph [ref=e53]:
+      - text: ¿Ya tienes una cuenta?
+      - link "Inicia sesión aquí" [ref=e54] [cursor=pointer]:
+        - /url: /login
+  - paragraph [ref=e56]:
+    - generic [ref=e57]: 🔒
+    - text: Tus datos están protegidos y encriptados
+```

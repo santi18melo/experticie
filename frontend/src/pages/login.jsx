@@ -1,7 +1,8 @@
-// frontend/src/pages/Login.jsx
+// frontend/src/pages/Login.jsx - PROFESSIONAL VERSION
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import '../styles/Auth.css';
 
 export default function Login() {
   const { login, loading, error } = useContext(AuthContext);
@@ -10,6 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [localError, setLocalError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +49,6 @@ export default function Login() {
               navigate("/dashboard");
           }
         } else {
-          // Fallback to general dashboard
           navigate("/dashboard");
         }
       } else {
@@ -60,62 +61,121 @@ export default function Login() {
   };
 
   return (
-    <div style={{ maxWidth: 420, margin: "40px auto", padding: 20, border: "1px solid #ddd", borderRadius: 8 }}>
-      <h2 style={{textAlign:'center', marginBottom:16}}>Iniciar sesión</h2>
+    <div className="auth-container">
+      <div className="auth-background">
+        <div className="auth-shape shape-1"></div>
+        <div className="auth-shape shape-2"></div>
+        <div className="auth-shape shape-3"></div>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <label style={{ display: "block", marginBottom: 8 }}>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ width: "100%", padding: 8, marginTop: 6, boxSizing: "border-box" }}
-            data-testid="login-email"
-            required
-          />
-        </label>
+      <div className="auth-card">
+        <div className="auth-header">
+          <div className="auth-logo">
+            <div className="logo-icon">🏪</div>
+            <h1>PREXCOL</h1>
+          </div>
+          <h2>Iniciar Sesión</h2>
+          <p className="auth-subtitle">Bienvenido de nuevo</p>
+        </div>
 
-        <label style={{ display: "block", marginBottom: 8 }}>
-          Contraseña
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%", padding: 8, marginTop: 6, boxSizing: "border-box" }}
-            data-testid="login-password"
-            required
-          />
-        </label>
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="email">
+              <span className="label-icon">📧</span>
+              Correo Electrónico
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="tu@email.com"
+              data-testid="login-email"
+              required
+              autoComplete="email"
+            />
+          </div>
 
-        <div style={{ marginTop: 12 }}>
+          <div className="form-group">
+            <label htmlFor="password">
+              <span className="label-icon">🔒</span>
+              Contraseña
+            </label>
+            <div className="password-input-wrapper">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                data-testid="login-password"
+                required
+                autoComplete="current-password"
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+              >
+                {showPassword ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
+          </div>
+
+          {(localError || error) && (
+            <div className="auth-error" role="alert">
+              <span className="error-icon">⚠️</span>
+              {localError || error}
+            </div>
+          )}
+
           <button
             type="submit"
+            className="auth-button"
             disabled={loading}
             data-testid="login-submit"
-            style={{
-              width: "100%",
-              padding: 10,
-              background: "#2563eb",
-              color: "#fff",
-              border: "none",
-              borderRadius: 6,
-              cursor: loading ? "not-allowed" : "pointer",
-            }}
           >
-            {loading ? "Entrando..." : "Entrar"}
+            {loading ? (
+              <>
+                <span className="spinner-small"></span>
+                Iniciando sesión...
+              </>
+            ) : (
+              <>
+                <span>Entrar</span>
+                <span className="button-arrow">→</span>
+              </>
+            )}
           </button>
-        </div>
 
-        <div style={{ marginTop: 12, minHeight: 20 }}>
-          {localError && <div style={{ color: "crimson" }}>{localError}</div>}
-          {!localError && error && <div style={{ color: "crimson" }}>{error}</div>}
-        </div>
+          <div className="auth-links">
+            <Link to="/forgot-password" className="auth-link">
+              ¿Olvidaste tu contraseña?
+            </Link>
+          </div>
 
-        <div style={{ marginTop: 12, textAlign: "center" }}>
-          <a href="/register">¿No tienes cuenta? Regístrate</a> · <a href="/forgot-password">Olvidé mi contraseña</a>
+          <div className="auth-divider">
+            <span>o</span>
+          </div>
+
+          <div className="auth-footer">
+            <p>
+              ¿No tienes una cuenta?{" "}
+              <Link to="/register" className="auth-link-primary">
+                Regístrate aquí
+              </Link>
+            </p>
+          </div>
+        </form>
+
+        <div className="auth-info">
+          <p className="info-text">
+            <span className="info-icon">ℹ️</span>
+            Sistema seguro con autenticación JWT
+          </p>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
