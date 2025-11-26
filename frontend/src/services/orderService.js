@@ -63,7 +63,7 @@ const OrderService = {
    */
   async updateOrderStatus(orderId, newStatus) {
     try {
-      const response = await axiosInstance.put(
+      const response = await axiosInstance.post(
         `/productos/pedidos/${orderId}/cambiar_estado/`,
         { estado: newStatus }
       );

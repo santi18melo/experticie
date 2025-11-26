@@ -49,7 +49,7 @@ const refreshToken = async () => {
 // -------------------------------
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log("[🔵 AXIOS REQ]", config.method?.toUpperCase(), config.url, config.data);
+    console.log("[🔵 AXIOS REQ]", config.method?.toUpperCase(), config.url, config.data || "");
     
     const token = getAccessToken();
     if (token) {
