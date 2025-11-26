@@ -62,6 +62,80 @@ export default function CompradorDashboard() {
     navigate("/login");
   };
 
+  // ==================== FILTRAR PEDIDOS ====================
+  const pedidosFiltrados = pedidos.filter((pedido) => {
+    if (filtroEstado === "todos") return true;
+    return pedido.estado === filtroEstado;
+  });
+
+  // ==================== ESTADÍSTICAS ====================
+  const stats = {
+    totalPedidos: pedidos.length,
+    pendientes: pedidos.filter((p) => p.estado === "pendiente").length,
+    preparando: pedidos.filter((p) => p.estado === "preparando").length,
+  };
+
+  if (loading && pedidos.length === 0) {
+    return (
+      <div className="comprador-dashboard">
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Cargando pedidos...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="comprador-dashboard">
+      <DashboardHeader title="📦 Panel de Comprador" />
+
+      {/* ALERTS */}
+      {error && (
+        <div className="alert alert-error">
+          <span>⚠️</span> {error}
+        </div>
+      )}
+      {success && (
+        <div className="alert alert-success">
+          <span>✓</span> {success}
+        </div>
+      )}
+
+      {/* ESTADÍSTICAS */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <div className="stat-icon">📋</div>
+          <div className="stat-content">
+            <h3>{stats.totalPedidos}</h3>
+            <p>Total Pedidos</p>
+            <span className="stat-detail">En gestión</span>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-icon">⏳</div>
+          <div className="stat-content">
+            <h3>{stats.pendientes}</h3>
+            <p>Pendientes</p>
+            <span className="stat-detail">Por procesar</span>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <div className="stat-icon">⚙️</div>
+          <div className="stat-content">
+            <h3>{stats.preparando}</h3>
+            <p>Preparando</p>
+            <span className="stat-detail">En proceso</span>
+          </div>
+        </div>
+      </div>
+
+      {/* FILTROS */}
+      <div className="filtros-container">
+        <div className="filtros">
+          <button
             className={`filtro-btn ${filtroEstado === "todos" ? "active" : ""}`}
             onClick={() => setFiltroEstado("todos")}
           >

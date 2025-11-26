@@ -142,12 +142,61 @@ export const actualizarProducto = async (productoId, productoData) => {
 /**
  * Eliminar un producto
  */
+/**
+ * Eliminar un producto
+ */
 export const eliminarProducto = async (productoId) => {
   try {
     const response = await api.delete(`/productos/productos/${productoId}/`);
     return response.data;
   } catch (error) {
     console.error('[productosService] Error deleting producto:', error);
+    throw error;
+  }
+};
+
+/**
+ * Obtener mis productos (proveedor)
+ */
+export const getMisProductos = async () => {
+  try {
+    const response = await api.get('/productos/productos/mis_productos/');
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error getting mis productos:', error);
+    throw error;
+  }
+};
+
+/**
+ * Ajustar stock de un producto
+ */
+export const ajustarStock = async (productoId, operacion, cantidad) => {
+  try {
+    const response = await api.post(`/productos/productos/${productoId}/ajustar_stock/`, {
+      operacion,
+      cantidad
+    });
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error adjusting stock:', error);
+    throw error;
+  }
+};
+
+/**
+ * Subir imagen de producto
+ */
+export const subirImagenProducto = async (productoId, formData) => {
+  try {
+    const response = await api.post(`/productos/productos/${productoId}/subir_imagen/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error uploading product image:', error);
     throw error;
   }
 };
@@ -283,6 +332,9 @@ export default {
   crearProducto,
   actualizarProducto,
   eliminarProducto,
+  getMisProductos,
+  ajustarStock,
+  subirImagenProducto,
   
   // Pedidos
   getMisPedidos,
