@@ -29,6 +29,8 @@ const Profile = lazy(() => import("../pages/Profile.jsx"));
 const Notifications = lazy(() => import("../pages/Notifications.jsx"));
 const Settings = lazy(() => import("../pages/Settings.jsx"));
 const PaymentStatus = lazy(() => import("../pages/PaymentStatus.jsx"));
+const PaymentHistory = lazy(() => import("../pages/PaymentHistory.jsx"));
+const PaymentDetail = lazy(() => import("../pages/PaymentDetail.jsx"));
 
 // Products
 const Catalogo = lazy(() => import("../components/productos/Catalogo.jsx"));
@@ -177,6 +179,26 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+
+      {/* Protected Routes - Payment History */}
+      <Route
+        path="/payments"
+        element={
+          <ProtectedRoute>
+            <PaymentHistory />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/payments/:id"
+        element={
+          <ProtectedRoute>
+            <PaymentDetail />
+          </ProtectedRoute>
+        }
+      />
+
 
       {/* Fallback - 404 */}
       <Route path="*" element={<Navigate to="/" replace />} />

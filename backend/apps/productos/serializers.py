@@ -33,6 +33,17 @@ class ProductoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ProductoListSerializer(serializers.ModelSerializer):
+    """Simplified serializer for product listings"""
+    tienda_nombre = serializers.ReadOnlyField(source='tienda.nombre')
+    proveedor_nombre = serializers.ReadOnlyField(source='proveedor.nombre')
+    
+    class Meta:
+        model = Producto
+        fields = ['id', 'nombre', 'descripcion', 'precio', 'stock', 'tienda', 'tienda_nombre', 
+                  'proveedor', 'proveedor_nombre', 'es_basico', 'categoria', 'imagen1', 'activo']
+
+
 class DetallePedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = DetallePedido
