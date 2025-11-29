@@ -63,10 +63,10 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
     localStorage.removeItem("refresh");
     localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
 
     setUser(null);
-
-    navigate("/login");
   };
 
   // ALWAYS render children - never return null or loading screen

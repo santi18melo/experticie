@@ -213,3 +213,133 @@ class DetallePedido(models.Model):
         pedido = self.pedido
         super().delete(*args, **kwargs)
         pedido.calcular_total()
+
+
+class StockConfig(models.Model):
+    """
+    Configuración de recarga automática de stock para productos.
+    Permite definir umbrales mínimos y cantidades de recarga automática.
+    """
+    
+    producto = models.OneToOneField(
+        Producto,
+        on_delete=models.CASCADE,
+        related_name='config_stock',
+        help_text="Producto al que aplica esta configuración"
+    )
+    
+    # Configuración de umbrales
+    stock_minimo = models.PositiveIntegerField(
+        default=10,
+        help_text="Nivel mínimo de stock que dispara la recarga automática"
+    )
+    
+    cantidad_recarga = models.PositiveIntegerField(
+        default=50,
+        help_text="Cantidad a agregar cuando se dispara la recarga automática"
+    )
+    
+    # Control de automatización
+    recarga_automatica_activa = models.BooleanField(
+        default=True,
+        help_text="Si está activa, el sistema recargará automáticamente el stock"
+    )
+    
+    # Historial
+    ultima_recarga = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="Fecha y hora de la última recarga automática"
+    )
+    
+    total_recargas = models.PositiveIntegerField(
+        default=0,
+        help_text="Contador de recargas automáticas realizadas"
+    )
+    
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = "Configuración de Stock"
+        verbose_name_plural = "Configuraciones de Stock"
+        ordering = ['producto__nombre']
+    
+    def __str__(self):
+        return f"Config Stock: {self.producto.nombre} (Min: {self.stock_minimo}, Recarga: {self.cantidad_recarga})"
+    
+    def necesita_recarga(self):
+        """Verifica si el producto necesita recarga automática"""
+        return (
+            self.recarga_automatica_activa and 
+            self.producto.stock <= self.stock_minimo
+        )
+    
+    def ejecutar_recarga(self):
+        """Ejecuta la recarga automática del producto"""
+        from django.utils import timezone
+        
+        if not self.necesita_recarga():
+            return False
+        
+        # Aumentar el stock
+        self.producto.aumentar_stock(self.cantidad_recarga)
+        
+        # Actualizar historial
+        self.ultima_recarga = timezone.now()
+        self.total_recargas += 1
+        self.save()
+        
+        return True
+
+
+class HistorialRecarga(models.Model):
+    """
+    Registro histórico de recargas de stock (manuales y automáticas)
+    """
+    
+    TIPO_RECARGA = [
+        ('automatica', 'Automática'),
+        ('manual', 'Manual'),
+    ]
+    
+    producto = models.ForeignKey(
+        Producto,
+        on_delete=models.CASCADE,
+        related_name='historial_recargas'
+    )
+    
+    cantidad = models.PositiveIntegerField(help_text="Cantidad agregada al stock")
+    stock_anterior = models.PositiveIntegerField(help_text="Stock antes de la recarga")
+    stock_nuevo = models.PositiveIntegerField(help_text="Stock después de la recarga")
+    
+    tipo = models.CharField(
+        max_length=15,
+        choices=TIPO_RECARGA,
+        default='manual'
+    )
+    
+    usuario = models.ForeignKey(
+        Usuario,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='recargas_realizadas',
+        help_text="Usuario que realizó la recarga (null si fue automática)"
+    )
+    
+    notas = models.TextField(blank=True, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Historial de Recarga"
+        verbose_name_plural = "Historial de Recargas"
+        ordering = ['-fecha_creacion']
+        indexes = [
+            models.Index(fields=['producto', '-fecha_creacion']),
+            models.Index(fields=['tipo', '-fecha_creacion']),
+        ]
+    
+    def __str__(self):
+        return f"{self.producto.nombre} - {self.tipo} (+{self.cantidad}) - {self.fecha_creacion.strftime('%Y-%m-%d %H:%M')}"
+

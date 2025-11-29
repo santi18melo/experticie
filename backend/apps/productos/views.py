@@ -192,6 +192,199 @@ class ProductoViewSet(viewsets.ModelViewSet):
                 "proveedor_nombre": proveedor.nombre,
             }
         )
+    
+    @action(detail=True, methods=["get", "post", "patch"], permission_classes=[IsAdmin | IsProveedor])
+    def config_stock(self, request, pk=None):
+        """Obtener o configurar la recarga automática de stock"""
+        from .models import StockConfig
+        
+        producto = self.get_object()
+        
+        if request.method == "GET":
+            try:
+                config = StockConfig.objects.get(producto=producto)
+                return Response({
+                    "producto_id": producto.id,
+                    "producto_nombre": producto.nombre,
+                    "stock_actual": producto.stock,
+                    "stock_minimo": config.stock_minimo,
+                    "cantidad_recarga": config.cantidad_recarga,
+                    "recarga_automatica_activa": config.recarga_automatica_activa,
+                    "ultima_recarga": config.ultima_recarga,
+                    "total_recargas": config.total_recargas,
+                })
+            except StockConfig.DoesNotExist:
+                return Response({
+                    "mensaje": "No hay configuración de stock para este producto",
+                    "producto_id": producto.id,
+                    "stock_actual": producto.stock,
+                }, status=status.HTTP_404_NOT_FOUND)
+        
+        # POST o PATCH: Crear o actualizar configuración
+        stock_minimo = request.data.get("stock_minimo")
+        cantidad_recarga = request.data.get("cantidad_recarga")
+        recarga_automatica_activa = request.data.get("recarga_automatica_activa")
+        
+        config, created = StockConfig.objects.get_or_create(
+            producto=producto,
+            defaults={
+                "stock_minimo": stock_minimo or 10,
+                "cantidad_recarga": cantidad_recarga or 50,
+                "recarga_automatica_activa": recarga_automatica_activa if recarga_automatica_activa is not None else True,
+            }
+        )
+        
+        if not created:
+            # Actualizar configuración existente
+            if stock_minimo is not None:
+                config.stock_minimo = stock_minimo
+            if cantidad_recarga is not None:
+                config.cantidad_recarga = cantidad_recarga
+            if recarga_automatica_activa is not None:
+                config.recarga_automatica_activa = recarga_automatica_activa
+            config.save()
+        
+        return Response({
+            "mensaje": "Configuración de stock actualizada" if not created else "Configuración de stock creada",
+            "producto_id": producto.id,
+            "stock_minimo": config.stock_minimo,
+            "cantidad_recarga": config.cantidad_recarga,
+            "recarga_automatica_activa": config.recarga_automatica_activa,
+        }, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
+    
+    @action(detail=True, methods=["post"], permission_classes=[IsAdmin])
+    def ejecutar_recarga(self, request, pk=None):
+        """Ejecutar manualmente la recarga de stock"""
+        from .models import StockConfig, HistorialRecarga
+        
+        producto = self.get_object()
+        
+        try:
+            config = StockConfig.objects.get(producto=producto)
+        except StockConfig.DoesNotExist:
+            return Response({
+                "error": "No hay configuración de stock para este producto. Configure primero."
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        stock_anterior = producto.stock
+        
+        # Registrar en historial
+        HistorialRecarga.objects.create(
+            producto=producto,
+            cantidad=config.cantidad_recarga,
+            stock_anterior=stock_anterior,
+            stock_nuevo=stock_anterior + config.cantidad_recarga,
+            tipo='manual',
+            usuario=request.user,
+            notas=request.data.get('notas', 'Recarga manual desde admin')
+        )
+        
+        # Ejecutar recarga
+        producto.aumentar_stock(config.cantidad_recarga)
+        
+        return Response({
+            "mensaje": f"Stock recargado exitosamente",
+            "producto": producto.nombre,
+            "stock_anterior": stock_anterior,
+            "stock_nuevo": producto.stock,
+            "cantidad_agregada": config.cantidad_recarga,
+        })
+    
+    @action(detail=False, methods=["get"], permission_classes=[IsAdmin])
+    def productos_stock_bajo(self, request):
+        """Listar productos con stock bajo que necesitan recarga"""
+        from .models import StockConfig
+        
+        configs = StockConfig.objects.filter(
+            recarga_automatica_activa=True
+        ).select_related('producto')
+        
+        productos_bajo_stock = []
+        for config in configs:
+            if config.necesita_recarga():
+                productos_bajo_stock.append({
+                    "id": config.producto.id,
+                    "nombre": config.producto.nombre,
+                    "stock_actual": config.producto.stock,
+                    "stock_minimo": config.stock_minimo,
+                    "cantidad_recarga": config.cantidad_recarga,
+                    "proveedor": config.producto.proveedor.nombre if config.producto.proveedor else None,
+                })
+        
+        return Response({
+            "total": len(productos_bajo_stock),
+            "productos": productos_bajo_stock,
+        })
+    
+    @action(detail=True, methods=["get"], permission_classes=[IsAdmin | IsProveedor])
+    def historial_recargas(self, request, pk=None):
+        """Ver historial de recargas de un producto"""
+        from .models import HistorialRecarga
+        
+        producto = self.get_object()
+        historial = HistorialRecarga.objects.filter(producto=producto).order_by('-fecha_creacion')[:20]
+        
+        data = [{
+            "id": h.id,
+            "cantidad": h.cantidad,
+            "stock_anterior": h.stock_anterior,
+            "stock_nuevo": h.stock_nuevo,
+            "tipo": h.tipo,
+            "usuario": h.usuario.nombre if h.usuario else "Sistema",
+            "notas": h.notas,
+            "fecha": h.fecha_creacion.strftime("%Y-%m-%d %H:%M:%S"),
+        } for h in historial]
+        
+        return Response({
+            "producto": producto.nombre,
+            "total_recargas": historial.count(),
+            "historial": data,
+        })
+    
+    @action(detail=False, methods=["post"], permission_classes=[IsAdmin])
+    def asignar_productos_masivo(self, request):
+        """Asignar múltiples productos a un proveedor"""
+        from apps.usuarios.models import Usuario
+        
+        proveedor_id = request.data.get("proveedor_id")
+        producto_ids = request.data.get("producto_ids", [])
+        
+        if not proveedor_id:
+            return Response({"error": "Se requiere proveedor_id"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if not producto_ids or not isinstance(producto_ids, list):
+            return Response({"error": "Se requiere una lista de producto_ids"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            proveedor = Usuario.objects.get(id=proveedor_id, rol="proveedor", estado=True)
+        except Usuario.DoesNotExist:
+            return Response({"error": "Proveedor no encontrado o inactivo"}, status=status.HTTP_404_NOT_FOUND)
+        
+        productos_actualizados = []
+        errores = []
+        
+        for producto_id in producto_ids:
+            try:
+                producto = Producto.objects.get(id=producto_id)
+                producto.proveedor = proveedor
+                producto.save()
+                productos_actualizados.append({
+                    "id": producto.id,
+                    "nombre": producto.nombre,
+                })
+            except Producto.DoesNotExist:
+                errores.append(f"Producto {producto_id} no encontrado")
+        
+        return Response({
+            "mensaje": f"{len(productos_actualizados)} productos asignados a {proveedor.nombre}",
+            "proveedor": {
+                "id": proveedor.id,
+                "nombre": proveedor.nombre,
+            },
+            "productos_actualizados": productos_actualizados,
+            "errores": errores if errores else None,
+        })
+
 
 
 # ======================== PEDIDO VIEWSET ========================

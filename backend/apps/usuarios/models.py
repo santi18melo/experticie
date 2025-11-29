@@ -62,3 +62,44 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"{self.nombre} - {self.get_rol_display()}"
+
+    def set_password(self, raw_password):
+        from django.contrib.auth.hashers import check_password
+        
+        # Verificar si la contraseña ya existe en el historial
+        if self.pk:
+            for history in self.password_history.all():
+                if check_password(raw_password, history.password_hash):
+                    raise ValueError("Esta contraseña ya ha sido utilizada anteriormente. Por favor elija una diferente.")
+        
+        super().set_password(raw_password)
+
+    def save(self, *args, **kwargs):
+        is_new_password = False
+        if self.pk:
+            # Verificar si la contraseña ha cambiado
+            try:
+                old_user = Usuario.objects.get(pk=self.pk)
+                if old_user.password != self.password:
+                    is_new_password = True
+            except Usuario.DoesNotExist:
+                is_new_password = True
+        else:
+            is_new_password = True
+            
+        super().save(*args, **kwargs)
+        
+        # Guardar en historial si es nueva contraseña
+        if is_new_password and self.password:
+            PasswordHistory.objects.create(usuario=self, password_hash=self.password)
+
+
+class PasswordHistory(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='password_history')
+    password_hash = models.CharField(max_length=255)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-fecha_creacion']
+        verbose_name = "Historial de Contraseña"
+        verbose_name_plural = "Historial de Contraseñas"

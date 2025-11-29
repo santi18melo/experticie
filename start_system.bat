@@ -132,7 +132,7 @@ if not exist "node_modules" (
 
 start "PREXCOL Frontend" cmd /k "npm run dev"
 timeout /t 3 /nobreak >nul
-echo   Frontend starting on http://localhost:5173/
+echo   Frontend starting on http://localhost:5175/
 cd ..
 echo.
 
@@ -143,7 +143,7 @@ echo.
 echo Backend:  http://localhost:8000/
 echo API:      http://localhost:8000/api/
 echo Admin:    http://localhost:8000/admin/
-echo Frontend: http://localhost:5173/
+echo Frontend: http://localhost:5175/
 echo.
 echo Credentials:
 echo   Admin:     admin / Prexcol123!
@@ -155,7 +155,7 @@ echo   - PREXCOL Frontend (React)
 echo.
 echo Opening browser in 5 seconds...
 timeout /t 5 /nobreak >nul
-start http://localhost:5173/
+start http://localhost:5175/
 echo.
 echo To stop: Close the console windows or press Ctrl+C in each
 echo.

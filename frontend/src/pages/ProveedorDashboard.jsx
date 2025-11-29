@@ -160,7 +160,7 @@ export default function ProveedorDashboard() {
   // ==================== LOGOUT ====================
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    setTimeout(() => window.location.replace('/login'), 150);
   };
 
   // ==================== ESTADÍSTICAS ====================

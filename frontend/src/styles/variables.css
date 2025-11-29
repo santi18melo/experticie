@@ -1,0 +1,126 @@
+/* ========================================
+   PREXCOL - Design System Variables
+   Paleta de colores profesional
+   ======================================== */
+
+:root {
+  /* ========== PRIMARY COLORS ========== */
+  --color-primary-dark: #031A6B;      /* Crepúsculo profundo */
+  --color-primary-medium: #043962;     /* Marina Real */
+  --color-primary-light: #004385;      /* Añil azul */
+  --color-primary-accent: #087CA7;     /* Azul Cairo */
+  
+  /* ========== GRADIENTS ========== */
+  --gradient-primary: linear-gradient(135deg, #087CA7 0%, #004385 50%, #031A6B 100%);
+  --gradient-primary-reverse: linear-gradient(135deg, #031A6B 0%, #004385 50%, #087CA7 100%);
+  --gradient-soft: linear-gradient(135deg, #087CA7 0%, #043962 100%);
+  --gradient-dark: linear-gradient(135deg, #043962 0%, #031A6B 100%);
+  --gradient-accent: linear-gradient(135deg, #004385 0%, #087CA7 100%);
+  
+  /* ========== BACKGROUND COLORS ========== */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-dark: #031A6B;
+  --bg-overlay: rgba(3, 26, 107, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  
+  /* ========== TEXT COLORS ========== */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --text-light: #a0aec0;
+  --text-white: #ffffff;
+  --text-on-primary: #ffffff;
+  
+  /* ========== BORDER COLORS ========== */
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e0;
+  --border-dark: #a0aec0;
+  --border-primary: #087CA7;
+  
+  /* ========== STATUS COLORS ========== */
+  --color-success: #10b981;
+  --color-success-light: #d1fae5;
+  --color-success-dark: #065f46;
+  
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-warning-dark: #92400e;
+  
+  --color-error: #dc2626;
+  --color-error-light: #fee2e2;
+  --color-error-dark: #991b1b;
+  
+  --color-info: #087CA7;
+  --color-info-light: #dbeafe;
+  --color-info-dark: #1e40af;
+  
+  /* ========== SHADOWS ========== */
+  --shadow-sm: 0 2px 4px rgba(3, 26, 107, 0.08);
+  --shadow-md: 0 4px 12px rgba(3, 26, 107, 0.12);
+  --shadow-lg: 0 8px 24px rgba(3, 26, 107, 0.16);
+  --shadow-xl: 0 20px 60px rgba(3, 26, 107, 0.24);
+  --shadow-primary: 0 4px 12px rgba(8, 124, 167, 0.4);
+  --shadow-primary-lg: 0 8px 24px rgba(8, 124, 167, 0.5);
+  
+  /* ========== SPACING ========== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* ========== BORDER RADIUS ========== */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* ========== TRANSITIONS ========== */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  --transition-all: all 0.3s ease;
+  
+  /* ========== TYPOGRAPHY ========== */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 32px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* ========== Z-INDEX ========== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ========== DARK MODE (Optional) ========== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-tertiary: #4a5568;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e0;
+  }
+}

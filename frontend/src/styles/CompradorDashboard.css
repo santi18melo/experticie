@@ -1,9 +1,10 @@
 /* Comprador Dashboard - Professional Styles */
+@import './variables.css';
 
 .comprador-dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e3e8ef 100%);
+  font-family: var(--font-family);
 }
 
 /* ========== HEADER ========== */
@@ -23,19 +24,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.header-left h1 {
-  margin: 0 0 4px 0;
-  font-size: 28px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.header-left p {
-  margin: 0;
-  color: #718096;
   font-size: 14px;
 }
 
@@ -74,7 +62,7 @@
   width: 50px;
   height: 50px;
   border: 4px solid #e2e8f0;
-  border-top-color: #3b82f6;
+  border-top-color: var(--color-primary-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -153,7 +141,7 @@
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: var(--gradient-primary);
 }
 
 .stat-content h3 {
@@ -212,9 +200,9 @@
 }
 
 .filtro-btn.active {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-primary);
 }
 
 /* ========== PEDIDOS CONTAINER ========== */
@@ -300,8 +288,8 @@
 }
 
 .pedido-card:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 8px 30px rgba(8, 124, 167, 0.15);
   transform: translateY(-4px);
 }
 
@@ -433,14 +421,14 @@
 }
 
 .btn-preparar {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-primary);
 }
 
 .btn-preparar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .btn-listo {

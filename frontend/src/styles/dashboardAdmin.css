@@ -1,9 +1,10 @@
 /* Admin Dashboard - Professional Styles */
+@import './variables.css';
 
 .admin-dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e3e8ef 100%);
+  font-family: var(--font-family);
 }
 
 /* ========== HEADER ========== */
@@ -28,7 +29,7 @@
   margin: 0 0 4px 0;
   font-size: 28px;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -143,7 +144,7 @@
   width: 50px;
   height: 50px;
   border: 4px solid #e2e8f0;
-  border-top-color: #667eea;
+  border-top-color: var(--color-primary-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -222,7 +223,7 @@
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
 }
 
 .stat-content h3 {
@@ -281,9 +282,9 @@
 }
 
 .tab.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-primary);
 }
 
 /* ========== TAB CONTENT ========== */
@@ -319,7 +320,7 @@
 /* ========== BUTTONS ========== */
 .btn-primary {
   padding: 12px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
   border: none;
   border-radius: 10px;
@@ -327,12 +328,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-primary);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .btn-logout {
@@ -466,8 +467,8 @@
 .form-grid select:focus,
 .form-grid textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 0 0 4px rgba(8, 124, 167, 0.1);
 }
 
 .form-grid textarea {
@@ -634,8 +635,8 @@
 }
 
 .info-card:hover {
-  border-color: #667eea;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 4px 12px rgba(8, 124, 167, 0.15);
   transform: translateY(-2px);
 }
 
@@ -653,7 +654,7 @@
 }
 
 .admin-name {
-  color: #667eea !important;
+  color: var(--color-primary-accent) !important;
   font-weight: 600;
 }
 

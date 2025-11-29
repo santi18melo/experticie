@@ -82,19 +82,22 @@ axiosInstance.interceptors.response.use(
 
     const originalReq = error.config;
 
-    // Handle 401 - Unauthorized
-    if (error.response?.status === 401) {
-      // If it's a refresh token failure or we've already retried, logout
-      if (originalReq.url.includes('/token/refresh/') || originalReq._retry) {
-        console.warn("[🔒 AUTH] Session expired. Logging out...");
+    // Handle 401 (Unauthorized) or 403 (Forbidden)
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      
+      // If it's a refresh token failure, or we've already retried, or it's a 403
+      if (originalReq.url.includes('/token/refresh/') || originalReq._retry || error.response?.status === 403) {
+        console.warn("[🔒 AUTH] Session invalid/expired. Logging out...");
         localStorage.removeItem("token");
         localStorage.removeItem("refresh");
         localStorage.removeItem("user");
-        window.location.href = "/login"; // Force redirect
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        window.location.href = "/login"; 
         return Promise.reject(error);
       }
 
-      // Try to refresh token
+      // Try to refresh token (only for 401)
       originalReq._retry = true;
       const refreshed = await refreshToken();
       
@@ -107,6 +110,8 @@ axiosInstance.interceptors.response.use(
         localStorage.removeItem("token");
         localStorage.removeItem("refresh");
         localStorage.removeItem("user");
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
         window.location.href = "/login";
         return Promise.reject(error);
       }
@@ -116,9 +121,5 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-
-// -------------------------------
-// EXPORT DEFAULT
-// -------------------------------
 export default axiosInstance;
 export { axiosInstance, API_BASE_URL };

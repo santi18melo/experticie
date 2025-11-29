@@ -8,10 +8,11 @@ const DashboardHeader = ({ title }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    if (window.confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-      logout();
-      navigate("/login");
-    }
+    logout();
+    setTimeout(() => {
+      console.log('[DashboardHeader] Redirecting to /login');
+      window.location.replace('/login');
+    }, 200);
   };
 
   const getImageUrl = (path) => {
