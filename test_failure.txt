@@ -1,0 +1,237 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-7.4.3, pluggy-1.6.0
+django: version: 5.0.4, settings: settings (from ini)
+rootdir: C:\experticie-3
+configfile: pytest.ini
+plugins: cov-7.0.0, django-4.7.0
+collected 16 items
+
+backend\apps\productos\tests\test_models.py .......F........             [100%]
+
+================================== FAILURES ===================================
+_____________________ TestPedidoModel.test_calcular_total _____________________
+
+self = <django.db.backends.utils.CursorWrapper object at 0x0000020F4D9FCA10>
+sql = 'INSERT INTO "productos_detallepedido" ("pedido_id", "producto_id", "cantidad", "precio_unitario") VALUES (%s, %s, %s, %s) RETURNING "productos_detallepedido"."id"'
+params = (1, 1, 3, '10.00')
+ignored_wrapper_args = (False, {'connection': <DatabaseWrapper vendor='sqlite' alias='default'>, 'cursor': <django.db.backends.utils.CursorWrapper object at 0x0000020F4D9FCA10>})
+
+    def _execute(self, sql, params, *ignored_wrapper_args):
+        # Raise a warning during app initialization (stored_app_configs is only
+        # ever set during testing).
+        if not apps.ready and not apps.stored_app_configs:
+            warnings.warn(self.APPS_NOT_READY_WARNING_MSG, category=RuntimeWarning)
+        self.db.validate_no_broken_transaction()
+        with self.db.wrap_database_errors:
+            if params is None:
+                # params default might be backend specific.
+                return self.cursor.execute(sql)
+            else:
+>               return self.cursor.execute(sql, params)
+
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <django.db.backends.sqlite3.base.SQLiteCursorWrapper object at 0x0000020F49D93930>
+query = 'INSERT INTO "productos_detallepedido" ("pedido_id", "producto_id", "cantidad", "precio_unitario") VALUES (?, ?, ?, ?) RETURNING "productos_detallepedido"."id"'
+params = (1, 1, 3, '10.00')
+
+    def execute(self, query, params=None):
+        if params is None:
+            return super().execute(query)
+        # Extract names if params is a mapping, i.e. "pyformat" style is used.
+        param_names = list(params) if isinstance(params, Mapping) else None
+        query = self.convert_query(query, param_names=param_names)
+>       return super().execute(query, params)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: productos_detallepedido.pedido_id, productos_detallepedido.producto_id
+
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\sqlite3\base.py:329: IntegrityError
+
+The above exception was the direct cause of the following exception:
+
+self = <backend.apps.productos.tests.test_models.TestPedidoModel testMethod=test_calcular_total>
+
+    def test_calcular_total(self):
+        """Test calculating pedido total"""
+        pedido = Pedido.objects.create(
+            cliente=self.cliente,
+            tienda=self.tienda
+        )
+    
+        DetallePedido.objects.create(
+            pedido=pedido,
+            producto=self.producto,
+            cantidad=2,
+            precio_unitario=Decimal("10.00")
+        )
+>       DetallePedido.objects.create(
+            pedido=pedido,
+            producto=self.producto,
+            cantidad=3,
+            precio_unitario=Decimal("10.00")
+        )
+
+backend\apps\productos\tests\test_models.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\manager.py:87: in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py:679: in create
+    obj.save(force_insert=True, using=self.db)
+backend\apps\productos\models.py:208: in save
+    super().save(*args, **kwargs)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:822: in save
+    self.save_base(
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:909: in save_base
+    updated = self._save_table(
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:1067: in _save_table
+    results = self._do_insert(
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:1108: in _do_insert
+    return manager._insert(
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\manager.py:87: in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py:1847: in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\sql\compiler.py:1823: in execute_sql
+    cursor.execute(sql, params)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py:79: in execute
+    return self._execute_with_wrappers(
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py:92: in _execute_with_wrappers
+    return executor(sql, params, many, context)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py:100: in _execute
+    with self.db.wrap_database_errors:
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\utils.py:91: in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py:105: in _execute
+    return self.cursor.execute(sql, params)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <django.db.backends.sqlite3.base.SQLiteCursorWrapper object at 0x0000020F49D93930>
+query = 'INSERT INTO "productos_detallepedido" ("pedido_id", "producto_id", "cantidad", "precio_unitario") VALUES (?, ?, ?, ?) RETURNING "productos_detallepedido"."id"'
+params = (1, 1, 3, '10.00')
+
+    def execute(self, query, params=None):
+        if params is None:
+            return super().execute(query)
+        # Extract names if params is a mapping, i.e. "pyformat" style is used.
+        param_names = list(params) if isinstance(params, Mapping) else None
+        query = self.convert_query(query, param_names=param_names)
+>       return super().execute(query, params)
+E       django.db.utils.IntegrityError: UNIQUE constraint failed: productos_detallepedido.pedido_id, productos_detallepedido.producto_id
+
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\sqlite3\base.py:329: IntegrityError
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.14.0-final-0 _______________
+
+Name                                                                                           Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------------------------------------------
+backend\__init__.py                                                                                2      0   100%
+backend\apps\__init__.py                                                                           0      0   100%
+backend\apps\notificaciones\__init__.py                                                            0      0   100%
+backend\apps\notificaciones\admin.py                                                              13      0   100%
+backend\apps\notificaciones\apps.py                                                                5      0   100%
+backend\apps\notificaciones\migrations\0001_initial.py                                             6      0   100%
+backend\apps\notificaciones\migrations\0002_initial.py                                             7      0   100%
+backend\apps\notificaciones\migrations\__init__.py                                                 0      0   100%
+backend\apps\notificaciones\models.py                                                             30      3    90%   11, 20, 37
+backend\apps\notificaciones\serializers.py                                                        17     17     0%   1-21
+backend\apps\notificaciones\tests\__init__.py                                                      0      0   100%
+backend\apps\notificaciones\tests\test_models.py                                                  74     74     0%   1-178
+backend\apps\notificaciones\tests\test_notificaciones_audit.py                                    77     77     0%   1-180
+backend\apps\notificaciones\tests\test_serializers.py                                             62     62     0%   1-125
+backend\apps\notificaciones\urls.py                                                                8      8     0%   1-14
+backend\apps\notificaciones\views.py                                                              53     53     0%   1-91
+backend\apps\pagos\__init__.py                                                                     0      0   100%
+backend\apps\pagos\admin.py                                                                       17      0   100%
+backend\apps\pagos\apps.py                                                                         5      0   100%
+backend\apps\pagos\migrations\0001_initial.py                                                      6      0   100%
+backend\apps\pagos\migrations\0002_initial.py                                                      7      0   100%
+backend\apps\pagos\migrations\0003_remove_transaccion_fecha_actualizacion_and_more.py              4      0   100%
+backend\apps\pagos\migrations\__init__.py                                                          0      0   100%
+backend\apps\pagos\models.py                                                                      36      4    89%   12, 21, 36, 46
+backend\apps\pagos\serializers.py                                                                 22     22     0%   1-27
+backend\apps\pagos\tests\__init__.py                                                               0      0   100%
+backend\apps\pagos\tests\test_models.py                                                           82     82     0%   1-226
+backend\apps\pagos\tests\test_pagos_audit.py                                                      70     70     0%   1-186
+backend\apps\pagos\tests\test_serializers.py                                                      62     62     0%   1-176
+backend\apps\pagos\urls.py                                                                         7      7     0%   1-9
+backend\apps\pagos\views.py                                                                       39     39     0%   1-67
+backend\apps\productos\__init__.py                                                                 0      0   100%
+backend\apps\productos\admin.py                                                                   69     15    78%   56-57, 60-61, 78, 113, 116-117, 120-121, 124-125, 144, 150, 154
+backend\apps\productos\apps.py                                                                     5      0   100%
+backend\apps\productos\management\__init__.py                                                      0      0   100%
+backend\apps\productos\management\commands\__init__.py                                             0      0   100%
+backend\apps\productos\management\commands\recargar_stock_automatico.py                           36     36     0%   9-88
+backend\apps\productos\migrations\0001_initial.py                                                  7      0   100%
+backend\apps\productos\migrations\0002_producto_caracteristicas_producto_imagen1_and_more.py       4      0   100%
+backend\apps\productos\migrations\0003_stockconfig_historialrecarga.py                             6      0   100%
+backend\apps\productos\migrations\0004_seccion.py                                                  4      0   100%
+backend\apps\productos\migrations\__init__.py                                                      0      0   100%
+backend\apps\productos\models.py                                                                 153     13    92%   199, 269, 273, 280-293, 344, 364
+backend\apps\productos\permissions.py                                                             51     51     0%   1-95
+backend\apps\productos\serializers.py                                                             68     68     0%   1-118
+backend\apps\productos\tasks.py                                                                   45     45     0%   1-91
+backend\apps\productos\tests.py                                                                  140    140     0%   1-381
+backend\apps\productos\tests\__init__.py                                                           0      0   100%
+backend\apps\productos\tests\test_models.py                                                      114      2    98%   219-220
+backend\apps\productos\tests\test_permissions.py                                                  92     92     0%   1-225
+backend\apps\productos\tests\test_productos_audit.py                                             104    104     0%   1-255
+backend\apps\productos\tests\test_serializers.py                                                  63     63     0%   1-200
+backend\apps\productos\urls.py                                                                    10     10     0%   1-21
+backend\apps\productos\views.py                                                                  368    368     0%   1-709
+backend\apps\usuarios\__init__.py                                                                  0      0   100%
+backend\apps\usuarios\admin.py                                                                    25      0   100%
+backend\apps\usuarios\apps.py                                                                      5      0   100%
+backend\apps\usuarios\auth_urls.py                                                                 3      3     0%   1-4
+backend\apps\usuarios\backends.py                                                                 17     17     0%   2-31
+backend\apps\usuarios\migrations\0001_initial.py                                                   5      0   100%
+backend\apps\usuarios\migrations\0002_usuario_imagen.py                                            4      0   100%
+backend\apps\usuarios\migrations\0003_usuario_last_activity.py                                     4      0   100%
+backend\apps\usuarios\migrations\0004_passwordhistory.py                                           6      0   100%
+backend\apps\usuarios\migrations\__init__.py                                                       0      0   100%
+backend\apps\usuarios\models.py                                                                   64     16    75%   15, 17, 26-29, 64, 71-73, 81-86
+backend\apps\usuarios\permissions.py                                                              10     10     0%   1-20
+backend\apps\usuarios\serializers.py                                                              64     64     0%   1-114
+backend\apps\usuarios\urls.py                                                                      6      6     0%   1-14
+backend\apps\usuarios\urls_auth.py                                                                 5      5     0%   1-6
+backend\apps\ventas\__init__.py                                                                    0      0   100%
+backend\apps\ventas\apps.py                                                                        7      0   100%
+backend\apps\ventas\migrations\0001_initial.py                                                     7      0   100%
+backend\apps\ventas\migrations\__init__.py                                                         0      0   100%
+backend\apps\ventas\models.py                                                                     27      2    93%   27, 41
+backend\apps\ventas\serializers.py                                                                14     14     0%   1-18
+backend\apps\ventas\signals.py                                                                    22     14    36%   15-48
+backend\apps\ventas\urls.py                                                                        6      6     0%   1-8
+backend\apps\ventas\views.py                                                                      42     42     0%   1-78
+backend\asgi.py                                                                                    4      4     0%   10-16
+backend\assign_products_to_providers.py                                                           36     36     0%   1-52
+backend\audit_tests.py                                                                           132    132     0%   5-227
+backend\celery_app.py                                                                             10      1    90%   19
+backend\check_proveedor_data.py                                                                   21     21     0%   1-32
+backend\check_superuser.py                                                                        27     27     0%   1-40
+backend\create_admin.py                                                                           21     21     0%   1-31
+backend\create_real_users.py                                                                      17     17     0%   1-24
+backend\create_test_products.py                                                                   48     48     0%   1-126
+backend\create_test_users.py                                                                      26     26     0%   1-58
+backend\debug_token.py                                                                            72     72     0%   5-100
+backend\fix_admin_password.py                                                                     40     40     0%   1-63
+backend\fix_imports.py                                                                            23     23     0%   1-47
+backend\fix_user_roles.py                                                                         28     28     0%   1-68
+backend\full_diagnostic.py                                                                        32     32     0%   1-46
+backend\investigate_admin.py                                                                      43     43     0%   1-60
+backend\list_users.py                                                                             28     28     0%   1-36
+backend\manage.py                                                                                 11     11     0%   3-22
+backend\middleware.py                                                                             10     10     0%   1-16
+backend\pagination.py                                                                              5      5     0%   2-11
+backend\settings.py                                                                               46      1    98%   88
+backend\urls.py                                                                                   10     10     0%   1-34
+backend\verificar_datos.py                                                                        44     44     0%   1-62
+backend\verify_all_logins.py                                                                      26     26     0%   1-45
+backend\verify_backend.py                                                                        154    154     0%   7-228
+backend\verify_rf_coverage.py                                                                    162    162     0%   1-294
+backend\views.py                                                                                  35     35     0%   1-72
+backend\wsgi.py                                                                                    4      4     0%   10-16
+----------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                           3508   2847    19%
+=========================== short test summary info ===========================
+FAILED backend/apps/productos/tests/test_models.py::TestPedidoModel::test_calcular_total
+======================== 1 failed, 15 passed in 29.12s ========================

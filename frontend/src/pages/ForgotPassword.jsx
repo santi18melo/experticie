@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { forgotPasswordService } from "../services/authService";
-import "../styles/Login.css"; // Reusing Login styles for consistency
+import "../styles/Auth.css";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -26,17 +26,29 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2 className="login-title">Recuperar Contraseña</h2>
-        <p className="login-subtitle">Ingresa tu correo para recibir un enlace</p>
+    <div className="auth-container">
+      <div className="auth-background">
+        <div className="auth-shape shape-1"></div>
+        <div className="auth-shape shape-2"></div>
+        <div className="auth-shape shape-3"></div>
+      </div>
 
-        {message && <div className="success-message">{message}</div>}
-        {error && <div className="error-message">{error}</div>}
+      <div className="auth-card">
+        <div className="auth-header">
+          <div className="auth-logo">
+            <div className="logo-icon">🏪</div>
+            <h1>PREXCOL</h1>
+          </div>
+          <h2>Recuperar Contraseña</h2>
+          <p className="auth-subtitle">Ingresa tu correo para recibir un enlace</p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label htmlFor="email">Correo Electrónico</label>
+            <label htmlFor="email">
+              <span className="label-icon">📧</span>
+              Correo Electrónico
+            </label>
             <input
               type="email"
               id="email"
@@ -44,19 +56,38 @@ export default function ForgotPassword() {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="ejemplo@correo.com"
+              data-testid="forgot-password-email"
             />
           </div>
 
-          <button type="submit" className="login-button" disabled={loading}>
-            {loading ? "Enviando..." : "Enviar Enlace"}
-          </button>
-        </form>
+          {message && (
+            <div className="auth-success" role="alert">
+              <span className="success-icon">✓</span>
+              {message}
+            </div>
+          )}
 
-        <div className="login-footer">
-          <p>
-            ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
-          </p>
-        </div>
+          {error && (
+            <div className="auth-error" role="alert">
+              <span className="error-icon">⚠️</span>
+              {error}
+            </div>
+          )}
+
+          <button type="submit" className="auth-button" disabled={loading}>
+            {loading ? "Enviando..." : "Enviar Enlace"}
+            {!loading && <span className="button-arrow">→</span>}
+          </button>
+
+          <div className="auth-footer">
+            <p>
+              ¿Ya tienes cuenta?{" "}
+              <Link to="/login" className="auth-link-primary">
+                Inicia Sesión
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );

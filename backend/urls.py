@@ -4,29 +4,49 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import render
 
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
+
+api_info = openapi.Info(
+    title="PREXCOL API",
+    default_version='v1',
+    description="API documentation for PREXCOL",
+    terms_of_service="https://www.example.com/terms/",
+    contact=openapi.Contact(email="support@example.com"),
+    license=openapi.License(name="BSD License"),
+)
+
+schema_view = get_schema_view(
+    api_info,
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
+
 def api_root(request):
     return render(request, 'index.html')
 
+# Swagger UI URLs
 urlpatterns = [
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+]
+
+# Main API routes
+urlpatterns += [
     path('admin/', admin.site.urls),
     path('', api_root, name='api-root'),
-    
-    # Auth routes (login, register, etc.)
+    # Auth routes
     path('api/auth/', include('apps.usuarios.urls_auth')),
-    
-    # User resource routes (api/usuarios/)
+    # User resource routes
     path('api/', include('apps.usuarios.urls')),
-    
-    # Product routes (api/productos/tiendas/, api/productos/productos/, etc.)
+    # Product routes
     path('api/productos/', include('apps.productos.urls')),
-    
     # Sales routes
     path('api/ventas/', include('apps.ventas.urls')),
-    
-    # Payment routes (api/pagos/metodos-pago/)
+    # Payment routes
     path('api/pagos/', include('apps.pagos.urls')),
-    
-    # Notification routes (api/notificaciones/)
+    # Notification routes
     path('api/', include('apps.notificaciones.urls')),
 ]
 

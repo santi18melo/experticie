@@ -2,7 +2,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from django.contrib.auth import get_user_model
-from productos.models import Tienda, Producto, Pedido, DetallePedido
+from apps.productos.models import Tienda, Producto, Pedido, DetallePedido
 
 User = get_user_model()
 
@@ -139,7 +139,7 @@ class TestPedidosAudit(APITestCase):
 
     def test_crear_pedido_cliente(self):
         """Test that cliente can create an order"""
-        from pagos.models import MetodoPago, EstadoPago
+        from apps.pagos.models import MetodoPago, EstadoPago
         
         # Create payment method and state
         metodo = MetodoPago.objects.create(nombre="Efectivo", activo=True)
@@ -178,7 +178,7 @@ class TestPedidosAudit(APITestCase):
 
     def test_cambiar_estado_pedido(self):
         """Test changing order status"""
-        from pagos.models import MetodoPago, EstadoPago
+        from apps.pagos.models import MetodoPago, EstadoPago
         
         metodo = MetodoPago.objects.create(nombre="Efectivo", activo=True)
         estado = EstadoPago.objects.create(nombre="Pendiente")

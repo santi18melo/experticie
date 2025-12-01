@@ -7,7 +7,8 @@ from django.db import transaction
 
 
 
-from .models import Tienda, Producto, Pedido, DetallePedido
+from .models import Tienda, Producto, Pedido, DetallePedido, Seccion
+from apps.usuarios.models import Usuario
 from .serializers import (
     TiendaSerializer,
     ProductoSerializer,
@@ -17,12 +18,12 @@ from .serializers import (
     PedidoUpdateEstadoSerializer,
     PedidoListSerializer,
     DetallePedidoSerializer,
+    SeccionSerializer,
 )
 from .permissions import (
     IsAdmin,
     IsCliente,
     IsProveedor,
-    IsComprador,
     IsLogistica,
     IsProductoOwnerOrAdmin,
 )
@@ -399,10 +400,8 @@ class PedidoViewSet(viewsets.ModelViewSet):
             return Pedido.objects.all()
         if rol == "cliente":
             return Pedido.objects.filter(cliente=self.request.user)
-        if rol == "comprador":
-            return Pedido.objects.filter(estado__in=["pendiente", "preparando"])
         if rol == "logistica":
-            return Pedido.objects.filter(estado__in=["preparando", "en_transito"])
+            return Pedido.objects.filter(estado__in=["pendiente", "preparando", "en_transito", "entregado"])
         return Pedido.objects.none()
 
     def get_serializer_class(self):
@@ -426,7 +425,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
         elif self.action == "crear_pedido":
             permission_classes = [IsCliente]
         elif self.action == "cambiar_estado":
-            permission_classes = [IsAdmin | IsComprador | IsLogistica]
+            permission_classes = [IsAdmin | IsLogistica]
         elif self.action == "destroy":
             permission_classes = [IsAdmin]
         else:
@@ -455,7 +454,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
                 monto_pago = serializer.validated_data["monto_pago"]
 
                 # 1. Validar Método de Pago
-                from pagos.models import MetodoPago, EstadoPago, Pago
+                from apps.pagos.models import MetodoPago, EstadoPago, Pago
                 try:
                     metodo_pago = MetodoPago.objects.get(nombre__iexact=metodo_pago_nombre, activo=True)
                 except MetodoPago.DoesNotExist:
@@ -514,7 +513,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
     @action(
         detail=True,
         methods=["post", "put", "patch"],
-        permission_classes=[IsAdmin | IsComprador | IsLogistica],
+        permission_classes=[IsAdmin | IsLogistica],
     )
     def cambiar_estado(self, request, pk=None):
         pedido = self.get_object()
@@ -564,7 +563,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
         serializer = PedidoListSerializer(pedidos, many=True)
         return Response(serializer.data)
 
-    @action(detail=False, methods=["get"], permission_classes=[IsComprador])
+    @action(detail=False, methods=["get"], permission_classes=[IsLogistica])
     def pendientes(self, request):
         pedidos = Pedido.objects.filter(estado="pendiente").order_by("fecha_creacion")
         serializer = PedidoListSerializer(pedidos, many=True)
@@ -590,7 +589,7 @@ class DetallePedidoViewSet(viewsets.ReadOnlyModelViewSet):
             return DetallePedido.objects.all()
         if rol == "cliente":
             return DetallePedido.objects.filter(pedido__cliente=self.request.user)
-        if rol in ["comprador", "logistica"]:
+        if rol == "logistica":
             return DetallePedido.objects.all()
         return DetallePedido.objects.none()
 
@@ -608,7 +607,7 @@ class DetallePedidoViewSet(viewsets.ReadOnlyModelViewSet):
                 request.user.is_superuser
                 or getattr(request.user, "rol", None) == "admin"
                 or pedido.cliente == request.user
-                or getattr(request.user, "rol", None) in ["comprador", "logistica"]
+                or getattr(request.user, "rol", None) == "logistica"
             ):
                 return Response(
                     {"error": "No tiene permiso para ver este pedido"},
@@ -621,6 +620,45 @@ class DetallePedidoViewSet(viewsets.ReadOnlyModelViewSet):
             return Response(
                 {"error": "Pedido no encontrado"}, status=status.HTTP_404_NOT_FOUND
             )
+
+
+# ======================== SECCION VIEWSET ========================
+
+
+class SeccionViewSet(viewsets.ModelViewSet):
+    """ViewSet para gestionar secciones de productos"""
+    queryset = Seccion.objects.filter(activa=True)
+    serializer_class = SeccionSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []  # Public access
+        elif self.action in ["create", "update", "partial_update", "destroy"]:
+            permission_classes = [IsAdmin]
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
+
+    @action(detail=True, methods=["post"], permission_classes=[IsAdmin])
+    def agregar_productos(self, request, pk=None):
+        """Agregar productos a una sección"""
+        seccion = self.get_object()
+        producto_ids = request.data.get("producto_ids", [])
+        
+        if not producto_ids:
+            return Response(
+                {"error": "Se requiere una lista de producto_ids"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        productos = Producto.objects.filter(id__in=producto_ids, activo=True)
+        seccion.productos.add(*productos)
+        
+        return Response({
+            "mensaje": f"{productos.count()} productos agregados a la sección",
+            "seccion": SeccionSerializer(seccion).data
+        })
 
 
 class ProductoSubirImagenView(APIView):

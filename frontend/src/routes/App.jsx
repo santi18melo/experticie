@@ -20,6 +20,7 @@ const CompradorDashboard = lazy(() => import("../pages/CompradorDashboard.jsx"))
 const PanelCliente = lazy(() => import("../components/clientes/PanelCliente.jsx"));
 const PanelLogistica = lazy(() => import("../components/logistica/PanelLogistica.jsx"));
 const ProveedorPanel = lazy(() => import("../components/usuarios/ProveedorPanel.jsx"));
+const UnifiedDashboard = lazy(() => import("../pages/UnifiedDashboard.jsx"));
 
 // New Components
 const Cart = lazy(() => import("../pages/Cart.jsx"));
@@ -77,7 +78,7 @@ function AppRoutes() {
         path="/comprador"
         element={
           <ProtectedRoute roles={["comprador"]}>
-            <CompradorDashboard />
+            <UnifiedDashboard />
           </ProtectedRoute>
         }
       />
@@ -97,7 +98,7 @@ function AppRoutes() {
         path="/logistica"
         element={
           <ProtectedRoute roles={["logistica"]}>
-            <PanelLogistica />
+            <UnifiedDashboard />
           </ProtectedRoute>
         }
       />

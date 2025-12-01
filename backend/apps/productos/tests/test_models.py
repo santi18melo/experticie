@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from productos.models import Tienda, Producto, Pedido, DetallePedido
+from apps.productos.models import Tienda, Producto, Pedido, DetallePedido
 from decimal import Decimal
 
 User = get_user_model()
@@ -203,6 +203,15 @@ class TestPedidoModel(TestCase):
             tienda=self.tienda
         )
         
+        producto2 = Producto.objects.create(
+            nombre="Producto Test 2",
+            descripcion="Desc 2",
+            precio=Decimal("20.00"),
+            stock=100,
+            tienda=self.tienda,
+            proveedor=self.proveedor
+        )
+        
         DetallePedido.objects.create(
             pedido=pedido,
             producto=self.producto,
@@ -211,13 +220,13 @@ class TestPedidoModel(TestCase):
         )
         DetallePedido.objects.create(
             pedido=pedido,
-            producto=self.producto,
+            producto=producto2,
             cantidad=3,
-            precio_unitario=Decimal("10.00")
+            precio_unitario=Decimal("20.00")
         )
         
         total = pedido.calcular_total()
-        self.assertEqual(total, Decimal("50.00"))
+        self.assertEqual(total, Decimal("80.00"))
 
     def test_puede_cambiar_a_preparando(self):
         """Test state transition to preparando"""

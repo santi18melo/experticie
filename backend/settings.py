@@ -19,6 +19,16 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testserver").split(",")
 
+# ... (skip to security settings)
+
+# Security Settings
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -26,17 +36,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    # CORS
     "corsheaders",
-
-    # Django REST + JWT
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
-
-    # Apps internas
-    'apps.usuarios.apps.UsuariosConfig',
+    "django_filters",
+    "drf_yasg",
+    # Internal apps
+    "apps.usuarios",
     "apps.productos",
     "apps.ventas",
     "apps.pagos",
@@ -115,7 +122,8 @@ TIME_ZONE = "America/Bogota"
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # REST Framework
@@ -139,6 +147,11 @@ SIMPLE_JWT = {
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:5175,http://127.0.0.1:5175,http://localhost:5174,http://127.0.0.1:5174").split(",")
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:5175,http://127.0.0.1:5175,http://localhost:5174,http://127.0.0.1:5174").split(",")
+
+if DEBUG:
+    additional_origins = ["http://localhost:8001", "http://127.0.0.1:8001", "http://localhost:8000", "http://127.0.0.1:8000"]
+    CORS_ALLOWED_ORIGINS.extend(additional_origins)
+    CSRF_TRUSTED_ORIGINS.extend(additional_origins)
 
 # Allow all headers
 CORS_ALLOW_HEADERS = [
@@ -169,3 +182,19 @@ FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5175")
 # Media files (uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Login URL for redirects
+LOGIN_URL = '/api/auth/login/'
+
+# Swagger Settings
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+    'DEFAULT_INFO': 'urls.api_info',
+}

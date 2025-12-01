@@ -4,18 +4,18 @@
    ======================================== */
 
 :root {
-  /* ========== PRIMARY COLORS ========== */
-  --color-primary-dark: #031A6B;      /* Crepúsculo profundo */
-  --color-primary-medium: #043962;     /* Marina Real */
-  --color-primary-light: #004385;      /* Añil azul */
-  --color-primary-accent: #087CA7;     /* Azul Cairo */
+  /* ========== PRIMARY COLORS (Vibrant Indigo/Pink) ========== */
+  --color-primary-dark: #4f46e5;      /* Indigo 600 */
+  --color-primary-medium: #6366f1;    /* Indigo 500 */
+  --color-primary-light: #818cf8;     /* Indigo 400 */
+  --color-primary-accent: #ec4899;    /* Pink 500 */
   
   /* ========== GRADIENTS ========== */
-  --gradient-primary: linear-gradient(135deg, #087CA7 0%, #004385 50%, #031A6B 100%);
-  --gradient-primary-reverse: linear-gradient(135deg, #031A6B 0%, #004385 50%, #087CA7 100%);
-  --gradient-soft: linear-gradient(135deg, #087CA7 0%, #043962 100%);
-  --gradient-dark: linear-gradient(135deg, #043962 0%, #031A6B 100%);
-  --gradient-accent: linear-gradient(135deg, #004385 0%, #087CA7 100%);
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --gradient-primary-reverse: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
+  --gradient-soft: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  --gradient-dark: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  --gradient-accent: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
   
   /* ========== BACKGROUND COLORS ========== */
   --bg-primary: #ffffff;

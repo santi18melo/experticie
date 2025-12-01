@@ -3,6 +3,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import generics, status
 from django.utils import timezone
+from django_ratelimit.decorators import ratelimit
 from ..models import Usuario
 from ..serializers import (
     UsuarioSerializer, 
@@ -39,6 +40,7 @@ def register_user(request):
 # ------------------------------------------------------------
 #   LOGIN
 # ------------------------------------------------------------
+@ratelimit(key='ip', rate='5/m', method='POST', block=True)
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def login_user(request):

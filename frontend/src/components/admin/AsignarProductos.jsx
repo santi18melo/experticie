@@ -11,6 +11,7 @@ function AsignarProductos() {
   const [error, setError] = useState('');
   const [filtro, setFiltro] = useState('todos'); // 'todos', 'con_proveedor', 'sin_proveedor'
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedIds, setSelectedIds] = useState(new Set());
 
   useEffect(() => {
     cargarDatos();
@@ -28,10 +29,11 @@ function AsignarProductos() {
       console.log('Productos cargados:', productosData);
       console.log('Proveedores cargados:', proveedoresData);
       
-      setProductos(Array.isArray(productosData) ? productosData : []);
+      const productosArray = Array.isArray(productosData) ? productosData : (productosData.results || []);
+      setProductos(productosArray);
       setProveedores(Array.isArray(proveedoresData) ? proveedoresData : []);
       
-      if (!Array.isArray(productosData) || productosData.length === 0) {
+      if (productosArray.length === 0) {
         setError('No se encontraron productos. Asegúrate de crear productos primero.');
       }
       if (!Array.isArray(proveedoresData) || proveedoresData.length === 0) {
@@ -72,40 +74,6 @@ function AsignarProductos() {
     }
   };
 
-  const handleAsignarMasivo = async (proveedorId) => {
-    if (!proveedorId) {
-      setError('Selecciona un proveedor para asignación masiva');
-      setTimeout(() => setError(''), 3000);
-      return;
-    }
-
-    const productosSinProveedor = productos.filter(p => !p.proveedor);
-    if (productosSinProveedor.length === 0) {
-      setError('No hay productos sin proveedor');
-      setTimeout(() => setError(''), 3000);
-      return;
-    }
-
-    if (!window.confirm(`¿Asignar ${productosSinProveedor.length} productos sin proveedor a este proveedor?`)) {
-      return;
-    }
-
-    let exitosos = 0;
-    let fallidos = 0;
-
-    for (const producto of productosSinProveedor) {
-      try {
-        await handleAsignar(producto.id, proveedorId);
-        exitosos++;
-      } catch {
-        fallidos++;
-      }
-    }
-
-    setMensaje(`Asignación masiva completada: ${exitosos} exitosos, ${fallidos} fallidos`);
-    setTimeout(() => setMensaje(''), 5000);
-  };
-
   const productosFiltrados = productos.filter(p => {
     const matchesFiltro = 
       filtro === 'todos' ? true :
@@ -119,6 +87,65 @@ function AsignarProductos() {
     
     return matchesFiltro && matchesSearch;
   });
+
+  const toggleSelectAll = () => {
+    if (selectedIds.size === productosFiltrados.length) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(productosFiltrados.map(p => p.id)));
+    }
+  };
+
+  const toggleSelectOne = (id) => {
+    const newSelected = new Set(selectedIds);
+    if (newSelected.has(id)) {
+      newSelected.delete(id);
+    } else {
+      newSelected.add(id);
+    }
+    setSelectedIds(newSelected);
+  };
+
+  const handleAsignarSeleccionados = async (proveedorId) => {
+    if (!proveedorId) {
+      setError('Selecciona un proveedor para asignación masiva');
+      return;
+    }
+    if (selectedIds.size === 0) {
+      setError('Selecciona al menos un producto');
+      return;
+    }
+
+    if (!window.confirm(`¿Asignar ${selectedIds.size} productos seleccionados a este proveedor?`)) {
+      return;
+    }
+
+    let exitosos = 0;
+    let fallidos = 0;
+
+    // Iterar sobre los IDs seleccionados
+    for (const id of selectedIds) {
+      try {
+        // Llamada directa al servicio sin pasar por handleAsignar para evitar múltiples actualizaciones de estado
+        const resultado = await productosService.asignarProveedor(id, proveedorId);
+        
+        // Actualizar estado local silenciosamente
+        setProductos(prev => prev.map(p => 
+          p.id === id 
+            ? { ...p, proveedor: proveedorId, proveedor_nombre: resultado.proveedor_nombre }
+            : p
+        ));
+        exitosos++;
+      } catch (err) {
+        console.error(`Error asignando producto ${id}:`, err);
+        fallidos++;
+      }
+    }
+
+    setMensaje(`Asignación completada: ${exitosos} exitosos, ${fallidos} fallidos`);
+    setSelectedIds(new Set()); // Limpiar selección
+    setTimeout(() => setMensaje(''), 5000);
+  };
 
   if (loading) {
     return (
@@ -150,20 +177,29 @@ function AsignarProductos() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         
-        <div className="masivo-container">
-          <select 
-            className="proveedor-select"
-            onChange={(e) => e.target.value && handleAsignarMasivo(e.target.value)}
-            defaultValue=""
-          >
-            <option value="">Asignación masiva...</option>
-            {proveedores.map(prov => (
-              <option key={prov.id} value={prov.id}>
-                {prov.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
+        {selectedIds.size > 0 && (
+          <div className="masivo-container" style={{display: 'flex', gap: '10px', alignItems: 'center', background: '#e0f2fe', padding: '5px 15px', borderRadius: '8px', border: '1px solid #bae6fd'}}>
+            <span style={{fontWeight: 'bold', color: '#0369a1'}}>{selectedIds.size} seleccionados</span>
+            <select 
+              className="proveedor-select"
+              onChange={(e) => {
+                if (e.target.value) {
+                  handleAsignarSeleccionados(e.target.value);
+                  e.target.value = ""; // Reset select
+                }
+              }}
+              defaultValue=""
+              style={{margin: 0, minWidth: '200px'}}
+            >
+              <option value="">Asignar a proveedor...</option>
+              {proveedores.map(prov => (
+                <option key={prov.id} value={prov.id}>
+                  {prov.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
       {/* Filtros */}
@@ -189,17 +225,18 @@ function AsignarProductos() {
       </div>
 
       {/* Tabla de productos */}
+
       <div className="table-container">
         <table className="productos-table">
           <thead>
             <tr>
+              <th></th> {/* Checkbox column */}
               <th>ID</th>
               <th>Producto</th>
               <th>Precio</th>
               <th>Stock</th>
               <th>Proveedor Actual</th>
               <th>Asignar Proveedor</th>
-              <th>Acción</th>
             </tr>
           </thead>
           <tbody>
@@ -216,6 +253,8 @@ function AsignarProductos() {
                   producto={producto}
                   proveedores={proveedores}
                   onAsignar={handleAsignar}
+                  isSelected={selectedIds.has(producto.id)}
+                  onToggleSelect={toggleSelectOne}
                 />
               ))
             )}
@@ -246,31 +285,51 @@ function AsignarProductos() {
   );
 }
 
-function ProductoRow({ producto, proveedores, onAsignar }) {
-  const [selectedProveedor, setSelectedProveedor] = useState(producto.proveedor || '');
+function ProductoRow({ producto, proveedores, onAsignar, isSelected, onToggleSelect }) {
   const [isAssigning, setIsAssigning] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(null); // 'success', 'error'
 
-  const handleAsignarClick = async () => {
+  const handleProveedorChange = async (e) => {
+    const nuevoProveedorId = e.target.value;
+    if (!nuevoProveedorId) return;
+
     setIsAssigning(true);
+    setSaveStatus(null);
+    
     try {
-      await onAsignar(producto.id, selectedProveedor);
+      await onAsignar(producto.id, nuevoProveedorId);
+      setSaveStatus('success');
+      setTimeout(() => setSaveStatus(null), 2000);
+    } catch (error) {
+      setSaveStatus('error');
     } finally {
       setIsAssigning(false);
     }
   };
 
+  // Helper function for currency formatting (assuming it's defined elsewhere or will be added)
+  const formatoMoneda = (value) => `$${Number(value).toFixed(2)}`;
+
   return (
-    <tr>
+    <tr style={isSelected ? {background: '#f0f9ff'} : {}}>
+      <td style={{textAlign: 'center'}}>
+        <input 
+          type="checkbox" 
+          checked={isSelected}
+          onChange={() => onToggleSelect(producto.id)}
+          style={{cursor: 'pointer', width: '18px', height: '18px'}}
+        />
+      </td>
       <td>{producto.id}</td>
       <td>
         <div className="producto-info">
-          <strong>{producto.nombre}</strong>
+          <span className="producto-nombre">{producto.nombre}</span>
           {producto.categoria && (
-            <span className="categoria-badge">{producto.categoria}</span>
+            <span className="badge-categoria">{producto.categoria}</span>
           )}
         </div>
       </td>
-      <td>${Number(producto.precio).toFixed(2)}</td>
+      <td>{formatoMoneda(producto.precio)}</td>
       <td>
         <span className={producto.stock < 10 ? 'stock-bajo' : ''}>
           {producto.stock}
@@ -278,34 +337,37 @@ function ProductoRow({ producto, proveedores, onAsignar }) {
       </td>
       <td>
         {producto.proveedor_nombre ? (
-          <span className="proveedor-badge">{producto.proveedor_nombre}</span>
+          <span className="badge-proveedor">
+            {producto.proveedor_nombre}
+          </span>
         ) : (
-          <span className="sin-proveedor">Sin asignar</span>
+          <span className="badge-sin-proveedor">Sin asignar</span>
         )}
       </td>
       <td>
-        <select 
-          className="proveedor-select"
-          value={selectedProveedor}
-          onChange={(e) => setSelectedProveedor(e.target.value)}
-          disabled={isAssigning}
-        >
-          <option value="">Seleccionar...</option>
-          {proveedores.map(prov => (
-            <option key={prov.id} value={prov.id}>
-              {prov.nombre}
-            </option>
-          ))}
-        </select>
-      </td>
-      <td>
-        <button 
-          className="btn-asignar"
-          onClick={handleAsignarClick}
-          disabled={!selectedProveedor || selectedProveedor == producto.proveedor || isAssigning}
-        >
-          {isAssigning ? 'Asignando...' : 'Asignar'}
-        </button>
+        {isAssigning ? (
+          <div style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#666'}}>
+            <span className="spinner-small">⌛</span> Guardando...
+          </div>
+        ) : saveStatus === 'success' ? (
+          <div style={{color: '#10b981', fontWeight: '500'}}>
+            ✓ ¡Asignado!
+          </div>
+        ) : (
+          <select 
+            className="select-proveedor-row"
+            value={producto.proveedor || ''}
+            onChange={handleProveedorChange}
+            disabled={isAssigning}
+          >
+            <option value="">Seleccionar...</option>
+            {proveedores.map(prov => (
+              <option key={prov.id} value={prov.id}>
+                {prov.nombre}
+              </option>
+            ))}
+          </select>
+        )}
       </td>
     </tr>
   );

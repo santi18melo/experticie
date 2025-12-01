@@ -1,0 +1,440 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-7.4.3, pluggy-1.6.0
+django: version: 5.0.4, settings: settings (from ini)
+rootdir: C:\experticie-3
+configfile: pytest.ini
+plugins: cov-7.0.0, django-4.7.0
+collected 37 items / 13 errors
+
+=================================== ERRORS ====================================
+________________________ ERROR collecting test_auth.py ________________________
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+test_auth.py:10: in <module>
+    from usuarios.models import Usuario
+backend\apps\usuarios\models.py:35: in <module>
+    class Usuario(AbstractBaseUser, PermissionsMixin):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class usuarios.models.Usuario doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+______________________ ERROR collecting test_output.txt _______________________
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\doctest.py:427: in collect
+    text = self.path.read_text(encoding)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\pathlib\__init__.py:793: in read_text
+    return f.read()
+<frozen codecs>:325: in decode
+    ???
+E   UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+______ ERROR collecting backend/apps/notificaciones/tests/test_models.py ______
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\notificaciones\tests\test_models.py:3: in <module>
+    from notificaciones.models import TipoNotificacion, EstadoNotificacion, Notificacion
+backend\apps\notificaciones\models.py:4: in <module>
+    class TipoNotificacion(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class notificaciones.models.TipoNotificacion doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+_ ERROR collecting backend/apps/notificaciones/tests/test_notificaciones_audit.py _
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\notificaciones\tests\test_notificaciones_audit.py:6: in <module>
+    from notificaciones.models import Notificacion, TipoNotificacion, EstadoNotificacion
+backend\apps\notificaciones\models.py:4: in <module>
+    class TipoNotificacion(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class notificaciones.models.TipoNotificacion doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+___ ERROR collecting backend/apps/notificaciones/tests/test_serializers.py ____
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\notificaciones\tests\test_serializers.py:3: in <module>
+    from notificaciones.models import TipoNotificacion, EstadoNotificacion, Notificacion
+backend\apps\notificaciones\models.py:4: in <module>
+    class TipoNotificacion(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class notificaciones.models.TipoNotificacion doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+__________ ERROR collecting backend/apps/pagos/tests/test_models.py ___________
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\pagos\tests\test_models.py:3: in <module>
+    from pagos.models import MetodoPago, EstadoPago, Pago, Transaccion
+backend\apps\pagos\models.py:5: in <module>
+    class EstadoPago(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class pagos.models.EstadoPago doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+________ ERROR collecting backend/apps/pagos/tests/test_pagos_audit.py ________
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\pagos\tests\test_pagos_audit.py:5: in <module>
+    from pagos.models import Pago, MetodoPago, EstadoPago, Transaccion
+backend\apps\pagos\models.py:5: in <module>
+    class EstadoPago(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class pagos.models.EstadoPago doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+________ ERROR collecting backend/apps/pagos/tests/test_serializers.py ________
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\pagos\tests\test_serializers.py:3: in <module>
+    from pagos.models import MetodoPago, EstadoPago, Pago, Transaccion
+backend\apps\pagos\models.py:5: in <module>
+    class EstadoPago(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class pagos.models.EstadoPago doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+________ ERROR collecting backend/apps/productos/tests/test_models.py _________
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\productos\tests\test_models.py:3: in <module>
+    from productos.models import Tienda, Producto, Pedido, DetallePedido
+backend\apps\productos\models.py:5: in <module>
+    class Tienda(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class productos.models.Tienda doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+______ ERROR collecting backend/apps/productos/tests/test_permissions.py ______
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\productos\tests\test_permissions.py:7: in <module>
+    from productos.models import Producto, Pedido, Tienda
+backend\apps\productos\models.py:5: in <module>
+    class Tienda(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class productos.models.Tienda doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+____ ERROR collecting backend/apps/productos/tests/test_productos_audit.py ____
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\productos\tests\test_productos_audit.py:5: in <module>
+    from productos.models import Tienda, Producto, Pedido, DetallePedido
+backend\apps\productos\models.py:5: in <module>
+    class Tienda(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class productos.models.Tienda doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+______ ERROR collecting backend/apps/productos/tests/test_serializers.py ______
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:341: in from_call
+    result: Optional[TResult] = func()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:531: in collect
+    self._inject_setup_module_fixture()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:310: in obj
+    self._obj = obj = self._getobj()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:528: in _getobj
+    return self._importtestmodule()
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+backend\apps\productos\tests\test_serializers.py:3: in <module>
+    from productos.models import Tienda, Producto, Pedido, DetallePedido
+backend\apps\productos\models.py:5: in <module>
+    class Tienda(models.Model):
+C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py:134: in __new__
+    raise RuntimeError(
+E   RuntimeError: Model class productos.models.Tienda doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+__________ ERROR collecting backend/apps/usuarios/tests/test_auth.py __________
+import file mismatch:
+imported module 'test_auth' has this __file__ attribute:
+  C:\experticie-3\backend\apps\usuarios\management\commands\test_auth.py
+which is not the same as the test file we want to collect:
+  C:\experticie-3\backend\apps\usuarios\tests\test_auth.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
+=========================== short test summary info ===========================
+ERROR test_auth.py - RuntimeError: Model class usuarios.models.Usuario doesn'...
+ERROR test_output.txt - UnicodeDecodeError: 'utf-8' codec can't decode byte 0...
+ERROR backend/apps/notificaciones/tests/test_models.py - RuntimeError: Model ...
+ERROR backend/apps/notificaciones/tests/test_notificaciones_audit.py - Runtim...
+ERROR backend/apps/notificaciones/tests/test_serializers.py - RuntimeError: M...
+ERROR backend/apps/pagos/tests/test_models.py - RuntimeError: Model class pag...
+ERROR backend/apps/pagos/tests/test_pagos_audit.py - RuntimeError: Model clas...
+ERROR backend/apps/pagos/tests/test_serializers.py - RuntimeError: Model clas...
+ERROR backend/apps/productos/tests/test_models.py - RuntimeError: Model class...
+ERROR backend/apps/productos/tests/test_permissions.py - RuntimeError: Model ...
+ERROR backend/apps/productos/tests/test_productos_audit.py - RuntimeError: Mo...
+ERROR backend/apps/productos/tests/test_serializers.py - RuntimeError: Model ...
+ERROR backend/apps/usuarios/tests/test_auth.py
+!!!!!!!!!!!!!!!!!! Interrupted: 13 errors during collection !!!!!!!!!!!!!!!!!!!
+============================= 13 errors in 5.58s ==============================

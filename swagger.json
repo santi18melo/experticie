@@ -1,0 +1,4113 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "PREXCOL API",
+        "description": "API documentation for PREXCOL",
+        "termsOfService": "https://www.example.com/terms/",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "BSD License"
+        },
+        "version": "v1"
+    },
+    "basePath": "/api",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ],
+    "paths": {
+        "/auth/login/": {
+            "post": {
+                "operationId": "auth_login_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/logout/": {
+            "post": {
+                "operationId": "auth_logout_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Logout"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Logout"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/register/": {
+            "post": {
+                "operationId": "auth_register_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/token/refresh/": {
+            "post": {
+                "operationId": "auth_token_refresh_create",
+                "description": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TokenRefresh"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TokenRefresh"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/estados-notificacion/": {
+            "get": {
+                "operationId": "estados-notificacion_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EstadoNotificacion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "estados-notificacion"
+                ]
+            },
+            "parameters": []
+        },
+        "/estados-notificacion/{id}/": {
+            "get": {
+                "operationId": "estados-notificacion_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EstadoNotificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "estados-notificacion"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this estado notificacion.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/notificaciones/": {
+            "get": {
+                "operationId": "notificaciones_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Notificacion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "post": {
+                "operationId": "notificaciones_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "parameters": []
+        },
+        "/notificaciones/enviar/": {
+            "post": {
+                "operationId": "notificaciones_enviar",
+                "description": "Endpoint simulado para enviar una notificación.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "parameters": []
+        },
+        "/notificaciones/historial/{usuario_id}/": {
+            "get": {
+                "operationId": "notificaciones_historial",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Notificacion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "usuario_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/notificaciones/{id}/": {
+            "get": {
+                "operationId": "notificaciones_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "put": {
+                "operationId": "notificaciones_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "patch": {
+                "operationId": "notificaciones_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "delete": {
+                "operationId": "notificaciones_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/notificaciones/{id}/marcar_leida/": {
+            "post": {
+                "operationId": "notificaciones_marcar_leida",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Notificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "notificaciones"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/pagos/metodos-pago/": {
+            "get": {
+                "operationId": "pagos_metodos-pago_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MetodoPago"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "parameters": []
+        },
+        "/pagos/metodos-pago/{id}/": {
+            "get": {
+                "operationId": "pagos_metodos-pago_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/MetodoPago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this metodo pago.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/pagos/pagos/": {
+            "get": {
+                "operationId": "pagos_pagos_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Pago"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "post": {
+                "operationId": "pagos_pagos_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "parameters": []
+        },
+        "/pagos/pagos/transaccion/": {
+            "post": {
+                "operationId": "pagos_pagos_transaccion",
+                "description": "Endpoint para registrar una transacción asociada a un pago existente.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "parameters": []
+        },
+        "/pagos/pagos/{id}/": {
+            "get": {
+                "operationId": "pagos_pagos_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "put": {
+                "operationId": "pagos_pagos_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "patch": {
+                "operationId": "pagos_pagos_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "delete": {
+                "operationId": "pagos_pagos_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/pagos/pagos/{id}/estado/": {
+            "get": {
+                "operationId": "pagos_pagos_estado",
+                "description": "Endpoint para consultar el estado de un pago.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pago"
+                        }
+                    }
+                },
+                "tags": [
+                    "pagos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/detalles-pedido/": {
+            "get": {
+                "operationId": "productos_detalles-pedido_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DetallePedido"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/detalles-pedido/por_pedido/": {
+            "get": {
+                "operationId": "productos_detalles-pedido_por_pedido",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DetallePedido"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/detalles-pedido/{id}/": {
+            "get": {
+                "operationId": "productos_detalles-pedido_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/DetallePedido"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/pedidos/": {
+            "get": {
+                "operationId": "productos_pedidos_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PedidoList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "post": {
+                "operationId": "productos_pedidos_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/pedidos/crear_pedido/": {
+            "post": {
+                "operationId": "productos_pedidos_crear_pedido",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PedidoCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PedidoCreate"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/pedidos/en_preparacion/": {
+            "get": {
+                "operationId": "productos_pedidos_en_preparacion",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Pedido"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/pedidos/mis_pedidos/": {
+            "get": {
+                "operationId": "productos_pedidos_mis_pedidos",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Pedido"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/pedidos/pendientes/": {
+            "get": {
+                "operationId": "productos_pedidos_pendientes",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Pedido"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/pedidos/{id}/": {
+            "get": {
+                "operationId": "productos_pedidos_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "put": {
+                "operationId": "productos_pedidos_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "patch": {
+                "operationId": "productos_pedidos_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "delete": {
+                "operationId": "productos_pedidos_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/pedidos/{id}/cambiar_estado/": {
+            "post": {
+                "operationId": "productos_pedidos_cambiar_estado_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PedidoUpdateEstado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PedidoUpdateEstado"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "put": {
+                "operationId": "productos_pedidos_cambiar_estado_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PedidoUpdateEstado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PedidoUpdateEstado"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "patch": {
+                "operationId": "productos_pedidos_cambiar_estado_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PedidoUpdateEstado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PedidoUpdateEstado"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/": {
+            "get": {
+                "operationId": "productos_productos_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProductoList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "post": {
+                "operationId": "productos_productos_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/productos/asignar_productos_masivo/": {
+            "post": {
+                "operationId": "productos_productos_asignar_productos_masivo",
+                "description": "Asignar múltiples productos a un proveedor",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/productos/mis_productos/": {
+            "get": {
+                "operationId": "productos_productos_mis_productos",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Producto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/productos/por_tienda/": {
+            "get": {
+                "operationId": "productos_productos_por_tienda",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Producto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/productos/productos_stock_bajo/": {
+            "get": {
+                "operationId": "productos_productos_productos_stock_bajo",
+                "description": "Listar productos con stock bajo que necesitan recarga",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Producto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/productos/{id}/": {
+            "get": {
+                "operationId": "productos_productos_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "put": {
+                "operationId": "productos_productos_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "patch": {
+                "operationId": "productos_productos_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "delete": {
+                "operationId": "productos_productos_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/{id}/ajustar_stock/": {
+            "post": {
+                "operationId": "productos_productos_ajustar_stock",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/{id}/asignar_proveedor/": {
+            "post": {
+                "operationId": "productos_productos_asignar_proveedor",
+                "description": "Asignar o cambiar el proveedor de un producto (solo admin)",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/{id}/config_stock/": {
+            "get": {
+                "operationId": "productos_productos_config_stock_read",
+                "description": "Obtener o configurar la recarga automática de stock",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "post": {
+                "operationId": "productos_productos_config_stock_create",
+                "description": "Obtener o configurar la recarga automática de stock",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "patch": {
+                "operationId": "productos_productos_config_stock_partial_update",
+                "description": "Obtener o configurar la recarga automática de stock",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/{id}/ejecutar_recarga/": {
+            "post": {
+                "operationId": "productos_productos_ejecutar_recarga",
+                "description": "Ejecutar manualmente la recarga de stock",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/{id}/historial_recargas/": {
+            "get": {
+                "operationId": "productos_productos_historial_recargas",
+                "description": "Ver historial de recargas de un producto",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Producto"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/productos/{id}/subir-imagen/": {
+            "post": {
+                "operationId": "productos_productos_subir-imagen_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/productos/secciones/": {
+            "get": {
+                "operationId": "productos_secciones_list",
+                "description": "ViewSet para gestionar secciones de productos",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Seccion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "post": {
+                "operationId": "productos_secciones_create",
+                "description": "ViewSet para gestionar secciones de productos",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/secciones/{id}/": {
+            "get": {
+                "operationId": "productos_secciones_read",
+                "description": "ViewSet para gestionar secciones de productos",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "put": {
+                "operationId": "productos_secciones_update",
+                "description": "ViewSet para gestionar secciones de productos",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "patch": {
+                "operationId": "productos_secciones_partial_update",
+                "description": "ViewSet para gestionar secciones de productos",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "delete": {
+                "operationId": "productos_secciones_delete",
+                "description": "ViewSet para gestionar secciones de productos",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Sección.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/productos/secciones/{id}/agregar_productos/": {
+            "post": {
+                "operationId": "productos_secciones_agregar_productos",
+                "description": "Agregar productos a una sección",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Seccion"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Sección.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/productos/tiendas/": {
+            "get": {
+                "operationId": "productos_tiendas_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Tienda"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "post": {
+                "operationId": "productos_tiendas_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/tiendas/mis_tiendas/": {
+            "get": {
+                "operationId": "productos_tiendas_mis_tiendas",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Tienda"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": []
+        },
+        "/productos/tiendas/{id}/": {
+            "get": {
+                "operationId": "productos_tiendas_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "put": {
+                "operationId": "productos_tiendas_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "patch": {
+                "operationId": "productos_tiendas_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Tienda"
+                        }
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "delete": {
+                "operationId": "productos_tiendas_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "productos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Tienda.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/tipos-notificacion/": {
+            "get": {
+                "operationId": "tipos-notificacion_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TipoNotificacion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "tipos-notificacion"
+                ]
+            },
+            "parameters": []
+        },
+        "/tipos-notificacion/{id}/": {
+            "get": {
+                "operationId": "tipos-notificacion_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TipoNotificacion"
+                        }
+                    }
+                },
+                "tags": [
+                    "tipos-notificacion"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this tipo notificacion.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/usuarios/": {
+            "get": {
+                "operationId": "usuarios_list",
+                "description": "ViewSet para manejar usuarios: listar, crear, actualizar, eliminar.",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Usuario"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "post": {
+                "operationId": "usuarios_create",
+                "description": "ViewSet para manejar usuarios: listar, crear, actualizar, eliminar.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "parameters": []
+        },
+        "/usuarios/me/": {
+            "get": {
+                "operationId": "usuarios_me_read",
+                "description": "Retorna o actualiza los datos del usuario autenticado",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Usuario"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "put": {
+                "operationId": "usuarios_me_update",
+                "description": "Retorna o actualiza los datos del usuario autenticado",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "patch": {
+                "operationId": "usuarios_me_partial_update",
+                "description": "Retorna o actualiza los datos del usuario autenticado",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "parameters": []
+        },
+        "/usuarios/proveedores/": {
+            "get": {
+                "operationId": "usuarios_proveedores",
+                "description": "Retorna lista de proveedores activos (solo para admin)",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Usuario"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "parameters": []
+        },
+        "/usuarios/{id}/": {
+            "get": {
+                "operationId": "usuarios_read",
+                "description": "ViewSet para manejar usuarios: listar, crear, actualizar, eliminar.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "put": {
+                "operationId": "usuarios_update",
+                "description": "ViewSet para manejar usuarios: listar, crear, actualizar, eliminar.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "patch": {
+                "operationId": "usuarios_partial_update",
+                "description": "ViewSet para manejar usuarios: listar, crear, actualizar, eliminar.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "delete": {
+                "operationId": "usuarios_delete",
+                "description": "ViewSet para manejar usuarios: listar, crear, actualizar, eliminar.",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "usuarios"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Usuario.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/ventas/": {
+            "get": {
+                "operationId": "ventas_list",
+                "description": "ViewSet para visualizar ventas. Solo lectura.\nAcceso restringido a administradores.",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Venta"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ventas"
+                ]
+            },
+            "parameters": []
+        },
+        "/ventas/mis_ventas_proveedor/": {
+            "get": {
+                "operationId": "ventas_mis_ventas_proveedor",
+                "description": "Retorna los detalles de venta de productos que pertenecen al proveedor actual.",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Venta"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ventas"
+                ]
+            },
+            "parameters": []
+        },
+        "/ventas/reporte_diario/": {
+            "get": {
+                "operationId": "ventas_reporte_diario",
+                "description": "Reporte de ventas del día actual",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Venta"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ventas"
+                ]
+            },
+            "parameters": []
+        },
+        "/ventas/{id}/": {
+            "get": {
+                "operationId": "ventas_read",
+                "description": "ViewSet para visualizar ventas. Solo lectura.\nAcceso restringido a administradores.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    }
+                },
+                "tags": [
+                    "ventas"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Venta.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Logout": {
+            "required": [
+                "refresh"
+            ],
+            "type": "object",
+            "properties": {
+                "refresh": {
+                    "title": "Refresh",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "TokenRefresh": {
+            "required": [
+                "refresh"
+            ],
+            "type": "object",
+            "properties": {
+                "refresh": {
+                    "title": "Refresh",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "access": {
+                    "title": "Access",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                }
+            }
+        },
+        "EstadoNotificacion": {
+            "required": [
+                "nombre"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "descripcion": {
+                    "title": "Descripcion",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "Notificacion": {
+            "required": [
+                "mensaje",
+                "destino",
+                "tipo",
+                "estado"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "tipo_nombre": {
+                    "title": "Tipo nombre",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "estado_nombre": {
+                    "title": "Estado nombre",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mensaje": {
+                    "title": "Mensaje",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "destino": {
+                    "title": "Destino",
+                    "description": "Correo o ID de usuario destino",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "leida": {
+                    "title": "Leida",
+                    "type": "boolean"
+                },
+                "fecha_lectura": {
+                    "title": "Fecha lectura",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "x-nullable": true
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "usuario": {
+                    "title": "Usuario",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "tipo": {
+                    "title": "Tipo",
+                    "type": "integer"
+                },
+                "estado": {
+                    "title": "Estado",
+                    "type": "integer"
+                }
+            }
+        },
+        "MetodoPago": {
+            "required": [
+                "nombre"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "activo": {
+                    "title": "Activo",
+                    "type": "boolean"
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "Transaccion": {
+            "required": [
+                "monto",
+                "estado",
+                "pago"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "referencia_externa": {
+                    "title": "Referencia externa",
+                    "type": "string",
+                    "maxLength": 100,
+                    "x-nullable": true
+                },
+                "monto": {
+                    "title": "Monto",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "estado": {
+                    "title": "Estado",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "respuesta_gateway": {
+                    "title": "Respuesta gateway",
+                    "type": "object",
+                    "x-nullable": true
+                },
+                "pago": {
+                    "title": "Pago",
+                    "type": "integer"
+                }
+            }
+        },
+        "Pago": {
+            "required": [
+                "monto",
+                "pedido",
+                "estado",
+                "metodo_pago"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "estado_nombre": {
+                    "title": "Estado nombre",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "metodo_nombre": {
+                    "title": "Metodo nombre",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "transacciones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Transaccion"
+                    },
+                    "readOnly": true
+                },
+                "monto": {
+                    "title": "Monto",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "comprobante": {
+                    "title": "Comprobante",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "usuario": {
+                    "title": "Usuario",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "pedido": {
+                    "title": "Pedido",
+                    "type": "integer"
+                },
+                "estado": {
+                    "title": "Estado",
+                    "type": "integer"
+                },
+                "metodo_pago": {
+                    "title": "Metodo pago",
+                    "type": "integer"
+                }
+            }
+        },
+        "DetallePedido": {
+            "required": [
+                "producto",
+                "cantidad",
+                "precio_unitario"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "producto": {
+                    "title": "Producto",
+                    "type": "integer"
+                },
+                "cantidad": {
+                    "title": "Cantidad",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "precio_unitario": {
+                    "title": "Precio unitario",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "subtotal": {
+                    "title": "Subtotal",
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "Usuario": {
+            "required": [
+                "email",
+                "nombre"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "rol": {
+                    "title": "Rol",
+                    "type": "string",
+                    "enum": [
+                        "admin",
+                        "proveedor",
+                        "logistica",
+                        "cliente"
+                    ]
+                },
+                "telefono": {
+                    "title": "Telefono",
+                    "type": "string",
+                    "maxLength": 20,
+                    "x-nullable": true
+                },
+                "direccion": {
+                    "title": "Direccion",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "estado": {
+                    "title": "Estado",
+                    "type": "boolean"
+                },
+                "imagen": {
+                    "title": "Imagen",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "password": {
+                    "title": "Contraseña",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "ultimo_ingreso": {
+                    "title": "Ultimo ingreso",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "x-nullable": true
+                }
+            }
+        },
+        "Tienda": {
+            "required": [
+                "nombre",
+                "direccion",
+                "administrador"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 150,
+                    "minLength": 1
+                },
+                "direccion": {
+                    "title": "Direccion",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "telefono": {
+                    "title": "Telefono",
+                    "type": "string",
+                    "maxLength": 20,
+                    "x-nullable": true
+                },
+                "administrador": {
+                    "title": "Administrador",
+                    "type": "integer"
+                },
+                "administrador_detalle": {
+                    "$ref": "#/definitions/Usuario"
+                },
+                "activa": {
+                    "title": "Activa",
+                    "type": "boolean",
+                    "readOnly": true
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "PedidoList": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "cliente": {
+                    "$ref": "#/definitions/Usuario"
+                },
+                "tienda": {
+                    "$ref": "#/definitions/Tienda"
+                },
+                "estado": {
+                    "title": "Estado",
+                    "type": "string",
+                    "enum": [
+                        "pendiente",
+                        "preparando",
+                        "en_transito",
+                        "entregado",
+                        "cancelado"
+                    ]
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "total": {
+                    "title": "Total",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "notas": {
+                    "title": "Notas",
+                    "type": "string",
+                    "x-nullable": true
+                }
+            }
+        },
+        "Pedido": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "cliente": {
+                    "$ref": "#/definitions/Usuario"
+                },
+                "tienda": {
+                    "$ref": "#/definitions/Tienda"
+                },
+                "detalles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DetallePedido"
+                    },
+                    "readOnly": true
+                },
+                "estado": {
+                    "title": "Estado",
+                    "type": "string",
+                    "enum": [
+                        "pendiente",
+                        "preparando",
+                        "en_transito",
+                        "entregado",
+                        "cancelado"
+                    ]
+                },
+                "total": {
+                    "title": "Total",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "notas": {
+                    "title": "Notas",
+                    "type": "string",
+                    "x-nullable": true
+                }
+            }
+        },
+        "PedidoCreate": {
+            "required": [
+                "tienda_id",
+                "detalles",
+                "metodo_pago",
+                "monto_pago"
+            ],
+            "type": "object",
+            "properties": {
+                "tienda_id": {
+                    "title": "Tienda id",
+                    "type": "integer"
+                },
+                "detalles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string",
+                            "x-nullable": true
+                        }
+                    }
+                },
+                "notas": {
+                    "title": "Notas",
+                    "type": "string"
+                },
+                "metodo_pago": {
+                    "title": "Metodo pago",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "monto_pago": {
+                    "title": "Monto pago",
+                    "type": "string",
+                    "format": "decimal"
+                }
+            }
+        },
+        "PedidoUpdateEstado": {
+            "type": "object",
+            "properties": {
+                "estado": {
+                    "title": "Estado",
+                    "type": "string",
+                    "enum": [
+                        "pendiente",
+                        "preparando",
+                        "en_transito",
+                        "entregado",
+                        "cancelado"
+                    ]
+                }
+            }
+        },
+        "ProductoList": {
+            "required": [
+                "nombre",
+                "descripcion",
+                "precio",
+                "tienda",
+                "proveedor"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "descripcion": {
+                    "title": "Descripcion",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "precio": {
+                    "title": "Precio",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "stock": {
+                    "title": "Stock",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "tienda": {
+                    "title": "Tienda",
+                    "type": "integer"
+                },
+                "tienda_nombre": {
+                    "title": "Tienda nombre",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "proveedor": {
+                    "title": "Proveedor",
+                    "description": "Proveedor responsable de este producto",
+                    "type": "integer"
+                },
+                "proveedor_nombre": {
+                    "title": "Proveedor nombre",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "es_basico": {
+                    "title": "Es basico",
+                    "description": "¿Es un producto de necesidad básica?",
+                    "type": "boolean"
+                },
+                "categoria": {
+                    "title": "Categoria",
+                    "description": "Categoría del producto (por ejemplo: alimentos, bebidas, aseo, dulces, ferretería, etc.)",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "imagen1": {
+                    "title": "Imagen1",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "activo": {
+                    "title": "Activo",
+                    "type": "boolean"
+                }
+            }
+        },
+        "Producto": {
+            "required": [
+                "nombre",
+                "descripcion",
+                "precio",
+                "tienda",
+                "proveedor"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "tienda_nombre": {
+                    "title": "Tienda nombre",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "proveedor_nombre": {
+                    "title": "Proveedor nombre",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "secciones": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "uniqueItems": true
+                },
+                "secciones_nombres": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "uniqueItems": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "descripcion": {
+                    "title": "Descripcion",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "precio": {
+                    "title": "Precio",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "stock": {
+                    "title": "Stock",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "es_basico": {
+                    "title": "Es basico",
+                    "description": "¿Es un producto de necesidad básica?",
+                    "type": "boolean"
+                },
+                "categoria": {
+                    "title": "Categoria",
+                    "description": "Categoría del producto (por ejemplo: alimentos, bebidas, aseo, dulces, ferretería, etc.)",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "imagen1": {
+                    "title": "Imagen1",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "imagen2": {
+                    "title": "Imagen2",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "imagen3": {
+                    "title": "Imagen3",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "caracteristicas": {
+                    "title": "Caracteristicas",
+                    "description": "Características detalladas del producto",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "activo": {
+                    "title": "Activo",
+                    "type": "boolean"
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "tienda": {
+                    "title": "Tienda",
+                    "type": "integer"
+                },
+                "proveedor": {
+                    "title": "Proveedor",
+                    "description": "Proveedor responsable de este producto",
+                    "type": "integer"
+                }
+            }
+        },
+        "Seccion": {
+            "required": [
+                "nombre"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "descripcion": {
+                    "title": "Descripcion",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "productos": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "uniqueItems": true
+                },
+                "productos_count": {
+                    "title": "Productos count",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "activa": {
+                    "title": "Activa",
+                    "type": "boolean"
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "TipoNotificacion": {
+            "required": [
+                "nombre"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nombre": {
+                    "title": "Nombre",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "descripcion": {
+                    "title": "Descripcion",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "fecha_creacion": {
+                    "title": "Fecha creacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "fecha_actualizacion": {
+                    "title": "Fecha actualizacion",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "DetalleVenta": {
+            "required": [
+                "producto",
+                "cantidad",
+                "precio_unitario",
+                "subtotal"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "producto": {
+                    "title": "Producto",
+                    "type": "integer"
+                },
+                "producto_nombre": {
+                    "title": "Producto nombre",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "cantidad": {
+                    "title": "Cantidad",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "precio_unitario": {
+                    "title": "Precio unitario",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "subtotal": {
+                    "title": "Subtotal",
+                    "type": "string",
+                    "format": "decimal"
+                }
+            }
+        },
+        "Venta": {
+            "required": [
+                "pedido",
+                "total"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "pedido": {
+                    "title": "Pedido",
+                    "type": "integer"
+                },
+                "cliente": {
+                    "$ref": "#/definitions/Usuario"
+                },
+                "total": {
+                    "title": "Total",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "fecha_venta": {
+                    "title": "Fecha venta",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "cantidad_items": {
+                    "title": "Cantidad items",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "detalles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DetalleVenta"
+                    },
+                    "readOnly": true
+                }
+            }
+        }
+    }
+}

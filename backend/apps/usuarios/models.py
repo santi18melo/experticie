@@ -35,15 +35,14 @@ class UsuarioManager(BaseUserManager):
 class Usuario(AbstractBaseUser, PermissionsMixin):
     ROLES = [
         ("admin", "Administrador"),
-        ("comprador", "Comprador"),
         ("proveedor", "Proveedor"),
         ("logistica", "Logística"),
         ("cliente", "Cliente"),
     ]
 
-    email = models.EmailField(unique=True, max_length=255)
+    email = models.EmailField(unique=True, max_length=255, db_index=True)
     nombre = models.CharField(max_length=100)
-    rol = models.CharField(max_length=20, choices=ROLES, default="cliente")
+    rol = models.CharField(max_length=20, choices=ROLES, default="cliente", db_index=True)
     telefono = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.TextField(blank=True, null=True)
     estado = models.BooleanField(default=True)
@@ -59,6 +58,15 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["nombre"]
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['rol', 'estado']),
+            models.Index(fields=['email', 'estado']),
+            models.Index(fields=['-fecha_creacion']),
+        ]
+        verbose_name = "Usuario"
+        verbose_name_plural = "Usuarios"
 
     def __str__(self):
         return f"{self.nombre} - {self.get_rol_display()}"
@@ -66,6 +74,11 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     def set_password(self, raw_password):
         from django.contrib.auth.hashers import check_password
         
+        # Si la contraseña es la misma que la actual, permitirlo (para actualizaciones de hash)
+        if self.pk and self.password and check_password(raw_password, self.password):
+            super().set_password(raw_password)
+            return
+
         # Verificar si la contraseña ya existe en el historial
         if self.pk:
             for history in self.password_history.all():

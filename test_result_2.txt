@@ -1,0 +1,246 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-7.4.3, pluggy-1.6.0 -- C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+django: version: 5.2.8, settings: settings (from ini)
+rootdir: C:\experticie-3
+configfile: pytest.ini
+plugins: cov-7.0.0, django-4.7.0
+collecting ... collected 6 items
+
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_inactive_user PASSED [ 16%]
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_rate_limit FAILED [ 33%]
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_success FAILED [ 50%]
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_logout FAILED [ 66%]
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_refresh_token FAILED [ 83%]
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_register_success PASSED [100%]
+
+================================== FAILURES ===================================
+_____________________ AuthFlowTests.test_login_rate_limit _____________________
+
+self = <test_auth_flow.AuthFlowTests testMethod=test_login_rate_limit>
+
+    def test_login_rate_limit(self):
+        # Realizar 6 intentos fallidos para disparar el bloque
+        for i in range(5):
+            resp = self.client.post(self.login_url, {"email": "wrong@example.com", "password": "bad"})
+>           self.assertIn(resp.status_code, [status.HTTP_401_UNAUTHORIZED, status.HTTP_400_BAD_REQUEST])
+E           AssertionError: 403 not found in [401, 400]
+
+backend\apps\usuarios\tests\test_auth_flow.py:85: AssertionError
+------------------------------ Captured log call ------------------------------
+WARNING  django.request:log.py:253 Unauthorized: /api/auth/login/
+WARNING  django.request:log.py:253 Unauthorized: /api/auth/login/
+WARNING  django.request:log.py:253 Unauthorized: /api/auth/login/
+WARNING  django.request:log.py:253 Unauthorized: /api/auth/login/
+WARNING  django.request:log.py:253 Forbidden (Permission denied): /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django_ratelimit\decorators.py", line 26, in _wrapped
+    raise (import_string(cls) if isinstance(cls, str) else cls)()
+django_ratelimit.exceptions.Ratelimited
+______________________ AuthFlowTests.test_login_success _______________________
+
+self = <test_auth_flow.AuthFlowTests testMethod=test_login_success>
+
+    def test_login_success(self):
+        response = self.client.post(self.login_url, {
+            "email": self.user.email,
+            "password": self.user_data["password"]
+        })
+>       self.assertEqual(response.status_code, status.HTTP_200_OK)
+E       AssertionError: 403 != 200
+
+backend\apps\usuarios\tests\test_auth_flow.py:65: AssertionError
+------------------------------ Captured log call ------------------------------
+WARNING  django.request:log.py:253 Forbidden (Permission denied): /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django_ratelimit\decorators.py", line 26, in _wrapped
+    raise (import_string(cls) if isinstance(cls, str) else cls)()
+django_ratelimit.exceptions.Ratelimited
+__________________________ AuthFlowTests.test_logout __________________________
+
+self = <test_auth_flow.AuthFlowTests testMethod=test_logout>
+
+    def test_logout(self):
+        # Primero login para obtener token
+        login_resp = self.client.post(self.login_url, {
+            "email": self.user.email,
+            "password": self.user_data["password"]
+        })
+>       token = login_resp.data["access"]
+E       AttributeError: 'HttpResponseForbidden' object has no attribute 'data'
+
+backend\apps\usuarios\tests\test_auth_flow.py:103: AttributeError
+------------------------------ Captured log call ------------------------------
+WARNING  django.request:log.py:253 Forbidden (Permission denied): /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django_ratelimit\decorators.py", line 26, in _wrapped
+    raise (import_string(cls) if isinstance(cls, str) else cls)()
+django_ratelimit.exceptions.Ratelimited
+______________________ AuthFlowTests.test_refresh_token _______________________
+
+self = <test_auth_flow.AuthFlowTests testMethod=test_refresh_token>
+
+    def test_refresh_token(self):
+        login_resp = self.client.post(self.login_url, {
+            "email": self.user.email,
+            "password": self.user_data["password"]
+        })
+>       refresh_token = login_resp.data["refresh"]
+E       AttributeError: 'HttpResponseForbidden' object has no attribute 'data'
+
+backend\apps\usuarios\tests\test_auth_flow.py:114: AttributeError
+------------------------------ Captured log call ------------------------------
+WARNING  django.request:log.py:253 Forbidden (Permission denied): /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django_ratelimit\decorators.py", line 26, in _wrapped
+    raise (import_string(cls) if isinstance(cls, str) else cls)()
+django_ratelimit.exceptions.Ratelimited
+============================== warnings summary ===============================
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_inactive_user
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_inactive_user
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_inactive_user
+backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_inactive_user
+  C:\Users\melos\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\urlpatterns.py:108: RemovedInDjango60Warning: Converter 'drf_format_suffix' is already registered. Support for overriding registered converters is deprecated and will be removed in Django 6.0.
+    register_converter(suffix_converter, converter_name)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.14.0-final-0 _______________
+
+Name                                                                                           Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------------------------------------------
+backend\__init__.py                                                                                2      2     0%   1-3
+backend\apps\__init__.py                                                                           0      0   100%
+backend\apps\notificaciones\__init__.py                                                            0      0   100%
+backend\apps\notificaciones\admin.py                                                              13      0   100%
+backend\apps\notificaciones\apps.py                                                                5      0   100%
+backend\apps\notificaciones\migrations\0001_initial.py                                             6      0   100%
+backend\apps\notificaciones\migrations\0002_initial.py                                             7      0   100%
+backend\apps\notificaciones\migrations\__init__.py                                                 0      0   100%
+backend\apps\notificaciones\models.py                                                             30      3    90%   11, 20, 37
+backend\apps\notificaciones\serializers.py                                                        17      0   100%
+backend\apps\notificaciones\tests\__init__.py                                                      0      0   100%
+backend\apps\notificaciones\tests\test_models.py                                                  74     74     0%   1-178
+backend\apps\notificaciones\tests\test_notificaciones_audit.py                                    77     77     0%   1-180
+backend\apps\notificaciones\tests\test_serializers.py                                             62     62     0%   1-125
+backend\apps\notificaciones\urls.py                                                                8      0   100%
+backend\apps\notificaciones\views.py                                                              53     28    47%   17, 20, 29-57, 61-66, 71-81
+backend\apps\pagos\__init__.py                                                                     0      0   100%
+backend\apps\pagos\admin.py                                                                       17      0   100%
+backend\apps\pagos\apps.py                                                                         5      0   100%
+backend\apps\pagos\migrations\0001_initial.py                                                      6      0   100%
+backend\apps\pagos\migrations\0002_initial.py                                                      7      0   100%
+backend\apps\pagos\migrations\0003_remove_transaccion_fecha_actualizacion_and_more.py              4      0   100%
+backend\apps\pagos\migrations\__init__.py                                                          0      0   100%
+backend\apps\pagos\models.py                                                                      36      4    89%   12, 21, 36, 46
+backend\apps\pagos\serializers.py                                                                 22      0   100%
+backend\apps\pagos\tests\__init__.py                                                               0      0   100%
+backend\apps\pagos\tests\test_models.py                                                           82     82     0%   1-226
+backend\apps\pagos\tests\test_pagos_audit.py                                                      70     70     0%   1-186
+backend\apps\pagos\tests\test_serializers.py                                                      62     62     0%   1-178
+backend\apps\pagos\urls.py                                                                         7      0   100%
+backend\apps\pagos\views.py                                                                       39     20    49%   18-21, 25, 33-50, 57-58
+backend\apps\productos\__init__.py                                                                 0      0   100%
+backend\apps\productos\admin.py                                                                   69     15    78%   56-57, 60-61, 78, 113, 116-117, 120-121, 124-125, 144, 150, 154
+backend\apps\productos\apps.py                                                                     5      0   100%
+backend\apps\productos\management\__init__.py                                                      0      0   100%
+backend\apps\productos\management\commands\__init__.py                                             0      0   100%
+backend\apps\productos\management\commands\recargar_stock_automatico.py                           36     36     0%   9-88
+backend\apps\productos\migrations\0001_initial.py                                                  7      0   100%
+backend\apps\productos\migrations\0002_producto_caracteristicas_producto_imagen1_and_more.py       4      0   100%
+backend\apps\productos\migrations\0003_stockconfig_historialrecarga.py                             6      0   100%
+backend\apps\productos\migrations\0004_seccion.py                                                  4      0   100%
+backend\apps\productos\migrations\__init__.py                                                      0      0   100%
+backend\apps\productos\models.py                                                                 153     37    76%   31, 89, 93-99, 103-105, 151, 155-158, 162, 166, 170, 199, 204, 208-209, 213-215, 269, 273, 280-293, 344, 364
+backend\apps\productos\permissions.py                                                             51     34    33%   9-11, 19-21, 29-31, 39-41, 49-51, 59-63, 71-79, 87-95
+backend\apps\productos\serializers.py                                                             68      8    88%   20-24, 89-94
+backend\apps\productos\tasks.py                                                                   45     45     0%   1-91
+backend\apps\productos\tests.py                                                                  140    140     0%   1-381
+backend\apps\productos\tests\__init__.py                                                           0      0   100%
+backend\apps\productos\tests\test_models.py                                                      115    115     0%   1-359
+backend\apps\productos\tests\test_permissions.py                                                  92     92     0%   1-225
+backend\apps\productos\tests\test_productos_audit.py                                             104    104     0%   1-255
+backend\apps\productos\tests\test_serializers.py                                                  63     63     0%   1-200
+backend\apps\productos\urls.py                                                                    10      0   100%
+backend\apps\productos\views.py                                                                  373    303    19%   40-44, 48-50, 61-108, 111-113, 116-130, 134-142, 146-148, 152-199, 204-225, 237-285, 296-323, 334-352, 360-376, 385-416, 435-444, 447-453, 456-472, 475, 482-555, 563-595, 604-608, 612-614, 618-620, 631-638, 642-664, 673-689, 703-705, 709-718
+backend\apps\usuarios\__init__.py                                                                  0      0   100%
+backend\apps\usuarios\admin.py                                                                    25      0   100%
+backend\apps\usuarios\apps.py                                                                      5      0   100%
+backend\apps\usuarios\auth_urls.py                                                                 3      3     0%   1-4
+backend\apps\usuarios\backends.py                                                                 17      3    82%   14, 17, 31
+backend\apps\usuarios\migrations\0001_initial.py                                                   5      0   100%
+backend\apps\usuarios\migrations\0002_usuario_imagen.py                                            4      0   100%
+backend\apps\usuarios\migrations\0003_usuario_last_activity.py                                     4      0   100%
+backend\apps\usuarios\migrations\0004_passwordhistory.py                                           6      0   100%
+backend\apps\usuarios\migrations\0005_alter_usuario_options_alter_usuario_email_and_more.py        4      0   100%
+backend\apps\usuarios\migrations\__init__.py                                                       0      0   100%
+backend\apps\usuarios\models.py                                                                   68     10    85%   15, 17, 26-29, 73, 82, 94-95
+backend\apps\usuarios\permissions.py                                                              10      6    40%   10-13, 18-20
+backend\apps\usuarios\serializers.py                                                              64     16    75%   8-9, 12-15, 45-50, 53-59
+backend\apps\usuarios\tests\test_auth_flow.py                                                     57     17    70%   66-71, 87-95, 104-107, 115-117
+backend\apps\usuarios\urls.py                                                                      6      0   100%
+backend\apps\usuarios\urls_auth.py                                                                 5      0   100%
+backend\apps\usuarios\views\view_password.py                                                      49     35    29%   16-236, 241-262
+backend\apps\usuarios\views\views_auth.py                                                         39      9    77%   25, 65-70, 88-91
+backend\apps\usuarios\views\views_usuario.py                                                      30     14    53%   28-38, 45-53
+backend\apps\ventas\__init__.py                                                                    0      0   100%
+backend\apps\ventas\apps.py                                                                        7      0   100%
+backend\apps\ventas\migrations\0001_initial.py                                                     7      0   100%
+backend\apps\ventas\migrations\__init__.py                                                         0      0   100%
+backend\apps\ventas\models.py                                                                     27      2    93%   27, 41
+backend\apps\ventas\serializers.py                                                                14      0   100%
+backend\apps\ventas\signals.py                                                                    22     14    36%   15-48
+backend\apps\ventas\urls.py                                                                        6      0   100%
+backend\apps\ventas\views.py                                                                      42     24    43%   21-30, 35-41, 53-78
+backend\asgi.py                                                                                    4      4     0%   10-16
+backend\assign_products_to_providers.py                                                           36     36     0%   1-52
+backend\audit_tests.py                                                                           132    132     0%   5-227
+backend\celery_app.py                                                                             10     10     0%   1-19
+backend\check_proveedor_data.py                                                                   21     21     0%   1-32
+backend\check_superuser.py                                                                        27     27     0%   1-40
+backend\create_admin.py                                                                           21     21     0%   1-31
+backend\create_real_users.py                                                                      17     17     0%   1-24
+backend\create_test_products.py                                                                   48     48     0%   1-126
+backend\create_test_users.py                                                                      26     26     0%   1-58
+backend\debug_token.py                                                                            72     72     0%   5-100
+backend\fix_admin_password.py                                                                     40     40     0%   1-63
+backend\fix_imports.py                                                                            23     23     0%   1-47
+backend\fix_user_roles.py                                                                         28     28     0%   1-68
+backend\full_diagnostic.py                                                                        32     32     0%   1-46
+backend\investigate_admin.py                                                                      43     43     0%   1-60
+backend\list_users.py                                                                             28     28     0%   1-36
+backend\manage.py                                                                                 11     11     0%   3-22
+backend\middleware.py                                                                             10      2    80%   12-13
+backend\pagination.py                                                                              5      0   100%
+backend\settings.py                                                                               56      1    98%   88
+backend\urls.py                                                                                   10      2    80%   8, 34
+backend\verificar_datos.py                                                                        44     44     0%   1-62
+backend\verify_all_logins.py                                                                      26     26     0%   1-45
+backend\verify_backend.py                                                                        154    154     0%   7-228
+backend\verify_rf_coverage.py                                                                    162    162     0%   1-294
+backend\views.py                                                                                  35     35     0%   1-72
+backend\wsgi.py                                                                                    4      4     0%   10-16
+----------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                           3707   2678    28%
+=========================== short test summary info ===========================
+FAILED backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_rate_limit
+FAILED backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_login_success
+FAILED backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_logout
+FAILED backend/apps/usuarios/tests/test_auth_flow.py::AuthFlowTests::test_refresh_token
+================== 4 failed, 2 passed, 4 warnings in 23.38s ===================

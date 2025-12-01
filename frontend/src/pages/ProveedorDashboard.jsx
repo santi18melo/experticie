@@ -33,6 +33,15 @@ export default function ProveedorDashboard() {
     categoria: "general",
   });
 
+  // Filtros de productos
+  const [filtros, setFiltros] = useState({
+    busqueda: '',
+    categoria: 'todos',
+    precioMin: '',
+    precioMax: '',
+    stockBajo: false
+  });
+
   // ==================== CARGAR DATOS ====================
   const cargarProductos = useCallback(async () => {
     try {
@@ -182,6 +191,24 @@ export default function ProveedorDashboard() {
     );
   }
 
+  // ==================== CARGAR VENTAS ====================
+  const [ventas, setVentas] = useState([]);
+  const [totalVendido, setTotalVendido] = useState(0);
+
+  const cargarVentas = useCallback(async () => {
+    try {
+      const res = await axiosInstance.get('/ventas/mis_ventas_proveedor/');
+      setVentas(res.data.ventas || []);
+      setTotalVendido(res.data.total_historico || 0);
+    } catch (err) {
+      console.error("Error cargando ventas:", err);
+    }
+  }, []);
+
+  useEffect(() => {
+    cargarVentas();
+  }, [cargarVentas]);
+
   return (
     <div className="proveedor-dashboard">
       {/* HEADER */}
@@ -223,11 +250,11 @@ export default function ProveedorDashboard() {
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon">📊</div>
+          <div className="stat-icon">💰</div>
           <div className="stat-content">
-            <h3>{stats.stockTotal}</h3>
-            <p>Stock Total</p>
-            <span className="stat-detail">Unidades</span>
+            <h3>${Number(totalVendido).toLocaleString('es-CO')}</h3>
+            <p>Ventas Totales</p>
+            <span className="stat-detail">Ingresos históricos</span>
           </div>
         </div>
 
@@ -247,6 +274,39 @@ export default function ProveedorDashboard() {
             <p>Productos Básicos</p>
             <span className="stat-detail">Necesidad básica</span>
           </div>
+        </div>
+      </div>
+
+      {/* SECCIÓN VENTAS */}
+      <div className="main-container" style={{ marginBottom: '30px' }}>
+        <div className="section-header">
+          <h2>📊 Mis Ventas Recientes</h2>
+        </div>
+        <div className="table-container" style={{ maxHeight: '300px', overflowY: 'auto' }}>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cliente</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ventas.length === 0 ? (
+                <tr><td colSpan="5" style={{textAlign: 'center'}}>No hay ventas registradas</td></tr>
+              ) : ventas.map(v => (
+                <tr key={v.id}>
+                  <td>{new Date(v.fecha).toLocaleDateString()}</td>
+                  <td>{v.producto}</td>
+                  <td>{v.cliente}</td>
+                  <td>{v.cantidad}</td>
+                  <td style={{fontWeight: 'bold', color: '#10b981'}}>${Number(v.subtotal).toLocaleString('es-CO')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -349,8 +409,126 @@ export default function ProveedorDashboard() {
           </form>
         )}
 
+        {/* FILTROS DE PRODUCTOS */}
+        <div style={{ 
+          marginBottom: '20px', 
+          padding: '15px', 
+          background: '#f8fafc', 
+          borderRadius: '12px', 
+          border: '1px solid #e2e8f0' 
+        }}>
+          <h4 style={{ margin: '0 0 10px 0', color: '#64748b', fontSize: '14px', textTransform: 'uppercase' }}>
+            🔍 Filtros de Búsqueda
+          </h4>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+            {/* Búsqueda con lupa */}
+            <div style={{ position: 'relative', flex: 1, minWidth: '200px' }}>
+              <input 
+                type="text" 
+                placeholder="Buscar producto..." 
+                value={filtros.busqueda}
+                onChange={e => setFiltros({...filtros, busqueda: e.target.value})}
+                style={{ 
+                  padding: '8px 35px 8px 12px', 
+                  borderRadius: '6px', 
+                  border: '1px solid #cbd5e1', 
+                  width: '100%',
+                  fontSize: '14px'
+                }}
+              />
+              <span style={{ 
+                position: 'absolute', 
+                right: '10px', 
+                top: '50%', 
+                transform: 'translateY(-50%)',
+                fontSize: '16px',
+                color: '#64748b',
+                pointerEvents: 'none'
+              }}>
+                🔍
+              </span>
+            </div>
+
+            {/* Categoría */}
+            <select
+              value={filtros.categoria}
+              onChange={e => setFiltros({...filtros, categoria: e.target.value})}
+              style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14px' }}
+            >
+              <option value="todos">Todas las Categorías</option>
+              {[...new Set(productos.map(p => p.categoria))].map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+
+            {/* Rango de precios */}
+            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+              <input 
+                type="number" 
+                placeholder="Min $" 
+                value={filtros.precioMin}
+                onChange={e => setFiltros({...filtros, precioMin: e.target.value})}
+                style={{ width: '90px', padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14px' }}
+              />
+              <span style={{ color: '#94a3b8' }}>-</span>
+              <input 
+                type="number" 
+                placeholder="Max $" 
+                value={filtros.precioMax}
+                onChange={e => setFiltros({...filtros, precioMax: e.target.value})}
+                style={{ width: '90px', padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14px' }}
+              />
+            </div>
+
+            {/* Stock bajo */}
+            <button
+              onClick={() => setFiltros({...filtros, stockBajo: !filtros.stockBajo})}
+              style={{
+                padding: '8px 16px',
+                background: filtros.stockBajo ? '#ef4444' : 'white',
+                color: filtros.stockBajo ? 'white' : '#334155',
+                border: '1px solid #cbd5e1',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                fontSize: '14px'
+              }}
+            >
+              {filtros.stockBajo ? '⚠️ Stock Bajo' : 'Mostrar Stock Bajo'}
+            </button>
+
+            {/* Limpiar */}
+            <button 
+              onClick={() => setFiltros({busqueda: '', categoria: 'todos', precioMin: '', precioMax: '', stockBajo: false})}
+              style={{ 
+                padding: '8px 16px', 
+                background: '#ef4444', 
+                border: 'none', 
+                borderRadius: '6px', 
+                cursor: 'pointer', 
+                color: 'white',
+                fontWeight: '500',
+                fontSize: '14px'
+              }}
+            >
+              🗑️ Limpiar
+            </button>
+          </div>
+        </div>
+
         {/* LISTA DE PRODUCTOS */}
-        {productos.length === 0 ? (
+        {(() => {
+          // Aplicar filtros
+          let productosFiltrados = productos.filter(p => {
+            if (filtros.busqueda && !p.nombre.toLowerCase().includes(filtros.busqueda.toLowerCase())) return false;
+            if (filtros.categoria !== 'todos' && p.categoria !== filtros.categoria) return false;
+            if (filtros.precioMin && parseFloat(p.precio) < parseFloat(filtros.precioMin)) return false;
+            if (filtros.precioMax && parseFloat(p.precio) > parseFloat(filtros.precioMax)) return false;
+            if (filtros.stockBajo && p.stock >= 10) return false;
+            return true;
+          });
+
+          return productosFiltrados.length === 0 ? (
           <div className="empty-state">
             <div className="empty-icon">📦</div>
             <h3>No tienes productos aún</h3>
@@ -358,7 +536,7 @@ export default function ProveedorDashboard() {
           </div>
         ) : (
           <div className="productos-grid">
-            {productos.map((producto) => (
+            {productosFiltrados.map((producto) => (
               <div key={producto.id} className="producto-card">
                 <div className="producto-header">
                   <h3>{producto.nombre}</h3>
@@ -424,7 +602,8 @@ export default function ProveedorDashboard() {
               </div>
             ))}
           </div>
-        )}
+        );
+        })()}
       </div>
     </div>
   );

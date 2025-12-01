@@ -317,6 +317,19 @@ export const getPedidosEnPreparacion = async () => {
   }
 };
 
+/**
+ * Obtener detalles de un pedido
+ */
+export const getDetallesPedido = async (pedidoId) => {
+  try {
+    const response = await api.get(`/productos/detalles-pedido/por_pedido/?pedido_id=${pedidoId}`);
+    return response.data;
+  } catch (error) {
+    console.error('[productosService] Error getting detalles pedido:', error);
+    throw error;
+  }
+};
+
 // ==================== MÉTODOS DE PAGO ====================
 
 /**
@@ -331,6 +344,8 @@ export const getMetodosPago = async () => {
     throw error;
   }
 };
+
+
 
 export default {
   // Tiendas
@@ -360,6 +375,7 @@ export default {
   cambiarEstadoPedido,
   getPedidosPendientes,
   getPedidosEnPreparacion,
+  getDetallesPedido,
   
   // Pagos
   getMetodosPago,

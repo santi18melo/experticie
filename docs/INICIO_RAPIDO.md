@@ -241,19 +241,6 @@ npx playwright show-report
 # Ejecutar pruebas continuas por 3 horas
 cd frontend
 python run_continuous_tests.py 3
-
-# Ejecutar pruebas por 30 minutos
-python run_continuous_tests.py 0.5
-```
-
----
-
-## 🌐 ENDPOINTS DE API
-
-### Autenticación
-
-```bash
-# Registro
 POST http://127.0.0.1:8000/api/auth/register/
 Content-Type: application/json
 {

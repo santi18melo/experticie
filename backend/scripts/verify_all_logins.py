@@ -1,45 +1,34 @@
-import os
-import sys
-import django
-import requests
-import json
+import requests, sys
 
-# Setup Django
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(current_dir)
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
-django.setup()
+BASE_URL = "http://127.0.0.1:8000"
 
-# Test users
-test_credentials = [
-    {'email': 'admin@example.com', 'password': 'admin123', 'rol': 'Admin'},
-    {'email': 'cliente1@example.com', 'password': 'cliente123', 'rol': 'Cliente'},
-    {'email': 'vendedor1@example.com', 'password': 'vendedor123', 'rol': 'Vendedor'},
-    {'email': 'investigador1@example.com', 'password': 'investigador123', 'rol': 'Investigador'},
+users = [
+    ("admin1@prexcol.com", "PassAdmin1*"),
+    ("logistica1@prexcol.com", "PassLogistica1*"),
+    ("proveedor1@prexcol.com", "PassProveedor1*"),
+    ("cliente1@prexcol.com", "PassCliente1*"),
 ]
 
-print("🔐 Verificando login de todos los usuarios...\n")
-
-api_url = "http://127.0.0.1:8000/api/auth/login/"
-
-for cred in test_credentials:
+def login(email, password):
+    url = f"{BASE_URL}/api/auth/login/"
     try:
-        response = requests.post(
-            api_url,
-            json={'email': cred['email'], 'password': cred['password']},
-            headers={'Content-Type': 'application/json'}
-        )
-        
-        if response.status_code == 200:
-            data = response.json()
-            print(f"✅ {cred['rol']}: {cred['email']}")
-            print(f"   Token: {data.get('access', 'N/A')[:50]}...")
+        resp = requests.post(url, json={"email": email, "password": password})
+        if resp.status_code == 200:
+            print(f"✅ {email} login successful. Token received.")
+            return True
         else:
-            print(f"❌ {cred['rol']}: {cred['email']}")
-            print(f"   Error: {response.text}")
+            print(f"❌ {email} login failed. Status {resp.status_code}: {resp.text}")
+            return False
     except Exception as e:
-        print(f"❌ {cred['rol']}: {cred['email']}")
-        print(f"   Error: {e}")
-    print()
+        print(f"❌ {email} login exception: {e}")
+        return False
 
-print("\n✅ Verificación completada!")
+if __name__ == "__main__":
+    all_ok = True
+    for email, pwd in users:
+        ok = login(email, pwd)
+        all_ok = all_ok and ok
+    if not all_ok:
+        sys.exit(1)
+    else:
+        print("All logins succeeded.")

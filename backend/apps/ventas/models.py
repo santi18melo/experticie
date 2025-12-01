@@ -1,13 +1,13 @@
 from django.db import models
 from apps.usuarios.models import Usuario
-from apps.productos.models import Pedido, Producto
+from apps.productos.models import Producto
 
 class Venta(models.Model):
     """
     Registro consolidado de una venta completada.
     Se genera cuando un pedido ha sido pagado y confirmado.
     """
-    pedido = models.OneToOneField(Pedido, on_delete=models.PROTECT, related_name='venta_registrada')
+    pedido = models.OneToOneField('productos.Pedido', on_delete=models.PROTECT, related_name='venta_registrada')
     cliente = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name='compras_realizadas')
     total = models.DecimalField(max_digits=12, decimal_places=2)
     fecha_venta = models.DateTimeField(auto_now_add=True)

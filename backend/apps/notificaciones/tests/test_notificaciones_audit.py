@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-from notificaciones.models import Notificacion, TipoNotificacion, EstadoNotificacion
+from apps.notificaciones.models import Notificacion, TipoNotificacion, EstadoNotificacion
 
 User = get_user_model()
 

@@ -2,8 +2,8 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from django.contrib.auth import get_user_model
-from pagos.models import Pago, MetodoPago, EstadoPago, Transaccion
-from productos.models import Pedido, Tienda
+from apps.pagos.models import Pago, MetodoPago, EstadoPago, Transaccion
+from apps.productos.models import Pedido, Tienda
 
 User = get_user_model()
 

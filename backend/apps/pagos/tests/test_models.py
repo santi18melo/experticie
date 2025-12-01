@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from pagos.models import MetodoPago, EstadoPago, Pago, Transaccion
-from productos.models import Pedido, Tienda
+from apps.pagos.models import MetodoPago, EstadoPago, Pago, Transaccion
+from apps.productos.models import Pedido, Tienda
 from decimal import Decimal
 
 User = get_user_model()

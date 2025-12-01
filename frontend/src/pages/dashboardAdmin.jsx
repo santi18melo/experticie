@@ -14,6 +14,8 @@ import { axiosInstance } from "../services/api";
 import ModalEdicion from "../components/ModalEdicion";
 import "../styles/DashboardAdmin.css";
 import DashboardHeader from "../components/DashboardHeader";
+import Pagination from "../components/Pagination";
+
 
 export default function DashboardAdmin() {
   const { user, logout } = useAuth();
@@ -65,13 +67,14 @@ export default function DashboardAdmin() {
   const [paginaTiendas, setPaginaTiendas] = useState(1);
   const [paginaProductos, setPaginaProductos] = useState(1);
   const [paginaPedidos, setPaginaPedidos] = useState(1);
-  const ITEMS_POR_PAGINA = 50;
+  const ITEMS_POR_PAGINA = 10;
 
   // Filtros
   const [filtroRol, setFiltroRol] = useState("todos");
   const [filtroEstadoUsuario, setFiltroEstadoUsuario] = useState("todos");
   const [filtroTienda, setFiltroTienda] = useState("todos");
   const [filtroEstadoPedido, setFiltroEstadoPedido] = useState("todos");
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Modal de Edición
   const [modalEdicion, setModalEdicion] = useState({
@@ -516,6 +519,14 @@ export default function DashboardAdmin() {
     if (filtroTienda !== "todos" && filtroTienda !== "activas" && filtroTienda !== "inactivas") {
       if (p.tienda !== parseInt(filtroTienda)) return false;
     }
+    
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      const nombre = p.nombre?.toLowerCase() || "";
+      const descripcion = p.descripcion?.toLowerCase() || "";
+      if (!nombre.includes(term) && !descripcion.includes(term)) return false;
+    }
+
     return true;
   });
 
@@ -551,7 +562,6 @@ export default function DashboardAdmin() {
     adminCount: usuarios.filter((u) => u.rol === 'admin').length,
     proveedorCount: usuarios.filter((u) => u.rol === 'proveedor').length,
     clienteCount: usuarios.filter((u) => u.rol === 'cliente').length,
-    compradorCount: usuarios.filter((u) => u.rol === 'comprador').length,
     
     // Tiendas
     totalTiendas: tiendas.length,
@@ -692,21 +702,12 @@ export default function DashboardAdmin() {
           <div className="content-section">
             <div className="section-header">
               <h2>Gestión de Usuarios</h2>
-              <div style={{display: 'flex', gap: '12px'}}>
-                <button
-                  className="btn-secondary"
-                  onClick={() => navigate('/admin/asignar-productos')}
-                  style={{background: '#10b981', color: 'white'}}
-                >
-                  🔗 Asignar Productos
-                </button>
-                <button
-                  className="btn-primary"
-                  onClick={() => setShowUserForm(!showUserForm)}
-                >
-                  {showUserForm ? "✕ Cancelar" : "+ Nuevo Usuario"}
-                </button>
-              </div>
+              <button
+                className="btn-primary"
+                onClick={() => setShowUserForm(!showUserForm)}
+              >
+                {showUserForm ? "✕ Cancelar" : "+ Nuevo Usuario"}
+              </button>
             </div>
 
             {showUserForm && (
@@ -755,7 +756,6 @@ export default function DashboardAdmin() {
                     }
                   >
                     <option value="cliente">Cliente</option>
-                    <option value="comprador">Comprador</option>
                     <option value="proveedor">Proveedor</option>
                     <option value="logistica">Logística</option>
                     <option value="admin">Admin</option>
@@ -796,7 +796,6 @@ export default function DashboardAdmin() {
                   <option value="admin">Admin</option>
                   <option value="proveedor">Proveedor</option>
                   <option value="cliente">Cliente</option>
-                  <option value="comprador">Comprador</option>
                   <option value="logistica">Logística</option>
                 </select>
               </div>
@@ -897,6 +896,16 @@ export default function DashboardAdmin() {
                 </tbody>
               </table>
             </div>
+
+            {/* PAGINACIÓN */}
+            <Pagination
+              currentPage={paginaUsuarios}
+              totalPages={totalPaginasUsuarios}
+              onPageChange={setPaginaUsuarios}
+              itemsPerPage={ITEMS_POR_PAGINA}
+              totalItems={usuariosFiltrados.length}
+              currentItems={usuariosPaginados.length}
+            />
           </div>
         )}
 
@@ -950,7 +959,7 @@ export default function DashboardAdmin() {
             )}
 
             <div className="grid-cards">
-              {tiendas.map((tienda) => (
+              {tiendasPaginadas.map((tienda) => (
                 <div key={tienda.id} className="info-card">
                   <h3>{tienda.nombre}</h3>
                   <p>📍 {tienda.direccion}</p>
@@ -979,6 +988,16 @@ export default function DashboardAdmin() {
                 </div>
               ))}
             </div>
+
+            {/* PAGINACIÓN */}
+            <Pagination
+              currentPage={paginaTiendas}
+              totalPages={totalPaginasTiendas}
+              onPageChange={setPaginaTiendas}
+              itemsPerPage={ITEMS_POR_PAGINA}
+              totalItems={tiendas.length}
+              currentItems={tiendasPaginadas.length}
+            />
           </div>
         )}
 
@@ -987,12 +1006,40 @@ export default function DashboardAdmin() {
           <div className="content-section">
             <div className="section-header">
               <h2>Gestión de Productos</h2>
-              <button
-                className="btn-primary"
-                onClick={() => setShowProductoForm(!showProductoForm)}
-              >
-                {showProductoForm ? "✕ Cancelar" : "+ Nuevo Producto"}
-              </button>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button
+                  className="btn-secondary"
+                  onClick={() => navigate('/admin/asignar-productos')}
+                  style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+                >
+                  🔗 Asignar Productos
+                </button>
+                <button
+                  className="btn-primary"
+                  onClick={() => setShowProductoForm(!showProductoForm)}
+                >
+                  {showProductoForm ? "✕ Cancelar" : "+ Nuevo Producto"}
+                </button>
+              </div>
+            </div>
+
+            <div className="search-bar" style={{ marginBottom: '20px' }}>
+              <input
+                type="text"
+                placeholder="🔍 Buscar productos..."
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setPaginaProductos(1);
+                }}
+                style={{
+                  width: '100%',
+                  padding: '10px 15px',
+                  borderRadius: '8px',
+                  border: '1px solid #ddd',
+                  fontSize: '16px'
+                }}
+              />
             </div>
 
             {showProductoForm && (
@@ -1115,7 +1162,7 @@ export default function DashboardAdmin() {
                   </tr>
                 </thead>
                 <tbody>
-                  {productos.map((producto) => (
+                  {productosPaginados.map((producto) => (
                     <tr key={producto.id}>
                       <td>{producto.id}</td>
                       <td>{producto.nombre}</td>
@@ -1155,6 +1202,16 @@ export default function DashboardAdmin() {
                 </tbody>
               </table>
             </div>
+
+            {/* PAGINACIÓN */}
+            <Pagination
+              currentPage={paginaProductos}
+              totalPages={totalPaginasProductos}
+              onPageChange={setPaginaProductos}
+              itemsPerPage={ITEMS_POR_PAGINA}
+              totalItems={productosFiltrados.length}
+              currentItems={productosPaginados.length}
+            />
           </div>
         )}
 
@@ -1179,7 +1236,7 @@ export default function DashboardAdmin() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pedidos.map((pedido) => (
+                  {pedidosPaginados.map((pedido) => (
                     <tr key={pedido.id}>
                       <td>#{pedido.id}</td>
                       <td>{pedido.cliente?.nombre || "N/A"}</td>
@@ -1210,6 +1267,16 @@ export default function DashboardAdmin() {
                 </tbody>
               </table>
             </div>
+
+            {/* PAGINACIÓN */}
+            <Pagination
+              currentPage={paginaPedidos}
+              totalPages={totalPaginasPedidos}
+              onPageChange={setPaginaPedidos}
+              itemsPerPage={ITEMS_POR_PAGINA}
+              totalItems={pedidosFiltrados.length}
+              currentItems={pedidosPaginados.length}
+            />
           </div>
         )}
       </div>

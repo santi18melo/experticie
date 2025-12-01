@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from productos.models import Tienda, Producto, Pedido, DetallePedido
-from productos.serializers import (
+from apps.productos.models import Tienda, Producto, Pedido, DetallePedido
+from apps.productos.serializers import (
     TiendaSerializer, ProductoSerializer, PedidoSerializer,
     PedidoCreateSerializer, DetallePedidoSerializer
 )

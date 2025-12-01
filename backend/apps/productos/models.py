@@ -343,3 +343,22 @@ class HistorialRecarga(models.Model):
     def __str__(self):
         return f"{self.producto.nombre} - {self.tipo} (+{self.cantidad}) - {self.fecha_creacion.strftime('%Y-%m-%d %H:%M')}"
 
+
+class Seccion(models.Model):
+    """
+    Modelo que representa una sección o catálogo de productos.
+    Permite agrupar productos para facilitar su visualización y filtrado.
+    """
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True, null=True)
+    productos = models.ManyToManyField(Producto, related_name='secciones', blank=True)
+    activa = models.BooleanField(default=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Sección"
+        verbose_name_plural = "Secciones"
+        ordering = ['nombre']
+
+    def __str__(self):
+        return self.nombre

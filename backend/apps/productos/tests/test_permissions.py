@@ -1,10 +1,10 @@
 from django.test import TestCase, RequestFactory
 from django.contrib.auth import get_user_model
-from productos.permissions import (
+from apps.productos.permissions import (
     IsAdmin, IsCliente, IsProveedor, IsComprador, IsLogistica,
     IsAdminOrReadOnly, IsProductoOwnerOrAdmin, IsPedidoOwnerOrAdmin
 )
-from productos.models import Producto, Pedido, Tienda
+from apps.productos.models import Producto, Pedido, Tienda
 
 User = get_user_model()
 

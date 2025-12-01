@@ -44,3 +44,38 @@ class VentaViewSet(viewsets.ReadOnlyModelViewSet):
             'cantidad_ventas': cantidad_ventas,
             'ventas': VentaSerializer(ventas_hoy, many=True).data
         })
+
+    @action(detail=False, methods=['get'], permission_classes=[permissions.IsAuthenticated])
+    def mis_ventas_proveedor(self, request):
+        """
+        Retorna los detalles de venta de productos que pertenecen al proveedor actual.
+        """
+        from .models import DetalleVenta
+        from .serializers import DetalleVentaSerializer
+        
+        user = request.user
+        if user.rol != 'proveedor':
+            return Response({'error': 'No eres proveedor'}, status=403)
+            
+        detalles = DetalleVenta.objects.filter(producto__proveedor=user).order_by('-venta__fecha_venta')
+        
+        # Calcular total vendido histórico
+        total_historico = detalles.aggregate(Sum('subtotal'))['subtotal__sum'] or 0
+        
+        # Serializar
+        data = []
+        for d in detalles:
+            data.append({
+                'id': d.id,
+                'fecha': d.venta.fecha_venta,
+                'producto': d.producto.nombre,
+                'cantidad': d.cantidad,
+                'precio_unitario': d.precio_unitario,
+                'subtotal': d.subtotal,
+                'cliente': d.venta.cliente.nombre
+            })
+            
+        return Response({
+            'total_historico': total_historico,
+            'ventas': data
+        })

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tienda, Producto, Pedido, DetallePedido
+from .models import Tienda, Producto, Pedido, DetallePedido, Seccion
 from apps.usuarios.serializers import UsuarioSerializer
 from apps.usuarios.models import Usuario
 
@@ -27,6 +27,12 @@ class TiendaSerializer(serializers.ModelSerializer):
 class ProductoSerializer(serializers.ModelSerializer):    
     tienda_nombre = serializers.ReadOnlyField(source='tienda.nombre')
     proveedor_nombre = serializers.ReadOnlyField(source='proveedor.nombre')
+    secciones = serializers.PrimaryKeyRelatedField(
+        many=True, 
+        queryset=Seccion.objects.all(),
+        required=False
+    )
+    secciones_nombres = serializers.StringRelatedField(source='secciones', many=True, read_only=True)
     
     class Meta:
         model = Producto
@@ -101,3 +107,12 @@ class PedidoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedido
         fields = ["id", "cliente", "tienda", "estado", "fecha_creacion", "total", "notas"]
+
+
+class SeccionSerializer(serializers.ModelSerializer):
+    productos_count = serializers.IntegerField(source='productos.count', read_only=True)
+    
+    class Meta:
+        model = Seccion
+        fields = ['id', 'nombre', 'descripcion', 'productos', 'productos_count', 'activa', 'fecha_creacion']
+        read_only_fields = ['fecha_creacion']

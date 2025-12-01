@@ -51,6 +51,15 @@ const DashboardHeader = ({ title }) => {
             <span className="edit-hint">Editar perfil</span>
           </div>
         </div>
+        <a 
+          href="http://127.0.0.1:8000/swagger/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="btn-link"
+          style={{ marginRight: '1rem', color: 'var(--text-main)', textDecoration: 'none' }}
+        >
+          📄 API Docs
+        </a>
         <button onClick={handleLogout} className="btn-logout">
           🚪 Cerrar Sesión
         </button>

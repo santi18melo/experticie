@@ -9,15 +9,27 @@ export default function ModalEdicion({
   onClose, 
   onSubmit,
   usuarios = [],
-  tiendas = []
+  tiendas = [],
+  secciones = []
 }) {
   const [formData, setFormData] = React.useState({});
 
   React.useEffect(() => {
     if (datos) {
-      setFormData(datos);
+      const initialData = { ...datos };
+      
+      // Si es un producto, inicializar las secciones
+      if (tipo === 'Producto' && datos.id) {
+        // Encontrar qué secciones contienen este producto
+        const seccionesDelProducto = secciones
+          .filter(s => s.productos && s.productos.includes(datos.id))
+          .map(s => s.id);
+        initialData.secciones = seccionesDelProducto;
+      }
+      
+      setFormData(initialData);
     }
-  }, [datos]);
+  }, [datos, tipo, secciones]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -307,6 +319,47 @@ export default function ModalEdicion({
                   />
                   Producto Activo
                 </label>
+              </div>
+
+              <div className="form-group">
+                <label>Secciones</label>
+                <div style={{ 
+                  maxHeight: '150px', 
+                  overflowY: 'auto', 
+                  border: '1px solid #e2e8f0', 
+                  padding: '10px', 
+                  borderRadius: '8px',
+                  background: '#f8fafc'
+                }}>
+                  {secciones.map(s => {
+                    const isChecked = formData.secciones?.includes(s.id) || false;
+                    return (
+                      <div key={s.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                        <input 
+                          type="checkbox" 
+                          id={`modal-sec-${s.id}`}
+                          checked={isChecked}
+                          onChange={(e) => {
+                            const currentSecciones = formData.secciones || [];
+                            const newSecciones = e.target.checked
+                              ? [...currentSecciones, s.id]
+                              : currentSecciones.filter(id => id !== s.id);
+                            setFormData(prev => ({ ...prev, secciones: newSecciones }));
+                          }}
+                          style={{ marginRight: '8px', cursor: 'pointer' }}
+                        />
+                        <label htmlFor={`modal-sec-${s.id}`} style={{ cursor: 'pointer', margin: 0 }}>
+                          {s.nombre}
+                        </label>
+                      </div>
+                    );
+                  })}
+                  {secciones.length === 0 && (
+                    <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                      No hay secciones disponibles
+                    </p>
+                  )}
+                </div>
               </div>
             </>
           )}

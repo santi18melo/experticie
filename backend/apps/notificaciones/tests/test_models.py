@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from notificaciones.models import TipoNotificacion, EstadoNotificacion, Notificacion
+from apps.notificaciones.models import TipoNotificacion, EstadoNotificacion, Notificacion
 from django.utils import timezone
 
 User = get_user_model()

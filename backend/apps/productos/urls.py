@@ -5,7 +5,8 @@ from .views import (
     ProductoViewSet,
     PedidoViewSet,
     DetallePedidoViewSet,
-    ProductoSubirImagenView,  # <-- IMPORTANTE
+    ProductoSubirImagenView,
+    SeccionViewSet,  # <-- Nuevo
 )
 
 # Crear el router para registrar los viewsets
@@ -14,6 +15,7 @@ router.register(r"tiendas", TiendaViewSet, basename="tienda")
 router.register(r"productos", ProductoViewSet, basename="producto")
 router.register(r"pedidos", PedidoViewSet, basename="pedido")
 router.register(r"detalles-pedido", DetallePedidoViewSet, basename="detalle-pedido")
+router.register(r"secciones", SeccionViewSet, basename="seccion")  # <-- Nuevo
 
 # Definir URLs
 urlpatterns = [
@@ -73,3 +75,9 @@ urlpatterns = [
 # GET    /api/detalles-pedido/            - Listar detalles (filtrado por rol)
 # GET    /api/detalles-pedido/{id}/       - Detalle específico
 # GET    /api/detalles-pedido/por_pedido/?pedido_id=<id> - Detalles de un pedido
+#
+# SECCIONES:
+# ----------
+# GET    /api/secciones/                  - Listar secciones
+# POST   /api/secciones/                  - Crear sección (solo admin)
+# POST   /api/secciones/{id}/agregar_productos/ - Agregar productos a sección

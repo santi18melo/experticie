@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from notificaciones.models import TipoNotificacion, EstadoNotificacion, Notificacion
-from notificaciones.serializers import (
+from apps.notificaciones.models import TipoNotificacion, EstadoNotificacion, Notificacion
+from apps.notificaciones.serializers import (
     NotificacionSerializer, TipoNotificacionSerializer, EstadoNotificacionSerializer
 )
 
