@@ -43,21 +43,6 @@ export default function Login() {
         // Redirect based on user role
         if (user && user.rol) {
           switch(user.rol) {
-            case 'admin':
-              navigate("/admin");
-              break;
-            case 'cliente':
-              navigate("/cliente");
-              break;
-            case 'comprador':
-              navigate("/comprador");
-              break;
-            case 'proveedor':
-              navigate("/proveedor");
-              break;
-            case 'logistica':
-              navigate("/logistica");
-              break;
             default:
               navigate("/dashboard");
           }

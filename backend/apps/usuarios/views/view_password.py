@@ -247,6 +247,22 @@ def reset_password(request, uidb64, token):
     if not password:
         return JsonResponse({"error": "Password requerido"}, status=400)
 
+    # Validar requisitos de seguridad de la contraseña
+    if len(password) < 8:
+        return JsonResponse({
+            "error": "La contraseña debe tener al menos 8 caracteres"
+        }, status=400)
+    
+    if not any(char.isupper() for char in password):
+        return JsonResponse({
+            "error": "La contraseña debe contener al menos una letra mayúscula"
+        }, status=400)
+    
+    if not any(char.isdigit() for char in password):
+        return JsonResponse({
+            "error": "La contraseña debe contener al menos un número"
+        }, status=400)
+
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
         user = Usuario.objects.get(pk=uid)

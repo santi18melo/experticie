@@ -11,6 +11,8 @@ import {
 import { axiosInstance } from "../services/api";
 import "../styles/ProveedorDashboard.css";
 
+import DashboardHeader from "../components/DashboardHeader";
+
 export default function ProveedorDashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -166,12 +168,6 @@ export default function ProveedorDashboard() {
     setEditingId(null);
   };
 
-  // ==================== LOGOUT ====================
-  const handleLogout = () => {
-    logout();
-    setTimeout(() => window.location.replace('/login'), 150);
-  };
-
   // ==================== ESTADÍSTICAS ====================
   const stats = {
     totalProductos: productos.length,
@@ -212,19 +208,7 @@ export default function ProveedorDashboard() {
   return (
     <div className="proveedor-dashboard">
       {/* HEADER */}
-      <div className="proveedor-header">
-        <div className="header-content">
-          <div className="header-left">
-            <h1>📦 Panel de Proveedor</h1>
-            <p>
-              Bienvenido, <strong>{user?.nombre}</strong>
-            </p>
-          </div>
-          <button onClick={handleLogout} className="btn-logout">
-            🚪 Cerrar Sesión
-          </button>
-        </div>
-      </div>
+      <DashboardHeader title="📦 Panel de Proveedor" />
 
       {/* ALERTS */}
       {error && (

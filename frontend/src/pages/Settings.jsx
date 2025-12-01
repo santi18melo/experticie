@@ -39,17 +39,36 @@ export default function Settings() {
       // Save to localStorage (can be extended to save to API)
       localStorage.setItem("userSettings", JSON.stringify(settings));
       setSaved(true);
-      setTimeout(() => setSaved(false), 3000);
+      
+      // Redirect to dashboard after 1.5 seconds
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     } catch (error) {
       console.error("Error saving settings:", error);
       alert("Error al guardar configuración");
     }
   };
 
-  const handleDeleteAccount = () => {
-    if (window.confirm("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.")) {
-      // API call to delete account
-      alert("Funcionalidad de eliminación de cuenta - implementar endpoint backend");
+  const handleDeactivateAccount = async () => {
+    if (window.confirm("¿Estás seguro de que deseas desactivar tu cuenta? Podrás reactivarla contactando al soporte.")) {
+      try {
+        // TODO: API call to deactivate account (set is_active = false)
+        // const response = await fetch('/api/usuarios/deactivate/', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        //     'Content-Type': 'application/json'
+        //   }
+        // });
+        
+        alert("Tu cuenta ha sido desactivada. Contacta al soporte para reactivarla.");
+        logout();
+        navigate("/login");
+      } catch (error) {
+        console.error("Error deactivating account:", error);
+        alert("Error al desactivar la cuenta");
+      }
     }
   };
 
@@ -176,20 +195,20 @@ export default function Settings() {
           <h2 style={styles.sectionTitle}>Acciones</h2>
           <div style={styles.buttonGroup}>
             <button onClick={handleSave} style={styles.saveButton}>
-              {saved ? "✓ Guardado" : "Guardar Cambios"}
+              {saved ? "✓ Guardado - Redirigiendo..." : "Guardar Cambios"}
             </button>
             <button onClick={handleLogout} style={styles.logoutButton}>
               Cerrar Sesión
             </button>
-            <button onClick={handleDeleteAccount} style={styles.deleteButton}>
-              Eliminar Cuenta
+            <button onClick={handleDeactivateAccount} style={styles.deleteButton}>
+              Desactivar Cuenta
             </button>
           </div>
         </section>
 
         {saved && (
           <div style={styles.successMessage}>
-            ✓ Configuración guardada correctamente
+            ✓ Configuración guardada correctamente. Redirigiendo al dashboard...
           </div>
         )}
       </div>
@@ -299,12 +318,13 @@ const styles = {
   },
   deleteButton: {
     padding: "12px 24px",
-    background: "#dc3545",
-    color: "white",
+    background: "#ffc107",
+    color: "#333",
     border: "none",
     borderRadius: "8px",
     cursor: "pointer",
     fontSize: "16px",
+    fontWeight: "600",
   },
   successMessage: {
     marginTop: "20px",

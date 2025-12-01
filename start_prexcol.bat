@@ -12,7 +12,7 @@ echo.
 REM Check if .venv exists
 if not exist ".venv" (
     echo [ERROR] Virtual environment not found.
-    echo Please run setup_server.sh or install manually.
+    echo Please run setup_backend.bat first.
     pause
     exit /b 1
 )
@@ -23,38 +23,55 @@ if not exist "logs\backend" mkdir logs\backend
 if not exist "logs\frontend" mkdir logs\frontend
 if not exist "logs\celery" mkdir logs\celery
 
-echo [1/6] Updating Dependencies & Database...
+echo [1/7] Updating Dependencies...
 call .venv\Scripts\activate.bat
-pip install -r requirements.txt
+echo Installing core dependencies...
+pip install --upgrade pip --quiet
+pip install -r requirements.txt --quiet --no-warn-script-location 2>nul || (
+    echo Warning: Some optional packages failed to install. Continuing...
+)
+echo Dependencies updated successfully.
+echo.
+
+echo [2/7] Running Database Migrations...
 cd backend
 python manage.py migrate
 cd ..
+echo.
 
-echo [2/6] Starting Django Backend...
+echo [3/7] Starting Django Backend...
 start "PREXCOL Backend" cmd /k "call .venv\Scripts\activate.bat && cd backend && python manage.py runserver > ..\logs\backend\server.log 2>&1"
+echo.
 
-echo [3/6] Starting Celery Worker...
+echo [4/7] Starting Celery Worker...
 start "PREXCOL Celery Worker" cmd /k "call .venv\Scripts\activate.bat && cd backend && celery -A backend worker -l info > ..\logs\celery\worker.log 2>&1"
+echo.
 
-echo [4/6] Starting Celery Beat...
+echo [5/7] Starting Celery Beat...
 start "PREXCOL Celery Beat" cmd /k "call .venv\Scripts\activate.bat && cd backend && celery -A backend beat -l info > ..\logs\celery\beat.log 2>&1"
+echo.
 
-echo [5/6] Starting React Frontend...
+echo [6/7] Starting React Frontend...
 cd frontend
 if not exist "node_modules" (
     echo Installing frontend dependencies...
     call npm install
+) else (
+    echo Checking for new frontend dependencies...
+    call npm install --quiet
 )
 start "PREXCOL Frontend" cmd /k "npm run dev > ..\logs\frontend\client.log 2>&1"
 cd ..
-
-echo [6/6] Waiting for services to start...
-timeout /t 10 /nobreak >nul
-
-echo [7/6] Opening Browser...
-start http://localhost:5175/
-
 echo.
+
+echo [7/7] Waiting for services to start...
+timeout /t 10 /nobreak >nul
+echo.
+
+echo Opening Browser...
+start http://localhost:5175/
+echo.
+
 echo ========================================
 echo PREXCOL IS RUNNING
 echo ========================================

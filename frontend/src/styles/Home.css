@@ -1,4 +1,4 @@
-/* Home Page - Professional Styles */
+/* Home Page - Professional Styles with Support Integration */
 @import './variables.css';
 
 .home-container {
@@ -158,7 +158,7 @@
 /* ========== FEATURES ========== */
 .home-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   margin-bottom: 40px;
 }
@@ -264,6 +264,277 @@
   transform: translateX(4px);
 }
 
+/* ========== HELP SECTION ========== */
+.home-help-section {
+  margin: 30px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  color: white;
+}
+
+.home-help-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.home-help-section p {
+  margin: 0 0 20px 0;
+  opacity: 0.9;
+}
+
+.help-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.help-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.help-option-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.help-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.help-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.help-text strong {
+  font-size: 15px;
+}
+
+.help-option-btn.ai-option {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+}
+
+.help-option-btn.ai-option:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.help-option-btn.live-option {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: transparent;
+}
+
+.help-option-btn.live-option:hover {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.help-option-btn.contact-option {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: transparent;
+}
+
+.help-option-btn.contact-option:hover {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+}
+
+.help-note {
+  margin-top: 15px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ========== FLOATING SUPPORT BUTTON ========== */
+.floating-support-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  animation: pulse-button 2s infinite;
+}
+
+.floating-support-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+@keyframes pulse-button {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.support-icon {
+  font-size: 24px;
+}
+
+.support-text {
+  font-weight: 600;
+}
+
+/* ========== SUPPORT POPUP ========== */
+.support-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.support-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #718096;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.popup-close:hover {
+  background: #f7fafc;
+  color: #1a202c;
+  transform: rotate(90deg);
+}
+
+.support-popup h3 {
+  margin: 0 0 25px 0;
+  font-size: 28px;
+  color: #1a202c;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-option {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f7fafc;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.contact-option:hover {
+  background: #edf2f7;
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.contact-option strong {
+  display: block;
+  font-size: 16px;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.contact-option p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #718096;
+}
+
+.popup-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
 /* ========== INFO ========== */
 .home-info {
   padding-top: 24px;
@@ -358,6 +629,24 @@
   .logo-icon-large {
     font-size: 60px;
   }
+
+  .help-options {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-support-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+  }
+
+  .support-text {
+    display: none;
+  }
+
+  .support-popup {
+    padding: 30px 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -377,5 +666,13 @@
   .btn-home-secondary {
     padding: 14px 24px;
     font-size: 15px;
+  }
+
+  .home-help-section {
+    padding: 20px;
+  }
+
+  .home-help-section h3 {
+    font-size: 20px;
   }
 }

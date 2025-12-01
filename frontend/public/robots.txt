@@ -1,0 +1,39 @@
+# PREXCOL - Robots.txt optimizado para SEO
+# Permite el acceso completo a todos los bots de búsqueda
+
+User-agent: *
+Allow: /
+
+# Bloquear solo directorios de desarrollo y configuración
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.well-known/
+
+# Directorios específicos permitidos
+Allow: /productos/
+Allow: /login
+Allow: /register
+
+# Sitemaps
+Sitemap: https://prexcol.com/sitemap.xml
+Sitemap: https://prexcol.com/sitemap-products.xml
+
+# Crawl-delay para bots específicos (opcional)
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 0
+
+# Redes sociales
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /

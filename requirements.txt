@@ -7,7 +7,7 @@ supervisor==4.2.5
 djangorestframework-simplejwt==5.3.1
 django-cors-headers==4.3.1
 python-dotenv==1.0.1
-psycopg2-binary==2.9.9
+Pillow==10.0.0
 
 # Testing
 pytest==7.4.3
@@ -19,3 +19,6 @@ flake8==7.0.0
 django-filter==24.3
 django-ratelimit==4.1.0
 drf-yasg==1.21.7
+
+# Optional: PostgreSQL support (uncomment if needed)
+# psycopg2-binary==2.9.9

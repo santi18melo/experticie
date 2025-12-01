@@ -1,0 +1,422 @@
+/* FloatingGuidePanel.css - Estilos para Mini Panel Flotante */
+
+/* Panel Flotante Principal */
+.floating-guide-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 380px;
+  max-height: 600px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: slideInPanel 0.4s ease;
+  overflow: hidden;
+  border: 2px solid #667eea;
+}
+
+@keyframes slideInPanel {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header Compacto */
+.floating-guide-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guide-mini-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.guide-icon {
+  font-size: 24px;
+}
+
+.guide-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.guide-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.control-btn.close:hover {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+/* Progreso */
+.floating-guide-progress {
+  padding: 15px 20px;
+  background: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.progress-bar-mini {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill-mini {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.progress-text-mini {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* Paso Actual */
+.floating-guide-step {
+  padding: 20px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.step-header-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.step-icon-mini {
+  font-size: 36px;
+}
+
+.step-header-mini h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #1a202c;
+  flex: 1;
+}
+
+.step-description-mini {
+  font-size: 14px;
+  color: #718096;
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+}
+
+/* Comentario Interactivo Mini */
+.step-comment-mini {
+  padding: 12px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  font-weight: 600;
+  animation: fadeInComment 0.4s ease;
+}
+
+@keyframes fadeInComment {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-comment-mini.active {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  border-left: 4px solid #3b82f6;
+  color: #1e40af;
+}
+
+.step-comment-mini.completed {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border-left: 4px solid #10b981;
+  color: #065f46;
+}
+
+.comment-icon-mini {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.comment-text-mini {
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* Botón Ejecutar Mini */
+.execute-btn-mini {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.execute-btn-mini:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
+/* Badge Completado */
+.completed-badge-mini {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Navegación */
+.floating-guide-navigation {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  background: #f7fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.nav-btn-mini {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn-mini.prev {
+  background: white;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+}
+
+.nav-btn-mini.prev:hover:not(:disabled) {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.nav-btn-mini.next {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.nav-btn-mini.next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.nav-btn-mini.finish {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  animation: pulseFinish 2s infinite;
+}
+
+@keyframes pulseFinish {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+  }
+}
+
+.nav-btn-mini:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Indicadores de Pasos */
+.step-indicators-mini {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: white;
+}
+
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.indicator-dot.completed {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* Panel Minimizado */
+.floating-guide-minimized {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+  animation: bounceIn 0.5s ease;
+  transition: all 0.3s ease;
+}
+
+.floating-guide-minimized:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.minimized-icon {
+  font-size: 28px;
+}
+
+.minimized-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.minimized-expand {
+  font-size: 16px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Scrollbar para el paso */
+.floating-guide-step::-webkit-scrollbar {
+  width: 6px;
+}
+
+.floating-guide-step::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.floating-guide-step::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.floating-guide-step::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floating-guide-panel {
+    width: calc(100% - 40px);
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-guide-panel {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-height: 500px;
+  }
+
+  .floating-guide-minimized {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .guide-name {
+    max-width: 150px;
+  }
+
+  .floating-guide-navigation {
+    flex-direction: column;
+  }
+
+  .nav-btn-mini {
+    width: 100%;
+  }
+}

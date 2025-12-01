@@ -1,0 +1,89 @@
+{
+  "name": "PREXCOL - Plataforma de Comercio Electrónico",
+  "short_name": "PREXCOL",
+  "description": "Plataforma líder de comercio electrónico en Colombia. Conecta proveedores, compradores y clientes en un ecosistema digital eficiente.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#8B5CF6",
+  "categories": ["business", "shopping", "productivity"],
+  "lang": "es-CO",
+  "dir": "ltr",
+  
+  "icons": [
+    {
+      "src": "/logo-1200x1200.png",
+      "sizes": "1200x1200",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-1200x1200.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-1200x1200.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/logo-1200x1200.png",
+      "sizes": "1200x1200",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "PREXCOL Dashboard"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Catálogo Productos",
+      "short_name": "Productos",
+      "description": "Ver catálogo completo de productos",
+      "url": "/productos",
+      "icons": [{ "src": "/logo-1200x1200.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mi Carrito",
+      "short_name": "Carrito",
+      "description": "Ver carrito de compras",
+      "url": "/cart",
+      "icons": [{ "src": "/logo-1200x1200.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Panel",
+      "description": "Acceder al dashboard",
+      "url": "/dashboard",
+      "icons": [{ "src": "/logo-1200x1200.png", "sizes": "192x192" }]
+    }
+  ],
+  
+  "related_applications": [],
+  "prefer_related_applications": false,
+  
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

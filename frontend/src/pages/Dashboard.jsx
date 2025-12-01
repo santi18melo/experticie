@@ -4,145 +4,130 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import DashboardHeader from '../components/DashboardHeader';
 
-export default function Dashboard() {
-  const { user, userRole, logout } = useAuth();
+// Import specialized dashboards
+import DashboardAdmin from './dashboardAdmin';
+import CompradorDashboard from './CompradorDashboard';
+import UnifiedDashboard from './UnifiedDashboard';
+import ProveedorDashboard from './ProveedorDashboard';
+
+// Import styles (using the professional admin styles for consistency)
+import '../styles/DashboardAdmin.css';
+
+// Default Dashboard for Clients (or generic users)
+const ClienteDashboard = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: 40 }}>
+    <div className="admin-dashboard"> {/* Reusing the layout class for consistent styling */}
       <DashboardHeader title="Dashboard - PREXCOL" />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
-        <button
-          onClick={() => navigate('/profile')}
-          style={{
-            padding: 20,
-            background: '#fff',
-            border: '1px solid #e5e7eb',
-            borderRadius: 8,
-            cursor: 'pointer',
-            textAlign: 'left'
-          }}
-          data-testid="dashboard-profile"
-        >
-          <h3 style={{ marginBottom: 10 }}>👤 Perfil</h3>
-          <p style={{ color: '#6b7280', fontSize: 14 }}>Ver y editar tu perfil</p>
-        </button>
-
-        <button
-          onClick={() => navigate('/orders')}
-          style={{
-            padding: 20,
-            background: '#fff',
-            border: '1px solid #e5e7eb',
-            borderRadius: 8,
-            cursor: 'pointer',
-            textAlign: 'left'
-          }}
-          data-testid="dashboard-orders"
-        >
-          <h3 style={{ marginBottom: 10 }}>📦 Pedidos</h3>
-          <p style={{ color: '#6b7280', fontSize: 14 }}>Ver historial de pedidos</p>
-        </button>
-
-        <button
-          onClick={() => navigate('/notifications')}
-          style={{
-            padding: 20,
-            background: '#fff',
-            border: '1px solid #e5e7eb',
-            borderRadius: 8,
-            cursor: 'pointer',
-            textAlign: 'left'
-          }}
-          data-testid="dashboard-notifications"
-        >
-          <h3 style={{ marginBottom: 10 }}>🔔 Notificaciones</h3>
-          <p style={{ color: '#6b7280', fontSize: 14 }}>Ver notificaciones</p>
-        </button>
-
-        <button
-          onClick={() => navigate('/settings')}
-          style={{
-            padding: 20,
-            background: '#fff',
-            border: '1px solid #e5e7eb',
-            borderRadius: 8,
-            cursor: 'pointer',
-            textAlign: 'left'
-          }}
-          data-testid="dashboard-settings"
-        >
-          <h3 style={{ marginBottom: 10 }}>⚙️ Configuración</h3>
-          <p style={{ color: '#6b7280', fontSize: 14 }}>Ajustes de cuenta</p>
-        </button>
-
-        {(userRole === 'cliente' || userRole === 'comprador') && (
-          <>
-            <button
-              onClick={() => navigate('/productos')}
-              style={{
-                padding: 20,
-                background: '#fff',
-                border: '1px solid #e5e7eb',
-                borderRadius: 8,
-                cursor: 'pointer',
-                textAlign: 'left'
-              }}
-              data-testid="dashboard-products"
-            >
-              <h3 style={{ marginBottom: 10 }}>🛍️ Productos</h3>
-              <p style={{ color: '#6b7280', fontSize: 14 }}>Ver catálogo de productos</p>
-            </button>
-
-            <button
-              onClick={() => navigate('/cart')}
-              style={{
-                padding: 20,
-                background: '#fff',
-                border: '1px solid #e5e7eb',
-                borderRadius: 8,
-                cursor: 'pointer',
-                textAlign: 'left'
-              }}
-              data-testid="dashboard-cart"
-            >
-              <h3 style={{ marginBottom: 10 }}>🛒 Carrito</h3>
-              <p style={{ color: '#6b7280', fontSize: 14 }}>Ver carrito de compras</p>
-            </button>
-          </>
-        )}
-
-        {userRole === 'admin' && (
-          <button
-            onClick={() => navigate('/admin')}
-            style={{
-              padding: 20,
-              background: '#2563eb',
-              color: '#fff',
-              border: 'none',
-              borderRadius: 8,
-              cursor: 'pointer',
-              textAlign: 'left'
-            }}
-            data-testid="dashboard-admin"
-          >
-            <h3 style={{ marginBottom: 10 }}>⚡ Panel Admin</h3>
-            <p style={{ fontSize: 14 }}>Ir al panel de administración</p>
-          </button>
-        )}
+      {/* Welcome Section */}
+      <div className="stats-grid">
+         <div className="stat-card" style={{ gridColumn: '1 / -1' }}>
+           <div className="stat-icon">👋</div>
+           <div className="stat-content">
+             <h3>Hola, {user?.nombre || 'Cliente'}</h3>
+             <p>Bienvenido a tu panel personal</p>
+             <span className="stat-detail">Explora nuestros productos y gestiona tus pedidos</span>
+           </div>
+         </div>
       </div>
 
-      <div style={{ marginTop: 40, padding: 20, background: '#fef3c7', borderRadius: 8, border: '1px solid #fbbf24' }}>
-        <h3 style={{ marginBottom: 10 }}>ℹ️ Información del Sistema</h3>
-        <p style={{ fontSize: 14, color: '#78350f' }}>
-          El sistema de autenticación está funcionando correctamente. Puedes navegar a las diferentes secciones usando los botones de arriba.
-        </p>
+      <div className="tab-content">
+        <div className="content-section">
+            <div className="section-header">
+                <h2>Acceso Rápido</h2>
+            </div>
+            <div className="grid-cards">
+                <div 
+                    className="info-card" 
+                    onClick={() => navigate('/productos')} 
+                    style={{cursor: 'pointer', borderColor: '#3b82f6'}}
+                >
+                    <h3 style={{color: '#1d4ed8'}}>🛍️ Catálogo</h3>
+                    <p>Explora nuestra variedad de productos y realiza tus compras.</p>
+                </div>
+                
+                <div 
+                    className="info-card" 
+                    onClick={() => navigate('/cart')} 
+                    style={{cursor: 'pointer', borderColor: '#10b981'}}
+                >
+                    <h3 style={{color: '#047857'}}>🛒 Mi Carrito</h3>
+                    <p>Revisa y finaliza los productos que has seleccionado.</p>
+                </div>
+                
+                <div 
+                    className="info-card" 
+                    onClick={() => navigate('/orders')} 
+                    style={{cursor: 'pointer', borderColor: '#f59e0b'}}
+                >
+                    <h3 style={{color: '#b45309'}}>📦 Mis Pedidos</h3>
+                    <p>Rastrea el estado de tus envíos y revisa tu historial.</p>
+                </div>
+                
+                <div 
+                    className="info-card" 
+                    onClick={() => navigate('/profile')} 
+                    style={{cursor: 'pointer', borderColor: '#6366f1'}}
+                >
+                    <h3 style={{color: '#4338ca'}}>👤 Mi Perfil</h3>
+                    <p>Actualiza tu información personal y preferencias.</p>
+                </div>
+
+                <div 
+                    className="info-card" 
+                    onClick={() => navigate('/notifications')} 
+                    style={{cursor: 'pointer', borderColor: '#8b5cf6'}}
+                >
+                    <h3 style={{color: '#6d28d9'}}>🔔 Notificaciones</h3>
+                    <p>Mantente al día con las últimas novedades.</p>
+                </div>
+
+                <div 
+                    className="info-card" 
+                    onClick={() => navigate('/settings')} 
+                    style={{cursor: 'pointer', borderColor: '#64748b'}}
+                >
+                    <h3 style={{color: '#334155'}}>⚙️ Configuración</h3>
+                    <p>Ajusta la configuración de tu cuenta.</p>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   );
+};
+
+export default function Dashboard() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+      return (
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Cargando...</p>
+        </div>
+      );
+  }
+
+  if (!user) {
+      return null; 
+  }
+
+  // Role-based rendering
+  switch (user.rol) {
+    case 'admin':
+      return <DashboardAdmin />;
+    case 'proveedor':
+      return <ProveedorDashboard />;
+    case 'comprador':
+      return <CompradorDashboard />;
+    case 'logistica':
+      return <UnifiedDashboard />;
+    case 'cliente':
+    default:
+      return <ClienteDashboard />;
+  }
 }

@@ -1,21 +1,23 @@
-// src/routes/App.jsx - Updated with all new routes
+// src/routes/App.jsx - Support routes are now PUBLIC
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import AppProviders from "../context/AppProviders";
+import { GuideProvider } from "../context/GuideContext";
+import GlobalFloatingGuide from "../components/GlobalFloatingGuide";
 import ProtectedRoute from "./ProtectedRoute";
 import ErrorBoundary from "../components/ErrorBoundary";
 import Loader from "../components/Loader";
 
 // Auth pages
-const Login = lazy(() => import("../pages/Login.jsx"));
-const Register = lazy(() => import("../pages/Register.jsx"));
+const Login = lazy(() => import("../pages/login.jsx"));
+const Register = lazy(() => import("../pages/register.jsx"));
 const Home = lazy(() => import("../pages/Home.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPassword.jsx"));
 const ResetPassword = lazy(() => import("../pages/ResetPassword.jsx"));
 
 // Dashboards
 const Dashboard = lazy(() => import("../pages/Dashboard.jsx"));
-const AdminDashboard = lazy(() => import("../pages/DashboardAdmin.jsx"));
+const AdminDashboard = lazy(() => import("../pages/dashboardAdmin.jsx"));
 const CompradorDashboard = lazy(() => import("../pages/CompradorDashboard.jsx"));
 const PanelCliente = lazy(() => import("../components/clientes/PanelCliente.jsx"));
 const PanelLogistica = lazy(() => import("../components/logistica/PanelLogistica.jsx"));
@@ -33,6 +35,10 @@ const PaymentStatus = lazy(() => import("../pages/PaymentStatus.jsx"));
 const PaymentHistory = lazy(() => import("../pages/PaymentHistory.jsx"));
 const PaymentDetail = lazy(() => import("../pages/PaymentDetail.jsx"));
 const AsignarProductos = lazy(() => import("../components/admin/AsignarProductos.jsx"));
+
+// Support Components - NOW PUBLIC
+const UserSupport = lazy(() => import("../pages/UserSupport.jsx"));
+const AIAssistant = lazy(() => import("../pages/AIAssistant.jsx"));
 
 // Products
 const Catalogo = lazy(() => import("../components/productos/Catalogo.jsx"));
@@ -52,6 +58,10 @@ function AppRoutes() {
       {/* Public Product Routes */}
       <Route path="/productos" element={<Catalogo />} />
       <Route path="/productos/:id" element={<DetalleProducto />} />
+
+      {/* Public Support & AI Routes - NO LOGIN REQUIRED */}
+      <Route path="/support" element={<UserSupport />} />
+      <Route path="/ai-assistant" element={<AIAssistant />} />
 
       {/* Protected Routes - General Dashboard */}
       <Route
@@ -211,7 +221,6 @@ function AppRoutes() {
         }
       />
 
-
       {/* Fallback - 404 */}
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -223,9 +232,13 @@ export default function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <AppProviders>
-          <AppRoutes />
-        </AppProviders>
+        <GuideProvider>
+          <AppProviders>
+            <AppRoutes />
+            {/* Panel flotante global - visible en toda la app */}
+            <GlobalFloatingGuide />
+          </AppProviders>
+        </GuideProvider>
       </Router>
     </ErrorBoundary>
   );

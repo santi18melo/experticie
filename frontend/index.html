@@ -1,10 +1,176 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
+    <!-- ==================== META TAGS BÁSICOS ==================== -->
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- ==================== SEO PRINCIPAL ==================== -->
+    <title>PREXCOL - Plataforma de Comercio Electrónico | E-commerce Colombia</title>
+    <meta name="description" content="PREXCOL es la plataforma líder de comercio electrónico en Colombia. Conectamos proveedores, compradores y clientes en un ecosistema digital eficiente. Gestión de productos, pedidos, pagos y logística en tiempo real." />
+    <meta name="keywords" content="PREXCOL, comercio electrónico Colombia, e-commerce, plataforma B2B, gestión de inventario, pedidos online, marketplace Colombia, proveedores Colombia, compras mayoristas, logística digital" />
+    <meta name="author" content="PREXCOL" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="Spanish" />
+    <meta name="geo.region" content="CO" />
+    <meta name="geo.placename" content="Colombia" />
+    
+    <!-- ==================== OPEN GRAPH / FACEBOOK ==================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://prexcol.com/" />
+    <meta property="og:title" content="PREXCOL - Plataforma de Comercio Electrónico Colombia" />
+    <meta property="og:description" content="La plataforma líder de comercio electrónico en Colombia. Conecta proveedores, compradores y clientes en un ecosistema digital eficiente." />
+    <meta property="og:image" content="https://prexcol.com/logo-1200x1200.png" />
+    <meta property="og:image:secure_url" content="https://prexcol.com/logo-1200x1200.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content="PREXCOL - Plataforma de Comercio Electrónico" />
+    <meta property="og:site_name" content="PREXCOL" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
+    
+    <!-- ==================== TWITTER CARDS ==================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@prexcol" />
+    <meta name="twitter:creator" content="@prexcol" />
+    <meta name="twitter:title" content="PREXCOL - Plataforma de Comercio Electrónico Colombia" />
+    <meta name="twitter:description" content="La plataforma líder de comercio electrónico en Colombia. Conecta proveedores, compradores y clientes en un ecosistema digital eficiente." />
+    <meta name="twitter:image" content="https://prexcol.com/logo-1200x1200.png" />
+    <meta name="twitter:image:alt" content="PREXCOL Logo" />
+    
+    <!-- ==================== WHATSAPP ==================== -->
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    
+    <!-- ==================== LINKEDIN ==================== -->
+    <meta property="og:see_also" content="https://www.linkedin.com/company/prexcol" />
+    
+    <!-- ==================== PINTEREST ==================== -->
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest-rich-pin" content="false" />
+    
+    <!-- ==================== CANONICAL & ALTERNATES ==================== -->
+    <link rel="canonical" href="https://prexcol.com/" />
+    <link rel="alternate" hreflang="es" href="https://prexcol.com/" />
+    <link rel="alternate" hreflang="es-CO" href="https://prexcol.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://prexcol.com/" />
+    
+    <!-- ==================== FAVICONS & ICONOS ==================== -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PREXCOL</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo-1200x1200.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo-1200x1200.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo-1200x1200.png" />
+    <link rel="mask-icon" href="/vite.svg" color="#8B5CF6" />
+    <meta name="msapplication-TileColor" content="#8B5CF6" />
+    <meta name="theme-color" content="#8B5CF6" />
+    
+    <!-- ==================== MOBILE APP META ==================== -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="PREXCOL" />
+    <meta name="application-name" content="PREXCOL" />
+    
+    <!-- ==================== PWA MANIFEST ==================== -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- ==================== PRECONNECT & DNS PREFETCH ==================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    
+    <!-- ==================== SCHEMA.ORG STRUCTURED DATA ==================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PREXCOL",
+      "description": "Plataforma líder de comercio electrónico en Colombia",
+      "url": "https://prexcol.com",
+      "logo": "https://prexcol.com/logo-1200x1200.png",
+      "image": "https://prexcol.com/logo-1200x1200.png",
+      "foundingDate": "2024",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CO",
+        "addressLocality": "Colombia"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "contacto@prexcol.com"
+      },
+      "sameAs": [
+        "https://www.facebook.com/prexcol",
+        "https://twitter.com/prexcol",
+        "https://www.linkedin.com/company/prexcol",
+        "https://www.instagram.com/prexcol"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "PREXCOL",
+      "url": "https://prexcol.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://prexcol.com/productos?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PREXCOL",
+      "url": "https://prexcol.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "COP"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    
+    <!-- ==================== VERIFICACIÓN DE MOTORES DE BÚSQUEDA ==================== -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+    <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
+    <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
+    
+    <!-- ==================== ANALYTICS & TRACKING (Placeholder) ==================== -->
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+    
+    <!-- Facebook Pixel -->
+    <!-- <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
+    </script> -->
   </head>
   <body>
     <div id="root"></div>

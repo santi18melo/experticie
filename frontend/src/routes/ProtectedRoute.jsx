@@ -2,6 +2,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Loader from "../components/Loader";
 
 /**
  * Componente para proteger rutas según autenticación y roles.
@@ -13,7 +14,7 @@ export default function ProtectedRoute({ children, roles }) {
 
   // Mientras carga información del usuario
   if (loading) {
-    return <p>Cargando...</p>;
+    return <Loader />;
   }
 
   // Si NO hay usuario autenticado

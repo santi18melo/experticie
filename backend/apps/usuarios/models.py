@@ -53,6 +53,26 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     last_activity = models.DateTimeField(null=True, blank=True)
 
     is_staff = models.BooleanField(default=False)
+    
+    # Gestión de estados de cuenta
+    self_deactivated = models.BooleanField(
+        default=False,
+        help_text="Usuario desactivó su cuenta voluntariamente (puede reactivarla)"
+    )
+    admin_suspended = models.BooleanField(
+        default=False,
+        help_text="Cuenta suspendida por administrador (requiere contacto con soporte)"
+    )
+    suspension_reason = models.TextField(
+        blank=True,
+        null=True,
+        help_text="Razón de la suspensión por parte del administrador"
+    )
+    suspension_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        help_text="Fecha de suspensión"
+    )
 
     objects = UsuarioManager()
 
