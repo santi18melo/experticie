@@ -1,0 +1,25 @@
+[build]
+  # Directory with the frontend build
+  base = "frontend"
+  publish = "frontend/dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirects for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# API proxy to backend (if deploying backend elsewhere)
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend-url.com/api/:splat"
+  status = 200
+  force = true
+
+# Functions directory
+[functions]
+  directory = "netlify/functions"
