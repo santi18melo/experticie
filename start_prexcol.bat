@@ -34,9 +34,11 @@ echo Dependencies updated successfully.
 echo.
 
 echo [2/7] Running Database Migrations...
-cd backend
-python manage.py migrate
-cd ..
+python backend\manage.py migrate
+if %errorlevel% neq 0 (
+    echo [WARNING] Migrations failed. Continuing anyway...
+    echo Check if dj-database-url is installed: python -m pip install dj-database-url whitenoise
+)
 echo.
 
 echo [3/7] Starting Django Backend...

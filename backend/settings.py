@@ -90,11 +90,15 @@ TEMPLATES = [
 WSGI_APPLICATION = "wsgi.application"
 ASGI_APPLICATION = 'asgi.application'
 
-# Database
-# Database
-import dj_database_url
+# Database configuration with optional dj_database_url support
+try:
+    import dj_database_url
+    HAS_DJ_DATABASE_URL = True
+except ImportError:
+    HAS_DJ_DATABASE_URL = False
+    print("Warning: dj-database-url not installed. Using default SQLite database.")
 
-if os.getenv("DATABASE_URL"):
+if HAS_DJ_DATABASE_URL and os.getenv("DATABASE_URL"):
     DATABASES = {
         "default": dj_database_url.config(
             default=os.getenv("DATABASE_URL"),
@@ -114,6 +118,7 @@ elif os.getenv("POSTGRES_DB"):
         }
     }
 else:
+    # Default SQLite for development
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
