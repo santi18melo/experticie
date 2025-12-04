@@ -47,9 +47,24 @@ Bienvenido a la documentación del proyecto PREXCOL. Esta guía te ayudará a en
 
 | Documento | Descripción | Audiencia |
 |-----------|-------------|-----------|
+| [MAPA_DE_PROCESOS.md](MAPA_DE_PROCESOS.md) | Mapa completo de procesos del negocio | Todos |
+| [GUIA_CONVENCIONES_BD.md](GUIA_CONVENCIONES_BD.md) | Convenciones de nomenclatura para FKs | Desarrolladores |
 | [DEPENDENCIAS.md](DEPENDENCIAS.md) | Dependencias del proyecto | Desarrolladores |
 | [GUIA_INTEGRACION_SEO.md](GUIA_INTEGRACION_SEO.md) | Integración SEO | Frontend Devs |
 | [SEO_Y_REDES_SOCIALES.md](SEO_Y_REDES_SOCIALES.md) | SEO y redes sociales | Marketing/Devs |
+
+### 📐 Diagramas UML
+
+| Documento | Descripción | Audiencia |
+|-----------|-------------|-----------|
+| [INDEX_DIAGRAMAS.md](diagramas/INDEX_DIAGRAMAS.md) | Índice maestro de diagramas | Todos |
+| [DIAGRAMA_CLASES.md](diagramas/DIAGRAMA_CLASES.md) | Modelo de dominio completo | Desarrolladores/Arquitectos |
+| [DIAGRAMA_COMPONENTES_PAQUETES.md](diagramas/DIAGRAMA_COMPONENTES_PAQUETES.md) | Arquitectura del sistema | Arquitectos |
+| [DIAGRAMA_DESPLIEGUE.md](diagramas/DIAGRAMA_DESPLIEGUE.md) | Infraestructura cloud | DevOps/Arquitectos |
+| [DIAGRAMA_SECUENCIA.md](diagramas/DIAGRAMA_SECUENCIA.md) | Interacciones entre componentes | Desarrolladores |
+| [DIAGRAMA_ACTIVIDAD.md](diagramas/DIAGRAMA_ACTIVIDAD.md) | Flujos de proceso | Todos |
+| [DIAGRAMA_CASOS_USO.md](diagramas/DIAGRAMA_CASOS_USO.md) | Requisitos funcionales | PM/QA/Desarrolladores |
+| [DIAGRAMA_ESTADOS.md](diagramas/DIAGRAMA_ESTADOS.md) | Máquinas de estado | Desarrolladores/QA |
 
 ### 📊 Reportes y Estado
 
@@ -111,6 +126,9 @@ docs/
 #### Ver qué cambió recientemente
 → **[RESUMEN_CAMBIOS_DEPENDENCIAS.md](RESUMEN_CAMBIOS_DEPENDENCIAS.md)**
 
+#### Entender los procesos del negocio
+→ **[MAPA_DE_PROCESOS.md](MAPA_DE_PROCESOS.md)**
+
 #### Probar la autenticación
 → **[MANUAL_AUTH_TESTING_GUIDE.md](MANUAL_AUTH_TESTING_GUIDE.md)**
 
@@ -119,6 +137,15 @@ docs/
 
 #### Ver el estado del proyecto
 → **[ESTADO_SISTEMA_FINAL.md](ESTADO_SISTEMA_FINAL.md)**
+
+#### Entender la arquitectura del sistema
+→ **[INDEX_DIAGRAMAS.md](diagramas/INDEX_DIAGRAMAS.md)** - Todos los diagramas UML
+
+#### Ver el modelo de datos
+→ **[DIAGRAMA_CLASES.md](diagramas/DIAGRAMA_CLASES.md)** - Diagrama de clases
+
+#### Entender un flujo específico
+→ **[DIAGRAMA_SECUENCIA.md](diagramas/DIAGRAMA_SECUENCIA.md)** - Diagramas de secuencia
 
 #### Ejecutar tests
 → **[REPORTE_AUTOMATIZACION.md](REPORTE_AUTOMATIZACION.md)**

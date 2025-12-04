@@ -3,6 +3,7 @@ import React from "react";
 import { AuthProvider } from "./AuthContext";
 import { CartProvider } from "./CartContext";
 import { NotificationProvider } from "./NotificationContext";
+import { I18nProvider } from "./I18nContext";
 
 /**
  * AppProviders - Wraps all context providers in one component
@@ -10,13 +11,15 @@ import { NotificationProvider } from "./NotificationContext";
  */
 export const AppProviders = ({ children }) => {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <NotificationProvider>
-          {children}
-        </NotificationProvider>
-      </CartProvider>
-    </AuthProvider>
+    <I18nProvider>
+      <AuthProvider>
+        <CartProvider>
+          <NotificationProvider>
+            {children}
+          </NotificationProvider>
+        </CartProvider>
+      </AuthProvider>
+    </I18nProvider>
   );
 };
 

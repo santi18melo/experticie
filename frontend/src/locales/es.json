@@ -1,0 +1,162 @@
+{
+  "common": {
+    "welcome": "Bienvenido",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "register": "Registrarse",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "stock": "Stock",
+    "available": "Disponible",
+    "unavailable": "No disponible"
+  },
+  "auth": {
+    "loginTitle": "Iniciar Sesión en PREXCOL",
+    "registerTitle": "Crear Cuenta",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "rememberMe": "Recordarme",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "loginSuccess": "Inicio de sesión exitoso",
+    "loginError": "Credenciales inválidas",
+    "registerSuccess": "Cuenta creada exitosamente",
+    "logoutSuccess": "Sesión cerrada correctamente"
+  },
+  "dashboard": {
+    "admin": {
+      "title": "Panel de Administración",
+      "users": "Usuarios",
+      "stores": "Tiendas",
+      "products": "Productos",
+      "orders": "Pedidos",
+      "stats": {
+        "totalUsers": "Total Usuarios",
+        "activeUsers": "Usuarios Activos",
+        "totalStores": "Total Tiendas",
+        "totalProducts": "Total Productos",
+        "totalOrders": "Total Pedidos",
+        "pendingOrders": "Pedidos Pendientes"
+      }
+    },
+    "client": {
+      "title": "Panel de Cliente",
+      "myOrders": "Mis Pedidos",
+      "selectStore": "Seleccionar Tienda",
+      "catalog": "Catálogo",
+      "cart": "Carrito",
+      "checkout": "Finalizar Compra"
+    }
+  },
+  "products": {
+    "title": "Productos",
+    "addToCart": "Agregar al Carrito",
+    "removeFromCart": "Quitar del Carrito",
+    "basic": "Básico",
+    "normal": "Normal",
+    "category": "Categoría",
+    "description": "Descripción",
+    "outOfStock": "Agotado",
+    "lowStock": "Stock Bajo",
+    "inStock": "En Stock"
+  },
+  "orders": {
+    "title": "Pedidos",
+    "createOrder": "Crear Pedido",
+    "orderNumber": "Pedido #{{number}}",
+    "orderDate": "Fecha del Pedido",
+    "orderStatus": "Estado del Pedido",
+    "paymentMethod": "Método de Pago",
+    "status": {
+      "pending": "Pendiente",
+      "preparing": "Preparando",
+      "inTransit": "En Tránsito",
+      "delivered": "Entregado",
+      "cancelled": "Cancelado"
+    },
+    "paymentMethods": {
+      "cash": "Efectivo",
+      "card": "Tarjeta",
+      "transfer": "Transferencia"
+    },
+    "confirmCreate": "¿Estás seguro de crear este pedido?",
+    "createSuccess": "Pedido creado exitosamente",
+    "createError": "Error al crear el pedido",
+    "updateSuccess": "Pedido actualizado correctamente",
+    "noOrders": "No tienes pedidos aún"
+  },
+  "cart": {
+    "title": "Carrito de Compras",
+    "empty": "Tu carrito está vacío",
+    "itemCount": "{{count}} artículo",
+    "itemCount_plural": "{{count}} artículos",
+    "clearCart": "Vaciar Carrito",
+    "confirmClear": "¿Estás seguro de vaciar el carrito?",
+    "exceedsStock": "La cantidad excede el stock disponible",
+    "addedToCart": "Producto agregado al carrito",
+    "removedFromCart": "Producto eliminado del carrito"
+  },
+  "users": {
+    "title": "Usuarios",
+    "createUser": "Crear Usuario",
+    "editUser": "Editar Usuario",
+    "deleteUser": "Eliminar Usuario",
+    "confirmDelete": "¿Estás seguro de eliminar este usuario?",
+    "role": "Rol",
+    "status": "Estado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "roles": {
+      "admin": "Administrador",
+      "client": "Cliente",
+      "provider": "Proveedor",
+      "logistics": "Logística"
+    }
+  },
+  "stores": {
+    "title": "Tiendas",
+    "createStore": "Crear Tienda",
+    "editStore": "Editar Tienda",
+    "deleteStore": "Eliminar Tienda",
+    "selectStore": "Seleccionar una tienda",
+    "noStores": "No hay tiendas disponibles"
+  },
+  "validation": {
+    "required": "Este campo es requerido",
+    "email": "Ingresa un correo electrónico válido",
+    "minLength": "Mínimo {{min}} caracteres",
+    "maxLength": "Máximo {{max}} caracteres",
+    "passwordMatch": "Las contraseñas no coinciden",
+    "phoneFormat": "Formato de teléfono inválido",
+    "positiveNumber": "Debe ser un número positivo",
+    "integer": "Debe ser un número entero"
+  },
+  "errors": {
+    "generic": "Ha ocurrido un error. Por favor, intenta de nuevo.",
+    "network": "Error de conexión. Verifica tu internet.",
+    "unauthorized": "No tienes permisos para realizar esta acción.",
+    "notFound": "Recurso no encontrado.",
+    "serverError": "Error del servidor. Intenta más tarde.",
+    "sessionExpired": "Tu sesión ha expirado. Por favor, inicia sesión nuevamente."
+  }
+}

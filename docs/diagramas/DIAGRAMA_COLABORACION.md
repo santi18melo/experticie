@@ -1,0 +1,456 @@
+# 🤝 DIAGRAMAS DE COLABORACIÓN Y COMUNICACIÓN - PREXCOL
+
+**Proyecto**: PREXCOL  
+**Fecha**: 2025-12-04  
+**Tipo**: Diagramas de Comportamiento - Interacción con Enfoque Estructural
+
+---
+
+## 📋 ÍNDICE
+
+1. [Crear Pedido](#crear-pedido)
+2. [Procesar Pago](#procesar-pago)
+3. [Recarga Automática de Stock](#recarga-automática-de-stock)
+4. [Cambiar Estado de Pedido](#cambiar-estado-de-pedido)
+5. [Autenticación JWT](#autenticación-jwt)
+
+---
+
+## 🛒 CREAR PEDIDO
+
+### Diagrama de Colaboración
+
+```mermaid
+graph LR
+    Cliente(("👤<br/>:Cliente"))
+    UI["📱<br/>:Frontend"]
+    API["🔌<br/>:API Controller"]
+    OrderService["⚙️<br/>:OrderService"]
+    StockService["📦<br/>:StockService"]
+    PaymentService["💳<br/>:PaymentService"]
+    DB[("💾<br/>:Database")]
+    NotifService["📧<br/>:NotifService"]
+
+    Cliente -->|"1: seleccionaProductos()"| UI
+    UI -->|"2: crearPedido(items)"| API
+    API -->|"3: validarStock(items)"| StockService
+    StockService -->|"4: SELECT stock"| DB
+    DB -->|"5: stock data"| StockService
+    StockService -->|"6: stock OK"| API
+    API -->|"7: procesarPago(monto)"| PaymentService
+    PaymentService -->|"8: pago aprobado"| API
+    API -->|"9: crearPedido(data)"| OrderService
+    OrderService -->|"10: INSERT pedido"| DB
+    OrderService -->|"11: reducirStock(items)"| StockService
+    StockService -->|"12: UPDATE stock"| DB
+    OrderService -->|"13: enviarNotif()"| NotifService
+    NotifService -->|"14: emails sent"| OrderService
+    OrderService -->|"15: pedido creado"| API
+    API -->|"16: 201 Created"| UI
+    UI -->|"17: confirmación"| Cliente
+
+    style Cliente fill:#e1f5ff
+    style DB fill:#fff4e1
+    style NotifService fill:#ffe1f5
+```
+
+### Descripción de Mensajes
+
+| # | Origen | Destino | Mensaje | Parámetros | Retorno |
+|---|--------|---------|---------|------------|---------|
+| 1 | Cliente | UI | seleccionaProductos() | productos[], cantidades[] | void |
+| 2 | UI | API | crearPedido() | items: OrderItem[] | Promise<Order> |
+| 3 | API | StockService | validarStock() | items: OrderItem[] | boolean |
+| 4 | StockService | DB | SELECT stock | product_ids: int[] | ResultSet |
+| 5 | DB | StockService | stock data | rows: Stock[] | - |
+| 6 | StockService | API | stock OK | - | true |
+| 7 | API | PaymentService | procesarPago() | monto: Decimal, metodo: string | PaymentResult |
+| 8 | PaymentService | API | pago aprobado | transaction_id: string | - |
+| 9 | API | OrderService | crearPedido() | orderData: OrderDTO | Order |
+| 10 | OrderService | DB | INSERT pedido | pedido: Pedido, detalles: DetallePedido[] | int (id) |
+| 11 | OrderService | StockService | reducirStock() | items: OrderItem[] | void |
+| 12 | StockService | DB | UPDATE stock | updates: StockUpdate[] | int (affected) |
+| 13 | OrderService | NotifService | enviarNotif() | pedido_id: int, tipo: string | void |
+| 14 | NotifService | OrderService | emails sent | - | true |
+| 15 | OrderService | API | pedido creado | pedido: Order | - |
+| 16 | API | UI | 201 Created | pedido: OrderDTO | - |
+| 17 | UI | Cliente | confirmación | pedido_numero: string | - |
+
+### Objetos Participantes
+
+- **Cliente**: Actor humano (Rol: cliente)
+- **Frontend**: React Application (SPA)
+- **API Controller**: Django REST ViewSet
+- **OrderService**: Business Logic Layer
+- **StockService**: Stock Management Service
+- **PaymentService**: Payment Processing Service
+- **Database**: PostgreSQL/SQLite
+- **NotifService**: Notification Service (Celery)
+
+---
+
+## 💳 PROCESAR PAGO
+
+### Diagrama de Colaboración
+
+```mermaid
+graph TB
+    Cliente(("👤<br/>:Cliente"))
+    UI["📱<br/>:Frontend"]
+    PaymentCtrl["🔌<br/>:PaymentController"]
+    PaymentSvc["⚙️<br/>:PaymentService"]
+    Gateway["🌐<br/>:PaymentGateway"]
+    DB[("💾<br/>:Database")]
+    OrderSvc["📦<br/>:OrderService"]
+    NotifSvc["📧<br/>:NotifService"]
+
+    Cliente -->|"1: ingresaDatosPago()"| UI
+    UI -->|"2: procesarPago(datos)"| PaymentCtrl
+    PaymentCtrl -->|"3: validarDatos()"| PaymentSvc
+    PaymentSvc -->|"4: getPedido(id)"| DB
+    DB -->|"5: pedido"| PaymentSvc
+    PaymentSvc -->|"6: chargeCard(amount, card)"| Gateway
+    Gateway -->|"7: [si aprobado] approved"| PaymentSvc
+    PaymentSvc -->|"8: INSERT pago"| DB
+    PaymentSvc -->|"9: INSERT transaccion"| DB
+    PaymentSvc -->|"10: updatePedido()"| OrderSvc
+    OrderSvc -->|"11: UPDATE estado"| DB
+    PaymentSvc -->|"12: notificarPago()"| NotifSvc
+    NotifSvc -->|"13: email sent"| PaymentSvc
+    PaymentSvc -->|"14: pagoExitoso"| PaymentCtrl
+    PaymentCtrl -->|"15: 200 OK"| UI
+    UI -->|"16: mostrarConfirmacion()"| Cliente
+
+    Gateway -.->|"7a: [si rechazado] declined"| PaymentSvc
+    PaymentSvc -.->|"8a: registrarRechazo()"| DB
+    PaymentSvc -.->|"14a: pagoRechazado"| PaymentCtrl
+    PaymentCtrl -.->|"15a: 402 Payment Required"| UI
+
+    style Cliente fill:#e1f5ff
+    style Gateway fill:#ffe1e1
+    style DB fill:#fff4e1
+```
+
+### Flujos Alternativos
+
+#### Flujo Exitoso (líneas sólidas)
+1-6: Validación y preparación
+7: Gateway aprueba
+8-13: Registro y notificación
+14-16: Confirmación al cliente
+
+#### Flujo de Rechazo (líneas punteadas)
+7a: Gateway rechaza
+8a: Registrar intento fallido
+14a-15a: Informar error con código 402
+
+---
+
+## 🔄 RECARGA AUTOMÁTICA DE STOCK
+
+### Diagrama de Colaboración
+
+```mermaid
+graph TB
+    Beat["⏰<br/>:CeleryBeat"]
+    Worker["⚙️<br/>:CeleryWorker"]
+    StockMonitor["🔍<br/>:StockMonitor"]
+    DB[("💾<br/>:Database")]
+    StockSvc["📦<br/>:StockService"]
+    NotifSvc["📧<br/>:NotifService"]
+    Proveedor(("👨‍💼<br/>:Proveedor"))
+
+    Beat -->|"1: [cada 1h] trigger()"| Worker
+    Worker -->|"2: checkStockLevels()"| StockMonitor
+    StockMonitor -->|"3: getProductosConRecarga()"| DB
+    DB -->|"4: productos[]"| StockMonitor
+    
+    StockMonitor -->|"5: [loop] necesitaRecarga(p)"| StockSvc
+    StockSvc -->|"6: stock <= minimo?"| StockSvc
+    StockSvc -->|"7: [si] ejecutarRecarga(p)"| DB
+    DB -->|"8: BEGIN TRANSACTION"| DB
+    StockSvc -->|"9: UPDATE stock"| DB
+    StockSvc -->|"10: INSERT historial"| DB
+    StockSvc -->|"11: UPDATE config"| DB
+    DB -->|"12: COMMIT"| DB
+    
+    StockSvc -->|"13: notificarProveedor(p)"| NotifSvc
+    NotifSvc -->|"14: enviarEmail()"| Proveedor
+    Proveedor -->|"15: recibe alerta"| Proveedor
+    
+    StockSvc -->|"16: recarga completada"| StockMonitor
+    StockMonitor -->|"17: siguiente producto"| StockMonitor
+    
+    StockMonitor -->|"18: [fin loop] reporte"| Worker
+    Worker -->|"19: task completed"| Beat
+
+    style Beat fill:#e1ffe1
+    style Proveedor fill:#e1f5ff
+    style DB fill:#fff4e1
+```
+
+### Condiciones de Decisión
+
+```python
+# Mensaje 6: Evaluar si necesita recarga
+def necesitaRecarga(producto):
+    config = producto.stock_config
+    return (
+        config.recarga_automatica_activa and 
+        producto.stock <= config.stock_minimo
+    )
+
+# Si TRUE → ejecutar mensajes 7-16
+# Si FALSE → saltar a mensaje 17 (siguiente producto)
+```
+
+---
+
+## 📋 CAMBIAR ESTADO DE PEDIDO
+
+### Diagrama de Colaboración
+
+```mermaid
+graph LR
+    Logistica(("🚚<br/>:Logistica"))
+    UI["📱<br/>:Frontend"]
+    OrderCtrl["🔌<br/>:OrderController"]
+    OrderSvc["⚙️<br/>:OrderService"]
+    DB[("💾<br/>:Database")]
+    VentaSvc["💰<br/>:VentaService"]
+    NotifSvc["📧<br/>:NotifService"]
+    Cliente(("👤<br/>:Cliente"))
+
+    Logistica -->|"1: seleccionaPedido(id)"| UI
+    UI -->|"2: cambiarEstado(id, nuevo)"| OrderCtrl
+    OrderCtrl -->|"3: getPedido(id)"| DB
+    DB -->|"4: pedido actual"| OrderCtrl
+    OrderCtrl -->|"5: validarTransicion()"| OrderSvc
+    OrderSvc -->|"6: [si válido] ok"| OrderCtrl
+    OrderCtrl -->|"7: updateEstado()"| DB
+    DB -->|"8: estado updated"| OrderCtrl
+    
+    OrderCtrl -->|"9: [si entregado] generarVenta()"| VentaSvc
+    VentaSvc -->|"10: INSERT venta"| DB
+    VentaSvc -->|"11: INSERT detalles"| DB
+    VentaSvc -->|"12: venta creada"| OrderCtrl
+    
+    OrderCtrl -->|"13: notificarCambio()"| NotifSvc
+    NotifSvc -->|"14: enviarEmail()"| Cliente
+    Cliente -->|"15: recibe notif"| Cliente
+    
+    OrderCtrl -->|"16: 200 OK (pedido)"| UI
+    UI -->|"17: mostrarConfirm()"| Logistica
+
+    OrderSvc -.->|"6a: [inválido] error"| OrderCtrl
+    OrderCtrl -.->|"16a: 400 Bad Request"| UI
+
+    style Logistica fill:#ffe1f5
+    style Cliente fill:#e1f5ff
+    style DB fill:#fff4e1
+```
+
+### Matriz de Transiciones Válidas
+
+| Estado Actual | Nuevo Estado | ¿Válido? | Acción Especial |
+|---------------|--------------|----------|-----------------|
+| pendiente | preparando | ✅ | - |
+| pendiente | cancelado | ✅ | Devolver stock |
+| preparando | en_transito | ✅ | - |
+| preparando | cancelado | ✅ | Devolver stock |
+| en_transito | entregado | ✅ | **Generar venta** (msg 9-12) |
+| en_transito | problema_entrega | ✅ | - |
+| problema_entrega | en_transito | ✅ | Reintentar |
+| problema_entrega | cancelado | ✅ | Procesar reembolso |
+| cualquier | mismo | ❌ | Error |
+| entregado | * | ❌ | Estado final |
+
+---
+
+## 🔐 AUTENTICACIÓN JWT
+
+### Diagrama de Colaboración
+
+```mermaid
+graph TB
+    Usuario(("👤<br/>:Usuario"))
+    UI["📱<br/>:Frontend"]
+    AuthCtrl["🔌<br/>:AuthController"]
+    AuthSvc["⚙️<br/>:AuthService"]
+    TokenGen["🔑<br/>:JWTGenerator"]
+    PassValidator["🔒<br/>:PasswordValidator"]
+    DB[("💾<br/>:Database")]
+
+    Usuario -->|"1: ingresaCredenciales()"| UI
+    UI -->|"2: login(email, pass)"| AuthCtrl
+    AuthCtrl -->|"3: getUserByEmail()"| DB
+    DB -->|"4: usuario"| AuthCtrl
+    AuthCtrl -->|"5: checkPassword()"| PassValidator
+    PassValidator -->|"6: [si correcto] ok"| AuthCtrl
+    AuthCtrl -->|"7: verifyAccountStatus()"| AuthSvc
+    AuthSvc -->|"8: [si activo] ok"| AuthCtrl
+    AuthCtrl -->|"9: generateTokens(user)"| TokenGen
+    TokenGen -->|"10: create access (15min)"| TokenGen
+    TokenGen -->|"11: create refresh (7d)"| TokenGen
+    TokenGen -->|"12: {access, refresh}"| AuthCtrl
+    AuthCtrl -->|"13: UPDATE ultimo_ingreso"| DB
+    AuthCtrl -->|"14: 200 OK (tokens, user)"| UI
+    UI -->|"15: storeTokens()"| UI
+    UI -->|"16: redirectDashboard()"| Usuario
+
+    PassValidator -.->|"6a: [incorrecto] error"| AuthCtrl
+    AuthCtrl -.->|"14a: 401 Unauthorized"| UI
+    
+    AuthSvc -.->|"8a: [suspendido] error"| AuthCtrl
+    AuthCtrl -.->|"14b: 403 Forbidden"| UI
+
+    style Usuario fill:#e1f5ff
+    style TokenGen fill:#fff4e1
+    style DB fill:#fff4e1
+```
+
+### Payload del Token
+
+```json
+// Mensaje 10: create access token
+{
+  "user_id": 42,
+  "email": "usuario@email.com",
+  "rol": "cliente",
+  "exp": 1701788400,  // 15 minutos
+  "type": "access"
+}
+
+// Mensaje 11: create refresh token
+{
+  "user_id": 42,
+  "email": "usuario@email.com",
+  "exp": 1702393200,  // 7 días
+  "type": "refresh"
+}
+```
+
+---
+
+## 🔀 COMPARACIÓN: SECUENCIA vs COLABORACIÓN
+
+### Mismo Escenario: Crear Pedido
+
+#### Diagrama de Secuencia
+- **Enfoque**: Temporal (orden cronológico)
+- **Eje vertical**: Tiempo
+- **Muestra**: Lifelines, activaciones
+- **Mejor para**: Entender flujo temporal
+
+#### Diagrama de Colaboración
+- **Enfoque**: Estructural (relaciones)
+- **Layout**: Libre (sin eje temporal)
+- **Muestra**: Numeración de mensajes, links
+- **Mejor para**: Entender navegación de mensajes
+
+---
+
+## 📊 NOTACIÓN Y ELEMENTOS
+
+### Objetos
+
+```
+:TipoClase
+```
+
+### Objetos Nombrados
+
+```
+objeto1: TipoClase
+```
+
+### Actores
+
+```
+((:Actor))
+```
+
+### Mensajes Síncronos
+
+```
+A ──>|"1: metodo()"| B
+```
+
+### Mensajes Asíncronos
+
+```
+A -.->|"2: callback()"| B
+```
+
+### Retorno Implícito
+
+El retorno está implícito en la flecha de regreso o en el siguiente mensaje con mayor numeración.
+
+### Numeración de Mensajes
+
+- **1, 2, 3...**: Secuencia principal
+- **1.1, 1.2...**: Sub-mensajes
+- **1a, 1b...**: Flujos alternativos
+
+---
+
+## 🎯 CUÁNDO USAR DIAGRAMAS DE COLABORACIÓN
+
+### ✅ Usar cuando:
+
+1. **Arquitectura del sistema**: Ver cómo colaboran componentes
+2. **Revisar código**: Identificar acoplamiento excesivo
+3. **Diseño de APIs**: Ver intercambios de mensajes
+4. **Documentar protocolos**: Comunicación entre servicios
+5. **Optimizar performance**: Identificar cuellos de botella
+
+### ❌ No usar cuando:
+
+1. **Flujo temporal crítico**: Usar secuencia
+2. **Muchos objetos**: Se vuelve ilegible
+3. **Lógica compleja**: Mejor diagrama de actividad
+4. **Estados importantes**: Usar máquinas de estado
+
+---
+
+## 📝 PATRONES OBSERVADOS
+
+### Patrón: Controller → Service → Repository
+
+```
+Cliente → Controller → Service → DB
+                ↓
+           NotifService
+```
+
+**Ventajas**:
+- Separación de responsabilidades
+- Fácil de testear
+- Reutilización de servicios
+
+### Patrón: Transaction Script
+
+```
+Service → DB (BEGIN)
+Service → DB (UPDATE 1)
+Service → DB (UPDATE 2)
+Service → DB (COMMIT)
+```
+
+**Uso**: Operaciones que requieren consistencia transaccional
+
+### Patrón: Asíncrono con Celery
+
+```
+API → Queue (async)
+       ↓
+    Worker → Service → DB
+```
+
+**Uso**: Operaciones largas (emails, recargas automáticas)
+
+---
+
+**Documento generado**: 2025-12-04  
+**Versión**: 1.0  
+**Estado**: ✅ Completado

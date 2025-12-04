@@ -1,25 +1,27 @@
 [build]
-  # Directory with the frontend build
+  # Directory that contains the package.json
   base = "frontend"
-  publish = "frontend/dist"
-  command = "npm run build"
+  
+  # Directory that contains the build output (relative to base)
+  publish = "dist"
+  
+  # Build command
+  command = "npm install && npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
 
-# Redirects for SPA routing
+# Redirects for Single Page Application (SPA)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# API proxy to backend (if deploying backend elsewhere)
-[[redirects]]
-  from = "/api/*"
-  to = "https://your-backend-url.com/api/:splat"
-  status = 200
-  force = true
-
-# Functions directory
-[functions]
-  directory = "netlify/functions"
+# Optional: Proxy /api requests to backend to avoid CORS issues
+# Uncomment and replace URL when backend is deployed
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://prexcol-backend.railway.app/api/:splat"
+#   status = 200
+#   force = true

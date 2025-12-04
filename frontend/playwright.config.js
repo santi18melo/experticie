@@ -2,35 +2,41 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/e2e',
-  fullyParallel: false,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: 1,
+  workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   
   use: {
-    baseURL: 'http://localhost:5178',
+    baseURL: process.env.VITE_APP_URL || 'http://localhost:5173',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    actionTimeout: 60000,
-    navigationTimeout: 60000,
   },
-
-  timeout: 120000,
 
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+    },
   ],
 
-  // webServer configuration disabled to avoid duplicate Vite instance
-  // webServer: {
-  //   command: 'npm run dev',
-  //   url: 'http://localhost:5178',
-  //   reuseExistingServer: true,
-  //   timeout: 120000,
-  // },
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://localhost:5173',
+    reuseExistingServer: !process.env.CI,
+  },
 });

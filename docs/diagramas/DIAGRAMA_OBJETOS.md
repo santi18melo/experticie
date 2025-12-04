@@ -1,0 +1,425 @@
+# 🔷 DIAGRAMA DE OBJETOS - PREXCOL
+
+**Proyecto**: PREXCOL  
+**Fecha**: 2025-12-04  
+**Tipo**: Diagrama Estructural - Instancias Concretas
+
+---
+
+## 📋 ÍNDICE
+
+1. [Escenario: Pedido en Proceso](#escenario-pedido-en-proceso)
+2. [Escenario: Sistema de Stock](#escenario-sistema-de-stock)
+3. [Escenario: Usuario y Permisos](#escenario-usuario-y-permisos)
+4. [Escenario: Pago Completado](#escenario-pago-completado)
+
+---
+
+## 🛒 ESCENARIO: PEDIDO EN PROCESO
+
+### Descripción
+Estado del sistema cuando un cliente (María García) tiene un pedido en estado "preparando" con dos productos.
+
+### Diagrama de Objetos
+
+```mermaid
+graph TB
+    subgraph "Instancias en Runtime - Pedido #1234"
+        usuario1["👤 usuario1: Usuario<br/>───────────────<br/>id: 42<br/>email: 'maria@email.com'<br/>nombre: 'María García'<br/>rol: 'cliente'<br/>estado: true"]
+        
+        tienda1["🏪 tienda1: Tienda<br/>───────────────<br/>id: 1<br/>id_administrador: 1<br/>nombre: 'Tienda Centro'<br/>direccion: 'Calle 10 #5-20'<br/>activa: true"]
+        
+        pedido1["📦 pedido1: Pedido<br/>───────────────<br/>id: 1234<br/>id_cliente: 42<br/>id_tienda: 1<br/>estado: 'preparando'<br/>total: 45000.00<br/>fecha_creacion: '2025-12-04 10:30'<br/>notas: 'Entregar antes 5pm'"]
+        
+        detalle1["📋 detalle1: DetallePedido<br/>───────────────<br/>id: 5001<br/>id_pedido: 1234<br/>id_producto: 101<br/>cantidad: 2<br/>precio_unitario: 12000.00<br/>subtotal: 24000.00"]
+        
+        detalle2["📋 detalle2: DetallePedido<br/>───────────────<br/>id: 5002<br/>id_pedido: 1234<br/>id_producto: 205<br/>cantidad: 3<br/>precio_unitario: 7000.00<br/>subtotal: 21000.00"]
+        
+        producto1["📦 producto1: Producto<br/>───────────────<br/>id: 101<br/>id_tienda: 1<br/>id_proveedor: 15<br/>nombre: 'Arroz Diana 500g'<br/>precio: 12000.00<br/>stock: 148<br/>categoria: 'alimentos'"]
+        
+        producto2["📦 producto2: Producto<br/>───────────────<br/>id: 205<br/>id_tienda: 1<br/>id_proveedor: 15<br/>nombre: 'Aceite Girasol 1L'<br/>precio: 7000.00<br/>stock: 67<br/>categoria: 'alimentos'"]
+        
+        proveedor1["👨‍💼 proveedor1: Usuario<br/>───────────────<br/>id: 15<br/>email: 'juan@proveedora.com'<br/>nombre: 'Juan Pérez'<br/>rol: 'proveedor'<br/>estado: true"]
+        
+        pago1["💳 pago1: Pago<br/>───────────────<br/>id: 789<br/>id_usuario: 42<br/>id_pedido: 1234<br/>id_estado_pago: 2<br/>id_metodo_pago: 1<br/>monto: 45000.00<br/>fecha_creacion: '2025-12-04 10:25'"]
+        
+        metodo1["💰 metodo1: MetodoPago<br/>───────────────<br/>id: 1<br/>nombre: 'Tarjeta Crédito'<br/>activo: true"]
+        
+        estado1["✅ estado1: EstadoPago<br/>───────────────<br/>id: 2<br/>nombre: 'Aprobado'"]
+    end
+    
+    pedido1 -->|id_cliente = 42| usuario1
+    pedido1 -->|id_tienda = 1| tienda1
+    pedido1 -->|detalles| detalle1
+    pedido1 -->|detalles| detalle2
+    pedido1 -->|pagos| pago1
+    
+    detalle1 -->|id_producto = 101| producto1
+    detalle2 -->|id_producto = 205| producto2
+    
+    producto1 -->|id_tienda = 1| tienda1
+    producto2 -->|id_tienda = 1| tienda1
+    producto1 -->|id_proveedor = 15| proveedor1
+    producto2 -->|id_proveedor = 15| proveedor1
+    
+    pago1 -->|id_usuario = 42| usuario1
+    pago1 -->|id_pedido = 1234| pedido1
+    pago1 -->|id_metodo_pago = 1| metodo1
+    pago1 -->|id_estado_pago = 2| estado1
+```
+
+### Valores Computados
+
+```python
+# En el diagrama:
+pedido1.total = detalle1.subtotal + detalle2.subtotal
+             = 24000.00 + 21000.00
+             = 45000.00 ✓
+
+detalle1.subtotal = detalle1.cantidad * detalle1.precio_unitario
+                  = 2 * 12000.00
+                  = 24000.00 ✓
+
+detalle2.subtotal = detalle2.cantidad * detalle2.precio_unitario
+                  = 3 * 7000.00
+                  = 21000.00 ✓
+
+# Stock después de pedido:
+producto1.stock_inicial = 150
+producto1.stock_actual = 148  (vendidas 2 unidades)
+
+producto2.stock_inicial = 70
+producto2.stock_actual = 67   (vendidas 3 unidades)
+```
+
+---
+
+## 📊 ESCENARIO: SISTEMA DE STOCK
+
+### Descripción
+Configuración de recarga automática para un producto con stock bajo.
+
+### Diagrama de Objetos
+
+```mermaid
+graph TB
+    subgraph "Sistema de Stock - Producto con Alerta"
+        producto_leche["📦 producto_leche: Producto<br/>───────────────<br/>id: 301<br/>nombre: 'Leche Entera 1L'<br/>precio: 4500.00<br/>stock: 8 🔴<br/>es_basico: true<br/>activo: true"]
+        
+        config_leche["⚙️ config_leche: StockConfig<br/>───────────────<br/>id: 45<br/>stock_minimo: 10<br/>cantidad_recarga: 50<br/>recarga_automatica_activa: true<br/>ultima_recarga: '2025-12-03 08:00'<br/>total_recargas: 12"]
+        
+        historial1["📝 historial1: HistorialRecarga<br/>───────────────<br/>id: 890<br/>cantidad: 50<br/>stock_anterior: 3<br/>stock_nuevo: 53<br/>tipo: 'automatica'<br/>fecha_creacion: '2025-12-03 08:00'"]
+        
+        historial2["📝 historial2: HistorialRecarga<br/>───────────────<br/>id: 891<br/>cantidad: 10<br/>stock_anterior: 53<br/>stock_nuevo: 63<br/>tipo: 'manual'<br/>fecha_creacion: '2025-12-03 14:30'"]
+        
+        proveedor_lacteos["👨‍💼 proveedor_lacteos: Usuario<br/>───────────────<br/>id: 18<br/>email: 'ana@lacteos.com'<br/>nombre: 'Ana Rodríguez'<br/>rol: 'proveedor'"]
+        
+        notif1["📧 notif1: Notificacion<br/>───────────────<br/>id: 2345<br/>mensaje: 'Stock bajo: Leche...'<br/>leida: true<br/>fecha_lectura: '2025-12-03 08:05'"]
+        
+        tipo_notif["🔔 tipo_notif: TipoNotificacion<br/>───────────────<br/>id: 3<br/>nombre: 'Stock Bajo'"]
+    end
+    
+    producto_leche -->|config_stock| config_leche
+    producto_leche -->|historial_recargas| historial1
+    producto_leche -->|historial_recargas| historial2
+    producto_leche -->|proveedor| proveedor_lacteos
+    
+    historial1 -->|producto| producto_leche
+    historial2 -->|producto| producto_leche
+    historial2 -->|usuario| proveedor_lacteos
+    
+    notif1 -->|usuario| proveedor_lacteos
+    notif1 -->|tipo| tipo_notif
+```
+
+### Estado del Sistema
+
+```python
+# Condición: stock <= stock_minimo
+producto_leche.stock = 8
+config_leche.stock_minimo = 10
+# → 8 <= 10 → TRUE → Sistema dispara alerta
+
+# Próxima acción automática:
+config_leche.necesita_recarga() = True
+# → Celery ejecutará recarga automática
+
+# Después de recarga:
+nuevo_stock = producto_leche.stock + config_leche.cantidad_recarga
+           = 8 + 50
+           = 58
+
+# Historial de movimientos:
+historial1: automatica, +50 (3 → 53)
+historial2: manual, +10 (53 → 63)
+# Stock vendido desde última recarga manual: 63 - 8 = 55 unidades
+```
+
+---
+
+## 👤 ESCENARIO: USUARIO Y PERMISOS
+
+### Descripción
+Usuario administrador con historial de contraseñas y tiendas administradas.
+
+### Diagrama de Objetos
+
+```mermaid
+graph TB
+    subgraph "Usuario Admin con Context"
+        admin1["👨‍💼 admin1: Usuario<br/>───────────────<br/>id: 1<br/>email: 'admin@prexcol.com'<br/>nombre: 'Carlos Admin'<br/>rol: 'admin'<br/>is_staff: true<br/>is_superuser: true<br/>self_deactivated: false<br/>admin_suspended: false<br/>ultimo_ingreso: '2025-12-04 13:00'"]
+        
+        pass_hist1["🔐 pass_hist1: PasswordHistory<br/>───────────────<br/>id: 101<br/>password_hash: 'pbkdf2_sha256$...'<br/>fecha_creacion: '2025-10-01'"]
+        
+        pass_hist2["🔐 pass_hist2: PasswordHistory<br/>───────────────<br/>id: 102<br/>password_hash: 'pbkdf2_sha256$...'<br/>fecha_creacion: '2025-11-15'"]
+        
+        pass_hist3["🔐 pass_hist3: PasswordHistory<br/>───────────────<br/>id: 103<br/>password_hash: 'pbkdf2_sha256$...'<br/>fecha_creacion: '2025-12-01'<br/>(actual)"]
+        
+        tienda_centro["🏪 tienda_centro: Tienda<br/>───────────────<br/>id: 1<br/>nombre: 'Tienda Centro'<br/>activa: true"]
+        
+        tienda_norte["🏪 tienda_norte: Tienda<br/>───────────────<br/>id: 2<br/>nombre: 'Tienda Norte'<br/>activa: true"]
+        
+        tienda_sur["🏪 tienda_sur: Tienda<br/>───────────────<br/>id: 3<br/>nombre: 'Tienda Sur'<br/>activa: false"]
+    end
+    
+    admin1 -->|password_history| pass_hist1
+    admin1 -->|password_history| pass_hist2
+    admin1 -->|password_history| pass_hist3
+    admin1 -->|tiendas_administradas| tienda_centro
+    admin1 -->|tiendas_administradas| tienda_norte
+    admin1 -->|tiendas_administradas| tienda_sur
+    
+    tienda_centro -->|administrador| admin1
+    tienda_norte -->|administrador| admin1
+    tienda_sur -->|administrador| admin1
+```
+
+### Reglas de Validación
+
+```python
+# Al cambiar contraseña, se valida:
+nueva_password = "NuevaPass123@"
+
+for history in admin1.password_history.all():
+    if check_password(nueva_password, history.password_hash):
+        raise ValueError("Contraseña ya utilizada")
+
+# Historial mantenido:
+pass_hist1: hace 2 meses
+pass_hist2: hace 19 días
+pass_hist3: hace 3 días (actual)
+
+# Permisos del admin:
+admin1.is_superuser = True
+# → Puede:
+#   - Gestionar todas las tiendas
+#   - Suspender/reactivar usuarios
+#   - Acceder a todos los reportes
+#   - Configurar sistema
+```
+
+---
+
+## 💳 ESCENARIO: PAGO COMPLETADO
+
+### Descripción
+Flujo completo de un pago aprobado con transacción del gateway.
+
+### Diagrama de Objetos
+
+```mermaid
+graph TB
+    subgraph "Pago Exitoso con Transacción"
+        cliente2["👤 cliente2: Usuario<br/>───────────────<br/>id: 55<br/>email: 'pedro@email.com'<br/>nombre: 'Pedro López'<br/>rol: 'cliente'"]
+        
+        pedido2["📦 pedido2: Pedido<br/>───────────────<br/>id: 1235<br/>estado: 'pendiente'<br/>total: 87500.00"]
+        
+        pago2["💳 pago2: Pago<br/>───────────────<br/>id: 790<br/>monto: 87500.00<br/>fecha_creacion: '2025-12-04 11:15'<br/>fecha_actualizacion: '2025-12-04 11:16'"]
+        
+        transaccion1["🔄 transaccion1: Transaccion<br/>───────────────<br/>id: 4567<br/>referencia_externa: 'TRX-PAY-789456'<br/>monto: 87500.00<br/>estado: 'approved'<br/>respuesta_gateway: {'...'}"]
+        
+        metodo_tarjeta["💰 metodo_tarjeta: MetodoPago<br/>───────────────<br/>id: 1<br/>nombre: 'Tarjeta Crédito'<br/>activo: true"]
+        
+        estado_aprobado["✅ estado_aprobado: EstadoPago<br/>───────────────<br/>id: 2<br/>nombre: 'Aprobado'<br/>descripcion: 'Pago autorizado'"]
+        
+        venta1["💰 venta1: Venta<br/>───────────────<br/>id: 456<br/>total: 87500.00<br/>cantidad_items: 4<br/>fecha_venta: '2025-12-04 16:30'"]
+    end
+    
+    pago2 -->|usuario| cliente2
+    pago2 -->|pedido| pedido2
+    pago2 -->|metodo_pago| metodo_tarjeta
+    pago2 -->|estado| estado_aprobado
+    pago2 -->|transacciones| transaccion1
+    
+    pedido2 -->|cliente| cliente2
+    pedido2 -->|venta_registrada| venta1
+    
+    venta1 -->|pedido| pedido2
+    venta1 -->|cliente| cliente2
+    
+    transaccion1 -->|pago| pago2
+```
+
+### Línea de Tiempo
+
+```
+11:15:00 - pago2 creado (estado: pendiente)
+11:15:05 - transaccion1 enviada a gateway
+11:15:23 - Gateway responde: approved
+11:15:24 - pago2 actualizado (estado: aprobado)
+11:15:25 - pedido2 cambia a estado: pendiente
+16:30:00 - pedido2 cambia a estado: entregado
+16:30:01 - venta1 generada
+```
+
+### Respuesta del Gateway
+
+```json
+// transaccion1.respuesta_gateway
+{
+  "status": "approved",
+  "transaction_id": "TRX-PAY-789456",
+  "authorization_code": "123456",
+  "payment_method": "VISA_CREDIT",
+  "last_4_digits": "4532",
+  "amount": 87500.00,
+  "currency": "COP",
+  "processor": "PayU",
+  "timestamp": "2025-12-04T11:15:23Z"
+}
+```
+
+---
+
+## 🔄 ESCENARIO: CICLO DE VIDA DE NOTIFICACIÓN
+
+### Descripción
+Notificación enviada a múltiples usuarios por un evento (pedido creado).
+
+### Diagrama de Objetos
+
+```mermaid
+graph TB
+    subgraph "Notificaciones por Pedido Creado"
+        pedido_evento["📦 pedido_nuevo: Pedido<br/>───────────────<br/>id: 1236<br/>estado: 'pendiente'<br/>fecha_creacion: '2025-12-04 14:00'"]
+        
+        notif_cliente["📧 notif_cliente: Notificacion<br/>───────────────<br/>id: 3001<br/>mensaje: 'Tu pedido #1236 ha sido...'<br/>destino: 'cliente@email.com'<br/>leida: true<br/>fecha_lectura: '2025-12-04 14:05'"]
+        
+        notif_logistica["📧 notif_logistica: Notificacion<br/>───────────────<br/>id: 3002<br/>mensaje: 'Nuevo pedido #1236 para...'<br/>destino: 'logistica@prexcol.com'<br/>leida: false<br/>fecha_lectura: null"]
+        
+        notif_proveedor["📧 notif_proveedor: Notificacion<br/>───────────────<br/>id: 3003<br/>mensaje: 'Pedido #1236 incluye tus...'<br/>destino: 'proveedor@proveedora.com'<br/>leida: true<br/>fecha_lectura: '2025-12-04 14:30'"]
+        
+        tipo_pedido["🔔 tipo_pedido: TipoNotificacion<br/>───────────────<br/>id: 1<br/>nombre: 'Nuevo Pedido'"]
+        
+        estado_enviada["✅ estado_enviada: EstadoNotificacion<br/>───────────────<br/>id: 2<br/>nombre: 'Enviada'"]
+        
+        cliente_dest["👤 cliente_dest: Usuario<br/>───────────────<br/>id: 60<br/>rol: 'cliente'"]
+        
+        logistica_dest["👤 logistica_dest: Usuario<br/>───────────────<br/>id: 8<br/>rol: 'logistica'"]
+        
+        proveedor_dest["👤 proveedor_dest: Usuario<br/>───────────────<br/>id: 15<br/>rol: 'proveedor'"]
+    end
+    
+    notif_cliente -->|usuario| cliente_dest
+    notif_cliente -->|tipo| tipo_pedido
+    notif_cliente -->|estado| estado_enviada
+    
+    notif_logistica -->|usuario| logistica_dest
+    notif_logistica -->|tipo| tipo_pedido
+    notif_logistica -->|estado| estado_enviada
+    
+    notif_proveedor -->|usuario| proveedor_dest
+    notif_proveedor -->|tipo| tipo_pedido
+    notif_proveedor -->|estado| estado_enviada
+```
+
+---
+
+## 📊 COMPARACIÓN: DIAGRAMA DE CLASES vs OBJETOS
+
+### Diagrama de Clases (Abstracto)
+
+```
+Usuario
+  - id: Long
+  - email: String
+  - rol: String
+  [0..*] ──────> [1] Pedido
+```
+
+### Diagrama de Objetos (Concreto)
+
+```
+usuario1: Usuario
+  - id: 42
+  - email: "maria@email.com"
+  - rol: "cliente"
+  ──────> pedido1: Pedido
+           - id: 1234
+           - estado: "preparando"
+```
+
+---
+
+## 🎯 CASOS DE USO DE DIAGRAMAS DE OBJETOS
+
+### 1. Debugging
+```
+Problema: Total de pedido incorrecto
+Solución: Crear diagrama de objetos del pedido específico
+         Ver valores exactos y relaciones activas
+```
+
+### 2. Testing
+```
+Escenario de Prueba: Usuario con 3 intentos fallidos
+Diagrama: Muestra objetos concretos de sesiones y errores
+```
+
+### 3. Documentación de Estados
+```
+Estado del Sistema: Producto con stock crítico
+Diagrama: Instancias reales mostrando alertas y configuración
+```
+
+### 4. Ejemplos Didácticos
+```
+Enseñar a nuevos desarrolladores:
+- Cómo se relacionan objetos en runtime
+- Valores típicos de cada campo
+- Cardinalidades en acción
+```
+
+---
+
+## 📝 NOTACIÓN Y CONVENCIONES
+
+### Formato de Instancias
+
+```
+nombre_variable: TipoClase
+───────────────────────
+atributo1: valor1
+atributo2: valor2
+...
+```
+
+### Enlaces
+
+```
+objeto1 ──>|rol| objeto2
+```
+
+### Valores Especiales
+
+- `null` - Valor nulo
+- `true/false` - Booleanos
+- `'texto'` - Strings
+- `123` - Números
+- `[...]` - Colecciones
+
+---
+
+**Documento generado**: 2025-12-04  
+**Versión**: 1.0  
+**Estado**: ✅ Completado

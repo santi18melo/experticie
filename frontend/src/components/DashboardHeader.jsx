@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import LanguageSelector from './LanguageSelector';
 import '../styles/DashboardHeader.css';
 
 const DashboardHeader = ({ title }) => {
@@ -60,6 +61,7 @@ const DashboardHeader = ({ title }) => {
         >
           📄 API Docs
         </a>
+        <LanguageSelector />
         <button onClick={handleLogout} className="btn-logout">
           🚪 Cerrar Sesión
         </button>
