@@ -27,7 +27,9 @@
 
 - [x] **Base de datos**
   - PostgreSQL configurado vía `DATABASE_URL` o variables `POSTGRES_*`
+  - `psycopg2-binary` instalado en requirements.txt
   - Migraciones aplicadas: `python manage.py migrate`
+  - **Ver guía completa:** `docs/POSTGRESQL_SETUP.md`
 
 - [x] **Archivos estáticos**
   - `python manage.py collectstatic --noinput`
