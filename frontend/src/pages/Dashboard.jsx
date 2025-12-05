@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import DashboardHeader from '../components/DashboardHeader';
 
 // Import specialized dashboards
-import DashboardAdmin from './dashboardAdmin';
+import DashboardAdmin from './dashboardAdmin.jsx';
 import CompradorDashboard from './CompradorDashboard';
 import UnifiedDashboard from './UnifiedDashboard';
 import ProveedorDashboard from './ProveedorDashboard';
