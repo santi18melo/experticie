@@ -1,0 +1,162 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "phone": "Phone",
+    "address": "Address",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "price": "Price",
+    "quantity": "Quantity",
+    "stock": "Stock",
+    "available": "Available",
+    "unavailable": "Unavailable"
+  },
+  "auth": {
+    "loginTitle": "Login to PREXCOL",
+    "registerTitle": "Create Account",
+    "forgotPassword": "Forgot your password?",
+    "rememberMe": "Remember me",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginSuccess": "Login successful",
+    "loginError": "Invalid credentials",
+    "registerSuccess": "Account created successfully",
+    "logoutSuccess": "Logged out successfully"
+  },
+  "dashboard": {
+    "admin": {
+      "title": "Admin Dashboard",
+      "users": "Users",
+      "stores": "Stores",
+      "products": "Products",
+      "orders": "Orders",
+      "stats": {
+        "totalUsers": "Total Users",
+        "activeUsers": "Active Users",
+        "totalStores": "Total Stores",
+        "totalProducts": "Total Products",
+        "totalOrders": "Total Orders",
+        "pendingOrders": "Pending Orders"
+      }
+    },
+    "client": {
+      "title": "Client Dashboard",
+      "myOrders": "My Orders",
+      "selectStore": "Select Store",
+      "catalog": "Catalog",
+      "cart": "Cart",
+      "checkout": "Checkout"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "addToCart": "Add to Cart",
+    "removeFromCart": "Remove from Cart",
+    "basic": "Basic",
+    "normal": "Normal",
+    "category": "Category",
+    "description": "Description",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Low Stock",
+    "inStock": "In Stock"
+  },
+  "orders": {
+    "title": "Orders",
+    "createOrder": "Create Order",
+    "orderNumber": "Order #{{number}}",
+    "orderDate": "Order Date",
+    "orderStatus": "Order Status",
+    "paymentMethod": "Payment Method",
+    "status": {
+      "pending": "Pending",
+      "preparing": "Preparing",
+      "inTransit": "In Transit",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "paymentMethods": {
+      "cash": "Cash",
+      "card": "Card",
+      "transfer": "Transfer"
+    },
+    "confirmCreate": "Are you sure you want to create this order?",
+    "createSuccess": "Order created successfully",
+    "createError": "Error creating order",
+    "updateSuccess": "Order updated successfully",
+    "noOrders": "You don't have any orders yet"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "itemCount": "{{count}} item",
+    "itemCount_plural": "{{count}} items",
+    "clearCart": "Clear Cart",
+    "confirmClear": "Are you sure you want to clear the cart?",
+    "exceedsStock": "Quantity exceeds available stock",
+    "addedToCart": "Product added to cart",
+    "removedFromCart": "Product removed from cart"
+  },
+  "users": {
+    "title": "Users",
+    "createUser": "Create User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "confirmDelete": "Are you sure you want to delete this user?",
+    "role": "Role",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "roles": {
+      "admin": "Administrator",
+      "client": "Client",
+      "provider": "Provider",
+      "logistics": "Logistics"
+    }
+  },
+  "stores": {
+    "title": "Stores",
+    "createStore": "Create Store",
+    "editStore": "Edit Store",
+    "deleteStore": "Delete Store",
+    "selectStore": "Select a store",
+    "noStores": "No stores available"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Enter a valid email address",
+    "minLength": "Minimum {{min}} characters",
+    "maxLength": "Maximum {{max}} characters",
+    "passwordMatch": "Passwords do not match",
+    "phoneFormat": "Invalid phone format",
+    "positiveNumber": "Must be a positive number",
+    "integer": "Must be an integer"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "network": "Connection error. Check your internet.",
+    "unauthorized": "You don't have permission to perform this action.",
+    "notFound": "Resource not found.",
+    "serverError": "Server error. Try again later.",
+    "sessionExpired": "Your session has expired. Please login again."
+  }
+}
