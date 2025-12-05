@@ -3,7 +3,7 @@ import AdminUsersTab from "../components/admin/tabs/AdminUsersTab";
 import AdminStoresTab from "../components/admin/tabs/AdminStoresTab";
 import AdminProductsTab from "../components/admin/tabs/AdminProductsTab";
 import AdminOrdersTab from "../components/admin/tabs/AdminOrdersTab";
-import "./dashboardAdmin.css"; // opcional, crea estilos premium
+import "../styles/dashboardAdmin.css";
 
 const tabs = [
   { id: "users", label: "Usuarios", Component: AdminUsersTab },
