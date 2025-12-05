@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: prexcol-backend
+    env: python
+    buildCommand: pip install -r requirements.txt && python backend/manage.py collectstatic --noinput
+    startCommand: gunicorn --chdir backend wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        value: "*"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: prexcol-db
+          property: connectionString
+      - key: WEB_CONCURRENCY
+        value: 2
+
+databases:
+  - name: prexcol-db
+    databaseName: prexcol
+    user: prexcol_user
+    plan: free
