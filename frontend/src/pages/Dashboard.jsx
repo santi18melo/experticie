@@ -11,7 +11,7 @@ import UnifiedDashboard from './UnifiedDashboard';
 import ProveedorDashboard from './ProveedorDashboard';
 
 // Import styles (using the professional admin styles for consistency)
-import '../styles/DashboardAdmin.css';
+import '../styles/dashboardAdmin.css';
 
 // Default Dashboard for Clients (or generic users)
 const ClienteDashboard = () => {
