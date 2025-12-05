@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import LanguageSelector from './LanguageSelector';
+import { getMediaURL } from '../config/api.js';
 import '../styles/DashboardHeader.css';
 
 const DashboardHeader = ({ title }) => {
@@ -17,9 +18,7 @@ const DashboardHeader = ({ title }) => {
   };
 
   const getImageUrl = (path) => {
-    if (!path) return null;
-    if (path.startsWith('http') || path.startsWith('blob')) return path;
-    return `http://127.0.0.1:8000${path}`;
+    return getMediaURL(path) || null;
   };
 
   return (
@@ -53,7 +52,7 @@ const DashboardHeader = ({ title }) => {
           </div>
         </div>
         <a 
-          href="http://127.0.0.1:8000/swagger/" 
+          href={`${getMediaURL('')}/swagger/`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="btn-link"

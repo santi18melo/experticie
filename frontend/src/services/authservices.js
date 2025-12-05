@@ -1,7 +1,8 @@
 // src/services/authservices.js
 import axios from "axios";
+import API_CONFIG from "../config/api.js";
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = API_CONFIG.baseURL;
 
 // ================= AXIOS PROTEGIDO =================
 const authAxios = axios.create({
