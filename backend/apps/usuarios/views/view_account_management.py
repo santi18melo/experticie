@@ -175,8 +175,29 @@ def request_support(request):
     message = request.data.get('message', '')
     issue_type = request.data.get('issue_type', 'general')
     
-    # TODO: Implementar sistema de tickets o envío de email
-    # Por ahora solo registramos la solicitud
+    # Implementación básica de envío de correo a soporte
+    from django.core.mail import send_mail
+    from django.conf import settings
+
+    subject = f"Solicitud de Soporte: {issue_type} - Usuario {user.email}"
+    email_message = f"""
+    Usuario: {user.nombre} ({user.email})
+    Tipo de problema: {issue_type}
+    Mensaje:
+    {message}
+    """
+    
+    try:
+        send_mail(
+            subject,
+            email_message,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.DEFAULT_FROM_EMAIL], # Enviar al admin (mismo correo por ahora)
+            fail_silently=False,
+        )
+    except Exception as e:
+        print(f"Error enviando correo de soporte: {e}")
+        # No fallamos la request, pero logueamos el error
     
     return Response({
         'message': 'Tu solicitud ha sido enviada al equipo de soporte. Te contactaremos pronto.',

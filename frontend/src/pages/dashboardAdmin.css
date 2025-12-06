@@ -1,0 +1,49 @@
+/* dashboardAdmin.css – estilos premium para el panel de administración */
+
+.dashboard-admin {
+  padding: 2rem;
+  background: linear-gradient(135deg, hsl(210,30%,95%), hsl(210,20%,90%));
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-admin__title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: hsl(210,40%,20%);
+  text-align: center;
+}
+
+.dashboard-admin__nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-admin__tab {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: hsl(210,30%,85%);
+  color: hsl(210,30%,20%);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.dashboard-admin__tab:hover {
+  background: hsl(210,30%,78%);
+}
+
+.dashboard-admin__tab.active {
+  background: hsl(210,40%,55%);
+  color: #fff;
+}
+
+.dashboard-admin__content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}

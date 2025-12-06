@@ -55,10 +55,14 @@ def login_user(request):
     user = serializer.validated_data["user"]
 
     # Verificar que el usuario esté activo
+    # Verificar que el usuario esté activo
     if not user.estado:
+        # Security: Return generic error to prevent user enumeration, 
+        # or keep 403 but be aware it reveals account existence.
+        # Choosing to return 401 for better security.
         return Response(
-            {"error": "Tu cuenta ha sido desactivada. Contacta al administrador."},
-            status=status.HTTP_403_FORBIDDEN,
+            {"error": "Credenciales inválidas o cuenta desactivada"},
+            status=status.HTTP_401_UNAUTHORIZED,
         )
 
     # Actualizar último ingreso

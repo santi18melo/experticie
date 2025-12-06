@@ -20,6 +20,18 @@ services:
       - key: WEB_CONCURRENCY
         value: 2
 
+  - type: static
+    name: prexcol-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: prexcol-backend
+          property: url
+
 databases:
   - name: prexcol-db
     databaseName: prexcol
