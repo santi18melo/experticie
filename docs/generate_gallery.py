@@ -22,8 +22,8 @@ def parse_markdown_files():
     rst_content.append("Galería Visual de Diagramas")
     rst_content.append("===========================")
     rst_content.append("")
-    rst_content.append("A continuación se presentan todos los diagramas del sistema renderizados dinámicamente.")
-    rst_content.append("Use el enlace 'Editar en Mermaid Live' para abrir el diagrama en el editor online.")
+    rst_content.append("A continuación se presentan todos los diagramas del sistema organizados visualmente.")
+    rst_content.append("Use las pestañas para alternar entre la visualización y el código fuente.")
     rst_content.append("")
 
     files = sorted([f for f in os.listdir(DIAGRAMS_DIR) if f.endswith('.md') and not f.startswith('INDEX') and not f.startswith('INDICE') and not f.startswith('RESUMEN')])
@@ -40,31 +40,51 @@ def parse_markdown_files():
             continue
 
         title = filename.replace('.md', '').replace('_', ' ').title()
-        rst_content.append(title)
-        rst_content.append("-" * len(title))
+        
+        rst_content.append(f".. dropdown:: {title}")
+        rst_content.append(f"    :open:")
+        rst_content.append(f"    :icon: graph")
         rst_content.append("")
-
+        
         for i, code in enumerate(mermaid_blocks):
-            diagram_name = f"Diagrama {i+1} de {title}"
+            diagram_name = f"Diagrama {i+1}"
             link = generate_mermaid_link(code)
             
-            rst_content.append(diagram_name)
-            rst_content.append("^" * len(diagram_name))
+            rst_content.append(f"    .. card:: {diagram_name}")
+            rst_content.append(f"        :class-card: sd-mb-3")
             rst_content.append("")
             
-            # Using raw directive for cleaner indentation handling if needed, but standard mermaid block is fine
-            rst_content.append(".. mermaid::")
+            rst_content.append(f"        .. tab-set::")
+            rst_content.append("")
+            
+            # Tab 1: Visualización
+            rst_content.append(f"            .. tab-item:: 👁️ Visualización")
+            rst_content.append(f"                :sync: view")
+            rst_content.append("")
+            rst_content.append(f"                .. mermaid::")
             rst_content.append("")
             for line in code.split('\n'):
-                rst_content.append(f"   {line}")
+                rst_content.append(f"                    {line}")
             rst_content.append("")
-            
-            rst_content.append(f"`✏️ Editar este diagrama en Mermaid Live <{link}>`_")
+            rst_content.append(f"                .. button-link:: {link}")
+            rst_content.append(f"                    :color: primary")
+            rst_content.append(f"                    :icon: octicon:pencil")
+            rst_content.append(f"                    :expand:")
             rst_content.append("")
-            rst_content.append(".. raw:: html")
+            rst_content.append(f"                    Editar en Mermaid Live")
             rst_content.append("")
-            rst_content.append("   <br><hr><br>")
+
+            # Tab 2: Código Fuente
+            rst_content.append(f"            .. tab-item:: 📝 Código Fuente")
+            rst_content.append(f"                :sync: code")
             rst_content.append("")
+            rst_content.append(f"                .. code-block:: mermaid")
+            rst_content.append("")
+            for line in code.split('\n'):
+                rst_content.append(f"                    {line}")
+            rst_content.append("")
+        
+        rst_content.append("")
 
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('\n'.join(rst_content))

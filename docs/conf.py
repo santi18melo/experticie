@@ -28,6 +28,7 @@ extensions = [
     'autodoc2',
     'myst_parser',
     'sphinxcontrib.mermaid',
+    'sphinx_design',
 ]
 
 # Autodoc2 configuration
