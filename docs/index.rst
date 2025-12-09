@@ -11,6 +11,7 @@ Bienvenido a la documentación técnica de **PREXCOL**, un sistema completo de g
    guia_inicio
    arquitectura
    diagramas/INDEX_DIAGRAMAS
+   diagramas/galeria
    apidocs/index
    guias_usuario
    deployment
