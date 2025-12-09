@@ -2,8 +2,8 @@ services:
   - type: web
     name: prexcol-backend
     env: python
-    buildCommand: pip install -r requirements.txt && python backend/manage.py collectstatic --noinput
-    startCommand: gunicorn --chdir backend wsgi:application
+    buildCommand: pip install -r requirements.txt && python src/backend/manage.py collectstatic --noinput
+    startCommand: gunicorn --chdir src/backend wsgi:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
@@ -23,8 +23,8 @@ services:
   - type: static
     name: prexcol-frontend
     env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    buildCommand: cd src/frontend && npm install && npm run build
+    staticPublishPath: src/frontend/dist
     envVars:
       - key: VITE_API_URL
         fromService:

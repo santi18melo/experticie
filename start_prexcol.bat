@@ -24,37 +24,36 @@ if not exist "logs\frontend" mkdir logs\frontend
 if not exist "logs\celery" mkdir logs\celery
 
 echo [1/7] Updating Dependencies...
-call .venv\Scripts\activate.bat
 echo Installing core dependencies...
-pip install --upgrade pip --quiet
-pip install -r requirements.txt --quiet --no-warn-script-location 2>nul || (
+.venv\Scripts\python.exe -m pip install --upgrade pip --quiet
+.venv\Scripts\python.exe -m pip install -r requirements.txt --quiet --no-warn-script-location 2>nul || (
     echo Warning: Some optional packages failed to install. Continuing...
 )
 echo Dependencies updated successfully.
 echo.
 
 echo [2/7] Running Database Migrations...
-python backend\manage.py migrate
+.venv\Scripts\python.exe src\backend\manage.py migrate
 if %errorlevel% neq 0 (
     echo [WARNING] Migrations failed. Continuing anyway...
-    echo Check if dj-database-url is installed: python -m pip install dj-database-url whitenoise
+    echo Check if dj-database-url is installed: .venv\Scripts\python.exe -m pip install dj-database-url whitenoise
 )
 echo.
 
 echo [3/7] Starting Django Backend...
-start "PREXCOL Backend" cmd /k "call .venv\Scripts\activate.bat && cd backend && python manage.py runserver > ..\logs\backend\server.log 2>&1"
+start "PREXCOL Backend" cmd /k "cd /d %~dp0src\backend && set PYTHONPATH=%~dp0src;%~dp0src\backend && ..\..\\.venv\Scripts\python.exe manage.py runserver 0.0.0.0:8000"
 echo.
 
 echo [4/7] Starting Celery Worker...
-start "PREXCOL Celery Worker" cmd /k "call .venv\Scripts\activate.bat && cd backend && celery -A backend worker -l info > ..\logs\celery\worker.log 2>&1"
+start "PREXCOL Celery Worker" cmd /k "cd src\backend && ..\..\.venv\Scripts\celery.exe -A backend worker -l info > ..\..\logs\celery\worker.log 2>&1"
 echo.
 
 echo [5/7] Starting Celery Beat...
-start "PREXCOL Celery Beat" cmd /k "call .venv\Scripts\activate.bat && cd backend && celery -A backend beat -l info > ..\logs\celery\beat.log 2>&1"
+start "PREXCOL Celery Beat" cmd /k "cd src\backend && ..\..\.venv\Scripts\celery.exe -A backend beat -l info > ..\..\logs\celery\beat.log 2>&1"
 echo.
 
 echo [6/7] Starting React Frontend...
-cd frontend
+cd src\frontend
 if not exist "node_modules" (
     echo Installing frontend dependencies...
     call npm install
@@ -62,8 +61,8 @@ if not exist "node_modules" (
     echo Checking for new frontend dependencies...
     call npm install --quiet
 )
-start "PREXCOL Frontend" cmd /k "npm run dev > ..\logs\frontend\client.log 2>&1"
-cd ..
+start "PREXCOL Frontend" cmd /k "npm run dev > ..\..\logs\frontend\client.log 2>&1"
+cd ..\..
 echo.
 
 echo [7/7] Waiting for services to start...
