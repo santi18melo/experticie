@@ -3,9 +3,8 @@ Galería Visual de Diagramas
 
 Explora la arquitectura y flujos de PREXCOL a través de nuestra galería interactiva.
 
-.. container:: hero-buttons
-
-    **Accesos Rápidos del Sistema**
+.. card:: Accesos Rápidos del Sistema
+    :class-card: hero-buttons sd-mb-4 sd-text-center
 
     .. grid:: 2
         :gutter: 3
@@ -37,7 +36,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
 ---
 
-.. dropdown:: 📊 Diagrama Actividad :badge:`7 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Actividad (7 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -933,7 +932,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         style ErrorUsed fill:#FFB6C1
 
 
-.. dropdown:: 📊 Diagrama Casos Uso :badge:`5 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Casos Uso (5 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -1527,7 +1526,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         C9 -.include.-> C8
 
 
-.. dropdown:: 📊 Diagrama Clases :badge:`1 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Clases (1 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -2039,7 +2038,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Notificacion --> EstadoNotificacion : tiene estado
 
 
-.. dropdown:: 📊 Diagrama Colaboracion :badge:`5 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Colaboracion (5 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -2557,7 +2556,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         style DB fill:#fff4e1
 
 
-.. dropdown:: 📊 Diagrama Componentes Paquetes :badge:`7 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Componentes Paquetes (7 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -3295,7 +3294,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         end
 
 
-.. dropdown:: 📊 Diagrama Despliegue :badge:`3 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Despliegue (3 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -3679,7 +3678,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Health -->|fail| Rollback[Rollback]
 
 
-.. dropdown:: 📊 Diagrama Estados :badge:`5 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Estados (5 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -4355,7 +4354,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         end note
 
 
-.. dropdown:: 📊 Diagrama Objetos :badge:`5 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Objetos (5 diagramas)
     :open:
     :class-container: sd-mb-4
 
@@ -4845,7 +4844,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         notif_proveedor -->|estado| estado_enviada
 
 
-.. dropdown:: 📊 Diagrama Secuencia :badge:`10 diagramas, badge-info`
+.. dropdown:: 📊 Diagrama Secuencia (10 diagramas)
     :open:
     :class-container: sd-mb-4
 

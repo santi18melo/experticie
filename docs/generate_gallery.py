@@ -29,9 +29,8 @@ def parse_markdown_files():
     rst_content.append("Explora la arquitectura y flujos de PREXCOL a través de nuestra galería interactiva.")
     rst_content.append("")
     
-    rst_content.append(".. container:: hero-buttons")
-    rst_content.append("")
-    rst_content.append("    **Accesos Rápidos del Sistema**")
+    rst_content.append(".. card:: Accesos Rápidos del Sistema")
+    rst_content.append("    :class-card: hero-buttons sd-mb-4 sd-text-center")
     rst_content.append("")
     rst_content.append("    .. grid:: 2")
     rst_content.append("        :gutter: 3")
@@ -79,7 +78,8 @@ def parse_markdown_files():
 
         title = filename.replace('.md', '').replace('_', ' ').title()
         
-        rst_content.append(f".. dropdown:: 📊 {title} :badge:`{len(mermaid_blocks)} diagramas, badge-info`")
+        # Removed broken badge syntax from title
+        rst_content.append(f".. dropdown:: 📊 {title} ({len(mermaid_blocks)} diagramas)")
         rst_content.append(f"    :open:")
         rst_content.append(f"    :class-container: sd-mb-4")
         rst_content.append("")
