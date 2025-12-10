@@ -69,9 +69,9 @@ def get_advanced_metrics(request):
 
     # --- USER METRICS ---
     users_data = {
-        'active': Usuario.objects.filter(is_active=True).count(),
-        'inactive': Usuario.objects.filter(is_active=False).count(),
-        'new_users': Usuario.objects.filter(fecha_registro__gte=start_date).count(),
+        'active': Usuario.objects.filter(estado=True).count(),
+        'inactive': Usuario.objects.filter(estado=False).count(),
+        'new_users': Usuario.objects.filter(fecha_creacion__gte=start_date).count(),
         'top_buyers': [] # TODO: Aggregate from Pedido if linked
     }
 
