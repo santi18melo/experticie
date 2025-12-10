@@ -19,8 +19,18 @@
 ![Diagrama de Casos de Uso Visual](imagenes/10_diagrama_casos_uso.png)
 
 ```mermaid
-graph TB
+graph LR
+    %% Actors on the Left
+    Admin((Administrador))
+    Proveedor((Proveedor))
+    Logistica((Logística))
+    Cliente((Cliente))
+    Sistema_Ext[Sistema Externo]
+
+    %% System Boundary
     subgraph Sistema_PREXCOL["SISTEMA PREXCOL"]
+        direction TB
+        
         subgraph Autenticacion["Módulo de Autenticación"]
             UC1[Registrarse]
             UC2[Iniciar Sesión]
@@ -58,36 +68,33 @@ graph TB
             UC22[Generar Reportes]
         end
 
-        subgraph Notificaciones["Módulo de Notificaciones"]
-            UC23[Enviar Notificación]
-            UC24[Ver Notificaciones]
-            UC25[Marcar como Leída]
-        end
-
         subgraph Administracion["Módulo de Administración"]
             UC26[Gestionar Usuarios]
             UC27[Suspender Cuenta]
             UC28[Ver Dashboard]
             UC29[Configurar Sistema]
         end
+        
+        subgraph Notificaciones["Módulo de Notificaciones"]
+            UC23[Enviar Notificación]
+            UC24[Ver Notificaciones]
+            UC25[Marcar como Leída]
+        end
     end
 
-    Admin((Administrador))
-    Proveedor((Proveedor))
-    Logistica((Logística))
-    Cliente((Cliente))
-    Sistema_Ext[Sistema Externo]
-
+    %% Relationships - Organized to reduce crossing
+    %% Admin Connections
     Admin --> UC1
     Admin --> UC2
     Admin --> UC6
     Admin --> UC7
     Admin --> UC8
+    Admin --> UC22
     Admin --> UC26
     Admin --> UC27
     Admin --> UC28
-    Admin --> UC22
-
+    
+    %% Provider Connections
     Proveedor --> UC1
     Proveedor --> UC2
     Proveedor --> UC7
@@ -96,13 +103,15 @@ graph TB
     Proveedor --> UC13
     Proveedor --> UC14
     Proveedor --> UC22
-
+    
+    %% Logistica Connections
     Logistica --> UC1
     Logistica --> UC2
     Logistica --> UC17
     Logistica --> UC18
     Logistica --> UC28
-
+    
+    %% Client Connections
     Cliente --> UC1
     Cliente --> UC2
     Cliente --> UC9
@@ -112,8 +121,9 @@ graph TB
     Cliente --> UC19
     Cliente --> UC24
 
-    UC16 ..> Sistema_Ext : <<include>>
-    UC23 ..> Sistema_Ext : <<include>>
+    %% Include/Extend
+    UC16 -.-> Sistema_Ext
+    UC23 -.-> Sistema_Ext
 ```
 
 ---

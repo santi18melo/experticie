@@ -23,19 +23,11 @@ flowchart TD
     Start([Inicio]) --> Input[Usuario completa formulario]
     Input --> ValidateClient{Validación<br/>cliente OK?}
     
-    ValidateClient -->|No| ShowError1[Mostrar errores<br/>de validación]
-    ShowError1 --> Input
-    
+    %% Happy Path
     ValidateClient -->|Sí| Submit[Enviar a backend]
     Submit --> CheckEmail{Email<br/>único?}
     
-    CheckEmail -->|No| EmailExists[Error: Email ya existe]
-    EmailExists --> Input
-    
     CheckEmail -->|Sí| CheckPass{Password<br/>válido?}
-    
-    CheckPass -->|No| PassWeak[Error: Password débil]
-    PassWeak --> Input
     
     CheckPass -->|Sí| CreateUser[Crear usuario en DB]
     CreateUser --> SaveHistory[Guardar password<br/>en historial]
@@ -43,6 +35,16 @@ flowchart TD
     SendEmail --> ShowSuccess[Mensaje: Registro exitoso]
     ShowSuccess --> RedirectLogin[Redirect a Login]
     RedirectLogin --> End([Fin])
+
+    %% Error Loops (Dotted for cleaner visuals)
+    ValidateClient -- No --> ShowError1[Mostrar errores<br/>de validación]
+    ShowError1 -.-> Input
+    
+    CheckEmail -- No --> EmailExists[Error: Email ya existe]
+    EmailExists -.-> Input
+    
+    CheckPass -- No --> PassWeak[Error: Password débil]
+    PassWeak -.-> Input
     
     style Start fill:#90EE90
     style End fill:#90EE90
@@ -62,8 +64,6 @@ flowchart TD
     SelectProduct --> ViewDetails[Ver detalles]
     
     ViewDetails --> CheckStock{Stock<br/>disponible?}
-    CheckStock -->|No| OutOfStock[Mostrar "Agotado"]
-    OutOfStock --> Browse
     
     CheckStock -->|Sí| AddCart[Agregar al carrito]
     AddCart --> MoreProducts{Agregar<br/>más productos?}
@@ -78,9 +78,6 @@ flowchart TD
     AdjustQty -->|No| Checkout[Proceder al pago]
     Checkout --> ValidateStock{Todo el stock<br/>disponible?}
     
-    ValidateStock -->|No| StockError[Error: Stock insuficiente]
-    StockError --> ViewCart
-    
     ValidateStock -->|Sí| SelectPayment[Seleccionar método<br/>de pago]
     SelectPayment --> PaymentMethod{Método?}
     
@@ -94,18 +91,25 @@ flowchart TD
     
     ProcessPayment --> PaymentResult{Pago<br/>exitoso?}
     
-    PaymentResult -->|No| PaymentFailed[Pago rechazado]
-    PaymentFailed --> RetryPayment{Reintentar?}
-    RetryPayment -->|Sí| SelectPayment
-    RetryPayment -->|No| CancelOrder[Cancelar orden]
-    CancelOrder --> End1([Fin: Sin pedido])
-    
     PaymentResult -->|Sí| CreateOrder[Crear pedido]
     CreateOrder --> ReduceStock[Reducir stock]
-    ReduceStock --> SendNotifications[Enviar notificaciones<br/>• Cliente<br/>• Logística<br/>• Proveedor]
-    SendNotifications --> ShowConfirmation[Mostrar confirmación<br/>con número de pedido]
+    ReduceStock --> SendNotifications[Enviar notificaciones]
+    SendNotifications --> ShowConfirmation[Mostrar confirmación]
     ShowConfirmation --> SendConfirmEmail[Enviar email<br/>de confirmación]
     SendConfirmEmail --> End2([Fin: Pedido creado])
+
+    %% Feedback / Alternate Paths
+    CheckStock -- No --> OutOfStock[Mostrar "Agotado"]
+    OutOfStock -.-> Browse
+    
+    ValidateStock -- No --> StockError[Error: Stock insuficiente]
+    StockError -.-> ViewCart
+    
+    PaymentResult -- No --> PaymentFailed[Pago rechazado]
+    PaymentFailed --> RetryPayment{Reintentar?}
+    RetryPayment -- Sí --> SelectPayment
+    RetryPayment -- No --> CancelOrder[Cancelar orden]
+    CancelOrder --> End1([Fin: Sin pedido])
     
     style Start fill:#90EE90
     style End1 fill:#FFB6C1
@@ -129,11 +133,6 @@ flowchart TD
     SelectOrder --> ViewDetails[Ver detalles]
     ViewDetails --> CheckInventory{Productos<br/>disponibles?}
     
-    CheckInventory -->|No| ReportIssue[Reportar problema]
-    ReportIssue --> NotifyAdmin[Notificar admin]
-    NotifyAdmin --> WaitResolution[Esperar resolución]
-    WaitResolution --> End1([Fin: Pendiente])
-    
     CheckInventory -->|Sí| StartPrep[Iniciar preparación]
     StartPrep --> ChangeStatus1[Cambiar estado:<br/>PREPARANDO]
     ChangeStatus1 --> NotifyClient1[Notificar cliente]
@@ -144,9 +143,6 @@ flowchart TD
     PackOrder --> PrintLabel[Imprimir etiqueta]
     
     PrintLabel --> ReadyShip{Listo para<br/>enviar?}
-    ReadyShip -->|No| CheckIssue{Hay<br/>problema?}
-    CheckIssue -->|Sí| ReportIssue
-    CheckIssue -->|No| PickProducts
     
     ReadyShip -->|Sí| ChangeStatus2[Cambiar estado:<br/>EN_TRANSITO]
     ChangeStatus2 --> NotifyClient2[Notificar cliente]
@@ -156,18 +152,28 @@ flowchart TD
     InTransit --> WaitDelivery[Esperar confirmación<br/>de entrega]
     
     WaitDelivery --> DeliveryConfirm{Entrega<br/>confirmada?}
-    DeliveryConfirm -->|No| DeliveryIssue{Hay<br/>problema?}
-    DeliveryIssue -->|Sí| ContactClient[Contactar cliente]
-    ContactClient --> Reschedule[Reprogramar entrega]
-    Reschedule --> InTransit
-    
-    DeliveryIssue -->|No| WaitDelivery
     
     DeliveryConfirm -->|Sí| ChangeStatus3[Cambiar estado:<br/>ENTREGADO]
     ChangeStatus3 --> GenerateSale[Generar registro<br/>de venta]
     GenerateSale --> NotifyClient3[Notificar cliente]
     NotifyClient3 --> UpdateMetrics[Actualizar métricas]
     UpdateMetrics --> End2([Fin: Completado])
+
+    %% Exceptions
+    CheckInventory -- No --> ReportIssue[Reportar problema]
+    ReportIssue --> NotifyAdmin[Notificar admin]
+    NotifyAdmin --> WaitResolution[Esperar resolución]
+    WaitResolution --> End1([Fin: Pendiente])
+
+    ReadyShip -- No --> CheckIssue{Hay<br/>problema?}
+    CheckIssue -- Sí --> ReportIssue
+    CheckIssue -- No --> PickProducts
+    
+    DeliveryConfirm -- No --> DeliveryIssue{Hay<br/>problema?}
+    DeliveryIssue -- Sí --> ContactClient[Contactar cliente]
+    ContactClient --> Reschedule[Reprogramar entrega]
+    Reschedule -.-> InTransit
+    DeliveryIssue -- No --> WaitDelivery
     
     style Start fill:#90EE90
     style End1 fill:#FFA500
@@ -193,24 +199,24 @@ flowchart TD
     NextProduct --> CheckStock{Stock actual <=<br/>Stock mínimo?}
     
     CheckStock -->|No| SkipProduct[No requiere recarga]
-    SkipProduct --> Loop
+    SkipProduct -.-> Loop
     
     CheckStock -->|Sí| BeginTrans[BEGIN TRANSACTION]
-    BeginTrans --> CalcRecharge[Calcular cantidad<br/>de recarga]
-    CalcRecharge --> UpdateStock[UPDATE stock<br/>stock += cantidad_recarga]
+    BeginTrans --> CalcRecharge[Calcular cantidad]
+    CalcRecharge --> UpdateStock[UPDATE stock]
     
-    UpdateStock --> LogHistory[INSERT historial_recarga<br/>tipo: automática]
-    LogHistory --> UpdateConfig[UPDATE stock_config<br/>• ultima_recarga<br/>• total_recargas++]
+    UpdateStock --> LogHistory[INSERT historial]
+    LogHistory --> UpdateConfig[UPDATE config]
     
     UpdateConfig --> Commit[COMMIT TRANSACTION]
-    Commit --> SendNotif[Enviar notificación<br/>a proveedor]
+    Commit --> SendNotif[Notificar proveedor]
     SendNotif --> LogEvent[Registrar en log]
-    LogEvent --> Loop
+    LogEvent -.-> Loop
     
     BeginTrans -.Error.-> Rollback[ROLLBACK]
     Rollback --> LogError[Registrar error]
     LogError --> NotifyAdmin[Notificar admin]
-    NotifyAdmin --> Loop
+    NotifyAdmin -.-> Loop
     
     style Start fill:#90EE90
     style End fill:#90EE90
@@ -225,42 +231,41 @@ flowchart TD
 ```mermaid
 flowchart TD
     Start([Inicio]) --> AdminLogin[Admin inicia sesión]
-    AdminLogin --> NavProducts[Navegar a<br/>Gestión de Productos]
-    NavProducts --> ViewProducts[Ver lista de productos]
+    AdminLogin --> NavProducts[Navegar Gestión]
+    NavProducts --> ViewProducts[Ver lista productos]
     
     ViewProducts --> SelectProduct[Seleccionar producto]
     SelectProduct --> ViewCurrent{Proveedor<br/>actual?}
     
-    ViewCurrent -->|No| NewAssign[Nueva asignación]
     ViewCurrent -->|Sí| ConfirmChange{Confirmar<br/>cambio?}
-    ConfirmChange -->|No| ViewProducts
-    ConfirmChange -->|Sí| NewAssign
+    ConfirmChange -- No --> ViewProducts
+    ConfirmChange -- Sí --> NewAssign[Nueva asignación]
+    ViewCurrent -- No --> NewAssign
     
-    NewAssign --> GetProviders[Obtener lista de<br/>proveedores activos]
+    NewAssign --> GetProviders[Listar proveedores]
     GetProviders --> SelectProvider[Seleccionar proveedor]
     
     SelectProvider --> ValidateProvider{Proveedor<br/>válido?}
-    ValidateProvider -->|No| ErrorInvalid[Error: Proveedor inválido]
-    ErrorInvalid --> GetProviders
+    ValidateProvider -- No --> ErrorInvalid[Error: Inválido]
+    ErrorInvalid -.-> GetProviders
     
-    ValidateProvider -->|Sí| ConfirmAssign[Confirmar asignación]
-    ConfirmAssign --> UpdateProduct[UPDATE producto<br/>SET proveedor_id]
+    ValidateProvider -->|Sí| ConfirmAssign[Confirmar]
+    ConfirmAssign --> UpdateProduct[UPDATE producto]
     
     UpdateProduct --> CheckAutoStock{Configurar<br/>recarga auto?}
-    CheckAutoStock -->|Sí| ConfigStock[Configurar<br/>stock_config]
-    ConfigStock --> SetMinStock[Establecer stock_minimo]
-    SetMinStock --> SetRechargeQty[Establecer cantidad_recarga]
-    SetRechargeQty --> EnableAuto[Activar recarga_automatica]
-    EnableAuto --> SaveConfig[Guardar configuración]
+    CheckAutoStock -->|Sí| ConfigStock[Configurar]
+    ConfigStock --> SetParams[Establecer parámetros]
+    SetParams --> EnableAuto[Activar]
+    EnableAuto --> SaveConfig[Guardar config]
     SaveConfig --> NotifyProvider
     
-    CheckAutoStock -->|No| NotifyProvider[Notificar proveedor]
-    NotifyProvider --> LogChange[Registrar cambio<br/>en auditoría]
-    LogChange --> ShowSuccess[Mostrar mensaje<br/>de éxito]
-    ShowSuccess --> MoreAssign{Asignar<br/>más productos?}
+    CheckAutoStock -->|No| NotifyProvider[Notificar]
+    NotifyProvider --> LogChange[Registrar auditoría]
+    LogChange --> ShowSuccess[Éxito]
+    ShowSuccess --> MoreAssign{¿Más?}
     
-    MoreAssign -->|Sí| ViewProducts
-    MoreAssign -->|No| End([Fin])
+    MoreAssign -- Sí --> ViewProducts
+    MoreAssign -- No --> End([Fin])
     
     style Start fill:#90EE90
     style End fill:#90EE90
@@ -274,55 +279,52 @@ flowchart TD
 ```mermaid
 flowchart TD
     Start([Inicio]) --> Login{Usuario<br/>autenticado?}
-    Login -->|No| RedirectLogin[Redirect a login]
+    Login -- No --> RedirectLogin[Redirect login]
     RedirectLogin --> End1([Fin])
     
-    Login -->|Sí| CheckRole{Rol de<br/>usuario?}
+    Login -->|Sí| CheckRole{Rol?}
     
     CheckRole -->|Admin| AdminDash[Dashboard Admin]
-    CheckRole -->|Proveedor| ProvDash[Dashboard Proveedor]
-    CheckRole -->|Logística| LogiDash[Dashboard Logística]
-    CheckRole -->|Cliente| ClientDash[Dashboard Cliente]
+    CheckRole -->|Proveedor| ProvDash[Dashboard Prov]
+    CheckRole -->|Logística| LogiDash[Dashboard Log]
+    CheckRole -->|Cliente| ClientDash[Dashboard Client]
     
-    AdminDash --> SelectReportType[Seleccionar tipo<br/>de reporte]
+    AdminDash --> SelectReportType[Seleccionar reporte]
     SelectReportType --> ReportType{Tipo?}
     
-    ReportType -->|Ventas| SalesReport[Reporte de ventas]
-    ReportType -->|Stock| StockReport[Reporte de stock]
-    ReportType -->|Usuarios| UsersReport[Reporte de usuarios]
-    ReportType -->|Pedidos| OrdersReport[Reporte de pedidos]
+    ReportType --> SalesReport[Ventas]
+    ReportType --> StockReport[Stock]
+    ReportType --> UsersReport[Usuarios]
+    ReportType --> OrdersReport[Pedidos]
     
-    SalesReport --> SetDateRange[Establecer rango<br/>de fechas]
-    StockReport --> SetFilters[Establecer filtros]
-    UsersReport --> SetFilters
-    OrdersReport --> SetDateRange
+    ProvDash --> ProvReports[Reportes Prov]
+    LogiDash --> LogiReports[Reportes Log]
+    ClientDash --> ClientReports[Reportes Client]
     
-    SetDateRange --> QueryDB[Consultar base<br/>de datos]
-    SetFilters --> QueryDB
+    SalesReport --> SetParams[Parámetros]
+    StockReport --> SetParams
+    UsersReport --> SetParams
+    OrdersReport --> SetParams
+    ProvReports --> SetParams
+    LogiReports --> SetParams
+    ClientReports --> SetParams
     
-    QueryDB --> ProcessData[Procesar datos]
-    ProcessData --> GenerateChart[Generar gráficos]
-    GenerateChart --> FormatReport[Formatear reporte]
+    SetParams --> QueryDB[Consultar DB]
+    QueryDB --> ProcessData[Procesar]
+    ProcessData --> GenerateChart[Gráficos]
+    GenerateChart --> FormatReport[Formatear]
     
-    FormatReport --> ExportFormat{Formato de<br/>exportación?}
-    ExportFormat -->|PDF| GenPDF[Generar PDF]
-    ExportFormat -->|Excel| GenExcel[Generar Excel]
-    ExportFormat -->|CSV| GenCSV[Generar CSV]
+    FormatReport --> ExportFormat{Exportar?}
+    ExportFormat -->|PDF| GenPDF[PDF]
+    ExportFormat -->|Excel| GenExcel[Excel]
+    ExportFormat -->|CSV| GenCSV[CSV]
     
-    GenPDF --> Download[Descargar archivo]
+    GenPDF --> Download[Descargar]
     GenExcel --> Download
     GenCSV --> Download
     
-    Download --> SaveHistory[Guardar en historial<br/>de reportes]
+    Download --> SaveHistory[Historial]
     SaveHistory --> End2([Fin])
-    
-    ProvDash --> ProvReports[Reportes de proveedor]
-    LogiDash --> LogiReports[Reportes de logística]
-    ClientDash --> ClientReports[Reportes de cliente]
-    
-    ProvReports --> SetFilters
-    LogiReports --> SetFilters
-    ClientReports --> SetDateRange
     
     style Start fill:#90EE90
     style End1 fill:#FFB6C1
@@ -338,51 +340,54 @@ flowchart TD
     Start([Inicio]) --> ViewProfile[Ver perfil]
     ViewProfile --> SelectAction{Acción?}
     
-    SelectAction -->|Editar perfil| EditProfile[Editar información]
-    SelectAction -->|Cambiar password| ChangePass[Cambiar contraseña]
-    SelectAction -->|Desactivar cuenta| DeactivateAcc[Desactivar cuenta]
-    SelectAction -->|Eliminar cuenta| DeleteAcc[Solicitar eliminación]
+    SelectAction -->|Editar| EditProfile
+    SelectAction -->|Pass| ChangePass
+    SelectAction -->|Deactivate| DeactivateAcc[Desactivar]
+    SelectAction -->|Delete| DeleteAcc[Eliminar]
     
-    EditProfile --> InputChanges[Ingresar cambios]
-    InputChanges --> ValidateChanges{Datos<br/>válidos?}
-    ValidateChanges -->|No| ShowErrors[Mostrar errores]
-    ShowErrors --> InputChanges
-    ValidateChanges -->|Sí| SaveChanges[Guardar cambios]
-    SaveChanges --> SuccessMsg[Mensaje de éxito]
+    %% Edit Profile
+    EditProfile --> InputChanges[Ingresar]
+    InputChanges --> ValidateChanges{Válido?}
+    ValidateChanges -- No --> ShowErrors[Error]
+    ShowErrors -.-> InputChanges
+    ValidateChanges -->|Sí| SaveChanges[Guardar]
+    SaveChanges --> SuccessMsg[Éxito]
     SuccessMsg --> ViewProfile
     
-    ChangePass --> InputOldPass[Ingresar contraseña<br/>actual]
-    InputOldPass --> VerifyOldPass{Contraseña<br/>correcta?}
-    VerifyOldPass -->|No| ErrorOldPass[Error: Contraseña<br/>incorrecta]
-    ErrorOldPass --> ChangePass
+    %% Change Pass
+    ChangePass --> InputOldPass[Pass actual]
+    InputOldPass --> VerifyOldPass{Correcta?}
+    VerifyOldPass -- No --> ErrorOldPass[Error]
+    ErrorOldPass -.-> ChangePass
     
-    VerifyOldPass -->|Sí| InputNewPass[Ingresar nueva<br/>contraseña]
-    InputNewPass --> CheckStrength{Contraseña<br/>fuerte?}
-    CheckStrength -->|No| ErrorWeak[Error: Contraseña<br/>débil]
-    ErrorWeak --> InputNewPass
+    VerifyOldPass -->|Sí| InputNewPass[Nueva pass]
+    InputNewPass --> CheckStrength{Fuerte?}
+    CheckStrength -- No --> ErrorWeak[Débil]
+    ErrorWeak -.-> InputNewPass
     
-    CheckStrength -->|Sí| CheckHistory{Ya usada<br/>antes?}
-    CheckHistory -->|Sí| ErrorUsed[Error: Contraseña<br/>ya utilizada]
-    ErrorUsed --> InputNewPass
+    CheckStrength -->|Sí| CheckHistory{Usada?}
+    CheckHistory -- Sí --> ErrorUsed[Usada]
+    ErrorUsed -.-> InputNewPass
     
-    CheckHistory -->|No| UpdatePass[Actualizar contraseña]
-    UpdatePass --> SaveHistory[Guardar en historial]
-    SaveHistory --> LogoutAll[Cerrar sesión en<br/>todos los dispositivos]
-    LogoutAll --> Redirect[Redirect a login]
-    Redirect --> End1([Fin: Reautenticarse])
+    CheckHistory -->|No| UpdatePass[Actualizar]
+    UpdatePass --> SaveHistory[Historial]
+    SaveHistory --> LogoutAll[Logout all]
+    LogoutAll --> Redirect[Login]
+    Redirect --> End1([Fin])
     
-    DeactivateAcc --> ConfirmDeact{Confirmar<br/>desactivación?}
-    ConfirmDeact -->|No| ViewProfile
-    ConfirmDeact -->|Sí| SetSelfDeact[SET self_deactivated=true]
-    SetSelfDeact --> Logout[Cerrar sesión]
-    Logout --> ShowInfo[Mostrar info:<br/>Puede reactivar]
-    ShowInfo --> End2([Fin: Cuenta desactivada])
+    %% Deactivate
+    DeactivateAcc --> ConfirmDeact{Confirmar?}
+    ConfirmDeact -- No --> ViewProfile
+    ConfirmDeact -->|Sí| SetSelfDeact[Desactivar]
+    SetSelfDeact --> Logout[Logout]
+    Logout --> End2([Fin])
     
-    DeleteAcc --> ConfirmDelete{Confirmar<br/>eliminación?}
-    ConfirmDelete -->|No| ViewProfile
-    ConfirmDelete -->|Sí| NotifyAdmin[Notificar admin]
-    NotifyAdmin --> PendingReview[Pendiente de revisión]
-    PendingReview --> End3([Fin: Solicitud enviada])
+    %% Delete
+    DeleteAcc --> ConfirmDelete{Confirmar?}
+    ConfirmDelete -- No --> ViewProfile
+    ConfirmDelete -->|Sí| NotifyAdmin[Notificar Admin]
+    NotifyAdmin --> PendingReview[Revisión]
+    PendingReview --> End3([Fin])
     
     style Start fill:#90EE90
     style End1 fill:#87CEEB

@@ -137,87 +137,91 @@ start_prexcol.bat
 ### Arquitectura Cloud
 
 ```mermaid
-graph TB
-    subgraph "User Devices"
+graph LR
+    subgraph Users["User Devices"]
         Desktop[💻 Desktop Browser]
         Mobile[📱 Mobile Browser]
     end
 
-    subgraph "CDN Layer"
-        CF[Cloudflare CDN<br/>• DDoS Protection<br/>• SSL/TLS<br/>• Caching]
+    subgraph CDN["CDN Layer"]
+        CF[Cloudflare CDN]
     end
 
-    subgraph "Frontend Hosting - Netlify"
+    subgraph Frontend["Frontend Hosting (Netlify)"]
         Build[Build Process]
-        Static[Static Assets<br/>HTML/CSS/JS]
+        Static[Static Assets]
         Edge[Edge Functions]
     end
 
-    subgraph "Backend Hosting - Railway/Render"
+    subgraph Backend["Backend Hosting (Railway/Render)"]
         LB[Load Balancer]
         
-        subgraph "Application Servers"
-            App1[Django Instance 1<br/>Gunicorn]
-            App2[Django Instance 2<br/>Gunicorn]
+        subgraph Apps["Application Servers"]
+            App1[Django Instance 1]
+            App2[Django Instance 2]
         end
 
-        Static_Backend[Static Files Server<br/>WhiteNoise]
+        Static_Backend[Static Files Server]
     end
 
-    subgraph "Database Layer"
-        PG[(PostgreSQL<br/>Managed DB)]
+    subgraph Data["Database Layer"]
+        PG[(PostgreSQL)]
         PG_Backup[(Automated Backups)]
     end
 
-    subgraph "Cache & Queue Layer"
-        Redis_Prod[(Redis Cloud<br/>Managed)]
+    subgraph Cache["Cache & Queue"]
+        Redis_Prod[(Redis Cloud)]
     end
 
-    subgraph "Worker Layer"
+    subgraph Workers["Worker Layer"]
         Worker1[Celery Worker 1]
         Worker2[Celery Worker 2]
-        Beat[Celery Beat<br/>Scheduler]
+        Beat[Celery Beat]
     end
 
-    subgraph "Storage Layer"
-        S3[AWS S3 / Cloudinary<br/>Media Files]
+    subgraph Services["External Services"]
+        SMTP[SendGrid]
+        Gateway[Payment Gateway]
+        Monitoring[Sentry]
+        S3[AWS S3 / Media]
     end
 
-    subgraph "External Services"
-        SMTP[SendGrid<br/>Email Service]
-        Gateway[Payment Gateway<br/>PayU/PSE]
-        Monitoring[Sentry<br/>Error Tracking]
-    end
-
+    %% Connections
     Desktop --> CF
     Mobile --> CF
+    
     CF --> Static
     CF --> LB
     
     Static --> Build
+    
     LB --> App1
     LB --> App2
     
+    %% App Connections
     App1 --> PG
     App2 --> PG
     App1 --> Redis_Prod
     App2 --> Redis_Prod
+    
     App1 --> S3
     App2 --> S3
     
+    App1 --> Gateway
+    App2 --> Gateway
+    App1 --> Monitoring
+    App2 --> Monitoring
+
+    %% Database
     PG --> PG_Backup
     
+    %% Workers
+    Beat --> Redis_Prod
     Worker1 --> Redis_Prod
     Worker2 --> Redis_Prod
-    Beat --> Redis_Prod
     
     Worker1 --> SMTP
     Worker2 --> SMTP
-    App1 --> Gateway
-    App2 --> Gateway
-    
-    App1 --> Monitoring
-    App2 --> Monitoring
     Worker1 --> Monitoring
     Worker2 --> Monitoring
 ```
