@@ -36,7 +36,7 @@ export default function LiveMetricsModal({ onClose }) {
 
   const fetchMetrics = useCallback(async () => {
     try {
-        const response = await axiosInstance.get(`/usuarios/admin/metrics/?range=${timeRange}`);
+        const response = await axiosInstance.get(`/admin/metrics/?range=${timeRange}`);
         setData(response.data);
         setError(null);
     } catch (err) {
