@@ -25,7 +25,7 @@ def self_deactivate_account(request):
     
     # Desactivar cuenta
     user.self_deactivated = True
-    user.is_active = False
+    user.estado = False
     user.save()
 
     # Enviar correo de desactivación
@@ -104,7 +104,7 @@ def self_reactivate_account(request):
     
     # Reactivar cuenta
     user.self_deactivated = False
-    user.is_active = True
+    user.estado = True
     user.save()
     
     return Response({
@@ -137,7 +137,7 @@ def admin_suspend_user(request, user_id):
     
     # Suspender cuenta
     user.admin_suspended = True
-    user.is_active = False
+    user.estado = False
     user.suspension_reason = reason
     user.suspension_date = timezone.now()
     user.save()
@@ -164,7 +164,7 @@ def admin_reactivate_user(request, user_id):
     # Reactivar cuenta
     user.admin_suspended = False
     user.self_deactivated = False
-    user.is_active = True
+    user.estado = True
     user.suspension_reason = None
     user.suspension_date = None
     user.save()
@@ -184,7 +184,7 @@ def get_account_status(request):
     user = request.user
     
     return Response({
-        'is_active': user.is_active,
+        'is_active': user.estado,
         'self_deactivated': user.self_deactivated,
         'admin_suspended': user.admin_suspended,
         'suspension_reason': user.suspension_reason if user.admin_suspended else None,
