@@ -18,7 +18,7 @@ const AdminDashboard = lazy(() => import("../pages/dashboardAdmin.jsx"));
 const CompradorDashboard = lazy(() => import("../pages/CompradorDashboard.jsx"));
 const PanelCliente = lazy(() => import("../components/clientes/PanelCliente.jsx"));
 const PanelLogistica = lazy(() => import("../components/logistica/PanelLogistica.jsx"));
-const ProveedorPanel = lazy(() => import("../components/usuarios/ProveedorPanel.jsx"));
+const ProveedorPanel = lazy(() => import("../pages/ProveedorDashboard.jsx")); // Use the full Dashboard page
 const UnifiedDashboard = lazy(() => import("../pages/UnifiedDashboard.jsx"));
 
 // New Components
