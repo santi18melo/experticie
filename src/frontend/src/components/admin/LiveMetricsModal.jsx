@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ModalEdicion.css'; // Use existing modal styles
+import '../../styles/ModalEdicion.css'; // Use existing modal styles
 
 export default function LiveMetricsModal({ onClose }) {
   const [metrics, setMetrics] = useState({
