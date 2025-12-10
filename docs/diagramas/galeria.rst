@@ -62,13 +62,13 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         RedirectLogin --> End([Fin])
                     
                         %% Error Loops (Dotted for cleaner visuals)
-                        ValidateClient -- No --> ShowError1[Mostrar errores<br/>de validación]
+                        ValidateClient -->|No| ShowError1[Mostrar errores<br/>de validación]
                         ShowError1 -.-> Input
                         
-                        CheckEmail -- No --> EmailExists[Error: Email ya existe]
+                        CheckEmail -->|No| EmailExists[Error: Email ya existe]
                         EmailExists -.-> Input
                         
-                        CheckPass -- No --> PassWeak[Error: Password débil]
+                        CheckPass -->|No| PassWeak[Error: Password débil]
                         PassWeak -.-> Input
                         
                         style Start fill:#90EE90
@@ -116,13 +116,13 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         RedirectLogin --> End([Fin])
                     
                         %% Error Loops (Dotted for cleaner visuals)
-                        ValidateClient -- No --> ShowError1[Mostrar errores<br/>de validación]
+                        ValidateClient -->|No| ShowError1[Mostrar errores<br/>de validación]
                         ShowError1 -.-> Input
                         
-                        CheckEmail -- No --> EmailExists[Error: Email ya existe]
+                        CheckEmail -->|No| EmailExists[Error: Email ya existe]
                         EmailExists -.-> Input
                         
-                        CheckPass -- No --> PassWeak[Error: Password débil]
+                        CheckPass -->|No| PassWeak[Error: Password débil]
                         PassWeak -.-> Input
                         
                         style Start fill:#90EE90
@@ -182,16 +182,16 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SendConfirmEmail --> End2([Fin: Pedido creado])
                     
                         %% Feedback / Alternate Paths
-                        CheckStock -- No --> OutOfStock[Mostrar "Agotado"]
+                        CheckStock -->|No| OutOfStock[Mostrar "Agotado"]
                         OutOfStock -.-> Browse
                         
-                        ValidateStock -- No --> StockError[Error: Stock insuficiente]
+                        ValidateStock -->|No| StockError[Error: Stock insuficiente]
                         StockError -.-> ViewCart
                         
-                        PaymentResult -- No --> PaymentFailed[Pago rechazado]
+                        PaymentResult -->|No| PaymentFailed[Pago rechazado]
                         PaymentFailed --> RetryPayment{Reintentar?}
-                        RetryPayment -- Sí --> SelectPayment
-                        RetryPayment -- No --> CancelOrder[Cancelar orden]
+                        RetryPayment -->|Sí| SelectPayment
+                        RetryPayment -->|No| CancelOrder[Cancelar orden]
                         CancelOrder --> End1([Fin: Sin pedido])
                         
                         style Start fill:#90EE90
@@ -263,16 +263,16 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SendConfirmEmail --> End2([Fin: Pedido creado])
                     
                         %% Feedback / Alternate Paths
-                        CheckStock -- No --> OutOfStock[Mostrar "Agotado"]
+                        CheckStock -->|No| OutOfStock[Mostrar "Agotado"]
                         OutOfStock -.-> Browse
                         
-                        ValidateStock -- No --> StockError[Error: Stock insuficiente]
+                        ValidateStock -->|No| StockError[Error: Stock insuficiente]
                         StockError -.-> ViewCart
                         
-                        PaymentResult -- No --> PaymentFailed[Pago rechazado]
+                        PaymentResult -->|No| PaymentFailed[Pago rechazado]
                         PaymentFailed --> RetryPayment{Reintentar?}
-                        RetryPayment -- Sí --> SelectPayment
-                        RetryPayment -- No --> CancelOrder[Cancelar orden]
+                        RetryPayment -->|Sí| SelectPayment
+                        RetryPayment -->|No| CancelOrder[Cancelar orden]
                         CancelOrder --> End1([Fin: Sin pedido])
                         
                         style Start fill:#90EE90
@@ -328,20 +328,20 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         UpdateMetrics --> End2([Fin: Completado])
                     
                         %% Exceptions
-                        CheckInventory -- No --> ReportIssue[Reportar problema]
+                        CheckInventory -->|No| ReportIssue[Reportar problema]
                         ReportIssue --> NotifyAdmin[Notificar admin]
                         NotifyAdmin --> WaitResolution[Esperar resolución]
                         WaitResolution --> End1([Fin: Pendiente])
                     
-                        ReadyShip -- No --> CheckIssue{Hay<br/>problema?}
-                        CheckIssue -- Sí --> ReportIssue
-                        CheckIssue -- No --> PickProducts
+                        ReadyShip -->|No| CheckIssue{Hay<br/>problema?}
+                        CheckIssue -->|Sí| ReportIssue
+                        CheckIssue -->|No| PickProducts
                         
-                        DeliveryConfirm -- No --> DeliveryIssue{Hay<br/>problema?}
-                        DeliveryIssue -- Sí --> ContactClient[Contactar cliente]
+                        DeliveryConfirm -->|No| DeliveryIssue{Hay<br/>problema?}
+                        DeliveryIssue -->|Sí| ContactClient[Contactar cliente]
                         ContactClient --> Reschedule[Reprogramar entrega]
                         Reschedule -.-> InTransit
-                        DeliveryIssue -- No --> WaitDelivery
+                        DeliveryIssue -->|No| WaitDelivery
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFA500
@@ -406,20 +406,20 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         UpdateMetrics --> End2([Fin: Completado])
                     
                         %% Exceptions
-                        CheckInventory -- No --> ReportIssue[Reportar problema]
+                        CheckInventory -->|No| ReportIssue[Reportar problema]
                         ReportIssue --> NotifyAdmin[Notificar admin]
                         NotifyAdmin --> WaitResolution[Esperar resolución]
                         WaitResolution --> End1([Fin: Pendiente])
                     
-                        ReadyShip -- No --> CheckIssue{Hay<br/>problema?}
-                        CheckIssue -- Sí --> ReportIssue
-                        CheckIssue -- No --> PickProducts
+                        ReadyShip -->|No| CheckIssue{Hay<br/>problema?}
+                        CheckIssue -->|Sí| ReportIssue
+                        CheckIssue -->|No| PickProducts
                         
-                        DeliveryConfirm -- No --> DeliveryIssue{Hay<br/>problema?}
-                        DeliveryIssue -- Sí --> ContactClient[Contactar cliente]
+                        DeliveryConfirm -->|No| DeliveryIssue{Hay<br/>problema?}
+                        DeliveryIssue -->|Sí| ContactClient[Contactar cliente]
                         ContactClient --> Reschedule[Reprogramar entrega]
                         Reschedule -.-> InTransit
-                        DeliveryIssue -- No --> WaitDelivery
+                        DeliveryIssue -->|No| WaitDelivery
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFA500
@@ -549,15 +549,15 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SelectProduct --> ViewCurrent{Proveedor<br/>actual?}
                         
                         ViewCurrent -->|Sí| ConfirmChange{Confirmar<br/>cambio?}
-                        ConfirmChange -- No --> ViewProducts
-                        ConfirmChange -- Sí --> NewAssign[Nueva asignación]
-                        ViewCurrent -- No --> NewAssign
+                        ConfirmChange -->|No| ViewProducts
+                        ConfirmChange -->|Sí| NewAssign[Nueva asignación]
+                        ViewCurrent -->|No| NewAssign
                         
                         NewAssign --> GetProviders[Listar proveedores]
                         GetProviders --> SelectProvider[Seleccionar proveedor]
                         
                         SelectProvider --> ValidateProvider{Proveedor<br/>válido?}
-                        ValidateProvider -- No --> ErrorInvalid[Error: Inválido]
+                        ValidateProvider -->|No| ErrorInvalid[Error: Inválido]
                         ErrorInvalid -.-> GetProviders
                         
                         ValidateProvider -->|Sí| ConfirmAssign[Confirmar]
@@ -575,8 +575,8 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         LogChange --> ShowSuccess[Éxito]
                         ShowSuccess --> MoreAssign{¿Más?}
                         
-                        MoreAssign -- Sí --> ViewProducts
-                        MoreAssign -- No --> End([Fin])
+                        MoreAssign -->|Sí| ViewProducts
+                        MoreAssign -->|No| End([Fin])
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -612,15 +612,15 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SelectProduct --> ViewCurrent{Proveedor<br/>actual?}
                         
                         ViewCurrent -->|Sí| ConfirmChange{Confirmar<br/>cambio?}
-                        ConfirmChange -- No --> ViewProducts
-                        ConfirmChange -- Sí --> NewAssign[Nueva asignación]
-                        ViewCurrent -- No --> NewAssign
+                        ConfirmChange -->|No| ViewProducts
+                        ConfirmChange -->|Sí| NewAssign[Nueva asignación]
+                        ViewCurrent -->|No| NewAssign
                         
                         NewAssign --> GetProviders[Listar proveedores]
                         GetProviders --> SelectProvider[Seleccionar proveedor]
                         
                         SelectProvider --> ValidateProvider{Proveedor<br/>válido?}
-                        ValidateProvider -- No --> ErrorInvalid[Error: Inválido]
+                        ValidateProvider -->|No| ErrorInvalid[Error: Inválido]
                         ErrorInvalid -.-> GetProviders
                         
                         ValidateProvider -->|Sí| ConfirmAssign[Confirmar]
@@ -638,8 +638,8 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         LogChange --> ShowSuccess[Éxito]
                         ShowSuccess --> MoreAssign{¿Más?}
                         
-                        MoreAssign -- Sí --> ViewProducts
-                        MoreAssign -- No --> End([Fin])
+                        MoreAssign -->|Sí| ViewProducts
+                        MoreAssign -->|No| End([Fin])
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -657,7 +657,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                     flowchart TD
                         Start([Inicio]) --> Login{Usuario<br/>autenticado?}
-                        Login -- No --> RedirectLogin[Redirect login]
+                        Login -->|No| RedirectLogin[Redirect login]
                         RedirectLogin --> End1([Fin])
                         
                         Login -->|Sí| CheckRole{Rol?}
@@ -731,7 +731,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                     flowchart TD
                         Start([Inicio]) --> Login{Usuario<br/>autenticado?}
-                        Login -- No --> RedirectLogin[Redirect login]
+                        Login -->|No| RedirectLogin[Redirect login]
                         RedirectLogin --> End1([Fin])
                         
                         Login -->|Sí| CheckRole{Rol?}
@@ -804,7 +804,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         %% Edit Profile
                         EditProfile --> InputChanges[Ingresar]
                         InputChanges --> ValidateChanges{Válido?}
-                        ValidateChanges -- No --> ShowErrors[Error]
+                        ValidateChanges -->|No| ShowErrors[Error]
                         ShowErrors -.-> InputChanges
                         ValidateChanges -->|Sí| SaveChanges[Guardar]
                         SaveChanges --> SuccessMsg[Éxito]
@@ -813,16 +813,16 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         %% Change Pass
                         ChangePass --> InputOldPass[Pass actual]
                         InputOldPass --> VerifyOldPass{Correcta?}
-                        VerifyOldPass -- No --> ErrorOldPass[Error]
+                        VerifyOldPass -->|No| ErrorOldPass[Error]
                         ErrorOldPass -.-> ChangePass
                         
                         VerifyOldPass -->|Sí| InputNewPass[Nueva pass]
                         InputNewPass --> CheckStrength{Fuerte?}
-                        CheckStrength -- No --> ErrorWeak[Débil]
+                        CheckStrength -->|No| ErrorWeak[Débil]
                         ErrorWeak -.-> InputNewPass
                         
                         CheckStrength -->|Sí| CheckHistory{Usada?}
-                        CheckHistory -- Sí --> ErrorUsed[Usada]
+                        CheckHistory -->|Sí| ErrorUsed[Usada]
                         ErrorUsed -.-> InputNewPass
                         
                         CheckHistory -->|No| UpdatePass[Actualizar]
@@ -833,14 +833,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         
                         %% Deactivate
                         DeactivateAcc --> ConfirmDeact{Confirmar?}
-                        ConfirmDeact -- No --> ViewProfile
+                        ConfirmDeact -->|No| ViewProfile
                         ConfirmDeact -->|Sí| SetSelfDeact[Desactivar]
                         SetSelfDeact --> Logout[Logout]
                         Logout --> End2([Fin])
                         
                         %% Delete
                         DeleteAcc --> ConfirmDelete{Confirmar?}
-                        ConfirmDelete -- No --> ViewProfile
+                        ConfirmDelete -->|No| ViewProfile
                         ConfirmDelete -->|Sí| NotifyAdmin[Notificar Admin]
                         NotifyAdmin --> PendingReview[Revisión]
                         PendingReview --> End3([Fin])
@@ -886,7 +886,7 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         %% Edit Profile
                         EditProfile --> InputChanges[Ingresar]
                         InputChanges --> ValidateChanges{Válido?}
-                        ValidateChanges -- No --> ShowErrors[Error]
+                        ValidateChanges -->|No| ShowErrors[Error]
                         ShowErrors -.-> InputChanges
                         ValidateChanges -->|Sí| SaveChanges[Guardar]
                         SaveChanges --> SuccessMsg[Éxito]
@@ -895,16 +895,16 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         %% Change Pass
                         ChangePass --> InputOldPass[Pass actual]
                         InputOldPass --> VerifyOldPass{Correcta?}
-                        VerifyOldPass -- No --> ErrorOldPass[Error]
+                        VerifyOldPass -->|No| ErrorOldPass[Error]
                         ErrorOldPass -.-> ChangePass
                         
                         VerifyOldPass -->|Sí| InputNewPass[Nueva pass]
                         InputNewPass --> CheckStrength{Fuerte?}
-                        CheckStrength -- No --> ErrorWeak[Débil]
+                        CheckStrength -->|No| ErrorWeak[Débil]
                         ErrorWeak -.-> InputNewPass
                         
                         CheckStrength -->|Sí| CheckHistory{Usada?}
-                        CheckHistory -- Sí --> ErrorUsed[Usada]
+                        CheckHistory -->|Sí| ErrorUsed[Usada]
                         ErrorUsed -.-> InputNewPass
                         
                         CheckHistory -->|No| UpdatePass[Actualizar]
@@ -915,14 +915,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         
                         %% Deactivate
                         DeactivateAcc --> ConfirmDeact{Confirmar?}
-                        ConfirmDeact -- No --> ViewProfile
+                        ConfirmDeact -->|No| ViewProfile
                         ConfirmDeact -->|Sí| SetSelfDeact[Desactivar]
                         SetSelfDeact --> Logout[Logout]
                         Logout --> End2([Fin])
                         
                         %% Delete
                         DeleteAcc --> ConfirmDelete{Confirmar?}
-                        ConfirmDelete -- No --> ViewProfile
+                        ConfirmDelete -->|No| ViewProfile
                         ConfirmDelete -->|Sí| NotifyAdmin[Notificar Admin]
                         NotifyAdmin --> PendingReview[Revisión]
                         PendingReview --> End3([Fin])
