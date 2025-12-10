@@ -37,6 +37,8 @@ class UsuarioSerializer(serializers.ModelSerializer):
             "password",
             "fecha_creacion",
             "ultimo_ingreso",
+            "is_staff",
+            "is_superuser",
         ]
         extra_kwargs = {'password': {'write_only': True, 'required': False}}
         read_only_fields = ["id", "fecha_creacion", "ultimo_ingreso"]

@@ -1,0 +1,142 @@
+:py:mod:`backend.apps.productos.permissions`
+============================================
+
+.. py:module:: backend.apps.productos.permissions
+
+.. autodoc2-docstring:: backend.apps.productos.permissions
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`IsAdmin <backend.apps.productos.permissions.IsAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsAdmin
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsCliente <backend.apps.productos.permissions.IsCliente>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsCliente
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsProveedor <backend.apps.productos.permissions.IsProveedor>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsProveedor
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsComprador <backend.apps.productos.permissions.IsComprador>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsComprador
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsLogistica <backend.apps.productos.permissions.IsLogistica>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsLogistica
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsAdminOrReadOnly <backend.apps.productos.permissions.IsAdminOrReadOnly>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsAdminOrReadOnly
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsProductoOwnerOrAdmin <backend.apps.productos.permissions.IsProductoOwnerOrAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsProductoOwnerOrAdmin
+          :parser: rst
+          :summary:
+   * - :py:obj:`IsPedidoOwnerOrAdmin <backend.apps.productos.permissions.IsPedidoOwnerOrAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.permissions.IsPedidoOwnerOrAdmin
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: IsAdmin
+   :canonical: backend.apps.productos.permissions.IsAdmin
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsAdmin
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.productos.permissions.IsAdmin.has_permission
+
+.. py:class:: IsCliente
+   :canonical: backend.apps.productos.permissions.IsCliente
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsCliente
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.productos.permissions.IsCliente.has_permission
+
+.. py:class:: IsProveedor
+   :canonical: backend.apps.productos.permissions.IsProveedor
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsProveedor
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.productos.permissions.IsProveedor.has_permission
+
+.. py:class:: IsComprador
+   :canonical: backend.apps.productos.permissions.IsComprador
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsComprador
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.productos.permissions.IsComprador.has_permission
+
+.. py:class:: IsLogistica
+   :canonical: backend.apps.productos.permissions.IsLogistica
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsLogistica
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.productos.permissions.IsLogistica.has_permission
+
+.. py:class:: IsAdminOrReadOnly
+   :canonical: backend.apps.productos.permissions.IsAdminOrReadOnly
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsAdminOrReadOnly
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.productos.permissions.IsAdminOrReadOnly.has_permission
+
+.. py:class:: IsProductoOwnerOrAdmin
+   :canonical: backend.apps.productos.permissions.IsProductoOwnerOrAdmin
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsProductoOwnerOrAdmin
+      :parser: rst
+
+   .. py:method:: has_object_permission(request, view, obj)
+      :canonical: backend.apps.productos.permissions.IsProductoOwnerOrAdmin.has_object_permission
+
+.. py:class:: IsPedidoOwnerOrAdmin
+   :canonical: backend.apps.productos.permissions.IsPedidoOwnerOrAdmin
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.productos.permissions.IsPedidoOwnerOrAdmin
+      :parser: rst
+
+   .. py:method:: has_object_permission(request, view, obj)
+      :canonical: backend.apps.productos.permissions.IsPedidoOwnerOrAdmin.has_object_permission

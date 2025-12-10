@@ -1,0 +1,8 @@
+:py:mod:`backend.apps.ventas.migrations`
+========================================
+
+.. py:module:: backend.apps.ventas.migrations
+
+.. autodoc2-docstring:: backend.apps.ventas.migrations
+   :parser: rst
+   :allowtitles:

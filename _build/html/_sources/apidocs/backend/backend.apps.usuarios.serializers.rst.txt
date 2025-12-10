@@ -1,0 +1,221 @@
+:py:mod:`backend.apps.usuarios.serializers`
+===========================================
+
+.. py:module:: backend.apps.usuarios.serializers
+
+.. autodoc2-docstring:: backend.apps.usuarios.serializers
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`LogoutSerializer <backend.apps.usuarios.serializers.LogoutSerializer>`
+     -
+   * - :py:obj:`UsuarioSerializer <backend.apps.usuarios.serializers.UsuarioSerializer>`
+     -
+   * - :py:obj:`RegisterSerializer <backend.apps.usuarios.serializers.RegisterSerializer>`
+     -
+   * - :py:obj:`LoginSerializer <backend.apps.usuarios.serializers.LoginSerializer>`
+     -
+   * - :py:obj:`UserTokenSerializer <backend.apps.usuarios.serializers.UserTokenSerializer>`
+     -
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`generate_tokens_for_user <backend.apps.usuarios.serializers.generate_tokens_for_user>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.serializers.generate_tokens_for_user
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: LogoutSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.usuarios.serializers.LogoutSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.Serializer`
+
+   .. py:attribute:: refresh
+      :canonical: backend.apps.usuarios.serializers.LogoutSerializer.refresh
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.LogoutSerializer.refresh
+         :parser: rst
+
+   .. py:method:: validate(attrs)
+      :canonical: backend.apps.usuarios.serializers.LogoutSerializer.validate
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.LogoutSerializer.validate
+         :parser: rst
+
+   .. py:method:: save(**kwargs)
+      :canonical: backend.apps.usuarios.serializers.LogoutSerializer.save
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.LogoutSerializer.save
+         :parser: rst
+
+.. py:class:: UsuarioSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.usuarios.serializers.UsuarioSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.UsuarioSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.fields
+         :value: ['id', 'email', 'nombre', 'rol', 'telefono', 'direccion', 'estado', 'imagen', 'password', 'fecha_cre...
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.fields
+            :parser: rst
+
+      .. py:attribute:: extra_kwargs
+         :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.extra_kwargs
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.extra_kwargs
+            :parser: rst
+
+      .. py:attribute:: read_only_fields
+         :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.read_only_fields
+         :value: ['id', 'fecha_creacion', 'ultimo_ingreso']
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.UsuarioSerializer.Meta.read_only_fields
+            :parser: rst
+
+   .. py:method:: create(validated_data)
+      :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.create
+
+   .. py:method:: update(instance, validated_data)
+      :canonical: backend.apps.usuarios.serializers.UsuarioSerializer.update
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.UsuarioSerializer.update
+         :parser: rst
+
+.. py:class:: RegisterSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.usuarios.serializers.RegisterSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: password
+      :canonical: backend.apps.usuarios.serializers.RegisterSerializer.password
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.RegisterSerializer.password
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.serializers.RegisterSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.RegisterSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.usuarios.serializers.RegisterSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.RegisterSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.usuarios.serializers.RegisterSerializer.Meta.fields
+         :value: ['email', 'nombre', 'password', 'rol']
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.RegisterSerializer.Meta.fields
+            :parser: rst
+
+   .. py:method:: create(validated_data)
+      :canonical: backend.apps.usuarios.serializers.RegisterSerializer.create
+
+.. py:class:: LoginSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.usuarios.serializers.LoginSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.Serializer`
+
+   .. py:attribute:: email
+      :canonical: backend.apps.usuarios.serializers.LoginSerializer.email
+      :value: 'EmailField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.LoginSerializer.email
+         :parser: rst
+
+   .. py:attribute:: password
+      :canonical: backend.apps.usuarios.serializers.LoginSerializer.password
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.LoginSerializer.password
+         :parser: rst
+
+   .. py:method:: validate(data)
+      :canonical: backend.apps.usuarios.serializers.LoginSerializer.validate
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.LoginSerializer.validate
+         :parser: rst
+
+.. py:class:: UserTokenSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.usuarios.serializers.UserTokenSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: access
+      :canonical: backend.apps.usuarios.serializers.UserTokenSerializer.access
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.UserTokenSerializer.access
+         :parser: rst
+
+   .. py:attribute:: refresh
+      :canonical: backend.apps.usuarios.serializers.UserTokenSerializer.refresh
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.UserTokenSerializer.refresh
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.serializers.UserTokenSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.serializers.UserTokenSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.usuarios.serializers.UserTokenSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.UserTokenSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.usuarios.serializers.UserTokenSerializer.Meta.fields
+         :value: ['id', 'email', 'nombre', 'rol', 'access', 'refresh']
+
+         .. autodoc2-docstring:: backend.apps.usuarios.serializers.UserTokenSerializer.Meta.fields
+            :parser: rst
+
+.. py:function:: generate_tokens_for_user(user)
+   :canonical: backend.apps.usuarios.serializers.generate_tokens_for_user
+
+   .. autodoc2-docstring:: backend.apps.usuarios.serializers.generate_tokens_for_user
+      :parser: rst

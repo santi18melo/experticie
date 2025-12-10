@@ -1,0 +1,144 @@
+:py:mod:`backend.audit_tests`
+=============================
+
+.. py:module:: backend.audit_tests
+
+.. autodoc2-docstring:: backend.audit_tests
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`BackendAudit <backend.audit_tests.BackendAudit>`
+     - .. autodoc2-docstring:: backend.audit_tests.BackendAudit
+          :parser: rst
+          :summary:
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`BASE_URL <backend.audit_tests.BASE_URL>`
+     - .. autodoc2-docstring:: backend.audit_tests.BASE_URL
+          :parser: rst
+          :summary:
+   * - :py:obj:`ADMIN_URL <backend.audit_tests.ADMIN_URL>`
+     - .. autodoc2-docstring:: backend.audit_tests.ADMIN_URL
+          :parser: rst
+          :summary:
+   * - :py:obj:`API_URL <backend.audit_tests.API_URL>`
+     - .. autodoc2-docstring:: backend.audit_tests.API_URL
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: BASE_URL
+   :canonical: backend.audit_tests.BASE_URL
+   :value: 'http://127.0.0.1:8000'
+
+   .. autodoc2-docstring:: backend.audit_tests.BASE_URL
+      :parser: rst
+
+.. py:data:: ADMIN_URL
+   :canonical: backend.audit_tests.ADMIN_URL
+   :value: None
+
+   .. autodoc2-docstring:: backend.audit_tests.ADMIN_URL
+      :parser: rst
+
+.. py:data:: API_URL
+   :canonical: backend.audit_tests.API_URL
+   :value: None
+
+   .. autodoc2-docstring:: backend.audit_tests.API_URL
+      :parser: rst
+
+.. py:class:: BackendAudit()
+   :canonical: backend.audit_tests.BackendAudit
+
+   .. autodoc2-docstring:: backend.audit_tests.BackendAudit
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.audit_tests.BackendAudit.__init__
+      :parser: rst
+
+   .. py:method:: log(category, test_name, status, details='')
+      :canonical: backend.audit_tests.BackendAudit.log
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.log
+         :parser: rst
+
+   .. py:method:: test_login_valid()
+      :canonical: backend.audit_tests.BackendAudit.test_login_valid
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_login_valid
+         :parser: rst
+
+   .. py:method:: test_login_invalid_password()
+      :canonical: backend.audit_tests.BackendAudit.test_login_invalid_password
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_login_invalid_password
+         :parser: rst
+
+   .. py:method:: test_login_invalid_email()
+      :canonical: backend.audit_tests.BackendAudit.test_login_invalid_email
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_login_invalid_email
+         :parser: rst
+
+   .. py:method:: test_login_empty_fields()
+      :canonical: backend.audit_tests.BackendAudit.test_login_empty_fields
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_login_empty_fields
+         :parser: rst
+
+   .. py:method:: test_login_sql_injection()
+      :canonical: backend.audit_tests.BackendAudit.test_login_sql_injection
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_login_sql_injection
+         :parser: rst
+
+   .. py:method:: test_register_endpoint()
+      :canonical: backend.audit_tests.BackendAudit.test_register_endpoint
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_register_endpoint
+         :parser: rst
+
+   .. py:method:: test_token_refresh(tokens)
+      :canonical: backend.audit_tests.BackendAudit.test_token_refresh
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_token_refresh
+         :parser: rst
+
+   .. py:method:: test_invalid_token_access()
+      :canonical: backend.audit_tests.BackendAudit.test_invalid_token_access
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_invalid_token_access
+         :parser: rst
+
+   .. py:method:: test_no_token_access()
+      :canonical: backend.audit_tests.BackendAudit.test_no_token_access
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.test_no_token_access
+         :parser: rst
+
+   .. py:method:: run_all_tests()
+      :canonical: backend.audit_tests.BackendAudit.run_all_tests
+
+      .. autodoc2-docstring:: backend.audit_tests.BackendAudit.run_all_tests
+         :parser: rst

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>backend.audit_tests &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=36754332"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">backend.audit_tests</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for backend.audit_tests</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">PREXCOL Backend Security &amp; QA Audit - Automated Test Suite</span>
+<span class="sd">Senior Backend QA Engineer - Comprehensive Testing</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://127.0.0.1:8000&quot;</span>
+<span class="n">ADMIN_URL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/admin/&quot;</span>
+<span class="n">API_URL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/api/auth/&quot;</span>
+
+<div class="viewcode-block" id="BackendAudit">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BackendAudit</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">=</span> <span class="p">[]</span>
+        
+<div class="viewcode-block" id="BackendAudit.log">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.log">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">test_name</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+            <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
+            <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">test_name</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span>
+            <span class="s2">&quot;details&quot;</span><span class="p">:</span> <span class="n">details</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">test_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">details</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">details</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_login_valid">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_login_valid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test login with valid credentials&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">login/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;admin123&quot;</span><span class="p">},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s2">&quot;tokens&quot;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s2">&quot;access&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Valid Credentials&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">data</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Valid Credentials&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="s2">&quot;No tokens in response&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Valid Credentials&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Valid Credentials&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_login_invalid_password">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_login_invalid_password">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_invalid_password</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test login with incorrect password&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">login/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;wrongpassword&quot;</span><span class="p">},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Invalid Password&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Correctly rejected&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Invalid Password&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Unexpected status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Invalid Password&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_login_invalid_email">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_login_invalid_email">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_invalid_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test login with incorrect email&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">login/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;nonexistent@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;admin123&quot;</span><span class="p">},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Invalid Email&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Correctly rejected&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Invalid Email&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Unexpected status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Invalid Email&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_login_empty_fields">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_login_empty_fields">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_empty_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test login with empty fields&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">login/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">401</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Empty Fields&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Correctly rejected&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Empty Fields&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Unexpected status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;AUTH&quot;</span><span class="p">,</span> <span class="s2">&quot;Login Empty Fields&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_login_sql_injection">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_login_sql_injection">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_sql_injection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test SQL injection attempt&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">login/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;admin@example.com&#39; OR &#39;1&#39;=&#39;1&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;&#39; OR &#39;1&#39;=&#39;1&quot;</span><span class="p">},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;SQL Injection Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Attack blocked&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;SQL Injection Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;SQL Injection Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_register_endpoint">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_register_endpoint">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_register_endpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test user registration&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">register/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;test_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span><span class="si">}</span><span class="s2">@example.com&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Test User&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;testpass123&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;rol&quot;</span><span class="p">:</span> <span class="s2">&quot;cliente&quot;</span>
+                <span class="p">},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Register Endpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;User created&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Register Endpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">, Body: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Register Endpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_token_refresh">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_token_refresh">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_token_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test token refresh&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tokens</span> <span class="ow">or</span> <span class="s2">&quot;refresh&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tokens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="p">{}):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Token Refresh&quot;</span><span class="p">,</span> <span class="s2">&quot;SKIP&quot;</span><span class="p">,</span> <span class="s2">&quot;No refresh token available&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">token/refresh/&quot;</span><span class="p">,</span>
+                <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;refresh&quot;</span><span class="p">:</span> <span class="n">tokens</span><span class="p">[</span><span class="s2">&quot;tokens&quot;</span><span class="p">][</span><span class="s2">&quot;refresh&quot;</span><span class="p">]},</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Token Refresh&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Token refreshed&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Token Refresh&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;API&quot;</span><span class="p">,</span> <span class="s2">&quot;Token Refresh&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_invalid_token_access">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_invalid_token_access">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_invalid_token_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test access with invalid token&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">usuarios/&quot;</span><span class="p">,</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer invalid_token_12345&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;Invalid Token Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Access denied&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;Invalid Token Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;Invalid Token Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.test_no_token_access">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.test_no_token_access">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_no_token_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test access without token&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API_URL</span><span class="si">}</span><span class="s2">usuarios/&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;No Token Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">,</span> <span class="s2">&quot;Access denied&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;No Token Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;SECURITY&quot;</span><span class="p">,</span> <span class="s2">&quot;No Token Protection&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+    
+<div class="viewcode-block" id="BackendAudit.run_all_tests">
+<a class="viewcode-back" href="../../apidocs/backend/backend.audit_tests.html#backend.audit_tests.BackendAudit.run_all_tests">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_all_tests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run all automated tests&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PREXCOL BACKEND SECURITY &amp; QA AUDIT&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Authentication Tests</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- AUTHENTICATION TESTS ---&quot;</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_login_valid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_login_invalid_password</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_login_invalid_email</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_login_empty_fields</span><span class="p">()</span>
+        
+        <span class="c1"># Security Tests</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- SECURITY TESTS ---&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_login_sql_injection</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_invalid_token_access</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_no_token_access</span><span class="p">()</span>
+        
+        <span class="c1"># API Tests</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- API ENDPOINT TESTS ---&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_register_endpoint</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_token_refresh</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+        
+        <span class="c1"># Generate Summary</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TEST SUMMARY&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+        
+        <span class="n">passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;PASS&quot;</span><span class="p">)</span>
+        <span class="n">failed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;FAIL&quot;</span><span class="p">)</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+        <span class="n">skipped</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SKIP&quot;</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Tests: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passed: </span><span class="si">{</span><span class="n">passed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed: </span><span class="si">{</span><span class="n">failed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Errors: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span></div>
+</div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">audit</span> <span class="o">=</span> <span class="n">BackendAudit</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">audit</span><span class="o">.</span><span class="n">run_all_tests</span><span class="p">()</span>
+    
+    <span class="c1"># Save results to file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;audit_results.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Results saved to audit_results.json&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

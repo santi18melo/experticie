@@ -1,0 +1,349 @@
+:py:mod:`backend.apps.productos.admin`
+======================================
+
+.. py:module:: backend.apps.productos.admin
+
+.. autodoc2-docstring:: backend.apps.productos.admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TiendaAdmin <backend.apps.productos.admin.TiendaAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin
+          :parser: rst
+          :summary:
+   * - :py:obj:`ProductoAdmin <backend.apps.productos.admin.ProductoAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin
+          :parser: rst
+          :summary:
+   * - :py:obj:`DetallePedidoInline <backend.apps.productos.admin.DetallePedidoInline>`
+     - .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline
+          :parser: rst
+          :summary:
+   * - :py:obj:`PedidoAdmin <backend.apps.productos.admin.PedidoAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin
+          :parser: rst
+          :summary:
+   * - :py:obj:`DetallePedidoAdmin <backend.apps.productos.admin.DetallePedidoAdmin>`
+     - .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: TiendaAdmin(model, admin_site)
+   :canonical: backend.apps.productos.admin.TiendaAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin.__init__
+      :parser: rst
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.productos.admin.TiendaAdmin.list_display
+      :value: ('nombre', 'administrador', 'activa', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.productos.admin.TiendaAdmin.list_filter
+      :value: ('activa', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.productos.admin.TiendaAdmin.search_fields
+      :value: ('nombre', 'administrador__nombre', 'direccion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin.search_fields
+         :parser: rst
+
+   .. py:attribute:: readonly_fields
+      :canonical: backend.apps.productos.admin.TiendaAdmin.readonly_fields
+      :value: ('fecha_creacion', 'fecha_actualizacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin.readonly_fields
+         :parser: rst
+
+   .. py:attribute:: fieldsets
+      :canonical: backend.apps.productos.admin.TiendaAdmin.fieldsets
+      :value: (('Información General',), ('Estado',), ('Auditoría',))
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.TiendaAdmin.fieldsets
+         :parser: rst
+
+.. py:class:: ProductoAdmin(model, admin_site)
+   :canonical: backend.apps.productos.admin.ProductoAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.__init__
+      :parser: rst
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.productos.admin.ProductoAdmin.list_display
+      :value: ('nombre', 'tienda', 'proveedor', 'precio', 'stock', 'activo', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.productos.admin.ProductoAdmin.list_filter
+      :value: ('tienda', 'proveedor', 'activo', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.productos.admin.ProductoAdmin.search_fields
+      :value: ('nombre', 'descripcion', 'proveedor__nombre')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.search_fields
+         :parser: rst
+
+   .. py:attribute:: readonly_fields
+      :canonical: backend.apps.productos.admin.ProductoAdmin.readonly_fields
+      :value: ('fecha_creacion', 'fecha_actualizacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.readonly_fields
+         :parser: rst
+
+   .. py:attribute:: fieldsets
+      :canonical: backend.apps.productos.admin.ProductoAdmin.fieldsets
+      :value: (('Información del Producto',), ('Inventario',), ('Estado',), ('Auditoría',))
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.fieldsets
+         :parser: rst
+
+   .. py:attribute:: actions
+      :canonical: backend.apps.productos.admin.ProductoAdmin.actions
+      :value: ['marcar_como_activo', 'marcar_como_inactivo']
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.actions
+         :parser: rst
+
+   .. py:method:: marcar_como_activo(request, queryset)
+      :canonical: backend.apps.productos.admin.ProductoAdmin.marcar_como_activo
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.marcar_como_activo
+         :parser: rst
+
+   .. py:method:: marcar_como_inactivo(request, queryset)
+      :canonical: backend.apps.productos.admin.ProductoAdmin.marcar_como_inactivo
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.ProductoAdmin.marcar_como_inactivo
+         :parser: rst
+
+.. py:class:: DetallePedidoInline(parent_model, admin_site)
+   :canonical: backend.apps.productos.admin.DetallePedidoInline
+
+   Bases: :py:obj:`django.contrib.admin.TabularInline`
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline.__init__
+      :parser: rst
+
+   .. py:attribute:: model
+      :canonical: backend.apps.productos.admin.DetallePedidoInline.model
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline.model
+         :parser: rst
+
+   .. py:attribute:: extra
+      :canonical: backend.apps.productos.admin.DetallePedidoInline.extra
+      :value: 0
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline.extra
+         :parser: rst
+
+   .. py:attribute:: fields
+      :canonical: backend.apps.productos.admin.DetallePedidoInline.fields
+      :value: ('producto', 'cantidad', 'precio_unitario', 'subtotal_display')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline.fields
+         :parser: rst
+
+   .. py:attribute:: readonly_fields
+      :canonical: backend.apps.productos.admin.DetallePedidoInline.readonly_fields
+      :value: ('subtotal_display',)
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline.readonly_fields
+         :parser: rst
+
+   .. py:method:: subtotal_display(obj)
+      :canonical: backend.apps.productos.admin.DetallePedidoInline.subtotal_display
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoInline.subtotal_display
+         :parser: rst
+
+.. py:class:: PedidoAdmin(model, admin_site)
+   :canonical: backend.apps.productos.admin.PedidoAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.__init__
+      :parser: rst
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.productos.admin.PedidoAdmin.list_display
+      :value: ('id', 'cliente', 'tienda', 'estado', 'total', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.productos.admin.PedidoAdmin.list_filter
+      :value: ('estado', 'tienda', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.productos.admin.PedidoAdmin.search_fields
+      :value: ('cliente__nombre', 'cliente__email', 'id')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.search_fields
+         :parser: rst
+
+   .. py:attribute:: readonly_fields
+      :canonical: backend.apps.productos.admin.PedidoAdmin.readonly_fields
+      :value: ('total', 'fecha_creacion', 'fecha_actualizacion', 'total_display')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.readonly_fields
+         :parser: rst
+
+   .. py:attribute:: fieldsets
+      :canonical: backend.apps.productos.admin.PedidoAdmin.fieldsets
+      :value: (('Información del Pedido',), ('Estado y Seguimiento',), ('Totales',), ('Auditoría',))
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.fieldsets
+         :parser: rst
+
+   .. py:attribute:: inlines
+      :canonical: backend.apps.productos.admin.PedidoAdmin.inlines
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.inlines
+         :parser: rst
+
+   .. py:attribute:: actions
+      :canonical: backend.apps.productos.admin.PedidoAdmin.actions
+      :value: ['marcar_como_preparando', 'marcar_como_en_transito', 'marcar_como_entregado']
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.actions
+         :parser: rst
+
+   .. py:method:: total_display(obj)
+      :canonical: backend.apps.productos.admin.PedidoAdmin.total_display
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.total_display
+         :parser: rst
+
+   .. py:method:: marcar_como_preparando(request, queryset)
+      :canonical: backend.apps.productos.admin.PedidoAdmin.marcar_como_preparando
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.marcar_como_preparando
+         :parser: rst
+
+   .. py:method:: marcar_como_en_transito(request, queryset)
+      :canonical: backend.apps.productos.admin.PedidoAdmin.marcar_como_en_transito
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.marcar_como_en_transito
+         :parser: rst
+
+   .. py:method:: marcar_como_entregado(request, queryset)
+      :canonical: backend.apps.productos.admin.PedidoAdmin.marcar_como_entregado
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.PedidoAdmin.marcar_como_entregado
+         :parser: rst
+
+.. py:class:: DetallePedidoAdmin(model, admin_site)
+   :canonical: backend.apps.productos.admin.DetallePedidoAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.__init__
+      :parser: rst
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.list_display
+      :value: ('pedido', 'producto', 'cantidad', 'precio_unitario', 'subtotal')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.list_filter
+      :value: ('pedido__fecha_creacion', 'producto')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.search_fields
+      :value: ('pedido__id', 'producto__nombre')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.search_fields
+         :parser: rst
+
+   .. py:attribute:: readonly_fields
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.readonly_fields
+      :value: ('pedido', 'subtotal_display')
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.readonly_fields
+         :parser: rst
+
+   .. py:method:: subtotal_display(obj)
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.subtotal_display
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.subtotal_display
+         :parser: rst
+
+   .. py:method:: has_add_permission(request)
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.has_add_permission
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.has_add_permission
+         :parser: rst
+
+   .. py:method:: has_delete_permission(request, obj=None)
+      :canonical: backend.apps.productos.admin.DetallePedidoAdmin.has_delete_permission
+
+      .. autodoc2-docstring:: backend.apps.productos.admin.DetallePedidoAdmin.has_delete_permission
+         :parser: rst

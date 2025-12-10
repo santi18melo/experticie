@@ -1,0 +1,124 @@
+:py:mod:`backend.apps.notificaciones.serializers`
+=================================================
+
+.. py:module:: backend.apps.notificaciones.serializers
+
+.. autodoc2-docstring:: backend.apps.notificaciones.serializers
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TipoNotificacionSerializer <backend.apps.notificaciones.serializers.TipoNotificacionSerializer>`
+     -
+   * - :py:obj:`EstadoNotificacionSerializer <backend.apps.notificaciones.serializers.EstadoNotificacionSerializer>`
+     -
+   * - :py:obj:`NotificacionSerializer <backend.apps.notificaciones.serializers.NotificacionSerializer>`
+     -
+
+API
+~~~
+
+.. py:class:: TipoNotificacionSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.notificaciones.serializers.TipoNotificacionSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.notificaciones.serializers.TipoNotificacionSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.serializers.TipoNotificacionSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.notificaciones.serializers.TipoNotificacionSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.TipoNotificacionSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.notificaciones.serializers.TipoNotificacionSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.TipoNotificacionSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: EstadoNotificacionSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.EstadoNotificacionSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: NotificacionSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: tipo_nombre
+      :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer.tipo_nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.serializers.NotificacionSerializer.tipo_nombre
+         :parser: rst
+
+   .. py:attribute:: estado_nombre
+      :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer.estado_nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.serializers.NotificacionSerializer.estado_nombre
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta.fields
+            :parser: rst
+
+      .. py:attribute:: read_only_fields
+         :canonical: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta.read_only_fields
+         :value: ['usuario', 'fecha_creacion', 'fecha_actualizacion', 'fecha_lectura']
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.serializers.NotificacionSerializer.Meta.read_only_fields
+            :parser: rst

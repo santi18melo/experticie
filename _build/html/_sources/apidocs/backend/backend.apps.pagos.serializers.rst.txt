@@ -1,0 +1,158 @@
+:py:mod:`backend.apps.pagos.serializers`
+========================================
+
+.. py:module:: backend.apps.pagos.serializers
+
+.. autodoc2-docstring:: backend.apps.pagos.serializers
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`EstadoPagoSerializer <backend.apps.pagos.serializers.EstadoPagoSerializer>`
+     -
+   * - :py:obj:`MetodoPagoSerializer <backend.apps.pagos.serializers.MetodoPagoSerializer>`
+     -
+   * - :py:obj:`TransaccionSerializer <backend.apps.pagos.serializers.TransaccionSerializer>`
+     -
+   * - :py:obj:`PagoSerializer <backend.apps.pagos.serializers.PagoSerializer>`
+     -
+
+API
+~~~
+
+.. py:class:: EstadoPagoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.pagos.serializers.EstadoPagoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.pagos.serializers.EstadoPagoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.EstadoPagoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.pagos.serializers.EstadoPagoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.EstadoPagoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.pagos.serializers.EstadoPagoSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.EstadoPagoSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: MetodoPagoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.pagos.serializers.MetodoPagoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.pagos.serializers.MetodoPagoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.MetodoPagoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.pagos.serializers.MetodoPagoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.MetodoPagoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.pagos.serializers.MetodoPagoSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.MetodoPagoSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: TransaccionSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.pagos.serializers.TransaccionSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.pagos.serializers.TransaccionSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.TransaccionSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.pagos.serializers.TransaccionSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.TransaccionSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.pagos.serializers.TransaccionSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.TransaccionSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: PagoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.pagos.serializers.PagoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: estado_nombre
+      :canonical: backend.apps.pagos.serializers.PagoSerializer.estado_nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.estado_nombre
+         :parser: rst
+
+   .. py:attribute:: metodo_nombre
+      :canonical: backend.apps.pagos.serializers.PagoSerializer.metodo_nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.metodo_nombre
+         :parser: rst
+
+   .. py:attribute:: transacciones
+      :canonical: backend.apps.pagos.serializers.PagoSerializer.transacciones
+      :value: 'TransaccionSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.transacciones
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.pagos.serializers.PagoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.pagos.serializers.PagoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.pagos.serializers.PagoSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.Meta.fields
+            :parser: rst
+
+      .. py:attribute:: read_only_fields
+         :canonical: backend.apps.pagos.serializers.PagoSerializer.Meta.read_only_fields
+         :value: ['usuario', 'fecha_creacion', 'fecha_actualizacion']
+
+         .. autodoc2-docstring:: backend.apps.pagos.serializers.PagoSerializer.Meta.read_only_fields
+            :parser: rst

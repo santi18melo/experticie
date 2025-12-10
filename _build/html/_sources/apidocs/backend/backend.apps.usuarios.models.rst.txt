@@ -1,0 +1,280 @@
+:py:mod:`backend.apps.usuarios.models`
+======================================
+
+.. py:module:: backend.apps.usuarios.models
+
+.. autodoc2-docstring:: backend.apps.usuarios.models
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`UsuarioManager <backend.apps.usuarios.models.UsuarioManager>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.models.UsuarioManager
+          :parser: rst
+          :summary:
+   * - :py:obj:`Usuario <backend.apps.usuarios.models.Usuario>`
+     -
+   * - :py:obj:`PasswordHistory <backend.apps.usuarios.models.PasswordHistory>`
+     -
+
+API
+~~~
+
+.. py:class:: UsuarioManager
+   :canonical: backend.apps.usuarios.models.UsuarioManager
+
+   Bases: :py:obj:`django.contrib.auth.models.BaseUserManager`
+
+   .. autodoc2-docstring:: backend.apps.usuarios.models.UsuarioManager
+      :parser: rst
+
+   .. py:method:: create_user(email, nombre, password=None, **extra_fields)
+      :canonical: backend.apps.usuarios.models.UsuarioManager.create_user
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.UsuarioManager.create_user
+         :parser: rst
+
+   .. py:method:: create_superuser(email, nombre, password=None, **extra_fields)
+      :canonical: backend.apps.usuarios.models.UsuarioManager.create_superuser
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.UsuarioManager.create_superuser
+         :parser: rst
+
+.. py:class:: Usuario(*args, **kwargs)
+   :canonical: backend.apps.usuarios.models.Usuario
+
+   Bases: :py:obj:`django.contrib.auth.models.AbstractBaseUser`, :py:obj:`django.contrib.auth.models.PermissionsMixin`
+
+   .. py:attribute:: ROLES
+      :canonical: backend.apps.usuarios.models.Usuario.ROLES
+      :value: [('admin', 'Administrador'), ('proveedor', 'Proveedor'), ('logistica', 'Logística'), ('cliente', 'Cl...
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.ROLES
+         :parser: rst
+
+   .. py:attribute:: email
+      :canonical: backend.apps.usuarios.models.Usuario.email
+      :value: 'EmailField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.email
+         :parser: rst
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.usuarios.models.Usuario.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.nombre
+         :parser: rst
+
+   .. py:attribute:: rol
+      :canonical: backend.apps.usuarios.models.Usuario.rol
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.rol
+         :parser: rst
+
+   .. py:attribute:: telefono
+      :canonical: backend.apps.usuarios.models.Usuario.telefono
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.telefono
+         :parser: rst
+
+   .. py:attribute:: direccion
+      :canonical: backend.apps.usuarios.models.Usuario.direccion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.direccion
+         :parser: rst
+
+   .. py:attribute:: estado
+      :canonical: backend.apps.usuarios.models.Usuario.estado
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.estado
+         :parser: rst
+
+   .. py:attribute:: imagen
+      :canonical: backend.apps.usuarios.models.Usuario.imagen
+      :value: 'ImageField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.imagen
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.usuarios.models.Usuario.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: ultimo_ingreso
+      :canonical: backend.apps.usuarios.models.Usuario.ultimo_ingreso
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.ultimo_ingreso
+         :parser: rst
+
+   .. py:attribute:: last_activity
+      :canonical: backend.apps.usuarios.models.Usuario.last_activity
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.last_activity
+         :parser: rst
+
+   .. py:attribute:: is_staff
+      :canonical: backend.apps.usuarios.models.Usuario.is_staff
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.is_staff
+         :parser: rst
+
+   .. py:attribute:: self_deactivated
+      :canonical: backend.apps.usuarios.models.Usuario.self_deactivated
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.self_deactivated
+         :parser: rst
+
+   .. py:attribute:: admin_suspended
+      :canonical: backend.apps.usuarios.models.Usuario.admin_suspended
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.admin_suspended
+         :parser: rst
+
+   .. py:attribute:: suspension_reason
+      :canonical: backend.apps.usuarios.models.Usuario.suspension_reason
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.suspension_reason
+         :parser: rst
+
+   .. py:attribute:: suspension_date
+      :canonical: backend.apps.usuarios.models.Usuario.suspension_date
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.suspension_date
+         :parser: rst
+
+   .. py:attribute:: objects
+      :canonical: backend.apps.usuarios.models.Usuario.objects
+      :value: 'UsuarioManager(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.objects
+         :parser: rst
+
+   .. py:attribute:: USERNAME_FIELD
+      :canonical: backend.apps.usuarios.models.Usuario.USERNAME_FIELD
+      :value: 'email'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.USERNAME_FIELD
+         :parser: rst
+
+   .. py:attribute:: REQUIRED_FIELDS
+      :canonical: backend.apps.usuarios.models.Usuario.REQUIRED_FIELDS
+      :value: ['nombre']
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.REQUIRED_FIELDS
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.models.Usuario.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.Meta
+         :parser: rst
+
+      .. py:attribute:: indexes
+         :canonical: backend.apps.usuarios.models.Usuario.Meta.indexes
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.Meta.indexes
+            :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.usuarios.models.Usuario.Meta.verbose_name
+         :value: 'Usuario'
+
+         .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.usuarios.models.Usuario.Meta.verbose_name_plural
+         :value: 'Usuarios'
+
+         .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.Meta.verbose_name_plural
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.usuarios.models.Usuario.__str__
+
+   .. py:method:: set_password(raw_password)
+      :canonical: backend.apps.usuarios.models.Usuario.set_password
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.Usuario.set_password
+         :parser: rst
+
+   .. py:method:: save(*args, **kwargs)
+      :canonical: backend.apps.usuarios.models.Usuario.save
+
+.. py:class:: PasswordHistory(*args, **kwargs)
+   :canonical: backend.apps.usuarios.models.PasswordHistory
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: usuario
+      :canonical: backend.apps.usuarios.models.PasswordHistory.usuario
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.usuario
+         :parser: rst
+
+   .. py:attribute:: password_hash
+      :canonical: backend.apps.usuarios.models.PasswordHistory.password_hash
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.password_hash
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.usuarios.models.PasswordHistory.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.fecha_creacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.models.PasswordHistory.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.Meta
+         :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.usuarios.models.PasswordHistory.Meta.ordering
+         :value: ['-fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.Meta.ordering
+            :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.usuarios.models.PasswordHistory.Meta.verbose_name
+         :value: 'Historial de Contraseña'
+
+         .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.usuarios.models.PasswordHistory.Meta.verbose_name_plural
+         :value: 'Historial de Contraseñas'
+
+         .. autodoc2-docstring:: backend.apps.usuarios.models.PasswordHistory.Meta.verbose_name_plural
+            :parser: rst

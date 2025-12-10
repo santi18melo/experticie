@@ -1,0 +1,33 @@
+:py:mod:`backend.create_admin`
+==============================
+
+.. py:module:: backend.create_admin
+
+.. autodoc2-docstring:: backend.create_admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`current_dir <backend.create_admin.current_dir>`
+     - .. autodoc2-docstring:: backend.create_admin.current_dir
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: current_dir
+   :canonical: backend.create_admin.current_dir
+   :value: 'dirname(...)'
+
+   .. autodoc2-docstring:: backend.create_admin.current_dir
+      :parser: rst

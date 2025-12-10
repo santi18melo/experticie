@@ -1,0 +1,837 @@
+:py:mod:`backend.apps.productos.models`
+=======================================
+
+.. py:module:: backend.apps.productos.models
+
+.. autodoc2-docstring:: backend.apps.productos.models
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`Tienda <backend.apps.productos.models.Tienda>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.Tienda
+          :parser: rst
+          :summary:
+   * - :py:obj:`Producto <backend.apps.productos.models.Producto>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.Producto
+          :parser: rst
+          :summary:
+   * - :py:obj:`Pedido <backend.apps.productos.models.Pedido>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.Pedido
+          :parser: rst
+          :summary:
+   * - :py:obj:`DetallePedido <backend.apps.productos.models.DetallePedido>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido
+          :parser: rst
+          :summary:
+   * - :py:obj:`StockConfig <backend.apps.productos.models.StockConfig>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.StockConfig
+          :parser: rst
+          :summary:
+   * - :py:obj:`HistorialRecarga <backend.apps.productos.models.HistorialRecarga>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga
+          :parser: rst
+          :summary:
+   * - :py:obj:`Seccion <backend.apps.productos.models.Seccion>`
+     - .. autodoc2-docstring:: backend.apps.productos.models.Seccion
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: Tienda(*args, **kwargs)
+   :canonical: backend.apps.productos.models.Tienda
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Tienda
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Tienda.__init__
+      :parser: rst
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.productos.models.Tienda.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.nombre
+         :parser: rst
+
+   .. py:attribute:: direccion
+      :canonical: backend.apps.productos.models.Tienda.direccion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.direccion
+         :parser: rst
+
+   .. py:attribute:: telefono
+      :canonical: backend.apps.productos.models.Tienda.telefono
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.telefono
+         :parser: rst
+
+   .. py:attribute:: administrador
+      :canonical: backend.apps.productos.models.Tienda.administrador
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.administrador
+         :parser: rst
+
+   .. py:attribute:: activa
+      :canonical: backend.apps.productos.models.Tienda.activa
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.activa
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.productos.models.Tienda.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.productos.models.Tienda.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.fecha_actualizacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.Tienda.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Tienda.Meta
+         :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.productos.models.Tienda.Meta.ordering
+         :value: ['-fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Tienda.Meta.ordering
+            :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.Tienda.Meta.verbose_name
+         :value: 'Tienda'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Tienda.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.Tienda.Meta.verbose_name_plural
+         :value: 'Tiendas'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Tienda.Meta.verbose_name_plural
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.Tienda.__str__
+
+.. py:class:: Producto(*args, **kwargs)
+   :canonical: backend.apps.productos.models.Producto
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Producto
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Producto.__init__
+      :parser: rst
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.productos.models.Producto.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.nombre
+         :parser: rst
+
+   .. py:attribute:: descripcion
+      :canonical: backend.apps.productos.models.Producto.descripcion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.descripcion
+         :parser: rst
+
+   .. py:attribute:: precio
+      :canonical: backend.apps.productos.models.Producto.precio
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.precio
+         :parser: rst
+
+   .. py:attribute:: stock
+      :canonical: backend.apps.productos.models.Producto.stock
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.stock
+         :parser: rst
+
+   .. py:attribute:: tienda
+      :canonical: backend.apps.productos.models.Producto.tienda
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.tienda
+         :parser: rst
+
+   .. py:attribute:: proveedor
+      :canonical: backend.apps.productos.models.Producto.proveedor
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.proveedor
+         :parser: rst
+
+   .. py:attribute:: es_basico
+      :canonical: backend.apps.productos.models.Producto.es_basico
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.es_basico
+         :parser: rst
+
+   .. py:attribute:: categoria
+      :canonical: backend.apps.productos.models.Producto.categoria
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.categoria
+         :parser: rst
+
+   .. py:attribute:: imagen1
+      :canonical: backend.apps.productos.models.Producto.imagen1
+      :value: 'ImageField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.imagen1
+         :parser: rst
+
+   .. py:attribute:: imagen2
+      :canonical: backend.apps.productos.models.Producto.imagen2
+      :value: 'ImageField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.imagen2
+         :parser: rst
+
+   .. py:attribute:: imagen3
+      :canonical: backend.apps.productos.models.Producto.imagen3
+      :value: 'ImageField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.imagen3
+         :parser: rst
+
+   .. py:attribute:: caracteristicas
+      :canonical: backend.apps.productos.models.Producto.caracteristicas
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.caracteristicas
+         :parser: rst
+
+   .. py:attribute:: activo
+      :canonical: backend.apps.productos.models.Producto.activo
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.activo
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.productos.models.Producto.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.productos.models.Producto.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.fecha_actualizacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.Producto.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.Meta
+         :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.productos.models.Producto.Meta.ordering
+         :value: ['-fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Producto.Meta.ordering
+            :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.Producto.Meta.verbose_name
+         :value: 'Producto'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Producto.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.Producto.Meta.verbose_name_plural
+         :value: 'Productos'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Producto.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: unique_together
+         :canonical: backend.apps.productos.models.Producto.Meta.unique_together
+         :value: ('nombre', 'tienda')
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Producto.Meta.unique_together
+            :parser: rst
+
+      .. py:attribute:: indexes
+         :canonical: backend.apps.productos.models.Producto.Meta.indexes
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Producto.Meta.indexes
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.Producto.__str__
+
+   .. py:method:: reducir_stock(cantidad)
+      :canonical: backend.apps.productos.models.Producto.reducir_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.reducir_stock
+         :parser: rst
+
+   .. py:method:: aumentar_stock(cantidad)
+      :canonical: backend.apps.productos.models.Producto.aumentar_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Producto.aumentar_stock
+         :parser: rst
+
+.. py:class:: Pedido(*args, **kwargs)
+   :canonical: backend.apps.productos.models.Pedido
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Pedido
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Pedido.__init__
+      :parser: rst
+
+   .. py:attribute:: ESTADOS_PEDIDO
+      :canonical: backend.apps.productos.models.Pedido.ESTADOS_PEDIDO
+      :value: [('pendiente', 'Pendiente'), ('preparando', 'Preparando'), ('en_transito', 'En Tránsito'), ('entrega...
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.ESTADOS_PEDIDO
+         :parser: rst
+
+   .. py:attribute:: cliente
+      :canonical: backend.apps.productos.models.Pedido.cliente
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.cliente
+         :parser: rst
+
+   .. py:attribute:: tienda
+      :canonical: backend.apps.productos.models.Pedido.tienda
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.tienda
+         :parser: rst
+
+   .. py:attribute:: estado
+      :canonical: backend.apps.productos.models.Pedido.estado
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.estado
+         :parser: rst
+
+   .. py:attribute:: total
+      :canonical: backend.apps.productos.models.Pedido.total
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.total
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.productos.models.Pedido.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.productos.models.Pedido.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.fecha_actualizacion
+         :parser: rst
+
+   .. py:attribute:: notas
+      :canonical: backend.apps.productos.models.Pedido.notas
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.notas
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.Pedido.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.Meta
+         :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.productos.models.Pedido.Meta.ordering
+         :value: ['-fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Pedido.Meta.ordering
+            :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.Pedido.Meta.verbose_name
+         :value: 'Pedido'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Pedido.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.Pedido.Meta.verbose_name_plural
+         :value: 'Pedidos'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Pedido.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: indexes
+         :canonical: backend.apps.productos.models.Pedido.Meta.indexes
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Pedido.Meta.indexes
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.Pedido.__str__
+
+   .. py:method:: calcular_total()
+      :canonical: backend.apps.productos.models.Pedido.calcular_total
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.calcular_total
+         :parser: rst
+
+   .. py:method:: puede_cambiar_a_preparando()
+      :canonical: backend.apps.productos.models.Pedido.puede_cambiar_a_preparando
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.puede_cambiar_a_preparando
+         :parser: rst
+
+   .. py:method:: puede_cambiar_a_en_transito()
+      :canonical: backend.apps.productos.models.Pedido.puede_cambiar_a_en_transito
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.puede_cambiar_a_en_transito
+         :parser: rst
+
+   .. py:method:: puede_cambiar_a_entregado()
+      :canonical: backend.apps.productos.models.Pedido.puede_cambiar_a_entregado
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Pedido.puede_cambiar_a_entregado
+         :parser: rst
+
+.. py:class:: DetallePedido(*args, **kwargs)
+   :canonical: backend.apps.productos.models.DetallePedido
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.__init__
+      :parser: rst
+
+   .. py:attribute:: pedido
+      :canonical: backend.apps.productos.models.DetallePedido.pedido
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.pedido
+         :parser: rst
+
+   .. py:attribute:: producto
+      :canonical: backend.apps.productos.models.DetallePedido.producto
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.producto
+         :parser: rst
+
+   .. py:attribute:: cantidad
+      :canonical: backend.apps.productos.models.DetallePedido.cantidad
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.cantidad
+         :parser: rst
+
+   .. py:attribute:: precio_unitario
+      :canonical: backend.apps.productos.models.DetallePedido.precio_unitario
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.precio_unitario
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.DetallePedido.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.Meta
+         :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.DetallePedido.Meta.verbose_name
+         :value: 'Detalle de Pedido'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.DetallePedido.Meta.verbose_name_plural
+         :value: 'Detalles de Pedido'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: unique_together
+         :canonical: backend.apps.productos.models.DetallePedido.Meta.unique_together
+         :value: ('pedido', 'producto')
+
+         .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.Meta.unique_together
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.DetallePedido.__str__
+
+   .. py:property:: subtotal
+      :canonical: backend.apps.productos.models.DetallePedido.subtotal
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.subtotal
+         :parser: rst
+
+   .. py:method:: save(*args, **kwargs)
+      :canonical: backend.apps.productos.models.DetallePedido.save
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.save
+         :parser: rst
+
+   .. py:method:: delete(*args, **kwargs)
+      :canonical: backend.apps.productos.models.DetallePedido.delete
+
+      .. autodoc2-docstring:: backend.apps.productos.models.DetallePedido.delete
+         :parser: rst
+
+.. py:class:: StockConfig(*args, **kwargs)
+   :canonical: backend.apps.productos.models.StockConfig
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.StockConfig
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.__init__
+      :parser: rst
+
+   .. py:attribute:: producto
+      :canonical: backend.apps.productos.models.StockConfig.producto
+      :value: 'OneToOneField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.producto
+         :parser: rst
+
+   .. py:attribute:: stock_minimo
+      :canonical: backend.apps.productos.models.StockConfig.stock_minimo
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.stock_minimo
+         :parser: rst
+
+   .. py:attribute:: cantidad_recarga
+      :canonical: backend.apps.productos.models.StockConfig.cantidad_recarga
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.cantidad_recarga
+         :parser: rst
+
+   .. py:attribute:: recarga_automatica_activa
+      :canonical: backend.apps.productos.models.StockConfig.recarga_automatica_activa
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.recarga_automatica_activa
+         :parser: rst
+
+   .. py:attribute:: ultima_recarga
+      :canonical: backend.apps.productos.models.StockConfig.ultima_recarga
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.ultima_recarga
+         :parser: rst
+
+   .. py:attribute:: total_recargas
+      :canonical: backend.apps.productos.models.StockConfig.total_recargas
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.total_recargas
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.productos.models.StockConfig.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.productos.models.StockConfig.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.fecha_actualizacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.StockConfig.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.Meta
+         :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.StockConfig.Meta.verbose_name
+         :value: 'Configuración de Stock'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.StockConfig.Meta.verbose_name_plural
+         :value: 'Configuraciones de Stock'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.productos.models.StockConfig.Meta.ordering
+         :value: ['producto__nombre']
+
+         .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.Meta.ordering
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.StockConfig.__str__
+
+   .. py:method:: necesita_recarga()
+      :canonical: backend.apps.productos.models.StockConfig.necesita_recarga
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.necesita_recarga
+         :parser: rst
+
+   .. py:method:: ejecutar_recarga()
+      :canonical: backend.apps.productos.models.StockConfig.ejecutar_recarga
+
+      .. autodoc2-docstring:: backend.apps.productos.models.StockConfig.ejecutar_recarga
+         :parser: rst
+
+.. py:class:: HistorialRecarga(*args, **kwargs)
+   :canonical: backend.apps.productos.models.HistorialRecarga
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.__init__
+      :parser: rst
+
+   .. py:attribute:: TIPO_RECARGA
+      :canonical: backend.apps.productos.models.HistorialRecarga.TIPO_RECARGA
+      :value: [('automatica', 'Automática'), ('manual', 'Manual')]
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.TIPO_RECARGA
+         :parser: rst
+
+   .. py:attribute:: producto
+      :canonical: backend.apps.productos.models.HistorialRecarga.producto
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.producto
+         :parser: rst
+
+   .. py:attribute:: cantidad
+      :canonical: backend.apps.productos.models.HistorialRecarga.cantidad
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.cantidad
+         :parser: rst
+
+   .. py:attribute:: stock_anterior
+      :canonical: backend.apps.productos.models.HistorialRecarga.stock_anterior
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.stock_anterior
+         :parser: rst
+
+   .. py:attribute:: stock_nuevo
+      :canonical: backend.apps.productos.models.HistorialRecarga.stock_nuevo
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.stock_nuevo
+         :parser: rst
+
+   .. py:attribute:: tipo
+      :canonical: backend.apps.productos.models.HistorialRecarga.tipo
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.tipo
+         :parser: rst
+
+   .. py:attribute:: usuario
+      :canonical: backend.apps.productos.models.HistorialRecarga.usuario
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.usuario
+         :parser: rst
+
+   .. py:attribute:: notas
+      :canonical: backend.apps.productos.models.HistorialRecarga.notas
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.notas
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.productos.models.HistorialRecarga.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.fecha_creacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.HistorialRecarga.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.Meta
+         :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.HistorialRecarga.Meta.verbose_name
+         :value: 'Historial de Recarga'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.HistorialRecarga.Meta.verbose_name_plural
+         :value: 'Historial de Recargas'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.productos.models.HistorialRecarga.Meta.ordering
+         :value: ['-fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.Meta.ordering
+            :parser: rst
+
+      .. py:attribute:: indexes
+         :canonical: backend.apps.productos.models.HistorialRecarga.Meta.indexes
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.models.HistorialRecarga.Meta.indexes
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.HistorialRecarga.__str__
+
+.. py:class:: Seccion(*args, **kwargs)
+   :canonical: backend.apps.productos.models.Seccion
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Seccion
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.models.Seccion.__init__
+      :parser: rst
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.productos.models.Seccion.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Seccion.nombre
+         :parser: rst
+
+   .. py:attribute:: descripcion
+      :canonical: backend.apps.productos.models.Seccion.descripcion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Seccion.descripcion
+         :parser: rst
+
+   .. py:attribute:: productos
+      :canonical: backend.apps.productos.models.Seccion.productos
+      :value: 'ManyToManyField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Seccion.productos
+         :parser: rst
+
+   .. py:attribute:: activa
+      :canonical: backend.apps.productos.models.Seccion.activa
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Seccion.activa
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.productos.models.Seccion.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Seccion.fecha_creacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.models.Seccion.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.models.Seccion.Meta
+         :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.productos.models.Seccion.Meta.verbose_name
+         :value: 'Sección'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Seccion.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.productos.models.Seccion.Meta.verbose_name_plural
+         :value: 'Secciones'
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Seccion.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.productos.models.Seccion.Meta.ordering
+         :value: ['nombre']
+
+         .. autodoc2-docstring:: backend.apps.productos.models.Seccion.Meta.ordering
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.productos.models.Seccion.__str__

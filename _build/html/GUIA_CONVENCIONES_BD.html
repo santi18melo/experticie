@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📋 GUÍA DE CONVENCIONES - NOMENCLATURA DE BASES DE DATOS &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📋 GUÍA DE CONVENCIONES - NOMENCLATURA DE BASES DE DATOS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GUIA_CONVENCIONES_BD.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guia-de-convenciones-nomenclatura-de-bases-de-datos">
+<h1>📋 GUÍA DE CONVENCIONES - NOMENCLATURA DE BASES DE DATOS<a class="headerlink" href="#guia-de-convenciones-nomenclatura-de-bases-de-datos" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Autor</strong>: Equipo de Arquitectura</p>
+<hr class="docutils" />
+<section id="objetivo">
+<h2>🎯 OBJETIVO<a class="headerlink" href="#objetivo" title="Link to this heading"></a></h2>
+<p>Establecer un estándar de nomenclatura consistente y claro para todos los campos de la base de datos, especialmente para <strong>Foreign Keys</strong>, mejorando la legibilidad del código y facilitando el mantenimiento.</p>
+</section>
+<hr class="docutils" />
+<section id="reglas-de-nomenclatura">
+<h2>📐 REGLAS DE NOMENCLATURA<a class="headerlink" href="#reglas-de-nomenclatura" title="Link to this heading"></a></h2>
+<section id="claves-primarias">
+<h3>1. <strong>Claves Primarias</strong><a class="headerlink" href="#claves-primarias" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ✅ CORRECTO</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Usuario</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Django lo crea automáticamente</span>
+</pre></div>
+</div>
+<p><strong>Regla</strong>: Siempre usar <code class="docutils literal notranslate"><span class="pre">id</span></code> como clave primaria.</p>
+</section>
+<hr class="docutils" />
+<section id="foreign-keys-claves-foraneas">
+<h3>2. <strong>Foreign Keys (Claves Foráneas)</strong><a class="headerlink" href="#foreign-keys-claves-foraneas" title="Link to this heading"></a></h3>
+<section id="antes-nomenclatura-ambigua">
+<h4>❌ ANTES (Nomenclatura Ambigua)<a class="headerlink" href="#antes-nomenclatura-ambigua" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Notificacion</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">usuario</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>      <span class="c1"># ¿Campo o relación?</span>
+    <span class="n">tipo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">TipoNotificacion</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># Ambiguo</span>
+    <span class="n">estado</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">EstadoNotificacion</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ¿String o FK?</span>
+</pre></div>
+</div>
+<p><strong>Problemas:</strong></p>
+<ul class="simple">
+<li><p>No queda claro si <code class="docutils literal notranslate"><span class="pre">estado</span></code> es un string o una FK</p></li>
+<li><p>En SQL, el campo real se llama <code class="docutils literal notranslate"><span class="pre">usuario_id</span></code>, no <code class="docutils literal notranslate"><span class="pre">usuario</span></code></p></li>
+<li><p>Confusión entre el campo BD y la relación ORM</p></li>
+</ul>
+</section>
+<section id="ahora-nomenclatura-especifica">
+<h4>✅ AHORA (Nomenclatura Específica)<a class="headerlink" href="#ahora-nomenclatura-especifica" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Notificacion</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_usuario</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="n">Usuario</span><span class="p">,</span> 
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+        <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;id_usuario&#39;</span><span class="p">,</span>  <span class="c1"># Nombre explícito en BD</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;notificaciones&#39;</span>
+    <span class="p">)</span>
+    <span class="n">id_tipo_notificacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="n">TipoNotificacion</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PROTECT</span><span class="p">,</span>
+        <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;id_tipo_notificacion&#39;</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;notificaciones&#39;</span>
+    <span class="p">)</span>
+    <span class="n">id_estado_notificacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="n">EstadoNotificacion</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PROTECT</span><span class="p">,</span>
+        <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;id_estado_notificacion&#39;</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;notificaciones&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Beneficios:</strong></p>
+<ul class="simple">
+<li><p>✅ Claridad total: se ve inmediatamente que es una FK</p></li>
+<li><p>✅ Coherencia con SQL: <code class="docutils literal notranslate"><span class="pre">id_usuario</span></code> en Python = <code class="docutils literal notranslate"><span class="pre">id_usuario</span></code> en BD</p></li>
+<li><p>✅ Evita ambigüedades: <code class="docutils literal notranslate"><span class="pre">id_estado_notificacion</span></code> vs <code class="docutils literal notranslate"><span class="pre">estado</span></code> (string)</p></li>
+<li><p>✅ Autodocumentado: se entiende sin ver documentación</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="patron-de-nomenclatura">
+<h3>3. <strong>Patrón de Nomenclatura</strong><a class="headerlink" href="#patron-de-nomenclatura" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">id_</span><span class="o">&lt;</span><span class="n">entidad_relacionada</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Ejemplos:</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Relación</p></th>
+<th class="head"><p>Campo FK</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Notificacion → Usuario</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_usuario</span></code></p></td>
+<td><p>ID del usuario que recibe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Producto → Tienda</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_tienda</span></code></p></td>
+<td><p>ID de la tienda</p></td>
+</tr>
+<tr class="row-even"><td><p>Producto → Proveedor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_proveedor</span></code></p></td>
+<td><p>ID del proveedor (Usuario)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pago → Pedido</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_pedido</span></code></p></td>
+<td><p>ID del pedido pagado</p></td>
+</tr>
+<tr class="row-even"><td><p>Pago → EstadoPago</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_estado_pago</span></code></p></td>
+<td><p>ID del estado del pago</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pago → MetodoPago</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_metodo_pago</span></code></p></td>
+<td><p>ID del método usado</p></td>
+</tr>
+<tr class="row-even"><td><p>DetallePedido → Producto</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_producto</span></code></p></td>
+<td><p>ID del producto</p></td>
+</tr>
+<tr class="row-odd"><td><p>DetallePedido → Pedido</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id_pedido</span></code></p></td>
+<td><p>ID del pedido</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="casos-especiales">
+<h3>4. <strong>Casos Especiales</strong><a class="headerlink" href="#casos-especiales" title="Link to this heading"></a></h3>
+<section id="multiples-fks-a-la-misma-tabla">
+<h4>Múltiples FKs a la misma tabla<a class="headerlink" href="#multiples-fks-a-la-misma-tabla" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HistorialRecarga</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_producto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="n">Producto</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+        <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;id_producto&#39;</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;recargas_historial&#39;</span>
+    <span class="p">)</span>
+    <span class="n">id_usuario_ejecutor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>  <span class="c1"># Descriptor específico</span>
+        <span class="n">Usuario</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">,</span>
+        <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;id_usuario_ejecutor&#39;</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;recargas_ejecutadas&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Regla</strong>: Cuando hay múltiples FKs a la misma tabla, usar sufijo descriptivo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id_usuario_ejecutor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id_usuario_creador</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id_usuario_aprobador</span></code></p></li>
+</ul>
+</section>
+<section id="self-referencing-fks">
+<h4>Self-referencing FKs<a class="headerlink" href="#self-referencing-fks" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Usuario</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_usuario_supervisor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="s1">&#39;self&#39;</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">,</span>
+        <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;id_usuario_supervisor&#39;</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;usuarios_supervisados&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="campos-booleanos">
+<h3>5. <strong>Campos Booleanos</strong><a class="headerlink" href="#campos-booleanos" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ✅ CORRECTO - Prefijo is_, tiene_, es_</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Usuario</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">is_staff</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">is_superuser</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">self_deactivated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">admin_suspended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Producto</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">es_basico</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">activo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">StockConfig</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">recarga_automatica_activa</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="campos-de-fecha-hora">
+<h3>6. <strong>Campos de Fecha/Hora</strong><a class="headerlink" href="#campos-de-fecha-hora" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ✅ CORRECTO - Prefijo fecha_</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">fecha_creacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fecha_actualizacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Pedido</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">fecha_creacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fecha_entrega_estimada</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fecha_entrega_real</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="campos-numericos">
+<h3>7. <strong>Campos Numéricos</strong><a class="headerlink" href="#campos-numericos" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ✅ CORRECTO - Nombres descriptivos</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Producto</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">precio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="k">class</span><span class="w"> </span><span class="nc">StockConfig</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">stock_minimo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">cantidad_recarga</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">total_recargas</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estandar-por-modelo">
+<h2>🗂️ ESTÁNDAR POR MODELO<a class="headerlink" href="#estandar-por-modelo" title="Link to this heading"></a></h2>
+<section id="usuario">
+<h3>Usuario<a class="headerlink" href="#usuario" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Usuario</span><span class="p">(</span><span class="n">AbstractBaseUser</span><span class="p">,</span> <span class="n">PermissionsMixin</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+    
+    <span class="c1"># Sin FKs (es la tabla raíz de autenticación)</span>
+</pre></div>
+</div>
+</section>
+<section id="passwordhistory">
+<h3>PasswordHistory<a class="headerlink" href="#passwordhistory" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PasswordHistory</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_usuario</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">password_hash</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">fecha_creacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="tienda">
+<h3>Tienda<a class="headerlink" href="#tienda" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Tienda</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_administrador</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="producto">
+<h3>Producto<a class="headerlink" href="#producto" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Producto</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_tienda</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Tienda</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_proveedor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="stockconfig">
+<h3>StockConfig<a class="headerlink" href="#stockconfig" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">StockConfig</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_producto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">Producto</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">stock_minimo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="historialrecarga">
+<h3>HistorialRecarga<a class="headerlink" href="#historialrecarga" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HistorialRecarga</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_producto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Producto</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_usuario_ejecutor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅ Específico</span>
+    <span class="n">cantidad</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="pedido">
+<h3>Pedido<a class="headerlink" href="#pedido" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Pedido</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_cliente</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_tienda</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Tienda</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">estado</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">ESTADOS_PEDIDO</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="detallepedido">
+<h3>DetallePedido<a class="headerlink" href="#detallepedido" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DetallePedido</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_pedido</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pedido</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_producto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Producto</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">cantidad</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="pago">
+<h3>Pago<a class="headerlink" href="#pago" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Pago</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_usuario</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_pedido</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pedido</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_estado_pago</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">EstadoPago</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_metodo_pago</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MetodoPago</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">monto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="transaccion">
+<h3>Transaccion<a class="headerlink" href="#transaccion" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Transaccion</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_pago</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pago</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">referencia_externa</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="venta">
+<h3>Venta<a class="headerlink" href="#venta" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Venta</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_pedido</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">Pedido</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_cliente</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="detalleventa">
+<h3>DetalleVenta<a class="headerlink" href="#detalleventa" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DetalleVenta</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_venta</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Venta</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_producto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Producto</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">cantidad</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+<section id="notificacion">
+<h3>Notificacion<a class="headerlink" href="#notificacion" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Notificacion</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BigAutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">id_usuario</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Usuario</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_tipo_notificacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">TipoNotificacion</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">id_estado_notificacion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">EstadoNotificacion</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">mensaje</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="c1"># ... otros campos ...</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="queries-sql-mas-claros">
+<h2>📊 QUERIES SQL MÁS CLAROS<a class="headerlink" href="#queries-sql-mas-claros" title="Link to this heading"></a></h2>
+<section id="antes-ambiguo">
+<h3>Antes (Ambiguo)<a class="headerlink" href="#antes-ambiguo" title="Link to this heading"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- ¿Qué campo es qué?</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">nombre</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pago</span><span class="w"> </span><span class="n">p</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">estado_pago</span><span class="w"> </span><span class="n">ep</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ep</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">pedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1234</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="ahora-claro">
+<h3>Ahora (Claro)<a class="headerlink" href="#ahora-claro" title="Link to this heading"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Totalmente explícito</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">nombre</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pago</span><span class="w"> </span><span class="n">p</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">estado_pago</span><span class="w"> </span><span class="n">ep</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_estado_pago</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ep</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_pedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1234</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="acceso-en-django-orm">
+<h2>🔧 ACCESO EN DJANGO ORM<a class="headerlink" href="#acceso-en-django-orm" title="Link to this heading"></a></h2>
+<section id="forma-actual-mantener-compatibilidad">
+<h3>Forma Actual (Mantener compatibilidad)<a class="headerlink" href="#forma-actual-mantener-compatibilidad" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Django ORM automáticamente convierte id_usuario a usuario</span>
+<span class="n">pago</span> <span class="o">=</span> <span class="n">Pago</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pago</span><span class="o">.</span><span class="n">id_usuario</span><span class="p">)</span>  <span class="c1"># Acceso directo al ID</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pago</span><span class="o">.</span><span class="n">id_usuario</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>  <span class="c1"># Django sigue permitiendo navegación</span>
+
+<span class="c1"># O usando el related_name</span>
+<span class="n">usuario</span> <span class="o">=</span> <span class="n">Usuario</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">pagos</span> <span class="o">=</span> <span class="n">usuario</span><span class="o">.</span><span class="n">pagos</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Funciona igual</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="checklist-de-implementacion">
+<h2>✅ CHECKLIST DE IMPLEMENTACIÓN<a class="headerlink" href="#checklist-de-implementacion" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[ ] Revisar todos los modelos existentes</p></li>
+<li><p>[ ] Renombrar FKs siguiendo el patrón <code class="docutils literal notranslate"><span class="pre">id_&lt;entidad&gt;</span></code></p></li>
+<li><p>[ ] Actualizar <code class="docutils literal notranslate"><span class="pre">db_column</span></code> en cada FK</p></li>
+<li><p>[ ] Crear migraciones Django</p></li>
+<li><p>[ ] Actualizar queries en views.py</p></li>
+<li><p>[ ] Actualizar serializers</p></li>
+<li><p>[ ] Actualizar tests</p></li>
+<li><p>[ ] Actualizar documentación</p></li>
+<li><p>[ ] Revisar que todos los diagramas UML reflejen los cambios</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="migracion-gradual">
+<h2>🚀 MIGRACIÓN GRADUAL<a class="headerlink" href="#migracion-gradual" title="Link to this heading"></a></h2>
+<section id="fase-1-nuevos-modelos">
+<h3>Fase 1: Nuevos Modelos<a class="headerlink" href="#fase-1-nuevos-modelos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Todos los modelos nuevos siguen la nueva convención</p></li>
+</ul>
+</section>
+<section id="fase-2-modelos-existentes-opcional">
+<h3>Fase 2: Modelos Existentes (Opcional)<a class="headerlink" href="#fase-2-modelos-existentes-opcional" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Crear migración para renombrar campos</p></li>
+<li><p>Mantener <code class="docutils literal notranslate"><span class="pre">db_column</span></code> para evitar cambios en BD</p></li>
+<li><p>Actualizar código Python gradualmente</p></li>
+</ul>
+</section>
+<section id="fase-3-refactoring-completo-futuro">
+<h3>Fase 3: Refactoring Completo (Futuro)<a class="headerlink" href="#fase-3-refactoring-completo-futuro" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Cuando sea conveniente, migrar la BD real</p></li>
+<li><p>Requiere downtime o migración en caliente</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ejemplo-de-migracion">
+<h2>📝 EJEMPLO DE MIGRACIÓN<a class="headerlink" href="#ejemplo-de-migracion" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejemplo de cómo hacer la migración sin afectar la BD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">models</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;notificaciones&#39;</span><span class="p">,</span> <span class="s1">&#39;0001_initial&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="c1"># Renombrar campo en Python, mantener nombre en BD</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">RenameField</span><span class="p">(</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;notificacion&#39;</span><span class="p">,</span>
+            <span class="n">old_name</span><span class="o">=</span><span class="s1">&#39;usuario&#39;</span><span class="p">,</span>
+            <span class="n">new_name</span><span class="o">=</span><span class="s1">&#39;id_usuario&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="c1"># Asegurar que el nombre en BD no cambie</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">AlterField</span><span class="p">(</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;notificacion&#39;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;id_usuario&#39;</span><span class="p">,</span>
+            <span class="n">field</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+                <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+                <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;notificaciones&#39;</span><span class="p">,</span>
+                <span class="n">to</span><span class="o">=</span><span class="s1">&#39;usuarios.usuario&#39;</span><span class="p">,</span>
+                <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;usuario_id&#39;</span><span class="p">,</span>  <span class="c1"># Mantiene nombre actual en BD</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="beneficios-a-largo-plazo">
+<h2>📚 BENEFICIOS A LARGO PLAZO<a class="headerlink" href="#beneficios-a-largo-plazo" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Onboarding más rápido</strong>: Nuevos devs entienden el esquema inmediatamente</p></li>
+<li><p><strong>Menos bugs</strong>: Menos confusión entre strings y FKs</p></li>
+<li><p><strong>Queries más claras</strong>: SQL más legible</p></li>
+<li><p><strong>Mejor IDE support</strong>: Autocomplete más preciso</p></li>
+<li><p><strong>Documentación implícita</strong>: El código se explica solo</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="recursos-adicionales">
+<h2>🎓 RECURSOS ADICIONALES<a class="headerlink" href="#recursos-adicionales" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Django Best Practices</strong>: https://.djangoproject.com/en/stable/topics/db/models/</p></li>
+<li><p><strong>PEP 8</strong>: https://pep8.org/</p></li>
+<li><p><strong>Database Naming Conventions</strong>: Google “database naming conventions best practices”</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Documento creado</strong>: 2025-12-04<br />
+<strong>Mantenedor</strong>: Equipo de Arquitectura<br />
+<strong>Próxima revisión</strong>: Al agregar nuevos modelos<br />
+<strong>Estado</strong>: ✅ Vigente</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

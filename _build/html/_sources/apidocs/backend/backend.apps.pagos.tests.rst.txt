@@ -1,0 +1,8 @@
+:py:mod:`backend.apps.pagos.tests`
+==================================
+
+.. py:module:: backend.apps.pagos.tests
+
+.. autodoc2-docstring:: backend.apps.pagos.tests
+   :parser: rst
+   :allowtitles:

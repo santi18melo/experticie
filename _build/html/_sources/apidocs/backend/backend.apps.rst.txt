@@ -1,0 +1,21 @@
+:py:mod:`backend.apps`
+======================
+
+.. py:module:: backend.apps
+
+.. autodoc2-docstring:: backend.apps
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps.notificaciones
+   backend.apps.pagos
+   backend.apps.productos
+   backend.apps.usuarios
+   backend.apps.ventas

@@ -1,0 +1,44 @@
+:py:mod:`backend.investigate_admin`
+===================================
+
+.. py:module:: backend.investigate_admin
+
+.. autodoc2-docstring:: backend.investigate_admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`current_dir <backend.investigate_admin.current_dir>`
+     - .. autodoc2-docstring:: backend.investigate_admin.current_dir
+          :parser: rst
+          :summary:
+   * - :py:obj:`admin_users <backend.investigate_admin.admin_users>`
+     - .. autodoc2-docstring:: backend.investigate_admin.admin_users
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: current_dir
+   :canonical: backend.investigate_admin.current_dir
+   :value: 'dirname(...)'
+
+   .. autodoc2-docstring:: backend.investigate_admin.current_dir
+      :parser: rst
+
+.. py:data:: admin_users
+   :canonical: backend.investigate_admin.admin_users
+   :value: 'filter(...)'
+
+   .. autodoc2-docstring:: backend.investigate_admin.admin_users
+      :parser: rst

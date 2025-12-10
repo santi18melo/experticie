@@ -1,0 +1,32 @@
+:py:mod:`backend.apps.notificaciones`
+=====================================
+
+.. py:module:: backend.apps.notificaciones
+
+.. autodoc2-docstring:: backend.apps.notificaciones
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps.notificaciones.migrations
+   backend.apps.notificaciones.tests
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.apps.notificaciones.admin
+   backend.apps.notificaciones.apps
+   backend.apps.notificaciones.models
+   backend.apps.notificaciones.serializers
+   backend.apps.notificaciones.urls
+   backend.apps.notificaciones.views

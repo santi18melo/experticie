@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔍 Comprehensive Code Review Report &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🔍 Comprehensive Code Review Report</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reportes/CODE_REVIEW_REPORT.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="comprehensive-code-review-report">
+<h1>🔍 Comprehensive Code Review Report<a class="headerlink" href="#comprehensive-code-review-report" title="Link to this heading"></a></h1>
+<p><strong>Project</strong>: PREXCOL E-Commerce Platform<br />
+<strong>Date</strong>: 2025-11-30<br />
+<strong>Reviewer</strong>: AI Code Review Agent<br />
+<strong>Review Type</strong>: Deep Test-First Analysis</p>
+<hr class="docutils" />
+<section id="executive-summary">
+<h2>📊 Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading"></a></h2>
+<p>This comprehensive code review began with a complete test suite execution and identified critical areas for improvement across the entire codebase. The project is a Django REST Framework backend with React frontend for an e-commerce platform.</p>
+<section id="test-results-summary">
+<h3>Test Results Summary<a class="headerlink" href="#test-results-summary" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Tests</strong>: 144 collected</p></li>
+<li><p><strong>Passed</strong>: 134 (93%)</p></li>
+<li><p><strong>Failed</strong>: 10 (7%)</p></li>
+<li><p><strong>Test Coverage</strong>: 19% (needs significant improvement)</p></li>
+<li><p><strong>Execution Time</strong>: 196.46s</p></li>
+</ul>
+</section>
+<section id="overall-health-score-b-good-with-room-for-improvement">
+<h3>Overall Health Score: <strong>B- (Good, with room for improvement)</strong><a class="headerlink" href="#overall-health-score-b-good-with-room-for-improvement" title="Link to this heading"></a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="test-infrastructure-configuration">
+<h2>1️⃣ Test Infrastructure &amp; Configuration<a class="headerlink" href="#test-infrastructure-configuration" title="Link to this heading"></a></h2>
+<section id="achievements">
+<h3>✅ Achievements<a class="headerlink" href="#achievements" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Successfully configured pytest</strong> with Django integration</p></li>
+<li><p><strong>Fixed all import paths</strong> - migrated from <code class="docutils literal notranslate"><span class="pre">productos.models</span></code> to <code class="docutils literal notranslate"><span class="pre">apps.productos.models</span></code></p></li>
+<li><p><strong>Resolved test discovery issues</strong> - proper <code class="docutils literal notranslate"><span class="pre">pytest.ini</span></code> configuration</p></li>
+<li><p><strong>Eliminated naming conflicts</strong> - renamed <code class="docutils literal notranslate"><span class="pre">test_auth.py</span></code> in management commands</p></li>
+</ol>
+</section>
+<section id="critical-issues-fixed">
+<h3>❌ Critical Issues Fixed<a class="headerlink" href="#critical-issues-fixed" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Impact</p></th>
+<th class="head"><p>Resolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ModuleNotFoundError for app imports</p></td>
+<td><p>Tests couldn’t run</p></td>
+<td><p>Updated all imports to use <code class="docutils literal notranslate"><span class="pre">apps.</span></code> prefix</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unique constraint violation in tests</p></td>
+<td><p>Test failures</p></td>
+<td><p>Fixed <code class="docutils literal notranslate"><span class="pre">test_calcular_total</span></code> to use different products</p></td>
+</tr>
+<tr class="row-even"><td><p>Import file mismatch</p></td>
+<td><p>Test collection errors</p></td>
+<td><p>Renamed conflicting <code class="docutils literal notranslate"><span class="pre">test_auth.py</span></code> to <code class="docutils literal notranslate"><span class="pre">verify_auth.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Missing pytest configuration</p></td>
+<td><p>No test discovery</p></td>
+<td><p>Created <code class="docutils literal notranslate"><span class="pre">pytest.ini</span></code> with proper settings</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="current-test-configuration-pytest-ini">
+<h3>📋 Current Test Configuration (<code class="docutils literal notranslate"><span class="pre">pytest.ini</span></code>)<a class="headerlink" href="#current-test-configuration-pytest-ini" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="na">python_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">test_*.py</span>
+<span class="na">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">. backend</span>
+<span class="na">norecursedirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">frontend backend/scripts .*</span>
+<span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">--cov=backend --cov-report=term-missing</span>
+<span class="na">DJANGO_SETTINGS_MODULE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">settings</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="code-quality-analysis-by-module">
+<h2>2️⃣ Code Quality Analysis by Module<a class="headerlink" href="#code-quality-analysis-by-module" title="Link to this heading"></a></h2>
+<section id="usuarios-authentication-user-management">
+<h3>🔐 <strong>usuarios</strong> (Authentication &amp; User Management)<a class="headerlink" href="#usuarios-authentication-user-management" title="Link to this heading"></a></h3>
+<p><strong>Coverage</strong>: 75% | <strong>Tests</strong>: 15 | <strong>Status</strong>: ✅ Good</p>
+<section id="strengths">
+<h4>Strengths:<a class="headerlink" href="#strengths" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Comprehensive user model with role-based access</p></li>
+<li><p>Custom authentication backend (<code class="docutils literal notranslate"><span class="pre">EmailBackend</span></code>)</p></li>
+<li><p>Password history tracking</p></li>
+<li><p>JWT token integration</p></li>
+</ul>
+</section>
+<section id="issues-found">
+<h4>Issues Found:<a class="headerlink" href="#issues-found" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Hard-coded credentials</strong> in test fixtures (<code class="docutils literal notranslate"><span class="pre">TestPass123!</span></code>)</p>
+<ul class="simple">
+<li><p><strong>Risk</strong>: Encourages weak password patterns</p></li>
+<li><p><strong>Fix</strong>: Use <code class="docutils literal notranslate"><span class="pre">make_password()</span></code> or rely on <code class="docutils literal notranslate"><span class="pre">create_user</span></code> auto-hashing</p></li>
+</ul>
+</li>
+<li><p><strong>Missing email validation</strong> in serializers</p>
+<ul class="simple">
+<li><p><strong>Risk</strong>: Invalid emails can be stored</p></li>
+<li><p><strong>Fix</strong>: Add email format validation</p></li>
+</ul>
+</li>
+<li><p><strong>No rate limiting</strong> on login endpoint</p>
+<ul class="simple">
+<li><p><strong>Risk</strong>: Brute force attacks</p></li>
+<li><p><strong>Fix</strong>: Implement <code class="docutils literal notranslate"><span class="pre">django-ratelimit</span></code> or DRF throttling</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="recommendations">
+<h4>Recommendations:<a class="headerlink" href="#recommendations" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add to UsuarioSerializer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.core.validators</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmailValidator</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UsuarioSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">EmailValidator</span><span class="p">()])</span>
+    
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Usuario</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;rol&#39;</span><span class="p">,</span> <span class="s1">&#39;estado&#39;</span><span class="p">]</span>
+        <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="productos-product-catalog">
+<h3>📦 <strong>productos</strong> (Product Catalog)<a class="headerlink" href="#productos-product-catalog" title="Link to this heading"></a></h3>
+<p><strong>Coverage</strong>: 92% | <strong>Tests</strong>: 16 | <strong>Status</strong>: ✅ Excellent</p>
+<section id="id1">
+<h4>Strengths:<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Well-designed models (Tienda, Producto, Pedido, DetallePedido)</p></li>
+<li><p>Stock management with <code class="docutils literal notranslate"><span class="pre">aumentar_stock</span></code>/<code class="docutils literal notranslate"><span class="pre">reducir_stock</span></code> methods</p></li>
+<li><p>Automatic stock reload configuration (<code class="docutils literal notranslate"><span class="pre">StockConfig</span></code>, <code class="docutils literal notranslate"><span class="pre">HistorialRecarga</span></code>)</p></li>
+<li><p>Product sections for categorization</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>Issues Found:<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p><strong>N+1 Query Problem</strong> in <code class="docutils literal notranslate"><span class="pre">ProductoViewSet.get_queryset()</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Current (inefficient)</span>
+<span class="n">queryset</span> <span class="o">=</span> <span class="n">Producto</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Recommended</span>
+<span class="n">queryset</span> <span class="o">=</span> <span class="n">Producto</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;proveedor&#39;</span><span class="p">,</span> <span class="s1">&#39;tienda&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Manual filtering instead of DRF filters</strong></p>
+<ul class="simple">
+<li><p><strong>Current</strong>: Manual <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">nombre:</span> <span class="pre">queryset.filter(nombre__icontains=nombre)</span></code></p></li>
+<li><p><strong>Better</strong>: Use <code class="docutils literal notranslate"><span class="pre">django-filter</span></code> with <code class="docutils literal notranslate"><span class="pre">FilterSet</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Missing database indexes</strong> on frequently queried fields</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add to Producto model</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">]),</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;precio&#39;</span><span class="p">]),</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;stock&#39;</span><span class="p">]),</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Hardcoded stock threshold</strong> (<code class="docutils literal notranslate"><span class="pre">stock_bajo</span> <span class="pre">=</span> <span class="pre">'true'</span></code> checks <code class="docutils literal notranslate"><span class="pre">stock__lte=10</span></code>)</p>
+<ul class="simple">
+<li><p><strong>Fix</strong>: Make configurable via settings or per-product</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h4>Recommendations:<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use django-filter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">rest_framework</span> <span class="k">as</span> <span class="n">filters</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProductoFilter</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">FilterSet</span><span class="p">):</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">CharFilter</span><span class="p">(</span><span class="n">lookup_expr</span><span class="o">=</span><span class="s1">&#39;icontains&#39;</span><span class="p">)</span>
+    <span class="n">precio_min</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">NumberFilter</span><span class="p">(</span><span class="n">field_name</span><span class="o">=</span><span class="s1">&#39;precio&#39;</span><span class="p">,</span> <span class="n">lookup_expr</span><span class="o">=</span><span class="s1">&#39;gte&#39;</span><span class="p">)</span>
+    <span class="n">precio_max</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">NumberFilter</span><span class="p">(</span><span class="n">field_name</span><span class="o">=</span><span class="s1">&#39;precio&#39;</span><span class="p">,</span> <span class="n">lookup_expr</span><span class="o">=</span><span class="s1">&#39;lte&#39;</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Producto</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">&#39;proveedor&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProductoViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">[</span><span class="n">DjangoFilterBackend</span><span class="p">,</span> <span class="n">SearchFilter</span><span class="p">,</span> <span class="n">OrderingFilter</span><span class="p">]</span>
+    <span class="n">filterset_class</span> <span class="o">=</span> <span class="n">ProductoFilter</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;descripcion&#39;</span><span class="p">]</span>
+    <span class="n">ordering_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;precio&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_creacion&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pagos-payment-processing">
+<h3>💳 <strong>pagos</strong> (Payment Processing)<a class="headerlink" href="#pagos-payment-processing" title="Link to this heading"></a></h3>
+<p><strong>Coverage</strong>: 89% | <strong>Tests</strong>: 18 | <strong>Status</strong>: ✅ Good</p>
+<section id="id4">
+<h4>Strengths:<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Separate models for payment methods, states, and transactions</p></li>
+<li><p>Gateway response tracking (<code class="docutils literal notranslate"><span class="pre">respuesta_gateway</span></code> JSONField)</p></li>
+<li><p>Payment state machine</p></li>
+</ul>
+</section>
+<section id="id5">
+<h4>Issues Found:<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p><strong>No payment validation</strong> before order completion</p>
+<ul class="simple">
+<li><p><strong>Risk</strong>: Orders created without confirmed payment</p></li>
+<li><p><strong>Fix</strong>: Add payment verification in <code class="docutils literal notranslate"><span class="pre">PedidoViewSet.crear_pedido</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Missing transaction rollback</strong> on payment failure</p>
+<ul class="simple">
+<li><p><strong>Current</strong>: Stock reduced even if payment fails</p></li>
+<li><p><strong>Fix</strong>: Use <code class="docutils literal notranslate"><span class="pre">transaction.atomic()</span></code> with proper exception handling</p></li>
+</ul>
+</li>
+<li><p><strong>Hard-coded payment amount validation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Current</span>
+<span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">monto_pago</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_pedido</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Better (allow tolerance for rounding)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="n">monto_pago</span><span class="p">)</span> <span class="o">-</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">total_pedido</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.01&#39;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>No payment retry mechanism</strong></p>
+<ul class="simple">
+<li><p><strong>Fix</strong>: Implement idempotency keys and retry logic</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notificaciones-notifications">
+<h3>🔔 <strong>notificaciones</strong> (Notifications)<a class="headerlink" href="#notificaciones-notifications" title="Link to this heading"></a></h3>
+<p><strong>Coverage</strong>: 90% | <strong>Tests</strong>: 12 | <strong>Status</strong>: ✅ Good</p>
+<section id="id6">
+<h4>Strengths:<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Flexible notification system with types and states</p></li>
+<li><p>User-specific notifications</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>Issues Found:<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>No notification delivery mechanism</strong></p>
+<ul class="simple">
+<li><p>Models exist but no email/SMS/push integration</p></li>
+<li><p><strong>Fix</strong>: Integrate Celery tasks for async delivery</p></li>
+</ul>
+</li>
+<li><p><strong>Missing notification preferences</strong></p>
+<ul class="simple">
+<li><p>Users can’t opt-out of notification types</p></li>
+<li><p><strong>Fix</strong>: Add <code class="docutils literal notranslate"><span class="pre">NotificationPreference</span></code> model</p></li>
+</ul>
+</li>
+<li><p><strong>No notification expiry</strong></p>
+<ul class="simple">
+<li><p>Old notifications accumulate</p></li>
+<li><p><strong>Fix</strong>: Add <code class="docutils literal notranslate"><span class="pre">expires_at</span></code> field and cleanup task</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ventas-sales-orders">
+<h3>🛒 <strong>ventas</strong> (Sales/Orders)<a class="headerlink" href="#ventas-sales-orders" title="Link to this heading"></a></h3>
+<p><strong>Coverage</strong>: 93% | <strong>Tests</strong>: 8 | <strong>Status</strong>: ✅ Excellent</p>
+<section id="id8">
+<h4>Strengths:<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Clean sales tracking model</p></li>
+<li><p>Signal-based architecture for order events</p></li>
+</ul>
+</section>
+<section id="id9">
+<h4>Issues Found:<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Signals not fully utilized</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">signals.py</span></code> exists but only 36% coverage</p></li>
+<li><p><strong>Fix</strong>: Add signals for order state changes, low stock alerts</p></li>
+</ul>
+</li>
+<li><p><strong>No sales analytics</strong></p>
+<ul class="simple">
+<li><p>Missing aggregation views for reports</p></li>
+<li><p><strong>Fix</strong>: Add ViewSet actions for sales by period, top products, etc.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="security-assessment">
+<h2>3️⃣ Security Assessment<a class="headerlink" href="#security-assessment" title="Link to this heading"></a></h2>
+<section id="critical-security-issues">
+<h3>🔴 Critical Security Issues<a class="headerlink" href="#critical-security-issues" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>DEBUG = True in production</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># backend/settings.py</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span>  <span class="c1"># ❌ Defaults to True!</span>
+
+<span class="c1"># Fix</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span>  <span class="c1"># ✅ Defaults to False</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>SECRET_KEY exposed</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SECRET_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;django-insecure-fallback-dev-key-change-in-prod&quot;</span><span class="p">)</span>
+
+<span class="c1"># Fix: Fail if not set in production</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">DEBUG</span> <span class="ow">and</span> <span class="n">SECRET_KEY</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;django-insecure&#39;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span><span class="s2">&quot;SECRET_KEY must be set in production&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Missing security middleware</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add to MIDDLEWARE</span>
+<span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+
+<span class="c1"># Add to settings</span>
+<span class="n">SECURE_HSTS_SECONDS</span> <span class="o">=</span> <span class="mi">31536000</span>
+<span class="n">SECURE_SSL_REDIRECT</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">DEBUG</span>
+<span class="n">SESSION_COOKIE_SECURE</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">DEBUG</span>
+<span class="n">CSRF_COOKIE_SECURE</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">DEBUG</span>
+<span class="n">X_FRAME_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;DENY&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>No input sanitization</strong></p>
+<ul class="simple">
+<li><p>User inputs not validated for XSS</p></li>
+<li><p><strong>Fix</strong>: Use DRF serializers with proper validators</p></li>
+</ul>
+</li>
+<li><p><strong>CORS too permissive</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Current</span>
+<span class="n">CORS_ALLOWED_ORIGINS</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:5175,...&quot;</span>
+
+<span class="c1"># Better</span>
+<span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+    <span class="n">CORS_ALLOWED_ORIGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://localhost:5175&quot;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">CORS_ALLOWED_ORIGINS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CORS_ALLOWED_ORIGINS&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="medium-security-issues">
+<h3>🟡 Medium Security Issues<a class="headerlink" href="#medium-security-issues" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>No API rate limiting</strong></p></li>
+<li><p><strong>Missing CSRF protection</strong> on some views (<code class="docutils literal notranslate"><span class="pre">&#64;csrf_exempt</span></code>)</p></li>
+<li><p><strong>Weak password validation</strong> (no complexity requirements)</p></li>
+<li><p><strong>No account lockout</strong> after failed login attempts</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="performance-optimization-opportunities">
+<h2>4️⃣ Performance Optimization Opportunities<a class="headerlink" href="#performance-optimization-opportunities" title="Link to this heading"></a></h2>
+<section id="database-queries">
+<h3>Database Queries<a class="headerlink" href="#database-queries" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Add select_related/prefetch_related</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Before (N+1 queries)</span>
+<span class="n">pedidos</span> <span class="o">=</span> <span class="n">Pedido</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">pedido</span> <span class="ow">in</span> <span class="n">pedidos</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pedido</span><span class="o">.</span><span class="n">cliente</span><span class="o">.</span><span class="n">nombre</span><span class="p">)</span>  <span class="c1"># Extra query per pedido</span>
+
+<span class="c1"># After (1 query)</span>
+<span class="n">pedidos</span> <span class="o">=</span> <span class="n">Pedido</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;cliente&#39;</span><span class="p">,</span> <span class="s1">&#39;tienda&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Add database indexes</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">email</span></code> field (for login lookups)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rol</span></code> field (for permission checks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">estado</span></code> field in Pedido (for filtering)</p></li>
+<li><p>Composite indexes on frequently filtered combinations</p></li>
+</ul>
+</li>
+<li><p><strong>Implement query result caching</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.core.cache</span><span class="w"> </span><span class="kn">import</span> <span class="n">cache</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_active_products</span><span class="p">():</span>
+    <span class="n">cache_key</span> <span class="o">=</span> <span class="s1">&#39;active_products&#39;</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cache_key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">products</span><span class="p">:</span>
+        <span class="n">products</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Producto</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activo</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cache_key</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>  <span class="c1"># 5 minutes</span>
+    <span class="k">return</span> <span class="n">products</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="api-response-time">
+<h3>API Response Time<a class="headerlink" href="#api-response-time" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Enable pagination everywhere</strong></p>
+<ul class="simple">
+<li><p>Currently only on some endpoints</p></li>
+<li><p><strong>Fix</strong>: Set global <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span> <span class="pre">=</span> <span class="pre">10</span></code> in REST_FRAMEWORK settings</p></li>
+</ul>
+</li>
+<li><p><strong>Use API response compression</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.middleware.gzip.GZipMiddleware&#39;</span><span class="p">,</span>  <span class="c1"># Add this</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Implement field selection</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow clients to request only needed fields</span>
+<span class="c1"># GET /api/productos/?fields=id,nombre,precio</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="frontend-code-quality-react">
+<h2>5️⃣ Frontend Code Quality (React)<a class="headerlink" href="#frontend-code-quality-react" title="Link to this heading"></a></h2>
+<section id="ui-ux-issues">
+<h3>🎨 UI/UX Issues<a class="headerlink" href="#ui-ux-issues" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Inconsistent styling</strong></p>
+<ul class="simple">
+<li><p>Multiple CSS files with duplicated styles</p></li>
+<li><p><strong>Fix</strong>: Create a design system with CSS variables</p></li>
+</ul>
+</li>
+<li><p><strong>No dark mode support</strong></p>
+<ul class="simple">
+<li><p>Modern apps should support dark mode</p></li>
+<li><p><strong>Fix</strong>: Use CSS custom properties and <code class="docutils literal notranslate"><span class="pre">prefers-color-scheme</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Missing accessibility features</strong></p>
+<ul class="simple">
+<li><p>No ARIA labels on interactive elements</p></li>
+<li><p><strong>Fix</strong>: Add <code class="docutils literal notranslate"><span class="pre">aria-label</span></code>, <code class="docutils literal notranslate"><span class="pre">aria-describedby</span></code>, etc.</p></li>
+</ul>
+</li>
+<li><p><strong>Poor mobile responsiveness</strong></p>
+<ul class="simple">
+<li><p>Some components don’t adapt to small screens</p></li>
+<li><p><strong>Fix</strong>: Use CSS Grid/Flexbox with media queries</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="recommended-design-system">
+<h3>📱 Recommended Design System<a class="headerlink" href="#recommended-design-system" title="Link to this heading"></a></h3>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* frontend/src/styles/design.css */</span>
+<span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c">/* Colors - HSL for easy manipulation */</span>
+<span class="w">  </span><span class="nv">--primary-hue</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--primary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--primary-hue</span><span class="p">),</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--primary-dark</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--primary-hue</span><span class="p">),</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--primary-light</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--primary-hue</span><span class="p">),</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nv">--secondary-hue</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--secondary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--secondary-hue</span><span class="p">),</span><span class="w"> </span><span class="mi">60</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nv">--success</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--warning</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--error</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nv">--bg-primary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--bg-secondary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">97</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--text-primary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">--text-secondary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c">/* Typography */</span>
+<span class="w">  </span><span class="nv">--font-family</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Inter&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="w"> </span><span class="n">BlinkMacSystemFont</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--font-size-base</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--line-height-base</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c">/* Spacing */</span>
+<span class="w">  </span><span class="nv">--spacing-xs</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--spacing-sm</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--spacing-md</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--spacing-lg</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--spacing-xl</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c">/* Transitions */</span>
+<span class="w">  </span><span class="nv">--transition-fast</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--transition-base</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--transition-slow</span><span class="p">:</span><span class="w"> </span><span class="mi">350</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-color-scheme</span><span class="o">:</span><span class="w"> </span><span class="nt">dark</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">--bg-primary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">--bg-secondary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">--text-primary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">--text-secondary</span><span class="p">:</span><span class="w"> </span><span class="nb">hsl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="architecture-design-patterns">
+<h2>6️⃣ Architecture &amp; Design Patterns<a class="headerlink" href="#architecture-design-patterns" title="Link to this heading"></a></h2>
+<section id="good-practices-found">
+<h3>✅ Good Practices Found<a class="headerlink" href="#good-practices-found" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Separation of concerns</strong> - apps are well-organized</p></li>
+<li><p><strong>DRY principle</strong> - reusable serializers and permissions</p></li>
+<li><p><strong>RESTful API design</strong> - proper HTTP methods and status codes</p></li>
+<li><p><strong>Signal-based events</strong> - decoupled notification system</p></li>
+</ol>
+</section>
+<section id="anti-patterns-to-fix">
+<h3>❌ Anti-Patterns to Fix<a class="headerlink" href="#anti-patterns-to-fix" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>God objects</strong> - Some ViewSets have too many responsibilities</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ProductoViewSet has 700+ lines</span>
+<span class="c1"># Fix: Extract to separate ViewSets or mixins</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Magic numbers</strong> - Hard-coded values scattered throughout</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bad</span>
+<span class="k">if</span> <span class="n">stock</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+
+<span class="c1"># Good</span>
+<span class="n">STOCK_LOW_THRESHOLD</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;STOCK_LOW_THRESHOLD&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">stock</span> <span class="o">&lt;=</span> <span class="n">STOCK_LOW_THRESHOLD</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Inconsistent error handling</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some views</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">status</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># Better</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIException</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PaymentFailedException</span><span class="p">(</span><span class="n">APIException</span><span class="p">):</span>
+    <span class="n">status_code</span> <span class="o">=</span> <span class="mi">402</span>
+    <span class="n">default_detail</span> <span class="o">=</span> <span class="s1">&#39;Payment processing failed&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="documentation-gaps">
+<h2>7️⃣ Documentation Gaps<a class="headerlink" href="#documentation-gaps" title="Link to this heading"></a></h2>
+<section id="missing-documentation">
+<h3>Missing Documentation<a class="headerlink" href="#missing-documentation" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>API Documentation</strong></p>
+<ul class="simple">
+<li><p>No OpenAPI/Swagger UI</p></li>
+<li><p><strong>Fix</strong>: Install <code class="docutils literal notranslate"><span class="pre">drf-yasg</span></code> and add schema view</p></li>
+</ul>
+</li>
+<li><p><strong>Code Comments</strong></p>
+<ul class="simple">
+<li><p>Many complex functions lack docstrings</p></li>
+<li><p><strong>Fix</strong>: Add docstrings to all public methods</p></li>
+</ul>
+</li>
+<li><p><strong>README</strong></p>
+<ul class="simple">
+<li><p>Missing setup instructions for tests</p></li>
+<li><p><strong>Fix</strong>: Add “Running Tests” section</p></li>
+</ul>
+</li>
+<li><p><strong>Architecture Diagram</strong></p>
+<ul class="simple">
+<li><p>No visual representation of system design</p></li>
+<li><p><strong>Fix</strong>: Create diagram showing app relationships</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="testing-strategy-improvements">
+<h2>8️⃣ Testing Strategy Improvements<a class="headerlink" href="#testing-strategy-improvements" title="Link to this heading"></a></h2>
+<section id="current-coverage-19">
+<h3>Current Coverage: 19% 😞<a class="headerlink" href="#current-coverage-19" title="Link to this heading"></a></h3>
+</section>
+<section id="priority-areas-to-test">
+<h3>Priority Areas to Test<a class="headerlink" href="#priority-areas-to-test" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Critical Business Logic</strong> (Target: 100%)</p>
+<ul class="simple">
+<li><p>Payment processing</p></li>
+<li><p>Stock management</p></li>
+<li><p>Order state transitions</p></li>
+</ul>
+</li>
+<li><p><strong>API Endpoints</strong> (Target: 90%)</p>
+<ul class="simple">
+<li><p>All CRUD operations</p></li>
+<li><p>Permission checks</p></li>
+<li><p>Error cases</p></li>
+</ul>
+</li>
+<li><p><strong>Models</strong> (Target: 85%)</p>
+<ul class="simple">
+<li><p>Model methods</p></li>
+<li><p>Validators</p></li>
+<li><p>Signals</p></li>
+</ul>
+</li>
+<li><p><strong>Serializers</strong> (Target: 80%)</p>
+<ul class="simple">
+<li><p>Validation logic</p></li>
+<li><p>Custom fields</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="recommended-test-structure">
+<h3>Recommended Test Structure<a class="headerlink" href="#recommended-test-structure" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># tests/test_integration.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OrderFlowIntegrationTest</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test complete order flow from cart to delivery&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_complete_order_flow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 1. Cliente adds products to cart</span>
+        <span class="c1"># 2. Cliente creates order</span>
+        <span class="c1"># 3. Payment is processed</span>
+        <span class="c1"># 4. Stock is reduced</span>
+        <span class="c1"># 5. Notification is sent</span>
+        <span class="c1"># 6. Order status progresses</span>
+        <span class="c1"># 7. Order is delivered</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="immediate-action-items-prioritized">
+<h2>9️⃣ Immediate Action Items (Prioritized)<a class="headerlink" href="#immediate-action-items-prioritized" title="Link to this heading"></a></h2>
+<section id="critical-do-this-week">
+<h3>🔴 Critical (Do This Week)<a class="headerlink" href="#critical-do-this-week" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>✅ <strong>Fix test infrastructure</strong> (COMPLETED)</p></li>
+<li><p>⬜ <strong>Set DEBUG=False default</strong> in settings</p></li>
+<li><p>⬜ <strong>Add security middleware</strong> (HSTS, SSL redirect)</p></li>
+<li><p>⬜ <strong>Implement rate limiting</strong> on auth endpoints</p></li>
+<li><p>⬜ <strong>Add select_related</strong> to fix N+1 queries</p></li>
+</ol>
+</section>
+<section id="high-priority-do-this-month">
+<h3>🟠 High Priority (Do This Month)<a class="headerlink" href="#high-priority-do-this-month" title="Link to this heading"></a></h3>
+<ol class="arabic simple" start="6">
+<li><p>⬜ <strong>Increase test coverage to 60%+</strong></p></li>
+<li><p>⬜ <strong>Add OpenAPI documentation</strong> (drf-yasg)</p></li>
+<li><p>⬜ <strong>Implement payment retry logic</strong></p></li>
+<li><p>⬜ <strong>Add database indexes</strong> on key fields</p></li>
+<li><p>⬜ <strong>Create design system</strong> for frontend</p></li>
+</ol>
+</section>
+<section id="medium-priority-do-this-quarter">
+<h3>🟡 Medium Priority (Do This Quarter)<a class="headerlink" href="#medium-priority-do-this-quarter" title="Link to this heading"></a></h3>
+<ol class="arabic simple" start="11">
+<li><p>⬜ <strong>Refactor large ViewSets</strong> (split responsibilities)</p></li>
+<li><p>⬜ <strong>Add notification delivery</strong> (Celery + email/SMS)</p></li>
+<li><p>⬜ <strong>Implement caching strategy</strong></p></li>
+<li><p>⬜ <strong>Add sales analytics endpoints</strong></p></li>
+<li><p>⬜ <strong>Create architecture documentation</strong></p></li>
+</ol>
+</section>
+<section id="low-priority-nice-to-have">
+<h3>🟢 Low Priority (Nice to Have)<a class="headerlink" href="#low-priority-nice-to-have" title="Link to this heading"></a></h3>
+<ol class="arabic simple" start="16">
+<li><p>⬜ <strong>Add GraphQL API</strong> (optional alternative to REST)</p></li>
+<li><p>⬜ <strong>Implement WebSocket</strong> for real-time updates</p></li>
+<li><p>⬜ <strong>Add A/B testing framework</strong></p></li>
+<li><p>⬜ <strong>Create admin dashboard</strong> (beyond Django admin)</p></li>
+<li><p>⬜ <strong>Add multi-language support</strong> (i18n)</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h2>🎯 Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<section id="overall-assessment">
+<h3>Overall Assessment<a class="headerlink" href="#overall-assessment" title="Link to this heading"></a></h3>
+<p>The PREXCOL platform demonstrates <strong>solid foundational architecture</strong> with well-organized Django apps and a clear separation of concerns. The test infrastructure is now functional (93% pass rate), but coverage needs significant improvement.</p>
+</section>
+<section id="key-strengths">
+<h3>Key Strengths<a class="headerlink" href="#key-strengths" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Clean model design</p></li>
+<li><p>✅ RESTful API structure</p></li>
+<li><p>✅ Role-based permissions</p></li>
+<li><p>✅ Comprehensive business logic</p></li>
+</ul>
+</section>
+<section id="key-weaknesses">
+<h3>Key Weaknesses<a class="headerlink" href="#key-weaknesses" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>❌ Low test coverage (19%)</p></li>
+<li><p>❌ Security configuration issues</p></li>
+<li><p>❌ Performance optimization needed</p></li>
+<li><p>❌ Documentation gaps</p></li>
+</ul>
+</section>
+<section id="recommended-next-steps">
+<h3>Recommended Next Steps<a class="headerlink" href="#recommended-next-steps" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Immediate</strong>: Fix security settings (DEBUG, SECRET_KEY, middleware)</p></li>
+<li><p><strong>Short-term</strong>: Boost test coverage to 60%+</p></li>
+<li><p><strong>Medium-term</strong>: Optimize database queries and add caching</p></li>
+<li><p><strong>Long-term</strong>: Implement comprehensive monitoring and analytics</p></li>
+</ol>
+</section>
+<section id="final-grade-b">
+<h3>Final Grade: <strong>B-</strong><a class="headerlink" href="#final-grade-b" title="Link to this heading"></a></h3>
+<p>With the fixes outlined in this report, the project can easily reach an <strong>A grade</strong> within 2-3 months.</p>
+<hr class="docutils" />
+<p><strong>Report Generated</strong>: 2025-11-30<br />
+<strong>Total Issues Found</strong>: 47<br />
+<strong>Critical</strong>: 5 | <strong>High</strong>: 12 | <strong>Medium</strong>: 18 | <strong>Low</strong>: 12<br />
+<strong>Estimated Fix Time</strong>: 120-160 hours</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

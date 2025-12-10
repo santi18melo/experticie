@@ -75,3 +75,13 @@ Para verificar la salud del sistema, ejecutar:
 python verify_observability.py
 python verify_map.py
 ```
+
+## 4. Documentación de API y Admin
+
+### Django Admin
+El panel de administración se encuentra en `/admin/`. Se ha optimizado para:
+- Mostrar fotos de perfil de usuarios.
+- Visualizar permisos (Staff/Superusuario) mediante badges.
+- Gestión de inventario automatizado mediante acciones.
+
+**Nota Técnica:** Se ha deshabilitado `drf-yasg` debido a incompatibilidades con Django 5.0.4 que causaban errores (`AttributeError`) al acceder al panel de administración. Se recomienda utilizar la API navegable de DRF o migrar a `drf-spectacular` en el futuro.

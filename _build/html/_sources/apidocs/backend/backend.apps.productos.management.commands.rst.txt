@@ -1,0 +1,17 @@
+:py:mod:`backend.apps.productos.management.commands`
+====================================================
+
+.. py:module:: backend.apps.productos.management.commands
+
+.. autodoc2-docstring:: backend.apps.productos.management.commands
+   :parser: rst
+   :allowtitles:
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.apps.productos.management.commands.recargar_stock_automatico

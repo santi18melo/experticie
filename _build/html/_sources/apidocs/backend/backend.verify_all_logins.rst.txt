@@ -1,0 +1,55 @@
+:py:mod:`backend.verify_all_logins`
+===================================
+
+.. py:module:: backend.verify_all_logins
+
+.. autodoc2-docstring:: backend.verify_all_logins
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`current_dir <backend.verify_all_logins.current_dir>`
+     - .. autodoc2-docstring:: backend.verify_all_logins.current_dir
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_credentials <backend.verify_all_logins.test_credentials>`
+     - .. autodoc2-docstring:: backend.verify_all_logins.test_credentials
+          :parser: rst
+          :summary:
+   * - :py:obj:`api_url <backend.verify_all_logins.api_url>`
+     - .. autodoc2-docstring:: backend.verify_all_logins.api_url
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: current_dir
+   :canonical: backend.verify_all_logins.current_dir
+   :value: 'dirname(...)'
+
+   .. autodoc2-docstring:: backend.verify_all_logins.current_dir
+      :parser: rst
+
+.. py:data:: test_credentials
+   :canonical: backend.verify_all_logins.test_credentials
+   :value: None
+
+   .. autodoc2-docstring:: backend.verify_all_logins.test_credentials
+      :parser: rst
+
+.. py:data:: api_url
+   :canonical: backend.verify_all_logins.api_url
+   :value: 'http://127.0.0.1:8000/api/auth/login/'
+
+   .. autodoc2-docstring:: backend.verify_all_logins.api_url
+      :parser: rst

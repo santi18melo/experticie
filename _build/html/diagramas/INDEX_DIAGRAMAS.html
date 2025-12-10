@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galería Visual de Diagramas" href="galeria.html" />
+    <link rel="prev" title="Arquitectura del Sistema" href="../arquitectura.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagramas/INDEX_DIAGRAMAS.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="indice-de-diagramas-uml-prexcol">
+<h1>📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL<a class="headerlink" href="#indice-de-diagramas-uml-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0</p>
+<hr class="docutils" />
+<section id="proposito">
+<h2>🎯 PROPÓSITO<a class="headerlink" href="#proposito" title="Link to this heading"></a></h2>
+<p>Este documento es el índice maestro de todos los diagramas UML del proyecto PREXCOL. Los diagramas están organizados en dos categorías principales: <strong>Estructurales</strong> y <strong>De Comportamiento</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="diagramas-disponibles">
+<h2>📚 DIAGRAMAS DISPONIBLES<a class="headerlink" href="#diagramas-disponibles" title="Link to this heading"></a></h2>
+<section id="diagramas-estructurales">
+<h3>🏗️ DIAGRAMAS ESTRUCTURALES<a class="headerlink" href="#diagramas-estructurales" title="Link to this heading"></a></h3>
+<p>Describen la estructura estática del sistema.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Diagrama</p></th>
+<th class="head"><p>Archivo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Diagrama de Clases</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_CLASES.html"><span class="std std-doc">DIAGRAMA_CLASES.md</span></a></p></td>
+<td><p>Modelo de dominio completo con relaciones, cardinalidades y patrones de diseño</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Diagrama de Componentes</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COMPONENTES_PAQUETES.html#diagrama-de-componentes"><span class="std std-ref">DIAGRAMA_COMPONENTES_PAQUETES.md</span></a></p></td>
+<td><p>Arquitectura de componentes frontend/backend</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Diagrama de Paquetes</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COMPONENTES_PAQUETES.html#diagrama-de-paquetes"><span class="std std-ref">DIAGRAMA_COMPONENTES_PAQUETES.md</span></a></p></td>
+<td><p>Organización de paquetes y dependencias</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Diagrama de Estructura Compuesta</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COMPONENTES_PAQUETES.html#diagrama-de-estructura-compuesta"><span class="std std-ref">DIAGRAMA_COMPONENTES_PAQUETES.md</span></a></p></td>
+<td><p>Estructura interna de componentes complejos</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Diagrama de Despliegue</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_DESPLIEGUE.html"><span class="std std-doc">DIAGRAMA_DESPLIEGUE.md</span></a></p></td>
+<td><p>Infraestructura cloud, nodos y entornos</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Diagrama de Objetos</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_OBJETOS.html"><span class="std std-doc">DIAGRAMA_OBJETOS.md</span></a></p></td>
+<td><p>Instancias concretas en escenarios específicos</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="diagramas-de-comportamiento">
+<h3>🔄 DIAGRAMAS DE COMPORTAMIENTO<a class="headerlink" href="#diagramas-de-comportamiento" title="Link to this heading"></a></h3>
+<p>Describen el comportamiento dinámico del sistema.</p>
+<section id="diagramas-de-interaccion">
+<h4>Diagramas de Interacción<a class="headerlink" href="#diagramas-de-interaccion" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Diagrama</p></th>
+<th class="head"><p>Archivo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Diagramas de Secuencia</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_SECUENCIA.html"><span class="std std-doc">DIAGRAMA_SECUENCIA.md</span></a></p></td>
+<td><p>Interacciones temporales entre objetos</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Autenticación</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_SECUENCIA.html#autenticación"><span class="std std-ref">DIAGRAMA_SECUENCIA.md#autenticación</span></a></p></td>
+<td><p>Login, registro, refresh token, reset password</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Gestión de Pedidos</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_SECUENCIA.html#gestión-de-pedidos"><span class="std std-ref">DIAGRAMA_SECUENCIA.md#gestión-de-pedidos</span></a></p></td>
+<td><p>Crear pedido, cambiar estado</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Procesar Pago</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_SECUENCIA.html#procesar-pago"><span class="std std-ref">DIAGRAMA_SECUENCIA.md#procesar-pago</span></a></p></td>
+<td><p>Pago con tarjeta, validaciones</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Recarga de Stock</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_SECUENCIA.html#recarga-de-stock"><span class="std std-ref">DIAGRAMA_SECUENCIA.md#recarga-de-stock</span></a></p></td>
+<td><p>Recarga automática y manual</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Notificaciones</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_SECUENCIA.html#notificaciones"><span class="std std-ref">DIAGRAMA_SECUENCIA.md#notificaciones</span></a></p></td>
+<td><p>Envío de notificaciones multi-canal</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p><strong>Diagramas de Colaboración</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COLABORACION.html"><span class="std std-doc">DIAGRAMA_COLABORACION.md</span></a></p></td>
+<td><p>Interacciones con enfoque estructural</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Crear Pedido</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COLABORACION.html#crear-pedido"><span class="std std-ref">DIAGRAMA_COLABORACION.md#crear-pedido</span></a></p></td>
+<td><p>Navegación de mensajes numerados</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Procesar Pago</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COLABORACION.html#procesar-pago"><span class="std std-ref">DIAGRAMA_COLABORACION.md#procesar-pago</span></a></p></td>
+<td><p>Flujos alternativos</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Recarga Automática</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COLABORACION.html#recarga-automática-de-stock"><span class="std std-ref">DIAGRAMA_COLABORACION.md#recarga-automática-de-stock</span></a></p></td>
+<td><p>Control transaccional</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Cambiar Estado</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COLABORACION.html#cambiar-estado-de-pedido"><span class="std std-ref">DIAGRAMA_COLABORACION.md#cambiar-estado-de-pedido</span></a></p></td>
+<td><p>Matriz de transiciones</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Autenticación</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_COLABORACION.html#autenticación-jwt"><span class="std std-ref">DIAGRAMA_COLABORACION.md#autenticación-jwt</span></a></p></td>
+<td><p>Tokens JWT</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Diagrama de Resumen de Interacción</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html"><span class="std std-doc">DIAGRAMA_RESUMEN_TIEMPO.md</span></a></p></td>
+<td><p>Vista combinada actividad + secuencia</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Flujo Compra</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html#flujo-completo-de-compra"><span class="std std-ref">DIAGRAMA_RESUMEN_TIEMPO.md#flujo-completo-de-compra</span></a></p></td>
+<td><p>Overview con referencias a sd:</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Stock Automático</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html#sistema-de-stock-automático"><span class="std std-ref">DIAGRAMA_RESUMEN_TIEMPO.md#sistema-de-stock-automático</span></a></p></td>
+<td><p>Decisiones y transacciones</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Gestión Usuario</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html#gestión-de-usuario"><span class="std std-ref">DIAGRAMA_RESUMEN_TIEMPO.md#gestión-de-usuario</span></a></p></td>
+<td><p>Flujos de perfil</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p><strong>Diagramas de Tiempo</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html"><span class="std std-doc">DIAGRAMA_RESUMEN_TIEMPO.md</span></a></p></td>
+<td><p>Restricciones temporales y SLAs</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Procesamiento Pedido</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html#timeline-procesamiento-de-pedido"><span class="std std-ref">DIAGRAMA_RESUMEN_TIEMPO.md#timeline-procesamiento-de-pedido</span></a></p></td>
+<td><p>Timeline 0-365 minutos</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Ciclo de Vida Pago</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html#timeline-ciclo-de-vida-de-pago"><span class="std std-ref">DIAGRAMA_RESUMEN_TIEMPO.md#timeline-ciclo-de-vida-de-pago</span></a></p></td>
+<td><p>Timeline 0-40 segundos</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Recarga Automática</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_RESUMEN_TIEMPO.html#timeline-recarga-automática"><span class="std std-ref">DIAGRAMA_RESUMEN_TIEMPO.md#timeline-recarga-automática</span></a></p></td>
+<td><p>Timeline 0-8 horas</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="otros-diagramas-de-comportamiento">
+<h4>Otros Diagramas de Comportamiento<a class="headerlink" href="#otros-diagramas-de-comportamiento" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Diagrama</p></th>
+<th class="head"><p>Archivo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p><strong>Diagramas de Actividad</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html"><span class="std std-doc">DIAGRAMA_ACTIVIDAD.md</span></a></p></td>
+<td><p>Flujos de proceso y algoritmos</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Registro de Usuario</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#registro-de-usuario"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#registro-de-usuario</span></a></p></td>
+<td><p>Proceso completo de registro</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Proceso de Compra</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#proceso-de-compra-completo"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#proceso-de-compra-completo</span></a></p></td>
+<td><p>Flujo de compra end-to-end</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Gestión de Pedido</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#gestión-de-pedido-logística"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#gestión-de-pedido-logística</span></a></p></td>
+<td><p>Logística de pedidos</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Recarga Automática</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#recarga-automática-de-stock"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#recarga-automática-de-stock</span></a></p></td>
+<td><p>Proceso automático de stock</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Asignación Productos</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#asignación-de-productos-a-proveedor"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#asignación-de-productos-a-proveedor</span></a></p></td>
+<td><p>Admin asigna productos</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Generación Reportes</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#generación-de-reportes"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#generación-de-reportes</span></a></p></td>
+<td><p>Crear reportes por rol</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Gestión de Cuenta</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#gestión-de-cuenta-de-usuario"><span class="std std-ref">DIAGRAMA_ACTIVIDAD.md#gestión-de-cuenta-de-usuario</span></a></p></td>
+<td><p>Editar perfil, cambiar password</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Diagramas de Casos de Uso</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">DIAGRAMA_CASOS_USO.md</span></a></p></td>
+<td><p>Requisitos funcionales por actor</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Vista General</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_CASOS_USO.html#vista-general-del-sistema"><span class="std std-ref">DIAGRAMA_CASOS_USO.md#vista-general-del-sistema</span></a></p></td>
+<td><p>Todos los casos de uso</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Por Actor</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_CASOS_USO.html#casos-de-uso-por-actor"><span class="std std-ref">DIAGRAMA_CASOS_USO.md#casos-de-uso-por-actor</span></a></p></td>
+<td><p>Admin, Proveedor, Logística, Cliente</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Especificaciones</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_CASOS_USO.html#especificaciones-detalladas"><span class="std std-ref">DIAGRAMA_CASOS_USO.md#especificaciones-detalladas</span></a></p></td>
+<td><p>Detalle de casos de uso principales</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p><strong>Diagramas de Máquinas de Estado</strong></p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ESTADOS.html"><span class="std std-doc">DIAGRAMA_ESTADOS.md</span></a></p></td>
+<td><p>Ciclos de vida y transiciones</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Estado del Pedido</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-pedido"><span class="std std-ref">DIAGRAMA_ESTADOS.md#estado-del-pedido</span></a></p></td>
+<td><p>6 estados, transiciones validadas</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Estado de Usuario</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-de-la-cuenta-de-usuario"><span class="std std-ref">DIAGRAMA_ESTADOS.md#estado-de-la-cuenta-de-usuario</span></a></p></td>
+<td><p>5 estados, permisos por estado</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Estado del Pago</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-pago"><span class="std std-ref">DIAGRAMA_ESTADOS.md#estado-del-pago</span></a></p></td>
+<td><p>8 estados, integración gateway</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Estado Notificación</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-de-la-notificación"><span class="std std-ref">DIAGRAMA_ESTADOS.md#estado-de-la-notificación</span></a></p></td>
+<td><p>Ciclo de envío con reintentos</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Estado del Stock</p></td>
+<td><p><a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-stock"><span class="std std-ref">DIAGRAMA_ESTADOS.md#estado-del-stock</span></a></p></td>
+<td><p>5 niveles de alerta</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="navegacion-rapida">
+<h2>🗺️ NAVEGACIÓN RÁPIDA<a class="headerlink" href="#navegacion-rapida" title="Link to this heading"></a></h2>
+<section id="por-modulo-del-sistema">
+<h3>Por Módulo del Sistema<a class="headerlink" href="#por-modulo-del-sistema" title="Link to this heading"></a></h3>
+<section id="modulo-autenticacion">
+<h4>Módulo: Autenticación<a class="headerlink" href="#modulo-autenticacion" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Clases</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html#módulo-usuarios"><span class="std std-ref">Usuario, PasswordHistory</span></a></p></li>
+<li><p><strong>Secuencia</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html#autenticación"><span class="std std-ref">Login, Registro, Reset Password</span></a></p></li>
+<li><p><strong>Actividad</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#registro-de-usuario"><span class="std std-ref">Registro de Usuario</span></a></p></li>
+<li><p><strong>Estados</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-de-la-cuenta-de-usuario"><span class="std std-ref">Estados de Usuario</span></a></p></li>
+<li><p><strong>Casos de Uso</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">UC-001 Registrarse, UC-002 Login</span></a></p></li>
+</ul>
+</section>
+<section id="modulo-productos">
+<h4>Módulo: Productos<a class="headerlink" href="#modulo-productos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Clases</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html#módulo-productos"><span class="std std-ref">Producto, Tienda, Seccion</span></a></p></li>
+<li><p><strong>Componentes</strong>: <a class="reference internal" href="DIAGRAMA_COMPONENTES_PAQUETES.html"><span class="std std-doc">Product Service</span></a></p></li>
+<li><p><strong>Actividad</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#asignación-de-productos-a-proveedor"><span class="std std-ref">Asignación de Productos</span></a></p></li>
+<li><p><strong>Casos de Uso</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">UC-007 Gestionar Productos, UC-008 Asignar</span></a></p></li>
+</ul>
+</section>
+<section id="modulo-stock">
+<h4>Módulo: Stock<a class="headerlink" href="#modulo-stock" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Clases</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html#módulo-productos"><span class="std std-ref">StockConfig, HistorialRecarga</span></a></p></li>
+<li><p><strong>Secuencia</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html#recarga-de-stock"><span class="std std-ref">Recarga Automática, Recarga Manual</span></a></p></li>
+<li><p><strong>Actividad</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#recarga-automática-de-stock"><span class="std std-ref">Recarga Automática</span></a></p></li>
+<li><p><strong>Estados</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-stock"><span class="std std-ref">Estados del Stock</span></a></p></li>
+<li><p><strong>Casos de Uso</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">UC-011 Configurar Recarga Auto</span></a></p></li>
+</ul>
+</section>
+<section id="modulo-pedidos">
+<h4>Módulo: Pedidos<a class="headerlink" href="#modulo-pedidos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Clases</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html#módulo-ventas"><span class="std std-ref">Pedido, DetallePedido</span></a></p></li>
+<li><p><strong>Secuencia</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html#gestión-de-pedidos"><span class="std std-ref">Crear Pedido, Cambiar Estado</span></a></p></li>
+<li><p><strong>Actividad</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html"><span class="std std-doc">Proceso de Compra, Gestión Pedido</span></a></p></li>
+<li><p><strong>Estados</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-pedido"><span class="std std-ref">Estados del Pedido</span></a></p></li>
+<li><p><strong>Casos de Uso</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">UC-015 Crear, UC-018 Cambiar Estado</span></a></p></li>
+</ul>
+</section>
+<section id="modulo-pagos">
+<h4>Módulo: Pagos<a class="headerlink" href="#modulo-pagos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Clases</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html#módulo-pagos"><span class="std std-ref">Pago, Transaccion, MetodoPago</span></a></p></li>
+<li><p><strong>Secuencia</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html#procesar-pago"><span class="std std-ref">Procesar Pago</span></a></p></li>
+<li><p><strong>Estados</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-pago"><span class="std std-ref">Estados del Pago</span></a></p></li>
+<li><p><strong>Casos de Uso</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">UC-016 Procesar Pago</span></a></p></li>
+</ul>
+</section>
+<section id="modulo-notificaciones">
+<h4>Módulo: Notificaciones<a class="headerlink" href="#modulo-notificaciones" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Clases</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html#módulo-notificaciones"><span class="std std-ref">Notificacion, TipoNotificacion</span></a></p></li>
+<li><p><strong>Secuencia</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html#notificaciones"><span class="std std-ref">Envío de Notificación</span></a></p></li>
+<li><p><strong>Estados</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-de-la-notificación"><span class="std std-ref">Estados de Notificación</span></a></p></li>
+<li><p><strong>Casos de Uso</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">UC-023 Enviar, UC-024 Ver</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estadisticas">
+<h2>📊 ESTADÍSTICAS<a class="headerlink" href="#estadisticas" title="Link to this heading"></a></h2>
+<section id="diagramas-creados">
+<h3>Diagramas Creados<a class="headerlink" href="#diagramas-creados" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipo</p></th>
+<th class="head"><p>Cantidad</p></th>
+<th class="head"><p>Archivos</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Estructurales</strong></p></td>
+<td><p>6</p></td>
+<td><p>3 documentos</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>De Comportamiento</strong></p></td>
+<td><p>7</p></td>
+<td><p>6 documentos</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total</strong></p></td>
+<td><p><strong>13 tipos UML</strong></p></td>
+<td><p><strong>9 documentos</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cobertura">
+<h3>Cobertura<a class="headerlink" href="#cobertura" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspecto</p></th>
+<th class="head"><p>Cubierto</p></th>
+<th class="head"><p>Notas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Modelo de Dominio</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>Todas las entidades documentadas</p></td>
+</tr>
+<tr class="row-odd"><td><p>Instancias Runtime</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>Escenarios concretos documentados</p></td>
+</tr>
+<tr class="row-even"><td><p>Arquitectura Sistema</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>Componentes, paquetes, despliegue</p></td>
+</tr>
+<tr class="row-odd"><td><p>Procesos de Negocio</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>Secuencias, actividades, colaboración</p></td>
+</tr>
+<tr class="row-even"><td><p>Interacciones Complejas</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>Overview y diagramas de tiempo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Requisitos Funcionales</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>29 casos de uso identificados</p></td>
+</tr>
+<tr class="row-even"><td><p>Estados del Sistema</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>5 máquinas de estado principales</p></td>
+</tr>
+<tr class="row-odd"><td><p>Restricciones Temporales</p></td>
+<td><p>✅ 100%</p></td>
+<td><p>SLAs y timelines documentados</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="convenciones-y-estandares">
+<h2>🎨 CONVENCIONES Y ESTÁNDARES<a class="headerlink" href="#convenciones-y-estandares" title="Link to this heading"></a></h2>
+<section id="formato-de-diagramas">
+<h3>Formato de Diagramas<a class="headerlink" href="#formato-de-diagramas" title="Link to this heading"></a></h3>
+<p>Todos los diagramas utilizan <strong>Mermaid syntax</strong> para facilitar:</p>
+<ul class="simple">
+<li><p>✅ Versionado en Git (texto plano)</p></li>
+<li><p>✅ Renderizado en GitHub/Markdown</p></li>
+<li><p>✅ Fácil mantenimiento</p></li>
+<li><p>✅ Generación automática</p></li>
+</ul>
+</section>
+<section id="nomenclatura">
+<h3>Nomenclatura<a class="headerlink" href="#nomenclatura" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Archivos</strong>: <code class="docutils literal notranslate"><span class="pre">DIAGRAMA_&lt;TIPO&gt;.md</span></code></p></li>
+<li><p><strong>Secciones</strong>: Títulos con emojis descriptivos</p></li>
+<li><p><strong>Enlaces</strong>: Referencias cruzadas entre diagramas</p></li>
+</ul>
+</section>
+<section id="colores-en-diagramas-de-actividad">
+<h3>Colores en Diagramas de Actividad<a class="headerlink" href="#colores-en-diagramas-de-actividad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>🟢 <strong>Verde</strong>: Estados iniciales, finales exitosos</p></li>
+<li><p>🔴 <strong>Rojo</strong>: Errores, estados finales fallidos</p></li>
+<li><p>🟠 <strong>Naranja</strong>: Advertencias, estados intermedios</p></li>
+<li><p>⚪ <strong>Gris</strong>: Estados neutros, skipped</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="herramientas-recomendadas">
+<h2>🔧 HERRAMIENTAS RECOMENDADAS<a class="headerlink" href="#herramientas-recomendadas" title="Link to this heading"></a></h2>
+<section id="visualizacion">
+<h3>Visualización<a class="headerlink" href="#visualizacion" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Herramienta</p></th>
+<th class="head"><p>Propósito</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mermaid Live Editor</strong></p></td>
+<td><p>Editar diagramas online</p></td>
+<td><p>https://mermaid.live</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code + Mermaid Extension</strong></p></td>
+<td><p>Previsualización local</p></td>
+<td><p>Marketplace VS Code</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GitHub</strong></p></td>
+<td><p>Renderizado automático</p></td>
+<td><p>En repositorio</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="generacion">
+<h3>Generación<a class="headerlink" href="#generacion" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Herramienta</p></th>
+<th class="head"><p>Propósito</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PlantUML</strong></p></td>
+<td><p>Alternativa a Mermaid</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Draw.io</strong></p></td>
+<td><p>Diagramas más complejos</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Lucidchart</strong></p></td>
+<td><p>Colaboración en equipo</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="como-usar-este-indice">
+<h2>📖 CÓMO USAR ESTE ÍNDICE<a class="headerlink" href="#como-usar-este-indice" title="Link to this heading"></a></h2>
+<section id="para-nuevos-desarrolladores">
+<h3>Para Nuevos Desarrolladores<a class="headerlink" href="#para-nuevos-desarrolladores" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Empieza con</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html"><span class="std std-doc">Diagrama de Clases</span></a></p>
+<ul class="simple">
+<li><p>Entender el modelo de dominio</p></li>
+</ul>
+</li>
+<li><p><strong>Luego</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">Casos de Uso por Actor</span></a></p>
+<ul class="simple">
+<li><p>Conocer funcionalidades por rol</p></li>
+</ul>
+</li>
+<li><p><strong>Después</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html"><span class="std std-doc">Diagramas de Secuencia</span></a></p>
+<ul class="simple">
+<li><p>Ver interacciones detalladas</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="para-arquitectos">
+<h3>Para Arquitectos<a class="headerlink" href="#para-arquitectos" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Revisar</strong>: <a class="reference internal" href="DIAGRAMA_COMPONENTES_PAQUETES.html"><span class="std std-doc">Componentes y Paquetes</span></a></p>
+<ul class="simple">
+<li><p>Arquitectura general</p></li>
+</ul>
+</li>
+<li><p><strong>Estudiar</strong>: <a class="reference internal" href="DIAGRAMA_DESPLIEGUE.html"><span class="std std-doc">Diagrama de Despliegue</span></a></p>
+<ul class="simple">
+<li><p>Infraestructura cloud</p></li>
+</ul>
+</li>
+<li><p><strong>Analizar</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html"><span class="std std-doc">Máquinas de Estado</span></a></p>
+<ul class="simple">
+<li><p>Reglas de negocio</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="para-qa-testers">
+<h3>Para QA/Testers<a class="headerlink" href="#para-qa-testers" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Consultar</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">Casos de Uso</span></a></p>
+<ul class="simple">
+<li><p>Definir casos de prueba</p></li>
+</ul>
+</li>
+<li><p><strong>Revisar</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html"><span class="std std-doc">Diagramas de Actividad</span></a></p>
+<ul class="simple">
+<li><p>Flujos de proceso</p></li>
+</ul>
+</li>
+<li><p><strong>Validar</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html"><span class="std std-doc">Máquinas de Estado</span></a></p>
+<ul class="simple">
+<li><p>Transiciones válidas</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="para-product-managers">
+<h3>Para Product Managers<a class="headerlink" href="#para-product-managers" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Ver</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html#vista-general-del-sistema"><span class="std std-ref">Vista General de Casos de Uso</span></a></p>
+<ul class="simple">
+<li><p>Todas las funcionalidades</p></li>
+</ul>
+</li>
+<li><p><strong>Entender</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#proceso-de-compra-completo"><span class="std std-ref">Proceso de Compra</span></a></p>
+<ul class="simple">
+<li><p>Flujo principal del negocio</p></li>
+</ul>
+</li>
+<li><p><strong>Revisar</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-pedido"><span class="std std-ref">Estados de Pedido</span></a></p>
+<ul class="simple">
+<li><p>Ciclo de vida del pedido</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mantenimiento">
+<h2>🔄 MANTENIMIENTO<a class="headerlink" href="#mantenimiento" title="Link to this heading"></a></h2>
+<section id="actualizacion-de-diagramas">
+<h3>Actualización de Diagramas<a class="headerlink" href="#actualizacion-de-diagramas" title="Link to this heading"></a></h3>
+<p><strong>Cuándo actualizar</strong>:</p>
+<ul class="simple">
+<li><p>Cambios en el modelo de datos</p></li>
+<li><p>Nuevas funcionalidades</p></li>
+<li><p>Cambios en flujos de proceso</p></li>
+<li><p>Modificaciones de arquitectura</p></li>
+</ul>
+<p><strong>Cómo actualizar</strong>:</p>
+<ol class="arabic simple">
+<li><p>Editar archivo <code class="docutils literal notranslate"><span class="pre">.md</span></code> correspondiente</p></li>
+<li><p>Actualizar diagramas Mermaid</p></li>
+<li><p>Verificar renderizado</p></li>
+<li><p>Actualizar este índice si es necesario</p></li>
+<li><p>Commit con mensaje descriptivo</p></li>
+</ol>
+</section>
+<section id="versionado">
+<h3>Versionado<a class="headerlink" href="#versionado" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Versión</p></th>
+<th class="head"><p>Fecha</p></th>
+<th class="head"><p>Cambios</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1.0</strong></p></td>
+<td><p>2025-12-04</p></td>
+<td><p>Creación inicial de todos los diagramas UML (13 tipos)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="checklist-de-completitud">
+<h2>📋 CHECKLIST DE COMPLETITUD<a class="headerlink" href="#checklist-de-completitud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[x] Diagrama de Clases</p></li>
+<li><p>[x] Diagrama de Componentes</p></li>
+<li><p>[x] Diagrama de Paquetes</p></li>
+<li><p>[x] Diagrama de Estructura Compuesta</p></li>
+<li><p>[x] Diagrama de Despliegue</p></li>
+<li><p>[x] Diagrama de Objetos</p></li>
+<li><p>[x] Diagramas de Secuencia (5 principales)</p></li>
+<li><p>[x] Diagramas de Colaboración (5 escenarios)</p></li>
+<li><p>[x] Diagrama de Resumen de Interacción (3 flujos)</p></li>
+<li><p>[x] Diagramas de Tiempo (3 timelines)</p></li>
+<li><p>[x] Diagramas de Actividad (7 flujos)</p></li>
+<li><p>[x] Diagramas de Casos de Uso (29 casos)</p></li>
+<li><p>[x] Diagramas de Máquinas de Estado (5 entidades)</p></li>
+</ul>
+<section id="estado-completado-13-13-tipos-uml-2-0">
+<h3>Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong><a class="headerlink" href="#estado-completado-13-13-tipos-uml-2-0" title="Link to this heading"></a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2>🎨 CONVENCIONES Y ESTÁNDARES<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>Formato de Diagramas<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Todos los diagramas utilizan <strong>Mermaid syntax</strong> para facilitar:</p>
+<ul class="simple">
+<li><p>✅ Versionado en Git (texto plano)</p></li>
+<li><p>✅ Renderizado en GitHub/Markdown</p></li>
+<li><p>✅ Fácil mantenimiento</p></li>
+<li><p>✅ Generación automática</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Nomenclatura<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Archivos</strong>: <code class="docutils literal notranslate"><span class="pre">DIAGRAMA_&lt;TIPO&gt;.md</span></code></p></li>
+<li><p><strong>Secciones</strong>: Títulos con emojis descriptivos</p></li>
+<li><p><strong>Enlaces</strong>: Referencias cruzadas entre diagramas</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Colores en Diagramas de Actividad<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>🟢 <strong>Verde</strong>: Estados iniciales, finales exitosos</p></li>
+<li><p>🔴 <strong>Rojo</strong>: Errores, estados finales fallidos</p></li>
+<li><p>🟠 <strong>Naranja</strong>: Advertencias, estados intermedios</p></li>
+<li><p>⚪ <strong>Gris</strong>: Estados neutros, skipped</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>🔧 HERRAMIENTAS RECOMENDADAS<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>Visualización<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Herramienta</p></th>
+<th class="head"><p>Propósito</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mermaid Live Editor</strong></p></td>
+<td><p>Editar diagramas online</p></td>
+<td><p>https://mermaid.live</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code + Mermaid Extension</strong></p></td>
+<td><p>Previsualización local</p></td>
+<td><p>Marketplace VS Code</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GitHub</strong></p></td>
+<td><p>Renderizado automático</p></td>
+<td><p>En repositorio</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h3>Generación<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Herramienta</p></th>
+<th class="head"><p>Propósito</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PlantUML</strong></p></td>
+<td><p>Alternativa a Mermaid</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Draw.io</strong></p></td>
+<td><p>Diagramas más complejos</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Lucidchart</strong></p></td>
+<td><p>Colaboración en equipo</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>📖 CÓMO USAR ESTE ÍNDICE<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3>Para Nuevos Desarrolladores<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Empieza con</strong>: <a class="reference internal" href="DIAGRAMA_CLASES.html"><span class="std std-doc">Diagrama de Clases</span></a></p>
+<ul class="simple">
+<li><p>Entender el modelo de dominio</p></li>
+</ul>
+</li>
+<li><p><strong>Luego</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">Casos de Uso por Actor</span></a></p>
+<ul class="simple">
+<li><p>Conocer funcionalidades por rol</p></li>
+</ul>
+</li>
+<li><p><strong>Después</strong>: <a class="reference internal" href="DIAGRAMA_SECUENCIA.html"><span class="std std-doc">Diagramas de Secuencia</span></a></p>
+<ul class="simple">
+<li><p>Ver interacciones detalladas</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id10">
+<h3>Para Arquitectos<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Revisar</strong>: <a class="reference internal" href="DIAGRAMA_COMPONENTES_PAQUETES.html"><span class="std std-doc">Componentes y Paquetes</span></a></p>
+<ul class="simple">
+<li><p>Arquitectura general</p></li>
+</ul>
+</li>
+<li><p><strong>Estudiar</strong>: <a class="reference internal" href="DIAGRAMA_DESPLIEGUE.html"><span class="std std-doc">Diagrama de Despliegue</span></a></p>
+<ul class="simple">
+<li><p>Infraestructura cloud</p></li>
+</ul>
+</li>
+<li><p><strong>Analizar</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html"><span class="std std-doc">Máquinas de Estado</span></a></p>
+<ul class="simple">
+<li><p>Reglas de negocio</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id11">
+<h3>Para QA/Testers<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Consultar</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html"><span class="std std-doc">Casos de Uso</span></a></p>
+<ul class="simple">
+<li><p>Definir casos de prueba</p></li>
+</ul>
+</li>
+<li><p><strong>Revisar</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html"><span class="std std-doc">Diagramas de Actividad</span></a></p>
+<ul class="simple">
+<li><p>Flujos de proceso</p></li>
+</ul>
+</li>
+<li><p><strong>Validar</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html"><span class="std std-doc">Máquinas de Estado</span></a></p>
+<ul class="simple">
+<li><p>Transiciones válidas</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id12">
+<h3>Para Product Managers<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Ver</strong>: <a class="reference internal" href="DIAGRAMA_CASOS_USO.html#vista-general-del-sistema"><span class="std std-ref">Vista General de Casos de Uso</span></a></p>
+<ul class="simple">
+<li><p>Todas las funcionalidades</p></li>
+</ul>
+</li>
+<li><p><strong>Entender</strong>: <a class="reference internal" href="DIAGRAMA_ACTIVIDAD.html#proceso-de-compra-completo"><span class="std std-ref">Proceso de Compra</span></a></p>
+<ul class="simple">
+<li><p>Flujo principal del negocio</p></li>
+</ul>
+</li>
+<li><p><strong>Revisar</strong>: <a class="reference internal" href="DIAGRAMA_ESTADOS.html#estado-del-pedido"><span class="std std-ref">Estados de Pedido</span></a></p>
+<ul class="simple">
+<li><p>Ciclo de vida del pedido</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>🔄 MANTENIMIENTO<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<section id="id14">
+<h3>Actualización de Diagramas<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p><strong>Cuándo actualizar</strong>:</p>
+<ul class="simple">
+<li><p>Cambios en el modelo de datos</p></li>
+<li><p>Nuevas funcionalidades</p></li>
+<li><p>Cambios en flujos de proceso</p></li>
+<li><p>Modificaciones de arquitectura</p></li>
+</ul>
+<p><strong>Cómo actualizar</strong>:</p>
+<ol class="arabic simple">
+<li><p>Editar archivo <code class="docutils literal notranslate"><span class="pre">.md</span></code> correspondiente</p></li>
+<li><p>Actualizar diagramas Mermaid</p></li>
+<li><p>Verificar renderizado</p></li>
+<li><p>Actualizar este índice si es necesario</p></li>
+<li><p>Commit con mensaje descriptivo</p></li>
+</ol>
+</section>
+<section id="id15">
+<h3>Versionado<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Versión</p></th>
+<th class="head"><p>Fecha</p></th>
+<th class="head"><p>Cambios</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1.0</strong></p></td>
+<td><p>2025-12-04</p></td>
+<td><p>Creación inicial de todos los diagramas</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>📋 CHECKLIST DE COMPLETITUD<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[x] Diagrama de Clases</p></li>
+<li><p>[x] Diagrama de Componentes</p></li>
+<li><p>[x] Diagrama de Paquetes</p></li>
+<li><p>[x] Diagrama de Estructura Compuesta</p></li>
+<li><p>[x] Diagrama de Despliegue</p></li>
+<li><p>[ ] Diagrama de Objetos (no requerido - usar instancias)</p></li>
+<li><p>[x] Diagramas de Secuencia (5 principales)</p></li>
+<li><p>[x] Diagramas de Actividad (7 flujos)</p></li>
+<li><p>[x] Diagramas de Casos de Uso (29 casos)</p></li>
+<li><p>[x] Diagramas de Máquinas de Estado (5 entidades)</p></li>
+<li><p>[ ] Diagrama de Colaboración (cubierto por secuencia)</p></li>
+<li><p>[ ] Diagrama de Resumen de Interacción (cubierto por actividad)</p></li>
+<li><p>[ ] Diagrama de Tiempo (no requerido - eventos simples)</p></li>
+</ul>
+<section id="estado-completado-10-13-tipos-uml-3-no-requeridos">
+<h3>Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)<a class="headerlink" href="#estado-completado-10-13-tipos-uml-3-no-requeridos" title="Link to this heading"></a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="enlaces-relacionados">
+<h2>🔗 ENLACES RELACIONADOS<a class="headerlink" href="#enlaces-relacionados" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="../MAPA_DE_PROCESOS.html"><span class="std std-doc">Mapa de Procesos</span></a></strong> - Vista de procesos de negocio</p></li>
+<li><p><strong><a class="reference internal" href="../API_DOCUMENTATION.html"><span class="std std-doc">Documentación de API</span></a></strong> - Endpoints REST</p></li>
+<li><p><strong><a class="reference internal" href="../manuales/MANUAL_TECNICO.html"><span class="std std-doc">Manual Técnico</span></a></strong> - Guía técnica completa</p></li>
+<li><p><strong><a class="reference internal" href="../INDEX.html"><span class="std std-doc">Índice General</span></a></strong> - Documentación principal</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Documento generado</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Mantenedor</strong>: Equipo de Arquitectura<br />
+<strong>Estado</strong>: ✅ COMPLETADO</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../arquitectura.html" class="btn btn-neutral float-left" title="Arquitectura del Sistema" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="galeria.html" class="btn btn-neutral float-right" title="Galería Visual de Diagramas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

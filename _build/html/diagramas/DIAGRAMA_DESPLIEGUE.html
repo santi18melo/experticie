@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚀 DIAGRAMA DE DESPLIEGUE - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🚀 DIAGRAMA DE DESPLIEGUE - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagramas/DIAGRAMA_DESPLIEGUE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diagrama-de-despliegue-prexcol">
+<h1>🚀 DIAGRAMA DE DESPLIEGUE - PREXCOL<a class="headerlink" href="#diagrama-de-despliegue-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Tipo</strong>: Diagrama Estructural - Infraestructura</p>
+<hr class="docutils" />
+<section id="indice">
+<h2>📋 ÍNDICE<a class="headerlink" href="#indice" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#arquitectura-de-despliegue"><span class="xref myst">Arquitectura de Despliegue</span></a></p></li>
+<li><p><a class="reference internal" href="#entorno-de-desarrollo"><span class="xref myst">Entorno de Desarrollo</span></a></p></li>
+<li><p><a class="reference internal" href="#entorno-de-producci%C3%B3n"><span class="xref myst">Entorno de Producción</span></a></p></li>
+<li><p><a class="reference internal" href="#especificaciones-de-hardware"><span class="xref myst">Especificaciones de Hardware</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="arquitectura-de-despliegue">
+<h2>🏗️ ARQUITECTURA DE DESPLIEGUE<a class="headerlink" href="#arquitectura-de-despliegue" title="Link to this heading"></a></h2>
+<p><img alt="Diagrama de Despliegue Visual" src="diagramas/imagenes/04_diagrama_despliegue.png" /></p>
+<section id="vista-general-del-sistema">
+<h3>Vista General del Sistema<a class="headerlink" href="#vista-general-del-sistema" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────────────────┐
+│                        INTERNET                                  │
+└────────────────────────────┬─────────────────────────────────────┘
+                             │
+                    ┌────────▼────────┐
+                    │   Cloudflare    │
+                    │   (DNS + CDN)   │
+                    │   SSL/TLS       │
+                    └────────┬────────┘
+                             │
+          ┌──────────────────┴──────────────────┐
+          │                                     │
+┌─────────▼─────────┐               ┌──────────▼──────────┐
+│   Netlify         │               │   Railway/          │
+│   (Frontend)      │               │   Render            │
+│                   │               │   (Backend)         │
+│ • React App       │               │                     │
+│ • Static Hosting  │               │ • Django App        │
+│ • Edge Functions  │               │ • Gunicorn          │
+│ • Auto Deploy     │               │ • PostgreSQL        │
+└───────────────────┘               └─────────┬───────────┘
+                                              │
+                                    ┌─────────▼─────────┐
+                                    │   Redis Cloud     │
+                                    │   (Cache/Queue)   │
+                                    └───────────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="entorno-de-desarrollo">
+<h2>💻 ENTORNO DE DESARROLLO<a class="headerlink" href="#entorno-de-desarrollo" title="Link to this heading"></a></h2>
+<section id="diagrama-de-despliegue-local">
+<h3>Diagrama de Despliegue Local<a class="headerlink" href="#diagrama-de-despliegue-local" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TB
+    subgraph &quot;Developer Workstation (localhost)&quot;
+        subgraph &quot;Frontend - Port 5175&quot;
+            Vite[Vite Dev Server]
+            React[React App]
+        end
+
+        subgraph &quot;Backend - Port 8000&quot;
+            Django[Django Dev Server]
+            DRF[Django REST Framework]
+        end
+
+        subgraph &quot;Database&quot;
+            SQLite[&quot;(SQLite DB&lt;br/&gt;db.sqlite3)&quot;]
+        end
+
+        subgraph &quot;Task Queue - Port 6379&quot;
+            Redis_Local[&quot;(Redis&lt;br/&gt;localhost)&quot;]
+            Celery_Worker[Celery Worker]
+            Celery_Beat[Celery Beat]
+        end
+
+        subgraph &quot;Media Files&quot;
+            Media_Local[&quot;/media/&lt;br/&gt;Local Storage&quot;]
+        end
+    end
+
+    subgraph &quot;Development Tools&quot;
+        Git[Git]
+        VSCode[VS Code]
+        Browser[Browser DevTools]
+    end
+
+    React --&gt; Vite
+    Vite --&gt;|proxy :8000| Django
+    Django --&gt; DRF
+    DRF --&gt; SQLite
+    Django --&gt; Media_Local
+    Django --&gt; Celery_Worker
+    Celery_Worker --&gt; Redis_Local
+    Celery_Beat --&gt; Redis_Local
+    
+    Git --&gt; VSCode
+    Browser --&gt; Vite
+</pre></div>
+</div>
+</section>
+<section id="especificacion-entorno-local">
+<h3>Especificación: Entorno Local<a class="headerlink" href="#especificacion-entorno-local" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Componente</p></th>
+<th class="head"><p>Software</p></th>
+<th class="head"><p>Puerto</p></th>
+<th class="head"><p>Notas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frontend</strong></p></td>
+<td><p>Vite 5.x</p></td>
+<td><p>5175</p></td>
+<td><p>Hot Module Replacement</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Backend</strong></p></td>
+<td><p>Django 4.x</p></td>
+<td><p>8000</p></td>
+<td><p>Auto-reload enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Database</strong></p></td>
+<td><p>SQLite 3</p></td>
+<td><p>-</p></td>
+<td><p>Archivo local</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cache</strong></p></td>
+<td><p>Redis 7.x</p></td>
+<td><p>6379</p></td>
+<td><p>Opcional en desarrollo</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Task Queue</strong></p></td>
+<td><p>Celery 5.x</p></td>
+<td><p>-</p></td>
+<td><p>Opcional en desarrollo</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Email</strong></p></td>
+<td><p>Console Backend</p></td>
+<td><p>-</p></td>
+<td><p>Imprime en consola</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comando-de-inicio-local">
+<h3>Comando de Inicio Local<a class="headerlink" href="#comando-de-inicio-local" title="Link to this heading"></a></h3>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span># Windows
+start_prexcol.bat
+
+# Proceso:
+1. Activa entorno virtual Python
+2. Verifica dependencias backend
+3. Inicia Django en :8000
+4. Verifica dependencias frontend  
+5. Inicia Vite en :5175
+6. (Opcional) Inicia Redis
+7. (Opcional) Inicia Celery
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="entorno-de-produccion">
+<h2>☁️ ENTORNO DE PRODUCCIÓN<a class="headerlink" href="#entorno-de-produccion" title="Link to this heading"></a></h2>
+<section id="arquitectura-cloud">
+<h3>Arquitectura Cloud<a class="headerlink" href="#arquitectura-cloud" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+    subgraph Users[&quot;User Devices&quot;]
+        Desktop[💻 Desktop Browser]
+        Mobile[📱 Mobile Browser]
+    end
+
+    subgraph CDN[&quot;CDN Layer&quot;]
+        CF[Cloudflare CDN]
+    end
+
+    subgraph Frontend[&quot;Frontend Hosting (Netlify)&quot;]
+        Build[Build Process]
+        Static[Static Assets]
+        Edge[Edge Functions]
+    end
+
+    subgraph Backend[&quot;Backend Hosting (Railway/Render)&quot;]
+        LB[Load Balancer]
+        
+        subgraph Apps[&quot;Application Servers&quot;]
+            App1[Django Instance 1]
+            App2[Django Instance 2]
+        end
+
+        Static_Backend[Static Files Server]
+    end
+
+    subgraph Data[&quot;Database Layer&quot;]
+        PG[(PostgreSQL)]
+        PG_Backup[(Automated Backups)]
+    end
+
+    subgraph Cache[&quot;Cache &amp; Queue&quot;]
+        Redis_Prod[(Redis Cloud)]
+    end
+
+    subgraph Workers[&quot;Worker Layer&quot;]
+        Worker1[Celery Worker 1]
+        Worker2[Celery Worker 2]
+        Beat[Celery Beat]
+    end
+
+    subgraph Services[&quot;External Services&quot;]
+        SMTP[SendGrid]
+        Gateway[Payment Gateway]
+        Monitoring[Sentry]
+        S3[AWS S3 / Media]
+    end
+
+    %% Connections
+    Desktop --&gt; CF
+    Mobile --&gt; CF
+    
+    CF --&gt; Static
+    CF --&gt; LB
+    
+    Static --&gt; Build
+    
+    LB --&gt; App1
+    LB --&gt; App2
+    
+    %% App Connections
+    App1 --&gt; PG
+    App2 --&gt; PG
+    App1 --&gt; Redis_Prod
+    App2 --&gt; Redis_Prod
+    
+    App1 --&gt; S3
+    App2 --&gt; S3
+    
+    App1 --&gt; Gateway
+    App2 --&gt; Gateway
+    App1 --&gt; Monitoring
+    App2 --&gt; Monitoring
+
+    %% Database
+    PG --&gt; PG_Backup
+    
+    %% Workers
+    Beat --&gt; Redis_Prod
+    Worker1 --&gt; Redis_Prod
+    Worker2 --&gt; Redis_Prod
+    
+    Worker1 --&gt; SMTP
+    Worker2 --&gt; SMTP
+    Worker1 --&gt; Monitoring
+    Worker2 --&gt; Monitoring
+</pre></div>
+</div>
+</section>
+<section id="especificacion-produccion">
+<h3>Especificación: Producción<a class="headerlink" href="#especificacion-produccion" title="Link to this heading"></a></h3>
+<section id="frontend-netlify">
+<h4>Frontend (Netlify)<a class="headerlink" href="#frontend-netlify" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspecto</p></th>
+<th class="head"><p>Especificación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hosting</strong></p></td>
+<td><p>Netlify CDN Global</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Build</strong></p></td>
+<td><p>Automatic on git push</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Framework</strong></p></td>
+<td><p>React + Vite</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Deploy Time</strong></p></td>
+<td><p>~2-3 minutos</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SSL</strong></p></td>
+<td><p>Auto-provisioned (Let’s Encrypt)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Domain</strong></p></td>
+<td><p>Custom domain supported</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Environment</strong></p></td>
+<td><p>Production environment variables</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># netlify.toml</span>
+<span class="p p-Indicator">[</span><span class="nv">build</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">command = &quot;npm run build&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">publish = &quot;dist&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">[[redirects]]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">from = &quot;/*&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">to = &quot;/index.html&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">status = 200</span>
+
+<span class="l l-Scalar l-Scalar-Plain">[build.environment]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">NODE_VERSION = &quot;20&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="backend-railway-render">
+<h4>Backend (Railway/Render)<a class="headerlink" href="#backend-railway-render" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspecto</p></th>
+<th class="head"><p>Especificación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hosting</strong></p></td>
+<td><p>Railway/Render PaaS</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>App Server</strong></p></td>
+<td><p>Gunicorn (4 workers)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Framework</strong></p></td>
+<td><p>Django 4.x</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Database</strong></p></td>
+<td><p>PostgreSQL 15</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Redis</strong></p></td>
+<td><p>Redis Cloud (Managed)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Workers</strong></p></td>
+<td><p>Celery (2 instances)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Memory</strong></p></td>
+<td><p>1GB-2GB RAM</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CPU</strong></p></td>
+<td><p>1-2 vCPUs</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Production Settings</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;api.prexcol.com&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;prexcol-backend.railway.app&#39;</span>
+<span class="p">]</span>
+
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PGDATABASE&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PGUSER&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PGPASSWORD&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PGHOST&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PGPORT&#39;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Celery Configuration</span>
+<span class="n">CELERY_BROKER_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;REDIS_URL&#39;</span><span class="p">)</span>
+<span class="n">CELERY_RESULT_BACKEND</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;REDIS_URL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="nodos-de-despliegue">
+<h2>🖥️ NODOS DE DESPLIEGUE<a class="headerlink" href="#nodos-de-despliegue" title="Link to this heading"></a></h2>
+<section id="nodo-cliente-navegador">
+<h3>Nodo: Cliente (Navegador)<a class="headerlink" href="#nodo-cliente-navegador" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────┐
+│   Cliente (Browser)         │
+├─────────────────────────────┤
+│ Hardware:                   │
+│ • CPU: Any modern           │
+│ • RAM: 2GB+                 │
+│ • Storage: Minimal (cache)  │
+│                             │
+│ Software:                   │
+│ • Chrome/Firefox/Safari     │
+│ • JavaScript Enabled        │
+│ • Cookies Enabled           │
+│                             │
+│ Components:                 │
+│ • React App (SPA)           │
+│ • Service Worker (PWA)      │
+│ • Local Storage             │
+└─────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="nodo-servidor-frontend-netlify">
+<h3>Nodo: Servidor Frontend (Netlify)<a class="headerlink" href="#nodo-servidor-frontend-netlify" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────┐
+│   Frontend Server           │
+├─────────────────────────────┤
+│ Infrastructure:             │
+│ • Global CDN                │
+│ • Edge Network              │
+│ • Automatic Scaling         │
+│                             │
+│ Components:                 │
+│ • Static File Server        │
+│ • Edge Functions            │
+│ • Build System              │
+│                             │
+│ Artifacts:                  │
+│ • HTML/CSS/JS               │
+│ • Images/Assets             │
+│ • Service Worker            │
+└─────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="nodo-servidor-backend-railway-render">
+<h3>Nodo: Servidor Backend (Railway/Render)<a class="headerlink" href="#nodo-servidor-backend-railway-render" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────┐
+│   Application Server        │
+├─────────────────────────────┤
+│ Infrastructure:             │
+│ • 2GB RAM                   │
+│ • 2 vCPU                    │
+│ • 10GB SSD                  │
+│                             │
+│ Software Stack:             │
+│ • Python 3.11               │
+│ • Django 4.2                │
+│ • Gunicorn WSGI             │
+│ • NGINX (reverse proxy)     │
+│                             │
+│ Components:                 │
+│ • Django Application        │
+│ • REST API (DRF)            │
+│ • Static Files (WhiteNoise) │
+│ • Media Upload Handler      │
+└─────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="nodo-base-de-datos-postgresql">
+<h3>Nodo: Base de Datos (PostgreSQL)<a class="headerlink" href="#nodo-base-de-datos-postgresql" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────┐
+│   Database Server           │
+├─────────────────────────────┤
+│ Infrastructure:             │
+│ • 4GB RAM                   │
+│ • 2 vCPU                    │
+│ • 20GB SSD Storage          │
+│                             │
+│ Software:                   │
+│ • PostgreSQL 15             │
+│ • Automated Backups         │
+│ • Point-in-time Recovery    │
+│                             │
+│ Configuration:              │
+│ • max_connections: 100      │
+│ • shared_buffers: 1GB       │
+│ • Replication: Enabled      │
+└─────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="nodo-cache-queue-redis">
+<h3>Nodo: Cache/Queue (Redis)<a class="headerlink" href="#nodo-cache-queue-redis" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────┐
+│   Redis Server              │
+├─────────────────────────────┤
+│ Infrastructure:             │
+│ • 1GB RAM                   │
+│ • 1 vCPU                    │
+│ • Persistence Enabled       │
+│                             │
+│ Software:                   │
+│ • Redis 7.x                 │
+│ • AOF Persistence           │
+│                             │
+│ Usage:                      │
+│ • Celery Broker             │
+│ • Celery Results            │
+│ • Session Cache             │
+│ • API Response Cache        │
+└─────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="nodo-workers-celery">
+<h3>Nodo: Workers (Celery)<a class="headerlink" href="#nodo-workers-celery" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────┐
+│   Celery Workers            │
+├─────────────────────────────┤
+│ Infrastructure:             │
+│ • 512MB RAM each            │
+│ • 0.5 vCPU each             │
+│ • 2 Instances               │
+│                             │
+│ Tasks:                      │
+│ • Send Emails               │
+│ • Process Notifications     │
+│ • Auto Stock Recharge       │
+│ • Generate Reports          │
+│                             │
+│ Schedule:                   │
+│ • Celery Beat               │
+│ • Periodic Tasks            │
+└─────────────────────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="especificaciones-de-hardware">
+<h2>📊 ESPECIFICACIONES DE HARDWARE<a class="headerlink" href="#especificaciones-de-hardware" title="Link to this heading"></a></h2>
+<section id="desarrollo">
+<h3>Desarrollo<a class="headerlink" href="#desarrollo" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Recurso</p></th>
+<th class="head"><p>Mínimo</p></th>
+<th class="head"><p>Recomendado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CPU</strong></p></td>
+<td><p>2 cores</p></td>
+<td><p>4 cores</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RAM</strong></p></td>
+<td><p>4GB</p></td>
+<td><p>8GB</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Disco</strong></p></td>
+<td><p>10GB</p></td>
+<td><p>20GB SSD</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SO</strong></p></td>
+<td><p>Windows 10</p></td>
+<td><p>Windows 11</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Python</strong></p></td>
+<td><p>3.9+</p></td>
+<td><p>3.11+</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Node.js</strong></p></td>
+<td><p>18.x</p></td>
+<td><p>20.x</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="produccion-tier-starter">
+<h3>Producción - Tier Starter<a class="headerlink" href="#produccion-tier-starter" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Servicio</p></th>
+<th class="head"><p>Specs</p></th>
+<th class="head"><p>Costo Aprox.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Netlify (Frontend)</strong></p></td>
+<td><p>CDN Global, 100GB bandwidth</p></td>
+<td><p>$0 - $19/mes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Railway (Backend)</strong></p></td>
+<td><p>2GB RAM, 2 vCPU, 10GB disk</p></td>
+<td><p>$5 - $20/mes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PostgreSQL</strong></p></td>
+<td><p>1GB RAM, 10GB storage</p></td>
+<td><p>$7 - $15/mes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Redis Cloud</strong></p></td>
+<td><p>30MB RAM</p></td>
+<td><p>$0 - $10/mes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total</strong></p></td>
+<td><p>-</p></td>
+<td><p><strong>$12 - $64/mes</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="produccion-tier-professional">
+<h3>Producción - Tier Professional<a class="headerlink" href="#produccion-tier-professional" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Servicio</p></th>
+<th class="head"><p>Specs</p></th>
+<th class="head"><p>Costo Aprox.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Netlify Pro</strong></p></td>
+<td><p>CDN, 1TB bandwidth</p></td>
+<td><p>$19/mes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Railway Pro</strong></p></td>
+<td><p>8GB RAM, 4 vCPU, 50GB disk</p></td>
+<td><p>$50/mes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PostgreSQL</strong></p></td>
+<td><p>4GB RAM, 50GB storage</p></td>
+<td><p>$50/mes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Redis Cloud</strong></p></td>
+<td><p>1GB RAM</p></td>
+<td><p>$15/mes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cloudinary</strong></p></td>
+<td><p>25GB storage, 25GB bandwidth</p></td>
+<td><p>$99/mes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SendGrid</strong></p></td>
+<td><p>100K emails/mes</p></td>
+<td><p>$19.95/mes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total</strong></p></td>
+<td><p>-</p></td>
+<td><p><strong>$252.95/mes</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="seguridad-en-despliegue">
+<h2>🔒 SEGURIDAD EN DESPLIEGUE<a class="headerlink" href="#seguridad-en-despliegue" title="Link to this heading"></a></h2>
+<section id="ssl-tls">
+<h3>SSL/TLS<a class="headerlink" href="#ssl-tls" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────┐
+│          SSL Certificate                │
+├─────────────────────────────────────────┤
+│ • Auto-provisioned (Let&#39;s Encrypt)      │
+│ • Auto-renewal                          │
+│ • TLS 1.3 Support                       │
+│ • HSTS Enabled                          │
+│ • Perfect Forward Secrecy               │
+└─────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="firewall-rules">
+<h3>Firewall Rules<a class="headerlink" href="#firewall-rules" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Frontend (Netlify):
+• Allow: HTTPS (443)
+• Block: All other ports
+
+Backend (Railway):
+• Allow: HTTPS (443) from Frontend
+• Allow: PostgreSQL (5432) from App only
+• Block: Direct DB access from internet
+
+Database (PostgreSQL):
+• Allow: Connections only from Backend IPs
+• Require: SSL connections
+• Block: Public access
+</pre></div>
+</div>
+</section>
+<section id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Production .env</span>
+<span class="nv">SECRET_KEY</span><span class="o">=</span>&lt;django-secret-key&gt;
+<span class="nv">DATABASE_URL</span><span class="o">=</span>&lt;postgres-connection-string&gt;
+<span class="nv">REDIS_URL</span><span class="o">=</span>&lt;redis-connection-string&gt;
+<span class="nv">ALLOWED_HOSTS</span><span class="o">=</span>api.prexcol.com,prexcol.netlify.app
+
+<span class="c1"># Email</span>
+<span class="nv">EMAIL_HOST</span><span class="o">=</span>smtp.sendgrid.net
+<span class="nv">EMAIL_HOST_USER</span><span class="o">=</span>apikey
+<span class="nv">EMAIL_HOST_PASSWORD</span><span class="o">=</span>&lt;sendgrid-api-key&gt;
+
+<span class="c1"># Storage</span>
+<span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;aws-key&gt;
+<span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>&lt;aws-secret&gt;
+<span class="nv">AWS_STORAGE_BUCKET_NAME</span><span class="o">=</span>prexcol-media
+<span class="nv">AWS_S3_REGION_NAME</span><span class="o">=</span>us-east-1
+
+<span class="c1"># Monitoring</span>
+<span class="nv">SENTRY_DSN</span><span class="o">=</span>&lt;sentry-dsn&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="proceso-de-despliegue">
+<h2>🚀 PROCESO DE DESPLIEGUE<a class="headerlink" href="#proceso-de-despliegue" title="Link to this heading"></a></h2>
+<section id="pipeline-ci-cd">
+<h3>Pipeline CI/CD<a class="headerlink" href="#pipeline-ci-cd" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+    Dev[Developer] --&gt;|git push| GitHub[GitHub Repo]
+    GitHub --&gt;|webhook| Netlify_Build[Netlify Build]
+    GitHub --&gt;|webhook| Railway_Build[Railway Build]
+    
+    Netlify_Build --&gt;|success| Netlify_Deploy[Deploy Frontend]
+    Railway_Build --&gt;|success| Railway_Deploy[Deploy Backend]
+    
+    Railway_Deploy --&gt; Migrate[Run Migrations]
+    Migrate --&gt; Collect[Collect Static]
+    Collect --&gt; Health[Health Check]
+    Health --&gt;|pass| Live[LIVE]
+    Health --&gt;|fail| Rollback[Rollback]
+</pre></div>
+</div>
+</section>
+<section id="comandos-de-despliegue">
+<h3>Comandos de Despliegue<a class="headerlink" href="#comandos-de-despliegue" title="Link to this heading"></a></h3>
+<section id="id1">
+<h4>Frontend (Netlify)<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build local</span>
+npm<span class="w"> </span>run<span class="w"> </span>build
+
+<span class="c1"># Deploy manual (CLI)</span>
+netlify<span class="w"> </span>deploy<span class="w"> </span>--prod
+
+<span class="c1"># Auto deploy triggers on:</span>
+<span class="c1"># - Push to main branch</span>
+<span class="c1"># - Pull request merge</span>
+</pre></div>
+</div>
+</section>
+<section id="backend-railway">
+<h4>Backend (Railway)<a class="headerlink" href="#backend-railway" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build command</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Start command</span>
+gunicorn<span class="w"> </span>backend.wsgi:application<span class="w"> </span>--bind<span class="w"> </span><span class="m">0</span>.0.0.0:<span class="nv">$PORT</span>
+
+<span class="c1"># Migraciones</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+
+<span class="c1"># Collect static</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>collectstatic<span class="w"> </span>--noinput
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="escalabilidad">
+<h2>📈 ESCALABILIDAD<a class="headerlink" href="#escalabilidad" title="Link to this heading"></a></h2>
+<section id="horizontal-scaling">
+<h3>Horizontal Scaling<a class="headerlink" href="#horizontal-scaling" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Load Balancer
+    │
+    ├─── App Instance 1 (1GB RAM)
+    ├─── App Instance 2 (1GB RAM)
+    ├─── App Instance 3 (1GB RAM)
+    └─── App Instance N...
+
+• Auto-scaling based on CPU/Memory
+• Min instances: 2
+• Max instances: 10
+• Scale up threshold: &gt;70% CPU
+• Scale down threshold: &lt;30% CPU
+</pre></div>
+</div>
+</section>
+<section id="vertical-scaling">
+<h3>Vertical Scaling<a class="headerlink" href="#vertical-scaling" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Tier 1 (Starter):
+• 1GB RAM, 1 vCPU
+• ~100 concurrent users
+
+Tier 2 (Professional):
+• 4GB RAM, 2 vCPU
+• ~500 concurrent users
+
+Tier 3 (Business):
+• 8GB RAM, 4 vCPU
+• ~2000 concurrent users
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="monitoreo">
+<h2>🔍 MONITOREO<a class="headerlink" href="#monitoreo" title="Link to this heading"></a></h2>
+<section id="metricas-clave">
+<h3>Métricas Clave<a class="headerlink" href="#metricas-clave" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Application Metrics:
+• Request/Response Time
+• Error Rate (4xx, 5xx)
+• Throughput (req/sec)
+• Active Users
+
+Infrastructure Metrics:
+• CPU Usage (%)
+• Memory Usage (%)
+• Disk I/O
+• Network I/O
+
+Database Metrics:
+• Query Performance
+• Connections Count
+• Slow Queries
+• Deadlocks
+</pre></div>
+</div>
+</section>
+<section id="herramientas-de-monitoreo">
+<h3>Herramientas de Monitoreo<a class="headerlink" href="#herramientas-de-monitoreo" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Herramienta</p></th>
+<th class="head"><p>Propósito</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sentry</strong></p></td>
+<td><p>Error Tracking &amp; Performance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Railway Metrics</strong></p></td>
+<td><p>Infrastructure Monitoring</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PostgreSQL Logs</strong></p></td>
+<td><p>Database Performance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Netlify Analytics</strong></p></td>
+<td><p>Frontend Analytics</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p><strong>Documento generado</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Estado</strong>: ✅ Completado</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

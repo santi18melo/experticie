@@ -1,0 +1,33 @@
+:py:mod:`backend.fix_imports`
+=============================
+
+.. py:module:: backend.fix_imports
+
+.. autodoc2-docstring:: backend.fix_imports
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`files_to_fix <backend.fix_imports.files_to_fix>`
+     - .. autodoc2-docstring:: backend.fix_imports.files_to_fix
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: files_to_fix
+   :canonical: backend.fix_imports.files_to_fix
+   :value: ['c:\\experticie-2\\backend\\apps\\usuarios\\views\\view_password.py', 'c:\\experticie-2\\backend\\a...
+
+   .. autodoc2-docstring:: backend.fix_imports.files_to_fix
+      :parser: rst

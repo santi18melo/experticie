@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚀 GUÍA DE INICIO RÁPIDO - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🚀 GUÍA DE INICIO RÁPIDO - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/INICIO_RAPIDO.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guia-de-inicio-rapido-prexcol">
+<h1>🚀 GUÍA DE INICIO RÁPIDO - PREXCOL<a class="headerlink" href="#guia-de-inicio-rapido-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Versión:</strong> 3.0<br />
+<strong>Última actualización:</strong> 2025-12-01</p>
+<hr class="docutils" />
+<section id="requisitos-previos">
+<h2>📋 REQUISITOS PREVIOS<a class="headerlink" href="#requisitos-previos" title="Link to this heading"></a></h2>
+<section id="software-necesario">
+<h3>Software Necesario<a class="headerlink" href="#software-necesario" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Python 3.10+</strong> (<a class="reference external" href="https://www.python.org/downloads/">Descargar</a>)</p></li>
+<li><p><strong>Node.js 18+</strong> (<a class="reference external" href="https://nodejs.org/">Descargar</a>)</p></li>
+<li><p><strong>Git</strong> (<a class="reference external" href="https://git-scm.com/">Descargar</a>)</p></li>
+</ul>
+</section>
+<section id="opcional-para-funcionalidad-completa">
+<h3>Opcional (para funcionalidad completa)<a class="headerlink" href="#opcional-para-funcionalidad-completa" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Redis</strong> (para Celery - tareas asíncronas)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="inicio-rapido-2-opciones">
+<h2>⚡ INICIO RÁPIDO (2 opciones)<a class="headerlink" href="#inicio-rapido-2-opciones" title="Link to this heading"></a></h2>
+<section id="opcion-1-inicio-simple-recomendado-para-desarrollo">
+<h3>Opción 1: Inicio Simple (Recomendado para desarrollo)<a class="headerlink" href="#opcion-1-inicio-simple-recomendado-para-desarrollo" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># 1. Clonar repositorio</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="p">&lt;</span><span class="n">repository-url</span><span class="p">&gt;</span>
+<span class="nb">cd </span><span class="n">experticie</span><span class="p">-</span><span class="n">3</span>
+
+<span class="c"># 2. Ejecutar script de inicio simple</span>
+<span class="p">.\</span><span class="n">start_simple</span><span class="p">.</span><span class="n">bat</span>
+</pre></div>
+</div>
+<p>Este script:</p>
+<ul class="simple">
+<li><p>✅ Activa el entorno virtual</p></li>
+<li><p>✅ Instala dependencias</p></li>
+<li><p>✅ Ejecuta migraciones</p></li>
+<li><p>✅ Inicia Backend (Django) en http://localhost:8000</p></li>
+<li><p>✅ Inicia Frontend (React) en http://localhost:5175</p></li>
+<li><p>✅ Abre el navegador automáticamente</p></li>
+</ul>
+</section>
+<section id="opcion-2-inicio-completo-con-celery-y-redis">
+<h3>Opción 2: Inicio Completo (con Celery y Redis)<a class="headerlink" href="#opcion-2-inicio-completo-con-celery-y-redis" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Asegúrate de tener Redis instalado y corriendo</span>
+<span class="p">.\</span><span class="n">start_prexcol</span><span class="p">.</span><span class="n">bat</span>
+</pre></div>
+</div>
+<p>Este script incluye todo lo anterior más:</p>
+<ul class="simple">
+<li><p>✅ Celery Worker (tareas asíncronas)</p></li>
+<li><p>✅ Celery Beat (tareas programadas)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuracion-manual-si-prefieres-control-total">
+<h2>🔧 CONFIGURACIÓN MANUAL (Si prefieres control total)<a class="headerlink" href="#configuracion-manual-si-prefieres-control-total" title="Link to this heading"></a></h2>
+<section id="backend-django">
+<h3>1. Backend (Django)<a class="headerlink" href="#backend-django" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Crear y activar entorno virtual</span>
+<span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+<span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span>
+
+<span class="c"># Instalar dependencias</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">-r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+
+<span class="c"># Ejecutar migraciones</span>
+<span class="nb">cd </span><span class="n">backend</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>
+
+<span class="c"># Crear usuarios de prueba (opcional)</span>
+<span class="n">python</span> <span class="n">scripts</span><span class="p">\</span><span class="n">create_demo_users</span><span class="p">.</span><span class="n">py</span>
+
+<span class="c"># Iniciar servidor</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
+</pre></div>
+</div>
+<p><strong>Backend disponible en:</strong> http://localhost:8000/api/</p>
+</section>
+<section id="frontend-react-vite">
+<h3>2. Frontend (React + Vite)<a class="headerlink" href="#frontend-react-vite" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># En otra terminal</span>
+<span class="nb">cd </span><span class="n">frontend</span>
+
+<span class="c"># Instalar dependencias</span>
+<span class="n">npm</span> <span class="n">install</span>
+
+<span class="c"># Iniciar servidor de desarrollo</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p><strong>Frontend disponible en:</strong> http://localhost:5175/</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="usuarios-de-prueba">
+<h2>👥 USUARIOS DE PRUEBA<a class="headerlink" href="#usuarios-de-prueba" title="Link to this heading"></a></h2>
+<p>Después de ejecutar <code class="docutils literal notranslate"><span class="pre">create_demo_users.py</span></code>, tendrás estos usuarios:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Email</p></th>
+<th class="head"><p>Contraseña</p></th>
+<th class="head"><p>Rol</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>admin&#64;prexcol.com</p></td>
+<td><p>Prexcol123!</p></td>
+<td><p>Administrador</p></td>
+</tr>
+<tr class="row-odd"><td><p>cliente&#64;prexcol.com</p></td>
+<td><p>Prexcol123!</p></td>
+<td><p>Cliente</p></td>
+</tr>
+<tr class="row-even"><td><p>comprador&#64;prexcol.com</p></td>
+<td><p>Prexcol123!</p></td>
+<td><p>Comprador</p></td>
+</tr>
+<tr class="row-odd"><td><p>proveedor&#64;prexcol.com</p></td>
+<td><p>Prexcol123!</p></td>
+<td><p>Proveedor</p></td>
+</tr>
+<tr class="row-even"><td><p>logistica&#64;prexcol.com</p></td>
+<td><p>Prexcol123!</p></td>
+<td><p>Logística</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="requisitos-de-contrasena">
+<h2>🔐 REQUISITOS DE CONTRASEÑA<a class="headerlink" href="#requisitos-de-contrasena" title="Link to this heading"></a></h2>
+<p>Al registrarse o cambiar contraseña, se requiere:</p>
+<ul class="simple">
+<li><p>✅ Mínimo 8 caracteres</p></li>
+<li><p>✅ Al menos una letra mayúscula</p></li>
+<li><p>✅ Al menos un número</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="flujo-de-autenticacion">
+<h2>🎯 FLUJO DE AUTENTICACIÓN<a class="headerlink" href="#flujo-de-autenticacion" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Registro (rol por defecto: cliente)
+   ↓
+2. Login
+   ↓
+3. Redirección automática al dashboard específico del rol:
+   - Admin → /admin
+   - Cliente → /cliente
+   - Comprador → /comprador
+   - Proveedor → /proveedor
+   - Logística → /logistica
+   ↓
+4. Navegación (según permisos del rol)
+   ↓
+5. Logout
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="comandos-utiles">
+<h2>🔧 COMANDOS ÚTILES<a class="headerlink" href="#comandos-utiles" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Backend (Django)<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Activar entorno virtual</span>
+<span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span>
+
+<span class="c"># Crear superusuario</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+
+<span class="c"># Ejecutar migraciones</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>
+
+<span class="c"># Crear usuarios de prueba</span>
+<span class="n">python</span> <span class="n">scripts</span><span class="p">\</span><span class="n">create_demo_users</span><span class="p">.</span><span class="n">py</span>
+
+<span class="c"># Ejecutar tests</span>
+<span class="n">pytest</span>
+
+<span class="c"># Verificar configuración</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">check</span>
+
+<span class="c"># Ejecutar en red local (accesible desde otros dispositivos)</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">:</span><span class="n">8000</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Frontend (React + Vite)<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Modo desarrollo</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+
+<span class="c"># Modo desarrollo (accesible desde red)</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span> <span class="p">--</span> <span class="p">-</span><span class="n">-host</span>
+
+<span class="c"># Build para producción</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">build</span>
+
+<span class="c"># Preview de producción</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">preview</span>
+
+<span class="c"># Ejecutar tests E2E</span>
+<span class="n">npx</span> <span class="n">playwright</span> <span class="n">test</span>
+
+<span class="c"># Ver reporte de tests</span>
+<span class="n">npx</span> <span class="n">playwright</span> <span class="nb">show-report</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="endpoints-api-principales">
+<h2>📡 ENDPOINTS API PRINCIPALES<a class="headerlink" href="#endpoints-api-principales" title="Link to this heading"></a></h2>
+<section id="autenticacion">
+<h3>Autenticación<a class="headerlink" href="#autenticacion" title="Link to this heading"></a></h3>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="err"># Registro</span>
+<span class="err">POST http://localhost:8000/api/auth/register/</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">{</span>
+<span class="err">  &quot;nombre&quot;: &quot;Nuevo Usuario&quot;,</span>
+<span class="err">  &quot;email&quot;: &quot;nuevo@example.com&quot;,</span>
+<span class="err">  &quot;password&quot;: &quot;Password123!&quot;,</span>
+<span class="err">  &quot;telefono&quot;: &quot;3001234567&quot;,</span>
+<span class="err">  &quot;direccion&quot;: &quot;Calle 123&quot;</span>
+<span class="err">}</span>
+
+<span class="err"># Login</span>
+<span class="err">POST http://localhost:8000/api/auth/login/</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">{</span>
+<span class="err">  &quot;email&quot;: &quot;admin@prexcol.com&quot;,</span>
+<span class="err">  &quot;password&quot;: &quot;Prexcol123!&quot;</span>
+<span class="err">}</span>
+
+<span class="err"># Refresh Token</span>
+<span class="err">POST http://localhost:8000/api/auth/token/refresh/</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">{</span>
+<span class="err">  &quot;refresh&quot;: &quot;YOUR_REFRESH_TOKEN&quot;</span>
+<span class="err">}</span>
+
+<span class="err"># Logout</span>
+<span class="err">POST http://localhost:8000/api/auth/logout/</span>
+<span class="err">Authorization: Bearer YOUR_ACCESS_TOKEN</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">{</span>
+<span class="err">  &quot;refresh&quot;: &quot;YOUR_REFRESH_TOKEN&quot;</span>
+<span class="err">}</span>
+
+<span class="err"># Recuperar contraseña</span>
+<span class="err">POST http://localhost:8000/api/auth/forgot-password/</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">{</span>
+<span class="err">  &quot;email&quot;: &quot;admin@prexcol.com&quot;</span>
+<span class="err">}</span>
+
+<span class="err"># Restablecer contraseña</span>
+<span class="err">POST http://localhost:8000/api/auth/reset-password/{uid}/{token}/</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">{</span>
+<span class="err">  &quot;password&quot;: &quot;NewPassword123!&quot;</span>
+<span class="err">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verificacion-del-sistema">
+<h2>🔍 VERIFICACIÓN DEL SISTEMA<a class="headerlink" href="#verificacion-del-sistema" title="Link to this heading"></a></h2>
+<section id="verificar-backend">
+<h3>Verificar Backend<a class="headerlink" href="#verificar-backend" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Verificar que el servidor esté corriendo</span>
+<span class="n">netstat</span> <span class="n">-ano</span> <span class="p">|</span> <span class="n">findstr</span> <span class="p">:</span><span class="n">8000</span>
+
+<span class="c"># Probar endpoint de salud</span>
+<span class="nb">curl </span><span class="n">http</span><span class="p">://</span><span class="n">localhost</span><span class="p">:</span><span class="n">8000</span><span class="p">/</span><span class="n">api</span><span class="p">/</span><span class="n">auth</span><span class="p">/</span><span class="n">login</span><span class="p">/</span>
+
+<span class="c"># Ver usuarios en la base de datos</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">shell</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="n">from</span> <span class="n">apps</span><span class="p">.</span><span class="n">usuarios</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Usuario</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="n">Usuario</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="verificar-frontend">
+<h3>Verificar Frontend<a class="headerlink" href="#verificar-frontend" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Verificar que Vite esté corriendo</span>
+<span class="n">netstat</span> <span class="n">-ano</span> <span class="p">|</span> <span class="n">findstr</span> <span class="p">:</span><span class="n">5175</span>
+
+<span class="c"># Ver tokens en navegador (F12 → Console)</span>
+<span class="n">localStorage</span><span class="p">.</span><span class="n">getItem</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="n">localStorage</span><span class="p">.</span><span class="n">getItem</span><span class="p">(</span><span class="s1">&#39;refresh&#39;</span><span class="p">)</span>
+<span class="n">localStorage</span><span class="p">.</span><span class="n">getItem</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="solucion-de-problemas">
+<h2>🐛 SOLUCIÓN DE PROBLEMAS<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading"></a></h2>
+<section id="error-modulo-no-encontrado">
+<h3>Error: “Módulo no encontrado”<a class="headerlink" href="#error-modulo-no-encontrado" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Reinstalar dependencias backend</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">-r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+
+<span class="c"># Reinstalar dependencias frontend</span>
+<span class="nb">cd </span><span class="n">frontend</span>
+<span class="n">npm</span> <span class="n">install</span>
+</pre></div>
+</div>
+</section>
+<section id="error-cors-policy">
+<h3>Error: “CORS Policy”<a class="headerlink" href="#error-cors-policy" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Verificar que el frontend esté en <code class="docutils literal notranslate"><span class="pre">http://localhost:5175</span></code></p></li>
+<li><p>Revisar <code class="docutils literal notranslate"><span class="pre">CORS_ALLOWED_ORIGINS</span></code> en <code class="docutils literal notranslate"><span class="pre">backend/settings.py</span></code></p></li>
+</ul>
+</section>
+<section id="error-401-unauthorized">
+<h3>Error: “401 Unauthorized”<a class="headerlink" href="#error-401-unauthorized" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>El token expiró (válido por 1 hora)</p></li>
+<li><p>Hacer login nuevamente o usar refresh token</p></li>
+</ul>
+</section>
+<section id="error-puerto-ya-en-uso">
+<h3>Error: “Puerto ya en uso”<a class="headerlink" href="#error-puerto-ya-en-uso" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Backend en otro puerto</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="n">8001</span>
+
+<span class="c"># Frontend en otro puerto</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span> <span class="p">--</span> <span class="p">-</span><span class="n">-port</span> <span class="n">5174</span>
+</pre></div>
+</div>
+</section>
+<section id="error-database-is-locked">
+<h3>Error: “Database is locked”<a class="headerlink" href="#error-database-is-locked" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Cerrar todas las conexiones a la BD</p></li>
+<li><p>Reiniciar el servidor Django</p></li>
+</ul>
+</section>
+<section id="error-psycopg2-binary-build-failed">
+<h3>Error: “psycopg2-binary build failed”<a class="headerlink" href="#error-psycopg2-binary-build-failed" title="Link to this heading"></a></h3>
+<p>Este error ya está resuelto. El archivo <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> ha sido actualizado para no incluir PostgreSQL por defecto (el proyecto usa SQLite).</p>
+<p>Si necesitas PostgreSQL, descomenta la línea en <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># psycopg2-binary==2.9.9</span>
+</pre></div>
+</div>
+</section>
+<section id="tests-e2e-fallan">
+<h3>Tests E2E fallan<a class="headerlink" href="#tests-e2e-fallan" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Instalar navegadores de Playwright</span>
+<span class="n">npx</span> <span class="n">playwright</span> <span class="n">install</span>
+
+<span class="c"># Ejecutar con más tiempo de espera</span>
+<span class="n">npx</span> <span class="n">playwright</span> <span class="n">test</span> <span class="p">-</span><span class="n">-timeout</span><span class="p">=</span><span class="n">60000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estructura-del-proyecto">
+<h2>📁 ESTRUCTURA DEL PROYECTO<a class="headerlink" href="#estructura-del-proyecto" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>experticie-3/
+├── backend/
+│   ├── apps/
+│   │   ├── usuarios/          # Autenticación y usuarios
+│   │   ├── productos/         # Gestión de productos
+│   │   ├── ventas/            # Gestión de ventas
+│   │   ├── pagos/             # Procesamiento de pagos
+│   │   └── notificaciones/    # Sistema de notificaciones
+│   ├── scripts/
+│   │   └── create_demo_users.py
+│   ├── settings.py
+│   └── manage.py
+│
+├── frontend/
+│   ├── src/
+│   │   ├── pages/             # Páginas principales
+│   │   ├── components/        # Componentes reutilizables
+│   │   ├── context/           # Estado global
+│   │   ├── services/          # Servicios API
+│   │   └── routes/            # Configuración de rutas
+│   ├── tests/e2e/             # Tests end-to-end
+│   └── package.json
+│
+├── docs/                      # Documentación organizada
+│   ├── README.md              # Índice de documentación
+│   ├── guias/
+│   ├── implementacion/
+│   ├── soluciones/
+│   ├── reportes/
+│   ├── informes/
+│   ├── planes/
+│   ├── resumenes/
+│   └── manuales/
+│
+├── requirements.txt           # Dependencias Python
+├── start_simple.bat           # Inicio rápido (sin Celery)
+├── start_prexcol.bat          # Inicio completo (con Celery)
+└── setup_backend.bat          # Configuración inicial
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="documentacion-adicional">
+<h2>🎓 DOCUMENTACIÓN ADICIONAL<a class="headerlink" href="#documentacion-adicional" title="Link to this heading"></a></h2>
+<p>Toda la documentación está organizada en la carpeta <code class="docutils literal notranslate"><span class="pre">docs/</span></code>. Consulta <code class="docutils literal notranslate"><span class="pre">docs/README.md</span></code> para un índice completo.</p>
+<p><strong>Documentos principales:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INICIO_RAPIDO.md</span></code> - Esta guía</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GUIA_PRUEBAS_COMPLETAS.md</span></code> - Guía de testing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEO_Y_REDES_SOCIALES.md</span></code> - Optimización SEO</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RESUMEN_FINAL.md</span></code> - Resumen ejecutivo del proyecto</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="seguridad">
+<h2>🔐 SEGURIDAD<a class="headerlink" href="#seguridad" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>✅ Passwords hasheados con PBKDF2 (Django)</p></li>
+<li><p>✅ Validación de contraseñas (8+ caracteres, mayúscula, número)</p></li>
+<li><p>✅ JWT con expiración (1h access, 1d refresh)</p></li>
+<li><p>✅ Tokens blacklisted en logout</p></li>
+<li><p>✅ CORS configurado correctamente</p></li>
+<li><p>✅ CSRF protection habilitado</p></li>
+<li><p>✅ Validación de datos en backend y frontend</p></li>
+<li><p>✅ Rutas protegidas por rol</p></li>
+<li><p>✅ Procesamiento seguro de imágenes (Pillow)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="consejos-pro">
+<h2>💡 CONSEJOS PRO<a class="headerlink" href="#consejos-pro" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Usa <code class="docutils literal notranslate"><span class="pre">start_simple.bat</span></code></strong> para desarrollo rápido</p></li>
+<li><p><strong>Mantén ambos servidores corriendo</strong> mientras desarrollas</p></li>
+<li><p><strong>Usa DevTools (F12)</strong> para ver requests/responses</p></li>
+<li><p><strong>Revisa logs regularmente</strong> en ambas terminales</p></li>
+<li><p><strong>Haz commits frecuentes</strong> después de cambios importantes</p></li>
+<li><p><strong>Ejecuta tests antes de cada commit</strong></p></li>
+<li><p><strong>Consulta <code class="docutils literal notranslate"><span class="pre">docs/README.md</span></code></strong> para encontrar documentación específica</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="verificacion-rapida">
+<h2>🎯 VERIFICACIÓN RÁPIDA<a class="headerlink" href="#verificacion-rapida" title="Link to this heading"></a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># 1. Backend funcionando</span>
+<span class="nb">curl </span><span class="n">http</span><span class="p">://</span><span class="n">localhost</span><span class="p">:</span><span class="n">8000</span><span class="p">/</span><span class="n">api</span><span class="p">/</span><span class="n">auth</span><span class="p">/</span><span class="n">login</span><span class="p">/</span>
+
+<span class="c"># 2. Frontend funcionando</span>
+<span class="c"># Abrir http://localhost:5175 en navegador</span>
+
+<span class="c"># 3. Tests pasando</span>
+<span class="nb">cd </span><span class="n">frontend</span>
+<span class="n">npx</span> <span class="n">playwright</span> <span class="n">test</span>
+
+<span class="c"># 4. Usuarios creados</span>
+<span class="nb">cd </span><span class="n">backend</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">shell</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="n">from</span> <span class="n">apps</span><span class="p">.</span><span class="n">usuarios</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Usuario</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Total usuarios: {Usuario.objects.count()}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="soporte">
+<h2>📞 SOPORTE<a class="headerlink" href="#soporte" title="Link to this heading"></a></h2>
+<p>Si encuentras problemas:</p>
+<ol class="arabic simple">
+<li><p>Revisa la sección <strong>Solución de Problemas</strong> arriba</p></li>
+<li><p>Consulta la documentación en <code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></li>
+<li><p>Verifica los logs en las terminales</p></li>
+<li><p>Revisa el estado de los servicios (backend, frontend, Redis)</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="changelog">
+<h2>📝 CHANGELOG<a class="headerlink" href="#changelog" title="Link to this heading"></a></h2>
+<section id="version-3-0-2025-12-01">
+<h3>Versión 3.0 (2025-12-01)<a class="headerlink" href="#version-3-0-2025-12-01" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✨ Validación real de contraseñas (8+ caracteres, mayúscula, número)</p></li>
+<li><p>📚 Reorganización completa de documentación</p></li>
+<li><p>🔧 Scripts de inicio mejorados (<code class="docutils literal notranslate"><span class="pre">start_simple.bat</span></code>, <code class="docutils literal notranslate"><span class="pre">start_prexcol.bat</span></code>)</p></li>
+<li><p>📦 Limpieza de <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> (eliminado PostgreSQL por defecto)</p></li>
+<li><p>🎨 Indicadores visuales en tiempo real para requisitos de contraseña</p></li>
+</ul>
+</section>
+<section id="version-2-1-2025-11-25">
+<h3>Versión 2.1 (2025-11-25)<a class="headerlink" href="#version-2-1-2025-11-25" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✨ Dashboards específicos por rol</p></li>
+<li><p>✨ Redirección automática según rol de usuario</p></li>
+<li><p>🎨 Interface profesionalizada</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>¡Sistema listo para desarrollo!</strong> 🎉</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+:py:mod:`backend.apps.notificaciones.tests`
+===========================================
+
+.. py:module:: backend.apps.notificaciones.tests
+
+.. autodoc2-docstring:: backend.apps.notificaciones.tests
+   :parser: rst
+   :allowtitles:

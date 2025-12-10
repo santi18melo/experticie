@@ -1,0 +1,32 @@
+:py:mod:`backend.manage`
+========================
+
+.. py:module:: backend.manage
+
+.. autodoc2-docstring:: backend.manage
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`main <backend.manage.main>`
+     - .. autodoc2-docstring:: backend.manage.main
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:function:: main()
+   :canonical: backend.manage.main
+
+   .. autodoc2-docstring:: backend.manage.main
+      :parser: rst

@@ -31,6 +31,9 @@ extensions = [
     'sphinx_design',
 ]
 
+# Mermaid configuration
+mermaid_version = "9.4.0"
+
 # Autodoc2 configuration
 autodoc2_packages = [
     {

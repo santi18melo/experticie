@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📱 Guía de Acceso desde Dispositivos Móviles &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📱 Guía de Acceso desde Dispositivos Móviles</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/manuales/ACCESO_MOVIL.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guia-de-acceso-desde-dispositivos-moviles">
+<h1>📱 Guía de Acceso desde Dispositivos Móviles<a class="headerlink" href="#guia-de-acceso-desde-dispositivos-moviles" title="Link to this heading"></a></h1>
+<section id="configuracion-de-red-local">
+<h2>🌐 Configuración de Red Local<a class="headerlink" href="#configuracion-de-red-local" title="Link to this heading"></a></h2>
+<p>Tu aplicación PREXCOL ahora está configurada para ser accesible desde <strong>cualquier dispositivo</strong> conectado a tu red WiFi (celular, tablet, otra computadora).</p>
+</section>
+<hr class="docutils" />
+<section id="direcciones-de-acceso">
+<h2>📍 Direcciones de Acceso<a class="headerlink" href="#direcciones-de-acceso" title="Link to this heading"></a></h2>
+<section id="desde-tu-computadora-localhost">
+<h3>Desde tu computadora (localhost):<a class="headerlink" href="#desde-tu-computadora-localhost" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Frontend</strong>: http://localhost:5175</p></li>
+<li><p><strong>Backend</strong>: http://localhost:8000</p></li>
+</ul>
+</section>
+<section id="desde-otros-dispositivos-en-la-misma-red-wifi">
+<h3>Desde otros dispositivos en la misma red WiFi:<a class="headerlink" href="#desde-otros-dispositivos-en-la-misma-red-wifi" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Frontend</strong>: http://192.168.1.80:5175</p></li>
+<li><p><strong>Backend</strong>: http://192.168.1.80:8000</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pasos-para-reiniciar-los-servidores">
+<h2>🔧 Pasos para Reiniciar los Servidores<a class="headerlink" href="#pasos-para-reiniciar-los-servidores" title="Link to this heading"></a></h2>
+<p><strong>⚠️ IMPORTANTE</strong>: Debes reiniciar AMBOS servidores después de los cambios.</p>
+<section id="reiniciar-backend-django">
+<h3>1. Reiniciar Backend (Django)<a class="headerlink" href="#reiniciar-backend-django" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># En la terminal del backend, presiona Ctrl+C para detener</span>
+<span class="c"># Luego ejecuta:</span>
+<span class="nb">cd </span><span class="n">backend</span>
+<span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+<span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">:</span><span class="n">8000</span>
+</pre></div>
+</div>
+</section>
+<section id="reiniciar-frontend-vite">
+<h3>2. Reiniciar Frontend (Vite)<a class="headerlink" href="#reiniciar-frontend-vite" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># En la terminal del frontend, presiona Ctrl+C para detener</span>
+<span class="c"># Luego ejecuta:</span>
+<span class="nb">cd </span><span class="n">frontend</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p><strong>Importante</strong>: Después de reiniciar, verás en la terminal del frontend algo como:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>➜  Local:   http://localhost:5175/
+➜  Network: http://192.168.1.80:5175/
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="archivos-de-configuracion">
+<h2>⚙️ Archivos de Configuración<a class="headerlink" href="#archivos-de-configuracion" title="Link to this heading"></a></h2>
+<section id="backend-backend-env">
+<h3>Backend: <code class="docutils literal notranslate"><span class="pre">backend/.env</span></code><a class="headerlink" href="#backend-backend-env" title="Link to this heading"></a></h3>
+<div class="highlight-env notranslate"><div class="highlight"><pre><span></span>ALLOWED_HOSTS=localhost,127.0.0.1,testserver,192.168.1.80,0.0.0.0
+CORS_ALLOWED_ORIGINS=http://localhost:5175,http://127.0.0.1:5175,http://192.168.1.80:5175
+CSRF_TRUSTED_ORIGINS=http://localhost:5175,http://127.0.0.1:5175,http://192.168.1.80:5175
+FRONTEND_URL=http://192.168.1.80:5175
+</pre></div>
+</div>
+</section>
+<section id="frontend-frontend-env">
+<h3>Frontend: <code class="docutils literal notranslate"><span class="pre">frontend/.env</span></code><a class="headerlink" href="#frontend-frontend-env" title="Link to this heading"></a></h3>
+<div class="highlight-env notranslate"><div class="highlight"><pre><span></span>VITE_API_BASE_URL=http://192.168.1.80:8000/api
+</pre></div>
+</div>
+<p><strong>⚠️ Nota</strong>: Si tu IP cambia, debes actualizar AMBOS archivos .env</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="correos-de-recuperacion-de-contrasena">
+<h2>📧 Correos de Recuperación de Contraseña<a class="headerlink" href="#correos-de-recuperacion-de-contrasena" title="Link to this heading"></a></h2>
+<p>Los correos ahora incluirán enlaces con la IP de red:</p>
+<ul class="simple">
+<li><p><strong>Enlace en el email</strong>: <code class="docutils literal notranslate"><span class="pre">http://192.168.1.80:5175/reset-password/...</span></code></p></li>
+<li><p>✅ Funciona desde <strong>celular</strong></p></li>
+<li><p>✅ Funciona desde <strong>tablet</strong></p></li>
+<li><p>✅ Funciona desde <strong>cualquier dispositivo en tu WiFi</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="como-probar-desde-tu-celular">
+<h2>📱 Cómo Probar desde tu Celular<a class="headerlink" href="#como-probar-desde-tu-celular" title="Link to this heading"></a></h2>
+<section id="paso-1-conectar-tu-celular-al-mismo-wifi">
+<h3>Paso 1: Conectar tu celular al mismo WiFi<a class="headerlink" href="#paso-1-conectar-tu-celular-al-mismo-wifi" title="Link to this heading"></a></h3>
+<p>Asegúrate de que tu celular esté conectado a la <strong>misma red WiFi</strong> que tu computadora.</p>
+</section>
+<section id="paso-2-abrir-el-navegador-en-el-celular">
+<h3>Paso 2: Abrir el navegador en el celular<a class="headerlink" href="#paso-2-abrir-el-navegador-en-el-celular" title="Link to this heading"></a></h3>
+<p>Abre Chrome, Safari o cualquier navegador en tu celular.</p>
+</section>
+<section id="paso-3-visitar-la-aplicacion">
+<h3>Paso 3: Visitar la aplicación<a class="headerlink" href="#paso-3-visitar-la-aplicacion" title="Link to this heading"></a></h3>
+<p>Escribe en la barra de direcciones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.1.80</span><span class="p">:</span><span class="mi">5175</span>
+</pre></div>
+</div>
+</section>
+<section id="paso-4-probar-el-flujo-de-recuperacion">
+<h3>Paso 4: Probar el flujo de recuperación<a class="headerlink" href="#paso-4-probar-el-flujo-de-recuperacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ve a “¿Olvidaste tu contraseña?”</p></li>
+<li><p>Ingresa tu email: <code class="docutils literal notranslate"><span class="pre">melosanchezsantiago&#64;gmail.com</span></code></p></li>
+<li><p>Abre el correo <strong>desde tu celular</strong></p></li>
+<li><p>Haz clic en “🔐 Restablecer mi contraseña”</p></li>
+<li><p>El enlace te llevará a la página de reset (responsive para móvil)</p></li>
+<li><p>Ingresa tu nueva contraseña</p></li>
+<li><p>Inicia sesión</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="seguridad-del-firewall">
+<h2>🔒 Seguridad del Firewall<a class="headerlink" href="#seguridad-del-firewall" title="Link to this heading"></a></h2>
+<p>Si no puedes acceder desde otros dispositivos, puede ser que el <strong>Firewall de Windows</strong> esté bloqueando las conexiones.</p>
+<section id="solucion-rapida">
+<h3>Solución rápida:<a class="headerlink" href="#solucion-rapida" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Busca “Firewall de Windows Defender” en el menú inicio</p></li>
+<li><p>Clic en “Permitir una aplicación a través de Firewall de Windows”</p></li>
+<li><p>Busca “Python” y asegúrate de que esté marcado para “Privado”</p></li>
+<li><p>Si no aparece, haz clic en “Cambiar configuración” → “Permitir otra aplicación”</p></li>
+<li><p>Agrega Python y Node.js</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notas-importantes">
+<h2>⚠️ Notas Importantes<a class="headerlink" href="#notas-importantes" title="Link to this heading"></a></h2>
+<section id="si-tu-ip-cambia">
+<h3>Si tu IP cambia:<a class="headerlink" href="#si-tu-ip-cambia" title="Link to this heading"></a></h3>
+<p>Tu IP local (192.168.1.80) puede cambiar si reinicias el router o tu computadora. Si eso pasa:</p>
+<ol class="arabic">
+<li><p>Ejecuta <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code> en PowerShell</p></li>
+<li><p>Busca tu nueva IP en “Adaptador de LAN inalámbrica”</p></li>
+<li><p>Actualiza el archivo <code class="docutils literal notranslate"><span class="pre">backend/.env</span></code>:</p>
+<div class="highlight-env notranslate"><div class="highlight"><pre><span></span>ALLOWED_HOSTS=localhost,127.0.0.1,testserver,TU_NUEVA_IP,0.0.0.0
+CORS_ALLOWED_ORIGINS=http://localhost:5175,http://127.0.0.1:5175,http://TU_NUEVA_IP:5175
+CSRF_TRUSTED_ORIGINS=http://localhost:5175,http://127.0.0.1:5175,http://TU_NUEVA_IP:5175
+FRONTEND_URL=http://TU_NUEVA_IP:5175
+</pre></div>
+</div>
+</li>
+<li><p>Reinicia los servidores</p></li>
+</ol>
+</section>
+<section id="solo-funciona-en-tu-red-local">
+<h3>Solo funciona en tu red local:<a class="headerlink" href="#solo-funciona-en-tu-red-local" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Dispositivos conectados a tu WiFi</p></li>
+<li><p>❌ Dispositivos fuera de tu red (internet público)</p></li>
+<li><p>Para acceso desde internet, necesitarías configurar port forwarding o usar un servicio como ngrok</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="checklist-de-verificacion">
+<h2>✅ Checklist de Verificación<a class="headerlink" href="#checklist-de-verificacion" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[ ] Backend corriendo en <code class="docutils literal notranslate"><span class="pre">0.0.0.0:8000</span></code></p></li>
+<li><p>[ ] Frontend corriendo y mostrando IP de red</p></li>
+<li><p>[ ] Archivo <code class="docutils literal notranslate"><span class="pre">frontend/.env</span></code> creado con VITE_API_BASE_URL</p></li>
+<li><p>[ ] Celular conectado al mismo WiFi</p></li>
+<li><p>[ ] Puedes abrir <code class="docutils literal notranslate"><span class="pre">http://192.168.1.80:5175</span></code> desde el celular</p></li>
+<li><p>[ ] El email de reset incluye la IP correcta</p></li>
+<li><p>[ ] El enlace del email funciona desde el celular</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="solucion-de-problemas">
+<h2>🔧 Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading"></a></h2>
+<section id="error-error-al-procesar-la-solicitud-en-celular">
+<h3>❌ Error: “Error al procesar la solicitud” en celular<a class="headerlink" href="#error-error-al-procesar-la-solicitud-en-celular" title="Link to this heading"></a></h3>
+<p><strong>Causa</strong>: El frontend está intentando conectarse a <code class="docutils literal notranslate"><span class="pre">127.0.0.1:8000</span></code> en lugar de la IP de red.</p>
+<p><strong>Solución</strong>:</p>
+<ol class="arabic simple">
+<li><p>Verifica que existe el archivo <code class="docutils literal notranslate"><span class="pre">frontend/.env</span></code></p></li>
+<li><p>Debe contener: <code class="docutils literal notranslate"><span class="pre">VITE_API_BASE_URL=http://192.168.1.80:8000/api</span></code></p></li>
+<li><p><strong>Reinicia el servidor frontend</strong> (Ctrl+C y <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span> <span class="pre">dev</span></code>)</p></li>
+<li><p>Vite solo lee el .env al iniciar</p></li>
+</ol>
+</section>
+<section id="error-algo-salio-mal-despues-del-login">
+<h3>❌ Error: “Algo salió mal” después del login<a class="headerlink" href="#error-algo-salio-mal-despues-del-login" title="Link to this heading"></a></h3>
+<p><strong>Causa</strong>: Error de React DOM con fragmentos vacíos.</p>
+<p><strong>Solución</strong>:</p>
+<ol class="arabic simple">
+<li><p>Ya está corregido en <code class="docutils literal notranslate"><span class="pre">Login.jsx</span></code> y <code class="docutils literal notranslate"><span class="pre">ForgotPassword.jsx</span></code></p></li>
+<li><p>Asegúrate de tener la última versión del código</p></li>
+<li><p>Refresca la página con Ctrl+Shift+R (hard refresh)</p></li>
+</ol>
+</section>
+<section id="no-puedo-acceder-desde-el-celular">
+<h3>❌ No puedo acceder desde el celular<a class="headerlink" href="#no-puedo-acceder-desde-el-celular" title="Link to this heading"></a></h3>
+<p><strong>Posibles causas y soluciones</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Firewall bloqueando</strong>:</p>
+<ul class="simple">
+<li><p>Abre “Firewall de Windows Defender”</p></li>
+<li><p>Permite Python y Node.js en redes privadas</p></li>
+</ul>
+</li>
+<li><p><strong>Celular en WiFi diferente</strong>:</p>
+<ul class="simple">
+<li><p>Verifica que estés en la misma red WiFi</p></li>
+<li><p>Compara el nombre de la red en PC y celular</p></li>
+</ul>
+</li>
+<li><p><strong>Servidor no corriendo en 0.0.0.0</strong>:</p>
+<ul class="simple">
+<li><p>Backend debe ser: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span> <span class="pre">0.0.0.0:8000</span></code></p></li>
+<li><p>Frontend debe mostrar “Network: http://192.168.1.80:5175”</p></li>
+</ul>
+</li>
+<li><p><strong>IP incorrecta</strong>:</p>
+<ul class="simple">
+<li><p>Ejecuta <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code> para verificar tu IP actual</p></li>
+<li><p>Actualiza ambos archivos .env si cambió</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="el-enlace-del-email-no-funciona">
+<h3>❌ El enlace del email no funciona<a class="headerlink" href="#el-enlace-del-email-no-funciona" title="Link to this heading"></a></h3>
+<p><strong>Solución</strong>:</p>
+<ol class="arabic simple">
+<li><p>Verifica que <code class="docutils literal notranslate"><span class="pre">backend/.env</span></code> tenga: <code class="docutils literal notranslate"><span class="pre">FRONTEND_URL=http://192.168.1.80:5175</span></code></p></li>
+<li><p>Reinicia el backend</p></li>
+<li><p>Solicita un nuevo email de recuperación</p></li>
+<li><p>El nuevo email tendrá el enlace correcto</p></li>
+</ol>
+</section>
+<section id="advertencia-no-es-seguro-en-el-navegador">
+<h3>⚠️ Advertencia: “No es seguro” en el navegador<a class="headerlink" href="#advertencia-no-es-seguro-en-el-navegador" title="Link to this heading"></a></h3>
+<p><strong>Es normal</strong>: Estás usando HTTP (no HTTPS) en una IP local.</p>
+<ul class="simple">
+<li><p>En producción usarías HTTPS con certificado SSL</p></li>
+<li><p>Para desarrollo local, puedes ignorar la advertencia</p></li>
+<li><p>Haz clic en “Avanzado” → “Continuar de todos modos”</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resultado-final">
+<h2>🎯 Resultado Final<a class="headerlink" href="#resultado-final" title="Link to this heading"></a></h2>
+<p>Ahora cuando solicites recuperar tu contraseña:</p>
+<ol class="arabic simple">
+<li><p>El correo llegará a tu email (Gmail)</p></li>
+<li><p>Puedes abrir el correo desde <strong>cualquier dispositivo</strong> (PC, celular, tablet)</p></li>
+<li><p>El enlace te llevará a <code class="docutils literal notranslate"><span class="pre">http://192.168.1.80:5175/reset-password/...</span></code></p></li>
+<li><p>La página se verá <strong>perfecta en móvil</strong> (responsive design)</p></li>
+<li><p>Podrás restablecer tu contraseña desde cualquier dispositivo</p></li>
+</ol>
+<p>¡Todo listo! 🚀</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

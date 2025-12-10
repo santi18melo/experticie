@@ -225,6 +225,43 @@ export default function Register() {
             <span className="button-arrow">→</span>
           </button>
 
+          {/* Documentation Button */}
+          <a 
+            href="http://localhost:8000/docs/index.html" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="docs-button"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              padding: '12px 20px',
+              marginTop: '16px',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '0.95rem',
+              fontWeight: '600',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 6px rgba(102, 126, 234, 0.25)'
+            }}
+            onMouseOver={(e) => {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 12px rgba(102, 126, 234, 0.35)';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 6px rgba(102, 126, 234, 0.25)';
+            }}
+          >
+            <span style={{ fontSize: '1.2rem' }}>📚</span>
+            <span>Ver Documentación</span>
+            <span style={{ fontSize: '0.8rem' }}>↗</span>
+          </a>
+
           <div className="auth-divider">
             <span>o</span>
           </div>

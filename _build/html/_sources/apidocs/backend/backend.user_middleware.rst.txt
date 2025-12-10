@@ -1,0 +1,43 @@
+:py:mod:`backend.user_middleware`
+=================================
+
+.. py:module:: backend.user_middleware
+
+.. autodoc2-docstring:: backend.user_middleware
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`ActiveUserMiddleware <backend.user_middleware.ActiveUserMiddleware>`
+     - .. autodoc2-docstring:: backend.user_middleware.ActiveUserMiddleware
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: ActiveUserMiddleware(get_response)
+   :canonical: backend.user_middleware.ActiveUserMiddleware
+
+   .. autodoc2-docstring:: backend.user_middleware.ActiveUserMiddleware
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.user_middleware.ActiveUserMiddleware.__init__
+      :parser: rst
+
+   .. py:method:: __call__(request)
+      :canonical: backend.user_middleware.ActiveUserMiddleware.__call__
+
+      .. autodoc2-docstring:: backend.user_middleware.ActiveUserMiddleware.__call__
+         :parser: rst

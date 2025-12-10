@@ -1,0 +1,49 @@
+:py:mod:`backend.services.observability`
+========================================
+
+.. py:module:: backend.services.observability
+
+.. autodoc2-docstring:: backend.services.observability
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`CustomJsonFormatter <backend.services.observability.CustomJsonFormatter>`
+     -
+   * - :py:obj:`MetricsCollector <backend.services.observability.MetricsCollector>`
+     - .. autodoc2-docstring:: backend.services.observability.MetricsCollector
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: CustomJsonFormatter(*args, **kwargs)
+   :canonical: backend.services.observability.CustomJsonFormatter
+
+   Bases: :py:obj:`pythonjsonlogger.jsonlogger.JsonFormatter`
+
+   .. py:method:: add_fields(log_record, record, message_dict)
+      :canonical: backend.services.observability.CustomJsonFormatter.add_fields
+
+.. py:class:: MetricsCollector
+   :canonical: backend.services.observability.MetricsCollector
+
+   .. autodoc2-docstring:: backend.services.observability.MetricsCollector
+      :parser: rst
+
+   .. py:method:: record_request(path, method, duration, status_code)
+      :canonical: backend.services.observability.MetricsCollector.record_request
+      :staticmethod:
+
+      .. autodoc2-docstring:: backend.services.observability.MetricsCollector.record_request
+         :parser: rst

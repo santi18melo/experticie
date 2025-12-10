@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     "django_filters",
-    "drf_yasg",
+    # "drf_yasg",
     # Internal apps
     "apps.usuarios",
     "apps.productos",
@@ -77,8 +77,8 @@ if not DEBUG:
 MIDDLEWARE.extend([
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "user_middleware.ActiveUserMiddleware",
-    "backend.middleware.observability.ObservabilityMiddleware", # Observability
+    "middleware.user_middleware.ActiveUserMiddleware",
+    "middleware.observability.ObservabilityMiddleware", # Observability
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ])

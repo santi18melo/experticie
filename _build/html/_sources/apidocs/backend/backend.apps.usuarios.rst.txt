@@ -1,0 +1,36 @@
+:py:mod:`backend.apps.usuarios`
+===============================
+
+.. py:module:: backend.apps.usuarios
+
+.. autodoc2-docstring:: backend.apps.usuarios
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps.usuarios.migrations
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.apps.usuarios.admin
+   backend.apps.usuarios.apps
+   backend.apps.usuarios.auth_urls
+   backend.apps.usuarios.backends
+   backend.apps.usuarios.models
+   backend.apps.usuarios.permissions
+   backend.apps.usuarios.serializers
+   backend.apps.usuarios.urls
+   backend.apps.usuarios.urls_account
+   backend.apps.usuarios.urls_admin
+   backend.apps.usuarios.urls_auth

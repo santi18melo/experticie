@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔄 DIAGRAMAS DE SECUENCIA - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🔄 DIAGRAMAS DE SECUENCIA - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagramas/DIAGRAMA_SECUENCIA.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diagramas-de-secuencia-prexcol">
+<h1>🔄 DIAGRAMAS DE SECUENCIA - PREXCOL<a class="headerlink" href="#diagramas-de-secuencia-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Tipo</strong>: Diagramas de Comportamiento - Interacción</p>
+<hr class="docutils" />
+<section id="indice">
+<h2>📋 ÍNDICE<a class="headerlink" href="#indice" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#autenticaci%C3%B3n"><span class="xref myst">Autenticación</span></a></p></li>
+<li><p><a class="reference internal" href="#gesti%C3%B3n-de-pedidos"><span class="xref myst">Gestión de Pedidos</span></a></p></li>
+<li><p><a class="reference internal" href="#procesar-pago"><span class="xref myst">Procesar Pago</span></a></p></li>
+<li><p><a class="reference internal" href="#recarga-de-stock"><span class="xref myst">Recarga de Stock</span></a></p></li>
+<li><p><a class="reference internal" href="../apidocs/backend/backend.apps.notificaciones.html#module-backend.apps.notificaciones" title="backend.apps.notificaciones"><span class="xref myst py py-mod">Notificaciones</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="autenticacion">
+<h2>🔐 AUTENTICACIÓN<a class="headerlink" href="#autenticacion" title="Link to this heading"></a></h2>
+<section id="secuencia-login-de-usuario">
+<h3>Secuencia: Login de Usuario<a class="headerlink" href="#secuencia-login-de-usuario" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Usuario
+    participant UI as Frontend&lt;br/&gt;(React)
+    participant API as Backend API&lt;br/&gt;(Django)
+    participant Auth as Auth Service
+    participant DB as Database
+    participant Token as JWT Generator
+
+    Usuario-&gt;&gt;UI: 1. Ingresa email/password
+    UI-&gt;&gt;UI: 2. Valida formato
+    UI-&gt;&gt;API: 3. POST /api/auth/login&lt;br/&gt;{email, password}
+    
+    API-&gt;&gt;Auth: 4. validate_credentials()
+    Auth-&gt;&gt;DB: 5. SELECT * FROM usuarios&lt;br/&gt;WHERE email=?
+    DB--&gt;&gt;Auth: 6. Usuario data
+    
+    Auth-&gt;&gt;Auth: 7. check_password()
+    Auth-&gt;&gt;Auth: 8. verify_account_status()
+    
+    alt Credenciales válidas &amp; cuenta activa
+        Auth-&gt;&gt;Token: 9. generate_tokens(user)
+        Token-&gt;&gt;Token: 10. Create access_token (15min)
+        Token-&gt;&gt;Token: 11. Create refresh_token (7 días)
+        Token--&gt;&gt;Auth: 12. {access, refresh}
+        
+        Auth-&gt;&gt;DB: 13. UPDATE ultimo_ingreso
+        Auth--&gt;&gt;API: 14. {user, tokens}
+        API--&gt;&gt;UI: 15. 200 OK&lt;br/&gt;{user, access_token, refresh_token}
+        
+        UI-&gt;&gt;UI: 16. Store tokens (localStorage)
+        UI-&gt;&gt;UI: 17. Redirect to dashboard
+        UI--&gt;&gt;Usuario: 18. Mostrar dashboard
+    else Credenciales inválidas
+        Auth--&gt;&gt;API: Error: Invalid credentials
+        API--&gt;&gt;UI: 401 Unauthorized
+        UI--&gt;&gt;Usuario: Mostrar error
+    else Cuenta suspendida
+        Auth--&gt;&gt;API: Error: Account suspended
+        API--&gt;&gt;UI: 403 Forbidden
+        UI--&gt;&gt;Usuario: Contactar soporte
+    end
+</pre></div>
+</div>
+</section>
+<section id="secuencia-registro-de-usuario">
+<h3>Secuencia: Registro de Usuario<a class="headerlink" href="#secuencia-registro-de-usuario" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Usuario
+    participant UI as Frontend
+    participant API as Backend API
+    participant Validator as Password&lt;br/&gt;Validator
+    participant DB as Database
+    participant Email as Email&lt;br/&gt;Service
+
+    Usuario-&gt;&gt;UI: 1. Completa formulario
+    UI-&gt;&gt;UI: 2. Validación cliente
+    UI-&gt;&gt;API: 3. POST /api/auth/register&lt;br/&gt;{email, nombre, password, rol}
+    
+    API-&gt;&gt;DB: 4. Check email único
+    alt Email ya existe
+        DB--&gt;&gt;API: Email exists
+        API--&gt;&gt;UI: 400 Bad Request
+        UI--&gt;&gt;Usuario: Email en uso
+    else Email disponible
+        API-&gt;&gt;Validator: 5. validate_password()
+        Validator-&gt;&gt;Validator: 6. Check strength
+        
+        alt Password débil
+            Validator--&gt;&gt;API: Weak password
+            API--&gt;&gt;UI: 400 Bad Request
+            UI--&gt;&gt;Usuario: Password requirements
+        else Password válido
+            API-&gt;&gt;DB: 7. INSERT usuario
+            API-&gt;&gt;DB: 8. INSERT password_history
+            DB--&gt;&gt;API: 9. Usuario creado
+            
+            API-&gt;&gt;Email: 10. send_welcome_email()
+            Email--&gt;&gt;API: 11. Email sent
+            
+            API--&gt;&gt;UI: 12. 201 Created&lt;br/&gt;{user}
+            UI--&gt;&gt;Usuario: 13. Registro exitoso
+            UI-&gt;&gt;UI: 14. Redirect to login
+        end
+    end
+</pre></div>
+</div>
+</section>
+<section id="secuencia-refresh-token">
+<h3>Secuencia: Refresh Token<a class="headerlink" href="#secuencia-refresh-token" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    participant UI as Frontend
+    participant API as Backend API
+    participant Token as JWT Service
+    participant DB as Database
+
+    UI-&gt;&gt;UI: 1. Access token expirado
+    UI-&gt;&gt;API: 2. POST /api/auth/refresh&lt;br/&gt;{refresh_token}
+    
+    API-&gt;&gt;Token: 3. validate_refresh_token()
+    
+    alt Token válido y no expirado
+        Token-&gt;&gt;DB: 4. Verify user exists &amp; active
+        DB--&gt;&gt;Token: 5. User data
+        
+        Token-&gt;&gt;Token: 6. Generate new access_token
+        Token--&gt;&gt;API: 7. {new_access_token}
+        
+        API--&gt;&gt;UI: 8. 200 OK&lt;br/&gt;{access_token}
+        UI-&gt;&gt;UI: 9. Update stored token
+        UI-&gt;&gt;UI: 10. Retry original request
+    else Token inválido o expirado
+        Token--&gt;&gt;API: Invalid refresh token
+        API--&gt;&gt;UI: 401 Unauthorized
+        UI-&gt;&gt;UI: Clear tokens
+        UI-&gt;&gt;UI: Redirect to login
+    end
+</pre></div>
+</div>
+</section>
+<section id="secuencia-reset-password">
+<h3>Secuencia: Reset Password<a class="headerlink" href="#secuencia-reset-password" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Usuario
+    participant UI as Frontend
+    participant API as Backend API
+    participant Token as Token&lt;br/&gt;Generator
+    participant DB as Database
+    participant Email as Email&lt;br/&gt;Service
+
+    rect rgb(200, 220, 240)
+        Note over Usuario,Email: Fase 1: Solicitud de Reset
+        Usuario-&gt;&gt;UI: 1. Click &quot;Olvidé mi contraseña&quot;
+        UI-&gt;&gt;UI: 2. Mostrar formulario
+        Usuario-&gt;&gt;UI: 3. Ingresa email
+        UI-&gt;&gt;API: 4. POST /api/auth/forgot-password&lt;br/&gt;{email}
+        
+        API-&gt;&gt;DB: 5. Find user by email
+        
+        alt Usuario existe
+            DB--&gt;&gt;API: 6. Usuario data
+            API-&gt;&gt;Token: 7. generate_reset_token()
+            Token--&gt;&gt;API: 8. {uid, token}
+            
+            API-&gt;&gt;DB: 9. Store reset token
+            API-&gt;&gt;Email: 10. send_reset_email(uid, token)
+            Email--&gt;&gt;API: 11. Email sent
+            
+            API--&gt;&gt;UI: 12. 200 OK
+            UI--&gt;&gt;Usuario: 13. &quot;Revisa tu email&quot;
+        else Usuario no existe
+            API--&gt;&gt;UI: 200 OK (por seguridad)
+            UI--&gt;&gt;Usuario: &quot;Revisa tu email&quot;
+        end
+    end
+
+    rect rgb(220, 240, 200)
+        Note over Usuario,Email: Fase 2: Reset de Contraseña
+        Usuario-&gt;&gt;Usuario: 14. Abre email
+        Usuario-&gt;&gt;UI: 15. Click link reset
+        UI-&gt;&gt;API: 16. GET /reset-password/{uid}/{token}
+        
+        API-&gt;&gt;Token: 17. validate_reset_token()
+        
+        alt Token válido
+            Token--&gt;&gt;API: Valid
+            API--&gt;&gt;UI: 18. Show reset form
+            
+            Usuario-&gt;&gt;UI: 19. Ingresa nueva password
+            UI-&gt;&gt;API: 20. POST /api/auth/reset-password&lt;br/&gt;{uid, token, new_password}
+            
+            API-&gt;&gt;Token: 21. verify_token()
+            API-&gt;&gt;DB: 22. Get password_history
+            
+            alt Password no reutilizada
+                API-&gt;&gt;DB: 23. UPDATE password
+                API-&gt;&gt;DB: 24. INSERT password_history
+                API-&gt;&gt;DB: 25. DELETE reset_token
+                
+                API--&gt;&gt;UI: 26. 200 OK
+                UI--&gt;&gt;Usuario: 27. &quot;Password actualizado&quot;
+                UI-&gt;&gt;UI: 28. Redirect to login
+            else Password ya usada
+                API--&gt;&gt;UI: 400 Bad Request
+                UI--&gt;&gt;Usuario: &quot;Password ya usada&quot;
+            end
+        else Token inválido/expirado
+            Token--&gt;&gt;API: Invalid
+            API--&gt;&gt;UI: 400 Bad Request
+            UI--&gt;&gt;Usuario: &quot;Link expirado&quot;
+        end
+    end
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gestion-de-pedidos">
+<h2>🛒 GESTIÓN DE PEDIDOS<a class="headerlink" href="#gestion-de-pedidos" title="Link to this heading"></a></h2>
+<section id="secuencia-crear-pedido">
+<h3>Secuencia: Crear Pedido<a class="headerlink" href="#secuencia-crear-pedido" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Cliente
+    participant UI as Frontend
+    participant API as Backend API
+    participant Order as Order&lt;br/&gt;Service
+    participant Stock as Stock&lt;br/&gt;Service
+    participant DB as Database
+    participant Notif as Notification&lt;br/&gt;Service
+
+    Cliente-&gt;&gt;UI: 1. Agrega productos al carrito
+    Cliente-&gt;&gt;UI: 2. Click &quot;Confirmar pedido&quot;
+    
+    UI-&gt;&gt;UI: 3. Valida carrito no vacío
+    UI-&gt;&gt;API: 4. POST /api/pedidos&lt;br/&gt;{items: [{producto_id, cantidad}]}
+    
+    API-&gt;&gt;Order: 5. create_order(items)
+    
+    loop Por cada item
+        Order-&gt;&gt;Stock: 6. validate_stock(producto, cantidad)
+        Stock-&gt;&gt;DB: 7. SELECT stock FROM productos
+        DB--&gt;&gt;Stock: 8. Stock actual
+        
+        alt Stock suficiente
+            Stock--&gt;&gt;Order: OK
+        else Stock insuficiente
+            Stock--&gt;&gt;Order: Stock insuficiente
+            Order--&gt;&gt;API: Error
+            API--&gt;&gt;UI: 400 Bad Request
+            UI--&gt;&gt;Cliente: &quot;Stock insuficiente&quot;
+        end
+    end
+    
+    Order-&gt;&gt;DB: 9. BEGIN TRANSACTION
+    Order-&gt;&gt;DB: 10. INSERT INTO pedidos
+    
+    loop Por cada item
+        Order-&gt;&gt;DB: 11. INSERT INTO detalle_pedido
+        Order-&gt;&gt;Stock: 12. reduce_stock(producto, cantidad)
+        Stock-&gt;&gt;DB: 13. UPDATE stock
+    end
+    
+    Order-&gt;&gt;Order: 14. calculate_total()
+    Order-&gt;&gt;DB: 15. UPDATE pedido SET total
+    
+    Order-&gt;&gt;DB: 16. COMMIT TRANSACTION
+    
+    Order-&gt;&gt;Notif: 17. notify_order_created()
+    Notif-&gt;&gt;Notif: 18. Create notifications
+    Notif--&gt;&gt;Order: OK
+    
+    Order--&gt;&gt;API: 19. Pedido creado
+    API--&gt;&gt;UI: 20. 201 Created {pedido}
+    UI--&gt;&gt;Cliente: 21. &quot;Pedido creado exitosamente&quot;
+    UI-&gt;&gt;UI: 22. Redirect to pagos
+</pre></div>
+</div>
+</section>
+<section id="secuencia-cambiar-estado-de-pedido">
+<h3>Secuencia: Cambiar Estado de Pedido<a class="headerlink" href="#secuencia-cambiar-estado-de-pedido" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Logistica
+    participant UI as Frontend
+    participant API as Backend API
+    participant Order as Order&lt;br/&gt;Service
+    participant DB as Database
+    participant Venta as Venta&lt;br/&gt;Service
+    participant Notif as Notification&lt;br/&gt;Service
+
+    Logistica-&gt;&gt;UI: 1. Selecciona pedido
+    Logistica-&gt;&gt;UI: 2. Click &quot;Cambiar estado&quot;
+    
+    UI-&gt;&gt;API: 3. PATCH /api/pedidos/{id}&lt;br/&gt;{estado: &quot;nuevo_estado&quot;}
+    
+    API-&gt;&gt;Order: 4. update_status(pedido_id, nuevo_estado)
+    Order-&gt;&gt;DB: 5. SELECT pedido WHERE id=?
+    DB--&gt;&gt;Order: 6. Pedido actual
+    
+    Order-&gt;&gt;Order: 7. validate_transition()
+    
+    alt Transición válida
+        Order-&gt;&gt;DB: 8. UPDATE pedido SET estado
+        DB--&gt;&gt;Order: 9. Updated
+        
+        alt Estado = &quot;entregado&quot;
+            Order-&gt;&gt;Venta: 10. create_venta(pedido)
+            Venta-&gt;&gt;DB: 11. INSERT INTO ventas
+            Venta-&gt;&gt;DB: 12. INSERT INTO detalle_ventas
+            Venta--&gt;&gt;Order: 13. Venta creada
+        end
+        
+        Order-&gt;&gt;Notif: 14. notify_status_change()
+        Notif-&gt;&gt;Notif: 15. Send email to cliente
+        Notif--&gt;&gt;Order: 16. Notification sent
+        
+        Order--&gt;&gt;API: 17. Pedido actualizado
+        API--&gt;&gt;UI: 18. 200 OK {pedido}
+        UI--&gt;&gt;Logistica: 19. &quot;Estado actualizado&quot;
+    else Transición inválida
+        Order--&gt;&gt;API: Error: Invalid transition
+        API--&gt;&gt;UI: 400 Bad Request
+        UI--&gt;&gt;Logistica: &quot;Transición no permitida&quot;
+    end
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="procesar-pago">
+<h2>💳 PROCESAR PAGO<a class="headerlink" href="#procesar-pago" title="Link to this heading"></a></h2>
+<section id="secuencia-pago-con-tarjeta">
+<h3>Secuencia: Pago con Tarjeta<a class="headerlink" href="#secuencia-pago-con-tarjeta" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Cliente
+    participant UI as Frontend
+    participant API as Backend API
+    participant Payment as Payment&lt;br/&gt;Service
+    participant Gateway as Payment&lt;br/&gt;Gateway
+    participant DB as Database
+    participant Order as Order&lt;br/&gt;Service
+    participant Notif as Notification&lt;br/&gt;Service
+
+    Cliente-&gt;&gt;UI: 1. Selecciona método pago
+    Cliente-&gt;&gt;UI: 2. Ingresa datos tarjeta
+    
+    UI-&gt;&gt;UI: 3. Valida formato tarjeta
+    UI-&gt;&gt;API: 4. POST /api/pagos&lt;br/&gt;{pedido_id, metodo, datos}
+    
+    API-&gt;&gt;Payment: 5. process_payment()
+    Payment-&gt;&gt;DB: 6. Get pedido details
+    DB--&gt;&gt;Payment: 7. Pedido data
+    
+    Payment-&gt;&gt;Gateway: 8. charge_card(amount, card_data)
+    Gateway-&gt;&gt;Gateway: 9. Process transaction
+    
+    alt Pago aprobado
+        Gateway--&gt;&gt;Payment: 10. {status: approved, ref: XXX}
+        
+        Payment-&gt;&gt;DB: 11. BEGIN TRANSACTION
+        Payment-&gt;&gt;DB: 12. INSERT INTO pagos
+        Payment-&gt;&gt;DB: 13. INSERT INTO transacciones
+        Payment-&gt;&gt;DB: 14. COMMIT
+        
+        Payment-&gt;&gt;Order: 15. confirm_payment(pedido_id)
+        Order-&gt;&gt;DB: 16. UPDATE pedido SET estado=&#39;pendiente&#39;
+        Order--&gt;&gt;Payment: 17. OK
+        
+        Payment-&gt;&gt;Notif: 18. notify_payment_success()
+        Notif-&gt;&gt;Notif: 19. Send confirmation email
+        Notif--&gt;&gt;Payment: 20. Sent
+        
+        Payment--&gt;&gt;API: 21. Payment successful
+        API--&gt;&gt;UI: 22. 200 OK {pago}
+        UI--&gt;&gt;Cliente: 23. &quot;Pago exitoso&quot;
+        UI-&gt;&gt;UI: 24. Show confirmation
+        
+    else Pago rechazado
+        Gateway--&gt;&gt;Payment: {status: declined, reason}
+        
+        Payment-&gt;&gt;DB: INSERT failed transaction
+        Payment--&gt;&gt;API: Payment declined
+        API--&gt;&gt;UI: 402 Payment Required
+        UI--&gt;&gt;Cliente: &quot;Pago rechazado&quot;
+        UI-&gt;&gt;UI: Retry option
+        
+    else Error de gateway
+        Gateway--&gt;&gt;Payment: Error
+        Payment-&gt;&gt;DB: Log error
+        Payment--&gt;&gt;API: Gateway error
+        API--&gt;&gt;UI: 500 Server Error
+        UI--&gt;&gt;Cliente: &quot;Error procesando pago&quot;
+        UI-&gt;&gt;UI: Contact support
+    end
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="recarga-de-stock">
+<h2>📦 RECARGA DE STOCK<a class="headerlink" href="#recarga-de-stock" title="Link to this heading"></a></h2>
+<section id="secuencia-recarga-automatica">
+<h3>Secuencia: Recarga Automática<a class="headerlink" href="#secuencia-recarga-automatica" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    participant Beat as Celery Beat&lt;br/&gt;(Scheduler)
+    participant Worker as Celery Worker
+    participant Stock as Stock&lt;br/&gt;Service
+    participant DB as Database
+    participant Notif as Notification&lt;br/&gt;Service
+
+    Beat-&gt;&gt;Beat: 1. Timer triggers&lt;br/&gt;(cada 1 hora)
+    Beat-&gt;&gt;Worker: 2. Task: check_stock_levels
+    
+    Worker-&gt;&gt;Stock: 3. monitor_all_products()
+    Stock-&gt;&gt;DB: 4. SELECT productos, stock_config&lt;br/&gt;WHERE recarga_automatica_activa
+    DB--&gt;&gt;Stock: 5. Products list
+    
+    loop Por cada producto
+        Stock-&gt;&gt;Stock: 6. config.necesita_recarga()?
+        
+        alt Stock &lt;= stock_minimo
+            Stock-&gt;&gt;DB: 7. BEGIN TRANSACTION
+            Stock-&gt;&gt;DB: 8. UPDATE productos&lt;br/&gt;SET stock += cantidad_recarga
+            
+            Stock-&gt;&gt;DB: 9. INSERT INTO historial_recarga&lt;br/&gt;(tipo=&#39;automatica&#39;)
+            
+            Stock-&gt;&gt;DB: 10. UPDATE stock_config&lt;br/&gt;SET ultima_recarga, total_recargas
+            
+            Stock-&gt;&gt;DB: 11. COMMIT
+            
+            Stock-&gt;&gt;Notif: 12. notify_auto_recharge()
+            Notif-&gt;&gt;Notif: 13. Email to proveedor
+            Notif--&gt;&gt;Stock: 14. Sent
+            
+            Stock--&gt;&gt;Worker: 15. Recarga ejecutada
+        else Stock &gt; stock_minimo
+            Stock--&gt;&gt;Worker: No action needed
+        end
+    end
+    
+    Worker--&gt;&gt;Beat: 16. Task completed
+</pre></div>
+</div>
+</section>
+<section id="secuencia-recarga-manual">
+<h3>Secuencia: Recarga Manual<a class="headerlink" href="#secuencia-recarga-manual" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    actor Proveedor
+    participant UI as Frontend
+    participant API as Backend API
+    participant Stock as Stock&lt;br/&gt;Service
+    participant DB as Database
+    participant Notif as Notification&lt;br/&gt;Service
+
+    Proveedor-&gt;&gt;UI: 1. Navega a &quot;Mis Productos&quot;
+    UI-&gt;&gt;API: 2. GET /api/productos/mis-productos
+    API--&gt;&gt;UI: 3. Lista de productos
+    
+    Proveedor-&gt;&gt;UI: 4. Selecciona producto
+    Proveedor-&gt;&gt;UI: 5. Click &quot;Recargar Stock&quot;
+    Proveedor-&gt;&gt;UI: 6. Ingresa cantidad
+    
+    UI-&gt;&gt;API: 7. POST /api/productos/{id}/recargar&lt;br/&gt;{cantidad, notas}
+    
+    API-&gt;&gt;Stock: 8. manual_recharge(producto, cantidad)
+    Stock-&gt;&gt;DB: 9. SELECT producto
+    DB--&gt;&gt;Stock: 10. Producto data
+    
+    Stock-&gt;&gt;DB: 11. BEGIN TRANSACTION
+    
+    Stock-&gt;&gt;Stock: 12. stock_anterior = producto.stock
+    Stock-&gt;&gt;DB: 13. UPDATE productos&lt;br/&gt;SET stock += cantidad
+    
+    Stock-&gt;&gt;DB: 14. INSERT INTO historial_recarga&lt;br/&gt;(tipo=&#39;manual&#39;, usuario=proveedor)
+    
+    Stock-&gt;&gt;DB: 15. COMMIT
+    
+    Stock-&gt;&gt;Notif: 16. notify_manual_recharge()
+    Notif-&gt;&gt;Notif: 17. Email to admin
+    Notif--&gt;&gt;Stock: 18. Sent
+    
+    Stock--&gt;&gt;API: 19. Recarga exitosa
+    API--&gt;&gt;UI: 20. 200 OK {producto}
+    UI--&gt;&gt;Proveedor: 21. &quot;Stock actualizado&quot;
+    UI-&gt;&gt;UI: 22. Refresh product list
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notificaciones">
+<h2>📧 NOTIFICACIONES<a class="headerlink" href="#notificaciones" title="Link to this heading"></a></h2>
+<section id="secuencia-envio-de-notificacion">
+<h3>Secuencia: Envío de Notificación<a class="headerlink" href="#secuencia-envio-de-notificacion" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    participant Trigger as Event&lt;br/&gt;Trigger
+    participant Notif as Notification&lt;br/&gt;Service
+    participant DB as Database
+    participant Queue as Celery&lt;br/&gt;Queue
+    participant Worker as Celery&lt;br/&gt;Worker
+    participant Email as Email&lt;br/&gt;Service
+    participant SMS as SMS&lt;br/&gt;Service
+
+    Trigger-&gt;&gt;Notif: 1. Event occurred&lt;br/&gt;(e.g., pedido creado)
+    
+    Notif-&gt;&gt;Notif: 2. Determine recipients&lt;br/&gt;&amp; notification type
+    
+    loop Por cada destinatario
+        Notif-&gt;&gt;DB: 3. INSERT INTO notificaciones&lt;br/&gt;(estado=&#39;pendiente&#39;)
+        DB--&gt;&gt;Notif: 4. Notificacion ID
+        
+        Notif-&gt;&gt;Queue: 5. Enqueue send task
+    end
+    
+    Notif--&gt;&gt;Trigger: 6. Notifications queued
+    
+    Queue-&gt;&gt;Worker: 7. Dequeue task
+    Worker-&gt;&gt;DB: 8. Get notification details
+    DB--&gt;&gt;Worker: 9. Notification data
+    
+    alt Channel = Email
+        Worker-&gt;&gt;Email: 10. send_email()
+        Email-&gt;&gt;Email: 11. Connect to SMTP
+        Email-&gt;&gt;Email: 12. Send message
+        
+        alt Email sent
+            Email--&gt;&gt;Worker: 13. Success
+            Worker-&gt;&gt;DB: 14. UPDATE notificaciones&lt;br/&gt;SET estado=&#39;enviada&#39;
+        else Send failed
+            Email--&gt;&gt;Worker: Error
+            Worker-&gt;&gt;DB: UPDATE estado=&#39;fallida&#39;
+            Worker-&gt;&gt;Queue: Retry task (max 3)
+        end
+        
+    else Channel = SMS
+        Worker-&gt;&gt;SMS: send_sms()
+        SMS--&gt;&gt;Worker: Result
+        Worker-&gt;&gt;DB: UPDATE notification
+    end
+    
+    Worker-&gt;&gt;DB: 15. Set fecha_envio
+    Worker--&gt;&gt;Queue: 16. Task completed
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Documento generado</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Estado</strong>: ✅ Completado</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

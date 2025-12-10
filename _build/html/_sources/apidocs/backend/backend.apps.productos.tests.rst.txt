@@ -1,0 +1,251 @@
+:py:mod:`backend.apps.productos.tests`
+======================================
+
+.. py:module:: backend.apps.productos.tests
+
+.. autodoc2-docstring:: backend.apps.productos.tests
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TiendaTestCase <backend.apps.productos.tests.TiendaTestCase>`
+     - .. autodoc2-docstring:: backend.apps.productos.tests.TiendaTestCase
+          :parser: rst
+          :summary:
+   * - :py:obj:`ProductoTestCase <backend.apps.productos.tests.ProductoTestCase>`
+     - .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase
+          :parser: rst
+          :summary:
+   * - :py:obj:`PedidoTestCase <backend.apps.productos.tests.PedidoTestCase>`
+     - .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase
+          :parser: rst
+          :summary:
+   * - :py:obj:`DetallePedidoTestCase <backend.apps.productos.tests.DetallePedidoTestCase>`
+     - .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase
+          :parser: rst
+          :summary:
+   * - :py:obj:`PermisoTestCase <backend.apps.productos.tests.PermisoTestCase>`
+     - .. autodoc2-docstring:: backend.apps.productos.tests.PermisoTestCase
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: TiendaTestCase(methodName='runTest')
+   :canonical: backend.apps.productos.tests.TiendaTestCase
+
+   Bases: :py:obj:`django.test.TestCase`
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.TiendaTestCase
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.TiendaTestCase.__init__
+      :parser: rst
+
+   .. py:method:: setUp()
+      :canonical: backend.apps.productos.tests.TiendaTestCase.setUp
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.TiendaTestCase.setUp
+         :parser: rst
+
+   .. py:method:: test_crear_tienda()
+      :canonical: backend.apps.productos.tests.TiendaTestCase.test_crear_tienda
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.TiendaTestCase.test_crear_tienda
+         :parser: rst
+
+   .. py:method:: test_listar_tiendas()
+      :canonical: backend.apps.productos.tests.TiendaTestCase.test_listar_tiendas
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.TiendaTestCase.test_listar_tiendas
+         :parser: rst
+
+.. py:class:: ProductoTestCase(methodName='runTest')
+   :canonical: backend.apps.productos.tests.ProductoTestCase
+
+   Bases: :py:obj:`django.test.TestCase`
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.__init__
+      :parser: rst
+
+   .. py:method:: setUp()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.setUp
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.setUp
+         :parser: rst
+
+   .. py:method:: test_crear_producto()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.test_crear_producto
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.test_crear_producto
+         :parser: rst
+
+   .. py:method:: test_reducir_stock()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.test_reducir_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.test_reducir_stock
+         :parser: rst
+
+   .. py:method:: test_reducir_stock_insuficiente()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.test_reducir_stock_insuficiente
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.test_reducir_stock_insuficiente
+         :parser: rst
+
+   .. py:method:: test_aumentar_stock()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.test_aumentar_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.test_aumentar_stock
+         :parser: rst
+
+   .. py:method:: test_listar_productos_cliente()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.test_listar_productos_cliente
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.test_listar_productos_cliente
+         :parser: rst
+
+   .. py:method:: test_listar_productos_proveedor()
+      :canonical: backend.apps.productos.tests.ProductoTestCase.test_listar_productos_proveedor
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.ProductoTestCase.test_listar_productos_proveedor
+         :parser: rst
+
+.. py:class:: PedidoTestCase(methodName='runTest')
+   :canonical: backend.apps.productos.tests.PedidoTestCase
+
+   Bases: :py:obj:`django.test.TestCase`
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.__init__
+      :parser: rst
+
+   .. py:method:: setUp()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.setUp
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.setUp
+         :parser: rst
+
+   .. py:method:: test_crear_pedido()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.test_crear_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.test_crear_pedido
+         :parser: rst
+
+   .. py:method:: test_crear_pedido_stock_insuficiente()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.test_crear_pedido_stock_insuficiente
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.test_crear_pedido_stock_insuficiente
+         :parser: rst
+
+   .. py:method:: test_stock_se_reduce_al_crear_pedido()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.test_stock_se_reduce_al_crear_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.test_stock_se_reduce_al_crear_pedido
+         :parser: rst
+
+   .. py:method:: test_cambiar_estado_pedido_comprador()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.test_cambiar_estado_pedido_comprador
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.test_cambiar_estado_pedido_comprador
+         :parser: rst
+
+   .. py:method:: test_cancelar_pedido_restaura_stock()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.test_cancelar_pedido_restaura_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.test_cancelar_pedido_restaura_stock
+         :parser: rst
+
+   .. py:method:: test_cliente_solo_ve_sus_pedidos()
+      :canonical: backend.apps.productos.tests.PedidoTestCase.test_cliente_solo_ve_sus_pedidos
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PedidoTestCase.test_cliente_solo_ve_sus_pedidos
+         :parser: rst
+
+.. py:class:: DetallePedidoTestCase(methodName='runTest')
+   :canonical: backend.apps.productos.tests.DetallePedidoTestCase
+
+   Bases: :py:obj:`django.test.TestCase`
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase.__init__
+      :parser: rst
+
+   .. py:method:: setUp()
+      :canonical: backend.apps.productos.tests.DetallePedidoTestCase.setUp
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase.setUp
+         :parser: rst
+
+   .. py:method:: test_crear_detalle_pedido()
+      :canonical: backend.apps.productos.tests.DetallePedidoTestCase.test_crear_detalle_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase.test_crear_detalle_pedido
+         :parser: rst
+
+   .. py:method:: test_subtotal_calculado()
+      :canonical: backend.apps.productos.tests.DetallePedidoTestCase.test_subtotal_calculado
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase.test_subtotal_calculado
+         :parser: rst
+
+   .. py:method:: test_detalle_actualiza_total_pedido()
+      :canonical: backend.apps.productos.tests.DetallePedidoTestCase.test_detalle_actualiza_total_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.DetallePedidoTestCase.test_detalle_actualiza_total_pedido
+         :parser: rst
+
+.. py:class:: PermisoTestCase(methodName='runTest')
+   :canonical: backend.apps.productos.tests.PermisoTestCase
+
+   Bases: :py:obj:`django.test.TestCase`
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.PermisoTestCase
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.tests.PermisoTestCase.__init__
+      :parser: rst
+
+   .. py:method:: setUp()
+      :canonical: backend.apps.productos.tests.PermisoTestCase.setUp
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PermisoTestCase.setUp
+         :parser: rst
+
+   .. py:method:: test_no_autenticado_no_puede_ver_productos()
+      :canonical: backend.apps.productos.tests.PermisoTestCase.test_no_autenticado_no_puede_ver_productos
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PermisoTestCase.test_no_autenticado_no_puede_ver_productos
+         :parser: rst
+
+   .. py:method:: test_no_autenticado_no_puede_crear_pedido()
+      :canonical: backend.apps.productos.tests.PermisoTestCase.test_no_autenticado_no_puede_crear_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.tests.PermisoTestCase.test_no_autenticado_no_puede_crear_pedido
+         :parser: rst

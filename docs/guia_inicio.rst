@@ -142,7 +142,7 @@ Opción 2: Manual
 .. code-block:: bash
 
     cd src/frontend
-    npm start
+    npm run dev
 
 **Terminal 3 - Celery (Opcional):**
 
@@ -156,7 +156,7 @@ Acceder al Sistema
 
 Una vez iniciado, puedes acceder a:
 
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:5175
 - **Backend API**: http://localhost:8000
 - **Admin Django**: http://localhost:8000/admin
 - **API Docs (Swagger)**: http://localhost:8000/swagger/
@@ -165,32 +165,63 @@ Una vez iniciado, puedes acceder a:
 Usuarios de Prueba
 ------------------
 
-El sistema incluye usuarios de prueba para cada rol:
+El sistema incluye usuarios de prueba creados y verificados con el script ``src/backend/create_test_users.py``.
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 20 20 40
+   :widths: 30 20 20 30
 
-   * - Usuario
+   * - Email (Usuario)
      - Contraseña
      - Rol
-     - Descripción
-   * - admin
+     - Estado
+   * - admin1@example.com
      - admin123
-     - Administrador
-     - Acceso completo al sistema
-   * - proveedor1
-     - proveedor123
-     - Proveedor
-     - Gestión de productos
-   * - logistica1
-     - logistica123
-     - Logística
-     - Gestión de entregas
-   * - cliente1
+     - **Admin**
+     - ✅ Verificado
+   * - cliente1@example.com
      - cliente123
-     - Cliente
-     - Realizar pedidos
+     - **Cliente**
+     - ✅ Verificado
+   * - proveedor1@example.com
+     - proveedor123
+     - **Proveedor**
+     - ✅ Verificado
+   * - logistica1@example.com
+     - logistica123
+     - **Logística**
+     - ✅ Verificado
+
+Estadísticas Actuales de la Base de Datos (Local SQLite):
+
+- **Admins:** 11
+- **Clientes:** 80
+- **Proveedores:** 8
+- **Logística:** 5
+
+Configuración de la Base de Datos
+----------------------------------
+
+Estado de la Base de Datos de Producción
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Actualmente, la aplicación **NO** está conectada a una base de datos PostgreSQL remota de producción. Por defecto, utiliza la base de datos local **SQLite** (``db.sqlite3``).
+
+Verificación de Salud:
+La base de datos local (SQLite) funciona correctamente, permitiendo la creación y recuperación exitosa de usuarios y otros datos.
+
+Cómo habilitar la Base de Datos de Producción (PostgreSQL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Para conectar la aplicación a una base de datos PostgreSQL en producción, debes descomentar y configurar la variable ``DATABASE_URL`` en el archivo ``src/backend/.env``:
+
+.. code-block:: ini
+
+    # .env
+    # Descomentar y reemplazar con tus credenciales reales
+    DATABASE_URL=postgresql://usuario:password@host:port/dbname
+
+Si estas líneas permanecen comentadas, el sistema continuará utilizando SQLite automáticamente.
 
 Verificación de la Instalación
 -------------------------------
@@ -198,7 +229,7 @@ Verificación de la Instalación
 Para verificar que todo está funcionando correctamente:
 
 1. **Backend**: Visita http://localhost:8000/api/ - Deberías ver la API root
-2. **Frontend**: Visita http://localhost:3000 - Deberías ver la página de inicio
+2. **Frontend**: Visita http://localhost:5175 - Deberías ver la página de inicio
 3. **Login**: Intenta iniciar sesión con uno de los usuarios de prueba
 4. **API Docs**: Visita http://localhost:8000/swagger/ - Deberías ver la documentación interactiva
 
@@ -247,7 +278,7 @@ Si faltan dependencias:
 Puerto en Uso
 ~~~~~~~~~~~~~
 
-Si el puerto 8000 o 3000 está en uso:
+Si el puerto 8000 o 5175 está en uso:
 
 .. code-block:: bash
 
@@ -255,7 +286,7 @@ Si el puerto 8000 o 3000 está en uso:
     python manage.py runserver 8001
 
     # Frontend - usar otro puerto
-    PORT=3001 npm start
+    npm run dev -- --port 5176
 
 Próximos Pasos
 --------------

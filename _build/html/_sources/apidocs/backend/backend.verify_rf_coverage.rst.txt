@@ -1,0 +1,121 @@
+:py:mod:`backend.verify_rf_coverage`
+====================================
+
+.. py:module:: backend.verify_rf_coverage
+
+.. autodoc2-docstring:: backend.verify_rf_coverage
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`print_header <backend.verify_rf_coverage.print_header>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.print_header
+          :parser: rst
+          :summary:
+   * - :py:obj:`verify_rf1_rf2_rf3 <backend.verify_rf_coverage.verify_rf1_rf2_rf3>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf1_rf2_rf3
+          :parser: rst
+          :summary:
+   * - :py:obj:`verify_rf4_rf5 <backend.verify_rf_coverage.verify_rf4_rf5>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf4_rf5
+          :parser: rst
+          :summary:
+   * - :py:obj:`verify_rf6_rf7 <backend.verify_rf_coverage.verify_rf6_rf7>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf6_rf7
+          :parser: rst
+          :summary:
+   * - :py:obj:`verify_rf8 <backend.verify_rf_coverage.verify_rf8>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf8
+          :parser: rst
+          :summary:
+   * - :py:obj:`verify_rf9 <backend.verify_rf_coverage.verify_rf9>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf9
+          :parser: rst
+          :summary:
+   * - :py:obj:`verify_rf10 <backend.verify_rf_coverage.verify_rf10>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf10
+          :parser: rst
+          :summary:
+   * - :py:obj:`main <backend.verify_rf_coverage.main>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.main
+          :parser: rst
+          :summary:
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`User <backend.verify_rf_coverage.User>`
+     - .. autodoc2-docstring:: backend.verify_rf_coverage.User
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: User
+   :canonical: backend.verify_rf_coverage.User
+   :value: 'get_user_model(...)'
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.User
+      :parser: rst
+
+.. py:function:: print_header(title)
+   :canonical: backend.verify_rf_coverage.print_header
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.print_header
+      :parser: rst
+
+.. py:function:: verify_rf1_rf2_rf3()
+   :canonical: backend.verify_rf_coverage.verify_rf1_rf2_rf3
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf1_rf2_rf3
+      :parser: rst
+
+.. py:function:: verify_rf4_rf5(token)
+   :canonical: backend.verify_rf_coverage.verify_rf4_rf5
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf4_rf5
+      :parser: rst
+
+.. py:function:: verify_rf6_rf7(token, prod_id, tienda_id)
+   :canonical: backend.verify_rf_coverage.verify_rf6_rf7
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf6_rf7
+      :parser: rst
+
+.. py:function:: verify_rf8(token, pedido_id)
+   :canonical: backend.verify_rf_coverage.verify_rf8
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf8
+      :parser: rst
+
+.. py:function:: verify_rf9(token)
+   :canonical: backend.verify_rf_coverage.verify_rf9
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf9
+      :parser: rst
+
+.. py:function:: verify_rf10()
+   :canonical: backend.verify_rf_coverage.verify_rf10
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.verify_rf10
+      :parser: rst
+
+.. py:function:: main()
+   :canonical: backend.verify_rf_coverage.main
+
+   .. autodoc2-docstring:: backend.verify_rf_coverage.main
+      :parser: rst

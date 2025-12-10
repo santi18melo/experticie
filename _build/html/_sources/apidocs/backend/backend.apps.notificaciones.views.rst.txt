@@ -1,0 +1,126 @@
+:py:mod:`backend.apps.notificaciones.views`
+===========================================
+
+.. py:module:: backend.apps.notificaciones.views
+
+.. autodoc2-docstring:: backend.apps.notificaciones.views
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`NotificacionViewSet <backend.apps.notificaciones.views.NotificacionViewSet>`
+     -
+   * - :py:obj:`TipoNotificacionViewSet <backend.apps.notificaciones.views.TipoNotificacionViewSet>`
+     -
+   * - :py:obj:`EstadoNotificacionViewSet <backend.apps.notificaciones.views.EstadoNotificacionViewSet>`
+     -
+
+API
+~~~
+
+.. py:class:: NotificacionViewSet(**kwargs)
+   :canonical: backend.apps.notificaciones.views.NotificacionViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.NotificacionViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.NotificacionViewSet.permission_classes
+         :parser: rst
+
+   .. py:method:: get_queryset()
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.get_queryset
+
+   .. py:method:: perform_create(serializer)
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.perform_create
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.NotificacionViewSet.perform_create
+         :parser: rst
+
+   .. py:method:: enviar(request)
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.enviar
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.NotificacionViewSet.enviar
+         :parser: rst
+
+   .. py:method:: marcar_leida(request, pk=None)
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.marcar_leida
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.NotificacionViewSet.marcar_leida
+         :parser: rst
+
+   .. py:method:: historial(request, usuario_id=None)
+      :canonical: backend.apps.notificaciones.views.NotificacionViewSet.historial
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.NotificacionViewSet.historial
+         :parser: rst
+
+.. py:class:: TipoNotificacionViewSet(**kwargs)
+   :canonical: backend.apps.notificaciones.views.TipoNotificacionViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ReadOnlyModelViewSet`
+
+   .. py:attribute:: queryset
+      :canonical: backend.apps.notificaciones.views.TipoNotificacionViewSet.queryset
+      :value: 'all(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.TipoNotificacionViewSet.queryset
+         :parser: rst
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.notificaciones.views.TipoNotificacionViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.TipoNotificacionViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.notificaciones.views.TipoNotificacionViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.TipoNotificacionViewSet.permission_classes
+         :parser: rst
+
+.. py:class:: EstadoNotificacionViewSet(**kwargs)
+   :canonical: backend.apps.notificaciones.views.EstadoNotificacionViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ReadOnlyModelViewSet`
+
+   .. py:attribute:: queryset
+      :canonical: backend.apps.notificaciones.views.EstadoNotificacionViewSet.queryset
+      :value: 'all(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.EstadoNotificacionViewSet.queryset
+         :parser: rst
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.notificaciones.views.EstadoNotificacionViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.EstadoNotificacionViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.notificaciones.views.EstadoNotificacionViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.views.EstadoNotificacionViewSet.permission_classes
+         :parser: rst

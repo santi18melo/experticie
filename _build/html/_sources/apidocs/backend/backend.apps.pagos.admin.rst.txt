@@ -1,0 +1,106 @@
+:py:mod:`backend.apps.pagos.admin`
+==================================
+
+.. py:module:: backend.apps.pagos.admin
+
+.. autodoc2-docstring:: backend.apps.pagos.admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`EstadoPagoAdmin <backend.apps.pagos.admin.EstadoPagoAdmin>`
+     -
+   * - :py:obj:`MetodoPagoAdmin <backend.apps.pagos.admin.MetodoPagoAdmin>`
+     -
+   * - :py:obj:`TransaccionInline <backend.apps.pagos.admin.TransaccionInline>`
+     -
+   * - :py:obj:`PagoAdmin <backend.apps.pagos.admin.PagoAdmin>`
+     -
+
+API
+~~~
+
+.. py:class:: EstadoPagoAdmin(model, admin_site)
+   :canonical: backend.apps.pagos.admin.EstadoPagoAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.pagos.admin.EstadoPagoAdmin.list_display
+      :value: ('nombre', 'descripcion', 'fecha_actualizacion')
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.EstadoPagoAdmin.list_display
+         :parser: rst
+
+.. py:class:: MetodoPagoAdmin(model, admin_site)
+   :canonical: backend.apps.pagos.admin.MetodoPagoAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.pagos.admin.MetodoPagoAdmin.list_display
+      :value: ('nombre', 'activo', 'fecha_actualizacion')
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.MetodoPagoAdmin.list_display
+         :parser: rst
+
+.. py:class:: TransaccionInline(parent_model, admin_site)
+   :canonical: backend.apps.pagos.admin.TransaccionInline
+
+   Bases: :py:obj:`django.contrib.admin.TabularInline`
+
+   .. py:attribute:: model
+      :canonical: backend.apps.pagos.admin.TransaccionInline.model
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.TransaccionInline.model
+         :parser: rst
+
+   .. py:attribute:: extra
+      :canonical: backend.apps.pagos.admin.TransaccionInline.extra
+      :value: 0
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.TransaccionInline.extra
+         :parser: rst
+
+.. py:class:: PagoAdmin(model, admin_site)
+   :canonical: backend.apps.pagos.admin.PagoAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.pagos.admin.PagoAdmin.list_display
+      :value: ('id', 'usuario', 'monto', 'estado', 'metodo_pago', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.PagoAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.pagos.admin.PagoAdmin.list_filter
+      :value: ('estado', 'metodo_pago', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.PagoAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.pagos.admin.PagoAdmin.search_fields
+      :value: ('usuario__email', 'usuario__nombre')
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.PagoAdmin.search_fields
+         :parser: rst
+
+   .. py:attribute:: inlines
+      :canonical: backend.apps.pagos.admin.PagoAdmin.inlines
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.pagos.admin.PagoAdmin.inlines
+         :parser: rst

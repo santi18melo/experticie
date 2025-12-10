@@ -1,0 +1,8 @@
+:py:mod:`backend.apps.notificaciones.migrations`
+================================================
+
+.. py:module:: backend.apps.notificaciones.migrations
+
+.. autodoc2-docstring:: backend.apps.notificaciones.migrations
+   :parser: rst
+   :allowtitles:

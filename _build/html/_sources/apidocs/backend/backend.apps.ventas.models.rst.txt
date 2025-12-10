@@ -1,0 +1,176 @@
+:py:mod:`backend.apps.ventas.models`
+====================================
+
+.. py:module:: backend.apps.ventas.models
+
+.. autodoc2-docstring:: backend.apps.ventas.models
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`Venta <backend.apps.ventas.models.Venta>`
+     - .. autodoc2-docstring:: backend.apps.ventas.models.Venta
+          :parser: rst
+          :summary:
+   * - :py:obj:`DetalleVenta <backend.apps.ventas.models.DetalleVenta>`
+     -
+
+API
+~~~
+
+.. py:class:: Venta(*args, **kwargs)
+   :canonical: backend.apps.ventas.models.Venta
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. autodoc2-docstring:: backend.apps.ventas.models.Venta
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.ventas.models.Venta.__init__
+      :parser: rst
+
+   .. py:attribute:: pedido
+      :canonical: backend.apps.ventas.models.Venta.pedido
+      :value: 'OneToOneField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.Venta.pedido
+         :parser: rst
+
+   .. py:attribute:: cliente
+      :canonical: backend.apps.ventas.models.Venta.cliente
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.Venta.cliente
+         :parser: rst
+
+   .. py:attribute:: total
+      :canonical: backend.apps.ventas.models.Venta.total
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.Venta.total
+         :parser: rst
+
+   .. py:attribute:: fecha_venta
+      :canonical: backend.apps.ventas.models.Venta.fecha_venta
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.Venta.fecha_venta
+         :parser: rst
+
+   .. py:attribute:: cantidad_items
+      :canonical: backend.apps.ventas.models.Venta.cantidad_items
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.Venta.cantidad_items
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.ventas.models.Venta.Meta
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.Venta.Meta
+         :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.ventas.models.Venta.Meta.ordering
+         :value: ['-fecha_venta']
+
+         .. autodoc2-docstring:: backend.apps.ventas.models.Venta.Meta.ordering
+            :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.ventas.models.Venta.Meta.verbose_name
+         :value: 'Venta'
+
+         .. autodoc2-docstring:: backend.apps.ventas.models.Venta.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.ventas.models.Venta.Meta.verbose_name_plural
+         :value: 'Ventas'
+
+         .. autodoc2-docstring:: backend.apps.ventas.models.Venta.Meta.verbose_name_plural
+            :parser: rst
+
+      .. py:attribute:: indexes
+         :canonical: backend.apps.ventas.models.Venta.Meta.indexes
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.ventas.models.Venta.Meta.indexes
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.ventas.models.Venta.__str__
+
+.. py:class:: DetalleVenta(*args, **kwargs)
+   :canonical: backend.apps.ventas.models.DetalleVenta
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: venta
+      :canonical: backend.apps.ventas.models.DetalleVenta.venta
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.venta
+         :parser: rst
+
+   .. py:attribute:: producto
+      :canonical: backend.apps.ventas.models.DetalleVenta.producto
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.producto
+         :parser: rst
+
+   .. py:attribute:: cantidad
+      :canonical: backend.apps.ventas.models.DetalleVenta.cantidad
+      :value: 'PositiveIntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.cantidad
+         :parser: rst
+
+   .. py:attribute:: precio_unitario
+      :canonical: backend.apps.ventas.models.DetalleVenta.precio_unitario
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.precio_unitario
+         :parser: rst
+
+   .. py:attribute:: subtotal
+      :canonical: backend.apps.ventas.models.DetalleVenta.subtotal
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.subtotal
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.ventas.models.DetalleVenta.Meta
+
+      .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.Meta
+         :parser: rst
+
+      .. py:attribute:: verbose_name
+         :canonical: backend.apps.ventas.models.DetalleVenta.Meta.verbose_name
+         :value: 'Detalle de Venta'
+
+         .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.Meta.verbose_name
+            :parser: rst
+
+      .. py:attribute:: verbose_name_plural
+         :canonical: backend.apps.ventas.models.DetalleVenta.Meta.verbose_name_plural
+         :value: 'Detalles de Venta'
+
+         .. autodoc2-docstring:: backend.apps.ventas.models.DetalleVenta.Meta.verbose_name_plural
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.ventas.models.DetalleVenta.__str__

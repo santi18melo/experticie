@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚙️ DIAGRAMAS DE MÁQUINAS DE ESTADO - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">⚙️ DIAGRAMAS DE MÁQUINAS DE ESTADO - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagramas/DIAGRAMA_ESTADOS.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diagramas-de-maquinas-de-estado-prexcol">
+<h1>⚙️ DIAGRAMAS DE MÁQUINAS DE ESTADO - PREXCOL<a class="headerlink" href="#diagramas-de-maquinas-de-estado-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Tipo</strong>: Diagramas de Comportamiento - Estados y Transiciones</p>
+<hr class="docutils" />
+<section id="indice">
+<h2>📋 ÍNDICE<a class="headerlink" href="#indice" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#estado-del-pedido"><span class="xref myst">Estado del Pedido</span></a></p></li>
+<li><p><a class="reference internal" href="#estado-de-la-cuenta-de-usuario"><span class="xref myst">Estado de la Cuenta de Usuario</span></a></p></li>
+<li><p><a class="reference internal" href="#estado-del-pago"><span class="xref myst">Estado del Pago</span></a></p></li>
+<li><p><a class="reference internal" href="#estado-de-la-notificaci%C3%B3n"><span class="xref myst">Estado de la Notificación</span></a></p></li>
+<li><p><a class="reference internal" href="#estado-del-stock"><span class="xref myst">Estado del Stock</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="estado-del-pedido">
+<h2>📦 ESTADO DEL PEDIDO<a class="headerlink" href="#estado-del-pedido" title="Link to this heading"></a></h2>
+<p><img alt="Diagrama de Estados Pedido Visual" src="diagramas/imagenes/11_diagrama_estados_pedido.png" /></p>
+<section id="diagrama-de-estados">
+<h3>Diagrama de Estados<a class="headerlink" href="#diagrama-de-estados" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>stateDiagram-v2
+    [*] --&gt; Pendiente: Cliente confirma compra&lt;br/&gt;&amp; pago exitoso
+
+    Pendiente --&gt; Preparando: Logística inicia&lt;br/&gt;preparación
+    Pendiente --&gt; Cancelado: Cliente cancela&lt;br/&gt;o Admin cancela
+
+    Preparando --&gt; En_Transito: Logística marca&lt;br/&gt;como enviado
+    Preparando --&gt; Cancelado: Problema en&lt;br/&gt;preparación
+
+    En_Transito --&gt; Entregado: Confirmación&lt;br/&gt;de entrega
+    En_Transito --&gt; Problema_Entrega: Error en&lt;br/&gt;entrega
+
+    Problema_Entrega --&gt; En_Transito: Reintento de&lt;br/&gt;entrega
+    Problema_Entrega --&gt; Cancelado: Entrega&lt;br/&gt;imposible
+
+    Entregado --&gt; [*]: Venta generada
+
+    Cancelado --&gt; [*]: Stock devuelto
+
+    state Pendiente {
+        [*] --&gt; Esperando_Preparacion
+        Esperando_Preparacion --&gt; Validando_Stock: Auto-check
+        Validando_Stock --&gt; Esperando_Preparacion: Stock OK
+    }
+
+    state Preparando {
+        [*] --&gt; Recolectando
+        Recolectando --&gt; Empacando
+        Empacando --&gt; Etiquetando
+        Etiquetando --&gt; Listo_para_Envio
+    }
+
+    state En_Transito {
+        [*] --&gt; Asignado_Transportista
+        Asignado_Transportista --&gt; En_Ruta
+        En_Ruta --&gt; En_Destino
+    }
+
+    note right of Pendiente
+        • Pago confirmado
+        • Stock reservado
+        • Cliente notificado
+    end note
+
+    note right of Entregado
+        • Genera Venta
+        • Actualiza métricas
+        • Notifica cliente
+    end note
+
+    note right of Cancelado
+        • Devuelve stock
+        • Procesa reembolso
+        • Notifica cliente
+    end note
+</pre></div>
+</div>
+</section>
+<section id="tabla-de-transiciones">
+<h3>Tabla de Transiciones<a class="headerlink" href="#tabla-de-transiciones" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Estado Origen</p></th>
+<th class="head"><p>Evento</p></th>
+<th class="head"><p>Acción</p></th>
+<th class="head"><p>Estado Destino</p></th>
+<th class="head"><p>Actor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Pago exitoso</p></td>
+<td><p>Crear pedido, reservar stock</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pendiente</p></td>
+<td><p>Iniciar preparación</p></td>
+<td><p>Asignar a logística</p></td>
+<td><p>Preparando</p></td>
+<td><p>Logística</p></td>
+</tr>
+<tr class="row-even"><td><p>Pendiente</p></td>
+<td><p>Cancelar</p></td>
+<td><p>Devolver stock</p></td>
+<td><p>Cancelado</p></td>
+<td><p>Cliente/Admin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Preparando</p></td>
+<td><p>Marcar enviado</p></td>
+<td><p>Asignar transportista</p></td>
+<td><p>En_Transito</p></td>
+<td><p>Logística</p></td>
+</tr>
+<tr class="row-even"><td><p>Preparando</p></td>
+<td><p>Reportar problema</p></td>
+<td><p>Notificar admin</p></td>
+<td><p>Cancelado</p></td>
+<td><p>Logística</p></td>
+</tr>
+<tr class="row-odd"><td><p>En_Transito</p></td>
+<td><p>Confirmar entrega</p></td>
+<td><p>Generar venta</p></td>
+<td><p>Entregado</p></td>
+<td><p>Logística/Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>En_Transito</p></td>
+<td><p>Problema entrega</p></td>
+<td><p>Registrar incidente</p></td>
+<td><p>Problema_Entrega</p></td>
+<td><p>Logística</p></td>
+</tr>
+<tr class="row-odd"><td><p>Problema_Entrega</p></td>
+<td><p>Reintentar</p></td>
+<td><p>Reprogramar entrega</p></td>
+<td><p>En_Transito</p></td>
+<td><p>Logística</p></td>
+</tr>
+<tr class="row-even"><td><p>Problema_Entrega</p></td>
+<td><p>Imposible entregar</p></td>
+<td><p>Procesar reembolso</p></td>
+<td><p>Cancelado</p></td>
+<td><p>Admin</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="invariantes-de-estado">
+<h3>Invariantes de Estado<a class="headerlink" href="#invariantes-de-estado" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reglas de Negocio por Estado</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">PENDIENTE</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Pago</span> <span class="n">debe</span> <span class="n">estar</span> <span class="n">APROBADO</span>
+    <span class="o">-</span> <span class="n">Stock</span> <span class="n">debe</span> <span class="n">estar</span> <span class="n">reservado</span>
+    <span class="o">-</span> <span class="n">No</span> <span class="n">puede</span> <span class="n">tener</span> <span class="n">detalles</span> <span class="n">vacíos</span>
+    <span class="o">-</span> <span class="n">Total</span> <span class="n">debe</span> <span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">PREPARANDO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Debe</span> <span class="n">tener</span> <span class="n">logística</span> <span class="n">asignada</span>
+    <span class="o">-</span> <span class="n">Todos</span> <span class="n">los</span> <span class="n">productos</span> <span class="n">deben</span> <span class="n">existir</span>
+    <span class="o">-</span> <span class="n">Stock</span> <span class="n">debe</span> <span class="n">seguir</span> <span class="n">disponible</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">EN_TRANSITO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Debe</span> <span class="n">tener</span> <span class="n">transportista</span> <span class="n">asignado</span>
+    <span class="o">-</span> <span class="n">Fecha</span> <span class="n">de</span> <span class="n">envío</span> <span class="n">registrada</span>
+    <span class="o">-</span> <span class="n">Tracking</span> <span class="n">ID</span> <span class="p">(</span><span class="n">opcional</span><span class="p">)</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">ENTREGADO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Debe</span> <span class="n">tener</span> <span class="n">confirmación</span> <span class="n">de</span> <span class="n">entrega</span>
+    <span class="o">-</span> <span class="n">Venta</span> <span class="n">debe</span> <span class="n">estar</span> <span class="n">generada</span>
+    <span class="o">-</span> <span class="n">Cliente</span> <span class="n">notificado</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">CANCELADO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Debe</span> <span class="n">tener</span> <span class="n">razón</span> <span class="n">de</span> <span class="n">cancelación</span>
+    <span class="o">-</span> <span class="n">Stock</span> <span class="n">debe</span> <span class="n">estar</span> <span class="n">devuelto</span>
+    <span class="o">-</span> <span class="n">Reembolso</span> <span class="n">procesado</span> <span class="p">(</span><span class="n">si</span> <span class="n">aplica</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estado-de-la-cuenta-de-usuario">
+<h2>👤 ESTADO DE LA CUENTA DE USUARIO<a class="headerlink" href="#estado-de-la-cuenta-de-usuario" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Diagrama de Estados<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>stateDiagram-v2
+    [*] --&gt; Activa: Registro exitoso
+
+    Activa --&gt; Auto_Desactivada: Usuario&lt;br/&gt;desactiva cuenta
+    Activa --&gt; Suspendida_Admin: Admin&lt;br/&gt;suspende
+    Activa --&gt; Inactiva: Sin actividad&lt;br/&gt;por 180 días
+
+    Auto_Desactivada --&gt; Activa: Usuario&lt;br/&gt;reactiva
+    Auto_Desactivada --&gt; Eliminada: 30 días sin&lt;br/&gt;reactivar
+
+    Suspendida_Admin --&gt; Activa: Admin&lt;br/&gt;reactiva
+    Suspendida_Admin --&gt; Eliminada: Solicitud usuario&lt;br/&gt;&amp; aprobación admin
+
+    Inactiva --&gt; Activa: Usuario&lt;br/&gt;inicia sesión
+    Inactiva --&gt; Eliminada: Sin actividad&lt;br/&gt;por 365 días
+
+    Eliminada --&gt; [*]: Datos anonimizados
+
+    state Activa {
+        [*] --&gt; Normal
+        Normal --&gt; Cambiando_Password: Solicitud cambio
+        Cambiando_Password --&gt; Normal: Password actualizado
+        Normal --&gt; Editando_Perfil: Solicitud edición
+        Editando_Perfil --&gt; Normal: Perfil actualizado
+    }
+
+    state Suspendida_Admin {
+        [*] --&gt; Bloqueada
+        note right of Bloqueada
+            • No puede iniciar sesión
+            • Debe contactar soporte
+            • Razón registrada
+        end note
+    }
+
+    note right of Auto_Desactivada
+        • Puede reactivar solo
+        • Datos preservados
+        • Sesiones cerradas
+    end note
+
+    note right of Eliminada
+        • Irreversible
+        • Datos anonimizados
+        • Cumple GPDR
+    end note
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Tabla de Transiciones<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Estado Origen</p></th>
+<th class="head"><p>Evento</p></th>
+<th class="head"><p>Acción</p></th>
+<th class="head"><p>Estado Destino</p></th>
+<th class="head"><p>Actor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Registro</p></td>
+<td><p>Crear usuario, enviar email</p></td>
+<td><p>Activa</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-odd"><td><p>Activa</p></td>
+<td><p>Desactivar cuenta</p></td>
+<td><p>Cerrar sesiones</p></td>
+<td><p>Auto_Desactivada</p></td>
+<td><p>Usuario</p></td>
+</tr>
+<tr class="row-even"><td><p>Activa</p></td>
+<td><p>Suspender</p></td>
+<td><p>Bloquear acceso, notificar</p></td>
+<td><p>Suspendida_Admin</p></td>
+<td><p>Admin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Activa</p></td>
+<td><p>Sin actividad 180 días</p></td>
+<td><p>Marcar inactiva</p></td>
+<td><p>Inactiva</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Auto_Desactivada</p></td>
+<td><p>Reactivar</p></td>
+<td><p>Restaurar acceso</p></td>
+<td><p>Activa</p></td>
+<td><p>Usuario</p></td>
+</tr>
+<tr class="row-odd"><td><p>Auto_Desactivada</p></td>
+<td><p>30 días sin usar</p></td>
+<td><p>Anonimizar datos</p></td>
+<td><p>Eliminada</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Suspendida_Admin</p></td>
+<td><p>Reactivar</p></td>
+<td><p>Desbloquear</p></td>
+<td><p>Activa</p></td>
+<td><p>Admin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Suspendida_Admin</p></td>
+<td><p>Solicitar eliminación</p></td>
+<td><p>Anonimizar</p></td>
+<td><p>Eliminada</p></td>
+<td><p>Admin</p></td>
+</tr>
+<tr class="row-even"><td><p>Inactiva</p></td>
+<td><p>Login</p></td>
+<td><p>Actualizar last_activity</p></td>
+<td><p>Activa</p></td>
+<td><p>Usuario</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inactiva</p></td>
+<td><p>365 días sin usar</p></td>
+<td><p>Anonimizar</p></td>
+<td><p>Eliminada</p></td>
+<td><p>Sistema</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="permisos-por-estado">
+<h3>Permisos por Estado<a class="headerlink" href="#permisos-por-estado" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matriz de Permisos</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">ACTIVA</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">iniciar</span> <span class="n">sesión</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">realizar</span> <span class="n">operaciones</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">sistema</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Recibe</span> <span class="n">notificaciones</span><span class="p">:</span> <span class="n">SÍ</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">AUTO_DESACTIVADA</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">iniciar</span> <span class="n">sesión</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">para</span> <span class="n">reactivar</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">realizar</span> <span class="n">operaciones</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">sistema</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Recibe</span> <span class="n">notificaciones</span><span class="p">:</span> <span class="n">NO</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">SUSPENDIDA_ADMIN</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">iniciar</span> <span class="n">sesión</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">realizar</span> <span class="n">operaciones</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">sistema</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">para</span> <span class="n">admin</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Recibe</span> <span class="n">notificaciones</span><span class="p">:</span> <span class="n">NO</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">INACTIVA</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">iniciar</span> <span class="n">sesión</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">reactiva</span> <span class="n">automáticamente</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">realizar</span> <span class="n">operaciones</span><span class="p">:</span> <span class="n">Limitadas</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">sistema</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Recibe</span> <span class="n">notificaciones</span><span class="p">:</span> <span class="n">NO</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">ELIMINADA</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">iniciar</span> <span class="n">sesión</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Puede</span> <span class="n">realizar</span> <span class="n">operaciones</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">sistema</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Recibe</span> <span class="n">notificaciones</span><span class="p">:</span> <span class="n">NO</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estado-del-pago">
+<h2>💳 ESTADO DEL PAGO<a class="headerlink" href="#estado-del-pago" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Diagrama de Estados<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>stateDiagram-v2
+    [*] --&gt; Pendiente: Cliente inicia&lt;br/&gt;proceso de pago
+
+    Pendiente --&gt; Procesando: Gateway&lt;br/&gt;recibe solicitud
+
+    Procesando --&gt; Aprobado: Autorización&lt;br/&gt;exitosa
+    Procesando --&gt; Rechazado: Fondos insuficientes&lt;br/&gt;o tarjeta inválida
+    Procesando --&gt; Error: Error técnico&lt;br/&gt;del gateway
+
+    Rechazado --&gt; Pendiente: Cliente&lt;br/&gt;reintenta
+    Error --&gt; Pendiente: Administrador&lt;br/&gt;autoriza reintento
+
+    Aprobado --&gt; Confirmado: Verificación&lt;br/&gt;exitosa
+
+    Confirmado --&gt; Completado: Pedido&lt;br/&gt;entregado
+
+    Completado --&gt; Reembolsado: Solicitud de&lt;br/&gt;reembolso aprobada
+
+    Rechazado --&gt; [*]: Pago no procesado
+    Error --&gt; [*]: Pago no procesado
+    Reembolsado --&gt; [*]: Monto devuelto
+
+    state Procesando {
+        [*] --&gt; Validando_Datos
+        Validando_Datos --&gt; Autorizando
+        Autorizando --&gt; Capturando
+    }
+
+    state Aprobado {
+        [*] --&gt; Verificando_Fondos
+        Verificando_Fondos --&gt; Reservado
+    }
+
+    note right of Pendiente
+        • Esperando acción
+        • No afecta inventario
+        • Timeout: 15 minutos
+    end note
+
+    note right of Completado
+        • Pago finalizado
+        • No reversible
+        • Venta confirmada
+    end note
+
+    note right of Reembolsado
+        • Dinero devuelto
+        • Pedido cancelado
+        • Stock restaurado
+    end note
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Tabla de Transiciones<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Estado Origen</p></th>
+<th class="head"><p>Evento</p></th>
+<th class="head"><p>Acción</p></th>
+<th class="head"><p>Estado Destino</p></th>
+<th class="head"><p>Actor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Iniciar pago</p></td>
+<td><p>Crear registro</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Cliente</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pendiente</p></td>
+<td><p>Enviar a gateway</p></td>
+<td><p>Conectar gateway</p></td>
+<td><p>Procesando</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Procesando</p></td>
+<td><p>Autorización OK</p></td>
+<td><p>Guardar referencia</p></td>
+<td><p>Aprobado</p></td>
+<td><p>Gateway</p></td>
+</tr>
+<tr class="row-odd"><td><p>Procesando</p></td>
+<td><p>Autorización denegada</p></td>
+<td><p>Registrar razón</p></td>
+<td><p>Rechazado</p></td>
+<td><p>Gateway</p></td>
+</tr>
+<tr class="row-even"><td><p>Procesando</p></td>
+<td><p>Error técnico</p></td>
+<td><p>Log error</p></td>
+<td><p>Error</p></td>
+<td><p>Gateway</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rechazado</p></td>
+<td><p>Reintentar</p></td>
+<td><p>Limpiar datos</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Cliente</p></td>
+</tr>
+<tr class="row-even"><td><p>Error</p></td>
+<td><p>Autorizar reintento</p></td>
+<td><p>Resetear</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Admin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aprobado</p></td>
+<td><p>Verificar fondos</p></td>
+<td><p>Reservar monto</p></td>
+<td><p>Confirmado</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Confirmado</p></td>
+<td><p>Pedido entregado</p></td>
+<td><p>Capturar pago</p></td>
+<td><p>Completado</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-odd"><td><p>Completado</p></td>
+<td><p>Solicitar reembolso</p></td>
+<td><p>Procesar devolución</p></td>
+<td><p>Reembolsado</p></td>
+<td><p>Admin</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estado-de-la-notificacion">
+<h2>📧 ESTADO DE LA NOTIFICACIÓN<a class="headerlink" href="#estado-de-la-notificacion" title="Link to this heading"></a></h2>
+<section id="id5">
+<h3>Diagrama de Estados<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>stateDiagram-v2
+    [*] --&gt; Pendiente: Evento trigger
+
+    Pendiente --&gt; Encolada: Agregada a&lt;br/&gt;cola Celery
+
+    Encolada --&gt; Enviando: Worker procesa
+
+    Enviando --&gt; Enviada: Envío exitoso&lt;br/&gt;(SMTP/SMS OK)
+    Enviando --&gt; Fallida: Error al enviar
+
+    Enviada --&gt; Leida: Usuario abre&lt;br/&gt;notificación
+
+    Fallida --&gt; Reintentando: Auto-retry&lt;br/&gt;(max 3 intentos)
+
+    Reintentando --&gt; Enviando: Intentando&lt;br/&gt;nuevamente
+    Reintentando --&gt; Fallida_Final: 3 intentos&lt;br/&gt;fallidos
+
+    Leida --&gt; [*]: Notificación procesada
+    Fallida_Final --&gt; [*]: Notificación&lt;br/&gt;no entregada
+
+    state Enviando {
+        [*] --&gt; Conectando_Servidor
+        Conectando_Servidor --&gt; Enviando_Mensaje
+        Enviando_Mensaje --&gt; Esperando_Confirmacion
+    }
+
+    note right of Pendiente
+        • Creada en DB
+        • leida = false
+        • estado = pendiente
+    end note
+
+    note right of Enviada
+        • Entregada exitosamente
+        • fecha_envio registrada
+        • Visible para usuario
+    end note
+
+    note right of Leida
+        • Usuario la vio
+        • fecha_lectura registrada
+        • Puede archivarse
+    end note
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>Tabla de Transiciones<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Estado Origen</p></th>
+<th class="head"><p>Evento</p></th>
+<th class="head"><p>Acción</p></th>
+<th class="head"><p>Estado Destino</p></th>
+<th class="head"><p>Actor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Evento ocurre</p></td>
+<td><p>Crear notificación</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pendiente</p></td>
+<td><p>Encolar tarea</p></td>
+<td><p>Enviar a Redis</p></td>
+<td><p>Encolada</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Encolada</p></td>
+<td><p>Worker toma tarea</p></td>
+<td><p>Procesar envío</p></td>
+<td><p>Enviando</p></td>
+<td><p>Celery</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enviando</p></td>
+<td><p>SMTP/SMS OK</p></td>
+<td><p>Registrar envío</p></td>
+<td><p>Enviada</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Enviando</p></td>
+<td><p>SMTP/SMS fail</p></td>
+<td><p>Log error</p></td>
+<td><p>Fallida</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fallida</p></td>
+<td><p>Auto-retry</p></td>
+<td><p>Reencolar</p></td>
+<td><p>Reintentando</p></td>
+<td><p>Celery</p></td>
+</tr>
+<tr class="row-even"><td><p>Reintentando</p></td>
+<td><p>Procesar</p></td>
+<td><p>Intentar envío</p></td>
+<td><p>Enviando</p></td>
+<td><p>Celery</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reintentando</p></td>
+<td><p>3 fallos</p></td>
+<td><p>Marcar como final</p></td>
+<td><p>Fallida_Final</p></td>
+<td><p>Sistema</p></td>
+</tr>
+<tr class="row-even"><td><p>Enviada</p></td>
+<td><p>Usuario abre</p></td>
+<td><p>Actualizar timestamp</p></td>
+<td><p>Leida</p></td>
+<td><p>Usuario</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estado-del-stock">
+<h2>📊 ESTADO DEL STOCK<a class="headerlink" href="#estado-del-stock" title="Link to this heading"></a></h2>
+<section id="id7">
+<h3>Diagrama de Estados<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>stateDiagram-v2
+    [*] --&gt; Normal: Stock &gt;= stock_minimo&lt;br/&gt;+ margen
+
+    Normal --&gt; Bajo: Stock &lt;= stock_minimo
+
+    Bajo --&gt; Muy_Bajo: Stock &lt; (stock_minimo / 2)
+
+    Muy_Bajo --&gt; Critico: Stock &lt;= 5
+
+    Critico --&gt; Agotado: Stock = 0
+
+    Bajo --&gt; Normal: Recarga manual&lt;br/&gt;o automática
+    Muy_Bajo --&gt; Normal: Recarga manual&lt;br/&gt;o automática
+    Critico --&gt; Normal: Recarga manual&lt;br/&gt;o automática
+    Agotado --&gt; Normal: Recarga manual&lt;br/&gt;o automática
+
+    state Normal {
+        [*] --&gt; Disponible
+        Disponible --&gt; Vendiendo: Pedidos activos
+        Vendiendo --&gt; Disponible: Stock OK
+    }
+
+    state Bajo {
+        [*] --&gt; Alerta_Proveedor
+        note right of Alerta_Proveedor
+            • Notificación al proveedor
+            • Recarga auto trigger
+        end note
+    }
+
+    state Critico {
+        [*] --&gt; Alerta_Admin
+        note right of Alerta_Admin
+            • Notificación urgente
+            • Visible en dashboard
+            • Icono de advertencia
+        end note
+    }
+
+    state Agotado {
+        [*] --&gt; No_Disponible
+        note right of No_Disponible
+            • No se puede agregar al carrito
+            • Mensaje &quot;Agotado&quot;
+            • No visible en búsquedas
+        end note
+    }
+
+    note right of Normal
+        • Stock saludable
+        • Ventas normales
+        • Sin alertas
+    end note
+
+    note right of Muy_Bajo
+        • Requiere atención
+        • Prioridad alta
+        • Limitar compras grandes
+    end note
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>Tabla de Transiciones<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Estado Origen</p></th>
+<th class="head"><p>Evento</p></th>
+<th class="head"><p>Acción</p></th>
+<th class="head"><p>Estado Destino</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Normal</p></td>
+<td><p>stock &lt;= stock_minimo</p></td>
+<td><p>Notificar proveedor, trigger recarga auto</p></td>
+<td><p>Bajo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bajo</p></td>
+<td><p>stock &lt; (stock_minimo / 2)</p></td>
+<td><p>Alerta urgente, priorizar recarga</p></td>
+<td><p>Muy_Bajo</p></td>
+</tr>
+<tr class="row-even"><td><p>Muy_Bajo</p></td>
+<td><p>stock &lt;= 5</p></td>
+<td><p>Alerta crítica admin, limitar ventas</p></td>
+<td><p>Critico</p></td>
+</tr>
+<tr class="row-odd"><td><p>Critico</p></td>
+<td><p>stock = 0</p></td>
+<td><p>Ocultar producto, desactivar ventas</p></td>
+<td><p>Agotado</p></td>
+</tr>
+<tr class="row-even"><td><p>Bajo/Muy_Bajo/Critico/Agotado</p></td>
+<td><p>Recarga</p></td>
+<td><p>Aumentar stock, cancelar alertas</p></td>
+<td><p>Normal</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="acciones-por-estado">
+<h3>Acciones por Estado<a class="headerlink" href="#acciones-por-estado" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comportamiento del Sistema por Estado</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">catálogo</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Permite</span> <span class="n">compra</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Límite</span> <span class="n">de</span> <span class="n">compra</span><span class="p">:</span> <span class="n">Sin</span> <span class="n">límite</span>
+    <span class="o">-</span> <span class="n">Alertas</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Recarga</span> <span class="n">automática</span><span class="p">:</span> <span class="n">NO</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">BAJO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">catálogo</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Permite</span> <span class="n">compra</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Límite</span> <span class="n">de</span> <span class="n">compra</span><span class="p">:</span> <span class="n">Normal</span>
+    <span class="o">-</span> <span class="n">Alertas</span><span class="p">:</span> <span class="n">Proveedor</span> <span class="n">notificado</span>
+    <span class="o">-</span> <span class="n">Recarga</span> <span class="n">automática</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">si</span> <span class="n">activa</span><span class="p">)</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">MUY_BAJO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">catálogo</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Permite</span> <span class="n">compra</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Límite</span> <span class="n">de</span> <span class="n">compra</span><span class="p">:</span> <span class="n">Max</span> <span class="mi">3</span> <span class="n">unidades</span>
+    <span class="o">-</span> <span class="n">Alertas</span><span class="p">:</span> <span class="n">Proveedor</span> <span class="o">+</span> <span class="n">Admin</span>
+    <span class="o">-</span> <span class="n">Recarga</span> <span class="n">automática</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">prioridad</span> <span class="n">alta</span><span class="p">)</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">CRITICO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">catálogo</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">con</span> <span class="n">advertencia</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Permite</span> <span class="n">compra</span><span class="p">:</span> <span class="n">SÍ</span>
+    <span class="o">-</span> <span class="n">Límite</span> <span class="n">de</span> <span class="n">compra</span><span class="p">:</span> <span class="n">Max</span> <span class="mi">1</span> <span class="n">unidad</span>
+    <span class="o">-</span> <span class="n">Alertas</span><span class="p">:</span> <span class="n">Urgente</span> <span class="n">a</span> <span class="n">Admin</span>
+    <span class="o">-</span> <span class="n">Recarga</span> <span class="n">automática</span><span class="p">:</span> <span class="n">SÍ</span> <span class="p">(</span><span class="n">prioridad</span> <span class="n">máxima</span><span class="p">)</span>
+
+<span class="n">Estado</span><span class="o">.</span><span class="n">AGOTADO</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Visible</span> <span class="n">en</span> <span class="n">catálogo</span><span class="p">:</span> <span class="n">NO</span> <span class="p">(</span><span class="n">o</span> <span class="n">con</span> <span class="s2">&quot;Agotado&quot;</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Permite</span> <span class="n">compra</span><span class="p">:</span> <span class="n">NO</span>
+    <span class="o">-</span> <span class="n">Límite</span> <span class="n">de</span> <span class="n">compra</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="o">-</span> <span class="n">Alertas</span><span class="p">:</span> <span class="n">Admin</span> <span class="n">notificado</span>
+    <span class="o">-</span> <span class="n">Recarga</span> <span class="n">automática</span><span class="p">:</span> <span class="n">Esperando</span> <span class="n">recarga</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="interacciones-entre-maquinas-de-estado">
+<h2>🔗 INTERACCIONES ENTRE MÁQUINAS DE ESTADO<a class="headerlink" href="#interacciones-entre-maquinas-de-estado" title="Link to this heading"></a></h2>
+<section id="pedido-pago">
+<h3>Pedido ↔ Pago<a class="headerlink" href="#pedido-pago" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Pago:APROBADO → Pedido:PENDIENTE
+Pedido:CANCELADO → Pago:REEMBOLSADO
+Pedido:ENTREGADO → Pago:COMPLETADO
+</pre></div>
+</div>
+</section>
+<section id="pedido-stock">
+<h3>Pedido ↔ Stock<a class="headerlink" href="#pedido-stock" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Pedido:PENDIENTE → Stock: reducir cantidad
+Pedido:CANCELADO → Stock: devolver cantidad
+Stock:AGOTADO → Pedido: no permitir crear
+</pre></div>
+</div>
+</section>
+<section id="usuario-pedido">
+<h3>Usuario ↔ Pedido<a class="headerlink" href="#usuario-pedido" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Usuario:SUSPENDIDA_ADMIN → Pedidos: cancelar pendientes
+Usuario:AUTO_DESACTIVADA → Pedidos: mantener histórico
+Usuario:ELIMINADA → Pedidos: anonimizar cliente
+</pre></div>
+</div>
+</section>
+<section id="stock-notificacion">
+<h3>Stock ↔ Notificación<a class="headerlink" href="#stock-notificacion" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Stock:BAJO → Notificación:PENDIENTE (tipo: stock_bajo)
+Stock:CRITICO → Notificación:PENDIENTE (tipo: stock_critico)
+Stock:AGOTADO → Notificación:PENDIENTE (tipo: agotado)
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resumen-de-estados-por-entidad">
+<h2>📊 RESUMEN DE ESTADOS POR ENTIDAD<a class="headerlink" href="#resumen-de-estados-por-entidad" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Entidad</p></th>
+<th class="head"><p>Estados Posibles</p></th>
+<th class="head"><p>Estado Inicial</p></th>
+<th class="head"><p>Estados Finales</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pedido</strong></p></td>
+<td><p>Pendiente, Preparando, En_Transito, Problema_Entrega, Entregado, Cancelado</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Entregado, Cancelado</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Usuario</strong></p></td>
+<td><p>Activa, Auto_Desactivada, Suspendida_Admin, Inactiva, Eliminada</p></td>
+<td><p>Activa</p></td>
+<td><p>Eliminada</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pago</strong></p></td>
+<td><p>Pendiente, Procesando, Aprobado, Confirmado, Completado, Rechazado, Error, Reembolsado</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Completado, Rechazado, Reembolsado, Error</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Notificación</strong></p></td>
+<td><p>Pendiente, Encolada, Enviando, Enviada, Leida, Fallida, Reintentando, Fallida_Final</p></td>
+<td><p>Pendiente</p></td>
+<td><p>Leida, Fallida_Final</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stock</strong></p></td>
+<td><p>Normal, Bajo, Muy_Bajo, Critico, Agotado</p></td>
+<td><p>Normal</p></td>
+<td><p>- (cíclico)</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p><strong>Documento generado</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Estado</strong>: ✅ Completado</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

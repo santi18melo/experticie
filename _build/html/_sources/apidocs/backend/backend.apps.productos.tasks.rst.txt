@@ -1,0 +1,32 @@
+:py:mod:`backend.apps.productos.tasks`
+======================================
+
+.. py:module:: backend.apps.productos.tasks
+
+.. autodoc2-docstring:: backend.apps.productos.tasks
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`recargar_stock_automatico_task <backend.apps.productos.tasks.recargar_stock_automatico_task>`
+     - .. autodoc2-docstring:: backend.apps.productos.tasks.recargar_stock_automatico_task
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:function:: recargar_stock_automatico_task()
+   :canonical: backend.apps.productos.tasks.recargar_stock_automatico_task
+
+   .. autodoc2-docstring:: backend.apps.productos.tasks.recargar_stock_automatico_task
+      :parser: rst

@@ -1,0 +1,75 @@
+:py:mod:`backend.apps.ventas.views`
+===================================
+
+.. py:module:: backend.apps.ventas.views
+
+.. autodoc2-docstring:: backend.apps.ventas.views
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`VentaViewSet <backend.apps.ventas.views.VentaViewSet>`
+     - .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: VentaViewSet(**kwargs)
+   :canonical: backend.apps.ventas.views.VentaViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ReadOnlyModelViewSet`
+
+   .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet.__init__
+      :parser: rst
+
+   .. py:attribute:: queryset
+      :canonical: backend.apps.ventas.views.VentaViewSet.queryset
+      :value: 'all(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet.queryset
+         :parser: rst
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.ventas.views.VentaViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.ventas.views.VentaViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet.permission_classes
+         :parser: rst
+
+   .. py:method:: get_queryset()
+      :canonical: backend.apps.ventas.views.VentaViewSet.get_queryset
+
+   .. py:method:: reporte_diario(request)
+      :canonical: backend.apps.ventas.views.VentaViewSet.reporte_diario
+
+      .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet.reporte_diario
+         :parser: rst
+
+   .. py:method:: mis_ventas_proveedor(request)
+      :canonical: backend.apps.ventas.views.VentaViewSet.mis_ventas_proveedor
+
+      .. autodoc2-docstring:: backend.apps.ventas.views.VentaViewSet.mis_ventas_proveedor
+         :parser: rst

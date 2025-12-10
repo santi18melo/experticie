@@ -1,0 +1,40 @@
+:py:mod:`backend.apps.usuarios.permissions`
+===========================================
+
+.. py:module:: backend.apps.usuarios.permissions
+
+.. autodoc2-docstring:: backend.apps.usuarios.permissions
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`IsAdmin <backend.apps.usuarios.permissions.IsAdmin>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.permissions.IsAdmin
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: IsAdmin
+   :canonical: backend.apps.usuarios.permissions.IsAdmin
+
+   Bases: :py:obj:`rest_framework.permissions.BasePermission`
+
+   .. autodoc2-docstring:: backend.apps.usuarios.permissions.IsAdmin
+      :parser: rst
+
+   .. py:method:: has_permission(request, view)
+      :canonical: backend.apps.usuarios.permissions.IsAdmin.has_permission
+
+   .. py:method:: has_object_permission(request, view, obj)
+      :canonical: backend.apps.usuarios.permissions.IsAdmin.has_object_permission

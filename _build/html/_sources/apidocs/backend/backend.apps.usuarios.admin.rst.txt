@@ -1,0 +1,180 @@
+:py:mod:`backend.apps.usuarios.admin`
+=====================================
+
+.. py:module:: backend.apps.usuarios.admin
+
+.. autodoc2-docstring:: backend.apps.usuarios.admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`UsuarioCreationForm <backend.apps.usuarios.admin.UsuarioCreationForm>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioCreationForm
+          :parser: rst
+          :summary:
+   * - :py:obj:`UsuarioChangeForm <backend.apps.usuarios.admin.UsuarioChangeForm>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioChangeForm
+          :parser: rst
+          :summary:
+   * - :py:obj:`UsuarioAdmin <backend.apps.usuarios.admin.UsuarioAdmin>`
+     -
+
+API
+~~~
+
+.. py:class:: UsuarioCreationForm(*args, **kwargs)
+   :canonical: backend.apps.usuarios.admin.UsuarioCreationForm
+
+   Bases: :py:obj:`django.contrib.auth.forms.UserCreationForm`
+
+   .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioCreationForm
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioCreationForm.__init__
+      :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.admin.UsuarioCreationForm.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioCreationForm.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.usuarios.admin.UsuarioCreationForm.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioCreationForm.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.usuarios.admin.UsuarioCreationForm.Meta.fields
+         :value: ('email', 'nombre', 'rol')
+
+         .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioCreationForm.Meta.fields
+            :parser: rst
+
+.. py:class:: UsuarioChangeForm(*args, **kwargs)
+   :canonical: backend.apps.usuarios.admin.UsuarioChangeForm
+
+   Bases: :py:obj:`django.contrib.auth.forms.UserChangeForm`
+
+   .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioChangeForm
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioChangeForm.__init__
+      :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.usuarios.admin.UsuarioChangeForm.Meta
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioChangeForm.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.usuarios.admin.UsuarioChangeForm.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioChangeForm.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.usuarios.admin.UsuarioChangeForm.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioChangeForm.Meta.fields
+            :parser: rst
+
+.. py:class:: UsuarioAdmin(model, admin_site)
+   :canonical: backend.apps.usuarios.admin.UsuarioAdmin
+
+   Bases: :py:obj:`django.contrib.auth.admin.UserAdmin`
+
+   .. py:attribute:: form
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.form
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.form
+         :parser: rst
+
+   .. py:attribute:: add_form
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.add_form
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.add_form
+         :parser: rst
+
+   .. py:attribute:: model
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.model
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.model
+         :parser: rst
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.list_display
+      :value: ('email', 'nombre', 'rol', 'estado', 'is_staff', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.list_filter
+      :value: ('rol', 'estado', 'is_staff', 'is_superuser')
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.search_fields
+      :value: ('email', 'nombre')
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.search_fields
+         :parser: rst
+
+   .. py:attribute:: ordering
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.ordering
+      :value: ('email',)
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.ordering
+         :parser: rst
+
+   .. py:attribute:: readonly_fields
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.readonly_fields
+      :value: ('fecha_creacion', 'ultimo_ingreso', 'last_login')
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.readonly_fields
+         :parser: rst
+
+   .. py:attribute:: fieldsets
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.fieldsets
+      :value: ((None,), ('Información Personal',), ('Permisos',), ('Fechas Importantes',))
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.fieldsets
+         :parser: rst
+
+   .. py:attribute:: add_fieldsets
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.add_fieldsets
+      :value: ((None,),)
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.add_fieldsets
+         :parser: rst
+
+   .. py:attribute:: filter_horizontal
+      :canonical: backend.apps.usuarios.admin.UsuarioAdmin.filter_horizontal
+      :value: ('groups', 'user_permissions')
+
+      .. autodoc2-docstring:: backend.apps.usuarios.admin.UsuarioAdmin.filter_horizontal
+         :parser: rst

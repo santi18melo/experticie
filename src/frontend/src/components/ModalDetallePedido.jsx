@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { getDetallesPedido } from '../services/productosService';
 import '../styles/ModalEdicion.css'; // Reusing modal styles
 
-export default function ModalDetallePedido({ pedido, onClose }) {
+export default function ModalDetallePedido({ pedido, onClose, showStatusChange = false, onStatusChange }) {
   const [detalles, setDetalles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [currentStatus, setCurrentStatus] = useState(pedido?.estado);
 
   useEffect(() => {
     if (pedido) {
       cargarDetalles();
+      setCurrentStatus(pedido.estado);
     }
   }, [pedido]);
 
@@ -25,6 +27,14 @@ export default function ModalDetallePedido({ pedido, onClose }) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleStatusChange = (e) => {
+      const newStatus = e.target.value;
+      setCurrentStatus(newStatus);
+      if (onStatusChange) {
+          onStatusChange(pedido.id, newStatus);
+      }
   };
 
   if (!pedido) return null;
@@ -43,7 +53,24 @@ export default function ModalDetallePedido({ pedido, onClose }) {
              <p><strong>Cliente:</strong> {pedido.cliente_nombre}</p>
              <p><strong>Tienda:</strong> {pedido.tienda_nombre}</p>
              <p><strong>Fecha:</strong> {new Date(pedido.fecha_creacion).toLocaleString()}</p>
-             <p><strong>Estado:</strong> <span className={`badge badge-${pedido.estado}`}>{pedido.estado}</span></p>
+             <p>
+                 <strong>Estado:</strong> 
+                 {showStatusChange ? (
+                     <select 
+                        value={currentStatus} 
+                        onChange={handleStatusChange}
+                        style={{marginLeft: '10px', padding: '4px', borderRadius: '4px', border: '1px solid #cbd5e1'}}
+                     >
+                        <option value="pendiente">Pendiente</option>
+                        <option value="preparando">Preparando</option>
+                        <option value="en_transito">En Tránsito</option>
+                        <option value="entregado">Entregado</option>
+                        <option value="cancelado">Cancelado</option>
+                     </select>
+                 ) : (
+                    <span className={`badge badge-${pedido.estado}`} style={{marginLeft: '5px'}}>{pedido.estado}</span>
+                 )}
+             </p>
              {pedido.notas && <p><strong>Notas:</strong> {pedido.notas}</p>}
           </div>
 

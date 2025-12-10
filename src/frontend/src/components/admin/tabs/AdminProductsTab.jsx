@@ -2,18 +2,43 @@ import React, { useState } from 'react';
 
 export default function AdminProductsTab({ productos, loading, onDelete, onUpdate, onCreate, tiendas, proveedores }) {
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
-    nombre: "", descripcion: "", precio: "", stock: "", tienda: "", es_basico: true, categoria: "general"
+    nombre: "", descripcion: "", precio: "", stock: "", tienda: "", es_basico: true, categoria: "general", proveedor: ""
   });
   const [searchTerm, setSearchTerm] = useState("");
 
+  const resetForm = () => {
+    setFormData({
+        nombre: "", descripcion: "", precio: "", stock: "", tienda: "", es_basico: true, categoria: "general", proveedor: ""
+    });
+    setEditingId(null);
+    setShowForm(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreate(formData);
-    setShowForm(false);
-    setFormData({
-        nombre: "", descripcion: "", precio: "", stock: "", tienda: "", es_basico: true, categoria: "general"
-    });
+    if (editingId) {
+        onUpdate({ ...formData, id: editingId });
+    } else {
+        onCreate(formData);
+    }
+    resetForm();
+  };
+
+  const handleEdit = (producto) => {
+      setFormData({
+          nombre: producto.nombre || "",
+          descripcion: producto.descripcion || "",
+          precio: producto.precio || "",
+          stock: producto.stock || "",
+          tienda: producto.tienda || "",
+          es_basico: producto.es_basico ?? true,
+          categoria: producto.categoria || "general",
+          proveedor: producto.proveedor || ""
+      });
+      setEditingId(producto.id);
+      setShowForm(true);
   };
 
   const productosFiltrados = (productos || []).filter(p => {
@@ -28,13 +53,16 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
     <div className="content-section">
       <div className="section-header">
         <h2>Gestión de Productos</h2>
-        <button className="btn-primary" onClick={() => setShowForm(!showForm)}>
+        <button className="btn-primary" onClick={() => { resetForm(); setShowForm(!showForm); }}>
           {showForm ? "✕ Cancelar" : "+ Nuevo Producto"}
         </button>
       </div>
 
       {showForm && (
         <form onSubmit={handleSubmit} className="form-card">
+          <div className="form-head">
+              <h3>{editingId ? 'Editar Producto' : 'Crear Producto'}</h3>
+          </div>
           <div className="form-grid">
             <input type="text" placeholder="Nombre" value={formData.nombre} onChange={e => setFormData({...formData, nombre: e.target.value})} required />
             <input type="number" placeholder="Precio" value={formData.precio} onChange={e => setFormData({...formData, precio: e.target.value})} required />
@@ -43,8 +71,8 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
               <option value="">Seleccionar Tienda</option>
               {(tiendas || []).map(t => <option key={t.id} value={t.id}>{t.nombre}</option>)}
             </select>
-            <select value={formData.proveedor} onChange={e => setFormData({...formData, proveedor: e.target.value})} required>
-              <option value="">Seleccionar Proveedor</option>
+            <select value={formData.proveedor} onChange={e => setFormData({...formData, proveedor: e.target.value})}>
+              <option value="">Seleccionar Proveedor (Opcional)</option>
               {(proveedores || []).map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
             </select>
             <textarea placeholder="Descripción" value={formData.descripcion} onChange={e => setFormData({...formData, descripcion: e.target.value})} />
@@ -55,7 +83,7 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
               </label>
             </div>
           </div>
-          <button type="submit" className="btn-submit">Crear Producto</button>
+          <button type="submit" className="btn-submit">{editingId ? 'Actualizar' : 'Crear Producto'}</button>
         </form>
       )}
 
@@ -107,7 +135,7 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
                 </td>
                 <td>
                   <div className="actions-cell">
-                    <button className="btn-icon edit" onClick={() => onUpdate(producto, true)} title="Editar">✏️</button>
+                    <button className="btn-icon edit" onClick={() => handleEdit(producto)} title="Editar">✏️</button>
                     <button className="btn-icon delete" onClick={() => onDelete(producto.id)} title="Eliminar">🗑️</button>
                   </div>
                 </td>

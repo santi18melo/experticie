@@ -1,0 +1,44 @@
+:py:mod:`backend.create_test_users`
+===================================
+
+.. py:module:: backend.create_test_users
+
+.. autodoc2-docstring:: backend.create_test_users
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`current_dir <backend.create_test_users.current_dir>`
+     - .. autodoc2-docstring:: backend.create_test_users.current_dir
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_users <backend.create_test_users.test_users>`
+     - .. autodoc2-docstring:: backend.create_test_users.test_users
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: current_dir
+   :canonical: backend.create_test_users.current_dir
+   :value: 'dirname(...)'
+
+   .. autodoc2-docstring:: backend.create_test_users.current_dir
+      :parser: rst
+
+.. py:data:: test_users
+   :canonical: backend.create_test_users.test_users
+   :value: None
+
+   .. autodoc2-docstring:: backend.create_test_users.test_users
+      :parser: rst

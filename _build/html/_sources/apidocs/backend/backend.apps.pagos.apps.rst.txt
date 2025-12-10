@@ -1,0 +1,50 @@
+:py:mod:`backend.apps.pagos.apps`
+=================================
+
+.. py:module:: backend.apps.pagos.apps
+
+.. autodoc2-docstring:: backend.apps.pagos.apps
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`PagosConfig <backend.apps.pagos.apps.PagosConfig>`
+     -
+
+API
+~~~
+
+.. py:class:: PagosConfig(app_name, app_module)
+   :canonical: backend.apps.pagos.apps.PagosConfig
+
+   Bases: :py:obj:`django.apps.AppConfig`
+
+   .. py:attribute:: default_auto_field
+      :canonical: backend.apps.pagos.apps.PagosConfig.default_auto_field
+      :value: 'django.db.models.BigAutoField'
+
+      .. autodoc2-docstring:: backend.apps.pagos.apps.PagosConfig.default_auto_field
+         :parser: rst
+
+   .. py:attribute:: name
+      :canonical: backend.apps.pagos.apps.PagosConfig.name
+      :value: 'apps.pagos'
+
+      .. autodoc2-docstring:: backend.apps.pagos.apps.PagosConfig.name
+         :parser: rst
+
+   .. py:attribute:: label
+      :canonical: backend.apps.pagos.apps.PagosConfig.label
+      :value: 'pagos'
+
+      .. autodoc2-docstring:: backend.apps.pagos.apps.PagosConfig.label
+         :parser: rst

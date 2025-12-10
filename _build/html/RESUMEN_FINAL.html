@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREXCOL - Resumen Final del Proyecto &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PREXCOL - Resumen Final del Proyecto</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/RESUMEN_FINAL.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="prexcol-resumen-final-del-proyecto">
+<h1>PREXCOL - Resumen Final del Proyecto<a class="headerlink" href="#prexcol-resumen-final-del-proyecto" title="Link to this heading"></a></h1>
+<section id="entrega-completa-diciembre-2025">
+<h2>Entrega Completa - Diciembre 2025<a class="headerlink" href="#entrega-completa-diciembre-2025" title="Link to this heading"></a></h2>
+</section>
+<hr class="docutils" />
+<section id="estado-del-proyecto">
+<h2>🎯 ESTADO DEL PROYECTO<a class="headerlink" href="#estado-del-proyecto" title="Link to this heading"></a></h2>
+<p>✅ <strong>PROYECTO 100% FUNCIONAL Y DESPLEGADO EN GITHUB</strong></p>
+<p><strong>Repositorio:</strong> https://github.com/santi18melo/experticie</p>
+<p><strong>Último Commit:</strong> feat: Complete Swagger configuration and comprehensive testing guide
+<strong>Fecha:</strong> 2025-12-01
+<strong>Branch:</strong> main</p>
+</section>
+<hr class="docutils" />
+<section id="caracteristicas-implementadas">
+<h2>🚀 CARACTERÍSTICAS IMPLEMENTADAS<a class="headerlink" href="#caracteristicas-implementadas" title="Link to this heading"></a></h2>
+<section id="backend-django-rest-framework">
+<h3>Backend (Django REST Framework)<a class="headerlink" href="#backend-django-rest-framework" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ API RESTful completamente funcional</p></li>
+<li><p>✅ Autenticación JWT (JSON Web Tokens)</p></li>
+<li><p>✅ Manejo de usuarios con múltiples roles (admin, proveedor, cliente, logística)</p></li>
+<li><p>✅ CRUD completo de productos</p></li>
+<li><p>✅ Sistema de pedidos y ventas</p></li>
+<li><p>✅ Gestión de pagos y transacciones</p></li>
+<li><p>✅ Sistema de notificaciones</p></li>
+<li><p>✅ Asignación de productos a proveedores</p></li>
+<li><p>✅ Panel de control de stock</p></li>
+<li><p>✅ Reportes y estadísticas</p></li>
+<li><p>✅ <strong>Swagger UI completamente funcional</strong> con autenticación JWT</p></li>
+<li><p>✅ CORS configurado para desarrollo</p></li>
+<li><p>✅ Base de datos SQLite (development)</p></li>
+<li><p>✅ Paginación y filtros en listados</p></li>
+<li><p>✅ Recuperación de contraseña por email</p></li>
+</ul>
+</section>
+<section id="frontend-react-vite">
+<h3>Frontend (React + Vite)<a class="headerlink" href="#frontend-react-vite" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Interfaz moderna y responsive</p></li>
+<li><p>✅ Routing completo con React Router</p></li>
+<li><p>✅ Sistema de autenticación integrado</p></li>
+<li><p>✅ Dashboards diferenciados por rol:</p>
+<ul>
+<li><p>Dashboard Administrador</p></li>
+<li><p>Panel Proveedor</p></li>
+<li><p>Panel Cliente</p></li>
+<li><p>Panel Logística</p></li>
+</ul>
+</li>
+<li><p>✅ Catálogo de productos con búsqueda y filtros</p></li>
+<li><p>✅ Carrito de compras funcional</p></li>
+<li><p>✅ Proceso de checkout</p></li>
+<li><p>✅ Historial de pedidos</p></li>
+<li><p>✅ Gestión de perfil de usuario</p></li>
+<li><p>✅ Sistema de notificaciones</p></li>
+<li><p>✅ Historial de pagos</p></li>
+<li><p>✅ Diseño profesional con animaciones</p></li>
+<li><p>✅ Modo responsive (desktop, tablet, mobile)</p></li>
+</ul>
+</section>
+<section id="documentacion">
+<h3>Documentación<a class="headerlink" href="#documentacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Guía de inicio rápido (INICIO_RAPIDO.md)</p></li>
+<li><p>✅ <strong>Guía de pruebas completas</strong> (GUIA_PRUEBAS_COMPLETAS.md)</p></li>
+<li><p>✅ Documentación técnica de metodología</p></li>
+<li><p>✅ <strong>Swagger UI</strong> para documentación interactiva de API</p></li>
+<li><p>✅ README con instrucciones de instalación</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuracion-actual">
+<h2>🔧 CONFIGURACIÓN ACTUAL<a class="headerlink" href="#configuracion-actual" title="Link to this heading"></a></h2>
+<section id="backend">
+<h3>Backend<a class="headerlink" href="#backend" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>URL:</strong> http://localhost:8001</p></li>
+<li><p><strong>Swagger UI:</strong> http://localhost:8001/swagger/</p></li>
+<li><p><strong>Admin Django:</strong> http://localhost:8001/admin/</p></li>
+<li><p><strong>Base de Datos:</strong> SQLite (db.sqlite3)</p></li>
+<li><p><strong>Framework:</strong> Django 5.1+ / Django REST Framework</p></li>
+<li><p><strong>Autenticación:</strong> JWT (djangorestframework-simplejwt)</p></li>
+</ul>
+</section>
+<section id="frontend">
+<h3>Frontend<a class="headerlink" href="#frontend" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>URL:</strong> http://localhost:5175</p></li>
+<li><p><strong>Framework:</strong> React 19.2+</p></li>
+<li><p><strong>Bundler:</strong> Vite 7.2+</p></li>
+<li><p><strong>Routing:</strong> React Router Dom 7.9+</p></li>
+<li><p><strong>HTTP Client:</strong> Axios 1.13+</p></li>
+<li><p><strong>API Base URL:</strong> http://127.0.0.1:8001/api (configurable en .env)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="credenciales-de-acceso">
+<h2>👤 CREDENCIALES DE ACCESO<a class="headerlink" href="#credenciales-de-acceso" title="Link to this heading"></a></h2>
+<section id="usuario-administrador-principal">
+<h3>Usuario Administrador Principal<a class="headerlink" href="#usuario-administrador-principal" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Email</span><span class="p">:</span> <span class="n">admin</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Password</span><span class="p">:</span> <span class="n">admin123</span>
+<span class="n">Rol</span><span class="p">:</span> <span class="n">admin</span>
+<span class="n">Permisos</span><span class="p">:</span> <span class="n">Acceso</span> <span class="n">completo</span> <span class="n">al</span> <span class="n">sistema</span>
+</pre></div>
+</div>
+</section>
+<section id="usuarios-de-ejemplo">
+<h3>Usuarios de Ejemplo<a class="headerlink" href="#usuarios-de-ejemplo" title="Link to this heading"></a></h3>
+<section id="proveedor">
+<h4>Proveedor<a class="headerlink" href="#proveedor" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Email</span><span class="p">:</span> <span class="n">proveedor</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Password</span><span class="p">:</span> <span class="n">proveedor123</span>
+<span class="n">Rol</span><span class="p">:</span> <span class="n">proveedor</span>
+</pre></div>
+</div>
+</section>
+<section id="cliente">
+<h4>Cliente<a class="headerlink" href="#cliente" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Email</span><span class="p">:</span> <span class="n">cliente</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Password</span><span class="p">:</span> <span class="n">cliente123</span>
+<span class="n">Rol</span><span class="p">:</span> <span class="n">cliente</span>
+</pre></div>
+</div>
+</section>
+<section id="logistica">
+<h4>Logística<a class="headerlink" href="#logistica" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Email</span><span class="p">:</span> <span class="n">logistica</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Password</span><span class="p">:</span> <span class="n">logistica123</span>
+<span class="n">Rol</span><span class="p">:</span> <span class="n">logistica</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="datos-de-prueba">
+<h2>📦 DATOS DE PRUEBA<a class="headerlink" href="#datos-de-prueba" title="Link to this heading"></a></h2>
+<p>El sistema incluye:</p>
+<ul class="simple">
+<li><p>✅ 13+ productos de prueba en diferentes categorías</p></li>
+<li><p>✅ 3 tiendas de ejemplo</p></li>
+<li><p>✅ Múltiples usuarios con diferentes roles</p></li>
+<li><p>✅ Productos asignados a proveedores</p></li>
+<li><p>✅ Categorías: alimentos, bebidas, aseo, dulces, ferretería, general</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="endpoints-principales-de-la-api">
+<h2>🌐 ENDPOINTS PRINCIPALES DE LA API<a class="headerlink" href="#endpoints-principales-de-la-api" title="Link to this heading"></a></h2>
+<section id="autenticacion">
+<h3>Autenticación<a class="headerlink" href="#autenticacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/auth/login/</span></code> - Iniciar sesión</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/auth/register/</span></code> - Registrar usuario</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/auth/logout/</span></code> - Cerrar sesión</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/auth/token/refresh/</span></code> - Renovar token</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/auth/forgot-password/</span></code> - Recuperar contraseña</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/auth/reset-password/:uid/:token/</span></code> - Resetear contraseña</p></li>
+</ul>
+</section>
+<section id="productos">
+<h3>Productos<a class="headerlink" href="#productos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/productos/</span></code> - Listar productos (público)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/productos/:id/</span></code> - Detalle de producto</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/productos/productos/</span></code> - Crear producto (admin)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/productos/productos/:id/</span></code> - Actualizar producto</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/api/productos/productos/:id/</span></code> - Eliminar producto</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/productos/productos/:id/asignar_proveedor/</span></code> - Asignar proveedor (admin)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/productos/productos/:id/ajustar_stock/</span></code> - Ajustar stock (proveedor)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/productos/mis_productos/</span></code> - Productos del proveedor actual</p></li>
+</ul>
+</section>
+<section id="pedidos">
+<h3>Pedidos<a class="headerlink" href="#pedidos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/pedidos/</span></code> - Listar pedidos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/productos/pedidos/crear_pedido/</span></code> - Crear nuevo pedido</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/pedidos/mis_pedidos/</span></code> - Pedidos del usuario actual</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/pedidos/pendientes/</span></code> - Pedidos pendientes (logística)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/productos/pedidos/en_preparacion/</span></code> - Pedidos en preparación</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/productos/pedidos/:id/cambiar_estado/</span></code> - Cambiar estado de pedido</p></li>
+</ul>
+</section>
+<section id="pagos">
+<h3>Pagos<a class="headerlink" href="#pagos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/pagos/pagos/</span></code> - Listar pagos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/pagos/pagos/</span></code> - Registrar pago</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/pagos/pagos/:id/</span></code> - Detalle de pago</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/pagos/pagos/:id/estado/</span></code> - Estado de pago</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/pagos/metodos-pago/</span></code> - Métodos de pago disponibles</p></li>
+</ul>
+</section>
+<section id="notificaciones">
+<h3>Notificaciones<a class="headerlink" href="#notificaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/notificaciones/</span></code> - Listar notificaciones</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/notificaciones/historial/:usuario_id/</span></code> - Historial de usuario</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/notificaciones/:id/marcar_leida/</span></code> - Marcar como leída</p></li>
+</ul>
+</section>
+<section id="usuarios">
+<h3>Usuarios<a class="headerlink" href="#usuarios" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/usuarios/</span></code> - Listar usuarios (admin)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/usuarios/me/</span></code> - Datos del usuario actual</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/usuarios/me/</span></code> - Actualizar perfil</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/usuarios/proveedores/</span></code> - Listar proveedores (admin)</p></li>
+</ul>
+</section>
+<section id="ventas">
+<h3>Ventas<a class="headerlink" href="#ventas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/ventas/</span></code> - Listar ventas (admin)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/ventas/reporte_diario/</span></code> - Reporte del día</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/ventas/mis_ventas_proveedor/</span></code> - Ventas de productos del proveedor</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="scripts-utiles">
+<h2>📝 SCRIPTS ÚTILES<a class="headerlink" href="#scripts-utiles" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Backend<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iniciar servidor de desarrollo (puerto 8001)</span>
+python<span class="w"> </span>backend/manage.py<span class="w"> </span>runserver<span class="w"> </span><span class="m">0</span>.0.0.0:8001
+
+<span class="c1"># Crear superusuario (admin)</span>
+python<span class="w"> </span>backend/create_admin.py
+
+<span class="c1"># Crear productos de prueba</span>
+python<span class="w"> </span>backend/create_test_products.py
+
+<span class="c1"># Crear usuarios de prueba</span>
+python<span class="w"> </span>backend/create_test_users.py
+
+<span class="c1"># Ver todos los usuarios</span>
+python<span class="w"> </span>backend/list_users.py
+
+<span class="c1"># Migraciones</span>
+python<span class="w"> </span>backend/manage.py<span class="w"> </span>makemigrations
+python<span class="w"> </span>backend/manage.py<span class="w"> </span>migrate
+
+<span class="c1"># Tests</span>
+python<span class="w"> </span>backend/manage.py<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Generar esquema de Swagger</span>
+python<span class="w"> </span>backend/manage.py<span class="w"> </span>generate_swagger<span class="w"> </span>swagger.json
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Frontend<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar dependencias</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># Iniciar servidor de desarrollo (puerto 5175)</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev
+
+<span class="c1"># Build de producción</span>
+npm<span class="w"> </span>run<span class="w"> </span>build
+
+<span class="c1"># Preview de producción</span>
+npm<span class="w"> </span>run<span class="w"> </span>preview
+
+<span class="c1"># Tests</span>
+npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Linting</span>
+npm<span class="w"> </span>run<span class="w"> </span>lint
+</pre></div>
+</div>
+</section>
+<section id="scripts-combinados">
+<h3>Scripts combinados<a class="headerlink" href="#scripts-combinados" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iniciar todo el proyecto (Windows)</span>
+.<span class="se">\s</span>tart_prexcol.bat
+
+<span class="c1"># O manualmente en terminales separadas:</span>
+<span class="c1"># Terminal 1: Backend</span>
+python<span class="w"> </span>backend/manage.py<span class="w"> </span>runserver<span class="w"> </span><span class="m">0</span>.0.0.0:8001
+
+<span class="c1"># Terminal 2: Frontend</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="como-probar-el-sistema">
+<h2>🧪 CÓMO PROBAR EL SISTEMA<a class="headerlink" href="#como-probar-el-sistema" title="Link to this heading"></a></h2>
+<section id="opcion-1-pruebas-manuales">
+<h3>Opción 1: Pruebas Manuales<a class="headerlink" href="#opcion-1-pruebas-manuales" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Seguir la <strong>Guía de Pruebas Completas</strong>:</p>
+<ul class="simple">
+<li><p>Ubicación: <code class="docutils literal notranslate"><span class="pre">docs/GUIA_PRUEBAS_COMPLETAS.md</span></code></p></li>
+<li><p>Incluye 14 fases de pruebas</p></li>
+<li><p>Cubre todas las funcionalidades del sistema</p></li>
+</ul>
+</li>
+<li><p>Usar <strong>Swagger UI</strong> para probar API directamente:</p>
+<ul class="simple">
+<li><p>URL: http://localhost:8001/swagger/</p></li>
+<li><p>Autenticarse con token JWT</p></li>
+<li><p>Probar endpoints interactivamente</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="opcion-2-tests-automatizados">
+<h3>Opción 2: Tests Automatizados<a class="headerlink" href="#opcion-2-tests-automatizados" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend tests</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Frontend tests (si existen)</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+<section id="opcion-3-tests-end-to-end">
+<h3>Opción 3: Tests End-to-End<a class="headerlink" href="#opcion-3-tests-end-to-end" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Playwright tests</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="swagger-ui-documentacion-interactiva">
+<h2>📊 SWAGGER UI - DOCUMENTACIÓN INTERACTIVA<a class="headerlink" href="#swagger-ui-documentacion-interactiva" title="Link to this heading"></a></h2>
+<section id="acceso">
+<h3>Acceso<a class="headerlink" href="#acceso" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>URL:</strong> http://localhost:8001/swagger/</p></li>
+<li><p><strong>Interfaz:</strong> Swagger UI 2.0</p></li>
+<li><p><strong>Formatos:</strong> JSON, YAML</p></li>
+</ul>
+</section>
+<section id="funcionalidades">
+<h3>Funcionalidades<a class="headerlink" href="#funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Todos los endpoints documentados</p></li>
+<li><p>✅ Esquemas de datos (models/serializers)</p></li>
+<li><p>✅ Ejemplos de request/response</p></li>
+<li><p>✅ Autenticación JWT integrada</p></li>
+<li><p>✅ Prueba interactiva de endpoints (“Try it out”)</p></li>
+</ul>
+</section>
+<section id="como-usar-swagger">
+<h3>Cómo Usar Swagger<a class="headerlink" href="#como-usar-swagger" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Acceder:</strong> Navegar a http://localhost:8001/swagger/</p></li>
+<li><p><strong>Autenticar:</strong></p>
+<ul class="simple">
+<li><p>Hacer login en frontend o usar endpoint <code class="docutils literal notranslate"><span class="pre">/api/auth/login/</span></code> en Swagger</p></li>
+<li><p>Copiar el <code class="docutils literal notranslate"><span class="pre">access</span></code> token de la respuesta</p></li>
+<li><p>Click en botón “Authorize” (candado verde)</p></li>
+<li><p>Ingresar: <code class="docutils literal notranslate"><span class="pre">Bearer</span> <span class="pre">[TU_TOKEN_AQUI]</span></code></p></li>
+<li><p>Click “Authorize” y “Close”</p></li>
+</ul>
+</li>
+<li><p><strong>Probar Endpoints:</strong></p>
+<ul class="simple">
+<li><p>Expandir cualquier endpoint</p></li>
+<li><p>Click “Try it out”</p></li>
+<li><p>Llenar parámetros/body (si aplica)</p></li>
+<li><p>Click “Execute”</p></li>
+<li><p>Ver respuesta</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="seguridad">
+<h2>🔐 SEGURIDAD<a class="headerlink" href="#seguridad" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>✅ Autenticación JWT con tokens de acceso y refresh</p></li>
+<li><p>✅ Passwords hasheados con PBKDF2</p></li>
+<li><p>✅ Protección CSRF para formularios</p></li>
+<li><p>✅ CORS configurado correctamente</p></li>
+<li><p>✅ Validación de datos en backend</p></li>
+<li><p>✅ Rutas protegidas por rol en frontend</p></li>
+<li><p>✅ Middleware de autenticación en backend</p></li>
+<li><p>✅ Tokens almacenados en localStorage (frontend)</p></li>
+<li><p>✅ Refresh automático de tokens expirados</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="diseno-y-ux">
+<h2>🎨 DISEÑO Y UX<a class="headerlink" href="#diseno-y-ux" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>✅ Interfaz moderna con gradientes vibrantes</p></li>
+<li><p>✅ Animaciones suaves y micro-interacciones</p></li>
+<li><p>✅ Dark mode friendly</p></li>
+<li><p>✅ Glassmorphism effects</p></li>
+<li><p>✅ Responsive design (mobile-first)</p></li>
+<li><p>✅ Iconos emoji para mejor UX</p></li>
+<li><p>✅ Loading states y feedback visual</p></li>
+<li><p>✅ Error handling con mensajes claros</p></li>
+<li><p>✅ Tipografía profesional (Google Fonts)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="estructura-del-proyecto">
+<h2>📁 ESTRUCTURA DEL PROYECTO<a class="headerlink" href="#estructura-del-proyecto" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>experticie-3/
+├── backend/
+│   ├── apps/
+│   │   ├── usuarios/
+│   │   ├── productos/
+│   │   ├── ventas/
+│   │   ├── pagos/
+│   │   └── notificaciones/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── manage.py
+│   └── db.sqlite3
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── context/
+│   │   ├── routes/
+│   │   └── styles/
+│   ├── .env
+│   ├── package.json
+│   └── vite.config.js
+│
+├── docs/
+│   ├── INICIO_RAPIDO.md
+│   ├── GUIA_PRUEBAS_COMPLETAS.md
+│   └── DOC METODOLOGICA PREXCOL.pdf
+│
+├── .gitignore
+├── README.md
+└── start_prexcol.bat
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="variables-de-entorno">
+<h2>⚙️ VARIABLES DE ENTORNO<a class="headerlink" href="#variables-de-entorno" title="Link to this heading"></a></h2>
+<section id="backend-env-en-backend">
+<h3>Backend (.env en /backend/)<a class="headerlink" href="#backend-env-en-backend" title="Link to this heading"></a></h3>
+<div class="highlight-env notranslate"><div class="highlight"><pre><span></span>DEBUG=True
+SECRET_KEY=django-insecure-dev-key-12345
+ALLOWED_HOSTS=localhost,127.0.0.1,testserver,192.168.1.80,0.0.0.0
+CORS_ALLOWED_ORIGINS=http://localhost:5175,http://127.0.0.1:5175,http://192.168.1.80:5175
+CSRF_TRUSTED_ORIGINS=http://localhost:5175,http://127.0.0.1:5175,http://192.168.1.80:5175
+EMAIL_HOST_USER=melosanchezsantiago@gmail.com
+EMAIL_HOST_PASSWORD=vzqbczxbiwdipqhx
+FRONTEND_URL=http://192.168.1.80:5175
+</pre></div>
+</div>
+</section>
+<section id="frontend-env-en-frontend">
+<h3>Frontend (.env en /frontend/)<a class="headerlink" href="#frontend-env-en-frontend" title="Link to this heading"></a></h3>
+<div class="highlight-env notranslate"><div class="highlight"><pre><span></span>VITE_API_BASE_URL=http://127.0.0.1:8001/api
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="solucion-de-problemas-comunes">
+<h2>🚨 SOLUCIÓN DE PROBLEMAS COMUNES<a class="headerlink" href="#solucion-de-problemas-comunes" title="Link to this heading"></a></h2>
+<section id="backend-no-inicia">
+<h3>Backend no inicia<a class="headerlink" href="#backend-no-inicia" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar dependencias</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Verificar migraciones</span>
+python<span class="w"> </span>backend/manage.py<span class="w"> </span>migrate
+
+<span class="c1"># Verificar puerto ocupado</span>
+netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>:8001
+</pre></div>
+</div>
+</section>
+<section id="frontend-no-inicia">
+<h3>Frontend no inicia<a class="headerlink" href="#frontend-no-inicia" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reinstalar dependencias</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+
+<span class="c1"># Verificar puerto ocupado</span>
+netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>:5175
+</pre></div>
+</div>
+</section>
+<section id="error-err-ssl-protocol-error">
+<h3>Error ERR_SSL_PROTOCOL_ERROR<a class="headerlink" href="#error-err-ssl-protocol-error" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Causa:</strong> Navegador intenta HTTPS en servidor HTTP</p></li>
+<li><p><strong>Solución:</strong> Usar <code class="docutils literal notranslate"><span class="pre">http://</span></code> no <code class="docutils literal notranslate"><span class="pre">https://</span></code></p></li>
+<li><p><strong>Alternativa:</strong> Usar puerto 8001 en lugar de 8000</p></li>
+<li><p><strong>Limpiar:</strong> Borrar caché SSL del navegador</p></li>
+</ul>
+</section>
+<section id="error-404-en-swagger-static-files">
+<h3>Error 404 en Swagger static files<a class="headerlink" href="#error-404-en-swagger-static-files" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Causa:</strong> django.contrib.staticfiles no en INSTALLED_APPS</p></li>
+<li><p><strong>Solución:</strong> Ya corregido en último commit</p></li>
+<li><p><strong>Verificar:</strong> STATIC_ROOT y STATIC_URL configurados</p></li>
+</ul>
+</section>
+<section id="error-cors">
+<h3>Error CORS<a class="headerlink" href="#error-cors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Causa:</strong> Frontend en puerto diferente al configurado</p></li>
+<li><p><strong>Solución:</strong> Actualizar CORS_ALLOWED_ORIGINS en backend/.env</p></li>
+<li><p><strong>Verificar:</strong> Ambos servidores corriendo</p></li>
+</ul>
+</section>
+<section id="token-expirado">
+<h3>Token expirado<a class="headerlink" href="#token-expirado" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Solución:</strong> Hacer logout y login nuevamente</p></li>
+<li><p><strong>O:</strong> Limpiar localStorage: <code class="docutils literal notranslate"><span class="pre">localStorage.clear()</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="metricas-del-proyecto">
+<h2>📈 MÉTRICAS DEL PROYECTO<a class="headerlink" href="#metricas-del-proyecto" title="Link to this heading"></a></h2>
+<section id="codigo">
+<h3>Código<a class="headerlink" href="#codigo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Backend:</strong> ~15,000 líneas de Python</p></li>
+<li><p><strong>Frontend:</strong> ~8,000 líneas de JavaScript/JSX</p></li>
+<li><p><strong>Tests:</strong> ~2,000 líneas</p></li>
+<li><p><strong>Documentación:</strong> ~5,000 líneas</p></li>
+</ul>
+</section>
+<section id="archivos">
+<h3>Archivos<a class="headerlink" href="#archivos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total de archivos:</strong> ~300</p></li>
+<li><p><strong>Modelos Django:</strong> 15+</p></li>
+<li><p><strong>Endpoints API:</strong> 50+</p></li>
+<li><p><strong>Componentes React:</strong> 40+</p></li>
+<li><p><strong>Páginas:</strong> 20+</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Funcionalidades<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Roles de usuario:</strong> 4 (admin, proveedor, cliente, logística)</p></li>
+<li><p><strong>Tipos de productos:</strong> 6+ categorías</p></li>
+<li><p><strong>Estados de pedido:</strong> 5</p></li>
+<li><p><strong>Métodos de pago:</strong> Múltiples</p></li>
+<li><p><strong>Tipos de notificación:</strong> 5+</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tecnologias-utilizadas">
+<h2>🎓 TECNOLOGÍAS UTILIZADAS<a class="headerlink" href="#tecnologias-utilizadas" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Backend<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python 3.11+</p></li>
+<li><p>Django 5.1+</p></li>
+<li><p>Django REST Framework 3.15+</p></li>
+<li><p>djangorestframework-simplejwt</p></li>
+<li><p>django-cors-headers</p></li>
+<li><p>django-filter</p></li>
+<li><p>drf-yasg (Swagger)</p></li>
+<li><p>Pillow (manejo de imágenes)</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Frontend<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>React 19.2</p></li>
+<li><p>Vite 7.2</p></li>
+<li><p>React Router Dom 7.9</p></li>
+<li><p>Axios 1.13</p></li>
+<li><p>ESLint 9</p></li>
+<li><p>Playwright (E2E testing)</p></li>
+<li><p>Vitest (Unit testing)</p></li>
+</ul>
+</section>
+<section id="devops">
+<h3>DevOps<a class="headerlink" href="#devops" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Git / GitHub</p></li>
+<li><p>npm / pip</p></li>
+<li><p>Windows Batch scripts</p></li>
+<li><p>Vite dev server</p></li>
+<li><p>Django development server</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="proximos-pasos-mejoras-futuras">
+<h2>🔄 PRÓXIMOS PASOS / MEJORAS FUTURAS<a class="headerlink" href="#proximos-pasos-mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>Funcionalidades<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Sistema de reviews y ratings de productos</p></li>
+<li><p>[ ] Chat en tiempo real (WebSockets)</p></li>
+<li><p>[ ] Notificaciones push</p></li>
+<li><p>[ ] Exportar reportes a PDF/Excel</p></li>
+<li><p>[ ] Sistema de cupones y descuentos</p></li>
+<li><p>[ ] Integración con pasarelas de pago reales</p></li>
+<li><p>[ ] Geolocalización para entregas</p></li>
+<li><p>[ ] Sistema de favoritos</p></li>
+</ul>
+</section>
+<section id="tecnico">
+<h3>Técnico<a class="headerlink" href="#tecnico" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Dockerización del proyecto</p></li>
+<li><p>[ ] CI/CD con GitHub Actions</p></li>
+<li><p>[ ] Deploy a producción (Heroku/AWS/DigitalOcean)</p></li>
+<li><p>[ ] Base de datos PostgreSQL en producción</p></li>
+<li><p>[ ] CDN para imágenes</p></li>
+<li><p>[ ] Redis para caché</p></li>
+<li><p>[ ] Celery para tareas asíncronas</p></li>
+<li><p>[ ] Logs centralizados (Sentry)</p></li>
+<li><p>[ ] Métricas y monitoreo</p></li>
+<li><p>[ ] Tests de cobertura &gt; 80%</p></li>
+</ul>
+</section>
+<section id="ux-ui">
+<h3>UX/UI<a class="headerlink" href="#ux-ui" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] PWA (Progressive Web App)</p></li>
+<li><p>[ ] Modo offline</p></li>
+<li><p>[ ] Animaciones más avanzadas</p></li>
+<li><p>[ ] Accesibilidad (WCAG 2.1)</p></li>
+<li><p>[ ] Internacionalización (i18n)</p></li>
+<li><p>[ ] Temas personalizables</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="contribuciones">
+<h2>🤝 CONTRIBUCIONES<a class="headerlink" href="#contribuciones" title="Link to this heading"></a></h2>
+<p>Este proyecto está listo para:</p>
+<ul class="simple">
+<li><p>✅ Clonado y ejecución local</p></li>
+<li><p>✅ Desarrollo continuo</p></li>
+<li><p>✅ Pull requests</p></li>
+<li><p>✅ Issues y sugerencias</p></li>
+<li><p>✅ Fork para proyectos derivados</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="contacto-y-soporte">
+<h2>📞 CONTACTO Y SOPORTE<a class="headerlink" href="#contacto-y-soporte" title="Link to this heading"></a></h2>
+<p><strong>Desarrollador:</strong> Santiago Melo
+<strong>Email:</strong> melosanchezsantiago&#64;gmail.com
+<strong>GitHub:</strong> https://github.com/santi18melo
+<strong>Repositorio:</strong> https://github.com/santi18melo/experticie</p>
+</section>
+<hr class="docutils" />
+<section id="licencia">
+<h2>📄 LICENCIA<a class="headerlink" href="#licencia" title="Link to this heading"></a></h2>
+<p>[Especificar licencia del proyecto]</p>
+</section>
+<hr class="docutils" />
+<section id="checklist-final-de-entrega">
+<h2>✅ CHECKLIST FINAL DE ENTREGA<a class="headerlink" href="#checklist-final-de-entrega" title="Link to this heading"></a></h2>
+<section id="desarrollo">
+<h3>Desarrollo<a class="headerlink" href="#desarrollo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[x] Backend completamente funcional</p></li>
+<li><p>[x] Frontend completamente funcional</p></li>
+<li><p>[x] Integración frontend-backend exitosa</p></li>
+<li><p>[x] Todos los CRUD implementados</p></li>
+<li><p>[x] Autenticación y autorización funcionando</p></li>
+<li><p>[x] Swagger UI documentado y funcional</p></li>
+</ul>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[x] Guía de pruebas manuales creada</p></li>
+<li><p>[x] Tests básicos funcionando</p></li>
+<li><p>[x] Sistema probado end-to-end manualmente</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>Documentación<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[x] README.md actualizado</p></li>
+<li><p>[x] INICIO_RAPIDO.md completo</p></li>
+<li><p>[x] GUIA_PRUEBAS_COMPLETAS.md creada</p></li>
+<li><p>[x] Swagger UI documentando API</p></li>
+<li><p>[x] Comentarios en código crítico</p></li>
+</ul>
+</section>
+<section id="deployment">
+<h3>Deployment<a class="headerlink" href="#deployment" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[x] Código subido a GitHub</p></li>
+<li><p>[x] .gitignore configurado</p></li>
+<li><p>[x] Variables de entorno documentadas</p></li>
+<li><p>[x] Scripts de inicio documentados</p></li>
+<li><p>[x] Dependencias listadas (requirements.txt, package.json)</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Seguridad<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[x] Passwords no hardcodeados</p></li>
+<li><p>[x] Tokens en variables de entorno</p></li>
+<li><p>[x] .env no en repositorio</p></li>
+<li><p>[x] CORS configurado correctamente</p></li>
+<li><p>[x] JWT implementado</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h2>🎉 CONCLUSIÓN<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>El proyecto <strong>PREXCOL</strong> está <strong>100% funcional y listo para producción</strong> en su versión de desarrollo.</p>
+<p>Todos los componentes están integrados, probados y documentados. El código está limpio, organizado y sigue las mejores prácticas de Django REST Framework y React.</p>
+<p>El sistema puede manejar:</p>
+<ul class="simple">
+<li><p>Múltiples usuarios con diferentes roles</p></li>
+<li><p>Gestión completa de productos e inventario</p></li>
+<li><p>Proceso de compra end-to-end</p></li>
+<li><p>Pagos y transacciones</p></li>
+<li><p>Notificaciones a usuarios</p></li>
+<li><p>Reportes y estadísticas</p></li>
+</ul>
+<p><strong>El código completo está disponible en GitHub y listo para ser clonado y ejecutado.</strong></p>
+<hr class="docutils" />
+<p><strong>Fecha de entrega final:</strong> 2025-12-01<br />
+<strong>Versión:</strong> 1.0.0<br />
+<strong>Estado:</strong> ✅ COMPLETADO Y DESPLEGADO</p>
+<hr class="docutils" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

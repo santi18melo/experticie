@@ -1,0 +1,40 @@
+:py:mod:`backend.apps.usuarios.backends`
+========================================
+
+.. py:module:: backend.apps.usuarios.backends
+
+.. autodoc2-docstring:: backend.apps.usuarios.backends
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`EmailBackend <backend.apps.usuarios.backends.EmailBackend>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.backends.EmailBackend
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: EmailBackend
+   :canonical: backend.apps.usuarios.backends.EmailBackend
+
+   Bases: :py:obj:`django.contrib.auth.backends.ModelBackend`
+
+   .. autodoc2-docstring:: backend.apps.usuarios.backends.EmailBackend
+      :parser: rst
+
+   .. py:method:: authenticate(request, username=None, password=None, **kwargs)
+      :canonical: backend.apps.usuarios.backends.EmailBackend.authenticate
+
+      .. autodoc2-docstring:: backend.apps.usuarios.backends.EmailBackend.authenticate
+         :parser: rst

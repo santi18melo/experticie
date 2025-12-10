@@ -1,0 +1,285 @@
+:py:mod:`backend.apps.productos.views`
+======================================
+
+.. py:module:: backend.apps.productos.views
+
+.. autodoc2-docstring:: backend.apps.productos.views
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TiendaViewSet <backend.apps.productos.views.TiendaViewSet>`
+     -
+   * - :py:obj:`ProductoViewSet <backend.apps.productos.views.ProductoViewSet>`
+     -
+   * - :py:obj:`PedidoViewSet <backend.apps.productos.views.PedidoViewSet>`
+     -
+   * - :py:obj:`DetallePedidoViewSet <backend.apps.productos.views.DetallePedidoViewSet>`
+     -
+   * - :py:obj:`SeccionViewSet <backend.apps.productos.views.SeccionViewSet>`
+     - .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet
+          :parser: rst
+          :summary:
+   * - :py:obj:`ProductoSubirImagenView <backend.apps.productos.views.ProductoSubirImagenView>`
+     -
+
+API
+~~~
+
+.. py:class:: TiendaViewSet(**kwargs)
+   :canonical: backend.apps.productos.views.TiendaViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+   .. py:attribute:: queryset
+      :canonical: backend.apps.productos.views.TiendaViewSet.queryset
+      :value: 'filter(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.views.TiendaViewSet.queryset
+         :parser: rst
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.productos.views.TiendaViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.TiendaViewSet.serializer_class
+         :parser: rst
+
+   .. py:method:: get_permissions()
+      :canonical: backend.apps.productos.views.TiendaViewSet.get_permissions
+
+   .. py:method:: mis_tiendas(request)
+      :canonical: backend.apps.productos.views.TiendaViewSet.mis_tiendas
+
+      .. autodoc2-docstring:: backend.apps.productos.views.TiendaViewSet.mis_tiendas
+         :parser: rst
+
+.. py:class:: ProductoViewSet(**kwargs)
+   :canonical: backend.apps.productos.views.ProductoViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.productos.views.ProductoViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.serializer_class
+         :parser: rst
+
+   .. py:method:: get_queryset()
+      :canonical: backend.apps.productos.views.ProductoViewSet.get_queryset
+
+   .. py:method:: get_serializer_class()
+      :canonical: backend.apps.productos.views.ProductoViewSet.get_serializer_class
+
+   .. py:method:: get_permissions()
+      :canonical: backend.apps.productos.views.ProductoViewSet.get_permissions
+
+   .. py:method:: por_tienda(request)
+      :canonical: backend.apps.productos.views.ProductoViewSet.por_tienda
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.por_tienda
+         :parser: rst
+
+   .. py:method:: mis_productos(request)
+      :canonical: backend.apps.productos.views.ProductoViewSet.mis_productos
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.mis_productos
+         :parser: rst
+
+   .. py:method:: ajustar_stock(request, pk=None)
+      :canonical: backend.apps.productos.views.ProductoViewSet.ajustar_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.ajustar_stock
+         :parser: rst
+
+   .. py:method:: asignar_proveedor(request, pk=None)
+      :canonical: backend.apps.productos.views.ProductoViewSet.asignar_proveedor
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.asignar_proveedor
+         :parser: rst
+
+   .. py:method:: config_stock(request, pk=None)
+      :canonical: backend.apps.productos.views.ProductoViewSet.config_stock
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.config_stock
+         :parser: rst
+
+   .. py:method:: ejecutar_recarga(request, pk=None)
+      :canonical: backend.apps.productos.views.ProductoViewSet.ejecutar_recarga
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.ejecutar_recarga
+         :parser: rst
+
+   .. py:method:: productos_stock_bajo(request)
+      :canonical: backend.apps.productos.views.ProductoViewSet.productos_stock_bajo
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.productos_stock_bajo
+         :parser: rst
+
+   .. py:method:: historial_recargas(request, pk=None)
+      :canonical: backend.apps.productos.views.ProductoViewSet.historial_recargas
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.historial_recargas
+         :parser: rst
+
+   .. py:method:: asignar_productos_masivo(request)
+      :canonical: backend.apps.productos.views.ProductoViewSet.asignar_productos_masivo
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoViewSet.asignar_productos_masivo
+         :parser: rst
+
+.. py:class:: PedidoViewSet(**kwargs)
+   :canonical: backend.apps.productos.views.PedidoViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.productos.views.PedidoViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.serializer_class
+         :parser: rst
+
+   .. py:method:: get_queryset()
+      :canonical: backend.apps.productos.views.PedidoViewSet.get_queryset
+
+   .. py:method:: get_serializer_class()
+      :canonical: backend.apps.productos.views.PedidoViewSet.get_serializer_class
+
+   .. py:method:: get_permissions()
+      :canonical: backend.apps.productos.views.PedidoViewSet.get_permissions
+
+   .. py:method:: create(request, *args, **kwargs)
+      :canonical: backend.apps.productos.views.PedidoViewSet.create
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.create
+         :parser: rst
+
+   .. py:method:: crear_pedido(request)
+      :canonical: backend.apps.productos.views.PedidoViewSet.crear_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.crear_pedido
+         :parser: rst
+
+   .. py:method:: cambiar_estado(request, pk=None)
+      :canonical: backend.apps.productos.views.PedidoViewSet.cambiar_estado
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.cambiar_estado
+         :parser: rst
+
+   .. py:method:: mis_pedidos(request)
+      :canonical: backend.apps.productos.views.PedidoViewSet.mis_pedidos
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.mis_pedidos
+         :parser: rst
+
+   .. py:method:: pendientes(request)
+      :canonical: backend.apps.productos.views.PedidoViewSet.pendientes
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.pendientes
+         :parser: rst
+
+   .. py:method:: en_preparacion(request)
+      :canonical: backend.apps.productos.views.PedidoViewSet.en_preparacion
+
+      .. autodoc2-docstring:: backend.apps.productos.views.PedidoViewSet.en_preparacion
+         :parser: rst
+
+.. py:class:: DetallePedidoViewSet(**kwargs)
+   :canonical: backend.apps.productos.views.DetallePedidoViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ReadOnlyModelViewSet`
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.productos.views.DetallePedidoViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.DetallePedidoViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.productos.views.DetallePedidoViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.DetallePedidoViewSet.permission_classes
+         :parser: rst
+
+   .. py:method:: get_queryset()
+      :canonical: backend.apps.productos.views.DetallePedidoViewSet.get_queryset
+
+   .. py:method:: por_pedido(request)
+      :canonical: backend.apps.productos.views.DetallePedidoViewSet.por_pedido
+
+      .. autodoc2-docstring:: backend.apps.productos.views.DetallePedidoViewSet.por_pedido
+         :parser: rst
+
+.. py:class:: SeccionViewSet(**kwargs)
+   :canonical: backend.apps.productos.views.SeccionViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+   .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet.__init__
+      :parser: rst
+
+   .. py:attribute:: queryset
+      :canonical: backend.apps.productos.views.SeccionViewSet.queryset
+      :value: 'filter(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet.queryset
+         :parser: rst
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.productos.views.SeccionViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.productos.views.SeccionViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet.permission_classes
+         :parser: rst
+
+   .. py:method:: get_permissions()
+      :canonical: backend.apps.productos.views.SeccionViewSet.get_permissions
+
+   .. py:method:: agregar_productos(request, pk=None)
+      :canonical: backend.apps.productos.views.SeccionViewSet.agregar_productos
+
+      .. autodoc2-docstring:: backend.apps.productos.views.SeccionViewSet.agregar_productos
+         :parser: rst
+
+.. py:class:: ProductoSubirImagenView(**kwargs)
+   :canonical: backend.apps.productos.views.ProductoSubirImagenView
+
+   Bases: :py:obj:`rest_framework.views.APIView`
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.productos.views.ProductoSubirImagenView.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoSubirImagenView.permission_classes
+         :parser: rst
+
+   .. py:method:: post(request, pk)
+      :canonical: backend.apps.productos.views.ProductoSubirImagenView.post
+
+      .. autodoc2-docstring:: backend.apps.productos.views.ProductoSubirImagenView.post
+         :parser: rst

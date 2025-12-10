@@ -1,0 +1,55 @@
+:py:mod:`backend.pagination`
+============================
+
+.. py:module:: backend.pagination
+
+.. autodoc2-docstring:: backend.pagination
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`CustomPageNumberPagination <backend.pagination.CustomPageNumberPagination>`
+     - .. autodoc2-docstring:: backend.pagination.CustomPageNumberPagination
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:class:: CustomPageNumberPagination
+   :canonical: backend.pagination.CustomPageNumberPagination
+
+   Bases: :py:obj:`rest_framework.pagination.PageNumberPagination`
+
+   .. autodoc2-docstring:: backend.pagination.CustomPageNumberPagination
+      :parser: rst
+
+   .. py:attribute:: page_size
+      :canonical: backend.pagination.CustomPageNumberPagination.page_size
+      :value: 10
+
+      .. autodoc2-docstring:: backend.pagination.CustomPageNumberPagination.page_size
+         :parser: rst
+
+   .. py:attribute:: page_size_query_param
+      :canonical: backend.pagination.CustomPageNumberPagination.page_size_query_param
+      :value: 'page_size'
+
+      .. autodoc2-docstring:: backend.pagination.CustomPageNumberPagination.page_size_query_param
+         :parser: rst
+
+   .. py:attribute:: max_page_size
+      :canonical: backend.pagination.CustomPageNumberPagination.max_page_size
+      :value: 10000
+
+      .. autodoc2-docstring:: backend.pagination.CustomPageNumberPagination.max_page_size
+         :parser: rst

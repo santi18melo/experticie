@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREXCOL - Guía de Pruebas Manuales Completas &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PREXCOL - Guía de Pruebas Manuales Completas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GUIA_PRUEBAS_COMPLETAS.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="prexcol-guia-de-pruebas-manuales-completas">
+<h1>PREXCOL - Guía de Pruebas Manuales Completas<a class="headerlink" href="#prexcol-guia-de-pruebas-manuales-completas" title="Link to this heading"></a></h1>
+</section>
+<section id="id1">
+<h1>============================================<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="configuracion-inicial">
+<h2>CONFIGURACIÓN INICIAL<a class="headerlink" href="#configuracion-inicial" title="Link to this heading"></a></h2>
+<section id="servidores-en-ejecucion">
+<h3>1. Servidores en ejecución<a class="headerlink" href="#servidores-en-ejecucion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Backend: http://localhost:8001 (Django)</p></li>
+<li><p>Frontend: http://localhost:5175 (Vite/React)</p></li>
+<li><p>Swagger UI: http://localhost:8001/swagger/</p></li>
+</ul>
+</section>
+<section id="credenciales-de-prueba">
+<h3>2. Credenciales de prueba<a class="headerlink" href="#credenciales-de-prueba" title="Link to this heading"></a></h3>
+<section id="usuario-administrador">
+<h4>Usuario Administrador<a class="headerlink" href="#usuario-administrador" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Email: admin&#64;example.com</p></li>
+<li><p>Password: admin123</p></li>
+<li><p>Rol: admin</p></li>
+</ul>
+</section>
+<section id="usuario-proveedor-ejemplo">
+<h4>Usuario Proveedor (ejemplo)<a class="headerlink" href="#usuario-proveedor-ejemplo" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Email: proveedor&#64;example.com</p></li>
+<li><p>Password: proveedor123</p></li>
+<li><p>Rol: proveedor</p></li>
+</ul>
+</section>
+<section id="usuario-cliente">
+<h4>Usuario Cliente<a class="headerlink" href="#usuario-cliente" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Email: cliente&#64;example.com</p></li>
+<li><p>Password: cliente123</p></li>
+<li><p>Rol: cliente</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pruebas-paso-a-paso">
+<h2>PRUEBAS PASO A PASO<a class="headerlink" href="#pruebas-paso-a-paso" title="Link to this heading"></a></h2>
+<section id="fase-1-autenticacion-y-autorizacion">
+<h3>FASE 1: Autenticación y Autorización<a class="headerlink" href="#fase-1-autenticacion-y-autorizacion" title="Link to this heading"></a></h3>
+<section id="test-1-1-login-exitoso">
+<h4>Test 1.1 - Login Exitoso<a class="headerlink" href="#test-1-1-login-exitoso" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a http://localhost:5175/login</p></li>
+<li><p>Ingresar email: admin&#64;example.com</p></li>
+<li><p>Ingresar password: admin123</p></li>
+<li><p>Click en el botón “Entrar”</p></li>
+<li><p>✅ ESPERADO: Redirección a /admin dashboard</p></li>
+<li><p>✅ ESPERADO: Token guardado en localStorage</p></li>
+<li><p>✅ ESPERADO: Información de usuario en localStorage</p></li>
+</ol>
+</section>
+<section id="test-1-2-login-con-credenciales-incorrectas">
+<h4>Test 1.2 - Login con Credenciales Incorrectas<a class="headerlink" href="#test-1-2-login-con-credenciales-incorrectas" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a http://localhost:5175/login</p></li>
+<li><p>Ingresar email: wrong&#64;example.com</p></li>
+<li><p>Ingresar password: wrongpass</p></li>
+<li><p>Click en “Entrar”</p></li>
+<li><p>✅ ESPERADO: Mensaje de error visible</p></li>
+<li><p>✅ ESPERADO: NO redirección</p></li>
+</ol>
+</section>
+<section id="test-1-3-registro-de-nuevo-usuario">
+<h4>Test 1.3 - Registro de Nuevo Usuario<a class="headerlink" href="#test-1-3-registro-de-nuevo-usuario" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a http://localhost:5175/register</p></li>
+<li><p>Completar formulario:</p>
+<ul class="simple">
+<li><p>Nombre: Usuario Test</p></li>
+<li><p>Email: test&#64;example.com</p></li>
+<li><p>Password: test123456</p></li>
+<li><p>Confirmar Password: test123456</p></li>
+<li><p>Rol: cliente</p></li>
+</ul>
+</li>
+<li><p>Click en “Registrarse”</p></li>
+<li><p>✅ ESPERADO: Mensaje de éxito</p></li>
+<li><p>✅ ESPERADO: Redirección a login</p></li>
+</ol>
+</section>
+<section id="test-1-4-recuperacion-de-contrasena">
+<h4>Test 1.4 - Recuperación de Contraseña<a class="headerlink" href="#test-1-4-recuperacion-de-contrasena" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a http://localhost:5175/forgot-password</p></li>
+<li><p>Ingresar email: admin&#64;example.com</p></li>
+<li><p>Click en “Enviar”</p></li>
+<li><p>✅ ESPERADO: Mensaje de confirmación</p></li>
+<li><p>✅ ESPERADO: Verificar console del backend para link de reset</p></li>
+</ol>
+</section>
+<section id="test-1-5-logout">
+<h4>Test 1.5 - Logout<a class="headerlink" href="#test-1-5-logout" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Estando autenticado, buscar botón/link de logout</p></li>
+<li><p>Click en logout</p></li>
+<li><p>✅ ESPERADO: Redirección a /login</p></li>
+<li><p>✅ ESPERADO: localStorage limpio</p></li>
+<li><p>✅ ESPERADO: Intentar acceder a /admin → redirige a /login</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-2-dashboard-de-administrador">
+<h3>FASE 2: Dashboard de Administrador<a class="headerlink" href="#fase-2-dashboard-de-administrador" title="Link to this heading"></a></h3>
+<section id="test-2-1-acceso-al-dashboard-admin">
+<h4>Test 2.1 - Acceso al Dashboard Admin<a class="headerlink" href="#test-2-1-acceso-al-dashboard-admin" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login como admin&#64;example.com</p></li>
+<li><p>✅ ESPERADO: Ver dashboard de administrador</p></li>
+<li><p>✅ ESPERADO: Ver estadísticas generales</p></li>
+<li><p>✅ ESPERADO: Ver lista de productos</p></li>
+<li><p>✅ ESPERADO: Ver panel de control de usuarios</p></li>
+</ol>
+</section>
+<section id="test-2-2-gestion-de-productos-admin">
+<h4>Test 2.2 - Gestión de Productos (Admin)<a class="headerlink" href="#test-2-2-gestion-de-productos-admin" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En dashboard admin, navegar a sección “Productos”</p></li>
+<li><p>Click en “Agregar Producto”</p></li>
+<li><p>Completar formulario:</p>
+<ul class="simple">
+<li><p>Nombre: Producto de Prueba</p></li>
+<li><p>Descripción: Descripción de prueba</p></li>
+<li><p>Precio: 1000</p></li>
+<li><p>Stock: 50</p></li>
+<li><p>Categoría: general</p></li>
+<li><p>Es básico: Sí</p></li>
+</ul>
+</li>
+<li><p>✅ ESPERADO: Producto creado exitosamente</p></li>
+<li><p>✅ ESPERADO: Producto visible en lista</p></li>
+</ol>
+</section>
+<section id="test-2-3-editar-producto">
+<h4>Test 2.3 - Editar Producto<a class="headerlink" href="#test-2-3-editar-producto" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En lista de productos, click en “Editar” de un producto</p></li>
+<li><p>Modificar el precio a 1500</p></li>
+<li><p>Click en “Guardar”</p></li>
+<li><p>✅ ESPERADO: Cambios reflejados inmediatamente</p></li>
+<li><p>✅ ESPERADO: Mensaje de éxito</p></li>
+</ol>
+</section>
+<section id="test-2-4-eliminar-producto">
+<h4>Test 2.4 - Eliminar Producto<a class="headerlink" href="#test-2-4-eliminar-producto" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En lista de productos, click en “Eliminar” de un producto</p></li>
+<li><p>Confirmar eliminación</p></li>
+<li><p>✅ ESPERADO: Producto removido de la lista</p></li>
+<li><p>✅ ESPERADO: Mensaje de confirmación</p></li>
+</ol>
+</section>
+<section id="test-2-5-asignar-productos-a-proveedores">
+<h4>Test 2.5 - Asignar Productos a Proveedores<a class="headerlink" href="#test-2-5-asignar-productos-a-proveedores" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a /admin/asignar-productos</p></li>
+<li><p>Seleccionar un proveedor del dropdown</p></li>
+<li><p>Seleccionar múltiples productos</p></li>
+<li><p>Click en “Asignar”</p></li>
+<li><p>✅ ESPERADO: Confirmación de asignación</p></li>
+<li><p>✅ ESPERADO: Productos ahora muestran el proveedor asignado</p></li>
+</ol>
+</section>
+<section id="test-2-6-gestion-de-usuarios">
+<h4>Test 2.6 - Gestión de Usuarios<a class="headerlink" href="#test-2-6-gestion-de-usuarios" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En admin dashboard, navegar a “Usuarios”</p></li>
+<li><p>Ver lista de todos los usuarios</p></li>
+<li><p>✅ ESPERADO: Ver columnas: nombre, email, rol, estado</p></li>
+<li><p>Click en un usuario para editar</p></li>
+<li><p>Cambiar el rol del usuario</p></li>
+<li><p>✅ ESPERADO: Cambios guardados correctamente</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-3-catalogo-y-productos-cliente">
+<h3>FASE 3: Catálogo y Productos (Cliente)<a class="headerlink" href="#fase-3-catalogo-y-productos-cliente" title="Link to this heading"></a></h3>
+<section id="test-3-1-ver-catalogo-publico">
+<h4>Test 3.1 - Ver Catálogo Público<a class="headerlink" href="#test-3-1-ver-catalogo-publico" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Logout si está autenticado</p></li>
+<li><p>Navegar a http://localhost:5175/productos</p></li>
+<li><p>✅ ESPERADO: Ver listado de productos</p></li>
+<li><p>✅ ESPERADO: Ver filtros por categoría</p></li>
+<li><p>✅ ESPERADO: Ver barra de búsqueda</p></li>
+</ol>
+</section>
+<section id="test-3-2-buscar-productos">
+<h4>Test 3.2 - Buscar Productos<a class="headerlink" href="#test-3-2-buscar-productos" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En catálogo, escribir “galleta” en búsqueda</p></li>
+<li><p>✅ ESPERADO: Filtrar productos que contengan “galleta”</p></li>
+<li><p>Limpiar búsqueda</p></li>
+<li><p>✅ ESPERADO: Mostrar todos los productos nuevamente</p></li>
+</ol>
+</section>
+<section id="test-3-3-filtrar-por-categoria">
+<h4>Test 3.3 - Filtrar por Categoría<a class="headerlink" href="#test-3-3-filtrar-por-categoria" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Seleccionar categoría “dulces”</p></li>
+<li><p>✅ ESPERADO: Mostrar solo productos de dulces</p></li>
+<li><p>Seleccionar “Todas las categorías”</p></li>
+<li><p>✅ ESPERADO: Mostrar todos los productos</p></li>
+</ol>
+</section>
+<section id="test-3-4-ver-detalle-de-producto">
+<h4>Test 3.4 - Ver Detalle de Producto<a class="headerlink" href="#test-3-4-ver-detalle-de-producto" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en un producto del catálogo</p></li>
+<li><p>✅ ESPERADO: Ver página de detalle con:</p>
+<ul class="simple">
+<li><p>Nombre del producto</p></li>
+<li><p>Descripción completa</p></li>
+<li><p>Precio</p></li>
+<li><p>Stock disponible</p></li>
+<li><p>Imágenes (si existen)</p></li>
+<li><p>Botón “Agregar al Carrito”</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-4-carrito-de-compras">
+<h3>FASE 4: Carrito de Compras<a class="headerlink" href="#fase-4-carrito-de-compras" title="Link to this heading"></a></h3>
+<section id="test-4-1-agregar-producto-al-carrito">
+<h4>Test 4.1 - Agregar Producto al Carrito<a class="headerlink" href="#test-4-1-agregar-producto-al-carrito" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login como cliente&#64;example.com</p></li>
+<li><p>Navegar a catálogo</p></li>
+<li><p>Click en “Agregar al Carrito” en un producto</p></li>
+<li><p>✅ ESPERADO: Mensaje de confirmación</p></li>
+<li><p>✅ ESPERADO: Contador de carrito actualizado</p></li>
+</ol>
+</section>
+<section id="test-4-2-ver-carrito">
+<h4>Test 4.2 - Ver Carrito<a class="headerlink" href="#test-4-2-ver-carrito" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en ícono de carrito o navegar a /cart</p></li>
+<li><p>✅ ESPERADO: Ver productos agregados</p></li>
+<li><p>✅ ESPERADO: Ver cantidad de cada producto</p></li>
+<li><p>✅ ESPERADO: Ver subtotal por producto</p></li>
+<li><p>✅ ESPERADO: Ver total general</p></li>
+</ol>
+</section>
+<section id="test-4-3-modificar-cantidad-en-carrito">
+<h4>Test 4.3 - Modificar Cantidad en Carrito<a class="headerlink" href="#test-4-3-modificar-cantidad-en-carrito" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En carrito, incrementar cantidad de un producto</p></li>
+<li><p>✅ ESPERADO: Subtotal actualizado</p></li>
+<li><p>✅ ESPERADO: Total general actualizado</p></li>
+<li><p>Decrementar cantidad</p></li>
+<li><p>✅ ESPERADO: Subtotales actualizados</p></li>
+</ol>
+</section>
+<section id="test-4-4-eliminar-producto-del-carrito">
+<h4>Test 4.4 - Eliminar Producto del Carrito<a class="headerlink" href="#test-4-4-eliminar-producto-del-carrito" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en botón eliminar de un producto</p></li>
+<li><p>✅ ESPERADO: Producto removido</p></li>
+<li><p>✅ ESPERADO: Total actualizado</p></li>
+</ol>
+</section>
+<section id="test-4-5-vaciar-carrito">
+<h4>Test 4.5 - Vaciar Carrito<a class="headerlink" href="#test-4-5-vaciar-carrito" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en “Vaciar Carrito”</p></li>
+<li><p>Confirmar</p></li>
+<li><p>✅ ESPERADO: Carrito vacío</p></li>
+<li><p>✅ ESPERADO: Mensaje indicando carrito vacío</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-5-proceso-de-checkout">
+<h3>FASE 5: Proceso de Checkout<a class="headerlink" href="#fase-5-proceso-de-checkout" title="Link to this heading"></a></h3>
+<section id="test-5-1-ir-a-checkout">
+<h4>Test 5.1 - Ir a Checkout<a class="headerlink" href="#test-5-1-ir-a-checkout" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Agregar productos al carrito</p></li>
+<li><p>Click en “Proceder al Pago” o navegar a /checkout</p></li>
+<li><p>✅ ESPERADO: Ver resumen de pedido</p></li>
+<li><p>✅ ESPERADO: Ver campos para dirección de envío</p></li>
+<li><p>✅ ESPERADO: Ver métodos de pago disponibles</p></li>
+</ol>
+</section>
+<section id="test-5-2-completar-checkout">
+<h4>Test 5.2 - Completar Checkout<a class="headerlink" href="#test-5-2-completar-checkout" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Completar dirección de envío</p></li>
+<li><p>Seleccionar método de pago</p></li>
+<li><p>Click en “Confirmar Pedido”</p></li>
+<li><p>✅ ESPERADO: Pedido creado exitosamente</p></li>
+<li><p>✅ ESPERADO: Redirección a página de confirmación</p></li>
+<li><p>✅ ESPERADO: Carrito vaciado</p></li>
+<li><p>✅ ESPERADO: Notificación enviada</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-6-historial-de-pedidos">
+<h3>FASE 6: Historial de Pedidos<a class="headerlink" href="#fase-6-historial-de-pedidos" title="Link to this heading"></a></h3>
+<section id="test-6-1-ver-historial-cliente">
+<h4>Test 6.1 - Ver Historial (Cliente)<a class="headerlink" href="#test-6-1-ver-historial-cliente" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login como cliente</p></li>
+<li><p>Navegar a /orders</p></li>
+<li><p>✅ ESPERADO: Ver lista de pedidos realizados</p></li>
+<li><p>✅ ESPERADO: Ver estado de cada pedido</p></li>
+<li><p>✅ ESPERADO: Ver fecha de cada pedido</p></li>
+<li><p>✅ ESPERADO: Ver total de cada pedido</p></li>
+</ol>
+</section>
+<section id="test-6-2-ver-detalle-de-pedido">
+<h4>Test 6.2 - Ver Detalle de Pedido<a class="headerlink" href="#test-6-2-ver-detalle-de-pedido" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en un pedido específico</p></li>
+<li><p>✅ ESPERADO: Ver productos del pedido</p></li>
+<li><p>✅ ESPERADO: Ver dirección de envío</p></li>
+<li><p>✅ ESPERADO: Ver método de pago</p></li>
+<li><p>✅ ESPERADO: Ver estado actual</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-7-panel-de-proveedor">
+<h3>FASE 7: Panel de Proveedor<a class="headerlink" href="#fase-7-panel-de-proveedor" title="Link to this heading"></a></h3>
+<section id="test-7-1-acceso-al-panel-proveedor">
+<h4>Test 7.1 - Acceso al Panel Proveedor<a class="headerlink" href="#test-7-1-acceso-al-panel-proveedor" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login como proveedor</p></li>
+<li><p>✅ ESPERADO: Ver dashboard de proveedor</p></li>
+<li><p>✅ ESPERADO: Ver productos asignados</p></li>
+<li><p>✅ ESPERADO: Ver estadísticas de ventas</p></li>
+</ol>
+</section>
+<section id="test-7-2-gestion-de-stock-proveedor">
+<h4>Test 7.2 - Gestión de Stock (Proveedor)<a class="headerlink" href="#test-7-2-gestion-de-stock-proveedor" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En panel proveedor, ver lista de productos</p></li>
+<li><p>Click en “Ajustar Stock” de un producto</p></li>
+<li><p>Modificar cantidad</p></li>
+<li><p>✅ ESPERADO: Stock actualizado</p></li>
+<li><p>✅ ESPERADO: Reflejo inmediato en catálogo</p></li>
+</ol>
+</section>
+<section id="test-7-3-ver-ventas-de-productos-propios">
+<h4>Test 7.3 - Ver Ventas de Productos Propios<a class="headerlink" href="#test-7-3-ver-ventas-de-productos-propios" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a sección “Mis Ventas”</p></li>
+<li><p>✅ ESPERADO: Ver solo ventas de productos asignados a este proveedor</p></li>
+<li><p>✅ ESPERADO: Ver detalles de cada venta</p></li>
+<li><p>✅ ESPERADO: Ver totales y estadísticas</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-8-panel-de-logistica">
+<h3>FASE 8: Panel de Logística<a class="headerlink" href="#fase-8-panel-de-logistica" title="Link to this heading"></a></h3>
+<section id="test-8-1-ver-pedidos-en-preparacion">
+<h4>Test 8.1 - Ver Pedidos en Preparación<a class="headerlink" href="#test-8-1-ver-pedidos-en-preparacion" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login como usuario logística</p></li>
+<li><p>Navegar a panel de logística</p></li>
+<li><p>✅ ESPERADO: Ver pedidos pendientes/en preparación</p></li>
+<li><p>✅ ESPERADO: Ver detalles de envío</p></li>
+</ol>
+</section>
+<section id="test-8-2-cambiar-estado-de-pedido">
+<h4>Test 8.2 - Cambiar Estado de Pedido<a class="headerlink" href="#test-8-2-cambiar-estado-de-pedido" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Seleccionar un pedido pendiente</p></li>
+<li><p>Cambiar estado a “En tránsito”</p></li>
+<li><p>✅ ESPERADO: Estado actualizado</p></li>
+<li><p>✅ ESPERADO: Notificación enviada al cliente</p></li>
+<li><p>✅ ESPERADO: Pedido movido a sección correspondiente</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-9-notificaciones">
+<h3>FASE 9: Notificaciones<a class="headerlink" href="#fase-9-notificaciones" title="Link to this heading"></a></h3>
+<section id="test-9-1-ver-notificaciones">
+<h4>Test 9.1 - Ver Notificaciones<a class="headerlink" href="#test-9-1-ver-notificaciones" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login con cualquier usuario</p></li>
+<li><p>Navegar a /notifications</p></li>
+<li><p>✅ ESPERADO: Ver lista de notificaciones</p></li>
+<li><p>✅ ESPERADO: Distinguir entre leídas y no leídas</p></li>
+<li><p>✅ ESPERADO: Ver contador de no leídas</p></li>
+</ol>
+</section>
+<section id="test-9-2-marcar-como-leida">
+<h4>Test 9.2 - Marcar como Leída<a class="headerlink" href="#test-9-2-marcar-como-leida" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en una notificación no leída</p></li>
+<li><p>✅ ESPERADO: Marcada como leída</p></li>
+<li><p>✅ ESPERADO: Contador actualizado</p></li>
+<li><p>✅ ESPERADO: Estilo visual cambiado</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-10-perfil-y-configuracion">
+<h3>FASE 10: Perfil y Configuración<a class="headerlink" href="#fase-10-perfil-y-configuracion" title="Link to this heading"></a></h3>
+<section id="test-10-1-ver-perfil">
+<h4>Test 10.1 - Ver Perfil<a class="headerlink" href="#test-10-1-ver-perfil" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a /profile</p></li>
+<li><p>✅ ESPERADO: Ver datos del usuario actual</p></li>
+<li><p>✅ ESPERADO: Nombre, email, rol, etc.</p></li>
+</ol>
+</section>
+<section id="test-10-2-editar-perfil">
+<h4>Test 10.2 - Editar Perfil<a class="headerlink" href="#test-10-2-editar-perfil" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en “Editar Perfil”</p></li>
+<li><p>Modificar nombre o dirección</p></li>
+<li><p>Click en “Guardar”</p></li>
+<li><p>✅ ESPERADO: Cambios guardados</p></li>
+<li><p>✅ ESPERADO: Datos actualizados en perfil</p></li>
+</ol>
+</section>
+<section id="test-10-3-cambiar-contrasena">
+<h4>Test 10.3 - Cambiar Contraseña<a class="headerlink" href="#test-10-3-cambiar-contrasena" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>En configuración, buscar “Cambiar Contraseña”</p></li>
+<li><p>Ingresar contraseña actual</p></li>
+<li><p>Ingresar nueva contraseña</p></li>
+<li><p>Confirmar nueva contraseña</p></li>
+<li><p>Click en “Actualizar”</p></li>
+<li><p>✅ ESPERADO: Contraseña actualizada</p></li>
+<li><p>✅ ESPERADO: Poder hacer login con nueva contraseña</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-11-pagos">
+<h3>FASE 11: Pagos<a class="headerlink" href="#fase-11-pagos" title="Link to this heading"></a></h3>
+<section id="test-11-1-ver-historial-de-pagos">
+<h4>Test 11.1 - Ver Historial de Pagos<a class="headerlink" href="#test-11-1-ver-historial-de-pagos" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a /payments</p></li>
+<li><p>✅ ESPERADO: Ver lista de pagos realizados</p></li>
+<li><p>✅ ESPERADO: Ver estado de cada pago</p></li>
+<li><p>✅ ESPERADO: Ver método de pago usado</p></li>
+</ol>
+</section>
+<section id="test-11-2-ver-detalle-de-pago">
+<h4>Test 11.2 - Ver Detalle de Pago<a class="headerlink" href="#test-11-2-ver-detalle-de-pago" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Click en un pago específico</p></li>
+<li><p>✅ ESPERADO: Ver monto total</p></li>
+<li><p>✅ ESPERADO: Ver pedido asociado</p></li>
+<li><p>✅ ESPERADO: Ver fecha y hora</p></li>
+<li><p>✅ ESPERADO: Ver estado de transacción</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-12-swagger-api-documentacion">
+<h3>FASE 12: Swagger API (Documentación)<a class="headerlink" href="#fase-12-swagger-api-documentacion" title="Link to this heading"></a></h3>
+<section id="test-12-1-acceder-a-swagger">
+<h4>Test 12.1 - Acceder a Swagger<a class="headerlink" href="#test-12-1-acceder-a-swagger" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a http://localhost:8001/swagger/</p></li>
+<li><p>✅ ESPERADO: Ver interfaz de Swagger UI</p></li>
+<li><p>✅ ESPERADO: Ver todos los endpoints documentados</p></li>
+<li><p>✅ ESPERADO: Ver modelos/esquemas</p></li>
+</ol>
+</section>
+<section id="test-12-2-autenticar-en-swagger">
+<h4>Test 12.2 - Autenticar en Swagger<a class="headerlink" href="#test-12-2-autenticar-en-swagger" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login en frontend para obtener token</p></li>
+<li><p>Copiar access token del localStorage o de respuesta de login</p></li>
+<li><p>En Swagger, click en “Authorize”</p></li>
+<li><p>Ingresar: Bearer [TOKEN]</p></li>
+<li><p>Click en “Authorize”</p></li>
+<li><p>✅ ESPERADO: Autenticación exitosa</p></li>
+<li><p>✅ ESPERADO: Candado cerrado en endpoints protegidos</p></li>
+</ol>
+</section>
+<section id="test-12-3-probar-endpoints-en-swagger">
+<h4>Test 12.3 - Probar Endpoints en Swagger<a class="headerlink" href="#test-12-3-probar-endpoints-en-swagger" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Expandir endpoint GET /api/productos/productos/</p></li>
+<li><p>Click en “Try it out”</p></li>
+<li><p>Click en “Execute”</p></li>
+<li><p>✅ ESPERADO: Ver respuesta con lista de productos</p></li>
+<li><p>✅ ESPERADO: Código 200</p></li>
+<li><p>✅ ESPERADO: JSON bien formateado</p></li>
+</ol>
+</section>
+<section id="test-12-4-crear-producto-via-swagger">
+<h4>Test 12.4 - Crear Producto via Swagger<a class="headerlink" href="#test-12-4-crear-producto-via-swagger" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Autenticarse con token de admin</p></li>
+<li><p>Expandir POST /api/productos/productos/</p></li>
+<li><p>Click en “Try it out”</p></li>
+<li><p>Llenar JSON de ejemplo con datos válidos</p></li>
+<li><p>Click en “Execute”</p></li>
+<li><p>✅ ESPERADO: Código 201 Created</p></li>
+<li><p>✅ ESPERADO: Producto creado visible en frontend</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-13-responsividad-y-ux">
+<h3>FASE 13: Responsividad y UX<a class="headerlink" href="#fase-13-responsividad-y-ux" title="Link to this heading"></a></h3>
+<section id="test-13-1-diseno-responsive">
+<h4>Test 13.1 - Diseño Responsive<a class="headerlink" href="#test-13-1-diseno-responsive" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Abrir DevTools (F12)</p></li>
+<li><p>Activar modo responsive</p></li>
+<li><p>Probar diferentes tamaños:</p>
+<ul class="simple">
+<li><p>Desktop (1920x1080)</p></li>
+<li><p>Tablet (768x1024)</p></li>
+<li><p>Mobile (375x667)</p></li>
+</ul>
+</li>
+<li><p>✅ ESPERADO: Layout se adapta correctamente</p></li>
+<li><p>✅ ESPERADO: Navegación funcional en mobile</p></li>
+<li><p>✅ ESPERADO: Botones accesibles en touch</p></li>
+</ol>
+</section>
+<section id="test-13-2-animaciones-y-transitions">
+<h4>Test 13.2 - Animaciones y Transitions<a class="headerlink" href="#test-13-2-animaciones-y-transitions" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar entre páginas</p></li>
+<li><p>✅ ESPERADO: Transiciones suaves</p></li>
+<li><p>Hacer hover en botones</p></li>
+<li><p>✅ ESPERADO: Efectos visuales apropiados</p></li>
+<li><p>✅ ESPERADO: Loading states visibles</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fase-14-manejo-de-errores">
+<h3>FASE 14: Manejo de Errores<a class="headerlink" href="#fase-14-manejo-de-errores" title="Link to this heading"></a></h3>
+<section id="test-14-1-error-de-red">
+<h4>Test 14.1 - Error de Red<a class="headerlink" href="#test-14-1-error-de-red" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Detener el backend</p></li>
+<li><p>Intentar login en frontend</p></li>
+<li><p>✅ ESPERADO: Mensaje de error claro</p></li>
+<li><p>✅ ESPERADO: NO crash de la aplicación</p></li>
+<li><p>✅ ESPERADO: Posibilidad de reintentar</p></li>
+</ol>
+</section>
+<section id="test-14-2-token-expirado">
+<h4>Test 14.2 - Token Expirado<a class="headerlink" href="#test-14-2-token-expirado" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Login exitoso</p></li>
+<li><p>Manualmente modificar token en localStorage para que sea inválido</p></li>
+<li><p>Intentar acceder a un endpoint protegido</p></li>
+<li><p>✅ ESPERADO: Redirección a login</p></li>
+<li><p>✅ ESPERADO: Mensaje explicativo</p></li>
+</ol>
+</section>
+<section id="test-14-3-404-not-found">
+<h4>Test 14.3 - 404 Not Found<a class="headerlink" href="#test-14-3-404-not-found" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Navegar a ruta inexistente: /ruta-que-no-existe</p></li>
+<li><p>✅ ESPERADO: Redirección a home o página 404</p></li>
+<li><p>✅ ESPERADO: NO pantalla en blanco</p></li>
+</ol>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="checklist-final">
+<h2>CHECKLIST FINAL<a class="headerlink" href="#checklist-final" title="Link to this heading"></a></h2>
+<section id="backend-django-drf">
+<h3>Backend (Django/DRF)<a class="headerlink" href="#backend-django-drf" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Servidor corriendo en puerto 8001</p></li>
+<li><p>[ ] Base de datos con datos de prueba</p></li>
+<li><p>[ ] Todos los endpoints respondiendo correctamente</p></li>
+<li><p>[ ] JWT tokens generándose correctamente</p></li>
+<li><p>[ ] CORS configurado para puerto 5175</p></li>
+<li><p>[ ] Swagger UI accesible y funcional</p></li>
+</ul>
+</section>
+<section id="frontend-react-vite">
+<h3>Frontend (React/Vite)<a class="headerlink" href="#frontend-react-vite" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Servidor corriendo en puerto 5175</p></li>
+<li><p>[ ] .env apuntando a http://127.0.0.1:8001/api</p></li>
+<li><p>[ ] Login funcional</p></li>
+<li><p>[ ] Registro funcional</p></li>
+<li><p>[ ] Routing funcionando correctamente</p></li>
+<li><p>[ ] Protected routes verificando autenticación</p></li>
+<li><p>[ ] Todos los dashboards accesibles según rol</p></li>
+<li><p>[ ] Catálogo mostrando productos</p></li>
+<li><p>[ ] Carrito funcionando</p></li>
+<li><p>[ ] Checkout completándose exitosamente</p></li>
+</ul>
+</section>
+<section id="integracion">
+<h3>Integración<a class="headerlink" href="#integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Frontend se comunica con backend sin errores</p></li>
+<li><p>[ ] Tokens JWT almacenándose y enviándose correctamente</p></li>
+<li><p>[ ] Refresh token funcionando</p></li>
+<li><p>[ ] Logout limpiando sesión completamente</p></li>
+<li><p>[ ] Notificaciones siendo creadas y mostradas</p></li>
+<li><p>[ ] Imágenes de productos cargando (si existen)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comandos-utiles">
+<h2>COMANDOS ÚTILES<a class="headerlink" href="#comandos-utiles" title="Link to this heading"></a></h2>
+<section id="ver-logs-del-backend">
+<h3>Ver logs del backend<a class="headerlink" href="#ver-logs-del-backend" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># En terminal donde corre Django</span>
+<span class="c1"># Los logs aparecen automáticamente</span>
+</pre></div>
+</div>
+</section>
+<section id="ver-logs-del-frontend">
+<h3>Ver logs del frontend<a class="headerlink" href="#ver-logs-del-frontend" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Abrir DevTools (F12) → Console</span>
+<span class="c1"># Ver errores en tiempo real</span>
+</pre></div>
+</div>
+</section>
+<section id="ver-tokens-almacenados">
+<h3>Ver tokens almacenados<a class="headerlink" href="#ver-tokens-almacenados" title="Link to this heading"></a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// En DevTools Console</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;refresh&#39;</span><span class="p">)</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="limpiar-localstorage">
+<h3>Limpiar localStorage<a class="headerlink" href="#limpiar-localstorage" title="Link to this heading"></a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// En DevTools Console</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="reporte-de-bugs">
+<h2>REPORTE DE BUGS<a class="headerlink" href="#reporte-de-bugs" title="Link to this heading"></a></h2>
+<p>Si encuentras un bug, documéntalo así:</p>
+<p><strong>Título del Bug:</strong>
+<strong>Pasos para Reproducir:</strong>
+1.
+2.
+3.</p>
+<p><strong>Resultado Esperado:</strong></p>
+<p><strong>Resultado Actual:</strong></p>
+<p><strong>Capturas de Pantalla:</strong></p>
+<p><strong>Logs de Consola:</strong></p>
+</section>
+<hr class="docutils" />
+<section id="notas-importantes">
+<h2>NOTAS IMPORTANTES<a class="headerlink" href="#notas-importantes" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Siempre verificar que ambos servidores (backend y frontend) estén corriendo</p></li>
+<li><p>Si hay problemas de autenticación, limpiar localStorage y volver a intentar</p></li>
+<li><p>Para probar con diferentes roles, necesitas usuarios con esos roles en la BD</p></li>
+<li><p>Los productos de prueba se crean al ejecutar create_test_products.py</p></li>
+<li><p>El admin&#64;example.com tiene acceso completo a todo el sistema</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Fecha de creación:</strong> 2025-12-01
+<strong>Versión:</strong> 1.0
+<strong>Estado:</strong> ✅ Listo para Pruebas</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

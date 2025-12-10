@@ -1,0 +1,17 @@
+:py:mod:`backend.apps.productos.management`
+===========================================
+
+.. py:module:: backend.apps.productos.management
+
+.. autodoc2-docstring:: backend.apps.productos.management
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps.productos.management.commands

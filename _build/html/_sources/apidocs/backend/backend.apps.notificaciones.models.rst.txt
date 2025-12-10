@@ -1,0 +1,184 @@
+:py:mod:`backend.apps.notificaciones.models`
+============================================
+
+.. py:module:: backend.apps.notificaciones.models
+
+.. autodoc2-docstring:: backend.apps.notificaciones.models
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TipoNotificacion <backend.apps.notificaciones.models.TipoNotificacion>`
+     -
+   * - :py:obj:`EstadoNotificacion <backend.apps.notificaciones.models.EstadoNotificacion>`
+     -
+   * - :py:obj:`Notificacion <backend.apps.notificaciones.models.Notificacion>`
+     -
+
+API
+~~~
+
+.. py:class:: TipoNotificacion(*args, **kwargs)
+   :canonical: backend.apps.notificaciones.models.TipoNotificacion
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.notificaciones.models.TipoNotificacion.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.TipoNotificacion.nombre
+         :parser: rst
+
+   .. py:attribute:: descripcion
+      :canonical: backend.apps.notificaciones.models.TipoNotificacion.descripcion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.TipoNotificacion.descripcion
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.notificaciones.models.TipoNotificacion.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.TipoNotificacion.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.notificaciones.models.TipoNotificacion.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.TipoNotificacion.fecha_actualizacion
+         :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.notificaciones.models.TipoNotificacion.__str__
+
+.. py:class:: EstadoNotificacion(*args, **kwargs)
+   :canonical: backend.apps.notificaciones.models.EstadoNotificacion
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.notificaciones.models.EstadoNotificacion.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.EstadoNotificacion.nombre
+         :parser: rst
+
+   .. py:attribute:: descripcion
+      :canonical: backend.apps.notificaciones.models.EstadoNotificacion.descripcion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.EstadoNotificacion.descripcion
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.notificaciones.models.EstadoNotificacion.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.EstadoNotificacion.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.notificaciones.models.EstadoNotificacion.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.EstadoNotificacion.fecha_actualizacion
+         :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.notificaciones.models.EstadoNotificacion.__str__
+
+.. py:class:: Notificacion(*args, **kwargs)
+   :canonical: backend.apps.notificaciones.models.Notificacion
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: usuario
+      :canonical: backend.apps.notificaciones.models.Notificacion.usuario
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.usuario
+         :parser: rst
+
+   .. py:attribute:: tipo
+      :canonical: backend.apps.notificaciones.models.Notificacion.tipo
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.tipo
+         :parser: rst
+
+   .. py:attribute:: estado
+      :canonical: backend.apps.notificaciones.models.Notificacion.estado
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.estado
+         :parser: rst
+
+   .. py:attribute:: mensaje
+      :canonical: backend.apps.notificaciones.models.Notificacion.mensaje
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.mensaje
+         :parser: rst
+
+   .. py:attribute:: destino
+      :canonical: backend.apps.notificaciones.models.Notificacion.destino
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.destino
+         :parser: rst
+
+   .. py:attribute:: leida
+      :canonical: backend.apps.notificaciones.models.Notificacion.leida
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.leida
+         :parser: rst
+
+   .. py:attribute:: fecha_lectura
+      :canonical: backend.apps.notificaciones.models.Notificacion.fecha_lectura
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.fecha_lectura
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.notificaciones.models.Notificacion.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.notificaciones.models.Notificacion.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.fecha_actualizacion
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.notificaciones.models.Notificacion.Meta
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.Meta
+         :parser: rst
+
+      .. py:attribute:: ordering
+         :canonical: backend.apps.notificaciones.models.Notificacion.Meta.ordering
+         :value: ['-fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.notificaciones.models.Notificacion.Meta.ordering
+            :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.notificaciones.models.Notificacion.__str__

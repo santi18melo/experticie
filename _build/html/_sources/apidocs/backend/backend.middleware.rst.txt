@@ -1,0 +1,8 @@
+:py:mod:`backend.middleware`
+============================
+
+.. py:module:: backend.middleware
+
+.. autodoc2-docstring:: backend.middleware
+   :parser: rst
+   :allowtitles:

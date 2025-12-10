@@ -1,0 +1,44 @@
+:py:mod:`backend.fix_user_roles`
+================================
+
+.. py:module:: backend.fix_user_roles
+
+.. autodoc2-docstring:: backend.fix_user_roles
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`current_dir <backend.fix_user_roles.current_dir>`
+     - .. autodoc2-docstring:: backend.fix_user_roles.current_dir
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_users <backend.fix_user_roles.test_users>`
+     - .. autodoc2-docstring:: backend.fix_user_roles.test_users
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: current_dir
+   :canonical: backend.fix_user_roles.current_dir
+   :value: 'dirname(...)'
+
+   .. autodoc2-docstring:: backend.fix_user_roles.current_dir
+      :parser: rst
+
+.. py:data:: test_users
+   :canonical: backend.fix_user_roles.test_users
+   :value: None
+
+   .. autodoc2-docstring:: backend.fix_user_roles.test_users
+      :parser: rst

@@ -1,0 +1,424 @@
+:py:mod:`backend.apps.productos.serializers`
+============================================
+
+.. py:module:: backend.apps.productos.serializers
+
+.. autodoc2-docstring:: backend.apps.productos.serializers
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TiendaSerializer <backend.apps.productos.serializers.TiendaSerializer>`
+     -
+   * - :py:obj:`ProductoSerializer <backend.apps.productos.serializers.ProductoSerializer>`
+     -
+   * - :py:obj:`ProductoListSerializer <backend.apps.productos.serializers.ProductoListSerializer>`
+     - .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer
+          :parser: rst
+          :summary:
+   * - :py:obj:`DetallePedidoSerializer <backend.apps.productos.serializers.DetallePedidoSerializer>`
+     -
+   * - :py:obj:`PedidoSerializer <backend.apps.productos.serializers.PedidoSerializer>`
+     -
+   * - :py:obj:`PedidoCreateSerializer <backend.apps.productos.serializers.PedidoCreateSerializer>`
+     - .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer
+          :parser: rst
+          :summary:
+   * - :py:obj:`PedidoUpdateEstadoSerializer <backend.apps.productos.serializers.PedidoUpdateEstadoSerializer>`
+     -
+   * - :py:obj:`PedidoListSerializer <backend.apps.productos.serializers.PedidoListSerializer>`
+     -
+   * - :py:obj:`SeccionSerializer <backend.apps.productos.serializers.SeccionSerializer>`
+     -
+
+API
+~~~
+
+.. py:class:: TiendaSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.TiendaSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: administrador_detalle
+      :canonical: backend.apps.productos.serializers.TiendaSerializer.administrador_detalle
+      :value: 'UsuarioSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.administrador_detalle
+         :parser: rst
+
+   .. py:attribute:: administrador
+      :canonical: backend.apps.productos.serializers.TiendaSerializer.administrador
+      :value: 'PrimaryKeyRelatedField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.administrador
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.TiendaSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.TiendaSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.TiendaSerializer.Meta.fields
+         :value: ['id', 'nombre', 'direccion', 'telefono', 'administrador', 'administrador_detalle', 'activa', 'fecha...
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.Meta.fields
+            :parser: rst
+
+      .. py:attribute:: read_only_fields
+         :canonical: backend.apps.productos.serializers.TiendaSerializer.Meta.read_only_fields
+         :value: ['activa', 'fecha_creacion', 'fecha_actualizacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.Meta.read_only_fields
+            :parser: rst
+
+   .. py:method:: to_representation(instance)
+      :canonical: backend.apps.productos.serializers.TiendaSerializer.to_representation
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.TiendaSerializer.to_representation
+         :parser: rst
+
+.. py:class:: ProductoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.ProductoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: tienda_nombre
+      :canonical: backend.apps.productos.serializers.ProductoSerializer.tienda_nombre
+      :value: 'ReadOnlyField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.tienda_nombre
+         :parser: rst
+
+   .. py:attribute:: proveedor_nombre
+      :canonical: backend.apps.productos.serializers.ProductoSerializer.proveedor_nombre
+      :value: 'ReadOnlyField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.proveedor_nombre
+         :parser: rst
+
+   .. py:attribute:: secciones
+      :canonical: backend.apps.productos.serializers.ProductoSerializer.secciones
+      :value: 'PrimaryKeyRelatedField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.secciones
+         :parser: rst
+
+   .. py:attribute:: secciones_nombres
+      :canonical: backend.apps.productos.serializers.ProductoSerializer.secciones_nombres
+      :value: 'StringRelatedField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.secciones_nombres
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.ProductoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.ProductoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.ProductoSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: ProductoListSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.ProductoListSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer.__init__
+      :parser: rst
+
+   .. py:attribute:: tienda_nombre
+      :canonical: backend.apps.productos.serializers.ProductoListSerializer.tienda_nombre
+      :value: 'ReadOnlyField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer.tienda_nombre
+         :parser: rst
+
+   .. py:attribute:: proveedor_nombre
+      :canonical: backend.apps.productos.serializers.ProductoListSerializer.proveedor_nombre
+      :value: 'ReadOnlyField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer.proveedor_nombre
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.ProductoListSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.ProductoListSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.ProductoListSerializer.Meta.fields
+         :value: ['id', 'nombre', 'descripcion', 'precio', 'stock', 'tienda', 'tienda_nombre', 'proveedor', 'proveedo...
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.ProductoListSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: DetallePedidoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.DetallePedidoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.DetallePedidoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.DetallePedidoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.DetallePedidoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.DetallePedidoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.DetallePedidoSerializer.Meta.fields
+         :value: ['id', 'producto', 'cantidad', 'precio_unitario', 'subtotal']
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.DetallePedidoSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: PedidoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.PedidoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: cliente
+      :canonical: backend.apps.productos.serializers.PedidoSerializer.cliente
+      :value: 'UsuarioSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoSerializer.cliente
+         :parser: rst
+
+   .. py:attribute:: tienda
+      :canonical: backend.apps.productos.serializers.PedidoSerializer.tienda
+      :value: 'TiendaSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoSerializer.tienda
+         :parser: rst
+
+   .. py:attribute:: detalles
+      :canonical: backend.apps.productos.serializers.PedidoSerializer.detalles
+      :value: 'DetallePedidoSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoSerializer.detalles
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.PedidoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.PedidoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.PedidoSerializer.Meta.fields
+         :value: '__all__'
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: PedidoCreateSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.PedidoCreateSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.Serializer`
+
+   .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer
+      :parser: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.__init__
+      :parser: rst
+
+   .. py:attribute:: tienda_id
+      :canonical: backend.apps.productos.serializers.PedidoCreateSerializer.tienda_id
+      :value: 'IntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.tienda_id
+         :parser: rst
+
+   .. py:attribute:: detalles
+      :canonical: backend.apps.productos.serializers.PedidoCreateSerializer.detalles
+      :value: 'ListField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.detalles
+         :parser: rst
+
+   .. py:attribute:: notas
+      :canonical: backend.apps.productos.serializers.PedidoCreateSerializer.notas
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.notas
+         :parser: rst
+
+   .. py:attribute:: metodo_pago
+      :canonical: backend.apps.productos.serializers.PedidoCreateSerializer.metodo_pago
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.metodo_pago
+         :parser: rst
+
+   .. py:attribute:: monto_pago
+      :canonical: backend.apps.productos.serializers.PedidoCreateSerializer.monto_pago
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.monto_pago
+         :parser: rst
+
+   .. py:method:: validate_detalles(value)
+      :canonical: backend.apps.productos.serializers.PedidoCreateSerializer.validate_detalles
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoCreateSerializer.validate_detalles
+         :parser: rst
+
+.. py:class:: PedidoUpdateEstadoSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer.Meta.fields
+         :value: ['estado']
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoUpdateEstadoSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: PedidoListSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.PedidoListSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: cliente
+      :canonical: backend.apps.productos.serializers.PedidoListSerializer.cliente
+      :value: 'UsuarioSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoListSerializer.cliente
+         :parser: rst
+
+   .. py:attribute:: tienda
+      :canonical: backend.apps.productos.serializers.PedidoListSerializer.tienda
+      :value: 'TiendaSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoListSerializer.tienda
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.PedidoListSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoListSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.PedidoListSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoListSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.PedidoListSerializer.Meta.fields
+         :value: ['id', 'cliente', 'tienda', 'estado', 'fecha_creacion', 'total', 'notas']
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.PedidoListSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: SeccionSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.productos.serializers.SeccionSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: productos_count
+      :canonical: backend.apps.productos.serializers.SeccionSerializer.productos_count
+      :value: 'IntegerField(...)'
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.SeccionSerializer.productos_count
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.productos.serializers.SeccionSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.productos.serializers.SeccionSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.productos.serializers.SeccionSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.SeccionSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.productos.serializers.SeccionSerializer.Meta.fields
+         :value: ['id', 'nombre', 'descripcion', 'productos', 'productos_count', 'activa', 'fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.SeccionSerializer.Meta.fields
+            :parser: rst
+
+      .. py:attribute:: read_only_fields
+         :canonical: backend.apps.productos.serializers.SeccionSerializer.Meta.read_only_fields
+         :value: ['fecha_creacion']
+
+         .. autodoc2-docstring:: backend.apps.productos.serializers.SeccionSerializer.Meta.read_only_fields
+            :parser: rst

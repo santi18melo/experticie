@@ -1,0 +1,78 @@
+:py:mod:`backend.apps.notificaciones.admin`
+===========================================
+
+.. py:module:: backend.apps.notificaciones.admin
+
+.. autodoc2-docstring:: backend.apps.notificaciones.admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`TipoNotificacionAdmin <backend.apps.notificaciones.admin.TipoNotificacionAdmin>`
+     -
+   * - :py:obj:`EstadoNotificacionAdmin <backend.apps.notificaciones.admin.EstadoNotificacionAdmin>`
+     -
+   * - :py:obj:`NotificacionAdmin <backend.apps.notificaciones.admin.NotificacionAdmin>`
+     -
+
+API
+~~~
+
+.. py:class:: TipoNotificacionAdmin(model, admin_site)
+   :canonical: backend.apps.notificaciones.admin.TipoNotificacionAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.notificaciones.admin.TipoNotificacionAdmin.list_display
+      :value: ('nombre', 'fecha_actualizacion')
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.admin.TipoNotificacionAdmin.list_display
+         :parser: rst
+
+.. py:class:: EstadoNotificacionAdmin(model, admin_site)
+   :canonical: backend.apps.notificaciones.admin.EstadoNotificacionAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.notificaciones.admin.EstadoNotificacionAdmin.list_display
+      :value: ('nombre', 'fecha_actualizacion')
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.admin.EstadoNotificacionAdmin.list_display
+         :parser: rst
+
+.. py:class:: NotificacionAdmin(model, admin_site)
+   :canonical: backend.apps.notificaciones.admin.NotificacionAdmin
+
+   Bases: :py:obj:`django.contrib.admin.ModelAdmin`
+
+   .. py:attribute:: list_display
+      :canonical: backend.apps.notificaciones.admin.NotificacionAdmin.list_display
+      :value: ('usuario', 'tipo', 'estado', 'leida', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.admin.NotificacionAdmin.list_display
+         :parser: rst
+
+   .. py:attribute:: list_filter
+      :canonical: backend.apps.notificaciones.admin.NotificacionAdmin.list_filter
+      :value: ('tipo', 'estado', 'leida', 'fecha_creacion')
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.admin.NotificacionAdmin.list_filter
+         :parser: rst
+
+   .. py:attribute:: search_fields
+      :canonical: backend.apps.notificaciones.admin.NotificacionAdmin.search_fields
+      :value: ('usuario__email', 'mensaje', 'destino')
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.admin.NotificacionAdmin.search_fields
+         :parser: rst

@@ -1,0 +1,50 @@
+:py:mod:`backend.apps.productos.apps`
+=====================================
+
+.. py:module:: backend.apps.productos.apps
+
+.. autodoc2-docstring:: backend.apps.productos.apps
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`ProductosConfig <backend.apps.productos.apps.ProductosConfig>`
+     -
+
+API
+~~~
+
+.. py:class:: ProductosConfig(app_name, app_module)
+   :canonical: backend.apps.productos.apps.ProductosConfig
+
+   Bases: :py:obj:`django.apps.AppConfig`
+
+   .. py:attribute:: default_auto_field
+      :canonical: backend.apps.productos.apps.ProductosConfig.default_auto_field
+      :value: 'django.db.models.BigAutoField'
+
+      .. autodoc2-docstring:: backend.apps.productos.apps.ProductosConfig.default_auto_field
+         :parser: rst
+
+   .. py:attribute:: name
+      :canonical: backend.apps.productos.apps.ProductosConfig.name
+      :value: 'apps.productos'
+
+      .. autodoc2-docstring:: backend.apps.productos.apps.ProductosConfig.name
+         :parser: rst
+
+   .. py:attribute:: label
+      :canonical: backend.apps.productos.apps.ProductosConfig.label
+      :value: 'productos'
+
+      .. autodoc2-docstring:: backend.apps.productos.apps.ProductosConfig.label
+         :parser: rst

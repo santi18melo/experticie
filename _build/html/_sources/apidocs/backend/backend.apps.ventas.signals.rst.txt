@@ -1,0 +1,32 @@
+:py:mod:`backend.apps.ventas.signals`
+=====================================
+
+.. py:module:: backend.apps.ventas.signals
+
+.. autodoc2-docstring:: backend.apps.ventas.signals
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`crear_venta_al_aprobar_pago <backend.apps.ventas.signals.crear_venta_al_aprobar_pago>`
+     - .. autodoc2-docstring:: backend.apps.ventas.signals.crear_venta_al_aprobar_pago
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:function:: crear_venta_al_aprobar_pago(sender, instance, created, **kwargs)
+   :canonical: backend.apps.ventas.signals.crear_venta_al_aprobar_pago
+
+   .. autodoc2-docstring:: backend.apps.ventas.signals.crear_venta_al_aprobar_pago
+      :parser: rst

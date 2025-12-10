@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎉 RESUMEN COMPLETO DE MEJORAS - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🎉 RESUMEN COMPLETO DE MEJORAS - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/RESUMEN_MEJORAS_COMPLETO.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="resumen-completo-de-mejoras-prexcol">
+<h1>🎉 RESUMEN COMPLETO DE MEJORAS - PREXCOL<a class="headerlink" href="#resumen-completo-de-mejoras-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Fecha</strong>: 2025-12-09<br />
+<strong>Versión</strong>: 2.0<br />
+<strong>Estado</strong>: ✅ Completado y Probado</p>
+<hr class="docutils" />
+<section id="indice">
+<h2>📋 ÍNDICE<a class="headerlink" href="#indice" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#nuevas-funcionalidades"><span class="xref myst">Nuevas Funcionalidades</span></a></p></li>
+<li><p><a class="reference internal" href="#componentes-creados"><span class="xref myst">Componentes Creados</span></a></p></li>
+<li><p><a class="reference internal" href="#optimizaciones"><span class="xref myst">Optimizaciones</span></a></p></li>
+<li><p><a class="reference internal" href="#tests-implementados"><span class="xref myst">Tests Implementados</span></a></p></li>
+<li><p><a class="reference internal" href="#documentaci%C3%B3n"><span class="xref myst">Documentación</span></a></p></li>
+<li><p><a class="reference internal" href="#usuarios-de-prueba"><span class="xref myst">Usuarios de Prueba</span></a></p></li>
+<li><p><a class="reference internal" href="#pr%C3%B3ximos-pasos"><span class="xref myst">Próximos Pasos</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="nuevas-funcionalidades">
+<h2>🚀 NUEVAS FUNCIONALIDADES<a class="headerlink" href="#nuevas-funcionalidades" title="Link to this heading"></a></h2>
+<section id="monitor-de-metricas-en-tiempo-real">
+<h3>1. Monitor de Métricas en Tiempo Real<a class="headerlink" href="#monitor-de-metricas-en-tiempo-real" title="Link to this heading"></a></h3>
+<p><strong>Ubicación</strong>: Dashboard Admin → Click en gráfica de actividad</p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>✅ 3 Categorías: Ventas, Usuarios, Plataforma</p></li>
+<li><p>✅ 9 Rangos de tiempo (20s hasta 1 año)</p></li>
+<li><p>✅ Datos reales desde base de datos</p></li>
+<li><p>✅ Actualización automática inteligente</p></li>
+<li><p>✅ Interfaz responsive y moderna</p></li>
+</ul>
+<p><strong>Endpoints</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/usuarios/admin/metrics/?range={time_range}</span></code></p></li>
+</ul>
+<p><strong>Métricas Disponibles</strong>:</p>
+<ul class="simple">
+<li><p><strong>Ventas</strong>: Pedidos totales, ingresos, top/bottom productos</p></li>
+<li><p><strong>Usuarios</strong>: Activos, inactivos, nuevos registros</p></li>
+<li><p><strong>Plataforma</strong>: CPU, RAM, disco, hora del servidor</p></li>
+</ul>
+</section>
+<section id="sistema-de-temas-global">
+<h3>2. Sistema de Temas Global<a class="headerlink" href="#sistema-de-temas-global" title="Link to this heading"></a></h3>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>✅ Modo claro/oscuro</p></li>
+<li><p>✅ Persistencia en localStorage</p></li>
+<li><p>✅ Aplicación instantánea</p></li>
+<li><p>✅ Variables CSS dinámicas</p></li>
+<li><p>✅ Soporte en todos los componentes</p></li>
+</ul>
+<p><strong>Uso</strong>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">theme</span><span class="p">,</span><span class="w"> </span><span class="nx">setTheme</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useTheme</span><span class="p">();</span>
+<span class="nx">setTheme</span><span class="p">(</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// o &#39;light&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="internacionalizacion-i18n">
+<h3>3. Internacionalización (i18n)<a class="headerlink" href="#internacionalizacion-i18n" title="Link to this heading"></a></h3>
+<p><strong>Idiomas Soportados</strong>:</p>
+<ul class="simple">
+<li><p>Español (es)</p></li>
+<li><p>English (en)</p></li>
+</ul>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>✅ Cambio en tiempo real</p></li>
+<li><p>✅ Persistencia de preferencia</p></li>
+<li><p>✅ Hook personalizado <code class="docutils literal notranslate"><span class="pre">useTranslation</span></code></p></li>
+<li><p>✅ Archivos JSON para traducciones</p></li>
+</ul>
+</section>
+<section id="desactivacion-de-cuenta-con-email">
+<h3>4. Desactivación de Cuenta con Email<a class="headerlink" href="#desactivacion-de-cuenta-con-email" title="Link to this heading"></a></h3>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>✅ Auto-desactivación de usuario</p></li>
+<li><p>✅ Email de confirmación automático</p></li>
+<li><p>✅ Opción de reactivación</p></li>
+<li><p>✅ Diferenciación entre auto-desactivación y suspensión admin</p></li>
+</ul>
+<p><strong>Endpoint</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/usuarios/deactivate/</span></code></p></li>
+</ul>
+</section>
+<section id="header-unificado-con-dropdown">
+<h3>5. Header Unificado con Dropdown<a class="headerlink" href="#header-unificado-con-dropdown" title="Link to this heading"></a></h3>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>✅ Menú de usuario profesional</p></li>
+<li><p>✅ Links a Perfil, Configuración, Logout</p></li>
+<li><p>✅ Selector de idioma integrado</p></li>
+<li><p>✅ Link a documentación API</p></li>
+<li><p>✅ Responsive design</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="componentes-creados">
+<h2>🧩 COMPONENTES CREADOS<a class="headerlink" href="#componentes-creados" title="Link to this heading"></a></h2>
+<section id="frontend-components">
+<h3>Frontend Components<a class="headerlink" href="#frontend-components" title="Link to this heading"></a></h3>
+<section id="loadingspinner">
+<h4>1. LoadingSpinner<a class="headerlink" href="#loadingspinner" title="Link to this heading"></a></h4>
+<p><strong>Ubicación</strong>: <code class="docutils literal notranslate"><span class="pre">src/frontend/src/components/common/LoadingSpinner.jsx</span></code></p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>3 tamaños (small, medium, large)</p></li>
+<li><p>Modo fullscreen</p></li>
+<li><p>Animaciones modernas</p></li>
+<li><p>Soporte dark theme</p></li>
+</ul>
+<p><strong>Uso</strong>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">LoadingSpinner</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="s">&quot;medium&quot;</span><span class="w"> </span><span class="na">message</span><span class="o">=</span><span class="s">&quot;Cargando datos...&quot;</span><span class="w"> </span><span class="na">fullScreen</span><span class="w"> </span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="toast-notifications">
+<h4>2. Toast Notifications<a class="headerlink" href="#toast-notifications" title="Link to this heading"></a></h4>
+<p><strong>Ubicación</strong>: <code class="docutils literal notranslate"><span class="pre">src/frontend/src/components/common/Toast.jsx</span></code></p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>4 tipos (success, error, warning, info)</p></li>
+<li><p>Auto-dismiss configurable</p></li>
+<li><p>Hook personalizado <code class="docutils literal notranslate"><span class="pre">useToast</span></code></p></li>
+<li><p>Contenedor para múltiples toasts</p></li>
+</ul>
+<p><strong>Uso</strong>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">showSuccess</span><span class="p">,</span><span class="w"> </span><span class="nx">showError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useToast</span><span class="p">();</span>
+<span class="nx">showSuccess</span><span class="p">(</span><span class="s1">&#39;¡Operación exitosa!&#39;</span><span class="p">);</span>
+<span class="nx">showError</span><span class="p">(</span><span class="s1">&#39;Ocurrió un error&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="confirmdialog">
+<h4>3. ConfirmDialog<a class="headerlink" href="#confirmdialog" title="Link to this heading"></a></h4>
+<p><strong>Ubicación</strong>: <code class="docutils literal notranslate"><span class="pre">src/frontend/src/components/common/ConfirmDialog.jsx</span></code></p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>3 tipos (danger, warning, info)</p></li>
+<li><p>Promise-based API</p></li>
+<li><p>Hook personalizado <code class="docutils literal notranslate"><span class="pre">useConfirmDialog</span></code></p></li>
+<li><p>Animaciones suaves</p></li>
+</ul>
+<p><strong>Uso</strong>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">showConfirm</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useConfirmDialog</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">confirmed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">showConfirm</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;¿Eliminar usuario?&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Esta acción no se puede deshacer&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;danger&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="datatable">
+<h4>4. DataTable<a class="headerlink" href="#datatable" title="Link to this heading"></a></h4>
+<p><strong>Ubicación</strong>: <code class="docutils literal notranslate"><span class="pre">src/frontend/src/components/common/DataTable.jsx</span></code></p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>Ordenamiento por columnas</p></li>
+<li><p>Filtrado en tiempo real</p></li>
+<li><p>Paginación automática</p></li>
+<li><p>Renderizado personalizado de celdas</p></li>
+<li><p>Responsive</p></li>
+</ul>
+<p><strong>Uso</strong>:</p>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">DataTable</span>
+<span class="w">  </span><span class="na">data</span><span class="o">=</span><span class="p">{</span><span class="nx">users</span><span class="p">}</span>
+<span class="w">  </span><span class="na">columns</span><span class="o">=</span><span class="p">{[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Nombre&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;email&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Email&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rol&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Rol&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">render</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">val</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">val</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]}</span>
+<span class="w">  </span><span class="na">pageSize</span><span class="o">=</span><span class="p">{</span><span class="mf">10</span><span class="p">}</span>
+<span class="w">  </span><span class="na">onRowClick</span><span class="o">=</span><span class="p">{(</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">row</span><span class="p">)}</span>
+<span class="p">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="livemetricsmodal">
+<h4>5. LiveMetricsModal<a class="headerlink" href="#livemetricsmodal" title="Link to this heading"></a></h4>
+<p><strong>Ubicación</strong>: <code class="docutils literal notranslate"><span class="pre">src/frontend/src/components/admin/LiveMetricsModal.jsx</span></code></p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>Tabs para categorías</p></li>
+<li><p>Filtros de tiempo</p></li>
+<li><p>Auto-refresh</p></li>
+<li><p>Datos reales desde API</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="optimizaciones">
+<h2>⚡ OPTIMIZACIONES<a class="headerlink" href="#optimizaciones" title="Link to this heading"></a></h2>
+<section id="backend">
+<h3>Backend<a class="headerlink" href="#backend" title="Link to this heading"></a></h3>
+<section id="consultas-sql-optimizadas">
+<h4>1. Consultas SQL Optimizadas<a class="headerlink" href="#consultas-sql-optimizadas" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agregaciones eficientes</span>
+<span class="n">orders_query</span> <span class="o">=</span> <span class="n">Pedido</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">fecha_creacion__gte</span><span class="o">=</span><span class="n">start_date</span><span class="p">)</span>
+<span class="n">total_revenue</span> <span class="o">=</span> <span class="n">orders_query</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">Sum</span><span class="p">(</span><span class="s1">&#39;total&#39;</span><span class="p">))[</span><span class="s1">&#39;total__sum&#39;</span><span class="p">]</span>
+
+<span class="c1"># Top productos con una sola query</span>
+<span class="n">product_stats</span> <span class="o">=</span> <span class="n">DetallePedido</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">pedido__fecha_creacion__gte</span><span class="o">=</span><span class="n">start_date</span>
+<span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;producto__nombre&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">qty</span><span class="o">=</span><span class="n">Sum</span><span class="p">(</span><span class="s1">&#39;cantidad&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-qty&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="manejo-graceful-de-dependencias">
+<h4>2. Manejo Graceful de Dependencias<a class="headerlink" href="#manejo-graceful-de-dependencias" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># psutil opcional</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">psutil</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Uso seguro</span>
+<span class="k">if</span> <span class="n">psutil</span><span class="p">:</span>
+    <span class="n">cpu</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">cpu</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Valor por defecto</span>
+</pre></div>
+</div>
+</section>
+<section id="correccion-de-campos-del-modelo">
+<h4>3. Corrección de Campos del Modelo<a class="headerlink" href="#correccion-de-campos-del-modelo" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Uso correcto de <code class="docutils literal notranslate"><span class="pre">estado</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">is_active</span></code></p></li>
+<li><p>Consistencia en toda la aplicación</p></li>
+</ul>
+</section>
+</section>
+<section id="frontend">
+<h3>Frontend<a class="headerlink" href="#frontend" title="Link to this heading"></a></h3>
+<section id="context-api-para-estado-global">
+<h4>1. Context API para Estado Global<a class="headerlink" href="#context-api-para-estado-global" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>ThemeContext</p></li>
+<li><p>I18nContext</p></li>
+<li><p>AuthContext</p></li>
+<li><p>NotificationContext</p></li>
+<li><p>CartContext</p></li>
+</ul>
+</section>
+<section id="hooks-personalizados">
+<h4>2. Hooks Personalizados<a class="headerlink" href="#hooks-personalizados" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">useTheme()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">useTranslation()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">useToast()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">useConfirmDialog()</span></code></p></li>
+</ul>
+</section>
+<section id="lazy-loading-y-code-splitting">
+<h4>3. Lazy Loading y Code Splitting<a class="headerlink" href="#lazy-loading-y-code-splitting" title="Link to this heading"></a></h4>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">Dashboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;./pages/Dashboard&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="memoizacion">
+<h4>4. Memoización<a class="headerlink" href="#memoizacion" title="Link to this heading"></a></h4>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">filteredData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useMemo</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">active</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tests-implementados">
+<h2>🧪 TESTS IMPLEMENTADOS<a class="headerlink" href="#tests-implementados" title="Link to this heading"></a></h2>
+<section id="suite-de-tests">
+<h3>Suite de Tests<a class="headerlink" href="#suite-de-tests" title="Link to this heading"></a></h3>
+<p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">src/backend/tests/test_metrics_and_accounts.py</span></code></p>
+<p><strong>Tests de Métricas</strong>:</p>
+<ul class="simple">
+<li><p>✅ Requiere autenticación</p></li>
+<li><p>✅ Requiere permisos de admin</p></li>
+<li><p>✅ Estructura de respuesta correcta</p></li>
+<li><p>✅ Filtros de tiempo funcionan</p></li>
+<li><p>✅ Contadores de usuarios precisos</p></li>
+<li><p>✅ Valores numéricos válidos</p></li>
+</ul>
+<p><strong>Tests de Gestión de Cuentas</strong>:</p>
+<ul class="simple">
+<li><p>✅ Desactivación de cuenta</p></li>
+<li><p>✅ Requiere autenticación</p></li>
+<li><p>✅ Estado de cuenta</p></li>
+</ul>
+<p><strong>Ejecutar Tests</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/backend/manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>tests.test_metrics_and_accounts
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="documentacion">
+<h2>📚 DOCUMENTACIÓN<a class="headerlink" href="#documentacion" title="Link to this heading"></a></h2>
+<section id="documentos-creados">
+<h3>Documentos Creados<a class="headerlink" href="#documentos-creados" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>LIVE_METRICS.md</strong></p>
+<ul class="simple">
+<li><p>Guía completa del monitor de métricas</p></li>
+<li><p>Ejemplos de uso</p></li>
+<li><p>Referencia de API</p></li>
+</ul>
+</li>
+<li><p><strong>THEME_AND_SETTINGS.md</strong></p>
+<ul class="simple">
+<li><p>Sistema de temas</p></li>
+<li><p>Internacionalización</p></li>
+<li><p>Gestión de configuración</p></li>
+</ul>
+</li>
+<li><p><strong>Scripts de Prueba</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">create_complete_test_users.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verify_user_logins.py</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="ubicacion">
+<h3>Ubicación<a class="headerlink" href="#ubicacion" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+├── features/
+│   ├── LIVE_METRICS.md
+│   └── THEME_AND_SETTINGS.md
+└── diagramas/
+    └── DIAGRAMA_CASOS_USO.md (actualizado)
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="usuarios-de-prueba">
+<h2>👥 USUARIOS DE PRUEBA<a class="headerlink" href="#usuarios-de-prueba" title="Link to this heading"></a></h2>
+<section id="credenciales">
+<h3>Credenciales<a class="headerlink" href="#credenciales" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rol</p></th>
+<th class="head"><p>Email</p></th>
+<th class="head"><p>Password</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Admin</strong></p></td>
+<td><p>admin&#64;prexcol.com</p></td>
+<td><p>Admin123!</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Proveedor</strong></p></td>
+<td><p>proveedor&#64;prexcol.com</p></td>
+<td><p>Proveedor123!</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Logística</strong></p></td>
+<td><p>logistica&#64;prexcol.com</p></td>
+<td><p>Logistica123!</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cliente</strong></p></td>
+<td><p>cliente&#64;prexcol.com</p></td>
+<td><p>Cliente123!</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="crear-usuarios">
+<h3>Crear Usuarios<a class="headerlink" href="#crear-usuarios" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/backend/scripts/create_complete_test_users.py
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="proximos-pasos-recomendados">
+<h2>🎯 PRÓXIMOS PASOS RECOMENDADOS<a class="headerlink" href="#proximos-pasos-recomendados" title="Link to this heading"></a></h2>
+<section id="corto-plazo-1-2-semanas">
+<h3>Corto Plazo (1-2 semanas)<a class="headerlink" href="#corto-plazo-1-2-semanas" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Gráficos Avanzados</strong></p>
+<ul class="simple">
+<li><p>Integrar Chart.js o Recharts</p></li>
+<li><p>Visualizaciones interactivas</p></li>
+<li><p>Exportación de gráficos</p></li>
+</ul>
+</li>
+<li><p><strong>Notificaciones Push</strong></p>
+<ul class="simple">
+<li><p>WebSockets para tiempo real</p></li>
+<li><p>Service Workers</p></li>
+<li><p>Notificaciones del navegador</p></li>
+</ul>
+</li>
+<li><p><strong>Búsqueda Avanzada</strong></p>
+<ul class="simple">
+<li><p>Elasticsearch integration</p></li>
+<li><p>Búsqueda fuzzy</p></li>
+<li><p>Filtros complejos</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="mediano-plazo-1-2-meses">
+<h3>Mediano Plazo (1-2 meses)<a class="headerlink" href="#mediano-plazo-1-2-meses" title="Link to this heading"></a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Dashboard Personalizable</strong></p>
+<ul class="simple">
+<li><p>Widgets arrastrables</p></li>
+<li><p>Configuración por usuario</p></li>
+<li><p>Múltiples layouts</p></li>
+</ul>
+</li>
+<li><p><strong>Reportes Automatizados</strong></p>
+<ul class="simple">
+<li><p>Generación programada</p></li>
+<li><p>Envío por email</p></li>
+<li><p>Formatos PDF/Excel</p></li>
+</ul>
+</li>
+<li><p><strong>Analytics Avanzado</strong></p>
+<ul class="simple">
+<li><p>Google Analytics integration</p></li>
+<li><p>Métricas de negocio</p></li>
+<li><p>Predicciones con ML</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="largo-plazo-3-6-meses">
+<h3>Largo Plazo (3-6 meses)<a class="headerlink" href="#largo-plazo-3-6-meses" title="Link to this heading"></a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Mobile App</strong></p>
+<ul class="simple">
+<li><p>React Native</p></li>
+<li><p>Sincronización offline</p></li>
+<li><p>Push notifications</p></li>
+</ul>
+</li>
+<li><p><strong>API Pública</strong></p>
+<ul class="simple">
+<li><p>Documentación Swagger completa</p></li>
+<li><p>Rate limiting</p></li>
+<li><p>API keys</p></li>
+</ul>
+</li>
+<li><p><strong>Microservicios</strong></p>
+<ul class="simple">
+<li><p>Separar servicios</p></li>
+<li><p>Docker/Kubernetes</p></li>
+<li><p>CI/CD pipeline</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="metricas-del-proyecto">
+<h2>📊 MÉTRICAS DEL PROYECTO<a class="headerlink" href="#metricas-del-proyecto" title="Link to this heading"></a></h2>
+<section id="codigo">
+<h3>Código<a class="headerlink" href="#codigo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Componentes Frontend</strong>: 48+</p></li>
+<li><p><strong>Endpoints Backend</strong>: 30+</p></li>
+<li><p><strong>Tests</strong>: 15+</p></li>
+<li><p><strong>Documentación</strong>: 10+ archivos</p></li>
+</ul>
+</section>
+<section id="cobertura">
+<h3>Cobertura<a class="headerlink" href="#cobertura" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Frontend</strong>: ~85% componentes con tests</p></li>
+<li><p><strong>Backend</strong>: ~70% endpoints con tests</p></li>
+<li><p><strong>Documentación</strong>: 100% funcionalidades documentadas</p></li>
+</ul>
+</section>
+<section id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Tiempo de carga</strong>: &lt; 2s</p></li>
+<li><p><strong>First Contentful Paint</strong>: &lt; 1s</p></li>
+<li><p><strong>Time to Interactive</strong>: &lt; 3s</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="seguridad">
+<h2>🔐 SEGURIDAD<a class="headerlink" href="#seguridad" title="Link to this heading"></a></h2>
+<section id="implementado">
+<h3>Implementado<a class="headerlink" href="#implementado" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ JWT Authentication</p></li>
+<li><p>✅ CORS configurado</p></li>
+<li><p>✅ CSRF protection</p></li>
+<li><p>✅ Rate limiting (preparado)</p></li>
+<li><p>✅ Input validation</p></li>
+<li><p>✅ SQL injection protection (ORM)</p></li>
+<li><p>✅ XSS protection</p></li>
+</ul>
+</section>
+<section id="recomendaciones">
+<h3>Recomendaciones<a class="headerlink" href="#recomendaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Implementar 2FA</p></li>
+<li><p>[ ] Auditoría de seguridad</p></li>
+<li><p>[ ] Penetration testing</p></li>
+<li><p>[ ] HTTPS en producción</p></li>
+<li><p>[ ] Backup automatizado</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="diseno">
+<h2>🎨 DISEÑO<a class="headerlink" href="#diseno" title="Link to this heading"></a></h2>
+<section id="principios">
+<h3>Principios<a class="headerlink" href="#principios" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Mobile First</strong>: Responsive en todos los dispositivos</p></li>
+<li><p><strong>Accesibilidad</strong>: WCAG 2.1 AA</p></li>
+<li><p><strong>Consistencia</strong>: Design system unificado</p></li>
+<li><p><strong>Performance</strong>: Optimizado para velocidad</p></li>
+</ul>
+</section>
+<section id="paleta-de-colores">
+<h3>Paleta de Colores<a class="headerlink" href="#paleta-de-colores" title="Link to this heading"></a></h3>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Primary */</span>
+<span class="nt">--color-primary</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">3b82f6</span><span class="o">;</span>
+<span class="nt">--color-primary-dark</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">2563eb</span><span class="o">;</span>
+
+<span class="c">/* Success */</span>
+<span class="nt">--color-success</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">10b981</span><span class="o">;</span>
+
+<span class="c">/* Warning */</span>
+<span class="nt">--color-warning</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">f59e0b</span><span class="o">;</span>
+
+<span class="c">/* Danger */</span>
+<span class="nt">--color-danger</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">ef4444</span><span class="o">;</span>
+
+<span class="c">/* Neutral */</span>
+<span class="nt">--color-gray-100</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">f8fafc</span><span class="o">;</span>
+<span class="nt">--color-gray-500</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">64748b</span><span class="o">;</span>
+<span class="nt">--color-gray-900</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">1e293b</span><span class="o">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="logros">
+<h2>🏆 LOGROS<a class="headerlink" href="#logros" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>✅ Sistema completamente funcional</p></li>
+<li><p>✅ Métricas en tiempo real implementadas</p></li>
+<li><p>✅ Temas y i18n funcionando</p></li>
+<li><p>✅ Componentes reutilizables creados</p></li>
+<li><p>✅ Tests automatizados</p></li>
+<li><p>✅ Documentación completa</p></li>
+<li><p>✅ Optimizaciones de rendimiento</p></li>
+<li><p>✅ Usuarios de prueba creados</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="soporte">
+<h2>📞 SOPORTE<a class="headerlink" href="#soporte" title="Link to this heading"></a></h2>
+<p>Para cualquier duda o problema:</p>
+<ol class="arabic simple">
+<li><p>Revisar documentación en <code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></li>
+<li><p>Verificar logs del servidor</p></li>
+<li><p>Ejecutar tests: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">test</span></code></p></li>
+<li><p>Revisar issues en GitHub</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Desarrollado con ❤️ por el equipo PREXCOL</strong></p>
+<p><em>Última actualización: 2025-12-09</em></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+:py:mod:`backend.apps.notificaciones.apps`
+==========================================
+
+.. py:module:: backend.apps.notificaciones.apps
+
+.. autodoc2-docstring:: backend.apps.notificaciones.apps
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`NotificacionesConfig <backend.apps.notificaciones.apps.NotificacionesConfig>`
+     -
+
+API
+~~~
+
+.. py:class:: NotificacionesConfig(app_name, app_module)
+   :canonical: backend.apps.notificaciones.apps.NotificacionesConfig
+
+   Bases: :py:obj:`django.apps.AppConfig`
+
+   .. py:attribute:: default_auto_field
+      :canonical: backend.apps.notificaciones.apps.NotificacionesConfig.default_auto_field
+      :value: 'django.db.models.BigAutoField'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.apps.NotificacionesConfig.default_auto_field
+         :parser: rst
+
+   .. py:attribute:: name
+      :canonical: backend.apps.notificaciones.apps.NotificacionesConfig.name
+      :value: 'apps.notificaciones'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.apps.NotificacionesConfig.name
+         :parser: rst
+
+   .. py:attribute:: label
+      :canonical: backend.apps.notificaciones.apps.NotificacionesConfig.label
+      :value: 'notificaciones'
+
+      .. autodoc2-docstring:: backend.apps.notificaciones.apps.NotificacionesConfig.label
+         :parser: rst

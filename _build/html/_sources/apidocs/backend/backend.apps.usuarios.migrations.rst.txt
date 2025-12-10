@@ -1,0 +1,8 @@
+:py:mod:`backend.apps.usuarios.migrations`
+==========================================
+
+.. py:module:: backend.apps.usuarios.migrations
+
+.. autodoc2-docstring:: backend.apps.usuarios.migrations
+   :parser: rst
+   :allowtitles:

@@ -1,0 +1,50 @@
+:py:mod:`backend.apps.usuarios.apps`
+====================================
+
+.. py:module:: backend.apps.usuarios.apps
+
+.. autodoc2-docstring:: backend.apps.usuarios.apps
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`UsuariosConfig <backend.apps.usuarios.apps.UsuariosConfig>`
+     -
+
+API
+~~~
+
+.. py:class:: UsuariosConfig(app_name, app_module)
+   :canonical: backend.apps.usuarios.apps.UsuariosConfig
+
+   Bases: :py:obj:`django.apps.AppConfig`
+
+   .. py:attribute:: default_auto_field
+      :canonical: backend.apps.usuarios.apps.UsuariosConfig.default_auto_field
+      :value: 'django.db.models.BigAutoField'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.apps.UsuariosConfig.default_auto_field
+         :parser: rst
+
+   .. py:attribute:: name
+      :canonical: backend.apps.usuarios.apps.UsuariosConfig.name
+      :value: 'apps.usuarios'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.apps.UsuariosConfig.name
+         :parser: rst
+
+   .. py:attribute:: label
+      :canonical: backend.apps.usuarios.apps.UsuariosConfig.label
+      :value: 'usuarios'
+
+      .. autodoc2-docstring:: backend.apps.usuarios.apps.UsuariosConfig.label
+         :parser: rst

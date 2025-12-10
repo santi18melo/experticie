@@ -2,14 +2,34 @@ import React, { useState } from 'react';
 
 export default function AdminStoresTab({ tiendas, loading, onDelete, onUpdate, onCreate }) {
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({ nombre: "", direccion: "", telefono: "" });
   const [filtroEstado, setFiltroEstado] = useState("todos");
 
+  const resetForm = () => {
+    setFormData({ nombre: "", direccion: "", telefono: "" });
+    setEditingId(null);
+    setShowForm(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreate(formData);
-    setShowForm(false);
-    setFormData({ nombre: "", direccion: "", telefono: "" });
+    if (editingId) {
+        onUpdate({ ...formData, id: editingId });
+    } else {
+        onCreate(formData);
+    }
+    resetForm();
+  };
+
+  const handleEdit = (tienda) => {
+      setFormData({
+          nombre: tienda.nombre || "",
+          direccion: tienda.direccion || "",
+          telefono: tienda.telefono || ""
+      });
+      setEditingId(tienda.id);
+      setShowForm(true);
   };
 
   const tiendasFiltradas = (tiendas || []).filter(t => {
@@ -22,19 +42,22 @@ export default function AdminStoresTab({ tiendas, loading, onDelete, onUpdate, o
     <div className="content-section">
       <div className="section-header">
         <h2>Gestión de Tiendas</h2>
-        <button className="btn-primary" onClick={() => setShowForm(!showForm)}>
+        <button className="btn-primary" onClick={() => { resetForm(); setShowForm(!showForm); }}>
           {showForm ? "✕ Cancelar" : "+ Nueva Tienda"}
         </button>
       </div>
 
       {showForm && (
         <form onSubmit={handleSubmit} className="form-card">
+          <div className="form-head">
+              <h3>{editingId ? 'Editar Tienda' : 'Crear Tienda'}</h3>
+          </div>
           <div className="form-grid">
             <input type="text" placeholder="Nombre Tienda" value={formData.nombre} onChange={e => setFormData({...formData, nombre: e.target.value})} required />
             <input type="text" placeholder="Dirección" value={formData.direccion} onChange={e => setFormData({...formData, direccion: e.target.value})} required />
             <input type="tel" placeholder="Teléfono" value={formData.telefono} onChange={e => setFormData({...formData, telefono: e.target.value})} required />
           </div>
-          <button type="submit" className="btn-submit">Crear Tienda</button>
+          <button type="submit" className="btn-submit">{editingId ? 'Actualizar' : 'Crear Tienda'}</button>
         </form>
       )}
 
@@ -78,7 +101,7 @@ export default function AdminStoresTab({ tiendas, loading, onDelete, onUpdate, o
                 </td>
                 <td>
                   <div className="actions-cell">
-                    <button className="btn-icon edit" onClick={() => onUpdate(tienda, true)} title="Editar">✏️</button>
+                    <button className="btn-icon edit" onClick={() => handleEdit(tienda)} title="Editar">✏️</button>
                     <button className="btn-icon delete" onClick={() => onDelete(tienda.id)} title="Eliminar">🗑️</button>
                   </div>
                 </td>

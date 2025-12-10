@@ -1,0 +1,17 @@
+:py:mod:`backend.services`
+==========================
+
+.. py:module:: backend.services
+
+.. autodoc2-docstring:: backend.services
+   :parser: rst
+   :allowtitles:
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.services.observability

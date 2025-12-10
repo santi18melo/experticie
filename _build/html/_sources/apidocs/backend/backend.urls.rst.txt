@@ -1,0 +1,84 @@
+:py:mod:`backend.urls`
+======================
+
+.. py:module:: backend.urls
+
+.. autodoc2-docstring:: backend.urls
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`api_root <backend.urls.api_root>`
+     - .. autodoc2-docstring:: backend.urls.api_root
+          :parser: rst
+          :summary:
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`api_info <backend.urls.api_info>`
+     - .. autodoc2-docstring:: backend.urls.api_info
+          :parser: rst
+          :summary:
+   * - :py:obj:`schema_view <backend.urls.schema_view>`
+     - .. autodoc2-docstring:: backend.urls.schema_view
+          :parser: rst
+          :summary:
+   * - :py:obj:`DOCS_ROOT <backend.urls.DOCS_ROOT>`
+     - .. autodoc2-docstring:: backend.urls.DOCS_ROOT
+          :parser: rst
+          :summary:
+   * - :py:obj:`urlpatterns <backend.urls.urlpatterns>`
+     - .. autodoc2-docstring:: backend.urls.urlpatterns
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: api_info
+   :canonical: backend.urls.api_info
+   :value: 'Info(...)'
+
+   .. autodoc2-docstring:: backend.urls.api_info
+      :parser: rst
+
+.. py:data:: schema_view
+   :canonical: backend.urls.schema_view
+   :value: 'get_schema_view(...)'
+
+   .. autodoc2-docstring:: backend.urls.schema_view
+      :parser: rst
+
+.. py:function:: api_root(request)
+   :canonical: backend.urls.api_root
+
+   .. autodoc2-docstring:: backend.urls.api_root
+      :parser: rst
+
+.. py:data:: DOCS_ROOT
+   :canonical: backend.urls.DOCS_ROOT
+   :value: 'join(...)'
+
+   .. autodoc2-docstring:: backend.urls.DOCS_ROOT
+      :parser: rst
+
+.. py:data:: urlpatterns
+   :canonical: backend.urls.urlpatterns
+   :value: None
+
+   .. autodoc2-docstring:: backend.urls.urlpatterns
+      :parser: rst

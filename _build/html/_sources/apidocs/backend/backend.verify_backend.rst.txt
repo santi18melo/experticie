@@ -1,0 +1,141 @@
+:py:mod:`backend.verify_backend`
+================================
+
+.. py:module:: backend.verify_backend
+
+.. autodoc2-docstring:: backend.verify_backend
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`print_header <backend.verify_backend.print_header>`
+     - .. autodoc2-docstring:: backend.verify_backend.print_header
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_imports <backend.verify_backend.test_imports>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_imports
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_database <backend.verify_backend.test_database>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_database
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_jwt_config <backend.verify_backend.test_jwt_config>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_jwt_config
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_cors <backend.verify_backend.test_cors>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_cors
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_permissions <backend.verify_backend.test_permissions>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_permissions
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_serializers <backend.verify_backend.test_serializers>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_serializers
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_migration_status <backend.verify_backend.test_migration_status>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_migration_status
+          :parser: rst
+          :summary:
+   * - :py:obj:`test_views <backend.verify_backend.test_views>`
+     - .. autodoc2-docstring:: backend.verify_backend.test_views
+          :parser: rst
+          :summary:
+   * - :py:obj:`main <backend.verify_backend.main>`
+     - .. autodoc2-docstring:: backend.verify_backend.main
+          :parser: rst
+          :summary:
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`current_dir <backend.verify_backend.current_dir>`
+     - .. autodoc2-docstring:: backend.verify_backend.current_dir
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: current_dir
+   :canonical: backend.verify_backend.current_dir
+   :value: None
+
+   .. autodoc2-docstring:: backend.verify_backend.current_dir
+      :parser: rst
+
+.. py:function:: print_header(text)
+   :canonical: backend.verify_backend.print_header
+
+   .. autodoc2-docstring:: backend.verify_backend.print_header
+      :parser: rst
+
+.. py:function:: test_imports()
+   :canonical: backend.verify_backend.test_imports
+
+   .. autodoc2-docstring:: backend.verify_backend.test_imports
+      :parser: rst
+
+.. py:function:: test_database()
+   :canonical: backend.verify_backend.test_database
+
+   .. autodoc2-docstring:: backend.verify_backend.test_database
+      :parser: rst
+
+.. py:function:: test_jwt_config()
+   :canonical: backend.verify_backend.test_jwt_config
+
+   .. autodoc2-docstring:: backend.verify_backend.test_jwt_config
+      :parser: rst
+
+.. py:function:: test_cors()
+   :canonical: backend.verify_backend.test_cors
+
+   .. autodoc2-docstring:: backend.verify_backend.test_cors
+      :parser: rst
+
+.. py:function:: test_permissions()
+   :canonical: backend.verify_backend.test_permissions
+
+   .. autodoc2-docstring:: backend.verify_backend.test_permissions
+      :parser: rst
+
+.. py:function:: test_serializers()
+   :canonical: backend.verify_backend.test_serializers
+
+   .. autodoc2-docstring:: backend.verify_backend.test_serializers
+      :parser: rst
+
+.. py:function:: test_migration_status()
+   :canonical: backend.verify_backend.test_migration_status
+
+   .. autodoc2-docstring:: backend.verify_backend.test_migration_status
+      :parser: rst
+
+.. py:function:: test_views()
+   :canonical: backend.verify_backend.test_views
+
+   .. autodoc2-docstring:: backend.verify_backend.test_views
+      :parser: rst
+
+.. py:function:: main()
+   :canonical: backend.verify_backend.main
+
+   .. autodoc2-docstring:: backend.verify_backend.main
+      :parser: rst

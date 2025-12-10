@@ -1,0 +1,44 @@
+:py:mod:`backend.apps.usuarios.urls`
+====================================
+
+.. py:module:: backend.apps.usuarios.urls
+
+.. autodoc2-docstring:: backend.apps.usuarios.urls
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`router <backend.apps.usuarios.urls.router>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.urls.router
+          :parser: rst
+          :summary:
+   * - :py:obj:`urlpatterns <backend.apps.usuarios.urls.urlpatterns>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.urls.urlpatterns
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: router
+   :canonical: backend.apps.usuarios.urls.router
+   :value: 'DefaultRouter(...)'
+
+   .. autodoc2-docstring:: backend.apps.usuarios.urls.router
+      :parser: rst
+
+.. py:data:: urlpatterns
+   :canonical: backend.apps.usuarios.urls.urlpatterns
+   :value: None
+
+   .. autodoc2-docstring:: backend.apps.usuarios.urls.urlpatterns
+      :parser: rst

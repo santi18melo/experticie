@@ -1,0 +1,42 @@
+:py:mod:`backend.apps.productos.management.commands.recargar_stock_automatico`
+==============================================================================
+
+.. py:module:: backend.apps.productos.management.commands.recargar_stock_automatico
+
+.. autodoc2-docstring:: backend.apps.productos.management.commands.recargar_stock_automatico
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`Command <backend.apps.productos.management.commands.recargar_stock_automatico.Command>`
+     -
+
+API
+~~~
+
+.. py:class:: Command(stdout=None, stderr=None, no_color=False, force_color=False)
+   :canonical: backend.apps.productos.management.commands.recargar_stock_automatico.Command
+
+   Bases: :py:obj:`django.core.management.base.BaseCommand`
+
+   .. py:attribute:: help
+      :canonical: backend.apps.productos.management.commands.recargar_stock_automatico.Command.help
+      :value: 'Ejecuta la recarga automática de stock para productos con stock bajo'
+
+      .. autodoc2-docstring:: backend.apps.productos.management.commands.recargar_stock_automatico.Command.help
+         :parser: rst
+
+   .. py:method:: add_arguments(parser)
+      :canonical: backend.apps.productos.management.commands.recargar_stock_automatico.Command.add_arguments
+
+   .. py:method:: handle(*args, **options)
+      :canonical: backend.apps.productos.management.commands.recargar_stock_automatico.Command.handle

@@ -1,0 +1,35 @@
+:py:mod:`backend.apps.productos`
+================================
+
+.. py:module:: backend.apps.productos
+
+.. autodoc2-docstring:: backend.apps.productos
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps.productos.management
+   backend.apps.productos.migrations
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.apps.productos.admin
+   backend.apps.productos.apps
+   backend.apps.productos.models
+   backend.apps.productos.permissions
+   backend.apps.productos.serializers
+   backend.apps.productos.tasks
+   backend.apps.productos.tests
+   backend.apps.productos.urls
+   backend.apps.productos.views

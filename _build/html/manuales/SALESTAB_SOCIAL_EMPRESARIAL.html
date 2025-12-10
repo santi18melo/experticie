@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌐 SalesTab - Diseño Red Social Empresarial &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🌐 SalesTab - Diseño Red Social Empresarial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/manuales/SALESTAB_SOCIAL_EMPRESARIAL.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="salestab-diseno-red-social-empresarial">
+<h1>🌐 SalesTab - Diseño Red Social Empresarial<a class="headerlink" href="#salestab-diseno-red-social-empresarial" title="Link to this heading"></a></h1>
+<section id="concepto-linkedin-facebook-corporativo">
+<h2>🎯 Concepto: LinkedIn + Facebook Corporativo<a class="headerlink" href="#concepto-linkedin-facebook-corporativo" title="Link to this heading"></a></h2>
+<p>Diseño profesional tipo red social empresarial que combina la elegancia de LinkedIn con la interactividad de Facebook, pero enfocado en ventas B2B.</p>
+</section>
+<hr class="docutils" />
+<section id="estructura-del-layout">
+<h2>🏗️ Estructura del Layout<a class="headerlink" href="#estructura-del-layout" title="Link to this heading"></a></h2>
+<section id="layout-principal-3-columnas">
+<h3><strong>Layout Principal (3 Columnas)</strong><a class="headerlink" href="#layout-principal-3-columnas" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────┐
+│              Header Sticky (LinkedIn)               │
+├──────────┬────────────────────────────┬─────────────┤
+│ Sidebar  │      Main Feed/Table       │             │
+│ (Stats)  │    (Actividad Ventas)      │             │
+│          │                            │             │
+│ 3 cols   │        9 cols              │             │
+└──────────┴────────────────────────────┴─────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="componentes-principales">
+<h2>📱 Componentes Principales<a class="headerlink" href="#componentes-principales" title="Link to this heading"></a></h2>
+<section id="header-sticky-tipo-linkedin">
+<h3>1. <strong>Header Sticky (Tipo LinkedIn)</strong><a class="headerlink" href="#header-sticky-tipo-linkedin" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌────────────────────────────────────────────────┐
+│ [📊] Actividad de Ventas      [📱Feed][📋Tab] │
+│      Monitorea transacciones en tiempo real    │
+└────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p>Sticky top (siempre visible)</p></li>
+<li><p>Fondo blanco con sombra sutil</p></li>
+<li><p>Toggle entre vista Feed y Tabla</p></li>
+<li><p>Icono corporativo azul</p></li>
+</ul>
+</section>
+<section id="sidebar-izquierdo-perfil-stats">
+<h3>2. <strong>Sidebar Izquierdo (Perfil + Stats)</strong><a class="headerlink" href="#sidebar-izquierdo-perfil-stats" title="Link to this heading"></a></h3>
+<section id="profile-card">
+<h4><strong>Profile Card</strong><a class="headerlink" href="#profile-card" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────┐
+│  ████████████    │ ← Banner azul
+│    [💼]          │ ← Icono flotante
+│  Dashboard Admin │
+│  Análisis ventas │
+└──────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="stats-card">
+<h4><strong>Stats Card</strong><a class="headerlink" href="#stats-card" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────┐
+│ 📈 Estadísticas  │
+├──────────────────┤
+│ Ventas hoy  $XXX │
+│ ─────────────    │
+│ Total       $XXX │
+│ ─────────────    │
+│ Promedio    $XXX │
+│ ─────────────    │
+│ Trans.       XXX │
+└──────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="quick-stat-card">
+<h4><strong>Quick Stat Card</strong><a class="headerlink" href="#quick-stat-card" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────┐
+│ 🎯 ITEMS VENDIDOS│
+│     1,234        │
+└──────────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<section id="vista-feed-tipo-facebook-linkedin">
+<h3>3. <strong>Vista Feed (Tipo Facebook/LinkedIn)</strong><a class="headerlink" href="#vista-feed-tipo-facebook-linkedin" title="Link to this heading"></a></h3>
+<p>Cada venta es un “post” con:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────┐
+│ [👤] Juan Pérez • realizó una compra  #123 │
+│      🕐 Hace 2 horas                        │
+├─────────────────────────────────────────────┤
+│                                             │
+│ 🛍️ Total de la compra    Productos         │
+│    $125,000                  3              │
+│                                             │
+│ ─────────────────────────────────────────   │
+│                                             │
+│ PRODUCTOS COMPRADOS                         │
+│ ┌─────────────┐  ┌─────────────┐          │
+│ │[2] Producto │  │[1] Producto │          │
+│ │   $50,000   │  │   $25,000   │          │
+│ └─────────────┘  └─────────────┘          │
+├─────────────────────────────────────────────┤
+│ 👍 Me gusta  💬 Comentar  🔗 Compartir     │
+└─────────────────────────────────────────────┘
+</pre></div>
+</div>
+<p><strong>Elementos del Post:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Header</strong>: Avatar + Nombre + Acción + Tiempo relativo</p></li>
+<li><p><strong>Content</strong>: Total + Items + Grid de productos</p></li>
+<li><p><strong>Footer</strong>: Botones de engagement (Me gusta, Comentar, Compartir)</p></li>
+</ol>
+</section>
+<section id="vista-tabla-profesional">
+<h3>4. <strong>Vista Tabla (Profesional)</strong><a class="headerlink" href="#vista-tabla-profesional" title="Link to this heading"></a></h3>
+<p>Tabla limpia y minimalista:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌────┬──────────┬───────────┬──────┬─────────┐
+│ ID │ Cliente  │   Fecha   │Items │  Total  │
+├────┼──────────┼───────────┼──────┼─────────┤
+│#123│[👤] Juan │15 Nov 2025│  3   │$125,000 │
+└────┴──────────┴───────────┴──────┴─────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="paleta-de-colores-corporativa">
+<h2>🎨 Paleta de Colores Corporativa<a class="headerlink" href="#paleta-de-colores-corporativa" title="Link to this heading"></a></h2>
+<section id="colores-principales">
+<h3><strong>Colores Principales</strong><a class="headerlink" href="#colores-principales" title="Link to this heading"></a></h3>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">Azul</span><span class="w"> </span><span class="nt">Corporativo</span><span class="o">:</span><span class="w">  </span><span class="p">#</span><span class="nn">2563eb</span><span class="w"> </span><span class="o">(</span><span class="nt">blue-600</span><span class="o">)</span>
+<span class="nt">Azul</span><span class="w"> </span><span class="nt">Oscuro</span><span class="o">:</span><span class="w">       </span><span class="p">#</span><span class="nn">1e40af</span><span class="w"> </span><span class="o">(</span><span class="nt">blue-700</span><span class="o">)</span>
+<span class="nt">Azul</span><span class="w"> </span><span class="nt">Claro</span><span class="o">:</span><span class="w">        </span><span class="p">#</span><span class="nn">dbeafe</span><span class="w"> </span><span class="o">(</span><span class="nt">blue-50</span><span class="o">)</span>
+
+<span class="nt">Gris</span><span class="w"> </span><span class="nt">Texto</span><span class="o">:</span><span class="w">        </span><span class="p">#</span><span class="nn">111827</span><span class="w"> </span><span class="o">(</span><span class="nt">gray-900</span><span class="o">)</span>
+<span class="nt">Gris</span><span class="w"> </span><span class="nt">Medio</span><span class="o">:</span><span class="w">        </span><span class="p">#</span><span class="nn">6b7280</span><span class="w"> </span><span class="o">(</span><span class="nt">gray-500</span><span class="o">)</span>
+<span class="nt">Gris</span><span class="w"> </span><span class="nt">Fondo</span><span class="o">:</span><span class="w">        </span><span class="p">#</span><span class="nn">f9fafb</span><span class="w"> </span><span class="o">(</span><span class="nt">gray-50</span><span class="o">)</span>
+<span class="nt">Gris</span><span class="w"> </span><span class="nt">Borde</span><span class="o">:</span><span class="w">        </span><span class="p">#</span><span class="nn">e5e7eb</span><span class="w"> </span><span class="o">(</span><span class="nt">gray-200</span><span class="o">)</span>
+
+<span class="nt">Verde</span><span class="w"> </span><span class="nt">Éxito</span><span class="o">:</span><span class="w">       </span><span class="p">#</span><span class="nn">10b981</span><span class="w"> </span><span class="o">(</span><span class="nt">emerald-600</span><span class="o">)</span>
+<span class="nt">Verde</span><span class="w"> </span><span class="nt">Claro</span><span class="o">:</span><span class="w">       </span><span class="p">#</span><span class="nn">d1fae5</span><span class="w"> </span><span class="o">(</span><span class="nt">emerald-100</span><span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="sin-gradientes-vibrantes">
+<h3><strong>Sin Gradientes Vibrantes</strong><a class="headerlink" href="#sin-gradientes-vibrantes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Colores sólidos y profesionales</p></li>
+<li><p>Gradientes sutiles solo en avatares</p></li>
+<li><p>Énfasis en legibilidad y claridad</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="caracteristicas-tipo-red-social">
+<h2>✨ Características Tipo Red Social<a class="headerlink" href="#caracteristicas-tipo-red-social" title="Link to this heading"></a></h2>
+<section id="timeline-de-actividad">
+<h3>1. <strong>Timeline de Actividad</strong><a class="headerlink" href="#timeline-de-actividad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Posts ordenados cronológicamente</p></li>
+<li><p>Tiempo relativo (“Hace 2 horas”)</p></li>
+<li><p>Avatar circular del cliente</p></li>
+<li><p>Acción descriptiva (“realizó una compra”)</p></li>
+</ul>
+</section>
+<section id="engagement-buttons">
+<h3>2. <strong>Engagement Buttons</strong><a class="headerlink" href="#engagement-buttons" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>👍 Me gusta  |  💬 Comentar  |  🔗 Compartir
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Estilo minimalista</p></li>
+<li><p>Hover effect sutil</p></li>
+<li><p>Preparado para futura funcionalidad</p></li>
+</ul>
+</section>
+<section id="profile-cards">
+<h3>3. <strong>Profile Cards</strong><a class="headerlink" href="#profile-cards" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Banner superior colorido</p></li>
+<li><p>Avatar flotante</p></li>
+<li><p>Información de perfil</p></li>
+<li><p>Estilo LinkedIn</p></li>
+</ul>
+</section>
+<section id="stats-sidebar">
+<h3>4. <strong>Stats Sidebar</strong><a class="headerlink" href="#stats-sidebar" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Siempre visible</p></li>
+<li><p>Actualización en tiempo real</p></li>
+<li><p>Formato compacto</p></li>
+<li><p>Separadores sutiles</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="toggle-de-vistas">
+<h2>🔄 Toggle de Vistas<a class="headerlink" href="#toggle-de-vistas" title="Link to this heading"></a></h2>
+<section id="boton-toggle">
+<h3><strong>Botón Toggle</strong><a class="headerlink" href="#boton-toggle" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────┐
+│ [📱Feed] [📋Tab]│
+└─────────────────┘
+</pre></div>
+</div>
+<p><strong>Estados:</strong></p>
+<ul class="simple">
+<li><p><strong>Activo</strong>: Fondo blanco + texto azul + sombra</p></li>
+<li><p><strong>Inactivo</strong>: Fondo transparente + texto gris</p></li>
+<li><p>Transición suave</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="elementos-de-datos">
+<h2>📊 Elementos de Datos<a class="headerlink" href="#elementos-de-datos" title="Link to this heading"></a></h2>
+<section id="badges-profesionales">
+<h3><strong>Badges Profesionales</strong><a class="headerlink" href="#badges-profesionales" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID:        [#123]      ← Azul claro
+Items:     [3 items]   ← Verde claro
+Cliente:   [👤 Juan]   ← Avatar + nombre
+</pre></div>
+</div>
+</section>
+<section id="formato-de-moneda">
+<h3><strong>Formato de Moneda</strong><a class="headerlink" href="#formato-de-moneda" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Grande:    $125,000    ← 2xl, bold, gray-900
+Pequeño:   $50,000     ← sm, bold, emerald-600
+</pre></div>
+</div>
+</section>
+<section id="tiempo-relativo">
+<h3><strong>Tiempo Relativo</strong><a class="headerlink" href="#tiempo-relativo" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hace</span> <span class="n">un</span> <span class="n">momento</span>
+<span class="n">Hace</span> <span class="mi">5</span> <span class="nb">min</span>
+<span class="n">Hace</span> <span class="mi">2</span> <span class="n">h</span>
+<span class="n">Hace</span> <span class="mi">3</span> <span class="n">días</span>
+<span class="mi">15</span> <span class="n">Nov</span> <span class="mi">2025</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="interacciones">
+<h2>🎯 Interacciones<a class="headerlink" href="#interacciones" title="Link to this heading"></a></h2>
+<section id="hover-effects">
+<h3><strong>Hover Effects</strong><a class="headerlink" href="#hover-effects" title="Link to this heading"></a></h3>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">Cards</span><span class="o">:</span><span class="w">     </span><span class="nt">shadow-sm</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nt">shadow-md</span>
+<span class="nt">Botones</span><span class="o">:</span><span class="w">   </span><span class="nt">bg-gray-100</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nt">bg-gray-200</span>
+<span class="nt">Filas</span><span class="o">:</span><span class="w">     </span><span class="nt">bg-white</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nt">bg-gray-50</span>
+<span class="nt">Links</span><span class="o">:</span><span class="w">     </span><span class="nt">text-gray-600</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nt">text-blue-600</span>
+</pre></div>
+</div>
+</section>
+<section id="focus-states">
+<h3><strong>Focus States</strong><a class="headerlink" href="#focus-states" title="Link to this heading"></a></h3>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">Inputs</span><span class="o">:</span><span class="w">    </span><span class="nt">ring-2</span><span class="w"> </span><span class="nt">ring-blue-500</span>
+<span class="nt">Botones</span><span class="o">:</span><span class="w">   </span><span class="nt">outline-blue-600</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="responsive-breakpoints">
+<h2>📱 Responsive Breakpoints<a class="headerlink" href="#responsive-breakpoints" title="Link to this heading"></a></h2>
+<section id="mobile-1024px">
+<h3><strong>Mobile (&lt; 1024px)</strong><a class="headerlink" href="#mobile-1024px" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────┐
+│     Header      │
+├─────────────────┤
+│   Stats Cards   │
+├─────────────────┤
+│   Main Feed     │
+└─────────────────┘
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sidebar se mueve arriba</p></li>
+<li><p>Feed ocupa ancho completo</p></li>
+<li><p>Cards en 1 columna</p></li>
+</ul>
+</section>
+<section id="desktop-1024px">
+<h3><strong>Desktop (≥ 1024px)</strong><a class="headerlink" href="#desktop-1024px" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌────┬──────────┐
+│Side│   Main   │
+│bar │   Feed   │
+└────┴──────────┘
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Layout 3-9 columnas</p></li>
+<li><p>Sidebar fijo</p></li>
+<li><p>Feed con ancho óptimo</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="caracteristicas-destacadas">
+<h2>🌟 Características Destacadas<a class="headerlink" href="#caracteristicas-destacadas" title="Link to this heading"></a></h2>
+<section id="diseno-limpio">
+<h3><strong>1. Diseño Limpio</strong><a class="headerlink" href="#diseno-limpio" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Sin gradientes vibrantes</p></li>
+<li><p>✅ Colores corporativos</p></li>
+<li><p>✅ Espaciado generoso</p></li>
+<li><p>✅ Tipografía clara</p></li>
+</ul>
+</section>
+<section id="interactividad-social">
+<h3><strong>2. Interactividad Social</strong><a class="headerlink" href="#interactividad-social" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Posts tipo feed</p></li>
+<li><p>✅ Tiempo relativo</p></li>
+<li><p>✅ Botones de engagement</p></li>
+<li><p>✅ Avatares circulares</p></li>
+</ul>
+</section>
+<section id="profesionalismo">
+<h3><strong>3. Profesionalismo</strong><a class="headerlink" href="#profesionalismo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Layout estructurado</p></li>
+<li><p>✅ Stats sidebar</p></li>
+<li><p>✅ Toggle de vistas</p></li>
+<li><p>✅ Tabla alternativa</p></li>
+</ul>
+</section>
+<section id="informacion-clara">
+<h3><strong>4. Información Clara</strong><a class="headerlink" href="#informacion-clara" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Grid de productos</p></li>
+<li><p>✅ Badges informativos</p></li>
+<li><p>✅ Formato de moneda</p></li>
+<li><p>✅ Fechas legibles</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comparacion-de-estilos">
+<h2>🎨 Comparación de Estilos<a class="headerlink" href="#comparacion-de-estilos" title="Link to this heading"></a></h2>
+<section id="antes-colorido">
+<h3><strong>Antes (Colorido)</strong><a class="headerlink" href="#antes-colorido" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Gradientes vibrantes</p></li>
+<li><p>Múltiples colores</p></li>
+<li><p>Estilo moderno/juvenil</p></li>
+</ul>
+</section>
+<section id="ahora-corporativo">
+<h3><strong>Ahora (Corporativo)</strong><a class="headerlink" href="#ahora-corporativo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Colores sólidos</p></li>
+<li><p>Azul corporativo</p></li>
+<li><p>Estilo LinkedIn/Facebook</p></li>
+<li><p>Profesional pero social</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ventajas-del-diseno">
+<h2>🚀 Ventajas del Diseño<a class="headerlink" href="#ventajas-del-diseno" title="Link to this heading"></a></h2>
+<section id="para-usuarios">
+<h3><strong>Para Usuarios</strong><a class="headerlink" href="#para-usuarios" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Familiar</strong>: Parece red social conocida</p></li>
+<li><p><strong>Intuitivo</strong>: Navegación clara</p></li>
+<li><p><strong>Informativo</strong>: Stats siempre visibles</p></li>
+<li><p><strong>Flexible</strong>: Dos vistas disponibles</p></li>
+</ol>
+</section>
+<section id="para-negocio">
+<h3><strong>Para Negocio</strong><a class="headerlink" href="#para-negocio" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Profesional</strong>: Imagen corporativa</p></li>
+<li><p><strong>Escalable</strong>: Fácil agregar features</p></li>
+<li><p><strong>Engagement</strong>: Preparado para interacciones</p></li>
+<li><p><strong>Analytics</strong>: Stats integrados</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="elementos-unicos">
+<h2>📋 Elementos Únicos<a class="headerlink" href="#elementos-unicos" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3><strong>1. Tiempo Relativo</strong><a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">getTimeAgo</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span>
+<span class="err">→</span><span class="w"> </span><span class="s2">&quot;Hace un momento&quot;</span>
+<span class="err">→</span><span class="w"> </span><span class="s2">&quot;Hace 5 min&quot;</span>
+<span class="err">→</span><span class="w"> </span><span class="s2">&quot;Hace 2 h&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="grid-de-productos-en-post">
+<h3><strong>2. Grid de Productos en Post</strong><a class="headerlink" href="#grid-de-productos-en-post" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Cards compactos</p></li>
+<li><p>Cantidad destacada</p></li>
+<li><p>Precio visible</p></li>
+<li><p>Hover effect</p></li>
+</ul>
+</section>
+<section id="profile-sidebar">
+<h3><strong>3. Profile Sidebar</strong><a class="headerlink" href="#profile-sidebar" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Banner superior</p></li>
+<li><p>Avatar flotante</p></li>
+<li><p>Stats organizados</p></li>
+<li><p>Quick stats destacados</p></li>
+</ul>
+</section>
+<section id="engagement-footer">
+<h3><strong>4. Engagement Footer</strong><a class="headerlink" href="#engagement-footer" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Botones sociales</p></li>
+<li><p>Preparado para funcionalidad</p></li>
+<li><p>Estilo minimalista</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resultado-final">
+<h2>🎯 Resultado Final<a class="headerlink" href="#resultado-final" title="Link to this heading"></a></h2>
+<p>Un diseño que combina:</p>
+<ul class="simple">
+<li><p>✅ <strong>Profesionalismo</strong> de LinkedIn</p></li>
+<li><p>✅ <strong>Interactividad</strong> de Facebook</p></li>
+<li><p>✅ <strong>Claridad</strong> de dashboards corporativos</p></li>
+<li><p>✅ <strong>Familiaridad</strong> de redes sociales</p></li>
+</ul>
+<p><strong>Perfecto para:</strong></p>
+<ul class="simple">
+<li><p>Equipos de ventas</p></li>
+<li><p>Dashboards B2B</p></li>
+<li><p>Plataformas empresariales</p></li>
+<li><p>Análisis de actividad</p></li>
+</ul>
+<p>¡Profesional, moderno y familiar! 🌐💼✨</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

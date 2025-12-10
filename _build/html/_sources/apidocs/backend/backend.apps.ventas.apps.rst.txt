@@ -1,0 +1,53 @@
+:py:mod:`backend.apps.ventas.apps`
+==================================
+
+.. py:module:: backend.apps.ventas.apps
+
+.. autodoc2-docstring:: backend.apps.ventas.apps
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`VentasConfig <backend.apps.ventas.apps.VentasConfig>`
+     -
+
+API
+~~~
+
+.. py:class:: VentasConfig(app_name, app_module)
+   :canonical: backend.apps.ventas.apps.VentasConfig
+
+   Bases: :py:obj:`django.apps.AppConfig`
+
+   .. py:attribute:: default_auto_field
+      :canonical: backend.apps.ventas.apps.VentasConfig.default_auto_field
+      :value: 'django.db.models.BigAutoField'
+
+      .. autodoc2-docstring:: backend.apps.ventas.apps.VentasConfig.default_auto_field
+         :parser: rst
+
+   .. py:attribute:: name
+      :canonical: backend.apps.ventas.apps.VentasConfig.name
+      :value: 'apps.ventas'
+
+      .. autodoc2-docstring:: backend.apps.ventas.apps.VentasConfig.name
+         :parser: rst
+
+   .. py:attribute:: label
+      :canonical: backend.apps.ventas.apps.VentasConfig.label
+      :value: 'ventas'
+
+      .. autodoc2-docstring:: backend.apps.ventas.apps.VentasConfig.label
+         :parser: rst
+
+   .. py:method:: ready()
+      :canonical: backend.apps.ventas.apps.VentasConfig.ready

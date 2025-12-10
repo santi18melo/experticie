@@ -1,0 +1,97 @@
+:py:mod:`backend.apps.ventas.serializers`
+=========================================
+
+.. py:module:: backend.apps.ventas.serializers
+
+.. autodoc2-docstring:: backend.apps.ventas.serializers
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`DetalleVentaSerializer <backend.apps.ventas.serializers.DetalleVentaSerializer>`
+     -
+   * - :py:obj:`VentaSerializer <backend.apps.ventas.serializers.VentaSerializer>`
+     -
+
+API
+~~~
+
+.. py:class:: DetalleVentaSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.ventas.serializers.DetalleVentaSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: producto_nombre
+      :canonical: backend.apps.ventas.serializers.DetalleVentaSerializer.producto_nombre
+      :value: 'ReadOnlyField(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.serializers.DetalleVentaSerializer.producto_nombre
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.ventas.serializers.DetalleVentaSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.ventas.serializers.DetalleVentaSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.ventas.serializers.DetalleVentaSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.ventas.serializers.DetalleVentaSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.ventas.serializers.DetalleVentaSerializer.Meta.fields
+         :value: ['id', 'producto', 'producto_nombre', 'cantidad', 'precio_unitario', 'subtotal']
+
+         .. autodoc2-docstring:: backend.apps.ventas.serializers.DetalleVentaSerializer.Meta.fields
+            :parser: rst
+
+.. py:class:: VentaSerializer(instance=None, data=empty, **kwargs)
+   :canonical: backend.apps.ventas.serializers.VentaSerializer
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+   .. py:attribute:: cliente
+      :canonical: backend.apps.ventas.serializers.VentaSerializer.cliente
+      :value: 'UsuarioSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.serializers.VentaSerializer.cliente
+         :parser: rst
+
+   .. py:attribute:: detalles
+      :canonical: backend.apps.ventas.serializers.VentaSerializer.detalles
+      :value: 'DetalleVentaSerializer(...)'
+
+      .. autodoc2-docstring:: backend.apps.ventas.serializers.VentaSerializer.detalles
+         :parser: rst
+
+   .. py:class:: Meta
+      :canonical: backend.apps.ventas.serializers.VentaSerializer.Meta
+
+      .. autodoc2-docstring:: backend.apps.ventas.serializers.VentaSerializer.Meta
+         :parser: rst
+
+      .. py:attribute:: model
+         :canonical: backend.apps.ventas.serializers.VentaSerializer.Meta.model
+         :value: None
+
+         .. autodoc2-docstring:: backend.apps.ventas.serializers.VentaSerializer.Meta.model
+            :parser: rst
+
+      .. py:attribute:: fields
+         :canonical: backend.apps.ventas.serializers.VentaSerializer.Meta.fields
+         :value: ['id', 'pedido', 'cliente', 'total', 'fecha_venta', 'cantidad_items', 'detalles']
+
+         .. autodoc2-docstring:: backend.apps.ventas.serializers.VentaSerializer.Meta.fields
+            :parser: rst

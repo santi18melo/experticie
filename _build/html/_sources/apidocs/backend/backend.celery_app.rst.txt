@@ -1,0 +1,51 @@
+:py:mod:`backend.celery_app`
+============================
+
+.. py:module:: backend.celery_app
+
+.. autodoc2-docstring:: backend.celery_app
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`debug_task <backend.celery_app.debug_task>`
+     - .. autodoc2-docstring:: backend.celery_app.debug_task
+          :parser: rst
+          :summary:
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`app <backend.celery_app.app>`
+     - .. autodoc2-docstring:: backend.celery_app.app
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: app
+   :canonical: backend.celery_app.app
+   :value: 'Celery(...)'
+
+   .. autodoc2-docstring:: backend.celery_app.app
+      :parser: rst
+
+.. py:function:: debug_task(self)
+   :canonical: backend.celery_app.debug_task
+
+   .. autodoc2-docstring:: backend.celery_app.debug_task
+      :parser: rst

@@ -1,0 +1,31 @@
+:py:mod:`backend.apps.ventas`
+=============================
+
+.. py:module:: backend.apps.ventas
+
+.. autodoc2-docstring:: backend.apps.ventas
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps.ventas.migrations
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.apps.ventas.apps
+   backend.apps.ventas.models
+   backend.apps.ventas.serializers
+   backend.apps.ventas.signals
+   backend.apps.ventas.urls
+   backend.apps.ventas.views

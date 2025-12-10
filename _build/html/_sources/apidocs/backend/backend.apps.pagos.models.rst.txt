@@ -1,0 +1,209 @@
+:py:mod:`backend.apps.pagos.models`
+===================================
+
+.. py:module:: backend.apps.pagos.models
+
+.. autodoc2-docstring:: backend.apps.pagos.models
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`EstadoPago <backend.apps.pagos.models.EstadoPago>`
+     -
+   * - :py:obj:`MetodoPago <backend.apps.pagos.models.MetodoPago>`
+     -
+   * - :py:obj:`Pago <backend.apps.pagos.models.Pago>`
+     -
+   * - :py:obj:`Transaccion <backend.apps.pagos.models.Transaccion>`
+     -
+
+API
+~~~
+
+.. py:class:: EstadoPago(*args, **kwargs)
+   :canonical: backend.apps.pagos.models.EstadoPago
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.pagos.models.EstadoPago.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.EstadoPago.nombre
+         :parser: rst
+
+   .. py:attribute:: descripcion
+      :canonical: backend.apps.pagos.models.EstadoPago.descripcion
+      :value: 'TextField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.EstadoPago.descripcion
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.pagos.models.EstadoPago.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.EstadoPago.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.pagos.models.EstadoPago.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.EstadoPago.fecha_actualizacion
+         :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.pagos.models.EstadoPago.__str__
+
+.. py:class:: MetodoPago(*args, **kwargs)
+   :canonical: backend.apps.pagos.models.MetodoPago
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: nombre
+      :canonical: backend.apps.pagos.models.MetodoPago.nombre
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.MetodoPago.nombre
+         :parser: rst
+
+   .. py:attribute:: activo
+      :canonical: backend.apps.pagos.models.MetodoPago.activo
+      :value: 'BooleanField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.MetodoPago.activo
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.pagos.models.MetodoPago.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.MetodoPago.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.pagos.models.MetodoPago.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.MetodoPago.fecha_actualizacion
+         :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.pagos.models.MetodoPago.__str__
+
+.. py:class:: Pago(*args, **kwargs)
+   :canonical: backend.apps.pagos.models.Pago
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: usuario
+      :canonical: backend.apps.pagos.models.Pago.usuario
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.usuario
+         :parser: rst
+
+   .. py:attribute:: pedido
+      :canonical: backend.apps.pagos.models.Pago.pedido
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.pedido
+         :parser: rst
+
+   .. py:attribute:: monto
+      :canonical: backend.apps.pagos.models.Pago.monto
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.monto
+         :parser: rst
+
+   .. py:attribute:: estado
+      :canonical: backend.apps.pagos.models.Pago.estado
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.estado
+         :parser: rst
+
+   .. py:attribute:: metodo_pago
+      :canonical: backend.apps.pagos.models.Pago.metodo_pago
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.metodo_pago
+         :parser: rst
+
+   .. py:attribute:: comprobante
+      :canonical: backend.apps.pagos.models.Pago.comprobante
+      :value: 'FileField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.comprobante
+         :parser: rst
+
+   .. py:attribute:: fecha_creacion
+      :canonical: backend.apps.pagos.models.Pago.fecha_creacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.fecha_creacion
+         :parser: rst
+
+   .. py:attribute:: fecha_actualizacion
+      :canonical: backend.apps.pagos.models.Pago.fecha_actualizacion
+      :value: 'DateTimeField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Pago.fecha_actualizacion
+         :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.pagos.models.Pago.__str__
+
+.. py:class:: Transaccion(*args, **kwargs)
+   :canonical: backend.apps.pagos.models.Transaccion
+
+   Bases: :py:obj:`django.db.models.Model`
+
+   .. py:attribute:: pago
+      :canonical: backend.apps.pagos.models.Transaccion.pago
+      :value: 'ForeignKey(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Transaccion.pago
+         :parser: rst
+
+   .. py:attribute:: referencia_externa
+      :canonical: backend.apps.pagos.models.Transaccion.referencia_externa
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Transaccion.referencia_externa
+         :parser: rst
+
+   .. py:attribute:: monto
+      :canonical: backend.apps.pagos.models.Transaccion.monto
+      :value: 'DecimalField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Transaccion.monto
+         :parser: rst
+
+   .. py:attribute:: estado
+      :canonical: backend.apps.pagos.models.Transaccion.estado
+      :value: 'CharField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Transaccion.estado
+         :parser: rst
+
+   .. py:attribute:: respuesta_gateway
+      :canonical: backend.apps.pagos.models.Transaccion.respuesta_gateway
+      :value: 'JSONField(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.models.Transaccion.respuesta_gateway
+         :parser: rst
+
+   .. py:method:: __str__()
+      :canonical: backend.apps.pagos.models.Transaccion.__str__

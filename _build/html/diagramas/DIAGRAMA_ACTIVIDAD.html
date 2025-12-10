@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔀 DIAGRAMAS DE ACTIVIDAD - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🔀 DIAGRAMAS DE ACTIVIDAD - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagramas/DIAGRAMA_ACTIVIDAD.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diagramas-de-actividad-prexcol">
+<h1>🔀 DIAGRAMAS DE ACTIVIDAD - PREXCOL<a class="headerlink" href="#diagramas-de-actividad-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Tipo</strong>: Diagramas de Comportamiento - Flujos de Proceso</p>
+<hr class="docutils" />
+<section id="indice">
+<h2>📋 ÍNDICE<a class="headerlink" href="#indice" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#registro-de-usuario"><span class="xref myst">Registro de Usuario</span></a></p></li>
+<li><p><a class="reference internal" href="#proceso-de-compra-completo"><span class="xref myst">Proceso de Compra Completo</span></a></p></li>
+<li><p><a class="reference internal" href="#gesti%C3%B3n-de-pedido-log%C3%ADstica"><span class="xref myst">Gestión de Pedido (Logística)</span></a></p></li>
+<li><p><a class="reference internal" href="#recarga-autom%C3%A1tica-de-stock"><span class="xref myst">Recarga Automática de Stock</span></a></p></li>
+<li><p><a class="reference internal" href="#asignaci%C3%B3n-de-productos-a-proveedor"><span class="xref myst">Asignación de Productos a Proveedor</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="registro-de-usuario">
+<h2>👤 REGISTRO DE USUARIO<a class="headerlink" href="#registro-de-usuario" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio]) --&gt; Input[Usuario completa formulario]
+    Input --&gt; ValidateClient{&quot;Validación&lt;br/&gt;cliente OK?&quot;}
+    
+    %% Happy Path
+    ValidateClient --&gt;|Sí| Submit[Enviar a backend]
+    Submit --&gt; CheckEmail{&quot;Email&lt;br/&gt;único?&quot;}
+    
+    CheckEmail --&gt;|Sí| CheckPass{&quot;Password&lt;br/&gt;válido?&quot;}
+    
+    CheckPass --&gt;|Sí| CreateUser[Crear usuario en DB]
+    CreateUser --&gt; SaveHistory[&quot;Guardar password&lt;br/&gt;en historial&quot;]
+    SaveHistory --&gt; SendEmail[&quot;Enviar email&lt;br/&gt;de bienvenida&quot;]
+    SendEmail --&gt; ShowSuccess[Mensaje: Registro exitoso]
+    ShowSuccess --&gt; RedirectLogin[Redirect a Login]
+    RedirectLogin --&gt; End([Fin])
+
+    %% Error Loops (Dotted for cleaner visuals)
+    ValidateClient --&gt;|No| ShowError1[&quot;Mostrar errores&lt;br/&gt;de validación&quot;]
+    ShowError1 -.-&gt; Input
+    
+    CheckEmail --&gt;|No| EmailExists[Error: Email ya existe]
+    EmailExists -.-&gt; Input
+    
+    CheckPass --&gt;|No| PassWeak[Error: Password débil]
+    PassWeak -.-&gt; Input
+    
+    style Start fill:#90EE90
+    style End fill:#90EE90
+    style ShowError1 fill:#FFB6C1
+    style EmailExists fill:#FFB6C1
+    style PassWeak fill:#FFB6C1
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="proceso-de-compra-completo">
+<h2>🛒 PROCESO DE COMPRA COMPLETO<a class="headerlink" href="#proceso-de-compra-completo" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio: Cliente en catálogo]) --&gt; Browse[Navegar productos]
+    Browse --&gt; SelectProduct[Seleccionar producto]
+    SelectProduct --&gt; ViewDetails[Ver detalles]
+    
+    ViewDetails --&gt; CheckStock{&quot;Stock&lt;br/&gt;disponible?&quot;}
+    
+    CheckStock --&gt;|Sí| AddCart[Agregar al carrito]
+    AddCart --&gt; MoreProducts{&quot;Agregar&lt;br/&gt;más productos?&quot;}
+    
+    MoreProducts --&gt;|Sí| Browse
+    MoreProducts --&gt;|No| ViewCart[Ver carrito]
+    
+    ViewCart --&gt; AdjustQty{&quot;Ajustar&lt;br/&gt;cantidades?&quot;}
+    AdjustQty --&gt;|Sí| ModifyCart[Modificar carrito]
+    ModifyCart --&gt; ViewCart
+    
+    AdjustQty --&gt;|No| Checkout[Proceder al pago]
+    Checkout --&gt; ValidateStock{&quot;Todo el stock&lt;br/&gt;disponible?&quot;}
+    
+    ValidateStock --&gt;|Sí| SelectPayment[&quot;Seleccionar método&lt;br/&gt;de pago&quot;]
+    SelectPayment --&gt; PaymentMethod{Método?}
+    
+    PaymentMethod --&gt;|Tarjeta| EnterCard[&quot;Ingresar datos&lt;br/&gt;de tarjeta&quot;]
+    PaymentMethod --&gt;|Transferencia| UploadProof[Subir comprobante]
+    PaymentMethod --&gt;|PSE| LoginBank[Login banco]
+    
+    EnterCard --&gt; ProcessPayment[Procesar pago]
+    UploadProof --&gt; ProcessPayment
+    LoginBank --&gt; ProcessPayment
+    
+    ProcessPayment --&gt; PaymentResult{&quot;Pago&lt;br/&gt;exitoso?&quot;}
+    
+    PaymentResult --&gt;|Sí| CreateOrder[Crear pedido]
+    CreateOrder --&gt; ReduceStock[Reducir stock]
+    ReduceStock --&gt; SendNotifications[Enviar notificaciones]
+    SendNotifications --&gt; ShowConfirmation[Mostrar confirmación]
+    ShowConfirmation --&gt; SendConfirmEmail[&quot;Enviar email&lt;br/&gt;de confirmación&quot;]
+    SendConfirmEmail --&gt; End2([Fin: Pedido creado])
+
+    %% Feedback / Alternate Paths
+    CheckStock --&gt;|No| OutOfStock[Mostrar &quot;Agotado&quot;]
+    OutOfStock -.-&gt; Browse
+    
+    ValidateStock --&gt;|No| StockError[Error: Stock insuficiente]
+    StockError -.-&gt; ViewCart
+    
+    PaymentResult --&gt;|No| PaymentFailed[Pago rechazado]
+    PaymentFailed --&gt; RetryPayment{Reintentar?}
+    RetryPayment --&gt;|Sí| SelectPayment
+    RetryPayment --&gt;|No| CancelOrder[Cancelar orden]
+    CancelOrder --&gt; End1([Fin: Sin pedido])
+    
+    style Start fill:#90EE90
+    style End1 fill:#FFB6C1
+    style End2 fill:#90EE90
+    style OutOfStock fill:#FFA500
+    style StockError fill:#FFB6C1
+    style PaymentFailed fill:#FFB6C1
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="gestion-de-pedido-logistica">
+<h2>🚚 GESTIÓN DE PEDIDO (LOGÍSTICA)<a class="headerlink" href="#gestion-de-pedido-logistica" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio]) --&gt; Login[Logística inicia sesión]
+    Login --&gt; Dashboard[Ver dashboard]
+    Dashboard --&gt; ViewPending[Ver pedidos pendientes]
+    
+    ViewPending --&gt; SelectOrder[Seleccionar pedido]
+    SelectOrder --&gt; ViewDetails[Ver detalles]
+    ViewDetails --&gt; CheckInventory{&quot;Productos&lt;br/&gt;disponibles?&quot;}
+    
+    CheckInventory --&gt;|Sí| StartPrep[Iniciar preparación]
+    StartPrep --&gt; ChangeStatus1[&quot;Cambiar estado:&lt;br/&gt;PREPARANDO&quot;]
+    ChangeStatus1 --&gt; NotifyClient1[Notificar cliente]
+    
+    NotifyClient1 --&gt; PickProducts[Recolectar productos]
+    PickProducts --&gt; VerifyItems[Verificar items]
+    VerifyItems --&gt; PackOrder[Empacar pedido]
+    PackOrder --&gt; PrintLabel[Imprimir etiqueta]
+    
+    PrintLabel --&gt; ReadyShip{&quot;Listo para&lt;br/&gt;enviar?&quot;}
+    
+    ReadyShip --&gt;|Sí| ChangeStatus2[&quot;Cambiar estado:&lt;br/&gt;EN_TRANSITO&quot;]
+    ChangeStatus2 --&gt; NotifyClient2[Notificar cliente]
+    NotifyClient2 --&gt; AssignCourier[Asignar transportista]
+    
+    AssignCourier --&gt; InTransit[Pedido en tránsito]
+    InTransit --&gt; WaitDelivery[&quot;Esperar confirmación&lt;br/&gt;de entrega&quot;]
+    
+    WaitDelivery --&gt; DeliveryConfirm{&quot;Entrega&lt;br/&gt;confirmada?&quot;}
+    
+    DeliveryConfirm --&gt;|Sí| ChangeStatus3[&quot;Cambiar estado:&lt;br/&gt;ENTREGADO&quot;]
+    ChangeStatus3 --&gt; GenerateSale[&quot;Generar registro&lt;br/&gt;de venta&quot;]
+    GenerateSale --&gt; NotifyClient3[Notificar cliente]
+    NotifyClient3 --&gt; UpdateMetrics[Actualizar métricas]
+    UpdateMetrics --&gt; End2([Fin: Completado])
+
+    %% Exceptions
+    CheckInventory --&gt;|No| ReportIssue[Reportar problema]
+    ReportIssue --&gt; NotifyAdmin[Notificar admin]
+    NotifyAdmin --&gt; WaitResolution[Esperar resolución]
+    WaitResolution --&gt; End1([Fin: Pendiente])
+
+    ReadyShip --&gt;|No| CheckIssue{&quot;Hay&lt;br/&gt;problema?&quot;}
+    CheckIssue --&gt;|Sí| ReportIssue
+    CheckIssue --&gt;|No| PickProducts
+    
+    DeliveryConfirm --&gt;|No| DeliveryIssue{&quot;Hay&lt;br/&gt;problema?&quot;}
+    DeliveryIssue --&gt;|Sí| ContactClient[Contactar cliente]
+    ContactClient --&gt; Reschedule[Reprogramar entrega]
+    Reschedule -.-&gt; InTransit
+    DeliveryIssue --&gt;|No| WaitDelivery
+    
+    style Start fill:#90EE90
+    style End1 fill:#FFA500
+    style End2 fill:#90EE90
+    style ReportIssue fill:#FFB6C1
+    style ContactClient fill:#FFA500
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="recarga-automatica-de-stock">
+<h2>🔄 RECARGA AUTOMÁTICA DE STOCK<a class="headerlink" href="#recarga-automatica-de-stock" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio: Timer]) --&gt; Trigger[&quot;Celery Beat trigger&lt;br/&gt;cada 1 hora&quot;]
+    Trigger --&gt; GetProducts[&quot;Obtener productos con&lt;br/&gt;recarga automática activa&quot;]
+    GetProducts --&gt; Loop{&quot;Más productos&lt;br/&gt;por revisar?&quot;}
+    
+    Loop --&gt;|No| EndProcess[Finalizar proceso]
+    EndProcess --&gt; End([Fin])
+    
+    Loop --&gt;|Sí| NextProduct[Siguiente producto]
+    NextProduct --&gt; CheckStock{&quot;Stock actual &lt;=&lt;br/&gt;Stock mínimo?&quot;}
+    
+    CheckStock --&gt;|No| SkipProduct[No requiere recarga]
+    SkipProduct -.-&gt; Loop
+    
+    CheckStock --&gt;|Sí| BeginTrans[BEGIN TRANSACTION]
+    BeginTrans --&gt; CalcRecharge[Calcular cantidad]
+    CalcRecharge --&gt; UpdateStock[UPDATE stock]
+    
+    UpdateStock --&gt; LogHistory[INSERT historial]
+    LogHistory --&gt; UpdateConfig[UPDATE config]
+    
+    UpdateConfig --&gt; Commit[COMMIT TRANSACTION]
+    Commit --&gt; SendNotif[Notificar proveedor]
+    SendNotif --&gt; LogEvent[Registrar en log]
+    LogEvent -.-&gt; Loop
+    
+    BeginTrans -.Error.-&gt; Rollback[ROLLBACK]
+    Rollback --&gt; LogError[Registrar error]
+    LogError --&gt; NotifyAdmin[Notificar admin]
+    NotifyAdmin -.-&gt; Loop
+    
+    style Start fill:#90EE90
+    style End fill:#90EE90
+    style SkipProduct fill:#D3D3D3
+    style Rollback fill:#FFB6C1
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="asignacion-de-productos-a-proveedor">
+<h2>👨‍💼 ASIGNACIÓN DE PRODUCTOS A PROVEEDOR<a class="headerlink" href="#asignacion-de-productos-a-proveedor" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio]) --&gt; AdminLogin[Admin inicia sesión]
+    AdminLogin --&gt; NavProducts[Navegar Gestión]
+    NavProducts --&gt; ViewProducts[Ver lista productos]
+    
+    ViewProducts --&gt; SelectProduct[Seleccionar producto]
+    SelectProduct --&gt; ViewCurrent{&quot;Proveedor&lt;br/&gt;actual?&quot;}
+    
+    ViewCurrent --&gt;|Sí| ConfirmChange{&quot;Confirmar&lt;br/&gt;cambio?&quot;}
+    ConfirmChange --&gt;|No| ViewProducts
+    ConfirmChange --&gt;|Sí| NewAssign[Nueva asignación]
+    ViewCurrent --&gt;|No| NewAssign
+    
+    NewAssign --&gt; GetProviders[Listar proveedores]
+    GetProviders --&gt; SelectProvider[Seleccionar proveedor]
+    
+    SelectProvider --&gt; ValidateProvider{&quot;Proveedor&lt;br/&gt;válido?&quot;}
+    ValidateProvider --&gt;|No| ErrorInvalid[Error: Inválido]
+    ErrorInvalid -.-&gt; GetProviders
+    
+    ValidateProvider --&gt;|Sí| ConfirmAssign[Confirmar]
+    ConfirmAssign --&gt; UpdateProduct[UPDATE producto]
+    
+    UpdateProduct --&gt; CheckAutoStock{&quot;Configurar&lt;br/&gt;recarga auto?&quot;}
+    CheckAutoStock --&gt;|Sí| ConfigStock[Configurar]
+    ConfigStock --&gt; SetParams[Establecer parámetros]
+    SetParams --&gt; EnableAuto[Activar]
+    EnableAuto --&gt; SaveConfig[Guardar config]
+    SaveConfig --&gt; NotifyProvider
+    
+    CheckAutoStock --&gt;|No| NotifyProvider[Notificar]
+    NotifyProvider --&gt; LogChange[Registrar auditoría]
+    LogChange --&gt; ShowSuccess[Éxito]
+    ShowSuccess --&gt; MoreAssign{¿Más?}
+    
+    MoreAssign --&gt;|Sí| ViewProducts
+    MoreAssign --&gt;|No| End([Fin])
+    
+    style Start fill:#90EE90
+    style End fill:#90EE90
+    style ErrorInvalid fill:#FFB6C1
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="generacion-de-reportes">
+<h2>📊 GENERACIÓN DE REPORTES<a class="headerlink" href="#generacion-de-reportes" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio]) --&gt; Login{&quot;Usuario&lt;br/&gt;autenticado?&quot;}
+    Login --&gt;|No| RedirectLogin[Redirect login]
+    RedirectLogin --&gt; End1([Fin])
+    
+    Login --&gt;|Sí| CheckRole{Rol?}
+    
+    CheckRole --&gt;|Admin| AdminDash[Dashboard Admin]
+    CheckRole --&gt;|Proveedor| ProvDash[Dashboard Prov]
+    CheckRole --&gt;|Logística| LogiDash[Dashboard Log]
+    CheckRole --&gt;|Cliente| ClientDash[Dashboard Client]
+    
+    AdminDash --&gt; SelectReportType[Seleccionar reporte]
+    SelectReportType --&gt; ReportType{Tipo?}
+    
+    ReportType --&gt; SalesReport[Ventas]
+    ReportType --&gt; StockReport[Stock]
+    ReportType --&gt; UsersReport[Usuarios]
+    ReportType --&gt; OrdersReport[Pedidos]
+    
+    ProvDash --&gt; ProvReports[Reportes Prov]
+    LogiDash --&gt; LogiReports[Reportes Log]
+    ClientDash --&gt; ClientReports[Reportes Client]
+    
+    SalesReport --&gt; SetParams[Parámetros]
+    StockReport --&gt; SetParams
+    UsersReport --&gt; SetParams
+    OrdersReport --&gt; SetParams
+    ProvReports --&gt; SetParams
+    LogiReports --&gt; SetParams
+    ClientReports --&gt; SetParams
+    
+    SetParams --&gt; QueryDB[Consultar DB]
+    QueryDB --&gt; ProcessData[Procesar]
+    ProcessData --&gt; GenerateChart[Gráficos]
+    GenerateChart --&gt; FormatReport[Formatear]
+    
+    FormatReport --&gt; ExportFormat{Exportar?}
+    ExportFormat --&gt;|PDF| GenPDF[PDF]
+    ExportFormat --&gt;|Excel| GenExcel[Excel]
+    ExportFormat --&gt;|CSV| GenCSV[CSV]
+    
+    GenPDF --&gt; Download[Descargar]
+    GenExcel --&gt; Download
+    GenCSV --&gt; Download
+    
+    Download --&gt; SaveHistory[Historial]
+    SaveHistory --&gt; End2([Fin])
+    
+    style Start fill:#90EE90
+    style End1 fill:#FFB6C1
+    style End2 fill:#90EE90
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="gestion-de-cuenta-de-usuario">
+<h2>🔐 GESTIÓN DE CUENTA DE USUARIO<a class="headerlink" href="#gestion-de-cuenta-de-usuario" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TD
+    Start([Inicio]) --&gt; ViewProfile[Ver perfil]
+    ViewProfile --&gt; SelectAction{Acción?}
+    
+    SelectAction --&gt;|Editar| EditProfile
+    SelectAction --&gt;|Pass| ChangePass
+    SelectAction --&gt;|Deactivate| DeactivateAcc[Desactivar]
+    SelectAction --&gt;|Delete| DeleteAcc[Eliminar]
+    
+    %% Edit Profile
+    EditProfile --&gt; InputChanges[Ingresar]
+    InputChanges --&gt; ValidateChanges{Válido?}
+    ValidateChanges --&gt;|No| ShowErrors[Error]
+    ShowErrors -.-&gt; InputChanges
+    ValidateChanges --&gt;|Sí| SaveChanges[Guardar]
+    SaveChanges --&gt; SuccessMsg[Éxito]
+    SuccessMsg --&gt; ViewProfile
+    
+    %% Change Pass
+    ChangePass --&gt; InputOldPass[Pass actual]
+    InputOldPass --&gt; VerifyOldPass{Correcta?}
+    VerifyOldPass --&gt;|No| ErrorOldPass[Error]
+    ErrorOldPass -.-&gt; ChangePass
+    
+    VerifyOldPass --&gt;|Sí| InputNewPass[Nueva pass]
+    InputNewPass --&gt; CheckStrength{Fuerte?}
+    CheckStrength --&gt;|No| ErrorWeak[Débil]
+    ErrorWeak -.-&gt; InputNewPass
+    
+    CheckStrength --&gt;|Sí| CheckHistory{Usada?}
+    CheckHistory --&gt;|Sí| ErrorUsed[Usada]
+    ErrorUsed -.-&gt; InputNewPass
+    
+    CheckHistory --&gt;|No| UpdatePass[Actualizar]
+    UpdatePass --&gt; SaveHistory[Historial]
+    SaveHistory --&gt; LogoutAll[Logout all]
+    LogoutAll --&gt; Redirect[Login]
+    Redirect --&gt; End1([Fin])
+    
+    %% Deactivate
+    DeactivateAcc --&gt; ConfirmDeact{Confirmar?}
+    ConfirmDeact --&gt;|No| ViewProfile
+    ConfirmDeact --&gt;|Sí| SetSelfDeact[Desactivar]
+    SetSelfDeact --&gt; Logout[Logout]
+    Logout --&gt; End2([Fin])
+    
+    %% Delete
+    DeleteAcc --&gt; ConfirmDelete{Confirmar?}
+    ConfirmDelete --&gt;|No| ViewProfile
+    ConfirmDelete --&gt;|Sí| NotifyAdmin[Notificar Admin]
+    NotifyAdmin --&gt; PendingReview[Revisión]
+    PendingReview --&gt; End3([Fin])
+    
+    style Start fill:#90EE90
+    style End1 fill:#87CEEB
+    style End2 fill:#FFA500
+    style End3 fill:#FFA500
+    style ErrorOldPass fill:#FFB6C1
+    style ErrorWeak fill:#FFB6C1
+    style ErrorUsed fill:#FFB6C1
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Documento generado</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Estado</strong>: ✅ Completado</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

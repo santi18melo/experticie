@@ -1,0 +1,92 @@
+:py:mod:`backend.apps.pagos.views`
+==================================
+
+.. py:module:: backend.apps.pagos.views
+
+.. autodoc2-docstring:: backend.apps.pagos.views
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`PagoViewSet <backend.apps.pagos.views.PagoViewSet>`
+     -
+   * - :py:obj:`MetodoPagoViewSet <backend.apps.pagos.views.MetodoPagoViewSet>`
+     -
+
+API
+~~~
+
+.. py:class:: PagoViewSet(**kwargs)
+   :canonical: backend.apps.pagos.views.PagoViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.pagos.views.PagoViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.PagoViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.pagos.views.PagoViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.PagoViewSet.permission_classes
+         :parser: rst
+
+   .. py:method:: get_queryset()
+      :canonical: backend.apps.pagos.views.PagoViewSet.get_queryset
+
+   .. py:method:: perform_create(serializer)
+      :canonical: backend.apps.pagos.views.PagoViewSet.perform_create
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.PagoViewSet.perform_create
+         :parser: rst
+
+   .. py:method:: transaccion(request)
+      :canonical: backend.apps.pagos.views.PagoViewSet.transaccion
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.PagoViewSet.transaccion
+         :parser: rst
+
+   .. py:method:: estado(request, pk=None)
+      :canonical: backend.apps.pagos.views.PagoViewSet.estado
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.PagoViewSet.estado
+         :parser: rst
+
+.. py:class:: MetodoPagoViewSet(**kwargs)
+   :canonical: backend.apps.pagos.views.MetodoPagoViewSet
+
+   Bases: :py:obj:`rest_framework.viewsets.ReadOnlyModelViewSet`
+
+   .. py:attribute:: queryset
+      :canonical: backend.apps.pagos.views.MetodoPagoViewSet.queryset
+      :value: 'filter(...)'
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.MetodoPagoViewSet.queryset
+         :parser: rst
+
+   .. py:attribute:: serializer_class
+      :canonical: backend.apps.pagos.views.MetodoPagoViewSet.serializer_class
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.MetodoPagoViewSet.serializer_class
+         :parser: rst
+
+   .. py:attribute:: permission_classes
+      :canonical: backend.apps.pagos.views.MetodoPagoViewSet.permission_classes
+      :value: None
+
+      .. autodoc2-docstring:: backend.apps.pagos.views.MetodoPagoViewSet.permission_classes
+         :parser: rst

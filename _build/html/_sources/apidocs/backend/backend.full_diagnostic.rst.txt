@@ -1,0 +1,55 @@
+:py:mod:`backend.full_diagnostic`
+=================================
+
+.. py:module:: backend.full_diagnostic
+
+.. autodoc2-docstring:: backend.full_diagnostic
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`tiendas <backend.full_diagnostic.tiendas>`
+     - .. autodoc2-docstring:: backend.full_diagnostic.tiendas
+          :parser: rst
+          :summary:
+   * - :py:obj:`productos <backend.full_diagnostic.productos>`
+     - .. autodoc2-docstring:: backend.full_diagnostic.productos
+          :parser: rst
+          :summary:
+   * - :py:obj:`productos_sin_proveedor <backend.full_diagnostic.productos_sin_proveedor>`
+     - .. autodoc2-docstring:: backend.full_diagnostic.productos_sin_proveedor
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: tiendas
+   :canonical: backend.full_diagnostic.tiendas
+   :value: 'filter(...)'
+
+   .. autodoc2-docstring:: backend.full_diagnostic.tiendas
+      :parser: rst
+
+.. py:data:: productos
+   :canonical: backend.full_diagnostic.productos
+   :value: 'filter(...)'
+
+   .. autodoc2-docstring:: backend.full_diagnostic.productos
+      :parser: rst
+
+.. py:data:: productos_sin_proveedor
+   :canonical: backend.full_diagnostic.productos_sin_proveedor
+   :value: 'filter(...)'
+
+   .. autodoc2-docstring:: backend.full_diagnostic.productos_sin_proveedor
+      :parser: rst

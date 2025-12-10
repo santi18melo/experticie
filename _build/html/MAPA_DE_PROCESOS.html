@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🗺️ MAPA DE PROCESOS - PREXCOL &mdash; PREXCOL 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=da1d6aa2" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PREXCOL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#objetivos-del-sistema">Objetivos del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#tecnologias-utilizadas">Tecnologías Utilizadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#infraestructura">Infraestructura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#arquitectura-del-sistema">Arquitectura del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduccion.html#flujo-de-datos">Flujo de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#modulos-principales">Módulos Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#seguridad">Seguridad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_inicio.html">Guía de Inicio Rápido</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#requisitos-previos">Requisitos Previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#instalacion">Instalación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#clonar-el-repositorio">1. Clonar el Repositorio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-backend">2. Configurar el Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-variables-de-entorno">3. Configurar Variables de Entorno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-la-base-de-datos">4. Configurar la Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#configurar-el-frontend">5. Configurar el Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#ejecutar-el-sistema">Ejecutar el Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-1-script-automatico-recomendado">Opción 1: Script Automático (Recomendado)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#opcion-2-manual">Opción 2: Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#acceder-al-sistema">Acceder al Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#usuarios-de-prueba">Usuarios de Prueba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-migraciones">Error de Migraciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#error-de-dependencias">Error de Dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guia_inicio.html#puerto-en-uso">Puerto en Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#proximos-pasos">Próximos Pasos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_inicio.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#vision-general">Visión General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#diagrama-de-arquitectura">Diagrama de Arquitectura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#frontend-react">Frontend (React)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#backend-django">Backend (Django)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#base-de-datos">Base de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#flujos-de-datos">Flujos de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion">Autenticación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#creacion-de-pedido">Creación de Pedido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#gestion-de-productos-proveedor">Gestión de Productos (Proveedor)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#autenticacion-y-autorizacion">Autenticación y Autorización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#proteccion-de-datos">Protección de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#https-y-encriptacion">HTTPS y Encriptación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#escalabilidad">Escalabilidad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#estrategias-de-cache">Estrategias de Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#optimizacion-de-queries">Optimización de Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#procesamiento-asincrono">Procesamiento Asíncrono</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#monitoreo-y-logging">Monitoreo y Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#logs-estructurados">Logs Estructurados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arquitectura.html#metricas">Métricas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitectura.html#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html">📐 ÍNDICE DE DIAGRAMAS UML - PREXCOL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#proposito">🎯 PROPÓSITO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-disponibles">📚 DIAGRAMAS DISPONIBLES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-estructurales">🏗️ DIAGRAMAS ESTRUCTURALES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-comportamiento">🔄 DIAGRAMAS DE COMPORTAMIENTO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-de-interaccion">Diagramas de Interacción</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#otros-diagramas-de-comportamiento">Otros Diagramas de Comportamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#navegacion-rapida">🗺️ NAVEGACIÓN RÁPIDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#por-modulo-del-sistema">Por Módulo del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-autenticacion">Módulo: Autenticación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-productos">Módulo: Productos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-stock">Módulo: Stock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pedidos">Módulo: Pedidos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-pagos">Módulo: Pagos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#modulo-notificaciones">Módulo: Notificaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estadisticas">📊 ESTADÍSTICAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#diagramas-creados">Diagramas Creados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#cobertura">Cobertura</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#convenciones-y-estandares">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#formato-de-diagramas">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#nomenclatura">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#colores-en-diagramas-de-actividad">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#herramientas-recomendadas">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#visualizacion">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#generacion">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#como-usar-este-indice">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-nuevos-desarrolladores">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-arquitectos">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-qa-testers">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#para-product-managers">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#mantenimiento">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#actualizacion-de-diagramas">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#versionado">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#checklist-de-completitud">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-13-13-tipos-uml-2-0">Estado: ✅ <strong>COMPLETADO - 13/13 tipos UML 2.0</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id1">🎨 CONVENCIONES Y ESTÁNDARES</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id2">Formato de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id3">Nomenclatura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id4">Colores en Diagramas de Actividad</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id5">🔧 HERRAMIENTAS RECOMENDADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id6">Visualización</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id7">Generación</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id8">📖 CÓMO USAR ESTE ÍNDICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id9">Para Nuevos Desarrolladores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id10">Para Arquitectos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id11">Para QA/Testers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id12">Para Product Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id13">🔄 MANTENIMIENTO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id14">Actualización de Diagramas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id15">Versionado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#id16">📋 CHECKLIST DE COMPLETITUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#estado-completado-10-13-tipos-uml-3-no-requeridos">Estado: ✅ COMPLETADO (10/13 tipos UML, 3 no requeridos)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagramas/INDEX_DIAGRAMAS.html#enlaces-relacionados">🔗 ENLACES RELACIONADOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagramas/galeria.html">Galería Visual de Diagramas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidocs/backend/backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.apps.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.apps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.services.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.services</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.audit_tests.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.audit_tests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.celery_app.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.celery_app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.create_test_users.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.create_test_users</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.debug_token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.debug_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_admin_password.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_admin_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_imports.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_imports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.fix_user_roles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.fix_user_roles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.full_diagnostic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.full_diagnostic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.investigate_admin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.investigate_admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.manage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.manage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.pagination.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.pagination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.urls.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.urls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.user_middleware.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.user_middleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_all_logins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_all_logins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.verify_rf_coverage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">backend.verify_rf_coverage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apidocs/backend/backend.html#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/backend/backend.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guias_usuario.html">Guías de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#roles-de-usuario">Roles de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-administradores">Guía para Administradores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#dashboard-administrativo">Dashboard Administrativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-usuarios">Gestión de Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-productos">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-pedidos">Gestión de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#reportes">Reportes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-proveedores">Guía para Proveedores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#id1">Gestión de Productos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#ver-pedidos">Ver Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#estadisticas">Estadísticas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-logistica">Guía para Logística</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#gestion-de-entregas">Gestión de Entregas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#rutas-de-distribucion">Rutas de Distribución</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#guia-para-clientes">Guía para Clientes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#realizar-pedidos">Realizar Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#seguimiento-de-pedidos">Seguimiento de Pedidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#perfil-de-usuario">Perfil de Usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#historial-de-compras">Historial de Compras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#soporte-y-ayuda">Soporte y Ayuda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#contacto">Contacto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guias_usuario.html#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guias_usuario.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Guía de Despliegue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#requisitos-de-produccion">Requisitos de Producción</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#infraestructura-minima">Infraestructura Mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#variables-de-entorno">Variables de Entorno</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-render">Despliegue en Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#frontend-netlify">Frontend (Netlify)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-en-railway">Despliegue en Railway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backend-completo">Backend Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#despliegue-manual-vps">Despliegue Manual (VPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#preparacion-del-servidor">Preparación del Servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-postgresql">Configurar PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-backend">Configurar Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-gunicorn">Configurar Gunicorn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-celery">Configurar Celery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-nginx">Configurar Nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#configurar-ssl-con-let-s-encrypt">Configurar SSL con Let’s Encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#iniciar-servicios">Iniciar Servicios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#monitoreo-y-mantenimiento">Monitoreo y Mantenimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#actualizaciones">Actualizaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#optimizacion">Optimización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#cdn">CDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#compresion">Compresión</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#seguridad">Seguridad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#checklist-de-seguridad">Checklist de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#firewall">Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-502-bad-gateway">Error 502 Bad Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#error-de-base-de-datos">Error de Base de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#archivos-estaticos-no-cargan">Archivos Estáticos No Cargan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#recursos-adicionales">Recursos Adicionales</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PREXCOL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🗺️ MAPA DE PROCESOS - PREXCOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/MAPA_DE_PROCESOS.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mapa-de-procesos-prexcol">
+<h1>🗺️ MAPA DE PROCESOS - PREXCOL<a class="headerlink" href="#mapa-de-procesos-prexcol" title="Link to this heading"></a></h1>
+<p><strong>Proyecto</strong>: PREXCOL (Plataforma de Gestión de Retail)<br />
+<strong>Fecha</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0</p>
+<hr class="docutils" />
+<section id="indice">
+<h2>📋 ÍNDICE<a class="headerlink" href="#indice" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#visi%C3%B3n-general"><span class="xref myst">Visión General</span></a></p></li>
+<li><p><a class="reference internal" href="#procesos-estrat%C3%A9gicos"><span class="xref myst">Procesos Estratégicos</span></a></p></li>
+<li><p><a class="reference internal" href="#procesos-operativos"><span class="xref myst">Procesos Operativos</span></a></p></li>
+<li><p><a class="reference internal" href="#procesos-de-soporte"><span class="xref myst">Procesos de Soporte</span></a></p></li>
+<li><p><a class="reference internal" href="#flujos-de-usuario-por-rol"><span class="xref myst">Flujos de Usuario por Rol</span></a></p></li>
+<li><p><a class="reference internal" href="#diagrama-de-flujo-de-pedidos"><span class="xref myst">Diagrama de Flujo de Pedidos</span></a></p></li>
+<li><p><a class="reference internal" href="#integraciones-y-sistemas"><span class="xref myst">Integraciones y Sistemas</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="vision-general">
+<h2>🎯 VISIÓN GENERAL<a class="headerlink" href="#vision-general" title="Link to this heading"></a></h2>
+<p>PREXCOL es una plataforma integral para la gestión de tiendas minoristas que conecta <strong>4 actores principales</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                    PLATAFORMA PREXCOL                          │
+│                                                                 │
+│  👤 ADMIN  ←→  📦 PROVEEDOR  ←→  🚚 LOGÍSTICA  ←→  🛒 CLIENTE  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<section id="entidades-clave">
+<h3><strong>Entidades Clave</strong><a class="headerlink" href="#entidades-clave" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Usuarios</strong>: 4 roles (Admin, Proveedor, Logística, Cliente)</p></li>
+<li><p><strong>Tiendas</strong>: Puntos de venta administrados</p></li>
+<li><p><strong>Productos</strong>: Catálogo de productos con stock</p></li>
+<li><p><strong>Pedidos</strong>: Órdenes de compra de clientes</p></li>
+<li><p><strong>Pagos</strong>: Transacciones financieras</p></li>
+<li><p><strong>Notificaciones</strong>: Comunicación automatizada</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="procesos-estrategicos">
+<h2>📊 PROCESOS ESTRATÉGICOS<a class="headerlink" href="#procesos-estrategicos" title="Link to this heading"></a></h2>
+<section id="gestion-de-tiendas">
+<h3>1. <strong>Gestión de Tiendas</strong><a class="headerlink" href="#gestion-de-tiendas" title="Link to this heading"></a></h3>
+<p><strong>Responsable</strong>: Administrador<br />
+<strong>Objetivo</strong>: Crear, configurar y administrar puntos de venta</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────┐
+│  GESTIÓN DE TIENDAS                                  │
+├──────────────────────────────────────────────────────┤
+│  1. Crear nueva tienda                               │
+│  2. Asignar administrador responsable                │
+│  3. Configurar información (dirección, teléfono)     │
+│  4. Activar/Desactivar tienda                        │
+│  5. Monitorear rendimiento                           │
+└──────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<p><strong>Impacto</strong>: Base para toda la operación del sistema</p>
+</section>
+<hr class="docutils" />
+<section id="gestion-de-usuarios">
+<h3>2. <strong>Gestión de Usuarios</strong><a class="headerlink" href="#gestion-de-usuarios" title="Link to this heading"></a></h3>
+<p><strong>Responsable</strong>: Administrador<br />
+<strong>Objetivo</strong>: Administrar ciclo de vida de usuarios</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────┐
+│  GESTIÓN DE USUARIOS                                 │
+├──────────────────────────────────────────────────────┤
+│  1. Registro de nuevos usuarios                      │
+│  2. Asignación de roles                              │
+│     • Admin                                          │
+│     • Proveedor                                      │
+│     • Logística                                      │
+│     • Cliente                                        │
+│  3. Gestión de permisos                              │
+│  4. Suspensión/Reactivación de cuentas              │
+│  5. Auto-desactivación de cuentas                    │
+│  6. Historial de contraseñas                         │
+└──────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<p><strong>Características Especiales</strong>:</p>
+<ul class="simple">
+<li><p>✅ Sistema de suspensión dual (auto-desactivación + suspensión por admin)</p></li>
+<li><p>✅ Validación de contraseñas únicas (historial)</p></li>
+<li><p>✅ Imágenes de perfil</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="gestion-del-catalogo">
+<h3>3. <strong>Gestión del Catálogo</strong><a class="headerlink" href="#gestion-del-catalogo" title="Link to this heading"></a></h3>
+<p><strong>Responsable</strong>: Administrador + Proveedor<br />
+<strong>Objetivo</strong>: Mantener catálogo de productos actualizado</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────┐
+│  GESTIÓN DEL CATÁLOGO                                │
+├──────────────────────────────────────────────────────┤
+│  Admin:                                              │
+│  1. Asignar productos a proveedores                  │
+│  2. Crear/editar productos                           │
+│  3. Configurar categorías                            │
+│  4. Establecer precios                               │
+│  5. Definir productos básicos                        │
+│                                                       │
+│  Proveedor:                                          │
+│  1. Ver productos asignados                          │
+│  2. Actualizar stock                                 │
+│  3. Gestionar recarga automática                     │
+│  4. Subir imágenes (hasta 3 por producto)           │
+│  5. Actualizar características                       │
+└──────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<p><strong>Características Especiales</strong>:</p>
+<ul class="simple">
+<li><p>✅ Sistema de recarga automática de stock</p></li>
+<li><p>✅ Historial de recargas (manual/automática)</p></li>
+<li><p>✅ Configuración de umbrales por producto</p></li>
+<li><p>✅ Múltiples imágenes por producto</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="procesos-operativos">
+<h2>🔄 PROCESOS OPERATIVOS<a class="headerlink" href="#procesos-operativos" title="Link to this heading"></a></h2>
+<section id="flujo-completo-de-pedidos">
+<h3>1. <strong>Flujo Completo de Pedidos</strong><a class="headerlink" href="#flujo-completo-de-pedidos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                     CICLO DE VIDA DEL PEDIDO                    │
+└─────────────────────────────────────────────────────────────────┘
+
+    1. CREACIÓN
+    ┌─────────────┐
+    │  🛒 Cliente │ ─────► Agrega productos al carrito
+    │  Navega     │        Selecciona cantidades
+    │  Catalogo   │        Confirma pedido
+    └─────────────┘
+           │
+           ▼
+    2. PROCESAMIENTO DE PAGO
+    ┌─────────────┐
+    │ 💳 Sistema  │ ─────► Valida método de pago
+    │ de Pagos    │        Procesa transacción
+    │             │        Valida comprobante (si aplica)
+    └─────────────┘
+           │
+           ▼
+    3. CONFIRMACIÓN
+    ┌─────────────┐
+    │ Estado:     │ ─────► 📧 Notificación al cliente
+    │ PENDIENTE   │        📧 Notificación al proveedor
+    │             │        📧 Notificación a logística
+    └─────────────┘
+           │
+           ▼
+    4. PREPARACIÓN
+    ┌─────────────┐
+    │ 🚚 Logística│ ─────► Recibe orden
+    │ Prepara     │        Verifica productos
+    │ Productos   │        Reduce stock
+    └─────────────┘        Cambia estado → PREPARANDO
+           │
+           ▼
+    5. ENVÍO
+    ┌─────────────┐
+    │ Estado:     │ ─────► 📧 Notificación al cliente
+    │ EN_TRANSITO │        Asigna transportista
+    │             │        Tracking (futuro)
+    └─────────────┘
+           │
+           ▼
+    6. ENTREGA
+    ┌─────────────┐
+    │ Estado:     │ ─────► 📧 Confirmación al cliente
+    │ ENTREGADO   │        ✅ Genera registro de venta
+    │             │        📊 Actualiza métricas
+    └─────────────┘
+           │
+           ▼
+    7. REGISTRO FINANCIERO
+    ┌─────────────┐
+    │ 📊 Venta    │ ─────► Consolida información
+    │ Registrada  │        Disponible para reportes
+    │             │        Historial permanente
+    └─────────────┘
+</pre></div>
+</div>
+<p><strong>Estados del Pedido</strong>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pendiente</span></code> - Pedido creado, esperando preparación</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preparando</span></code> - Logística está preparando el pedido</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">en_transito</span></code> - Pedido enviado al cliente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">entregado</span></code> - Pedido completado exitosamente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cancelado</span></code> - Pedido cancelado (devuelve stock)</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="gestion-de-stock">
+<h3>2. <strong>Gestión de Stock</strong><a class="headerlink" href="#gestion-de-stock" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                   SISTEMA DE GESTIÓN DE STOCK                   │
+└─────────────────────────────────────────────────────────────────┘
+
+    RECARGA MANUAL
+    ┌─────────────┐
+    │ 📦 Proveedor│ ─────► Ingresa cantidad
+    │ o Admin     │        Sistema valida
+    └─────────────┘        Actualiza stock
+           │                Registra en historial
+           │
+    ┌──────▼──────────────────────────────────────┐
+    │         STOCK DEL PRODUCTO                  │
+    │   Actual: 150 unidades                      │
+    └─────────────────────────────────────────────┘
+           │
+           ▼
+    MONITOREO AUTOMÁTICO
+    ┌─────────────┐
+    │ 🤖 Sistema  │ ─────► Verifica stock cada X tiempo
+    │ Automático  │        Compara con stock_minimo
+    └─────────────┘        
+           │
+           ▼
+    ¿Stock &lt;= Stock Mínimo?
+           │
+           ├─[SÍ]──► RECARGA AUTOMÁTICA
+           │         ┌─────────────┐
+           │         │ + cantidad  │
+           │         │   recarga   │
+           │         └─────────────┘
+           │         Registra en historial
+           │         Notifica al proveedor
+           │
+           └─[NO]──► Continúa monitoreo
+
+    REDUCCIÓN POR VENTA
+    ┌─────────────┐
+    │ 🛒 Pedido   │ ─────► Valida disponibilidad
+    │ Confirmado  │        Reduce stock
+    │             │        Registra en historial
+    └─────────────┘        Trigger recarga si aplica
+</pre></div>
+</div>
+<p><strong>Modelos Involucrados</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Producto.stock</span></code> - Stock actual</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StockConfig</span></code> - Configuración de recarga</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HistorialRecarga</span></code> - Registro de movimientos</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="procesamiento-de-pagos">
+<h3>3. <strong>Procesamiento de Pagos</strong><a class="headerlink" href="#procesamiento-de-pagos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                    FLUJO DE PROCESAMIENTO DE PAGOS              │
+└─────────────────────────────────────────────────────────────────┘
+
+    1. SELECCIÓN DE MÉTODO
+    ┌─────────────┐
+    │  🛒 Cliente │ ─────► Selecciona método de pago:
+    └─────────────┘        • Tarjeta de crédito
+           │                • Transferencia bancaria
+           │                • PSE
+           │                • Efectivo (en tienda)
+           │
+           ▼
+    2. VALIDACIÓN
+    ┌─────────────┐
+    │ Método      │ ─────► ¿Requiere comprobante?
+    │ Activo?     │         
+    └─────────────┘        
+           │
+           ▼
+    3. PROCESAMIENTO
+    ┌─────────────┐
+    │ Gateway de  │ ─────► Procesa transacción
+    │ Pago        │        Recibe respuesta
+    └─────────────┘        Guarda referencia externa
+           │
+           ▼
+    4. REGISTRO
+    ┌─────────────┐
+    │ Pago        │ ─────► Crea registro en BD
+    │ + Estado    │        Asocia con pedido
+    │             │        Guarda respuesta gateway
+    └─────────────┘
+           │
+           ▼
+    5. NOTIFICACIÓN
+    ┌─────────────┐
+    │ 📧 Email    │ ─────► Confirmación al cliente
+    │ Automático  │        Recibo de pago
+    └─────────────┘        Detalles de transacción
+</pre></div>
+</div>
+<p><strong>Modelos Involucrados</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MetodoPago</span></code> - Métodos disponibles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pago</span></code> - Registro del pago</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaccion</span></code> - Detalles de la transacción</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EstadoPago</span></code> - Estados del pago</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="procesos-de-soporte">
+<h2>🛠️ PROCESOS DE SOPORTE<a class="headerlink" href="#procesos-de-soporte" title="Link to this heading"></a></h2>
+<section id="sistema-de-notificaciones">
+<h3>1. <strong>Sistema de Notificaciones</strong><a class="headerlink" href="#sistema-de-notificaciones" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                MOTOR DE NOTIFICACIONES AUTOMÁTICAS              │
+└─────────────────────────────────────────────────────────────────┘
+
+    EVENTOS TRIGGER
+    ┌─────────────────┐
+    │ • Nuevo pedido  │
+    │ • Cambio estado │
+    │ • Pago recibido │ ────► Detector de Eventos
+    │ • Stock bajo    │
+    │ • Nuevo usuario │
+    └─────────────────┘
+           │
+           ▼
+    CLASIFICACIÓN
+    ┌─────────────────┐
+    │ Tipo de         │ ────► • Transaccional
+    │ Notificación    │       • Informativa
+    └─────────────────┘       • Alerta
+           │
+           ▼
+    DESTINATARIOS
+    ┌─────────────────┐
+    │ • Cliente       │
+    │ • Proveedor     │ ────► Envío Multi-canal
+    │ • Logística     │       • Email
+    │ • Admin         │       • Push (futuro)
+    └─────────────────┘       • SMS (futuro)
+           │
+           ▼
+    REGISTRO
+    ┌─────────────────┐
+    │ Base de Datos   │ ────► Marca como enviada
+    │ Notificaciones  │       Tracking de lectura
+    └─────────────────┘       Historial completo
+</pre></div>
+</div>
+<p><strong>Tipos de Notificaciones</strong>:</p>
+<ul class="simple">
+<li><p>✉️ <strong>Pedido Creado</strong> → Cliente, Logística</p></li>
+<li><p>📦 <strong>Pedido en Preparación</strong> → Cliente</p></li>
+<li><p>🚚 <strong>Pedido en Tránsito</strong> → Cliente</p></li>
+<li><p>✅ <strong>Pedido Entregado</strong> → Cliente</p></li>
+<li><p>💰 <strong>Pago Recibido</strong> → Cliente, Admin</p></li>
+<li><p>📉 <strong>Stock Bajo</strong> → Proveedor, Admin</p></li>
+<li><p>🔄 <strong>Recarga Automática</strong> → Proveedor</p></li>
+<li><p>👤 <strong>Nuevo Usuario</strong> → Admin</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="autenticacion-y-seguridad">
+<h3>2. <strong>Autenticación y Seguridad</strong><a class="headerlink" href="#autenticacion-y-seguridad" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│              SISTEMA DE AUTENTICACIÓN Y SEGURIDAD               │
+└─────────────────────────────────────────────────────────────────┘
+
+    REGISTRO
+    ┌─────────────┐
+    │ Nuevo       │ ────► Validación de email único
+    │ Usuario     │       Hash de contraseña (bcrypt)
+    └─────────────┘       Creación de perfil
+           │
+           ▼
+    LOGIN
+    ┌─────────────┐
+    │ Credenciales│ ────► Validación email/password
+    │ Email/Pass  │       Verificación de estado
+    └─────────────┘       • ¿Activo?
+           │               • ¿Suspendido?
+           │               • ¿Auto-desactivado?
+           ▼
+    TOKEN JWT
+    ┌─────────────┐
+    │ Generación  │ ────► Access Token (15 min)
+    │ Token       │       Refresh Token (7 días)
+    └─────────────┘       Claims: id, email, rol
+           │
+           ▼
+    AUTORIZACIÓN
+    ┌─────────────┐
+    │ Middleware  │ ────► Verifica token en cada request
+    │ JWT         │       Valida permisos por rol
+    └─────────────┘       Renueva token si aplica
+           │
+           ▼
+    GESTIÓN DE CUENTA
+    ┌─────────────┐
+    │ • Cambio    │ ────► Validación de contraseña anterior
+    │   contraseña│       Verificación vs historial
+    │ • Reset     │       Envío de email con token
+    │ • Suspensión│       Estados de cuenta
+    └─────────────┘
+</pre></div>
+</div>
+<p><strong>Características de Seguridad</strong>:</p>
+<ul class="simple">
+<li><p>🔒 JWT con refresh tokens</p></li>
+<li><p>🔑 Historial de contraseñas (no reutilización)</p></li>
+<li><p>🚫 Suspensión dual (usuario/admin)</p></li>
+<li><p>📧 Reset de contraseña por email</p></li>
+<li><p>🛡️ Rate limiting (futuro)</p></li>
+<li><p>🔐 2FA (futuro)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="sistema-de-reportes-y-analytics">
+<h3>3. <strong>Sistema de Reportes y Analytics</strong><a class="headerlink" href="#sistema-de-reportes-y-analytics" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                   REPORTES Y ANALÍTICAS                         │
+└─────────────────────────────────────────────────────────────────┘
+
+    DATOS OPERATIVOS
+    ┌─────────────────┐
+    │ • Ventas        │
+    │ • Pedidos       │
+    │ • Stock         │ ────► Agregación
+    │ • Usuarios      │       
+    │ • Transacciones │
+    └─────────────────┘
+           │
+           ▼
+    MÉTRICAS CLAVE (KPIs)
+    ┌─────────────────┐
+    │ • Total ventas  │
+    │ • Pedidos/día   │
+    │ • Productos más │ ────► Dashboard
+    │   vendidos      │       Visualización
+    │ • Stock crítico │
+    │ • Usuarios      │
+    │   activos       │
+    └─────────────────┘
+           │
+           ▼
+    REPORTES POR ROL
+    ┌─────────────────┐
+    │ Admin:          │ ────► Vista completa
+    │ • Global        │       Todas las tiendas
+    │                 │       Todos los usuarios
+    │ Proveedor:      │ ────► Sus productos
+    │ • Productos     │       Stock e historial
+    │ • Recargas      │
+    │                 │
+    │ Logística:      │ ────► Pedidos asignados
+    │ • Pendientes    │       Estados
+    │ • En proceso    │
+    │                 │
+    │ Cliente:        │ ────► Historial personal
+    │ • Mis pedidos   │       Mis pagos
+    │ • Mis pagos     │
+    └─────────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="flujos-de-usuario-por-rol">
+<h2>👥 FLUJOS DE USUARIO POR ROL<a class="headerlink" href="#flujos-de-usuario-por-rol" title="Link to this heading"></a></h2>
+<section id="administrador">
+<h3>1. <strong>ADMINISTRADOR</strong><a class="headerlink" href="#administrador" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                        ROL: ADMINISTRADOR                       │
+└─────────────────────────────────────────────────────────────────┘
+
+    INICIO DE SESIÓN
+         │
+         ▼
+    DASHBOARD ADMIN
+    ┌────────────────────────────────┐
+    │ • Vista general del sistema    │
+    │ • Métricas clave (KPIs)        │
+    │ • Alertas y notificaciones     │
+    │ • Accesos rápidos              │
+    └────────────────────────────────┘
+         │
+    ┌────┴──────┬──────────┬──────────┬──────────┐
+    │           │          │          │          │
+    ▼           ▼          ▼          ▼          ▼
+TIENDAS    PRODUCTOS   USUARIOS   PEDIDOS   REPORTES
+ │           │          │          │          │
+ ├─Crear    ├─Crear    ├─Crear    ├─Ver     ├─Ventas
+ ├─Editar   ├─Editar   ├─Editar   ├─Estado  ├─Stock
+ ├─Activar  ├─Asignar  ├─Roles    ├─Canc.  ├─Usuarios
+ └─Eliminar └─Stock    └─Suspend. └─Detall. └─Finanzas
+</pre></div>
+</div>
+<p><strong>Capacidades Principales</strong>:</p>
+<ul class="simple">
+<li><p>✅ Gestión completa de tiendas</p></li>
+<li><p>✅ Asignación de productos a proveedores</p></li>
+<li><p>✅ Creación y edición de productos</p></li>
+<li><p>✅ Administración de usuarios (todos los roles)</p></li>
+<li><p>✅ Suspensión/reactivación de cuentas</p></li>
+<li><p>✅ Vista global de pedidos</p></li>
+<li><p>✅ Reportes y analíticas completas</p></li>
+<li><p>✅ Configuración del sistema</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="proveedor">
+<h3>2. <strong>PROVEEDOR</strong><a class="headerlink" href="#proveedor" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                         ROL: PROVEEDOR                          │
+└─────────────────────────────────────────────────────────────────┘
+
+    INICIO DE SESIÓN
+         │
+         ▼
+    DASHBOARD PROVEEDOR
+    ┌────────────────────────────────┐
+    │ • Productos asignados          │
+    │ • Stock bajo (alertas)         │
+    │ • Recargas recientes           │
+    │ • Pedidos relacionados         │
+    └────────────────────────────────┘
+         │
+    ┌────┴──────┬──────────┬──────────┐
+    │           │          │          │
+    ▼           ▼          ▼          ▼
+MIS PRODUCTOS STOCK   RECARGAS  REPORTES
+    │           │          │          │
+    ├─Ver      ├─Actual   ├─Manual   ├─Historial
+    ├─Editar   ├─Histo.  ├─Auto     ├─Ventas
+    ├─Imágenes ├─Config. ├─Histor.  └─Stock
+    └─Caract.  └─Alert.  └─Config.
+</pre></div>
+</div>
+<p><strong>Capacidades Principales</strong>:</p>
+<ul class="simple">
+<li><p>✅ Ver productos asignados</p></li>
+<li><p>✅ Actualizar stock</p></li>
+<li><p>✅ Configurar recarga automática</p></li>
+<li><p>✅ Realizar recargas manuales</p></li>
+<li><p>✅ Ver historial de recargas</p></li>
+<li><p>✅ Subir/editar imágenes de productos</p></li>
+<li><p>✅ Actualizar características</p></li>
+<li><p>✅ Recibir alertas de stock bajo</p></li>
+<li><p>✅ Reportes de sus productos</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="logistica">
+<h3>3. <strong>LOGÍSTICA</strong><a class="headerlink" href="#logistica" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                        ROL: LOGÍSTICA                           │
+└─────────────────────────────────────────────────────────────────┘
+
+    INICIO DE SESIÓN
+         │
+         ▼
+    PANEL LOGÍSTICA
+    ┌────────────────────────────────┐
+    │ • Pedidos pendientes           │
+    │ • Pedidos en preparación       │
+    │ • Pedidos en tránsito          │
+    │ • Alertas de tiempo            │
+    └────────────────────────────────┘
+         │
+    ┌────┴──────┬──────────┬──────────┐
+    │           │          │          │
+    ▼           ▼          ▼          ▼
+PENDIENTES PREPARANDO EN_TRANSITO ENTREGADOS
+    │           │          │          │
+    ├─Ver      ├─Ver      ├─Ver      ├─Ver
+    ├─Iniciar  ├─Detalle  ├─Detalle  ├─Historial
+    ├─Detalle  ├─Marcar   ├─Marcar   └─Reportes
+    └─Asignar  │ enviado  │ entregado
+               └─Cancelar └─Problemas
+</pre></div>
+</div>
+<p><strong>Capacidades Principales</strong>:</p>
+<ul class="simple">
+<li><p>✅ Ver pedidos pendientes</p></li>
+<li><p>✅ Cambiar estado de pedidos</p>
+<ul>
+<li><p>Pendiente → Preparando</p></li>
+<li><p>Preparando → En tránsito</p></li>
+<li><p>En tránsito → Entregado</p></li>
+</ul>
+</li>
+<li><p>✅ Ver detalles completos de pedidos</p></li>
+<li><p>✅ Cancelar pedidos (con justificación)</p></li>
+<li><p>✅ Gestionar problemas en entrega</p></li>
+<li><p>✅ Reportes de entregas</p></li>
+<li><p>✅ Métricas de tiempo de entrega</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="cliente">
+<h3>4. <strong>CLIENTE</strong><a class="headerlink" href="#cliente" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                          ROL: CLIENTE                           │
+└─────────────────────────────────────────────────────────────────┘
+
+    INICIO DE SESIÓN / REGISTRO
+         │
+         ▼
+    CATÁLOGO DE PRODUCTOS
+    ┌────────────────────────────────┐
+    │ • Buscar productos             │
+    │ • Filtrar por categoría        │
+    │ • Ver detalles                 │
+    │ • Agregar al carrito           │
+    └────────────────────────────────┘
+         │
+         ▼
+    CARRITO DE COMPRAS
+    ┌────────────────────────────────┐
+    │ • Ver productos seleccionados  │
+    │ • Ajustar cantidades           │
+    │ • Calcular total               │
+    │ • Proceder al pago             │
+    └────────────────────────────────┘
+         │
+         ▼
+    PAGO
+    ┌────────────────────────────────┐
+    │ • Seleccionar método de pago   │
+    │ • Ingresar datos               │
+    │ • Subir comprobante (si aplica)│
+    │ • Confirmar pago               │
+    └────────────────────────────────┘
+         │
+         ▼
+    CONFIRMACIÓN
+    ┌────────────────────────────────┐
+    │ • Número de pedido             │
+    │ • Detalles de la compra        │
+    │ • Estado: Pendiente            │
+    │ • Email de confirmación        │
+    └────────────────────────────────┘
+         │
+         ▼
+    MIS PEDIDOS
+    ┌────────────────────────────────┐
+    │ • Ver historial                │
+    │ • Seguimiento de estados       │
+    │ • Ver detalles                 │
+    │ • Descargar factura            │
+    └────────────────────────────────┘
+</pre></div>
+</div>
+<p><strong>Capacidades Principales</strong>:</p>
+<ul class="simple">
+<li><p>✅ Navegar catálogo de productos</p></li>
+<li><p>✅ Buscar y filtrar productos</p></li>
+<li><p>✅ Ver detalles y características</p></li>
+<li><p>✅ Agregar productos al carrito</p></li>
+<li><p>✅ Realizar compras</p></li>
+<li><p>✅ Seleccionar método de pago</p></li>
+<li><p>✅ Ver historial de pedidos</p></li>
+<li><p>✅ Seguimiento de estado de pedidos</p></li>
+<li><p>✅ Gestionar perfil</p></li>
+<li><p>✅ Auto-desactivar cuenta</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="diagrama-de-flujo-de-pedidos">
+<h2>📈 DIAGRAMA DE FLUJO DE PEDIDOS<a class="headerlink" href="#diagrama-de-flujo-de-pedidos" title="Link to this heading"></a></h2>
+<section id="flujo-detallado-con-validaciones">
+<h3><strong>Flujo Detallado con Validaciones</strong><a class="headerlink" href="#flujo-detallado-con-validaciones" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TD
+    A[Cliente: Agrega productos al carrito] --&gt; B{¿Stock disponible?}
+    B --&gt;|Sí| C[Cliente: Confirma pedido]
+    B --&gt;|No| A1[Error: Stock insuficiente]
+    
+    C --&gt; D[Cliente: Selecciona método de pago]
+    D --&gt; E{¿Método válido y activo?}
+    E --&gt;|Sí| F[Sistema: Procesa pago]
+    E --&gt;|No| D1[Error: Método no disponible]
+    
+    F --&gt; G{¿Pago exitoso?}
+    G --&gt;|Sí| H[Sistema: Crea pedido - Estado: PENDIENTE]
+    G --&gt;|No| F1[Error: Pago rechazado]
+    
+    H --&gt; H1[Sistema: Reduce stock de productos]
+    H1 --&gt; H2[Sistema: Envía notificaciones]
+    H2 --&gt; I[Logística: Recibe orden]
+    
+    I --&gt; J[Logística: Inicia preparación]
+    J --&gt; K[Sistema: Cambia estado a PREPARANDO]
+    K --&gt; K1[Sistema: Notifica al cliente]
+    
+    K1 --&gt; L[Logística: Prepara productos]
+    L --&gt; M{¿Productos listos?}
+    M --&gt;|Sí| N[Logística: Marca como EN_TRANSITO]
+    M --&gt;|No| M1[Logística: Reporta problema]
+    
+    N --&gt; N1[Sistema: Notifica al cliente]
+    N1 --&gt; O[Transporte: Entrega pedido]
+    
+    O --&gt; P{¿Entrega exitosa?}
+    P --&gt;|Sí| Q[Logística: Marca como ENTREGADO]
+    P --&gt;|No| P1[Reporta problema de entrega]
+    
+    Q --&gt; Q1[Sistema: Genera registro de venta]
+    Q1 --&gt; Q2[Sistema: Actualiza métricas]
+    Q2 --&gt; R[Sistema: Notifica confirmación al cliente]
+    
+    A1 --&gt; Z[Fin - Error]
+    D1 --&gt; Z
+    F1 --&gt; Z
+    M1 --&gt; Z
+    P1 --&gt; Z
+    R --&gt; Y[Fin - Éxito]
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="integraciones-y-sistemas">
+<h2>🔗 INTEGRACIONES Y SISTEMAS<a class="headerlink" href="#integraciones-y-sistemas" title="Link to this heading"></a></h2>
+<section id="arquitectura-del-sistema">
+<h3><strong>Arquitectura del Sistema</strong><a class="headerlink" href="#arquitectura-del-sistema" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                          FRONTEND                               │
+│                    React 19 + Vite                              │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
+│  │Dashboard │  │Catálogo  │  │ Pedidos  │  │  Auth    │       │
+│  │  Admin   │  │Productos │  │          │  │          │       │
+│  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼ axios (HTTP)
+┌─────────────────────────────────────────────────────────────────┐
+│                          API REST                               │
+│                   Django REST Framework                         │
+│  ┌────────────────────────────────────────────────────┐        │
+│  │  Endpoints:                                        │        │
+│  │  • /api/auth/ (login, registro, reset)            │        │
+│  │  • /api/usuarios/                                 │        │
+│  │  • /api/productos/                                │        │
+│  │  • /api/pedidos/                                  │        │
+│  │  • /api/pagos/                                    │        │
+│  │  • /api/notificaciones/                           │        │
+│  └────────────────────────────────────────────────────┘        │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                          BACKEND                                │
+│                       Django 4.x                                │
+│  ┌────────┐  ┌────────┐  ┌────────┐  ┌────────┐  ┌────────┐  │
+│  │Usuarios│  │Product.│  │Ventas  │  │Pagos   │  │Notific.│  │
+│  │  App   │  │  App   │  │  App   │  │  App   │  │  App   │  │
+│  └────────┘  └────────┘  └────────┘  └────────┘  └────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                        BASE DE DATOS                            │
+│                        SQLite / PostgreSQL                      │
+│  ┌──────────────────────────────────────────────────┐          │
+│  │ Tablas: Usuario, Producto, Pedido, Pago,        │          │
+│  │         Notificacion, Tienda, etc.              │          │
+│  └──────────────────────────────────────────────────┘          │
+└─────────────────────────────────────────────────────────────────┘
+
+                SERVICIOS EXTERNOS (Futuros)
+    ┌──────────┐  ┌──────────┐  ┌──────────┐
+    │ Gateway  │  │  Email   │  │  SMS     │
+    │  Pagos   │  │ Service  │  │ Service  │
+    │(PayU,PSE)│  │(SendGrid)│  │(Twilio)  │
+    └──────────┘  └──────────┘  └──────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="matriz-de-responsabilidades-raci">
+<h2>📊 MATRIZ DE RESPONSABILIDADES (RACI)<a class="headerlink" href="#matriz-de-responsabilidades-raci" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Proceso</p></th>
+<th class="head"><p>Admin</p></th>
+<th class="head"><p>Proveedor</p></th>
+<th class="head"><p>Logística</p></th>
+<th class="head"><p>Cliente</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Gestión de Tiendas</strong></p></td>
+<td><p>R,A</p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gestión de Usuarios</strong></p></td>
+<td><p>R,A</p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Crear Productos</strong></p></td>
+<td><p>R,A</p></td>
+<td><p>C</p></td>
+<td><p>I</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Asignar Productos a Proveedor</strong></p></td>
+<td><p>R,A</p></td>
+<td><p>I</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Actualizar Stock</strong></p></td>
+<td><p>R</p></td>
+<td><p>R,A</p></td>
+<td><p>I</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Configurar Recarga Auto</strong></p></td>
+<td><p>R</p></td>
+<td><p>R,A</p></td>
+<td><p>I</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Crear Pedido</strong></p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>R,A</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Preparar Pedido</strong></p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>R,A</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cambiar Estado Pedido</strong></p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>R,A</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Procesar Pago</strong></p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>I</p></td>
+<td><p>R,A</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Enviar Notificaciones</strong></p></td>
+<td><p>I</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Generar Reportes</strong></p></td>
+<td><p>R,A</p></td>
+<td><p>R,A</p></td>
+<td><p>R,A</p></td>
+<td><p>R,A</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gestión de Cuenta</strong></p></td>
+<td><p>R</p></td>
+<td><p>R,A</p></td>
+<td><p>R,A</p></td>
+<td><p>R,A</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leyenda</strong>:</p>
+<ul class="simple">
+<li><p><strong>R</strong> = Responsable (quien ejecuta)</p></li>
+<li><p><strong>A</strong> = Aprobador (quien decide)</p></li>
+<li><p><strong>C</strong> = Consultado (quien provee información)</p></li>
+<li><p><strong>I</strong> = Informado (quien recibe información)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="indicadores-clave-de-rendimiento-kpis">
+<h2>🎯 INDICADORES CLAVE DE RENDIMIENTO (KPIs)<a class="headerlink" href="#indicadores-clave-de-rendimiento-kpis" title="Link to this heading"></a></h2>
+<section id="kpis-por-area">
+<h3><strong>KPIs por Área</strong><a class="headerlink" href="#kpis-por-area" title="Link to this heading"></a></h3>
+<section id="ventas">
+<h4><strong>Ventas</strong><a class="headerlink" href="#ventas" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>💰 Total de ventas (diario/semanal/mensual)</p></li>
+<li><p>📦 Número de pedidos completados</p></li>
+<li><p>💵 Valor promedio de pedido</p></li>
+<li><p>📈 Tasa de conversión (visitas → compras)</p></li>
+<li><p>🔄 Tasa de pedidos cancelados</p></li>
+</ul>
+</section>
+<section id="operaciones">
+<h4><strong>Operaciones</strong><a class="headerlink" href="#operaciones" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>⏱️ Tiempo promedio de preparación</p></li>
+<li><p>🚚 Tiempo promedio de entrega</p></li>
+<li><p>✅ Tasa de entregas exitosas</p></li>
+<li><p>❌ Tasa de problemas en entrega</p></li>
+<li><p>📊 Pedidos por estado (dashboard)</p></li>
+</ul>
+</section>
+<section id="inventario">
+<h4><strong>Inventario</strong><a class="headerlink" href="#inventario" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>📉 Productos con stock bajo</p></li>
+<li><p>🔄 Frecuencia de recarga automática</p></li>
+<li><p>📊 Rotación de inventario</p></li>
+<li><p>💸 Valor total de inventario</p></li>
+<li><p>🎯 Tasa de productos sin stock</p></li>
+</ul>
+</section>
+<section id="usuarios">
+<h4><strong>Usuarios</strong><a class="headerlink" href="#usuarios" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>👥 Usuarios activos (por rol)</p></li>
+<li><p>📊 Nuevos registros (período)</p></li>
+<li><p>🚫 Cuentas suspendidas</p></li>
+<li><p>🔄 Tasa de retención de clientes</p></li>
+<li><p>⏰ Última actividad promedio</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="roadmap-y-mejoras-futuras">
+<h2>🚀 ROADMAP Y MEJORAS FUTURAS<a class="headerlink" href="#roadmap-y-mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-completada">
+<h3><strong>Fase 1: Completada ✅</strong><a class="headerlink" href="#fase-1-completada" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sistema de usuarios multi-rol</p></li>
+<li><p>Gestión de productos y tiendas</p></li>
+<li><p>Flujo completo de pedidos</p></li>
+<li><p>Sistema de pagos básico</p></li>
+<li><p>Notificaciones por email</p></li>
+<li><p>Recarga automática de stock</p></li>
+<li><p>Dashboards por rol</p></li>
+</ul>
+</section>
+<section id="fase-2-en-progreso">
+<h3><strong>Fase 2: En Progreso 🔄</strong><a class="headerlink" href="#fase-2-en-progreso" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Optimización de filtros y búsqueda</p></li>
+<li><p>Reportes avanzados</p></li>
+<li><p>Sistema de guías interactivas</p></li>
+<li><p>SEO y optimización social media</p></li>
+<li><p>Mejoras de UX/UI</p></li>
+</ul>
+</section>
+<section id="fase-3-planeada">
+<h3><strong>Fase 3: Planeada 📋</strong><a class="headerlink" href="#fase-3-planeada" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Integración con gateways de pago reales (PayU, PSE)</p></li>
+<li><p>Sistema de tracking de entregas</p></li>
+<li><p>Notificaciones push en tiempo real</p></li>
+<li><p>App móvil (React Native)</p></li>
+<li><p>Sistema de chat en vivo</p></li>
+<li><p>Multi-tienda para un mismo admin</p></li>
+<li><p>Sistema de cupones y descuentos</p></li>
+<li><p>Programa de fidelización</p></li>
+<li><p>Analíticas avanzadas con IA</p></li>
+</ul>
+</section>
+<section id="fase-4-vision-a-largo-plazo">
+<h3><strong>Fase 4: Visión a Largo Plazo 🔮</strong><a class="headerlink" href="#fase-4-vision-a-largo-plazo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Marketplace multi-vendor</p></li>
+<li><p>Integración con ERP externo</p></li>
+<li><p>API pública para terceros</p></li>
+<li><p>Sistema de franquicias</p></li>
+<li><p>Blockchain para trazabilidad</p></li>
+<li><p>Inteligencia artificial para predicción de demanda</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h2>📝 CONCLUSIÓN<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>El <strong>Mapa de Procesos de PREXCOL</strong> define un sistema integral de gestión retail que:</p>
+<p>✅ <strong>Conecta 4 actores clave</strong>: Admin, Proveedor, Logística, Cliente<br />
+✅ <strong>Automatiza procesos críticos</strong>: Stock, pagos, notificaciones<br />
+✅ <strong>Garantiza trazabilidad</strong>: Historial completo de operaciones<br />
+✅ <strong>Escala eficientemente</strong>: Arquitectura modular y extensible<br />
+✅ <strong>Prioriza la experiencia</strong>: Dashboards específicos por rol</p>
+<p>Este mapa sirve como <strong>guía estratégica</strong> para el desarrollo continuo y la optimización del sistema.</p>
+<hr class="docutils" />
+<p><strong>Documento preparado por</strong>: Sistema PREXCOL<br />
+<strong>Última actualización</strong>: 2025-12-04<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Mantenedor</strong>: Equipo de Desarrollo</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, PREXCOL Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

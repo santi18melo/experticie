@@ -1,0 +1,8 @@
+:py:mod:`backend.apps.pagos.migrations`
+=======================================
+
+.. py:module:: backend.apps.pagos.migrations
+
+.. autodoc2-docstring:: backend.apps.pagos.migrations
+   :parser: rst
+   :allowtitles:

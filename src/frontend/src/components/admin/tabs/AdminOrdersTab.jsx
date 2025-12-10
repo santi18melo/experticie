@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
+import ModalDetallePedido from '../../ModalDetallePedido';
 
 export default function AdminOrdersTab({ pedidos, loading, onUpdate }) {
   const [filtroEstado, setFiltroEstado] = useState("todos");
+  const [selectedPedido, setSelectedPedido] = useState(null);
 
   const pedidosFiltrados = (pedidos || []).filter(p => {
     if (filtroEstado !== "todos" && p.estado !== filtroEstado) return false;
     return true;
   });
+
+  const handleStatusChange = (pedidoId, newStatus) => {
+      onUpdate({ id: pedidoId, estado: newStatus });
+      // Update local state if needed for optimistic UI, though onUpdate usually triggers refresh
+      if (selectedPedido && selectedPedido.id === pedidoId) {
+          setSelectedPedido({ ...selectedPedido, estado: newStatus });
+      }
+  };
 
   return (
     <div className="content-section">
@@ -59,7 +69,7 @@ export default function AdminOrdersTab({ pedidos, loading, onUpdate }) {
                 <td>{new Date(pedido.fecha_creacion).toLocaleDateString()}</td>
                 <td>
                   <div className="actions-cell">
-                    <button className="btn-icon edit" onClick={() => onUpdate(pedido, true)} title="Ver Detalles">👁️</button>
+                    <button className="btn-icon edit" onClick={() => setSelectedPedido(pedido)} title="Ver Detalles">👁️</button>
                   </div>
                 </td>
               </tr>
@@ -67,6 +77,15 @@ export default function AdminOrdersTab({ pedidos, loading, onUpdate }) {
           </tbody>
         </table>
       </div>
+
+      {selectedPedido && (
+        <ModalDetallePedido
+          pedido={selectedPedido}
+          onClose={() => setSelectedPedido(null)}
+          showStatusChange={true}
+          onStatusChange={handleStatusChange}
+        />
+      )}
     </div>
   );
 }

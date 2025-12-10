@@ -1,0 +1,33 @@
+:py:mod:`backend.apps.usuarios.urls_admin`
+==========================================
+
+.. py:module:: backend.apps.usuarios.urls_admin
+
+.. autodoc2-docstring:: backend.apps.usuarios.urls_admin
+   :parser: rst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`urlpatterns <backend.apps.usuarios.urls_admin.urlpatterns>`
+     - .. autodoc2-docstring:: backend.apps.usuarios.urls_admin.urlpatterns
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: urlpatterns
+   :canonical: backend.apps.usuarios.urls_admin.urlpatterns
+   :value: None
+
+   .. autodoc2-docstring:: backend.apps.usuarios.urls_admin.urlpatterns
+      :parser: rst

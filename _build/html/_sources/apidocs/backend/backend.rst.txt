@@ -1,0 +1,69 @@
+:py:mod:`backend`
+=================
+
+.. py:module:: backend
+
+.. autodoc2-docstring:: backend
+   :parser: rst
+   :allowtitles:
+
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   backend.apps
+   backend.middleware
+   backend.services
+
+Submodules
+----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   backend.audit_tests
+   backend.celery_app
+   backend.create_admin
+   backend.create_test_users
+   backend.debug_token
+   backend.fix_admin_password
+   backend.fix_imports
+   backend.fix_user_roles
+   backend.full_diagnostic
+   backend.investigate_admin
+   backend.manage
+   backend.pagination
+   backend.urls
+   backend.user_middleware
+   backend.verify_all_logins
+   backend.verify_backend
+   backend.verify_rf_coverage
+
+Package Contents
+----------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`__all__ <backend.__all__>`
+     - .. autodoc2-docstring:: backend.__all__
+          :parser: rst
+          :summary:
+
+API
+~~~
+
+.. py:data:: __all__
+   :canonical: backend.__all__
+   :value: ('celery_app',)
+
+   .. autodoc2-docstring:: backend.__all__
+      :parser: rst
