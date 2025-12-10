@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/ModalEdicion.css'; // Use existing modal styles
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { axiosInstance } from '../../services/api';
 import '../../styles/ModalEdicion.css';
