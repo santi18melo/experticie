@@ -1,3 +1,12 @@
+ï»¿# PREXCOL  Project Overview
 
-## ?? Limpieza de backups
-- Se eliminó la carpeta experticie-1-backup que contenía una copia completa del proyecto y no era utilizada por la aplicación.
+This repository contains the PREXCOL platform. Documentation has been reorganized under the `docs/` folder.
+
+- Primary documentation index: `docs/README.md`
+- Developer quick start: `docs/INICIO_RAPIDO.md`
+
+For contributors: follow the `docs/PLAN_REORGANIZACION_MAESTRO.md` if you need to move or archive files.
+
+If you need the legacy notes or backups, see `tools/archives/`.
+
+-- Team
