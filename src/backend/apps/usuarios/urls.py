@@ -13,4 +13,5 @@ router.register(r'usuarios', UsuarioViewSet, basename='usuario')
 # -------------------------------
 urlpatterns = [
     path('', include(router.urls)),  # ViewSet routes
+    path('admin/', include('apps.usuarios.urls_admin')),
 ]
