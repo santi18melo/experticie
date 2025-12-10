@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export default function AdminOrdersTab({ pedidos, loading, onUpdate }) {
   const [filtroEstado, setFiltroEstado] = useState("todos");
 
-  const pedidosFiltrados = pedidos.filter(p => {
+  const pedidosFiltrados = (pedidos || []).filter(p => {
     if (filtroEstado !== "todos" && p.estado !== filtroEstado) return false;
     return true;
   });

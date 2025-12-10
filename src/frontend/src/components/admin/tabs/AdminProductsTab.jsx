@@ -16,7 +16,7 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
     });
   };
 
-  const productosFiltrados = productos.filter(p => {
+  const productosFiltrados = (productos || []).filter(p => {
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       return p.nombre.toLowerCase().includes(term) || p.descripcion.toLowerCase().includes(term);
@@ -41,11 +41,11 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
             <input type="number" placeholder="Stock" value={formData.stock} onChange={e => setFormData({...formData, stock: e.target.value})} required />
             <select value={formData.tienda} onChange={e => setFormData({...formData, tienda: e.target.value})} required>
               <option value="">Seleccionar Tienda</option>
-              {tiendas.map(t => <option key={t.id} value={t.id}>{t.nombre}</option>)}
+              {(tiendas || []).map(t => <option key={t.id} value={t.id}>{t.nombre}</option>)}
             </select>
             <select value={formData.proveedor} onChange={e => setFormData({...formData, proveedor: e.target.value})} required>
               <option value="">Seleccionar Proveedor</option>
-              {proveedores.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
+              {(proveedores || []).map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
             </select>
             <textarea placeholder="Descripción" value={formData.descripcion} onChange={e => setFormData({...formData, descripcion: e.target.value})} />
             <div className="checkbox-group">
@@ -88,7 +88,7 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
                   <div className="product-name">{producto.nombre}</div>
                   <small>{producto.descripcion?.substring(0, 30)}...</small>
                 </td>
-                <td>{tiendas.find(t => t.id === producto.tienda)?.nombre || producto.tienda}</td>
+                <td>{(tiendas || []).find(t => t.id === producto.tienda)?.nombre || producto.tienda}</td>
                 <td>${Number(producto.precio).toLocaleString()}</td>
                 <td>
                   <span className={`badge ${producto.stock < 10 ? 'danger' : 'success'}`}>

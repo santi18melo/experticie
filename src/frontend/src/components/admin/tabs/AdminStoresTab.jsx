@@ -12,7 +12,7 @@ export default function AdminStoresTab({ tiendas, loading, onDelete, onUpdate, o
     setFormData({ nombre: "", direccion: "", telefono: "" });
   };
 
-  const tiendasFiltradas = tiendas.filter(t => {
+  const tiendasFiltradas = (tiendas || []).filter(t => {
     if (filtroEstado === "activas" && !t.activa) return false;
     if (filtroEstado === "inactivas" && t.activa) return false;
     return true;
