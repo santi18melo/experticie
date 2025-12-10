@@ -48,7 +48,7 @@ const DashboardHeader = ({ title }) => {
               onClick={() => setShowDropdown(!showDropdown)}
             >
               <div className="user-profile-trigger" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div className="profile-text" style={{ textAlign: 'right', display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>
+                <div className="profile-text">
                    <span style={{ display: 'block', fontWeight: 'bold', fontSize: '0.9rem', color: '#1e293b' }}>{user?.nombre}</span>
                    <span style={{ display: 'block', fontSize: '0.75rem', color: '#64748b', textTransform: 'capitalize' }}>{user?.rol}</span>
                 </div>

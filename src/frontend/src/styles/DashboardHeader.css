@@ -161,3 +161,15 @@
     display: none;
   }
 }
+
+/* Responsive Profile Text */
+.profile-text {
+  text-align: right;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .profile-text {
+    display: block;
+  }
+}
