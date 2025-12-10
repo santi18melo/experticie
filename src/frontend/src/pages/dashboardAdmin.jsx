@@ -134,9 +134,70 @@ export default function DashboardAdmin() {
   const ActiveComponent = tabs.find(t => t.id === activeTab).Component;
   const activeProps = getComponentProps();
 
+  // Stats state
+  const [stats, setStats] = useState({ users: 0, stores: 0, products: 0, orders: 0 });
+
+  // Fetch stats on mount
+  useEffect(() => {
+    const loadStats = async () => {
+        try {
+            const [u, s, p, o] = await Promise.all([
+                UserService.getAllUsers(),
+                productosService.getTiendas(),
+                productosService.getProductos(),
+                productosService.getPedidos()
+            ]);
+            setStats({
+                users: u?.length || 0,
+                stores: s?.length || 0,
+                products: p?.length || 0,
+                orders: o?.length || 0
+            });
+        } catch (e) {
+            console.error("Error loading stats:", e);
+        }
+    };
+    loadStats();
+  }, []);
+
   return (
     <div className="dashboard-admin">
-      <h1 className="dashboard-admin__title">Panel de Administración</h1>
+      <div className="admin-header-content">
+          <h1 className="dashboard-admin__title">Panel de Administración</h1>
+      </div>
+      
+      {/* Stats Overview */}
+      <div className="stats-grid">
+         <div className="stat-card">
+           <div className="stat-icon">👥</div>
+           <div className="stat-content">
+             <h3>{stats.users}</h3>
+             <p>Usuarios</p>
+           </div>
+         </div>
+         <div className="stat-card">
+           <div className="stat-icon">🏪</div>
+           <div className="stat-content">
+             <h3>{stats.stores}</h3>
+             <p>Tiendas</p>
+           </div>
+         </div>
+         <div className="stat-card">
+           <div className="stat-icon">📦</div>
+           <div className="stat-content">
+             <h3>{stats.products}</h3>
+             <p>Productos</p>
+           </div>
+         </div>
+         <div className="stat-card">
+           <div className="stat-icon">🧾</div>
+           <div className="stat-content">
+             <h3>{stats.orders}</h3>
+             <p>Pedidos</p>
+           </div>
+         </div>
+      </div>
+
       <nav className="dashboard-admin__nav">
         {tabs.map(tab => (
           <button
