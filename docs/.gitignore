@@ -1,7 +1,6 @@
 # Sphinx build files
 _build/
-_static/
-_templates/
+
 
 # Auto-generated API docs
 apidocs/
