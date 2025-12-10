@@ -155,7 +155,7 @@ export default function Profile() {
                <div className="image-wrapper">
                   {previewImage ? (
                     <img 
-                    src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://127.0.0.1:8000${previewImage}`} 
+                    src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://localhost:8000${previewImage}`} 
                     alt="Perfil" 
                     className="profile-img-large" 
                   />

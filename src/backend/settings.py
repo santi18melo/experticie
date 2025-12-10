@@ -77,7 +77,7 @@ if not DEBUG:
 MIDDLEWARE.extend([
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "middleware.user_middleware.ActiveUserMiddleware",
+    "user_middleware.ActiveUserMiddleware",
     "middleware.observability.ObservabilityMiddleware", # Observability
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",

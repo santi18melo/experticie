@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // Helper function for API calls - could be moved to a separate service file for larger applications
 const sendPasswordResetEmail = async (email) => {
-  const response = await fetch("http://127.0.0.1:8000/api/auth/forgot-password/", {
+  const response = await fetch("http://localhost:8000/api/auth/forgot-password/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

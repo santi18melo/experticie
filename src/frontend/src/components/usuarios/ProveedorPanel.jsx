@@ -204,7 +204,7 @@ function PanelProveedor() {
                 
                 {p.imagen && (
                     <img 
-                        src={p.imagen.startsWith('http') ? p.imagen : `http://127.0.0.1:8000${p.imagen}`} 
+                        src={p.imagen.startsWith('http') ? p.imagen : `http://localhost:8000${p.imagen}`} 
                         alt={p.nombre} 
                         style={{width: '100%', height: '150px', objectFit: 'cover', borderRadius: '8px', marginTop: '10px'}}
                     />
@@ -298,7 +298,7 @@ function PanelProveedor() {
                 />
                 {previewImage && (
                     <img 
-                        src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://127.0.0.1:8000${previewImage}`} 
+                        src={previewImage.startsWith('http') || previewImage.startsWith('blob') ? previewImage : `http://localhost:8000${previewImage}`} 
                         alt="Preview" 
                         className="image-preview" 
                     />
