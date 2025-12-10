@@ -598,7 +598,9 @@ UC-028 (Ver Dashboard) generalized by:
 | UC-002 Iniciar Sesión | ✅ | ✅ | ✅ | ✅ |
 | UC-003 Recuperar Contraseña | ✅ | ✅ | ✅ | ✅ |
 | UC-004 Cambiar Contraseña | ✅ | ✅ | ✅ | ✅ |
-| UC-005 Gestionar Cuenta | ✅ | ✅ | ✅ | ✅ |
+| UC-005 Gestionar Cuenta (Ver Perfil, Configurar) | ✅ | ✅ | ✅ | ✅ |
+| UC-005a Desactivar Cuenta | ✅ | ✅ | ✅ | ✅ |
+| UC-005b Cambiar Tema/Idioma | ✅ | ✅ | ✅ | ✅ |
 | **Productos & Stock** ||||
 | UC-006 Gestionar Tiendas | ✅ | - | - | - |
 | UC-007 Gestionar Productos | ✅ | ✅ | - | - |

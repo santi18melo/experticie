@@ -4,6 +4,7 @@ import { AuthProvider } from "./AuthContext";
 import { CartProvider } from "./CartContext";
 import { NotificationProvider } from "./NotificationContext";
 import { I18nProvider } from "./I18nContext";
+import { ThemeProvider } from "./ThemeContext";
 
 /**
  * AppProviders - Wraps all context providers in one component
@@ -11,7 +12,8 @@ import { I18nProvider } from "./I18nContext";
  */
 export const AppProviders = ({ children }) => {
   return (
-    <I18nProvider>
+    <ThemeProvider>
+      <I18nProvider>
       <AuthProvider>
         <CartProvider>
           <NotificationProvider>
@@ -19,7 +21,8 @@ export const AppProviders = ({ children }) => {
           </NotificationProvider>
         </CartProvider>
       </AuthProvider>
-    </I18nProvider>
+      </I18nProvider>
+    </ThemeProvider>
   );
 };
 

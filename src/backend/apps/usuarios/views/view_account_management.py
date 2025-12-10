@@ -27,6 +27,34 @@ def self_deactivate_account(request):
     user.self_deactivated = True
     user.is_active = False
     user.save()
+
+    # Enviar correo de desactivación
+    try:
+        from django.core.mail import send_mail
+        from django.conf import settings
+        
+        subject = 'Desactivación de Cuenta - PREXCOL'
+        message = f'''Hola {user.nombre},
+
+Tu cuenta en PREXCOL ha sido desactivada exitosamente a tu solicitud.
+
+Si esto fue un error o deseas volver, puedes reactivar tu cuenta simplemente iniciando sesión nuevamente.
+
+Esperamos verte pronto.
+
+Saludos,
+El equipo de PREXCOL'''
+        
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=True,
+        )
+    except Exception as e:
+        print(f"Error enviando correo de desactivación: {e}")
+
     
     return Response({
         'message': 'Tu cuenta ha sido desactivada. Puedes reactivarla en cualquier momento desde la página de login.',

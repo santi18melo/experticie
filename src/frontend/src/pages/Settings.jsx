@@ -3,47 +3,66 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+import { useTheme } from "../context/ThemeContext";
+import { useTranslation } from "../context/I18nContext";
+import { axiosInstance } from "../services/api";
+
 export default function Settings() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const { theme, setTheme } = useTheme();
+  const { locale, changeLocale } = useTranslation();
   
   const [settings, setSettings] = useState({
     emailNotifications: true,
     orderNotifications: true,
     marketingEmails: false,
-    language: "es",
-    theme: "light",
+    language: locale || "es",
+    theme: theme || "light",
     currency: "COP"
   });
 
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    // Load settings from localStorage or API
     const savedSettings = localStorage.getItem("userSettings");
     if (savedSettings) {
-      setSettings(JSON.parse(savedSettings));
+      setSettings(prev => ({ ...prev, ...JSON.parse(savedSettings) }));
     }
   }, []);
 
+  // Update local state when context changes (if changed from elsewhere)
+  useEffect(() => {
+    setSettings(prev => ({ ...prev, theme: theme, language: locale }));
+  }, [theme, locale]);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
     setSettings(prev => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value
+      [name]: newValue
     }));
+
+    // Apply changes immediately for detailed feedback
+    if (name === 'theme') {
+        setTheme(newValue);
+    }
+    if (name === 'language') {
+        changeLocale(newValue);
+    }
   };
 
   const handleSave = async () => {
     try {
-      // Save to localStorage (can be extended to save to API)
       localStorage.setItem("userSettings", JSON.stringify(settings));
-      setSaved(true);
       
-      // Redirect to dashboard after 1.5 seconds
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1500);
+      // Also sync with backend if needed
+      // await axiosInstance.post('/usuarios/preferencias/', settings);
+
+      setSaved(true);
+      setTimeout(() => navigate("/dashboard"), 1500);
     } catch (error) {
       console.error("Error saving settings:", error);
       alert("Error al guardar configuración");
@@ -51,23 +70,15 @@ export default function Settings() {
   };
 
   const handleDeactivateAccount = async () => {
-    if (window.confirm("¿Estás seguro de que deseas desactivar tu cuenta? Podrás reactivarla contactando al soporte.")) {
+    if (window.confirm("¿Seguro que deseas desactivar tu cuenta? Se enviará un correo de confirmación.")) {
       try {
-        // TODO: API call to deactivate account (set is_active = false)
-        // const response = await fetch('/api/usuarios/deactivate/', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        //     'Content-Type': 'application/json'
-        //   }
-        // });
-        
-        alert("Tu cuenta ha sido desactivada. Contacta al soporte para reactivarla.");
+        await axiosInstance.post('/usuarios/deactivate/');
+        alert("Cuenta desactivada. Revisa tu correo confirmado la desactivación.");
         logout();
         navigate("/login");
       } catch (error) {
-        console.error("Error deactivating account:", error);
-        alert("Error al desactivar la cuenta");
+        console.error("Error deactivating:", error);
+        alert("Error al desactivar: " + (error.response?.data?.error || "Error desconocido"));
       }
     }
   };

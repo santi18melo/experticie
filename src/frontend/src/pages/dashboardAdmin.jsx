@@ -8,6 +8,7 @@ import AdminOrdersTab from "../components/admin/tabs/AdminOrdersTab";
 import UserService from "../services/userService";
 import productosService from "../services/productosService";
 import SimpleChart from "../components/admin/SimpleChart";
+import LiveMetricsModal from "../components/admin/LiveMetricsModal";
 import "../styles/dashboardAdmin.css";
 
 const tabs = [
@@ -164,6 +165,8 @@ export default function DashboardAdmin() {
   const ActiveComponent = tabs.find(t => t.id === activeTab)?.Component || (() => <div>Tab not found</div>);
   const activeProps = getComponentProps();
 
+  const [showMetrics, setShowMetrics] = useState(false);
+
   return (
     <div className="dashboard-admin">
       <DashboardHeader title="Panel de Administración" />
@@ -226,9 +229,17 @@ export default function DashboardAdmin() {
               </div>
 
               {/* Activity Chart */}
-              <div className="content-section" style={{ padding: '20px', borderRadius: '16px', animation: 'none', background: 'linear-gradient(135deg, #2b6cb0 0%, #2c5282 100%)', color: 'white' }}>
-                 <h3 style={{ margin: '0 0 10px 0', fontSize: '1rem', color: 'white' }}>📈 Actividad Reciente</h3>
-                 <SimpleChart values={[3, 7, 5, 10, 8, 12, 9]} />
+              <div 
+                className="content-section" 
+                style={{ padding: '20px', borderRadius: '16px', animation: 'none', background: 'linear-gradient(135deg, #2b6cb0 0%, #2c5282 100%)', color: 'white', cursor: 'pointer' }}
+                onClick={() => setShowMetrics(true)}
+                title="Clic para ver métricas en tiempo real"
+              >
+                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    <h3 style={{ margin: 0, fontSize: '1rem', color: 'white' }}>📈 Actividad Reciente</h3>
+                    <span style={{ fontSize: '0.7rem', background: '#ffffff33', padding: '2px 6px', borderRadius: '4px' }}>🔴 EN VIVO</span>
+                 </div>
+                 <SimpleChart values={[3, 7, 5, 10, 8, 12, 9]} onClick={() => setShowMetrics(true)} />
               </div>
 
           </div>
@@ -248,6 +259,9 @@ export default function DashboardAdmin() {
       <section className="dashboard-admin__content">
         <ActiveComponent {...activeProps} />
       </section>
+
+      {/* Live Metrics Modal */}
+      {showMetrics && <LiveMetricsModal onClose={() => setShowMetrics(false)} />}
     </div>
   );
 }
