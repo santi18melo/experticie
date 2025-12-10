@@ -30,7 +30,7 @@ export default function AdminUsersTab({
     });
   };
 
-  const usuariosFiltrados = usuarios.filter(u => {
+  const usuariosFiltrados = (usuarios || []).filter(u => {
     if (filtroRol !== "todos" && u.rol !== filtroRol) return false;
     if (filtroEstado !== "todos") {
       if (filtroEstado === "activo" && !u.estado) return false;

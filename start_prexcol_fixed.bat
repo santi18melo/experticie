@@ -6,10 +6,10 @@ echo PREXCOL - Quick Start Fixed Script
 echo ========================================
 
 :: ---- Paths ----
-SET BACKEND_DIR=%CD%\backend
-SET FRONTEND_DIR=%CD%\frontend
+SET BACKEND_DIR=%CD%\src\backend
+SET FRONTEND_DIR=%CD%\src\frontend
 SET LOGS_DIR=%CD%\logs
-SET VENV_DIR=%CD%\scripts
+SET VENV_DIR=%CD%\.venv\Scripts
 
 
 :: ---- Crear directorios de logs ----
