@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from django.db.models import Count, Sum, F
 from django.utils import timezone
 from datetime import timedelta
-import psutil
+try:
+    import psutil
+except ImportError:
+    psutil = None
 import datetime
 
 # Imports from other apps
@@ -74,9 +77,12 @@ def get_advanced_metrics(request):
 
     # --- PLATFORM METRICS ---
     try:
-        cpu_p = psutil.cpu_percent(interval=None)
-        mem = psutil.virtual_memory()
-        disk = psutil.disk_usage('/')
+        if psutil:
+            cpu_p = psutil.cpu_percent(interval=None)
+            mem = psutil.virtual_memory()
+            disk = psutil.disk_usage('/')
+        else:
+            raise ImportError("psutil not available")
     except:
         cpu_p = 0
         mem = type('obj', (object,), {'percent': 0, 'used': 0, 'total': 1})

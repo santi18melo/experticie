@@ -3,8 +3,9 @@ Galería Visual de Diagramas
 
 Explora la arquitectura y flujos de PREXCOL a través de nuestra galería interactiva.
 
-.. card:: Accesos Rápidos del Sistema
-    :class-card: hero-buttons sd-mb-4 sd-text-center
+.. container:: sd-p-4 sd-bg-light sd-rounded sd-shadow-sm sd-mb-4 sd-text-center
+
+    **Accesos Rápidos**
 
     .. grid:: 2
         :gutter: 3
@@ -15,11 +16,8 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                 :shadow:
                 :expand:
                 :icon: octicon:browser
-                :class: action-button-large
 
-                🚀 **Ir a la Aplicación**
-                
-                *Acceso Frontend (Cliente/Ventas)*
+                IR A LA APLICACIÓN
 
         .. grid-item::
             .. button-link:: http://localhost:8000/admin
@@ -27,12 +25,8 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                 :shadow:
                 :expand:
                 :icon: octicon:server
-                :class: action-button-large
 
-                🎛️ **Ir al Backend**
-                
-                *Panel Administrativo (Django)*
-
+                IR AL BACKEND
 
 ---
 
@@ -54,19 +48,11 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Start([Inicio]) --> Input[Usuario completa formulario]
                         Input --> ValidateClient{Validación<br/>cliente OK?}
                         
-                        ValidateClient -->|No| ShowError1[Mostrar errores<br/>de validación]
-                        ShowError1 --> Input
-                        
+                        %% Happy Path
                         ValidateClient -->|Sí| Submit[Enviar a backend]
                         Submit --> CheckEmail{Email<br/>único?}
                         
-                        CheckEmail -->|No| EmailExists[Error: Email ya existe]
-                        EmailExists --> Input
-                        
                         CheckEmail -->|Sí| CheckPass{Password<br/>válido?}
-                        
-                        CheckPass -->|No| PassWeak[Error: Password débil]
-                        PassWeak --> Input
                         
                         CheckPass -->|Sí| CreateUser[Crear usuario en DB]
                         CreateUser --> SaveHistory[Guardar password<br/>en historial]
@@ -74,6 +60,16 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SendEmail --> ShowSuccess[Mensaje: Registro exitoso]
                         ShowSuccess --> RedirectLogin[Redirect a Login]
                         RedirectLogin --> End([Fin])
+                    
+                        %% Error Loops (Dotted for cleaner visuals)
+                        ValidateClient -- No --> ShowError1[Mostrar errores<br/>de validación]
+                        ShowError1 -.-> Input
+                        
+                        CheckEmail -- No --> EmailExists[Error: Email ya existe]
+                        EmailExists -.-> Input
+                        
+                        CheckPass -- No --> PassWeak[Error: Password débil]
+                        PassWeak -.-> Input
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -83,14 +79,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gSW5wdXRbVXN1YXJpbyBjb21wbGV0YSBmb3JtdWxhcmlvXVxuICAgIElucHV0IC0tPiBWYWxpZGF0ZUNsaWVudHtWYWxpZGFjaVx1MDBmM248YnIvPmNsaWVudGUgT0s/fVxuICAgIFxuICAgIFZhbGlkYXRlQ2xpZW50IC0tPnxOb3wgU2hvd0Vycm9yMVtNb3N0cmFyIGVycm9yZXM8YnIvPmRlIHZhbGlkYWNpXHUwMGYzbl1cbiAgICBTaG93RXJyb3IxIC0tPiBJbnB1dFxuICAgIFxuICAgIFZhbGlkYXRlQ2xpZW50IC0tPnxTXHUwMGVkfCBTdWJtaXRbRW52aWFyIGEgYmFja2VuZF1cbiAgICBTdWJtaXQgLS0+IENoZWNrRW1haWx7RW1haWw8YnIvPlx1MDBmYW5pY28/fVxuICAgIFxuICAgIENoZWNrRW1haWwgLS0+fE5vfCBFbWFpbEV4aXN0c1tFcnJvcjogRW1haWwgeWEgZXhpc3RlXVxuICAgIEVtYWlsRXhpc3RzIC0tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrRW1haWwgLS0+fFNcdTAwZWR8IENoZWNrUGFzc3tQYXNzd29yZDxici8+dlx1MDBlMWxpZG8/fVxuICAgIFxuICAgIENoZWNrUGFzcyAtLT58Tm98IFBhc3NXZWFrW0Vycm9yOiBQYXNzd29yZCBkXHUwMGU5YmlsXVxuICAgIFBhc3NXZWFrIC0tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrUGFzcyAtLT58U1x1MDBlZHwgQ3JlYXRlVXNlcltDcmVhciB1c3VhcmlvIGVuIERCXVxuICAgIENyZWF0ZVVzZXIgLS0+IFNhdmVIaXN0b3J5W0d1YXJkYXIgcGFzc3dvcmQ8YnIvPmVuIGhpc3RvcmlhbF1cbiAgICBTYXZlSGlzdG9yeSAtLT4gU2VuZEVtYWlsW0VudmlhciBlbWFpbDxici8+ZGUgYmllbnZlbmlkYV1cbiAgICBTZW5kRW1haWwgLS0+IFNob3dTdWNjZXNzW01lbnNhamU6IFJlZ2lzdHJvIGV4aXRvc29dXG4gICAgU2hvd1N1Y2Nlc3MgLS0+IFJlZGlyZWN0TG9naW5bUmVkaXJlY3QgYSBMb2dpbl1cbiAgICBSZWRpcmVjdExvZ2luIC0tPiBFbmQoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIFNob3dFcnJvcjEgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRW1haWxFeGlzdHMgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgUGFzc1dlYWsgZmlsbDojRkZCNkMxIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gSW5wdXRbVXN1YXJpbyBjb21wbGV0YSBmb3JtdWxhcmlvXVxuICAgIElucHV0IC0tPiBWYWxpZGF0ZUNsaWVudHtWYWxpZGFjaVx1MDBmM248YnIvPmNsaWVudGUgT0s/fVxuICAgIFxuICAgICUlIEhhcHB5IFBhdGhcbiAgICBWYWxpZGF0ZUNsaWVudCAtLT58U1x1MDBlZHwgU3VibWl0W0VudmlhciBhIGJhY2tlbmRdXG4gICAgU3VibWl0IC0tPiBDaGVja0VtYWlse0VtYWlsPGJyLz5cdTAwZmFuaWNvP31cbiAgICBcbiAgICBDaGVja0VtYWlsIC0tPnxTXHUwMGVkfCBDaGVja1Bhc3N7UGFzc3dvcmQ8YnIvPnZcdTAwZTFsaWRvP31cbiAgICBcbiAgICBDaGVja1Bhc3MgLS0+fFNcdTAwZWR8IENyZWF0ZVVzZXJbQ3JlYXIgdXN1YXJpbyBlbiBEQl1cbiAgICBDcmVhdGVVc2VyIC0tPiBTYXZlSGlzdG9yeVtHdWFyZGFyIHBhc3N3b3JkPGJyLz5lbiBoaXN0b3JpYWxdXG4gICAgU2F2ZUhpc3RvcnkgLS0+IFNlbmRFbWFpbFtFbnZpYXIgZW1haWw8YnIvPmRlIGJpZW52ZW5pZGFdXG4gICAgU2VuZEVtYWlsIC0tPiBTaG93U3VjY2Vzc1tNZW5zYWplOiBSZWdpc3RybyBleGl0b3NvXVxuICAgIFNob3dTdWNjZXNzIC0tPiBSZWRpcmVjdExvZ2luW1JlZGlyZWN0IGEgTG9naW5dXG4gICAgUmVkaXJlY3RMb2dpbiAtLT4gRW5kKFtGaW5dKVxuXG4gICAgJSUgRXJyb3IgTG9vcHMgKERvdHRlZCBmb3IgY2xlYW5lciB2aXN1YWxzKVxuICAgIFZhbGlkYXRlQ2xpZW50IC0tIE5vIC0tPiBTaG93RXJyb3IxW01vc3RyYXIgZXJyb3Jlczxici8+ZGUgdmFsaWRhY2lcdTAwZjNuXVxuICAgIFNob3dFcnJvcjEgLS4tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrRW1haWwgLS0gTm8gLS0+IEVtYWlsRXhpc3RzW0Vycm9yOiBFbWFpbCB5YSBleGlzdGVdXG4gICAgRW1haWxFeGlzdHMgLS4tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrUGFzcyAtLSBObyAtLT4gUGFzc1dlYWtbRXJyb3I6IFBhc3N3b3JkIGRcdTAwZTliaWxdXG4gICAgUGFzc1dlYWsgLS4tPiBJbnB1dFxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBTaG93RXJyb3IxIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIEVtYWlsRXhpc3RzIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIFBhc3NXZWFrIGZpbGw6I0ZGQjZDMSIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gSW5wdXRbVXN1YXJpbyBjb21wbGV0YSBmb3JtdWxhcmlvXVxuICAgIElucHV0IC0tPiBWYWxpZGF0ZUNsaWVudHtWYWxpZGFjaVx1MDBmM248YnIvPmNsaWVudGUgT0s/fVxuICAgIFxuICAgIFZhbGlkYXRlQ2xpZW50IC0tPnxOb3wgU2hvd0Vycm9yMVtNb3N0cmFyIGVycm9yZXM8YnIvPmRlIHZhbGlkYWNpXHUwMGYzbl1cbiAgICBTaG93RXJyb3IxIC0tPiBJbnB1dFxuICAgIFxuICAgIFZhbGlkYXRlQ2xpZW50IC0tPnxTXHUwMGVkfCBTdWJtaXRbRW52aWFyIGEgYmFja2VuZF1cbiAgICBTdWJtaXQgLS0+IENoZWNrRW1haWx7RW1haWw8YnIvPlx1MDBmYW5pY28/fVxuICAgIFxuICAgIENoZWNrRW1haWwgLS0+fE5vfCBFbWFpbEV4aXN0c1tFcnJvcjogRW1haWwgeWEgZXhpc3RlXVxuICAgIEVtYWlsRXhpc3RzIC0tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrRW1haWwgLS0+fFNcdTAwZWR8IENoZWNrUGFzc3tQYXNzd29yZDxici8+dlx1MDBlMWxpZG8/fVxuICAgIFxuICAgIENoZWNrUGFzcyAtLT58Tm98IFBhc3NXZWFrW0Vycm9yOiBQYXNzd29yZCBkXHUwMGU5YmlsXVxuICAgIFBhc3NXZWFrIC0tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrUGFzcyAtLT58U1x1MDBlZHwgQ3JlYXRlVXNlcltDcmVhciB1c3VhcmlvIGVuIERCXVxuICAgIENyZWF0ZVVzZXIgLS0+IFNhdmVIaXN0b3J5W0d1YXJkYXIgcGFzc3dvcmQ8YnIvPmVuIGhpc3RvcmlhbF1cbiAgICBTYXZlSGlzdG9yeSAtLT4gU2VuZEVtYWlsW0VudmlhciBlbWFpbDxici8+ZGUgYmllbnZlbmlkYV1cbiAgICBTZW5kRW1haWwgLS0+IFNob3dTdWNjZXNzW01lbnNhamU6IFJlZ2lzdHJvIGV4aXRvc29dXG4gICAgU2hvd1N1Y2Nlc3MgLS0+IFJlZGlyZWN0TG9naW5bUmVkaXJlY3QgYSBMb2dpbl1cbiAgICBSZWRpcmVjdExvZ2luIC0tPiBFbmQoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIFNob3dFcnJvcjEgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRW1haWxFeGlzdHMgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgUGFzc1dlYWsgZmlsbDojRkZCNkMxIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gSW5wdXRbVXN1YXJpbyBjb21wbGV0YSBmb3JtdWxhcmlvXVxuICAgIElucHV0IC0tPiBWYWxpZGF0ZUNsaWVudHtWYWxpZGFjaVx1MDBmM248YnIvPmNsaWVudGUgT0s/fVxuICAgIFxuICAgICUlIEhhcHB5IFBhdGhcbiAgICBWYWxpZGF0ZUNsaWVudCAtLT58U1x1MDBlZHwgU3VibWl0W0VudmlhciBhIGJhY2tlbmRdXG4gICAgU3VibWl0IC0tPiBDaGVja0VtYWlse0VtYWlsPGJyLz5cdTAwZmFuaWNvP31cbiAgICBcbiAgICBDaGVja0VtYWlsIC0tPnxTXHUwMGVkfCBDaGVja1Bhc3N7UGFzc3dvcmQ8YnIvPnZcdTAwZTFsaWRvP31cbiAgICBcbiAgICBDaGVja1Bhc3MgLS0+fFNcdTAwZWR8IENyZWF0ZVVzZXJbQ3JlYXIgdXN1YXJpbyBlbiBEQl1cbiAgICBDcmVhdGVVc2VyIC0tPiBTYXZlSGlzdG9yeVtHdWFyZGFyIHBhc3N3b3JkPGJyLz5lbiBoaXN0b3JpYWxdXG4gICAgU2F2ZUhpc3RvcnkgLS0+IFNlbmRFbWFpbFtFbnZpYXIgZW1haWw8YnIvPmRlIGJpZW52ZW5pZGFdXG4gICAgU2VuZEVtYWlsIC0tPiBTaG93U3VjY2Vzc1tNZW5zYWplOiBSZWdpc3RybyBleGl0b3NvXVxuICAgIFNob3dTdWNjZXNzIC0tPiBSZWRpcmVjdExvZ2luW1JlZGlyZWN0IGEgTG9naW5dXG4gICAgUmVkaXJlY3RMb2dpbiAtLT4gRW5kKFtGaW5dKVxuXG4gICAgJSUgRXJyb3IgTG9vcHMgKERvdHRlZCBmb3IgY2xlYW5lciB2aXN1YWxzKVxuICAgIFZhbGlkYXRlQ2xpZW50IC0tIE5vIC0tPiBTaG93RXJyb3IxW01vc3RyYXIgZXJyb3Jlczxici8+ZGUgdmFsaWRhY2lcdTAwZjNuXVxuICAgIFNob3dFcnJvcjEgLS4tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrRW1haWwgLS0gTm8gLS0+IEVtYWlsRXhpc3RzW0Vycm9yOiBFbWFpbCB5YSBleGlzdGVdXG4gICAgRW1haWxFeGlzdHMgLS4tPiBJbnB1dFxuICAgIFxuICAgIENoZWNrUGFzcyAtLSBObyAtLT4gUGFzc1dlYWtbRXJyb3I6IFBhc3N3b3JkIGRcdTAwZTliaWxdXG4gICAgUGFzc1dlYWsgLS4tPiBJbnB1dFxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBTaG93RXJyb3IxIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIEVtYWlsRXhpc3RzIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIFBhc3NXZWFrIGZpbGw6I0ZGQjZDMSIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -106,19 +102,11 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Start([Inicio]) --> Input[Usuario completa formulario]
                         Input --> ValidateClient{Validación<br/>cliente OK?}
                         
-                        ValidateClient -->|No| ShowError1[Mostrar errores<br/>de validación]
-                        ShowError1 --> Input
-                        
+                        %% Happy Path
                         ValidateClient -->|Sí| Submit[Enviar a backend]
                         Submit --> CheckEmail{Email<br/>único?}
                         
-                        CheckEmail -->|No| EmailExists[Error: Email ya existe]
-                        EmailExists --> Input
-                        
                         CheckEmail -->|Sí| CheckPass{Password<br/>válido?}
-                        
-                        CheckPass -->|No| PassWeak[Error: Password débil]
-                        PassWeak --> Input
                         
                         CheckPass -->|Sí| CreateUser[Crear usuario en DB]
                         CreateUser --> SaveHistory[Guardar password<br/>en historial]
@@ -126,6 +114,16 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SendEmail --> ShowSuccess[Mensaje: Registro exitoso]
                         ShowSuccess --> RedirectLogin[Redirect a Login]
                         RedirectLogin --> End([Fin])
+                    
+                        %% Error Loops (Dotted for cleaner visuals)
+                        ValidateClient -- No --> ShowError1[Mostrar errores<br/>de validación]
+                        ShowError1 -.-> Input
+                        
+                        CheckEmail -- No --> EmailExists[Error: Email ya existe]
+                        EmailExists -.-> Input
+                        
+                        CheckPass -- No --> PassWeak[Error: Password débil]
+                        PassWeak -.-> Input
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -149,8 +147,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SelectProduct --> ViewDetails[Ver detalles]
                         
                         ViewDetails --> CheckStock{Stock<br/>disponible?}
-                        CheckStock -->|No| OutOfStock[Mostrar "Agotado"]
-                        OutOfStock --> Browse
                         
                         CheckStock -->|Sí| AddCart[Agregar al carrito]
                         AddCart --> MoreProducts{Agregar<br/>más productos?}
@@ -165,9 +161,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         AdjustQty -->|No| Checkout[Proceder al pago]
                         Checkout --> ValidateStock{Todo el stock<br/>disponible?}
                         
-                        ValidateStock -->|No| StockError[Error: Stock insuficiente]
-                        StockError --> ViewCart
-                        
                         ValidateStock -->|Sí| SelectPayment[Seleccionar método<br/>de pago]
                         SelectPayment --> PaymentMethod{Método?}
                         
@@ -181,18 +174,25 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         
                         ProcessPayment --> PaymentResult{Pago<br/>exitoso?}
                         
-                        PaymentResult -->|No| PaymentFailed[Pago rechazado]
-                        PaymentFailed --> RetryPayment{Reintentar?}
-                        RetryPayment -->|Sí| SelectPayment
-                        RetryPayment -->|No| CancelOrder[Cancelar orden]
-                        CancelOrder --> End1([Fin: Sin pedido])
-                        
                         PaymentResult -->|Sí| CreateOrder[Crear pedido]
                         CreateOrder --> ReduceStock[Reducir stock]
-                        ReduceStock --> SendNotifications[Enviar notificaciones<br/>• Cliente<br/>• Logística<br/>• Proveedor]
-                        SendNotifications --> ShowConfirmation[Mostrar confirmación<br/>con número de pedido]
+                        ReduceStock --> SendNotifications[Enviar notificaciones]
+                        SendNotifications --> ShowConfirmation[Mostrar confirmación]
                         ShowConfirmation --> SendConfirmEmail[Enviar email<br/>de confirmación]
                         SendConfirmEmail --> End2([Fin: Pedido creado])
+                    
+                        %% Feedback / Alternate Paths
+                        CheckStock -- No --> OutOfStock[Mostrar "Agotado"]
+                        OutOfStock -.-> Browse
+                        
+                        ValidateStock -- No --> StockError[Error: Stock insuficiente]
+                        StockError -.-> ViewCart
+                        
+                        PaymentResult -- No --> PaymentFailed[Pago rechazado]
+                        PaymentFailed --> RetryPayment{Reintentar?}
+                        RetryPayment -- Sí --> SelectPayment
+                        RetryPayment -- No --> CancelOrder[Cancelar orden]
+                        CancelOrder --> End1([Fin: Sin pedido])
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFB6C1
@@ -203,14 +203,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IENsaWVudGUgZW4gY2F0XHUwMGUxbG9nb10pIC0tPiBCcm93c2VbTmF2ZWdhciBwcm9kdWN0b3NdXG4gICAgQnJvd3NlIC0tPiBTZWxlY3RQcm9kdWN0W1NlbGVjY2lvbmFyIHByb2R1Y3RvXVxuICAgIFNlbGVjdFByb2R1Y3QgLS0+IFZpZXdEZXRhaWxzW1ZlciBkZXRhbGxlc11cbiAgICBcbiAgICBWaWV3RGV0YWlscyAtLT4gQ2hlY2tTdG9ja3tTdG9jazxici8+ZGlzcG9uaWJsZT99XG4gICAgQ2hlY2tTdG9jayAtLT58Tm98IE91dE9mU3RvY2tbTW9zdHJhciBcIkFnb3RhZG9cIl1cbiAgICBPdXRPZlN0b2NrIC0tPiBCcm93c2VcbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxTXHUwMGVkfCBBZGRDYXJ0W0FncmVnYXIgYWwgY2Fycml0b11cbiAgICBBZGRDYXJ0IC0tPiBNb3JlUHJvZHVjdHN7QWdyZWdhcjxici8+bVx1MDBlMXMgcHJvZHVjdG9zP31cbiAgICBcbiAgICBNb3JlUHJvZHVjdHMgLS0+fFNcdTAwZWR8IEJyb3dzZVxuICAgIE1vcmVQcm9kdWN0cyAtLT58Tm98IFZpZXdDYXJ0W1ZlciBjYXJyaXRvXVxuICAgIFxuICAgIFZpZXdDYXJ0IC0tPiBBZGp1c3RRdHl7QWp1c3Rhcjxici8+Y2FudGlkYWRlcz99XG4gICAgQWRqdXN0UXR5IC0tPnxTXHUwMGVkfCBNb2RpZnlDYXJ0W01vZGlmaWNhciBjYXJyaXRvXVxuICAgIE1vZGlmeUNhcnQgLS0+IFZpZXdDYXJ0XG4gICAgXG4gICAgQWRqdXN0UXR5IC0tPnxOb3wgQ2hlY2tvdXRbUHJvY2VkZXIgYWwgcGFnb11cbiAgICBDaGVja291dCAtLT4gVmFsaWRhdGVTdG9ja3tUb2RvIGVsIHN0b2NrPGJyLz5kaXNwb25pYmxlP31cbiAgICBcbiAgICBWYWxpZGF0ZVN0b2NrIC0tPnxOb3wgU3RvY2tFcnJvcltFcnJvcjogU3RvY2sgaW5zdWZpY2llbnRlXVxuICAgIFN0b2NrRXJyb3IgLS0+IFZpZXdDYXJ0XG4gICAgXG4gICAgVmFsaWRhdGVTdG9jayAtLT58U1x1MDBlZHwgU2VsZWN0UGF5bWVudFtTZWxlY2Npb25hciBtXHUwMGU5dG9kbzxici8+ZGUgcGFnb11cbiAgICBTZWxlY3RQYXltZW50IC0tPiBQYXltZW50TWV0aG9ke01cdTAwZTl0b2RvP31cbiAgICBcbiAgICBQYXltZW50TWV0aG9kIC0tPnxUYXJqZXRhfCBFbnRlckNhcmRbSW5ncmVzYXIgZGF0b3M8YnIvPmRlIHRhcmpldGFdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58VHJhbnNmZXJlbmNpYXwgVXBsb2FkUHJvb2ZbU3ViaXIgY29tcHJvYmFudGVdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58UFNFfCBMb2dpbkJhbmtbTG9naW4gYmFuY29dXG4gICAgXG4gICAgRW50ZXJDYXJkIC0tPiBQcm9jZXNzUGF5bWVudFtQcm9jZXNhciBwYWdvXVxuICAgIFVwbG9hZFByb29mIC0tPiBQcm9jZXNzUGF5bWVudFxuICAgIExvZ2luQmFuayAtLT4gUHJvY2Vzc1BheW1lbnRcbiAgICBcbiAgICBQcm9jZXNzUGF5bWVudCAtLT4gUGF5bWVudFJlc3VsdHtQYWdvPGJyLz5leGl0b3NvP31cbiAgICBcbiAgICBQYXltZW50UmVzdWx0IC0tPnxOb3wgUGF5bWVudEZhaWxlZFtQYWdvIHJlY2hhemFkb11cbiAgICBQYXltZW50RmFpbGVkIC0tPiBSZXRyeVBheW1lbnR7UmVpbnRlbnRhcj99XG4gICAgUmV0cnlQYXltZW50IC0tPnxTXHUwMGVkfCBTZWxlY3RQYXltZW50XG4gICAgUmV0cnlQYXltZW50IC0tPnxOb3wgQ2FuY2VsT3JkZXJbQ2FuY2VsYXIgb3JkZW5dXG4gICAgQ2FuY2VsT3JkZXIgLS0+IEVuZDEoW0ZpbjogU2luIHBlZGlkb10pXG4gICAgXG4gICAgUGF5bWVudFJlc3VsdCAtLT58U1x1MDBlZHwgQ3JlYXRlT3JkZXJbQ3JlYXIgcGVkaWRvXVxuICAgIENyZWF0ZU9yZGVyIC0tPiBSZWR1Y2VTdG9ja1tSZWR1Y2lyIHN0b2NrXVxuICAgIFJlZHVjZVN0b2NrIC0tPiBTZW5kTm90aWZpY2F0aW9uc1tFbnZpYXIgbm90aWZpY2FjaW9uZXM8YnIvPlx1MjAyMiBDbGllbnRlPGJyLz5cdTIwMjIgTG9nXHUwMGVkc3RpY2E8YnIvPlx1MjAyMiBQcm92ZWVkb3JdXG4gICAgU2VuZE5vdGlmaWNhdGlvbnMgLS0+IFNob3dDb25maXJtYXRpb25bTW9zdHJhciBjb25maXJtYWNpXHUwMGYzbjxici8+Y29uIG5cdTAwZmFtZXJvIGRlIHBlZGlkb11cbiAgICBTaG93Q29uZmlybWF0aW9uIC0tPiBTZW5kQ29uZmlybUVtYWlsW0VudmlhciBlbWFpbDxici8+ZGUgY29uZmlybWFjaVx1MDBmM25dXG4gICAgU2VuZENvbmZpcm1FbWFpbCAtLT4gRW5kMihbRmluOiBQZWRpZG8gY3JlYWRvXSlcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQxIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIEVuZDIgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgT3V0T2ZTdG9jayBmaWxsOiNGRkE1MDBcbiAgICBzdHlsZSBTdG9ja0Vycm9yIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIFBheW1lbnRGYWlsZWQgZmlsbDojRkZCNkMxIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IENsaWVudGUgZW4gY2F0XHUwMGUxbG9nb10pIC0tPiBCcm93c2VbTmF2ZWdhciBwcm9kdWN0b3NdXG4gICAgQnJvd3NlIC0tPiBTZWxlY3RQcm9kdWN0W1NlbGVjY2lvbmFyIHByb2R1Y3RvXVxuICAgIFNlbGVjdFByb2R1Y3QgLS0+IFZpZXdEZXRhaWxzW1ZlciBkZXRhbGxlc11cbiAgICBcbiAgICBWaWV3RGV0YWlscyAtLT4gQ2hlY2tTdG9ja3tTdG9jazxici8+ZGlzcG9uaWJsZT99XG4gICAgXG4gICAgQ2hlY2tTdG9jayAtLT58U1x1MDBlZHwgQWRkQ2FydFtBZ3JlZ2FyIGFsIGNhcnJpdG9dXG4gICAgQWRkQ2FydCAtLT4gTW9yZVByb2R1Y3Rze0FncmVnYXI8YnIvPm1cdTAwZTFzIHByb2R1Y3Rvcz99XG4gICAgXG4gICAgTW9yZVByb2R1Y3RzIC0tPnxTXHUwMGVkfCBCcm93c2VcbiAgICBNb3JlUHJvZHVjdHMgLS0+fE5vfCBWaWV3Q2FydFtWZXIgY2Fycml0b11cbiAgICBcbiAgICBWaWV3Q2FydCAtLT4gQWRqdXN0UXR5e0FqdXN0YXI8YnIvPmNhbnRpZGFkZXM/fVxuICAgIEFkanVzdFF0eSAtLT58U1x1MDBlZHwgTW9kaWZ5Q2FydFtNb2RpZmljYXIgY2Fycml0b11cbiAgICBNb2RpZnlDYXJ0IC0tPiBWaWV3Q2FydFxuICAgIFxuICAgIEFkanVzdFF0eSAtLT58Tm98IENoZWNrb3V0W1Byb2NlZGVyIGFsIHBhZ29dXG4gICAgQ2hlY2tvdXQgLS0+IFZhbGlkYXRlU3RvY2t7VG9kbyBlbCBzdG9jazxici8+ZGlzcG9uaWJsZT99XG4gICAgXG4gICAgVmFsaWRhdGVTdG9jayAtLT58U1x1MDBlZHwgU2VsZWN0UGF5bWVudFtTZWxlY2Npb25hciBtXHUwMGU5dG9kbzxici8+ZGUgcGFnb11cbiAgICBTZWxlY3RQYXltZW50IC0tPiBQYXltZW50TWV0aG9ke01cdTAwZTl0b2RvP31cbiAgICBcbiAgICBQYXltZW50TWV0aG9kIC0tPnxUYXJqZXRhfCBFbnRlckNhcmRbSW5ncmVzYXIgZGF0b3M8YnIvPmRlIHRhcmpldGFdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58VHJhbnNmZXJlbmNpYXwgVXBsb2FkUHJvb2ZbU3ViaXIgY29tcHJvYmFudGVdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58UFNFfCBMb2dpbkJhbmtbTG9naW4gYmFuY29dXG4gICAgXG4gICAgRW50ZXJDYXJkIC0tPiBQcm9jZXNzUGF5bWVudFtQcm9jZXNhciBwYWdvXVxuICAgIFVwbG9hZFByb29mIC0tPiBQcm9jZXNzUGF5bWVudFxuICAgIExvZ2luQmFuayAtLT4gUHJvY2Vzc1BheW1lbnRcbiAgICBcbiAgICBQcm9jZXNzUGF5bWVudCAtLT4gUGF5bWVudFJlc3VsdHtQYWdvPGJyLz5leGl0b3NvP31cbiAgICBcbiAgICBQYXltZW50UmVzdWx0IC0tPnxTXHUwMGVkfCBDcmVhdGVPcmRlcltDcmVhciBwZWRpZG9dXG4gICAgQ3JlYXRlT3JkZXIgLS0+IFJlZHVjZVN0b2NrW1JlZHVjaXIgc3RvY2tdXG4gICAgUmVkdWNlU3RvY2sgLS0+IFNlbmROb3RpZmljYXRpb25zW0VudmlhciBub3RpZmljYWNpb25lc11cbiAgICBTZW5kTm90aWZpY2F0aW9ucyAtLT4gU2hvd0NvbmZpcm1hdGlvbltNb3N0cmFyIGNvbmZpcm1hY2lcdTAwZjNuXVxuICAgIFNob3dDb25maXJtYXRpb24gLS0+IFNlbmRDb25maXJtRW1haWxbRW52aWFyIGVtYWlsPGJyLz5kZSBjb25maXJtYWNpXHUwMGYzbl1cbiAgICBTZW5kQ29uZmlybUVtYWlsIC0tPiBFbmQyKFtGaW46IFBlZGlkbyBjcmVhZG9dKVxuXG4gICAgJSUgRmVlZGJhY2sgLyBBbHRlcm5hdGUgUGF0aHNcbiAgICBDaGVja1N0b2NrIC0tIE5vIC0tPiBPdXRPZlN0b2NrW01vc3RyYXIgXCJBZ290YWRvXCJdXG4gICAgT3V0T2ZTdG9jayAtLi0+IEJyb3dzZVxuICAgIFxuICAgIFZhbGlkYXRlU3RvY2sgLS0gTm8gLS0+IFN0b2NrRXJyb3JbRXJyb3I6IFN0b2NrIGluc3VmaWNpZW50ZV1cbiAgICBTdG9ja0Vycm9yIC0uLT4gVmlld0NhcnRcbiAgICBcbiAgICBQYXltZW50UmVzdWx0IC0tIE5vIC0tPiBQYXltZW50RmFpbGVkW1BhZ28gcmVjaGF6YWRvXVxuICAgIFBheW1lbnRGYWlsZWQgLS0+IFJldHJ5UGF5bWVudHtSZWludGVudGFyP31cbiAgICBSZXRyeVBheW1lbnQgLS0gU1x1MDBlZCAtLT4gU2VsZWN0UGF5bWVudFxuICAgIFJldHJ5UGF5bWVudCAtLSBObyAtLT4gQ2FuY2VsT3JkZXJbQ2FuY2VsYXIgb3JkZW5dXG4gICAgQ2FuY2VsT3JkZXIgLS0+IEVuZDEoW0ZpbjogU2luIHBlZGlkb10pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kMSBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBFbmQyIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIE91dE9mU3RvY2sgZmlsbDojRkZBNTAwXG4gICAgc3R5bGUgU3RvY2tFcnJvciBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBQYXltZW50RmFpbGVkIGZpbGw6I0ZGQjZDMSIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IENsaWVudGUgZW4gY2F0XHUwMGUxbG9nb10pIC0tPiBCcm93c2VbTmF2ZWdhciBwcm9kdWN0b3NdXG4gICAgQnJvd3NlIC0tPiBTZWxlY3RQcm9kdWN0W1NlbGVjY2lvbmFyIHByb2R1Y3RvXVxuICAgIFNlbGVjdFByb2R1Y3QgLS0+IFZpZXdEZXRhaWxzW1ZlciBkZXRhbGxlc11cbiAgICBcbiAgICBWaWV3RGV0YWlscyAtLT4gQ2hlY2tTdG9ja3tTdG9jazxici8+ZGlzcG9uaWJsZT99XG4gICAgQ2hlY2tTdG9jayAtLT58Tm98IE91dE9mU3RvY2tbTW9zdHJhciBcIkFnb3RhZG9cIl1cbiAgICBPdXRPZlN0b2NrIC0tPiBCcm93c2VcbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxTXHUwMGVkfCBBZGRDYXJ0W0FncmVnYXIgYWwgY2Fycml0b11cbiAgICBBZGRDYXJ0IC0tPiBNb3JlUHJvZHVjdHN7QWdyZWdhcjxici8+bVx1MDBlMXMgcHJvZHVjdG9zP31cbiAgICBcbiAgICBNb3JlUHJvZHVjdHMgLS0+fFNcdTAwZWR8IEJyb3dzZVxuICAgIE1vcmVQcm9kdWN0cyAtLT58Tm98IFZpZXdDYXJ0W1ZlciBjYXJyaXRvXVxuICAgIFxuICAgIFZpZXdDYXJ0IC0tPiBBZGp1c3RRdHl7QWp1c3Rhcjxici8+Y2FudGlkYWRlcz99XG4gICAgQWRqdXN0UXR5IC0tPnxTXHUwMGVkfCBNb2RpZnlDYXJ0W01vZGlmaWNhciBjYXJyaXRvXVxuICAgIE1vZGlmeUNhcnQgLS0+IFZpZXdDYXJ0XG4gICAgXG4gICAgQWRqdXN0UXR5IC0tPnxOb3wgQ2hlY2tvdXRbUHJvY2VkZXIgYWwgcGFnb11cbiAgICBDaGVja291dCAtLT4gVmFsaWRhdGVTdG9ja3tUb2RvIGVsIHN0b2NrPGJyLz5kaXNwb25pYmxlP31cbiAgICBcbiAgICBWYWxpZGF0ZVN0b2NrIC0tPnxOb3wgU3RvY2tFcnJvcltFcnJvcjogU3RvY2sgaW5zdWZpY2llbnRlXVxuICAgIFN0b2NrRXJyb3IgLS0+IFZpZXdDYXJ0XG4gICAgXG4gICAgVmFsaWRhdGVTdG9jayAtLT58U1x1MDBlZHwgU2VsZWN0UGF5bWVudFtTZWxlY2Npb25hciBtXHUwMGU5dG9kbzxici8+ZGUgcGFnb11cbiAgICBTZWxlY3RQYXltZW50IC0tPiBQYXltZW50TWV0aG9ke01cdTAwZTl0b2RvP31cbiAgICBcbiAgICBQYXltZW50TWV0aG9kIC0tPnxUYXJqZXRhfCBFbnRlckNhcmRbSW5ncmVzYXIgZGF0b3M8YnIvPmRlIHRhcmpldGFdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58VHJhbnNmZXJlbmNpYXwgVXBsb2FkUHJvb2ZbU3ViaXIgY29tcHJvYmFudGVdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58UFNFfCBMb2dpbkJhbmtbTG9naW4gYmFuY29dXG4gICAgXG4gICAgRW50ZXJDYXJkIC0tPiBQcm9jZXNzUGF5bWVudFtQcm9jZXNhciBwYWdvXVxuICAgIFVwbG9hZFByb29mIC0tPiBQcm9jZXNzUGF5bWVudFxuICAgIExvZ2luQmFuayAtLT4gUHJvY2Vzc1BheW1lbnRcbiAgICBcbiAgICBQcm9jZXNzUGF5bWVudCAtLT4gUGF5bWVudFJlc3VsdHtQYWdvPGJyLz5leGl0b3NvP31cbiAgICBcbiAgICBQYXltZW50UmVzdWx0IC0tPnxOb3wgUGF5bWVudEZhaWxlZFtQYWdvIHJlY2hhemFkb11cbiAgICBQYXltZW50RmFpbGVkIC0tPiBSZXRyeVBheW1lbnR7UmVpbnRlbnRhcj99XG4gICAgUmV0cnlQYXltZW50IC0tPnxTXHUwMGVkfCBTZWxlY3RQYXltZW50XG4gICAgUmV0cnlQYXltZW50IC0tPnxOb3wgQ2FuY2VsT3JkZXJbQ2FuY2VsYXIgb3JkZW5dXG4gICAgQ2FuY2VsT3JkZXIgLS0+IEVuZDEoW0ZpbjogU2luIHBlZGlkb10pXG4gICAgXG4gICAgUGF5bWVudFJlc3VsdCAtLT58U1x1MDBlZHwgQ3JlYXRlT3JkZXJbQ3JlYXIgcGVkaWRvXVxuICAgIENyZWF0ZU9yZGVyIC0tPiBSZWR1Y2VTdG9ja1tSZWR1Y2lyIHN0b2NrXVxuICAgIFJlZHVjZVN0b2NrIC0tPiBTZW5kTm90aWZpY2F0aW9uc1tFbnZpYXIgbm90aWZpY2FjaW9uZXM8YnIvPlx1MjAyMiBDbGllbnRlPGJyLz5cdTIwMjIgTG9nXHUwMGVkc3RpY2E8YnIvPlx1MjAyMiBQcm92ZWVkb3JdXG4gICAgU2VuZE5vdGlmaWNhdGlvbnMgLS0+IFNob3dDb25maXJtYXRpb25bTW9zdHJhciBjb25maXJtYWNpXHUwMGYzbjxici8+Y29uIG5cdTAwZmFtZXJvIGRlIHBlZGlkb11cbiAgICBTaG93Q29uZmlybWF0aW9uIC0tPiBTZW5kQ29uZmlybUVtYWlsW0VudmlhciBlbWFpbDxici8+ZGUgY29uZmlybWFjaVx1MDBmM25dXG4gICAgU2VuZENvbmZpcm1FbWFpbCAtLT4gRW5kMihbRmluOiBQZWRpZG8gY3JlYWRvXSlcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQxIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIEVuZDIgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgT3V0T2ZTdG9jayBmaWxsOiNGRkE1MDBcbiAgICBzdHlsZSBTdG9ja0Vycm9yIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIFBheW1lbnRGYWlsZWQgZmlsbDojRkZCNkMxIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IENsaWVudGUgZW4gY2F0XHUwMGUxbG9nb10pIC0tPiBCcm93c2VbTmF2ZWdhciBwcm9kdWN0b3NdXG4gICAgQnJvd3NlIC0tPiBTZWxlY3RQcm9kdWN0W1NlbGVjY2lvbmFyIHByb2R1Y3RvXVxuICAgIFNlbGVjdFByb2R1Y3QgLS0+IFZpZXdEZXRhaWxzW1ZlciBkZXRhbGxlc11cbiAgICBcbiAgICBWaWV3RGV0YWlscyAtLT4gQ2hlY2tTdG9ja3tTdG9jazxici8+ZGlzcG9uaWJsZT99XG4gICAgXG4gICAgQ2hlY2tTdG9jayAtLT58U1x1MDBlZHwgQWRkQ2FydFtBZ3JlZ2FyIGFsIGNhcnJpdG9dXG4gICAgQWRkQ2FydCAtLT4gTW9yZVByb2R1Y3Rze0FncmVnYXI8YnIvPm1cdTAwZTFzIHByb2R1Y3Rvcz99XG4gICAgXG4gICAgTW9yZVByb2R1Y3RzIC0tPnxTXHUwMGVkfCBCcm93c2VcbiAgICBNb3JlUHJvZHVjdHMgLS0+fE5vfCBWaWV3Q2FydFtWZXIgY2Fycml0b11cbiAgICBcbiAgICBWaWV3Q2FydCAtLT4gQWRqdXN0UXR5e0FqdXN0YXI8YnIvPmNhbnRpZGFkZXM/fVxuICAgIEFkanVzdFF0eSAtLT58U1x1MDBlZHwgTW9kaWZ5Q2FydFtNb2RpZmljYXIgY2Fycml0b11cbiAgICBNb2RpZnlDYXJ0IC0tPiBWaWV3Q2FydFxuICAgIFxuICAgIEFkanVzdFF0eSAtLT58Tm98IENoZWNrb3V0W1Byb2NlZGVyIGFsIHBhZ29dXG4gICAgQ2hlY2tvdXQgLS0+IFZhbGlkYXRlU3RvY2t7VG9kbyBlbCBzdG9jazxici8+ZGlzcG9uaWJsZT99XG4gICAgXG4gICAgVmFsaWRhdGVTdG9jayAtLT58U1x1MDBlZHwgU2VsZWN0UGF5bWVudFtTZWxlY2Npb25hciBtXHUwMGU5dG9kbzxici8+ZGUgcGFnb11cbiAgICBTZWxlY3RQYXltZW50IC0tPiBQYXltZW50TWV0aG9ke01cdTAwZTl0b2RvP31cbiAgICBcbiAgICBQYXltZW50TWV0aG9kIC0tPnxUYXJqZXRhfCBFbnRlckNhcmRbSW5ncmVzYXIgZGF0b3M8YnIvPmRlIHRhcmpldGFdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58VHJhbnNmZXJlbmNpYXwgVXBsb2FkUHJvb2ZbU3ViaXIgY29tcHJvYmFudGVdXG4gICAgUGF5bWVudE1ldGhvZCAtLT58UFNFfCBMb2dpbkJhbmtbTG9naW4gYmFuY29dXG4gICAgXG4gICAgRW50ZXJDYXJkIC0tPiBQcm9jZXNzUGF5bWVudFtQcm9jZXNhciBwYWdvXVxuICAgIFVwbG9hZFByb29mIC0tPiBQcm9jZXNzUGF5bWVudFxuICAgIExvZ2luQmFuayAtLT4gUHJvY2Vzc1BheW1lbnRcbiAgICBcbiAgICBQcm9jZXNzUGF5bWVudCAtLT4gUGF5bWVudFJlc3VsdHtQYWdvPGJyLz5leGl0b3NvP31cbiAgICBcbiAgICBQYXltZW50UmVzdWx0IC0tPnxTXHUwMGVkfCBDcmVhdGVPcmRlcltDcmVhciBwZWRpZG9dXG4gICAgQ3JlYXRlT3JkZXIgLS0+IFJlZHVjZVN0b2NrW1JlZHVjaXIgc3RvY2tdXG4gICAgUmVkdWNlU3RvY2sgLS0+IFNlbmROb3RpZmljYXRpb25zW0VudmlhciBub3RpZmljYWNpb25lc11cbiAgICBTZW5kTm90aWZpY2F0aW9ucyAtLT4gU2hvd0NvbmZpcm1hdGlvbltNb3N0cmFyIGNvbmZpcm1hY2lcdTAwZjNuXVxuICAgIFNob3dDb25maXJtYXRpb24gLS0+IFNlbmRDb25maXJtRW1haWxbRW52aWFyIGVtYWlsPGJyLz5kZSBjb25maXJtYWNpXHUwMGYzbl1cbiAgICBTZW5kQ29uZmlybUVtYWlsIC0tPiBFbmQyKFtGaW46IFBlZGlkbyBjcmVhZG9dKVxuXG4gICAgJSUgRmVlZGJhY2sgLyBBbHRlcm5hdGUgUGF0aHNcbiAgICBDaGVja1N0b2NrIC0tIE5vIC0tPiBPdXRPZlN0b2NrW01vc3RyYXIgXCJBZ290YWRvXCJdXG4gICAgT3V0T2ZTdG9jayAtLi0+IEJyb3dzZVxuICAgIFxuICAgIFZhbGlkYXRlU3RvY2sgLS0gTm8gLS0+IFN0b2NrRXJyb3JbRXJyb3I6IFN0b2NrIGluc3VmaWNpZW50ZV1cbiAgICBTdG9ja0Vycm9yIC0uLT4gVmlld0NhcnRcbiAgICBcbiAgICBQYXltZW50UmVzdWx0IC0tIE5vIC0tPiBQYXltZW50RmFpbGVkW1BhZ28gcmVjaGF6YWRvXVxuICAgIFBheW1lbnRGYWlsZWQgLS0+IFJldHJ5UGF5bWVudHtSZWludGVudGFyP31cbiAgICBSZXRyeVBheW1lbnQgLS0gU1x1MDBlZCAtLT4gU2VsZWN0UGF5bWVudFxuICAgIFJldHJ5UGF5bWVudCAtLSBObyAtLT4gQ2FuY2VsT3JkZXJbQ2FuY2VsYXIgb3JkZW5dXG4gICAgQ2FuY2VsT3JkZXIgLS0+IEVuZDEoW0ZpbjogU2luIHBlZGlkb10pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kMSBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBFbmQyIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIE91dE9mU3RvY2sgZmlsbDojRkZBNTAwXG4gICAgc3R5bGUgU3RvY2tFcnJvciBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBQYXltZW50RmFpbGVkIGZpbGw6I0ZGQjZDMSIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -228,8 +228,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SelectProduct --> ViewDetails[Ver detalles]
                         
                         ViewDetails --> CheckStock{Stock<br/>disponible?}
-                        CheckStock -->|No| OutOfStock[Mostrar "Agotado"]
-                        OutOfStock --> Browse
                         
                         CheckStock -->|Sí| AddCart[Agregar al carrito]
                         AddCart --> MoreProducts{Agregar<br/>más productos?}
@@ -244,9 +242,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         AdjustQty -->|No| Checkout[Proceder al pago]
                         Checkout --> ValidateStock{Todo el stock<br/>disponible?}
                         
-                        ValidateStock -->|No| StockError[Error: Stock insuficiente]
-                        StockError --> ViewCart
-                        
                         ValidateStock -->|Sí| SelectPayment[Seleccionar método<br/>de pago]
                         SelectPayment --> PaymentMethod{Método?}
                         
@@ -260,18 +255,25 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         
                         ProcessPayment --> PaymentResult{Pago<br/>exitoso?}
                         
-                        PaymentResult -->|No| PaymentFailed[Pago rechazado]
-                        PaymentFailed --> RetryPayment{Reintentar?}
-                        RetryPayment -->|Sí| SelectPayment
-                        RetryPayment -->|No| CancelOrder[Cancelar orden]
-                        CancelOrder --> End1([Fin: Sin pedido])
-                        
                         PaymentResult -->|Sí| CreateOrder[Crear pedido]
                         CreateOrder --> ReduceStock[Reducir stock]
-                        ReduceStock --> SendNotifications[Enviar notificaciones<br/>• Cliente<br/>• Logística<br/>• Proveedor]
-                        SendNotifications --> ShowConfirmation[Mostrar confirmación<br/>con número de pedido]
+                        ReduceStock --> SendNotifications[Enviar notificaciones]
+                        SendNotifications --> ShowConfirmation[Mostrar confirmación]
                         ShowConfirmation --> SendConfirmEmail[Enviar email<br/>de confirmación]
                         SendConfirmEmail --> End2([Fin: Pedido creado])
+                    
+                        %% Feedback / Alternate Paths
+                        CheckStock -- No --> OutOfStock[Mostrar "Agotado"]
+                        OutOfStock -.-> Browse
+                        
+                        ValidateStock -- No --> StockError[Error: Stock insuficiente]
+                        StockError -.-> ViewCart
+                        
+                        PaymentResult -- No --> PaymentFailed[Pago rechazado]
+                        PaymentFailed --> RetryPayment{Reintentar?}
+                        RetryPayment -- Sí --> SelectPayment
+                        RetryPayment -- No --> CancelOrder[Cancelar orden]
+                        CancelOrder --> End1([Fin: Sin pedido])
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFB6C1
@@ -299,11 +301,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SelectOrder --> ViewDetails[Ver detalles]
                         ViewDetails --> CheckInventory{Productos<br/>disponibles?}
                         
-                        CheckInventory -->|No| ReportIssue[Reportar problema]
-                        ReportIssue --> NotifyAdmin[Notificar admin]
-                        NotifyAdmin --> WaitResolution[Esperar resolución]
-                        WaitResolution --> End1([Fin: Pendiente])
-                        
                         CheckInventory -->|Sí| StartPrep[Iniciar preparación]
                         StartPrep --> ChangeStatus1[Cambiar estado:<br/>PREPARANDO]
                         ChangeStatus1 --> NotifyClient1[Notificar cliente]
@@ -314,9 +311,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         PackOrder --> PrintLabel[Imprimir etiqueta]
                         
                         PrintLabel --> ReadyShip{Listo para<br/>enviar?}
-                        ReadyShip -->|No| CheckIssue{Hay<br/>problema?}
-                        CheckIssue -->|Sí| ReportIssue
-                        CheckIssue -->|No| PickProducts
                         
                         ReadyShip -->|Sí| ChangeStatus2[Cambiar estado:<br/>EN_TRANSITO]
                         ChangeStatus2 --> NotifyClient2[Notificar cliente]
@@ -326,18 +320,28 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         InTransit --> WaitDelivery[Esperar confirmación<br/>de entrega]
                         
                         WaitDelivery --> DeliveryConfirm{Entrega<br/>confirmada?}
-                        DeliveryConfirm -->|No| DeliveryIssue{Hay<br/>problema?}
-                        DeliveryIssue -->|Sí| ContactClient[Contactar cliente]
-                        ContactClient --> Reschedule[Reprogramar entrega]
-                        Reschedule --> InTransit
-                        
-                        DeliveryIssue -->|No| WaitDelivery
                         
                         DeliveryConfirm -->|Sí| ChangeStatus3[Cambiar estado:<br/>ENTREGADO]
                         ChangeStatus3 --> GenerateSale[Generar registro<br/>de venta]
                         GenerateSale --> NotifyClient3[Notificar cliente]
                         NotifyClient3 --> UpdateMetrics[Actualizar métricas]
                         UpdateMetrics --> End2([Fin: Completado])
+                    
+                        %% Exceptions
+                        CheckInventory -- No --> ReportIssue[Reportar problema]
+                        ReportIssue --> NotifyAdmin[Notificar admin]
+                        NotifyAdmin --> WaitResolution[Esperar resolución]
+                        WaitResolution --> End1([Fin: Pendiente])
+                    
+                        ReadyShip -- No --> CheckIssue{Hay<br/>problema?}
+                        CheckIssue -- Sí --> ReportIssue
+                        CheckIssue -- No --> PickProducts
+                        
+                        DeliveryConfirm -- No --> DeliveryIssue{Hay<br/>problema?}
+                        DeliveryIssue -- Sí --> ContactClient[Contactar cliente]
+                        ContactClient --> Reschedule[Reprogramar entrega]
+                        Reschedule -.-> InTransit
+                        DeliveryIssue -- No --> WaitDelivery
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFA500
@@ -347,14 +351,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW5bTG9nXHUwMGVkc3RpY2EgaW5pY2lhIHNlc2lcdTAwZjNuXVxuICAgIExvZ2luIC0tPiBEYXNoYm9hcmRbVmVyIGRhc2hib2FyZF1cbiAgICBEYXNoYm9hcmQgLS0+IFZpZXdQZW5kaW5nW1ZlciBwZWRpZG9zIHBlbmRpZW50ZXNdXG4gICAgXG4gICAgVmlld1BlbmRpbmcgLS0+IFNlbGVjdE9yZGVyW1NlbGVjY2lvbmFyIHBlZGlkb11cbiAgICBTZWxlY3RPcmRlciAtLT4gVmlld0RldGFpbHNbVmVyIGRldGFsbGVzXVxuICAgIFZpZXdEZXRhaWxzIC0tPiBDaGVja0ludmVudG9yeXtQcm9kdWN0b3M8YnIvPmRpc3BvbmlibGVzP31cbiAgICBcbiAgICBDaGVja0ludmVudG9yeSAtLT58Tm98IFJlcG9ydElzc3VlW1JlcG9ydGFyIHByb2JsZW1hXVxuICAgIFJlcG9ydElzc3VlIC0tPiBOb3RpZnlBZG1pbltOb3RpZmljYXIgYWRtaW5dXG4gICAgTm90aWZ5QWRtaW4gLS0+IFdhaXRSZXNvbHV0aW9uW0VzcGVyYXIgcmVzb2x1Y2lcdTAwZjNuXVxuICAgIFdhaXRSZXNvbHV0aW9uIC0tPiBFbmQxKFtGaW46IFBlbmRpZW50ZV0pXG4gICAgXG4gICAgQ2hlY2tJbnZlbnRvcnkgLS0+fFNcdTAwZWR8IFN0YXJ0UHJlcFtJbmljaWFyIHByZXBhcmFjaVx1MDBmM25dXG4gICAgU3RhcnRQcmVwIC0tPiBDaGFuZ2VTdGF0dXMxW0NhbWJpYXIgZXN0YWRvOjxici8+UFJFUEFSQU5ET11cbiAgICBDaGFuZ2VTdGF0dXMxIC0tPiBOb3RpZnlDbGllbnQxW05vdGlmaWNhciBjbGllbnRlXVxuICAgIFxuICAgIE5vdGlmeUNsaWVudDEgLS0+IFBpY2tQcm9kdWN0c1tSZWNvbGVjdGFyIHByb2R1Y3Rvc11cbiAgICBQaWNrUHJvZHVjdHMgLS0+IFZlcmlmeUl0ZW1zW1ZlcmlmaWNhciBpdGVtc11cbiAgICBWZXJpZnlJdGVtcyAtLT4gUGFja09yZGVyW0VtcGFjYXIgcGVkaWRvXVxuICAgIFBhY2tPcmRlciAtLT4gUHJpbnRMYWJlbFtJbXByaW1pciBldGlxdWV0YV1cbiAgICBcbiAgICBQcmludExhYmVsIC0tPiBSZWFkeVNoaXB7TGlzdG8gcGFyYTxici8+ZW52aWFyP31cbiAgICBSZWFkeVNoaXAgLS0+fE5vfCBDaGVja0lzc3Vle0hheTxici8+cHJvYmxlbWE/fVxuICAgIENoZWNrSXNzdWUgLS0+fFNcdTAwZWR8IFJlcG9ydElzc3VlXG4gICAgQ2hlY2tJc3N1ZSAtLT58Tm98IFBpY2tQcm9kdWN0c1xuICAgIFxuICAgIFJlYWR5U2hpcCAtLT58U1x1MDBlZHwgQ2hhbmdlU3RhdHVzMltDYW1iaWFyIGVzdGFkbzo8YnIvPkVOX1RSQU5TSVRPXVxuICAgIENoYW5nZVN0YXR1czIgLS0+IE5vdGlmeUNsaWVudDJbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MiAtLT4gQXNzaWduQ291cmllcltBc2lnbmFyIHRyYW5zcG9ydGlzdGFdXG4gICAgXG4gICAgQXNzaWduQ291cmllciAtLT4gSW5UcmFuc2l0W1BlZGlkbyBlbiB0clx1MDBlMW5zaXRvXVxuICAgIEluVHJhbnNpdCAtLT4gV2FpdERlbGl2ZXJ5W0VzcGVyYXIgY29uZmlybWFjaVx1MDBmM248YnIvPmRlIGVudHJlZ2FdXG4gICAgXG4gICAgV2FpdERlbGl2ZXJ5IC0tPiBEZWxpdmVyeUNvbmZpcm17RW50cmVnYTxici8+Y29uZmlybWFkYT99XG4gICAgRGVsaXZlcnlDb25maXJtIC0tPnxOb3wgRGVsaXZlcnlJc3N1ZXtIYXk8YnIvPnByb2JsZW1hP31cbiAgICBEZWxpdmVyeUlzc3VlIC0tPnxTXHUwMGVkfCBDb250YWN0Q2xpZW50W0NvbnRhY3RhciBjbGllbnRlXVxuICAgIENvbnRhY3RDbGllbnQgLS0+IFJlc2NoZWR1bGVbUmVwcm9ncmFtYXIgZW50cmVnYV1cbiAgICBSZXNjaGVkdWxlIC0tPiBJblRyYW5zaXRcbiAgICBcbiAgICBEZWxpdmVyeUlzc3VlIC0tPnxOb3wgV2FpdERlbGl2ZXJ5XG4gICAgXG4gICAgRGVsaXZlcnlDb25maXJtIC0tPnxTXHUwMGVkfCBDaGFuZ2VTdGF0dXMzW0NhbWJpYXIgZXN0YWRvOjxici8+RU5UUkVHQURPXVxuICAgIENoYW5nZVN0YXR1czMgLS0+IEdlbmVyYXRlU2FsZVtHZW5lcmFyIHJlZ2lzdHJvPGJyLz5kZSB2ZW50YV1cbiAgICBHZW5lcmF0ZVNhbGUgLS0+IE5vdGlmeUNsaWVudDNbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MyAtLT4gVXBkYXRlTWV0cmljc1tBY3R1YWxpemFyIG1cdTAwZTl0cmljYXNdXG4gICAgVXBkYXRlTWV0cmljcyAtLT4gRW5kMihbRmluOiBDb21wbGV0YWRvXSlcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQxIGZpbGw6I0ZGQTUwMFxuICAgIHN0eWxlIEVuZDIgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgUmVwb3J0SXNzdWUgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgQ29udGFjdENsaWVudCBmaWxsOiNGRkE1MDAiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW5bTG9nXHUwMGVkc3RpY2EgaW5pY2lhIHNlc2lcdTAwZjNuXVxuICAgIExvZ2luIC0tPiBEYXNoYm9hcmRbVmVyIGRhc2hib2FyZF1cbiAgICBEYXNoYm9hcmQgLS0+IFZpZXdQZW5kaW5nW1ZlciBwZWRpZG9zIHBlbmRpZW50ZXNdXG4gICAgXG4gICAgVmlld1BlbmRpbmcgLS0+IFNlbGVjdE9yZGVyW1NlbGVjY2lvbmFyIHBlZGlkb11cbiAgICBTZWxlY3RPcmRlciAtLT4gVmlld0RldGFpbHNbVmVyIGRldGFsbGVzXVxuICAgIFZpZXdEZXRhaWxzIC0tPiBDaGVja0ludmVudG9yeXtQcm9kdWN0b3M8YnIvPmRpc3BvbmlibGVzP31cbiAgICBcbiAgICBDaGVja0ludmVudG9yeSAtLT58U1x1MDBlZHwgU3RhcnRQcmVwW0luaWNpYXIgcHJlcGFyYWNpXHUwMGYzbl1cbiAgICBTdGFydFByZXAgLS0+IENoYW5nZVN0YXR1czFbQ2FtYmlhciBlc3RhZG86PGJyLz5QUkVQQVJBTkRPXVxuICAgIENoYW5nZVN0YXR1czEgLS0+IE5vdGlmeUNsaWVudDFbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgXG4gICAgTm90aWZ5Q2xpZW50MSAtLT4gUGlja1Byb2R1Y3RzW1JlY29sZWN0YXIgcHJvZHVjdG9zXVxuICAgIFBpY2tQcm9kdWN0cyAtLT4gVmVyaWZ5SXRlbXNbVmVyaWZpY2FyIGl0ZW1zXVxuICAgIFZlcmlmeUl0ZW1zIC0tPiBQYWNrT3JkZXJbRW1wYWNhciBwZWRpZG9dXG4gICAgUGFja09yZGVyIC0tPiBQcmludExhYmVsW0ltcHJpbWlyIGV0aXF1ZXRhXVxuICAgIFxuICAgIFByaW50TGFiZWwgLS0+IFJlYWR5U2hpcHtMaXN0byBwYXJhPGJyLz5lbnZpYXI/fVxuICAgIFxuICAgIFJlYWR5U2hpcCAtLT58U1x1MDBlZHwgQ2hhbmdlU3RhdHVzMltDYW1iaWFyIGVzdGFkbzo8YnIvPkVOX1RSQU5TSVRPXVxuICAgIENoYW5nZVN0YXR1czIgLS0+IE5vdGlmeUNsaWVudDJbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MiAtLT4gQXNzaWduQ291cmllcltBc2lnbmFyIHRyYW5zcG9ydGlzdGFdXG4gICAgXG4gICAgQXNzaWduQ291cmllciAtLT4gSW5UcmFuc2l0W1BlZGlkbyBlbiB0clx1MDBlMW5zaXRvXVxuICAgIEluVHJhbnNpdCAtLT4gV2FpdERlbGl2ZXJ5W0VzcGVyYXIgY29uZmlybWFjaVx1MDBmM248YnIvPmRlIGVudHJlZ2FdXG4gICAgXG4gICAgV2FpdERlbGl2ZXJ5IC0tPiBEZWxpdmVyeUNvbmZpcm17RW50cmVnYTxici8+Y29uZmlybWFkYT99XG4gICAgXG4gICAgRGVsaXZlcnlDb25maXJtIC0tPnxTXHUwMGVkfCBDaGFuZ2VTdGF0dXMzW0NhbWJpYXIgZXN0YWRvOjxici8+RU5UUkVHQURPXVxuICAgIENoYW5nZVN0YXR1czMgLS0+IEdlbmVyYXRlU2FsZVtHZW5lcmFyIHJlZ2lzdHJvPGJyLz5kZSB2ZW50YV1cbiAgICBHZW5lcmF0ZVNhbGUgLS0+IE5vdGlmeUNsaWVudDNbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MyAtLT4gVXBkYXRlTWV0cmljc1tBY3R1YWxpemFyIG1cdTAwZTl0cmljYXNdXG4gICAgVXBkYXRlTWV0cmljcyAtLT4gRW5kMihbRmluOiBDb21wbGV0YWRvXSlcblxuICAgICUlIEV4Y2VwdGlvbnNcbiAgICBDaGVja0ludmVudG9yeSAtLSBObyAtLT4gUmVwb3J0SXNzdWVbUmVwb3J0YXIgcHJvYmxlbWFdXG4gICAgUmVwb3J0SXNzdWUgLS0+IE5vdGlmeUFkbWluW05vdGlmaWNhciBhZG1pbl1cbiAgICBOb3RpZnlBZG1pbiAtLT4gV2FpdFJlc29sdXRpb25bRXNwZXJhciByZXNvbHVjaVx1MDBmM25dXG4gICAgV2FpdFJlc29sdXRpb24gLS0+IEVuZDEoW0ZpbjogUGVuZGllbnRlXSlcblxuICAgIFJlYWR5U2hpcCAtLSBObyAtLT4gQ2hlY2tJc3N1ZXtIYXk8YnIvPnByb2JsZW1hP31cbiAgICBDaGVja0lzc3VlIC0tIFNcdTAwZWQgLS0+IFJlcG9ydElzc3VlXG4gICAgQ2hlY2tJc3N1ZSAtLSBObyAtLT4gUGlja1Byb2R1Y3RzXG4gICAgXG4gICAgRGVsaXZlcnlDb25maXJtIC0tIE5vIC0tPiBEZWxpdmVyeUlzc3Vle0hheTxici8+cHJvYmxlbWE/fVxuICAgIERlbGl2ZXJ5SXNzdWUgLS0gU1x1MDBlZCAtLT4gQ29udGFjdENsaWVudFtDb250YWN0YXIgY2xpZW50ZV1cbiAgICBDb250YWN0Q2xpZW50IC0tPiBSZXNjaGVkdWxlW1JlcHJvZ3JhbWFyIGVudHJlZ2FdXG4gICAgUmVzY2hlZHVsZSAtLi0+IEluVHJhbnNpdFxuICAgIERlbGl2ZXJ5SXNzdWUgLS0gTm8gLS0+IFdhaXREZWxpdmVyeVxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZDEgZmlsbDojRkZBNTAwXG4gICAgc3R5bGUgRW5kMiBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBSZXBvcnRJc3N1ZSBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBDb250YWN0Q2xpZW50IGZpbGw6I0ZGQTUwMCIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW5bTG9nXHUwMGVkc3RpY2EgaW5pY2lhIHNlc2lcdTAwZjNuXVxuICAgIExvZ2luIC0tPiBEYXNoYm9hcmRbVmVyIGRhc2hib2FyZF1cbiAgICBEYXNoYm9hcmQgLS0+IFZpZXdQZW5kaW5nW1ZlciBwZWRpZG9zIHBlbmRpZW50ZXNdXG4gICAgXG4gICAgVmlld1BlbmRpbmcgLS0+IFNlbGVjdE9yZGVyW1NlbGVjY2lvbmFyIHBlZGlkb11cbiAgICBTZWxlY3RPcmRlciAtLT4gVmlld0RldGFpbHNbVmVyIGRldGFsbGVzXVxuICAgIFZpZXdEZXRhaWxzIC0tPiBDaGVja0ludmVudG9yeXtQcm9kdWN0b3M8YnIvPmRpc3BvbmlibGVzP31cbiAgICBcbiAgICBDaGVja0ludmVudG9yeSAtLT58Tm98IFJlcG9ydElzc3VlW1JlcG9ydGFyIHByb2JsZW1hXVxuICAgIFJlcG9ydElzc3VlIC0tPiBOb3RpZnlBZG1pbltOb3RpZmljYXIgYWRtaW5dXG4gICAgTm90aWZ5QWRtaW4gLS0+IFdhaXRSZXNvbHV0aW9uW0VzcGVyYXIgcmVzb2x1Y2lcdTAwZjNuXVxuICAgIFdhaXRSZXNvbHV0aW9uIC0tPiBFbmQxKFtGaW46IFBlbmRpZW50ZV0pXG4gICAgXG4gICAgQ2hlY2tJbnZlbnRvcnkgLS0+fFNcdTAwZWR8IFN0YXJ0UHJlcFtJbmljaWFyIHByZXBhcmFjaVx1MDBmM25dXG4gICAgU3RhcnRQcmVwIC0tPiBDaGFuZ2VTdGF0dXMxW0NhbWJpYXIgZXN0YWRvOjxici8+UFJFUEFSQU5ET11cbiAgICBDaGFuZ2VTdGF0dXMxIC0tPiBOb3RpZnlDbGllbnQxW05vdGlmaWNhciBjbGllbnRlXVxuICAgIFxuICAgIE5vdGlmeUNsaWVudDEgLS0+IFBpY2tQcm9kdWN0c1tSZWNvbGVjdGFyIHByb2R1Y3Rvc11cbiAgICBQaWNrUHJvZHVjdHMgLS0+IFZlcmlmeUl0ZW1zW1ZlcmlmaWNhciBpdGVtc11cbiAgICBWZXJpZnlJdGVtcyAtLT4gUGFja09yZGVyW0VtcGFjYXIgcGVkaWRvXVxuICAgIFBhY2tPcmRlciAtLT4gUHJpbnRMYWJlbFtJbXByaW1pciBldGlxdWV0YV1cbiAgICBcbiAgICBQcmludExhYmVsIC0tPiBSZWFkeVNoaXB7TGlzdG8gcGFyYTxici8+ZW52aWFyP31cbiAgICBSZWFkeVNoaXAgLS0+fE5vfCBDaGVja0lzc3Vle0hheTxici8+cHJvYmxlbWE/fVxuICAgIENoZWNrSXNzdWUgLS0+fFNcdTAwZWR8IFJlcG9ydElzc3VlXG4gICAgQ2hlY2tJc3N1ZSAtLT58Tm98IFBpY2tQcm9kdWN0c1xuICAgIFxuICAgIFJlYWR5U2hpcCAtLT58U1x1MDBlZHwgQ2hhbmdlU3RhdHVzMltDYW1iaWFyIGVzdGFkbzo8YnIvPkVOX1RSQU5TSVRPXVxuICAgIENoYW5nZVN0YXR1czIgLS0+IE5vdGlmeUNsaWVudDJbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MiAtLT4gQXNzaWduQ291cmllcltBc2lnbmFyIHRyYW5zcG9ydGlzdGFdXG4gICAgXG4gICAgQXNzaWduQ291cmllciAtLT4gSW5UcmFuc2l0W1BlZGlkbyBlbiB0clx1MDBlMW5zaXRvXVxuICAgIEluVHJhbnNpdCAtLT4gV2FpdERlbGl2ZXJ5W0VzcGVyYXIgY29uZmlybWFjaVx1MDBmM248YnIvPmRlIGVudHJlZ2FdXG4gICAgXG4gICAgV2FpdERlbGl2ZXJ5IC0tPiBEZWxpdmVyeUNvbmZpcm17RW50cmVnYTxici8+Y29uZmlybWFkYT99XG4gICAgRGVsaXZlcnlDb25maXJtIC0tPnxOb3wgRGVsaXZlcnlJc3N1ZXtIYXk8YnIvPnByb2JsZW1hP31cbiAgICBEZWxpdmVyeUlzc3VlIC0tPnxTXHUwMGVkfCBDb250YWN0Q2xpZW50W0NvbnRhY3RhciBjbGllbnRlXVxuICAgIENvbnRhY3RDbGllbnQgLS0+IFJlc2NoZWR1bGVbUmVwcm9ncmFtYXIgZW50cmVnYV1cbiAgICBSZXNjaGVkdWxlIC0tPiBJblRyYW5zaXRcbiAgICBcbiAgICBEZWxpdmVyeUlzc3VlIC0tPnxOb3wgV2FpdERlbGl2ZXJ5XG4gICAgXG4gICAgRGVsaXZlcnlDb25maXJtIC0tPnxTXHUwMGVkfCBDaGFuZ2VTdGF0dXMzW0NhbWJpYXIgZXN0YWRvOjxici8+RU5UUkVHQURPXVxuICAgIENoYW5nZVN0YXR1czMgLS0+IEdlbmVyYXRlU2FsZVtHZW5lcmFyIHJlZ2lzdHJvPGJyLz5kZSB2ZW50YV1cbiAgICBHZW5lcmF0ZVNhbGUgLS0+IE5vdGlmeUNsaWVudDNbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MyAtLT4gVXBkYXRlTWV0cmljc1tBY3R1YWxpemFyIG1cdTAwZTl0cmljYXNdXG4gICAgVXBkYXRlTWV0cmljcyAtLT4gRW5kMihbRmluOiBDb21wbGV0YWRvXSlcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQxIGZpbGw6I0ZGQTUwMFxuICAgIHN0eWxlIEVuZDIgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgUmVwb3J0SXNzdWUgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgQ29udGFjdENsaWVudCBmaWxsOiNGRkE1MDAiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW5bTG9nXHUwMGVkc3RpY2EgaW5pY2lhIHNlc2lcdTAwZjNuXVxuICAgIExvZ2luIC0tPiBEYXNoYm9hcmRbVmVyIGRhc2hib2FyZF1cbiAgICBEYXNoYm9hcmQgLS0+IFZpZXdQZW5kaW5nW1ZlciBwZWRpZG9zIHBlbmRpZW50ZXNdXG4gICAgXG4gICAgVmlld1BlbmRpbmcgLS0+IFNlbGVjdE9yZGVyW1NlbGVjY2lvbmFyIHBlZGlkb11cbiAgICBTZWxlY3RPcmRlciAtLT4gVmlld0RldGFpbHNbVmVyIGRldGFsbGVzXVxuICAgIFZpZXdEZXRhaWxzIC0tPiBDaGVja0ludmVudG9yeXtQcm9kdWN0b3M8YnIvPmRpc3BvbmlibGVzP31cbiAgICBcbiAgICBDaGVja0ludmVudG9yeSAtLT58U1x1MDBlZHwgU3RhcnRQcmVwW0luaWNpYXIgcHJlcGFyYWNpXHUwMGYzbl1cbiAgICBTdGFydFByZXAgLS0+IENoYW5nZVN0YXR1czFbQ2FtYmlhciBlc3RhZG86PGJyLz5QUkVQQVJBTkRPXVxuICAgIENoYW5nZVN0YXR1czEgLS0+IE5vdGlmeUNsaWVudDFbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgXG4gICAgTm90aWZ5Q2xpZW50MSAtLT4gUGlja1Byb2R1Y3RzW1JlY29sZWN0YXIgcHJvZHVjdG9zXVxuICAgIFBpY2tQcm9kdWN0cyAtLT4gVmVyaWZ5SXRlbXNbVmVyaWZpY2FyIGl0ZW1zXVxuICAgIFZlcmlmeUl0ZW1zIC0tPiBQYWNrT3JkZXJbRW1wYWNhciBwZWRpZG9dXG4gICAgUGFja09yZGVyIC0tPiBQcmludExhYmVsW0ltcHJpbWlyIGV0aXF1ZXRhXVxuICAgIFxuICAgIFByaW50TGFiZWwgLS0+IFJlYWR5U2hpcHtMaXN0byBwYXJhPGJyLz5lbnZpYXI/fVxuICAgIFxuICAgIFJlYWR5U2hpcCAtLT58U1x1MDBlZHwgQ2hhbmdlU3RhdHVzMltDYW1iaWFyIGVzdGFkbzo8YnIvPkVOX1RSQU5TSVRPXVxuICAgIENoYW5nZVN0YXR1czIgLS0+IE5vdGlmeUNsaWVudDJbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MiAtLT4gQXNzaWduQ291cmllcltBc2lnbmFyIHRyYW5zcG9ydGlzdGFdXG4gICAgXG4gICAgQXNzaWduQ291cmllciAtLT4gSW5UcmFuc2l0W1BlZGlkbyBlbiB0clx1MDBlMW5zaXRvXVxuICAgIEluVHJhbnNpdCAtLT4gV2FpdERlbGl2ZXJ5W0VzcGVyYXIgY29uZmlybWFjaVx1MDBmM248YnIvPmRlIGVudHJlZ2FdXG4gICAgXG4gICAgV2FpdERlbGl2ZXJ5IC0tPiBEZWxpdmVyeUNvbmZpcm17RW50cmVnYTxici8+Y29uZmlybWFkYT99XG4gICAgXG4gICAgRGVsaXZlcnlDb25maXJtIC0tPnxTXHUwMGVkfCBDaGFuZ2VTdGF0dXMzW0NhbWJpYXIgZXN0YWRvOjxici8+RU5UUkVHQURPXVxuICAgIENoYW5nZVN0YXR1czMgLS0+IEdlbmVyYXRlU2FsZVtHZW5lcmFyIHJlZ2lzdHJvPGJyLz5kZSB2ZW50YV1cbiAgICBHZW5lcmF0ZVNhbGUgLS0+IE5vdGlmeUNsaWVudDNbTm90aWZpY2FyIGNsaWVudGVdXG4gICAgTm90aWZ5Q2xpZW50MyAtLT4gVXBkYXRlTWV0cmljc1tBY3R1YWxpemFyIG1cdTAwZTl0cmljYXNdXG4gICAgVXBkYXRlTWV0cmljcyAtLT4gRW5kMihbRmluOiBDb21wbGV0YWRvXSlcblxuICAgICUlIEV4Y2VwdGlvbnNcbiAgICBDaGVja0ludmVudG9yeSAtLSBObyAtLT4gUmVwb3J0SXNzdWVbUmVwb3J0YXIgcHJvYmxlbWFdXG4gICAgUmVwb3J0SXNzdWUgLS0+IE5vdGlmeUFkbWluW05vdGlmaWNhciBhZG1pbl1cbiAgICBOb3RpZnlBZG1pbiAtLT4gV2FpdFJlc29sdXRpb25bRXNwZXJhciByZXNvbHVjaVx1MDBmM25dXG4gICAgV2FpdFJlc29sdXRpb24gLS0+IEVuZDEoW0ZpbjogUGVuZGllbnRlXSlcblxuICAgIFJlYWR5U2hpcCAtLSBObyAtLT4gQ2hlY2tJc3N1ZXtIYXk8YnIvPnByb2JsZW1hP31cbiAgICBDaGVja0lzc3VlIC0tIFNcdTAwZWQgLS0+IFJlcG9ydElzc3VlXG4gICAgQ2hlY2tJc3N1ZSAtLSBObyAtLT4gUGlja1Byb2R1Y3RzXG4gICAgXG4gICAgRGVsaXZlcnlDb25maXJtIC0tIE5vIC0tPiBEZWxpdmVyeUlzc3Vle0hheTxici8+cHJvYmxlbWE/fVxuICAgIERlbGl2ZXJ5SXNzdWUgLS0gU1x1MDBlZCAtLT4gQ29udGFjdENsaWVudFtDb250YWN0YXIgY2xpZW50ZV1cbiAgICBDb250YWN0Q2xpZW50IC0tPiBSZXNjaGVkdWxlW1JlcHJvZ3JhbWFyIGVudHJlZ2FdXG4gICAgUmVzY2hlZHVsZSAtLi0+IEluVHJhbnNpdFxuICAgIERlbGl2ZXJ5SXNzdWUgLS0gTm8gLS0+IFdhaXREZWxpdmVyeVxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZDEgZmlsbDojRkZBNTAwXG4gICAgc3R5bGUgRW5kMiBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBSZXBvcnRJc3N1ZSBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBDb250YWN0Q2xpZW50IGZpbGw6I0ZGQTUwMCIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -375,11 +379,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         SelectOrder --> ViewDetails[Ver detalles]
                         ViewDetails --> CheckInventory{Productos<br/>disponibles?}
                         
-                        CheckInventory -->|No| ReportIssue[Reportar problema]
-                        ReportIssue --> NotifyAdmin[Notificar admin]
-                        NotifyAdmin --> WaitResolution[Esperar resolución]
-                        WaitResolution --> End1([Fin: Pendiente])
-                        
                         CheckInventory -->|Sí| StartPrep[Iniciar preparación]
                         StartPrep --> ChangeStatus1[Cambiar estado:<br/>PREPARANDO]
                         ChangeStatus1 --> NotifyClient1[Notificar cliente]
@@ -390,9 +389,6 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         PackOrder --> PrintLabel[Imprimir etiqueta]
                         
                         PrintLabel --> ReadyShip{Listo para<br/>enviar?}
-                        ReadyShip -->|No| CheckIssue{Hay<br/>problema?}
-                        CheckIssue -->|Sí| ReportIssue
-                        CheckIssue -->|No| PickProducts
                         
                         ReadyShip -->|Sí| ChangeStatus2[Cambiar estado:<br/>EN_TRANSITO]
                         ChangeStatus2 --> NotifyClient2[Notificar cliente]
@@ -402,18 +398,28 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         InTransit --> WaitDelivery[Esperar confirmación<br/>de entrega]
                         
                         WaitDelivery --> DeliveryConfirm{Entrega<br/>confirmada?}
-                        DeliveryConfirm -->|No| DeliveryIssue{Hay<br/>problema?}
-                        DeliveryIssue -->|Sí| ContactClient[Contactar cliente]
-                        ContactClient --> Reschedule[Reprogramar entrega]
-                        Reschedule --> InTransit
-                        
-                        DeliveryIssue -->|No| WaitDelivery
                         
                         DeliveryConfirm -->|Sí| ChangeStatus3[Cambiar estado:<br/>ENTREGADO]
                         ChangeStatus3 --> GenerateSale[Generar registro<br/>de venta]
                         GenerateSale --> NotifyClient3[Notificar cliente]
                         NotifyClient3 --> UpdateMetrics[Actualizar métricas]
                         UpdateMetrics --> End2([Fin: Completado])
+                    
+                        %% Exceptions
+                        CheckInventory -- No --> ReportIssue[Reportar problema]
+                        ReportIssue --> NotifyAdmin[Notificar admin]
+                        NotifyAdmin --> WaitResolution[Esperar resolución]
+                        WaitResolution --> End1([Fin: Pendiente])
+                    
+                        ReadyShip -- No --> CheckIssue{Hay<br/>problema?}
+                        CheckIssue -- Sí --> ReportIssue
+                        CheckIssue -- No --> PickProducts
+                        
+                        DeliveryConfirm -- No --> DeliveryIssue{Hay<br/>problema?}
+                        DeliveryIssue -- Sí --> ContactClient[Contactar cliente]
+                        ContactClient --> Reschedule[Reprogramar entrega]
+                        Reschedule -.-> InTransit
+                        DeliveryIssue -- No --> WaitDelivery
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFA500
@@ -443,24 +449,24 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         NextProduct --> CheckStock{Stock actual <=<br/>Stock mínimo?}
                         
                         CheckStock -->|No| SkipProduct[No requiere recarga]
-                        SkipProduct --> Loop
+                        SkipProduct -.-> Loop
                         
                         CheckStock -->|Sí| BeginTrans[BEGIN TRANSACTION]
-                        BeginTrans --> CalcRecharge[Calcular cantidad<br/>de recarga]
-                        CalcRecharge --> UpdateStock[UPDATE stock<br/>stock += cantidad_recarga]
+                        BeginTrans --> CalcRecharge[Calcular cantidad]
+                        CalcRecharge --> UpdateStock[UPDATE stock]
                         
-                        UpdateStock --> LogHistory[INSERT historial_recarga<br/>tipo: automática]
-                        LogHistory --> UpdateConfig[UPDATE stock_config<br/>• ultima_recarga<br/>• total_recargas++]
+                        UpdateStock --> LogHistory[INSERT historial]
+                        LogHistory --> UpdateConfig[UPDATE config]
                         
                         UpdateConfig --> Commit[COMMIT TRANSACTION]
-                        Commit --> SendNotif[Enviar notificación<br/>a proveedor]
+                        Commit --> SendNotif[Notificar proveedor]
                         SendNotif --> LogEvent[Registrar en log]
-                        LogEvent --> Loop
+                        LogEvent -.-> Loop
                         
                         BeginTrans -.Error.-> Rollback[ROLLBACK]
                         Rollback --> LogError[Registrar error]
                         LogError --> NotifyAdmin[Notificar admin]
-                        NotifyAdmin --> Loop
+                        NotifyAdmin -.-> Loop
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -469,14 +475,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IFRpbWVyXSkgLS0+IFRyaWdnZXJbQ2VsZXJ5IEJlYXQgdHJpZ2dlcjxici8+Y2FkYSAxIGhvcmFdXG4gICAgVHJpZ2dlciAtLT4gR2V0UHJvZHVjdHNbT2J0ZW5lciBwcm9kdWN0b3MgY29uPGJyLz5yZWNhcmdhIGF1dG9tXHUwMGUxdGljYSBhY3RpdmFdXG4gICAgR2V0UHJvZHVjdHMgLS0+IExvb3B7TVx1MDBlMXMgcHJvZHVjdG9zPGJyLz5wb3IgcmV2aXNhcj99XG4gICAgXG4gICAgTG9vcCAtLT58Tm98IEVuZFByb2Nlc3NbRmluYWxpemFyIHByb2Nlc29dXG4gICAgRW5kUHJvY2VzcyAtLT4gRW5kKFtGaW5dKVxuICAgIFxuICAgIExvb3AgLS0+fFNcdTAwZWR8IE5leHRQcm9kdWN0W1NpZ3VpZW50ZSBwcm9kdWN0b11cbiAgICBOZXh0UHJvZHVjdCAtLT4gQ2hlY2tTdG9ja3tTdG9jayBhY3R1YWwgPD08YnIvPlN0b2NrIG1cdTAwZWRuaW1vP31cbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxOb3wgU2tpcFByb2R1Y3RbTm8gcmVxdWllcmUgcmVjYXJnYV1cbiAgICBTa2lwUHJvZHVjdCAtLT4gTG9vcFxuICAgIFxuICAgIENoZWNrU3RvY2sgLS0+fFNcdTAwZWR8IEJlZ2luVHJhbnNbQkVHSU4gVFJBTlNBQ1RJT05dXG4gICAgQmVnaW5UcmFucyAtLT4gQ2FsY1JlY2hhcmdlW0NhbGN1bGFyIGNhbnRpZGFkPGJyLz5kZSByZWNhcmdhXVxuICAgIENhbGNSZWNoYXJnZSAtLT4gVXBkYXRlU3RvY2tbVVBEQVRFIHN0b2NrPGJyLz5zdG9jayArPSBjYW50aWRhZF9yZWNhcmdhXVxuICAgIFxuICAgIFVwZGF0ZVN0b2NrIC0tPiBMb2dIaXN0b3J5W0lOU0VSVCBoaXN0b3JpYWxfcmVjYXJnYTxici8+dGlwbzogYXV0b21cdTAwZTF0aWNhXVxuICAgIExvZ0hpc3RvcnkgLS0+IFVwZGF0ZUNvbmZpZ1tVUERBVEUgc3RvY2tfY29uZmlnPGJyLz5cdTIwMjIgdWx0aW1hX3JlY2FyZ2E8YnIvPlx1MjAyMiB0b3RhbF9yZWNhcmdhcysrXVxuICAgIFxuICAgIFVwZGF0ZUNvbmZpZyAtLT4gQ29tbWl0W0NPTU1JVCBUUkFOU0FDVElPTl1cbiAgICBDb21taXQgLS0+IFNlbmROb3RpZltFbnZpYXIgbm90aWZpY2FjaVx1MDBmM248YnIvPmEgcHJvdmVlZG9yXVxuICAgIFNlbmROb3RpZiAtLT4gTG9nRXZlbnRbUmVnaXN0cmFyIGVuIGxvZ11cbiAgICBMb2dFdmVudCAtLT4gTG9vcFxuICAgIFxuICAgIEJlZ2luVHJhbnMgLS5FcnJvci4tPiBSb2xsYmFja1tST0xMQkFDS11cbiAgICBSb2xsYmFjayAtLT4gTG9nRXJyb3JbUmVnaXN0cmFyIGVycm9yXVxuICAgIExvZ0Vycm9yIC0tPiBOb3RpZnlBZG1pbltOb3RpZmljYXIgYWRtaW5dXG4gICAgTm90aWZ5QWRtaW4gLS0+IExvb3BcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgU2tpcFByb2R1Y3QgZmlsbDojRDNEM0QzXG4gICAgc3R5bGUgUm9sbGJhY2sgZmlsbDojRkZCNkMxIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IFRpbWVyXSkgLS0+IFRyaWdnZXJbQ2VsZXJ5IEJlYXQgdHJpZ2dlcjxici8+Y2FkYSAxIGhvcmFdXG4gICAgVHJpZ2dlciAtLT4gR2V0UHJvZHVjdHNbT2J0ZW5lciBwcm9kdWN0b3MgY29uPGJyLz5yZWNhcmdhIGF1dG9tXHUwMGUxdGljYSBhY3RpdmFdXG4gICAgR2V0UHJvZHVjdHMgLS0+IExvb3B7TVx1MDBlMXMgcHJvZHVjdG9zPGJyLz5wb3IgcmV2aXNhcj99XG4gICAgXG4gICAgTG9vcCAtLT58Tm98IEVuZFByb2Nlc3NbRmluYWxpemFyIHByb2Nlc29dXG4gICAgRW5kUHJvY2VzcyAtLT4gRW5kKFtGaW5dKVxuICAgIFxuICAgIExvb3AgLS0+fFNcdTAwZWR8IE5leHRQcm9kdWN0W1NpZ3VpZW50ZSBwcm9kdWN0b11cbiAgICBOZXh0UHJvZHVjdCAtLT4gQ2hlY2tTdG9ja3tTdG9jayBhY3R1YWwgPD08YnIvPlN0b2NrIG1cdTAwZWRuaW1vP31cbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxOb3wgU2tpcFByb2R1Y3RbTm8gcmVxdWllcmUgcmVjYXJnYV1cbiAgICBTa2lwUHJvZHVjdCAtLi0+IExvb3BcbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxTXHUwMGVkfCBCZWdpblRyYW5zW0JFR0lOIFRSQU5TQUNUSU9OXVxuICAgIEJlZ2luVHJhbnMgLS0+IENhbGNSZWNoYXJnZVtDYWxjdWxhciBjYW50aWRhZF1cbiAgICBDYWxjUmVjaGFyZ2UgLS0+IFVwZGF0ZVN0b2NrW1VQREFURSBzdG9ja11cbiAgICBcbiAgICBVcGRhdGVTdG9jayAtLT4gTG9nSGlzdG9yeVtJTlNFUlQgaGlzdG9yaWFsXVxuICAgIExvZ0hpc3RvcnkgLS0+IFVwZGF0ZUNvbmZpZ1tVUERBVEUgY29uZmlnXVxuICAgIFxuICAgIFVwZGF0ZUNvbmZpZyAtLT4gQ29tbWl0W0NPTU1JVCBUUkFOU0FDVElPTl1cbiAgICBDb21taXQgLS0+IFNlbmROb3RpZltOb3RpZmljYXIgcHJvdmVlZG9yXVxuICAgIFNlbmROb3RpZiAtLT4gTG9nRXZlbnRbUmVnaXN0cmFyIGVuIGxvZ11cbiAgICBMb2dFdmVudCAtLi0+IExvb3BcbiAgICBcbiAgICBCZWdpblRyYW5zIC0uRXJyb3IuLT4gUm9sbGJhY2tbUk9MTEJBQ0tdXG4gICAgUm9sbGJhY2sgLS0+IExvZ0Vycm9yW1JlZ2lzdHJhciBlcnJvcl1cbiAgICBMb2dFcnJvciAtLT4gTm90aWZ5QWRtaW5bTm90aWZpY2FyIGFkbWluXVxuICAgIE5vdGlmeUFkbWluIC0uLT4gTG9vcFxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBTa2lwUHJvZHVjdCBmaWxsOiNEM0QzRDNcbiAgICBzdHlsZSBSb2xsYmFjayBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IFRpbWVyXSkgLS0+IFRyaWdnZXJbQ2VsZXJ5IEJlYXQgdHJpZ2dlcjxici8+Y2FkYSAxIGhvcmFdXG4gICAgVHJpZ2dlciAtLT4gR2V0UHJvZHVjdHNbT2J0ZW5lciBwcm9kdWN0b3MgY29uPGJyLz5yZWNhcmdhIGF1dG9tXHUwMGUxdGljYSBhY3RpdmFdXG4gICAgR2V0UHJvZHVjdHMgLS0+IExvb3B7TVx1MDBlMXMgcHJvZHVjdG9zPGJyLz5wb3IgcmV2aXNhcj99XG4gICAgXG4gICAgTG9vcCAtLT58Tm98IEVuZFByb2Nlc3NbRmluYWxpemFyIHByb2Nlc29dXG4gICAgRW5kUHJvY2VzcyAtLT4gRW5kKFtGaW5dKVxuICAgIFxuICAgIExvb3AgLS0+fFNcdTAwZWR8IE5leHRQcm9kdWN0W1NpZ3VpZW50ZSBwcm9kdWN0b11cbiAgICBOZXh0UHJvZHVjdCAtLT4gQ2hlY2tTdG9ja3tTdG9jayBhY3R1YWwgPD08YnIvPlN0b2NrIG1cdTAwZWRuaW1vP31cbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxOb3wgU2tpcFByb2R1Y3RbTm8gcmVxdWllcmUgcmVjYXJnYV1cbiAgICBTa2lwUHJvZHVjdCAtLT4gTG9vcFxuICAgIFxuICAgIENoZWNrU3RvY2sgLS0+fFNcdTAwZWR8IEJlZ2luVHJhbnNbQkVHSU4gVFJBTlNBQ1RJT05dXG4gICAgQmVnaW5UcmFucyAtLT4gQ2FsY1JlY2hhcmdlW0NhbGN1bGFyIGNhbnRpZGFkPGJyLz5kZSByZWNhcmdhXVxuICAgIENhbGNSZWNoYXJnZSAtLT4gVXBkYXRlU3RvY2tbVVBEQVRFIHN0b2NrPGJyLz5zdG9jayArPSBjYW50aWRhZF9yZWNhcmdhXVxuICAgIFxuICAgIFVwZGF0ZVN0b2NrIC0tPiBMb2dIaXN0b3J5W0lOU0VSVCBoaXN0b3JpYWxfcmVjYXJnYTxici8+dGlwbzogYXV0b21cdTAwZTF0aWNhXVxuICAgIExvZ0hpc3RvcnkgLS0+IFVwZGF0ZUNvbmZpZ1tVUERBVEUgc3RvY2tfY29uZmlnPGJyLz5cdTIwMjIgdWx0aW1hX3JlY2FyZ2E8YnIvPlx1MjAyMiB0b3RhbF9yZWNhcmdhcysrXVxuICAgIFxuICAgIFVwZGF0ZUNvbmZpZyAtLT4gQ29tbWl0W0NPTU1JVCBUUkFOU0FDVElPTl1cbiAgICBDb21taXQgLS0+IFNlbmROb3RpZltFbnZpYXIgbm90aWZpY2FjaVx1MDBmM248YnIvPmEgcHJvdmVlZG9yXVxuICAgIFNlbmROb3RpZiAtLT4gTG9nRXZlbnRbUmVnaXN0cmFyIGVuIGxvZ11cbiAgICBMb2dFdmVudCAtLT4gTG9vcFxuICAgIFxuICAgIEJlZ2luVHJhbnMgLS5FcnJvci4tPiBSb2xsYmFja1tST0xMQkFDS11cbiAgICBSb2xsYmFjayAtLT4gTG9nRXJyb3JbUmVnaXN0cmFyIGVycm9yXVxuICAgIExvZ0Vycm9yIC0tPiBOb3RpZnlBZG1pbltOb3RpZmljYXIgYWRtaW5dXG4gICAgTm90aWZ5QWRtaW4gLS0+IExvb3BcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgU2tpcFByb2R1Y3QgZmlsbDojRDNEM0QzXG4gICAgc3R5bGUgUm9sbGJhY2sgZmlsbDojRkZCNkMxIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW86IFRpbWVyXSkgLS0+IFRyaWdnZXJbQ2VsZXJ5IEJlYXQgdHJpZ2dlcjxici8+Y2FkYSAxIGhvcmFdXG4gICAgVHJpZ2dlciAtLT4gR2V0UHJvZHVjdHNbT2J0ZW5lciBwcm9kdWN0b3MgY29uPGJyLz5yZWNhcmdhIGF1dG9tXHUwMGUxdGljYSBhY3RpdmFdXG4gICAgR2V0UHJvZHVjdHMgLS0+IExvb3B7TVx1MDBlMXMgcHJvZHVjdG9zPGJyLz5wb3IgcmV2aXNhcj99XG4gICAgXG4gICAgTG9vcCAtLT58Tm98IEVuZFByb2Nlc3NbRmluYWxpemFyIHByb2Nlc29dXG4gICAgRW5kUHJvY2VzcyAtLT4gRW5kKFtGaW5dKVxuICAgIFxuICAgIExvb3AgLS0+fFNcdTAwZWR8IE5leHRQcm9kdWN0W1NpZ3VpZW50ZSBwcm9kdWN0b11cbiAgICBOZXh0UHJvZHVjdCAtLT4gQ2hlY2tTdG9ja3tTdG9jayBhY3R1YWwgPD08YnIvPlN0b2NrIG1cdTAwZWRuaW1vP31cbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxOb3wgU2tpcFByb2R1Y3RbTm8gcmVxdWllcmUgcmVjYXJnYV1cbiAgICBTa2lwUHJvZHVjdCAtLi0+IExvb3BcbiAgICBcbiAgICBDaGVja1N0b2NrIC0tPnxTXHUwMGVkfCBCZWdpblRyYW5zW0JFR0lOIFRSQU5TQUNUSU9OXVxuICAgIEJlZ2luVHJhbnMgLS0+IENhbGNSZWNoYXJnZVtDYWxjdWxhciBjYW50aWRhZF1cbiAgICBDYWxjUmVjaGFyZ2UgLS0+IFVwZGF0ZVN0b2NrW1VQREFURSBzdG9ja11cbiAgICBcbiAgICBVcGRhdGVTdG9jayAtLT4gTG9nSGlzdG9yeVtJTlNFUlQgaGlzdG9yaWFsXVxuICAgIExvZ0hpc3RvcnkgLS0+IFVwZGF0ZUNvbmZpZ1tVUERBVEUgY29uZmlnXVxuICAgIFxuICAgIFVwZGF0ZUNvbmZpZyAtLT4gQ29tbWl0W0NPTU1JVCBUUkFOU0FDVElPTl1cbiAgICBDb21taXQgLS0+IFNlbmROb3RpZltOb3RpZmljYXIgcHJvdmVlZG9yXVxuICAgIFNlbmROb3RpZiAtLT4gTG9nRXZlbnRbUmVnaXN0cmFyIGVuIGxvZ11cbiAgICBMb2dFdmVudCAtLi0+IExvb3BcbiAgICBcbiAgICBCZWdpblRyYW5zIC0uRXJyb3IuLT4gUm9sbGJhY2tbUk9MTEJBQ0tdXG4gICAgUm9sbGJhY2sgLS0+IExvZ0Vycm9yW1JlZ2lzdHJhciBlcnJvcl1cbiAgICBMb2dFcnJvciAtLT4gTm90aWZ5QWRtaW5bTm90aWZpY2FyIGFkbWluXVxuICAgIE5vdGlmeUFkbWluIC0uLT4gTG9vcFxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBTa2lwUHJvZHVjdCBmaWxsOiNEM0QzRDNcbiAgICBzdHlsZSBSb2xsYmFjayBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -500,24 +506,24 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         NextProduct --> CheckStock{Stock actual <=<br/>Stock mínimo?}
                         
                         CheckStock -->|No| SkipProduct[No requiere recarga]
-                        SkipProduct --> Loop
+                        SkipProduct -.-> Loop
                         
                         CheckStock -->|Sí| BeginTrans[BEGIN TRANSACTION]
-                        BeginTrans --> CalcRecharge[Calcular cantidad<br/>de recarga]
-                        CalcRecharge --> UpdateStock[UPDATE stock<br/>stock += cantidad_recarga]
+                        BeginTrans --> CalcRecharge[Calcular cantidad]
+                        CalcRecharge --> UpdateStock[UPDATE stock]
                         
-                        UpdateStock --> LogHistory[INSERT historial_recarga<br/>tipo: automática]
-                        LogHistory --> UpdateConfig[UPDATE stock_config<br/>• ultima_recarga<br/>• total_recargas++]
+                        UpdateStock --> LogHistory[INSERT historial]
+                        LogHistory --> UpdateConfig[UPDATE config]
                         
                         UpdateConfig --> Commit[COMMIT TRANSACTION]
-                        Commit --> SendNotif[Enviar notificación<br/>a proveedor]
+                        Commit --> SendNotif[Notificar proveedor]
                         SendNotif --> LogEvent[Registrar en log]
-                        LogEvent --> Loop
+                        LogEvent -.-> Loop
                         
                         BeginTrans -.Error.-> Rollback[ROLLBACK]
                         Rollback --> LogError[Registrar error]
                         LogError --> NotifyAdmin[Notificar admin]
-                        NotifyAdmin --> Loop
+                        NotifyAdmin -.-> Loop
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -536,42 +542,41 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                     flowchart TD
                         Start([Inicio]) --> AdminLogin[Admin inicia sesión]
-                        AdminLogin --> NavProducts[Navegar a<br/>Gestión de Productos]
-                        NavProducts --> ViewProducts[Ver lista de productos]
+                        AdminLogin --> NavProducts[Navegar Gestión]
+                        NavProducts --> ViewProducts[Ver lista productos]
                         
                         ViewProducts --> SelectProduct[Seleccionar producto]
                         SelectProduct --> ViewCurrent{Proveedor<br/>actual?}
                         
-                        ViewCurrent -->|No| NewAssign[Nueva asignación]
                         ViewCurrent -->|Sí| ConfirmChange{Confirmar<br/>cambio?}
-                        ConfirmChange -->|No| ViewProducts
-                        ConfirmChange -->|Sí| NewAssign
+                        ConfirmChange -- No --> ViewProducts
+                        ConfirmChange -- Sí --> NewAssign[Nueva asignación]
+                        ViewCurrent -- No --> NewAssign
                         
-                        NewAssign --> GetProviders[Obtener lista de<br/>proveedores activos]
+                        NewAssign --> GetProviders[Listar proveedores]
                         GetProviders --> SelectProvider[Seleccionar proveedor]
                         
                         SelectProvider --> ValidateProvider{Proveedor<br/>válido?}
-                        ValidateProvider -->|No| ErrorInvalid[Error: Proveedor inválido]
-                        ErrorInvalid --> GetProviders
+                        ValidateProvider -- No --> ErrorInvalid[Error: Inválido]
+                        ErrorInvalid -.-> GetProviders
                         
-                        ValidateProvider -->|Sí| ConfirmAssign[Confirmar asignación]
-                        ConfirmAssign --> UpdateProduct[UPDATE producto<br/>SET proveedor_id]
+                        ValidateProvider -->|Sí| ConfirmAssign[Confirmar]
+                        ConfirmAssign --> UpdateProduct[UPDATE producto]
                         
                         UpdateProduct --> CheckAutoStock{Configurar<br/>recarga auto?}
-                        CheckAutoStock -->|Sí| ConfigStock[Configurar<br/>stock_config]
-                        ConfigStock --> SetMinStock[Establecer stock_minimo]
-                        SetMinStock --> SetRechargeQty[Establecer cantidad_recarga]
-                        SetRechargeQty --> EnableAuto[Activar recarga_automatica]
-                        EnableAuto --> SaveConfig[Guardar configuración]
+                        CheckAutoStock -->|Sí| ConfigStock[Configurar]
+                        ConfigStock --> SetParams[Establecer parámetros]
+                        SetParams --> EnableAuto[Activar]
+                        EnableAuto --> SaveConfig[Guardar config]
                         SaveConfig --> NotifyProvider
                         
-                        CheckAutoStock -->|No| NotifyProvider[Notificar proveedor]
-                        NotifyProvider --> LogChange[Registrar cambio<br/>en auditoría]
-                        LogChange --> ShowSuccess[Mostrar mensaje<br/>de éxito]
-                        ShowSuccess --> MoreAssign{Asignar<br/>más productos?}
+                        CheckAutoStock -->|No| NotifyProvider[Notificar]
+                        NotifyProvider --> LogChange[Registrar auditoría]
+                        LogChange --> ShowSuccess[Éxito]
+                        ShowSuccess --> MoreAssign{¿Más?}
                         
-                        MoreAssign -->|Sí| ViewProducts
-                        MoreAssign -->|No| End([Fin])
+                        MoreAssign -- Sí --> ViewProducts
+                        MoreAssign -- No --> End([Fin])
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -579,14 +584,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gQWRtaW5Mb2dpbltBZG1pbiBpbmljaWEgc2VzaVx1MDBmM25dXG4gICAgQWRtaW5Mb2dpbiAtLT4gTmF2UHJvZHVjdHNbTmF2ZWdhciBhPGJyLz5HZXN0aVx1MDBmM24gZGUgUHJvZHVjdG9zXVxuICAgIE5hdlByb2R1Y3RzIC0tPiBWaWV3UHJvZHVjdHNbVmVyIGxpc3RhIGRlIHByb2R1Y3Rvc11cbiAgICBcbiAgICBWaWV3UHJvZHVjdHMgLS0+IFNlbGVjdFByb2R1Y3RbU2VsZWNjaW9uYXIgcHJvZHVjdG9dXG4gICAgU2VsZWN0UHJvZHVjdCAtLT4gVmlld0N1cnJlbnR7UHJvdmVlZG9yPGJyLz5hY3R1YWw/fVxuICAgIFxuICAgIFZpZXdDdXJyZW50IC0tPnxOb3wgTmV3QXNzaWduW051ZXZhIGFzaWduYWNpXHUwMGYzbl1cbiAgICBWaWV3Q3VycmVudCAtLT58U1x1MDBlZHwgQ29uZmlybUNoYW5nZXtDb25maXJtYXI8YnIvPmNhbWJpbz99XG4gICAgQ29uZmlybUNoYW5nZSAtLT58Tm98IFZpZXdQcm9kdWN0c1xuICAgIENvbmZpcm1DaGFuZ2UgLS0+fFNcdTAwZWR8IE5ld0Fzc2lnblxuICAgIFxuICAgIE5ld0Fzc2lnbiAtLT4gR2V0UHJvdmlkZXJzW09idGVuZXIgbGlzdGEgZGU8YnIvPnByb3ZlZWRvcmVzIGFjdGl2b3NdXG4gICAgR2V0UHJvdmlkZXJzIC0tPiBTZWxlY3RQcm92aWRlcltTZWxlY2Npb25hciBwcm92ZWVkb3JdXG4gICAgXG4gICAgU2VsZWN0UHJvdmlkZXIgLS0+IFZhbGlkYXRlUHJvdmlkZXJ7UHJvdmVlZG9yPGJyLz52XHUwMGUxbGlkbz99XG4gICAgVmFsaWRhdGVQcm92aWRlciAtLT58Tm98IEVycm9ySW52YWxpZFtFcnJvcjogUHJvdmVlZG9yIGludlx1MDBlMWxpZG9dXG4gICAgRXJyb3JJbnZhbGlkIC0tPiBHZXRQcm92aWRlcnNcbiAgICBcbiAgICBWYWxpZGF0ZVByb3ZpZGVyIC0tPnxTXHUwMGVkfCBDb25maXJtQXNzaWduW0NvbmZpcm1hciBhc2lnbmFjaVx1MDBmM25dXG4gICAgQ29uZmlybUFzc2lnbiAtLT4gVXBkYXRlUHJvZHVjdFtVUERBVEUgcHJvZHVjdG88YnIvPlNFVCBwcm92ZWVkb3JfaWRdXG4gICAgXG4gICAgVXBkYXRlUHJvZHVjdCAtLT4gQ2hlY2tBdXRvU3RvY2t7Q29uZmlndXJhcjxici8+cmVjYXJnYSBhdXRvP31cbiAgICBDaGVja0F1dG9TdG9jayAtLT58U1x1MDBlZHwgQ29uZmlnU3RvY2tbQ29uZmlndXJhcjxici8+c3RvY2tfY29uZmlnXVxuICAgIENvbmZpZ1N0b2NrIC0tPiBTZXRNaW5TdG9ja1tFc3RhYmxlY2VyIHN0b2NrX21pbmltb11cbiAgICBTZXRNaW5TdG9jayAtLT4gU2V0UmVjaGFyZ2VRdHlbRXN0YWJsZWNlciBjYW50aWRhZF9yZWNhcmdhXVxuICAgIFNldFJlY2hhcmdlUXR5IC0tPiBFbmFibGVBdXRvW0FjdGl2YXIgcmVjYXJnYV9hdXRvbWF0aWNhXVxuICAgIEVuYWJsZUF1dG8gLS0+IFNhdmVDb25maWdbR3VhcmRhciBjb25maWd1cmFjaVx1MDBmM25dXG4gICAgU2F2ZUNvbmZpZyAtLT4gTm90aWZ5UHJvdmlkZXJcbiAgICBcbiAgICBDaGVja0F1dG9TdG9jayAtLT58Tm98IE5vdGlmeVByb3ZpZGVyW05vdGlmaWNhciBwcm92ZWVkb3JdXG4gICAgTm90aWZ5UHJvdmlkZXIgLS0+IExvZ0NoYW5nZVtSZWdpc3RyYXIgY2FtYmlvPGJyLz5lbiBhdWRpdG9yXHUwMGVkYV1cbiAgICBMb2dDaGFuZ2UgLS0+IFNob3dTdWNjZXNzW01vc3RyYXIgbWVuc2FqZTxici8+ZGUgXHUwMGU5eGl0b11cbiAgICBTaG93U3VjY2VzcyAtLT4gTW9yZUFzc2lnbntBc2lnbmFyPGJyLz5tXHUwMGUxcyBwcm9kdWN0b3M/fVxuICAgIFxuICAgIE1vcmVBc3NpZ24gLS0+fFNcdTAwZWR8IFZpZXdQcm9kdWN0c1xuICAgIE1vcmVBc3NpZ24gLS0+fE5vfCBFbmQoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVycm9ySW52YWxpZCBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gQWRtaW5Mb2dpbltBZG1pbiBpbmljaWEgc2VzaVx1MDBmM25dXG4gICAgQWRtaW5Mb2dpbiAtLT4gTmF2UHJvZHVjdHNbTmF2ZWdhciBHZXN0aVx1MDBmM25dXG4gICAgTmF2UHJvZHVjdHMgLS0+IFZpZXdQcm9kdWN0c1tWZXIgbGlzdGEgcHJvZHVjdG9zXVxuICAgIFxuICAgIFZpZXdQcm9kdWN0cyAtLT4gU2VsZWN0UHJvZHVjdFtTZWxlY2Npb25hciBwcm9kdWN0b11cbiAgICBTZWxlY3RQcm9kdWN0IC0tPiBWaWV3Q3VycmVudHtQcm92ZWVkb3I8YnIvPmFjdHVhbD99XG4gICAgXG4gICAgVmlld0N1cnJlbnQgLS0+fFNcdTAwZWR8IENvbmZpcm1DaGFuZ2V7Q29uZmlybWFyPGJyLz5jYW1iaW8/fVxuICAgIENvbmZpcm1DaGFuZ2UgLS0gTm8gLS0+IFZpZXdQcm9kdWN0c1xuICAgIENvbmZpcm1DaGFuZ2UgLS0gU1x1MDBlZCAtLT4gTmV3QXNzaWduW051ZXZhIGFzaWduYWNpXHUwMGYzbl1cbiAgICBWaWV3Q3VycmVudCAtLSBObyAtLT4gTmV3QXNzaWduXG4gICAgXG4gICAgTmV3QXNzaWduIC0tPiBHZXRQcm92aWRlcnNbTGlzdGFyIHByb3ZlZWRvcmVzXVxuICAgIEdldFByb3ZpZGVycyAtLT4gU2VsZWN0UHJvdmlkZXJbU2VsZWNjaW9uYXIgcHJvdmVlZG9yXVxuICAgIFxuICAgIFNlbGVjdFByb3ZpZGVyIC0tPiBWYWxpZGF0ZVByb3ZpZGVye1Byb3ZlZWRvcjxici8+dlx1MDBlMWxpZG8/fVxuICAgIFZhbGlkYXRlUHJvdmlkZXIgLS0gTm8gLS0+IEVycm9ySW52YWxpZFtFcnJvcjogSW52XHUwMGUxbGlkb11cbiAgICBFcnJvckludmFsaWQgLS4tPiBHZXRQcm92aWRlcnNcbiAgICBcbiAgICBWYWxpZGF0ZVByb3ZpZGVyIC0tPnxTXHUwMGVkfCBDb25maXJtQXNzaWduW0NvbmZpcm1hcl1cbiAgICBDb25maXJtQXNzaWduIC0tPiBVcGRhdGVQcm9kdWN0W1VQREFURSBwcm9kdWN0b11cbiAgICBcbiAgICBVcGRhdGVQcm9kdWN0IC0tPiBDaGVja0F1dG9TdG9ja3tDb25maWd1cmFyPGJyLz5yZWNhcmdhIGF1dG8/fVxuICAgIENoZWNrQXV0b1N0b2NrIC0tPnxTXHUwMGVkfCBDb25maWdTdG9ja1tDb25maWd1cmFyXVxuICAgIENvbmZpZ1N0b2NrIC0tPiBTZXRQYXJhbXNbRXN0YWJsZWNlciBwYXJcdTAwZTFtZXRyb3NdXG4gICAgU2V0UGFyYW1zIC0tPiBFbmFibGVBdXRvW0FjdGl2YXJdXG4gICAgRW5hYmxlQXV0byAtLT4gU2F2ZUNvbmZpZ1tHdWFyZGFyIGNvbmZpZ11cbiAgICBTYXZlQ29uZmlnIC0tPiBOb3RpZnlQcm92aWRlclxuICAgIFxuICAgIENoZWNrQXV0b1N0b2NrIC0tPnxOb3wgTm90aWZ5UHJvdmlkZXJbTm90aWZpY2FyXVxuICAgIE5vdGlmeVByb3ZpZGVyIC0tPiBMb2dDaGFuZ2VbUmVnaXN0cmFyIGF1ZGl0b3JcdTAwZWRhXVxuICAgIExvZ0NoYW5nZSAtLT4gU2hvd1N1Y2Nlc3NbXHUwMGM5eGl0b11cbiAgICBTaG93U3VjY2VzcyAtLT4gTW9yZUFzc2lnbntcdTAwYmZNXHUwMGUxcz99XG4gICAgXG4gICAgTW9yZUFzc2lnbiAtLSBTXHUwMGVkIC0tPiBWaWV3UHJvZHVjdHNcbiAgICBNb3JlQXNzaWduIC0tIE5vIC0tPiBFbmQoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVycm9ySW52YWxpZCBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gQWRtaW5Mb2dpbltBZG1pbiBpbmljaWEgc2VzaVx1MDBmM25dXG4gICAgQWRtaW5Mb2dpbiAtLT4gTmF2UHJvZHVjdHNbTmF2ZWdhciBhPGJyLz5HZXN0aVx1MDBmM24gZGUgUHJvZHVjdG9zXVxuICAgIE5hdlByb2R1Y3RzIC0tPiBWaWV3UHJvZHVjdHNbVmVyIGxpc3RhIGRlIHByb2R1Y3Rvc11cbiAgICBcbiAgICBWaWV3UHJvZHVjdHMgLS0+IFNlbGVjdFByb2R1Y3RbU2VsZWNjaW9uYXIgcHJvZHVjdG9dXG4gICAgU2VsZWN0UHJvZHVjdCAtLT4gVmlld0N1cnJlbnR7UHJvdmVlZG9yPGJyLz5hY3R1YWw/fVxuICAgIFxuICAgIFZpZXdDdXJyZW50IC0tPnxOb3wgTmV3QXNzaWduW051ZXZhIGFzaWduYWNpXHUwMGYzbl1cbiAgICBWaWV3Q3VycmVudCAtLT58U1x1MDBlZHwgQ29uZmlybUNoYW5nZXtDb25maXJtYXI8YnIvPmNhbWJpbz99XG4gICAgQ29uZmlybUNoYW5nZSAtLT58Tm98IFZpZXdQcm9kdWN0c1xuICAgIENvbmZpcm1DaGFuZ2UgLS0+fFNcdTAwZWR8IE5ld0Fzc2lnblxuICAgIFxuICAgIE5ld0Fzc2lnbiAtLT4gR2V0UHJvdmlkZXJzW09idGVuZXIgbGlzdGEgZGU8YnIvPnByb3ZlZWRvcmVzIGFjdGl2b3NdXG4gICAgR2V0UHJvdmlkZXJzIC0tPiBTZWxlY3RQcm92aWRlcltTZWxlY2Npb25hciBwcm92ZWVkb3JdXG4gICAgXG4gICAgU2VsZWN0UHJvdmlkZXIgLS0+IFZhbGlkYXRlUHJvdmlkZXJ7UHJvdmVlZG9yPGJyLz52XHUwMGUxbGlkbz99XG4gICAgVmFsaWRhdGVQcm92aWRlciAtLT58Tm98IEVycm9ySW52YWxpZFtFcnJvcjogUHJvdmVlZG9yIGludlx1MDBlMWxpZG9dXG4gICAgRXJyb3JJbnZhbGlkIC0tPiBHZXRQcm92aWRlcnNcbiAgICBcbiAgICBWYWxpZGF0ZVByb3ZpZGVyIC0tPnxTXHUwMGVkfCBDb25maXJtQXNzaWduW0NvbmZpcm1hciBhc2lnbmFjaVx1MDBmM25dXG4gICAgQ29uZmlybUFzc2lnbiAtLT4gVXBkYXRlUHJvZHVjdFtVUERBVEUgcHJvZHVjdG88YnIvPlNFVCBwcm92ZWVkb3JfaWRdXG4gICAgXG4gICAgVXBkYXRlUHJvZHVjdCAtLT4gQ2hlY2tBdXRvU3RvY2t7Q29uZmlndXJhcjxici8+cmVjYXJnYSBhdXRvP31cbiAgICBDaGVja0F1dG9TdG9jayAtLT58U1x1MDBlZHwgQ29uZmlnU3RvY2tbQ29uZmlndXJhcjxici8+c3RvY2tfY29uZmlnXVxuICAgIENvbmZpZ1N0b2NrIC0tPiBTZXRNaW5TdG9ja1tFc3RhYmxlY2VyIHN0b2NrX21pbmltb11cbiAgICBTZXRNaW5TdG9jayAtLT4gU2V0UmVjaGFyZ2VRdHlbRXN0YWJsZWNlciBjYW50aWRhZF9yZWNhcmdhXVxuICAgIFNldFJlY2hhcmdlUXR5IC0tPiBFbmFibGVBdXRvW0FjdGl2YXIgcmVjYXJnYV9hdXRvbWF0aWNhXVxuICAgIEVuYWJsZUF1dG8gLS0+IFNhdmVDb25maWdbR3VhcmRhciBjb25maWd1cmFjaVx1MDBmM25dXG4gICAgU2F2ZUNvbmZpZyAtLT4gTm90aWZ5UHJvdmlkZXJcbiAgICBcbiAgICBDaGVja0F1dG9TdG9jayAtLT58Tm98IE5vdGlmeVByb3ZpZGVyW05vdGlmaWNhciBwcm92ZWVkb3JdXG4gICAgTm90aWZ5UHJvdmlkZXIgLS0+IExvZ0NoYW5nZVtSZWdpc3RyYXIgY2FtYmlvPGJyLz5lbiBhdWRpdG9yXHUwMGVkYV1cbiAgICBMb2dDaGFuZ2UgLS0+IFNob3dTdWNjZXNzW01vc3RyYXIgbWVuc2FqZTxici8+ZGUgXHUwMGU5eGl0b11cbiAgICBTaG93U3VjY2VzcyAtLT4gTW9yZUFzc2lnbntBc2lnbmFyPGJyLz5tXHUwMGUxcyBwcm9kdWN0b3M/fVxuICAgIFxuICAgIE1vcmVBc3NpZ24gLS0+fFNcdTAwZWR8IFZpZXdQcm9kdWN0c1xuICAgIE1vcmVBc3NpZ24gLS0+fE5vfCBFbmQoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVycm9ySW52YWxpZCBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gQWRtaW5Mb2dpbltBZG1pbiBpbmljaWEgc2VzaVx1MDBmM25dXG4gICAgQWRtaW5Mb2dpbiAtLT4gTmF2UHJvZHVjdHNbTmF2ZWdhciBHZXN0aVx1MDBmM25dXG4gICAgTmF2UHJvZHVjdHMgLS0+IFZpZXdQcm9kdWN0c1tWZXIgbGlzdGEgcHJvZHVjdG9zXVxuICAgIFxuICAgIFZpZXdQcm9kdWN0cyAtLT4gU2VsZWN0UHJvZHVjdFtTZWxlY2Npb25hciBwcm9kdWN0b11cbiAgICBTZWxlY3RQcm9kdWN0IC0tPiBWaWV3Q3VycmVudHtQcm92ZWVkb3I8YnIvPmFjdHVhbD99XG4gICAgXG4gICAgVmlld0N1cnJlbnQgLS0+fFNcdTAwZWR8IENvbmZpcm1DaGFuZ2V7Q29uZmlybWFyPGJyLz5jYW1iaW8/fVxuICAgIENvbmZpcm1DaGFuZ2UgLS0gTm8gLS0+IFZpZXdQcm9kdWN0c1xuICAgIENvbmZpcm1DaGFuZ2UgLS0gU1x1MDBlZCAtLT4gTmV3QXNzaWduW051ZXZhIGFzaWduYWNpXHUwMGYzbl1cbiAgICBWaWV3Q3VycmVudCAtLSBObyAtLT4gTmV3QXNzaWduXG4gICAgXG4gICAgTmV3QXNzaWduIC0tPiBHZXRQcm92aWRlcnNbTGlzdGFyIHByb3ZlZWRvcmVzXVxuICAgIEdldFByb3ZpZGVycyAtLT4gU2VsZWN0UHJvdmlkZXJbU2VsZWNjaW9uYXIgcHJvdmVlZG9yXVxuICAgIFxuICAgIFNlbGVjdFByb3ZpZGVyIC0tPiBWYWxpZGF0ZVByb3ZpZGVye1Byb3ZlZWRvcjxici8+dlx1MDBlMWxpZG8/fVxuICAgIFZhbGlkYXRlUHJvdmlkZXIgLS0gTm8gLS0+IEVycm9ySW52YWxpZFtFcnJvcjogSW52XHUwMGUxbGlkb11cbiAgICBFcnJvckludmFsaWQgLS4tPiBHZXRQcm92aWRlcnNcbiAgICBcbiAgICBWYWxpZGF0ZVByb3ZpZGVyIC0tPnxTXHUwMGVkfCBDb25maXJtQXNzaWduW0NvbmZpcm1hcl1cbiAgICBDb25maXJtQXNzaWduIC0tPiBVcGRhdGVQcm9kdWN0W1VQREFURSBwcm9kdWN0b11cbiAgICBcbiAgICBVcGRhdGVQcm9kdWN0IC0tPiBDaGVja0F1dG9TdG9ja3tDb25maWd1cmFyPGJyLz5yZWNhcmdhIGF1dG8/fVxuICAgIENoZWNrQXV0b1N0b2NrIC0tPnxTXHUwMGVkfCBDb25maWdTdG9ja1tDb25maWd1cmFyXVxuICAgIENvbmZpZ1N0b2NrIC0tPiBTZXRQYXJhbXNbRXN0YWJsZWNlciBwYXJcdTAwZTFtZXRyb3NdXG4gICAgU2V0UGFyYW1zIC0tPiBFbmFibGVBdXRvW0FjdGl2YXJdXG4gICAgRW5hYmxlQXV0byAtLT4gU2F2ZUNvbmZpZ1tHdWFyZGFyIGNvbmZpZ11cbiAgICBTYXZlQ29uZmlnIC0tPiBOb3RpZnlQcm92aWRlclxuICAgIFxuICAgIENoZWNrQXV0b1N0b2NrIC0tPnxOb3wgTm90aWZ5UHJvdmlkZXJbTm90aWZpY2FyXVxuICAgIE5vdGlmeVByb3ZpZGVyIC0tPiBMb2dDaGFuZ2VbUmVnaXN0cmFyIGF1ZGl0b3JcdTAwZWRhXVxuICAgIExvZ0NoYW5nZSAtLT4gU2hvd1N1Y2Nlc3NbXHUwMGM5eGl0b11cbiAgICBTaG93U3VjY2VzcyAtLT4gTW9yZUFzc2lnbntcdTAwYmZNXHUwMGUxcz99XG4gICAgXG4gICAgTW9yZUFzc2lnbiAtLSBTXHUwMGVkIC0tPiBWaWV3UHJvZHVjdHNcbiAgICBNb3JlQXNzaWduIC0tIE5vIC0tPiBFbmQoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kIGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVycm9ySW52YWxpZCBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -600,42 +605,41 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                     flowchart TD
                         Start([Inicio]) --> AdminLogin[Admin inicia sesión]
-                        AdminLogin --> NavProducts[Navegar a<br/>Gestión de Productos]
-                        NavProducts --> ViewProducts[Ver lista de productos]
+                        AdminLogin --> NavProducts[Navegar Gestión]
+                        NavProducts --> ViewProducts[Ver lista productos]
                         
                         ViewProducts --> SelectProduct[Seleccionar producto]
                         SelectProduct --> ViewCurrent{Proveedor<br/>actual?}
                         
-                        ViewCurrent -->|No| NewAssign[Nueva asignación]
                         ViewCurrent -->|Sí| ConfirmChange{Confirmar<br/>cambio?}
-                        ConfirmChange -->|No| ViewProducts
-                        ConfirmChange -->|Sí| NewAssign
+                        ConfirmChange -- No --> ViewProducts
+                        ConfirmChange -- Sí --> NewAssign[Nueva asignación]
+                        ViewCurrent -- No --> NewAssign
                         
-                        NewAssign --> GetProviders[Obtener lista de<br/>proveedores activos]
+                        NewAssign --> GetProviders[Listar proveedores]
                         GetProviders --> SelectProvider[Seleccionar proveedor]
                         
                         SelectProvider --> ValidateProvider{Proveedor<br/>válido?}
-                        ValidateProvider -->|No| ErrorInvalid[Error: Proveedor inválido]
-                        ErrorInvalid --> GetProviders
+                        ValidateProvider -- No --> ErrorInvalid[Error: Inválido]
+                        ErrorInvalid -.-> GetProviders
                         
-                        ValidateProvider -->|Sí| ConfirmAssign[Confirmar asignación]
-                        ConfirmAssign --> UpdateProduct[UPDATE producto<br/>SET proveedor_id]
+                        ValidateProvider -->|Sí| ConfirmAssign[Confirmar]
+                        ConfirmAssign --> UpdateProduct[UPDATE producto]
                         
                         UpdateProduct --> CheckAutoStock{Configurar<br/>recarga auto?}
-                        CheckAutoStock -->|Sí| ConfigStock[Configurar<br/>stock_config]
-                        ConfigStock --> SetMinStock[Establecer stock_minimo]
-                        SetMinStock --> SetRechargeQty[Establecer cantidad_recarga]
-                        SetRechargeQty --> EnableAuto[Activar recarga_automatica]
-                        EnableAuto --> SaveConfig[Guardar configuración]
+                        CheckAutoStock -->|Sí| ConfigStock[Configurar]
+                        ConfigStock --> SetParams[Establecer parámetros]
+                        SetParams --> EnableAuto[Activar]
+                        EnableAuto --> SaveConfig[Guardar config]
                         SaveConfig --> NotifyProvider
                         
-                        CheckAutoStock -->|No| NotifyProvider[Notificar proveedor]
-                        NotifyProvider --> LogChange[Registrar cambio<br/>en auditoría]
-                        LogChange --> ShowSuccess[Mostrar mensaje<br/>de éxito]
-                        ShowSuccess --> MoreAssign{Asignar<br/>más productos?}
+                        CheckAutoStock -->|No| NotifyProvider[Notificar]
+                        NotifyProvider --> LogChange[Registrar auditoría]
+                        LogChange --> ShowSuccess[Éxito]
+                        ShowSuccess --> MoreAssign{¿Más?}
                         
-                        MoreAssign -->|Sí| ViewProducts
-                        MoreAssign -->|No| End([Fin])
+                        MoreAssign -- Sí --> ViewProducts
+                        MoreAssign -- No --> End([Fin])
                         
                         style Start fill:#90EE90
                         style End fill:#90EE90
@@ -653,55 +657,52 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                     flowchart TD
                         Start([Inicio]) --> Login{Usuario<br/>autenticado?}
-                        Login -->|No| RedirectLogin[Redirect a login]
+                        Login -- No --> RedirectLogin[Redirect login]
                         RedirectLogin --> End1([Fin])
                         
-                        Login -->|Sí| CheckRole{Rol de<br/>usuario?}
+                        Login -->|Sí| CheckRole{Rol?}
                         
                         CheckRole -->|Admin| AdminDash[Dashboard Admin]
-                        CheckRole -->|Proveedor| ProvDash[Dashboard Proveedor]
-                        CheckRole -->|Logística| LogiDash[Dashboard Logística]
-                        CheckRole -->|Cliente| ClientDash[Dashboard Cliente]
+                        CheckRole -->|Proveedor| ProvDash[Dashboard Prov]
+                        CheckRole -->|Logística| LogiDash[Dashboard Log]
+                        CheckRole -->|Cliente| ClientDash[Dashboard Client]
                         
-                        AdminDash --> SelectReportType[Seleccionar tipo<br/>de reporte]
+                        AdminDash --> SelectReportType[Seleccionar reporte]
                         SelectReportType --> ReportType{Tipo?}
                         
-                        ReportType -->|Ventas| SalesReport[Reporte de ventas]
-                        ReportType -->|Stock| StockReport[Reporte de stock]
-                        ReportType -->|Usuarios| UsersReport[Reporte de usuarios]
-                        ReportType -->|Pedidos| OrdersReport[Reporte de pedidos]
+                        ReportType --> SalesReport[Ventas]
+                        ReportType --> StockReport[Stock]
+                        ReportType --> UsersReport[Usuarios]
+                        ReportType --> OrdersReport[Pedidos]
                         
-                        SalesReport --> SetDateRange[Establecer rango<br/>de fechas]
-                        StockReport --> SetFilters[Establecer filtros]
-                        UsersReport --> SetFilters
-                        OrdersReport --> SetDateRange
+                        ProvDash --> ProvReports[Reportes Prov]
+                        LogiDash --> LogiReports[Reportes Log]
+                        ClientDash --> ClientReports[Reportes Client]
                         
-                        SetDateRange --> QueryDB[Consultar base<br/>de datos]
-                        SetFilters --> QueryDB
+                        SalesReport --> SetParams[Parámetros]
+                        StockReport --> SetParams
+                        UsersReport --> SetParams
+                        OrdersReport --> SetParams
+                        ProvReports --> SetParams
+                        LogiReports --> SetParams
+                        ClientReports --> SetParams
                         
-                        QueryDB --> ProcessData[Procesar datos]
-                        ProcessData --> GenerateChart[Generar gráficos]
-                        GenerateChart --> FormatReport[Formatear reporte]
+                        SetParams --> QueryDB[Consultar DB]
+                        QueryDB --> ProcessData[Procesar]
+                        ProcessData --> GenerateChart[Gráficos]
+                        GenerateChart --> FormatReport[Formatear]
                         
-                        FormatReport --> ExportFormat{Formato de<br/>exportación?}
-                        ExportFormat -->|PDF| GenPDF[Generar PDF]
-                        ExportFormat -->|Excel| GenExcel[Generar Excel]
-                        ExportFormat -->|CSV| GenCSV[Generar CSV]
+                        FormatReport --> ExportFormat{Exportar?}
+                        ExportFormat -->|PDF| GenPDF[PDF]
+                        ExportFormat -->|Excel| GenExcel[Excel]
+                        ExportFormat -->|CSV| GenCSV[CSV]
                         
-                        GenPDF --> Download[Descargar archivo]
+                        GenPDF --> Download[Descargar]
                         GenExcel --> Download
                         GenCSV --> Download
                         
-                        Download --> SaveHistory[Guardar en historial<br/>de reportes]
+                        Download --> SaveHistory[Historial]
                         SaveHistory --> End2([Fin])
-                        
-                        ProvDash --> ProvReports[Reportes de proveedor]
-                        LogiDash --> LogiReports[Reportes de logística]
-                        ClientDash --> ClientReports[Reportes de cliente]
-                        
-                        ProvReports --> SetFilters
-                        LogiReports --> SetFilters
-                        ClientReports --> SetDateRange
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFB6C1
@@ -709,14 +710,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW57VXN1YXJpbzxici8+YXV0ZW50aWNhZG8/fVxuICAgIExvZ2luIC0tPnxOb3wgUmVkaXJlY3RMb2dpbltSZWRpcmVjdCBhIGxvZ2luXVxuICAgIFJlZGlyZWN0TG9naW4gLS0+IEVuZDEoW0Zpbl0pXG4gICAgXG4gICAgTG9naW4gLS0+fFNcdTAwZWR8IENoZWNrUm9sZXtSb2wgZGU8YnIvPnVzdWFyaW8/fVxuICAgIFxuICAgIENoZWNrUm9sZSAtLT58QWRtaW58IEFkbWluRGFzaFtEYXNoYm9hcmQgQWRtaW5dXG4gICAgQ2hlY2tSb2xlIC0tPnxQcm92ZWVkb3J8IFByb3ZEYXNoW0Rhc2hib2FyZCBQcm92ZWVkb3JdXG4gICAgQ2hlY2tSb2xlIC0tPnxMb2dcdTAwZWRzdGljYXwgTG9naURhc2hbRGFzaGJvYXJkIExvZ1x1MDBlZHN0aWNhXVxuICAgIENoZWNrUm9sZSAtLT58Q2xpZW50ZXwgQ2xpZW50RGFzaFtEYXNoYm9hcmQgQ2xpZW50ZV1cbiAgICBcbiAgICBBZG1pbkRhc2ggLS0+IFNlbGVjdFJlcG9ydFR5cGVbU2VsZWNjaW9uYXIgdGlwbzxici8+ZGUgcmVwb3J0ZV1cbiAgICBTZWxlY3RSZXBvcnRUeXBlIC0tPiBSZXBvcnRUeXBle1RpcG8/fVxuICAgIFxuICAgIFJlcG9ydFR5cGUgLS0+fFZlbnRhc3wgU2FsZXNSZXBvcnRbUmVwb3J0ZSBkZSB2ZW50YXNdXG4gICAgUmVwb3J0VHlwZSAtLT58U3RvY2t8IFN0b2NrUmVwb3J0W1JlcG9ydGUgZGUgc3RvY2tdXG4gICAgUmVwb3J0VHlwZSAtLT58VXN1YXJpb3N8IFVzZXJzUmVwb3J0W1JlcG9ydGUgZGUgdXN1YXJpb3NdXG4gICAgUmVwb3J0VHlwZSAtLT58UGVkaWRvc3wgT3JkZXJzUmVwb3J0W1JlcG9ydGUgZGUgcGVkaWRvc11cbiAgICBcbiAgICBTYWxlc1JlcG9ydCAtLT4gU2V0RGF0ZVJhbmdlW0VzdGFibGVjZXIgcmFuZ288YnIvPmRlIGZlY2hhc11cbiAgICBTdG9ja1JlcG9ydCAtLT4gU2V0RmlsdGVyc1tFc3RhYmxlY2VyIGZpbHRyb3NdXG4gICAgVXNlcnNSZXBvcnQgLS0+IFNldEZpbHRlcnNcbiAgICBPcmRlcnNSZXBvcnQgLS0+IFNldERhdGVSYW5nZVxuICAgIFxuICAgIFNldERhdGVSYW5nZSAtLT4gUXVlcnlEQltDb25zdWx0YXIgYmFzZTxici8+ZGUgZGF0b3NdXG4gICAgU2V0RmlsdGVycyAtLT4gUXVlcnlEQlxuICAgIFxuICAgIFF1ZXJ5REIgLS0+IFByb2Nlc3NEYXRhW1Byb2Nlc2FyIGRhdG9zXVxuICAgIFByb2Nlc3NEYXRhIC0tPiBHZW5lcmF0ZUNoYXJ0W0dlbmVyYXIgZ3JcdTAwZTFmaWNvc11cbiAgICBHZW5lcmF0ZUNoYXJ0IC0tPiBGb3JtYXRSZXBvcnRbRm9ybWF0ZWFyIHJlcG9ydGVdXG4gICAgXG4gICAgRm9ybWF0UmVwb3J0IC0tPiBFeHBvcnRGb3JtYXR7Rm9ybWF0byBkZTxici8+ZXhwb3J0YWNpXHUwMGYzbj99XG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxQREZ8IEdlblBERltHZW5lcmFyIFBERl1cbiAgICBFeHBvcnRGb3JtYXQgLS0+fEV4Y2VsfCBHZW5FeGNlbFtHZW5lcmFyIEV4Y2VsXVxuICAgIEV4cG9ydEZvcm1hdCAtLT58Q1NWfCBHZW5DU1ZbR2VuZXJhciBDU1ZdXG4gICAgXG4gICAgR2VuUERGIC0tPiBEb3dubG9hZFtEZXNjYXJnYXIgYXJjaGl2b11cbiAgICBHZW5FeGNlbCAtLT4gRG93bmxvYWRcbiAgICBHZW5DU1YgLS0+IERvd25sb2FkXG4gICAgXG4gICAgRG93bmxvYWQgLS0+IFNhdmVIaXN0b3J5W0d1YXJkYXIgZW4gaGlzdG9yaWFsPGJyLz5kZSByZXBvcnRlc11cbiAgICBTYXZlSGlzdG9yeSAtLT4gRW5kMihbRmluXSlcbiAgICBcbiAgICBQcm92RGFzaCAtLT4gUHJvdlJlcG9ydHNbUmVwb3J0ZXMgZGUgcHJvdmVlZG9yXVxuICAgIExvZ2lEYXNoIC0tPiBMb2dpUmVwb3J0c1tSZXBvcnRlcyBkZSBsb2dcdTAwZWRzdGljYV1cbiAgICBDbGllbnREYXNoIC0tPiBDbGllbnRSZXBvcnRzW1JlcG9ydGVzIGRlIGNsaWVudGVdXG4gICAgXG4gICAgUHJvdlJlcG9ydHMgLS0+IFNldEZpbHRlcnNcbiAgICBMb2dpUmVwb3J0cyAtLT4gU2V0RmlsdGVyc1xuICAgIENsaWVudFJlcG9ydHMgLS0+IFNldERhdGVSYW5nZVxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZDEgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRW5kMiBmaWxsOiM5MEVFOTAiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW57VXN1YXJpbzxici8+YXV0ZW50aWNhZG8/fVxuICAgIExvZ2luIC0tIE5vIC0tPiBSZWRpcmVjdExvZ2luW1JlZGlyZWN0IGxvZ2luXVxuICAgIFJlZGlyZWN0TG9naW4gLS0+IEVuZDEoW0Zpbl0pXG4gICAgXG4gICAgTG9naW4gLS0+fFNcdTAwZWR8IENoZWNrUm9sZXtSb2w/fVxuICAgIFxuICAgIENoZWNrUm9sZSAtLT58QWRtaW58IEFkbWluRGFzaFtEYXNoYm9hcmQgQWRtaW5dXG4gICAgQ2hlY2tSb2xlIC0tPnxQcm92ZWVkb3J8IFByb3ZEYXNoW0Rhc2hib2FyZCBQcm92XVxuICAgIENoZWNrUm9sZSAtLT58TG9nXHUwMGVkc3RpY2F8IExvZ2lEYXNoW0Rhc2hib2FyZCBMb2ddXG4gICAgQ2hlY2tSb2xlIC0tPnxDbGllbnRlfCBDbGllbnREYXNoW0Rhc2hib2FyZCBDbGllbnRdXG4gICAgXG4gICAgQWRtaW5EYXNoIC0tPiBTZWxlY3RSZXBvcnRUeXBlW1NlbGVjY2lvbmFyIHJlcG9ydGVdXG4gICAgU2VsZWN0UmVwb3J0VHlwZSAtLT4gUmVwb3J0VHlwZXtUaXBvP31cbiAgICBcbiAgICBSZXBvcnRUeXBlIC0tPiBTYWxlc1JlcG9ydFtWZW50YXNdXG4gICAgUmVwb3J0VHlwZSAtLT4gU3RvY2tSZXBvcnRbU3RvY2tdXG4gICAgUmVwb3J0VHlwZSAtLT4gVXNlcnNSZXBvcnRbVXN1YXJpb3NdXG4gICAgUmVwb3J0VHlwZSAtLT4gT3JkZXJzUmVwb3J0W1BlZGlkb3NdXG4gICAgXG4gICAgUHJvdkRhc2ggLS0+IFByb3ZSZXBvcnRzW1JlcG9ydGVzIFByb3ZdXG4gICAgTG9naURhc2ggLS0+IExvZ2lSZXBvcnRzW1JlcG9ydGVzIExvZ11cbiAgICBDbGllbnREYXNoIC0tPiBDbGllbnRSZXBvcnRzW1JlcG9ydGVzIENsaWVudF1cbiAgICBcbiAgICBTYWxlc1JlcG9ydCAtLT4gU2V0UGFyYW1zW1Bhclx1MDBlMW1ldHJvc11cbiAgICBTdG9ja1JlcG9ydCAtLT4gU2V0UGFyYW1zXG4gICAgVXNlcnNSZXBvcnQgLS0+IFNldFBhcmFtc1xuICAgIE9yZGVyc1JlcG9ydCAtLT4gU2V0UGFyYW1zXG4gICAgUHJvdlJlcG9ydHMgLS0+IFNldFBhcmFtc1xuICAgIExvZ2lSZXBvcnRzIC0tPiBTZXRQYXJhbXNcbiAgICBDbGllbnRSZXBvcnRzIC0tPiBTZXRQYXJhbXNcbiAgICBcbiAgICBTZXRQYXJhbXMgLS0+IFF1ZXJ5REJbQ29uc3VsdGFyIERCXVxuICAgIFF1ZXJ5REIgLS0+IFByb2Nlc3NEYXRhW1Byb2Nlc2FyXVxuICAgIFByb2Nlc3NEYXRhIC0tPiBHZW5lcmF0ZUNoYXJ0W0dyXHUwMGUxZmljb3NdXG4gICAgR2VuZXJhdGVDaGFydCAtLT4gRm9ybWF0UmVwb3J0W0Zvcm1hdGVhcl1cbiAgICBcbiAgICBGb3JtYXRSZXBvcnQgLS0+IEV4cG9ydEZvcm1hdHtFeHBvcnRhcj99XG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxQREZ8IEdlblBERltQREZdXG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxFeGNlbHwgR2VuRXhjZWxbRXhjZWxdXG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxDU1Z8IEdlbkNTVltDU1ZdXG4gICAgXG4gICAgR2VuUERGIC0tPiBEb3dubG9hZFtEZXNjYXJnYXJdXG4gICAgR2VuRXhjZWwgLS0+IERvd25sb2FkXG4gICAgR2VuQ1NWIC0tPiBEb3dubG9hZFxuICAgIFxuICAgIERvd25sb2FkIC0tPiBTYXZlSGlzdG9yeVtIaXN0b3JpYWxdXG4gICAgU2F2ZUhpc3RvcnkgLS0+IEVuZDIoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kMSBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBFbmQyIGZpbGw6IzkwRUU5MCIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW57VXN1YXJpbzxici8+YXV0ZW50aWNhZG8/fVxuICAgIExvZ2luIC0tPnxOb3wgUmVkaXJlY3RMb2dpbltSZWRpcmVjdCBhIGxvZ2luXVxuICAgIFJlZGlyZWN0TG9naW4gLS0+IEVuZDEoW0Zpbl0pXG4gICAgXG4gICAgTG9naW4gLS0+fFNcdTAwZWR8IENoZWNrUm9sZXtSb2wgZGU8YnIvPnVzdWFyaW8/fVxuICAgIFxuICAgIENoZWNrUm9sZSAtLT58QWRtaW58IEFkbWluRGFzaFtEYXNoYm9hcmQgQWRtaW5dXG4gICAgQ2hlY2tSb2xlIC0tPnxQcm92ZWVkb3J8IFByb3ZEYXNoW0Rhc2hib2FyZCBQcm92ZWVkb3JdXG4gICAgQ2hlY2tSb2xlIC0tPnxMb2dcdTAwZWRzdGljYXwgTG9naURhc2hbRGFzaGJvYXJkIExvZ1x1MDBlZHN0aWNhXVxuICAgIENoZWNrUm9sZSAtLT58Q2xpZW50ZXwgQ2xpZW50RGFzaFtEYXNoYm9hcmQgQ2xpZW50ZV1cbiAgICBcbiAgICBBZG1pbkRhc2ggLS0+IFNlbGVjdFJlcG9ydFR5cGVbU2VsZWNjaW9uYXIgdGlwbzxici8+ZGUgcmVwb3J0ZV1cbiAgICBTZWxlY3RSZXBvcnRUeXBlIC0tPiBSZXBvcnRUeXBle1RpcG8/fVxuICAgIFxuICAgIFJlcG9ydFR5cGUgLS0+fFZlbnRhc3wgU2FsZXNSZXBvcnRbUmVwb3J0ZSBkZSB2ZW50YXNdXG4gICAgUmVwb3J0VHlwZSAtLT58U3RvY2t8IFN0b2NrUmVwb3J0W1JlcG9ydGUgZGUgc3RvY2tdXG4gICAgUmVwb3J0VHlwZSAtLT58VXN1YXJpb3N8IFVzZXJzUmVwb3J0W1JlcG9ydGUgZGUgdXN1YXJpb3NdXG4gICAgUmVwb3J0VHlwZSAtLT58UGVkaWRvc3wgT3JkZXJzUmVwb3J0W1JlcG9ydGUgZGUgcGVkaWRvc11cbiAgICBcbiAgICBTYWxlc1JlcG9ydCAtLT4gU2V0RGF0ZVJhbmdlW0VzdGFibGVjZXIgcmFuZ288YnIvPmRlIGZlY2hhc11cbiAgICBTdG9ja1JlcG9ydCAtLT4gU2V0RmlsdGVyc1tFc3RhYmxlY2VyIGZpbHRyb3NdXG4gICAgVXNlcnNSZXBvcnQgLS0+IFNldEZpbHRlcnNcbiAgICBPcmRlcnNSZXBvcnQgLS0+IFNldERhdGVSYW5nZVxuICAgIFxuICAgIFNldERhdGVSYW5nZSAtLT4gUXVlcnlEQltDb25zdWx0YXIgYmFzZTxici8+ZGUgZGF0b3NdXG4gICAgU2V0RmlsdGVycyAtLT4gUXVlcnlEQlxuICAgIFxuICAgIFF1ZXJ5REIgLS0+IFByb2Nlc3NEYXRhW1Byb2Nlc2FyIGRhdG9zXVxuICAgIFByb2Nlc3NEYXRhIC0tPiBHZW5lcmF0ZUNoYXJ0W0dlbmVyYXIgZ3JcdTAwZTFmaWNvc11cbiAgICBHZW5lcmF0ZUNoYXJ0IC0tPiBGb3JtYXRSZXBvcnRbRm9ybWF0ZWFyIHJlcG9ydGVdXG4gICAgXG4gICAgRm9ybWF0UmVwb3J0IC0tPiBFeHBvcnRGb3JtYXR7Rm9ybWF0byBkZTxici8+ZXhwb3J0YWNpXHUwMGYzbj99XG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxQREZ8IEdlblBERltHZW5lcmFyIFBERl1cbiAgICBFeHBvcnRGb3JtYXQgLS0+fEV4Y2VsfCBHZW5FeGNlbFtHZW5lcmFyIEV4Y2VsXVxuICAgIEV4cG9ydEZvcm1hdCAtLT58Q1NWfCBHZW5DU1ZbR2VuZXJhciBDU1ZdXG4gICAgXG4gICAgR2VuUERGIC0tPiBEb3dubG9hZFtEZXNjYXJnYXIgYXJjaGl2b11cbiAgICBHZW5FeGNlbCAtLT4gRG93bmxvYWRcbiAgICBHZW5DU1YgLS0+IERvd25sb2FkXG4gICAgXG4gICAgRG93bmxvYWQgLS0+IFNhdmVIaXN0b3J5W0d1YXJkYXIgZW4gaGlzdG9yaWFsPGJyLz5kZSByZXBvcnRlc11cbiAgICBTYXZlSGlzdG9yeSAtLT4gRW5kMihbRmluXSlcbiAgICBcbiAgICBQcm92RGFzaCAtLT4gUHJvdlJlcG9ydHNbUmVwb3J0ZXMgZGUgcHJvdmVlZG9yXVxuICAgIExvZ2lEYXNoIC0tPiBMb2dpUmVwb3J0c1tSZXBvcnRlcyBkZSBsb2dcdTAwZWRzdGljYV1cbiAgICBDbGllbnREYXNoIC0tPiBDbGllbnRSZXBvcnRzW1JlcG9ydGVzIGRlIGNsaWVudGVdXG4gICAgXG4gICAgUHJvdlJlcG9ydHMgLS0+IFNldEZpbHRlcnNcbiAgICBMb2dpUmVwb3J0cyAtLT4gU2V0RmlsdGVyc1xuICAgIENsaWVudFJlcG9ydHMgLS0+IFNldERhdGVSYW5nZVxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZDEgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRW5kMiBmaWxsOiM5MEVFOTAiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gTG9naW57VXN1YXJpbzxici8+YXV0ZW50aWNhZG8/fVxuICAgIExvZ2luIC0tIE5vIC0tPiBSZWRpcmVjdExvZ2luW1JlZGlyZWN0IGxvZ2luXVxuICAgIFJlZGlyZWN0TG9naW4gLS0+IEVuZDEoW0Zpbl0pXG4gICAgXG4gICAgTG9naW4gLS0+fFNcdTAwZWR8IENoZWNrUm9sZXtSb2w/fVxuICAgIFxuICAgIENoZWNrUm9sZSAtLT58QWRtaW58IEFkbWluRGFzaFtEYXNoYm9hcmQgQWRtaW5dXG4gICAgQ2hlY2tSb2xlIC0tPnxQcm92ZWVkb3J8IFByb3ZEYXNoW0Rhc2hib2FyZCBQcm92XVxuICAgIENoZWNrUm9sZSAtLT58TG9nXHUwMGVkc3RpY2F8IExvZ2lEYXNoW0Rhc2hib2FyZCBMb2ddXG4gICAgQ2hlY2tSb2xlIC0tPnxDbGllbnRlfCBDbGllbnREYXNoW0Rhc2hib2FyZCBDbGllbnRdXG4gICAgXG4gICAgQWRtaW5EYXNoIC0tPiBTZWxlY3RSZXBvcnRUeXBlW1NlbGVjY2lvbmFyIHJlcG9ydGVdXG4gICAgU2VsZWN0UmVwb3J0VHlwZSAtLT4gUmVwb3J0VHlwZXtUaXBvP31cbiAgICBcbiAgICBSZXBvcnRUeXBlIC0tPiBTYWxlc1JlcG9ydFtWZW50YXNdXG4gICAgUmVwb3J0VHlwZSAtLT4gU3RvY2tSZXBvcnRbU3RvY2tdXG4gICAgUmVwb3J0VHlwZSAtLT4gVXNlcnNSZXBvcnRbVXN1YXJpb3NdXG4gICAgUmVwb3J0VHlwZSAtLT4gT3JkZXJzUmVwb3J0W1BlZGlkb3NdXG4gICAgXG4gICAgUHJvdkRhc2ggLS0+IFByb3ZSZXBvcnRzW1JlcG9ydGVzIFByb3ZdXG4gICAgTG9naURhc2ggLS0+IExvZ2lSZXBvcnRzW1JlcG9ydGVzIExvZ11cbiAgICBDbGllbnREYXNoIC0tPiBDbGllbnRSZXBvcnRzW1JlcG9ydGVzIENsaWVudF1cbiAgICBcbiAgICBTYWxlc1JlcG9ydCAtLT4gU2V0UGFyYW1zW1Bhclx1MDBlMW1ldHJvc11cbiAgICBTdG9ja1JlcG9ydCAtLT4gU2V0UGFyYW1zXG4gICAgVXNlcnNSZXBvcnQgLS0+IFNldFBhcmFtc1xuICAgIE9yZGVyc1JlcG9ydCAtLT4gU2V0UGFyYW1zXG4gICAgUHJvdlJlcG9ydHMgLS0+IFNldFBhcmFtc1xuICAgIExvZ2lSZXBvcnRzIC0tPiBTZXRQYXJhbXNcbiAgICBDbGllbnRSZXBvcnRzIC0tPiBTZXRQYXJhbXNcbiAgICBcbiAgICBTZXRQYXJhbXMgLS0+IFF1ZXJ5REJbQ29uc3VsdGFyIERCXVxuICAgIFF1ZXJ5REIgLS0+IFByb2Nlc3NEYXRhW1Byb2Nlc2FyXVxuICAgIFByb2Nlc3NEYXRhIC0tPiBHZW5lcmF0ZUNoYXJ0W0dyXHUwMGUxZmljb3NdXG4gICAgR2VuZXJhdGVDaGFydCAtLT4gRm9ybWF0UmVwb3J0W0Zvcm1hdGVhcl1cbiAgICBcbiAgICBGb3JtYXRSZXBvcnQgLS0+IEV4cG9ydEZvcm1hdHtFeHBvcnRhcj99XG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxQREZ8IEdlblBERltQREZdXG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxFeGNlbHwgR2VuRXhjZWxbRXhjZWxdXG4gICAgRXhwb3J0Rm9ybWF0IC0tPnxDU1Z8IEdlbkNTVltDU1ZdXG4gICAgXG4gICAgR2VuUERGIC0tPiBEb3dubG9hZFtEZXNjYXJnYXJdXG4gICAgR2VuRXhjZWwgLS0+IERvd25sb2FkXG4gICAgR2VuQ1NWIC0tPiBEb3dubG9hZFxuICAgIFxuICAgIERvd25sb2FkIC0tPiBTYXZlSGlzdG9yeVtIaXN0b3JpYWxdXG4gICAgU2F2ZUhpc3RvcnkgLS0+IEVuZDIoW0Zpbl0pXG4gICAgXG4gICAgc3R5bGUgU3RhcnQgZmlsbDojOTBFRTkwXG4gICAgc3R5bGUgRW5kMSBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBFbmQyIGZpbGw6IzkwRUU5MCIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -730,55 +731,52 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                     flowchart TD
                         Start([Inicio]) --> Login{Usuario<br/>autenticado?}
-                        Login -->|No| RedirectLogin[Redirect a login]
+                        Login -- No --> RedirectLogin[Redirect login]
                         RedirectLogin --> End1([Fin])
                         
-                        Login -->|Sí| CheckRole{Rol de<br/>usuario?}
+                        Login -->|Sí| CheckRole{Rol?}
                         
                         CheckRole -->|Admin| AdminDash[Dashboard Admin]
-                        CheckRole -->|Proveedor| ProvDash[Dashboard Proveedor]
-                        CheckRole -->|Logística| LogiDash[Dashboard Logística]
-                        CheckRole -->|Cliente| ClientDash[Dashboard Cliente]
+                        CheckRole -->|Proveedor| ProvDash[Dashboard Prov]
+                        CheckRole -->|Logística| LogiDash[Dashboard Log]
+                        CheckRole -->|Cliente| ClientDash[Dashboard Client]
                         
-                        AdminDash --> SelectReportType[Seleccionar tipo<br/>de reporte]
+                        AdminDash --> SelectReportType[Seleccionar reporte]
                         SelectReportType --> ReportType{Tipo?}
                         
-                        ReportType -->|Ventas| SalesReport[Reporte de ventas]
-                        ReportType -->|Stock| StockReport[Reporte de stock]
-                        ReportType -->|Usuarios| UsersReport[Reporte de usuarios]
-                        ReportType -->|Pedidos| OrdersReport[Reporte de pedidos]
+                        ReportType --> SalesReport[Ventas]
+                        ReportType --> StockReport[Stock]
+                        ReportType --> UsersReport[Usuarios]
+                        ReportType --> OrdersReport[Pedidos]
                         
-                        SalesReport --> SetDateRange[Establecer rango<br/>de fechas]
-                        StockReport --> SetFilters[Establecer filtros]
-                        UsersReport --> SetFilters
-                        OrdersReport --> SetDateRange
+                        ProvDash --> ProvReports[Reportes Prov]
+                        LogiDash --> LogiReports[Reportes Log]
+                        ClientDash --> ClientReports[Reportes Client]
                         
-                        SetDateRange --> QueryDB[Consultar base<br/>de datos]
-                        SetFilters --> QueryDB
+                        SalesReport --> SetParams[Parámetros]
+                        StockReport --> SetParams
+                        UsersReport --> SetParams
+                        OrdersReport --> SetParams
+                        ProvReports --> SetParams
+                        LogiReports --> SetParams
+                        ClientReports --> SetParams
                         
-                        QueryDB --> ProcessData[Procesar datos]
-                        ProcessData --> GenerateChart[Generar gráficos]
-                        GenerateChart --> FormatReport[Formatear reporte]
+                        SetParams --> QueryDB[Consultar DB]
+                        QueryDB --> ProcessData[Procesar]
+                        ProcessData --> GenerateChart[Gráficos]
+                        GenerateChart --> FormatReport[Formatear]
                         
-                        FormatReport --> ExportFormat{Formato de<br/>exportación?}
-                        ExportFormat -->|PDF| GenPDF[Generar PDF]
-                        ExportFormat -->|Excel| GenExcel[Generar Excel]
-                        ExportFormat -->|CSV| GenCSV[Generar CSV]
+                        FormatReport --> ExportFormat{Exportar?}
+                        ExportFormat -->|PDF| GenPDF[PDF]
+                        ExportFormat -->|Excel| GenExcel[Excel]
+                        ExportFormat -->|CSV| GenCSV[CSV]
                         
-                        GenPDF --> Download[Descargar archivo]
+                        GenPDF --> Download[Descargar]
                         GenExcel --> Download
                         GenCSV --> Download
                         
-                        Download --> SaveHistory[Guardar en historial<br/>de reportes]
+                        Download --> SaveHistory[Historial]
                         SaveHistory --> End2([Fin])
-                        
-                        ProvDash --> ProvReports[Reportes de proveedor]
-                        LogiDash --> LogiReports[Reportes de logística]
-                        ClientDash --> ClientReports[Reportes de cliente]
-                        
-                        ProvReports --> SetFilters
-                        LogiReports --> SetFilters
-                        ClientReports --> SetDateRange
                         
                         style Start fill:#90EE90
                         style End1 fill:#FFB6C1
@@ -798,51 +796,54 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Start([Inicio]) --> ViewProfile[Ver perfil]
                         ViewProfile --> SelectAction{Acción?}
                         
-                        SelectAction -->|Editar perfil| EditProfile[Editar información]
-                        SelectAction -->|Cambiar password| ChangePass[Cambiar contraseña]
-                        SelectAction -->|Desactivar cuenta| DeactivateAcc[Desactivar cuenta]
-                        SelectAction -->|Eliminar cuenta| DeleteAcc[Solicitar eliminación]
+                        SelectAction -->|Editar| EditProfile
+                        SelectAction -->|Pass| ChangePass
+                        SelectAction -->|Deactivate| DeactivateAcc[Desactivar]
+                        SelectAction -->|Delete| DeleteAcc[Eliminar]
                         
-                        EditProfile --> InputChanges[Ingresar cambios]
-                        InputChanges --> ValidateChanges{Datos<br/>válidos?}
-                        ValidateChanges -->|No| ShowErrors[Mostrar errores]
-                        ShowErrors --> InputChanges
-                        ValidateChanges -->|Sí| SaveChanges[Guardar cambios]
-                        SaveChanges --> SuccessMsg[Mensaje de éxito]
+                        %% Edit Profile
+                        EditProfile --> InputChanges[Ingresar]
+                        InputChanges --> ValidateChanges{Válido?}
+                        ValidateChanges -- No --> ShowErrors[Error]
+                        ShowErrors -.-> InputChanges
+                        ValidateChanges -->|Sí| SaveChanges[Guardar]
+                        SaveChanges --> SuccessMsg[Éxito]
                         SuccessMsg --> ViewProfile
                         
-                        ChangePass --> InputOldPass[Ingresar contraseña<br/>actual]
-                        InputOldPass --> VerifyOldPass{Contraseña<br/>correcta?}
-                        VerifyOldPass -->|No| ErrorOldPass[Error: Contraseña<br/>incorrecta]
-                        ErrorOldPass --> ChangePass
+                        %% Change Pass
+                        ChangePass --> InputOldPass[Pass actual]
+                        InputOldPass --> VerifyOldPass{Correcta?}
+                        VerifyOldPass -- No --> ErrorOldPass[Error]
+                        ErrorOldPass -.-> ChangePass
                         
-                        VerifyOldPass -->|Sí| InputNewPass[Ingresar nueva<br/>contraseña]
-                        InputNewPass --> CheckStrength{Contraseña<br/>fuerte?}
-                        CheckStrength -->|No| ErrorWeak[Error: Contraseña<br/>débil]
-                        ErrorWeak --> InputNewPass
+                        VerifyOldPass -->|Sí| InputNewPass[Nueva pass]
+                        InputNewPass --> CheckStrength{Fuerte?}
+                        CheckStrength -- No --> ErrorWeak[Débil]
+                        ErrorWeak -.-> InputNewPass
                         
-                        CheckStrength -->|Sí| CheckHistory{Ya usada<br/>antes?}
-                        CheckHistory -->|Sí| ErrorUsed[Error: Contraseña<br/>ya utilizada]
-                        ErrorUsed --> InputNewPass
+                        CheckStrength -->|Sí| CheckHistory{Usada?}
+                        CheckHistory -- Sí --> ErrorUsed[Usada]
+                        ErrorUsed -.-> InputNewPass
                         
-                        CheckHistory -->|No| UpdatePass[Actualizar contraseña]
-                        UpdatePass --> SaveHistory[Guardar en historial]
-                        SaveHistory --> LogoutAll[Cerrar sesión en<br/>todos los dispositivos]
-                        LogoutAll --> Redirect[Redirect a login]
-                        Redirect --> End1([Fin: Reautenticarse])
+                        CheckHistory -->|No| UpdatePass[Actualizar]
+                        UpdatePass --> SaveHistory[Historial]
+                        SaveHistory --> LogoutAll[Logout all]
+                        LogoutAll --> Redirect[Login]
+                        Redirect --> End1([Fin])
                         
-                        DeactivateAcc --> ConfirmDeact{Confirmar<br/>desactivación?}
-                        ConfirmDeact -->|No| ViewProfile
-                        ConfirmDeact -->|Sí| SetSelfDeact[SET self_deactivated=true]
-                        SetSelfDeact --> Logout[Cerrar sesión]
-                        Logout --> ShowInfo[Mostrar info:<br/>Puede reactivar]
-                        ShowInfo --> End2([Fin: Cuenta desactivada])
+                        %% Deactivate
+                        DeactivateAcc --> ConfirmDeact{Confirmar?}
+                        ConfirmDeact -- No --> ViewProfile
+                        ConfirmDeact -->|Sí| SetSelfDeact[Desactivar]
+                        SetSelfDeact --> Logout[Logout]
+                        Logout --> End2([Fin])
                         
-                        DeleteAcc --> ConfirmDelete{Confirmar<br/>eliminación?}
-                        ConfirmDelete -->|No| ViewProfile
-                        ConfirmDelete -->|Sí| NotifyAdmin[Notificar admin]
-                        NotifyAdmin --> PendingReview[Pendiente de revisión]
-                        PendingReview --> End3([Fin: Solicitud enviada])
+                        %% Delete
+                        DeleteAcc --> ConfirmDelete{Confirmar?}
+                        ConfirmDelete -- No --> ViewProfile
+                        ConfirmDelete -->|Sí| NotifyAdmin[Notificar Admin]
+                        NotifyAdmin --> PendingReview[Revisión]
+                        PendingReview --> End3([Fin])
                         
                         style Start fill:#90EE90
                         style End1 fill:#87CEEB
@@ -854,14 +855,14 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gVmlld1Byb2ZpbGVbVmVyIHBlcmZpbF1cbiAgICBWaWV3UHJvZmlsZSAtLT4gU2VsZWN0QWN0aW9ue0FjY2lcdTAwZjNuP31cbiAgICBcbiAgICBTZWxlY3RBY3Rpb24gLS0+fEVkaXRhciBwZXJmaWx8IEVkaXRQcm9maWxlW0VkaXRhciBpbmZvcm1hY2lcdTAwZjNuXVxuICAgIFNlbGVjdEFjdGlvbiAtLT58Q2FtYmlhciBwYXNzd29yZHwgQ2hhbmdlUGFzc1tDYW1iaWFyIGNvbnRyYXNlXHUwMGYxYV1cbiAgICBTZWxlY3RBY3Rpb24gLS0+fERlc2FjdGl2YXIgY3VlbnRhfCBEZWFjdGl2YXRlQWNjW0Rlc2FjdGl2YXIgY3VlbnRhXVxuICAgIFNlbGVjdEFjdGlvbiAtLT58RWxpbWluYXIgY3VlbnRhfCBEZWxldGVBY2NbU29saWNpdGFyIGVsaW1pbmFjaVx1MDBmM25dXG4gICAgXG4gICAgRWRpdFByb2ZpbGUgLS0+IElucHV0Q2hhbmdlc1tJbmdyZXNhciBjYW1iaW9zXVxuICAgIElucHV0Q2hhbmdlcyAtLT4gVmFsaWRhdGVDaGFuZ2Vze0RhdG9zPGJyLz52XHUwMGUxbGlkb3M/fVxuICAgIFZhbGlkYXRlQ2hhbmdlcyAtLT58Tm98IFNob3dFcnJvcnNbTW9zdHJhciBlcnJvcmVzXVxuICAgIFNob3dFcnJvcnMgLS0+IElucHV0Q2hhbmdlc1xuICAgIFZhbGlkYXRlQ2hhbmdlcyAtLT58U1x1MDBlZHwgU2F2ZUNoYW5nZXNbR3VhcmRhciBjYW1iaW9zXVxuICAgIFNhdmVDaGFuZ2VzIC0tPiBTdWNjZXNzTXNnW01lbnNhamUgZGUgXHUwMGU5eGl0b11cbiAgICBTdWNjZXNzTXNnIC0tPiBWaWV3UHJvZmlsZVxuICAgIFxuICAgIENoYW5nZVBhc3MgLS0+IElucHV0T2xkUGFzc1tJbmdyZXNhciBjb250cmFzZVx1MDBmMWE8YnIvPmFjdHVhbF1cbiAgICBJbnB1dE9sZFBhc3MgLS0+IFZlcmlmeU9sZFBhc3N7Q29udHJhc2VcdTAwZjFhPGJyLz5jb3JyZWN0YT99XG4gICAgVmVyaWZ5T2xkUGFzcyAtLT58Tm98IEVycm9yT2xkUGFzc1tFcnJvcjogQ29udHJhc2VcdTAwZjFhPGJyLz5pbmNvcnJlY3RhXVxuICAgIEVycm9yT2xkUGFzcyAtLT4gQ2hhbmdlUGFzc1xuICAgIFxuICAgIFZlcmlmeU9sZFBhc3MgLS0+fFNcdTAwZWR8IElucHV0TmV3UGFzc1tJbmdyZXNhciBudWV2YTxici8+Y29udHJhc2VcdTAwZjFhXVxuICAgIElucHV0TmV3UGFzcyAtLT4gQ2hlY2tTdHJlbmd0aHtDb250cmFzZVx1MDBmMWE8YnIvPmZ1ZXJ0ZT99XG4gICAgQ2hlY2tTdHJlbmd0aCAtLT58Tm98IEVycm9yV2Vha1tFcnJvcjogQ29udHJhc2VcdTAwZjFhPGJyLz5kXHUwMGU5YmlsXVxuICAgIEVycm9yV2VhayAtLT4gSW5wdXROZXdQYXNzXG4gICAgXG4gICAgQ2hlY2tTdHJlbmd0aCAtLT58U1x1MDBlZHwgQ2hlY2tIaXN0b3J5e1lhIHVzYWRhPGJyLz5hbnRlcz99XG4gICAgQ2hlY2tIaXN0b3J5IC0tPnxTXHUwMGVkfCBFcnJvclVzZWRbRXJyb3I6IENvbnRyYXNlXHUwMGYxYTxici8+eWEgdXRpbGl6YWRhXVxuICAgIEVycm9yVXNlZCAtLT4gSW5wdXROZXdQYXNzXG4gICAgXG4gICAgQ2hlY2tIaXN0b3J5IC0tPnxOb3wgVXBkYXRlUGFzc1tBY3R1YWxpemFyIGNvbnRyYXNlXHUwMGYxYV1cbiAgICBVcGRhdGVQYXNzIC0tPiBTYXZlSGlzdG9yeVtHdWFyZGFyIGVuIGhpc3RvcmlhbF1cbiAgICBTYXZlSGlzdG9yeSAtLT4gTG9nb3V0QWxsW0NlcnJhciBzZXNpXHUwMGYzbiBlbjxici8+dG9kb3MgbG9zIGRpc3Bvc2l0aXZvc11cbiAgICBMb2dvdXRBbGwgLS0+IFJlZGlyZWN0W1JlZGlyZWN0IGEgbG9naW5dXG4gICAgUmVkaXJlY3QgLS0+IEVuZDEoW0ZpbjogUmVhdXRlbnRpY2Fyc2VdKVxuICAgIFxuICAgIERlYWN0aXZhdGVBY2MgLS0+IENvbmZpcm1EZWFjdHtDb25maXJtYXI8YnIvPmRlc2FjdGl2YWNpXHUwMGYzbj99XG4gICAgQ29uZmlybURlYWN0IC0tPnxOb3wgVmlld1Byb2ZpbGVcbiAgICBDb25maXJtRGVhY3QgLS0+fFNcdTAwZWR8IFNldFNlbGZEZWFjdFtTRVQgc2VsZl9kZWFjdGl2YXRlZD10cnVlXVxuICAgIFNldFNlbGZEZWFjdCAtLT4gTG9nb3V0W0NlcnJhciBzZXNpXHUwMGYzbl1cbiAgICBMb2dvdXQgLS0+IFNob3dJbmZvW01vc3RyYXIgaW5mbzo8YnIvPlB1ZWRlIHJlYWN0aXZhcl1cbiAgICBTaG93SW5mbyAtLT4gRW5kMihbRmluOiBDdWVudGEgZGVzYWN0aXZhZGFdKVxuICAgIFxuICAgIERlbGV0ZUFjYyAtLT4gQ29uZmlybURlbGV0ZXtDb25maXJtYXI8YnIvPmVsaW1pbmFjaVx1MDBmM24/fVxuICAgIENvbmZpcm1EZWxldGUgLS0+fE5vfCBWaWV3UHJvZmlsZVxuICAgIENvbmZpcm1EZWxldGUgLS0+fFNcdTAwZWR8IE5vdGlmeUFkbWluW05vdGlmaWNhciBhZG1pbl1cbiAgICBOb3RpZnlBZG1pbiAtLT4gUGVuZGluZ1Jldmlld1tQZW5kaWVudGUgZGUgcmV2aXNpXHUwMGYzbl1cbiAgICBQZW5kaW5nUmV2aWV3IC0tPiBFbmQzKFtGaW46IFNvbGljaXR1ZCBlbnZpYWRhXSlcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQxIGZpbGw6Izg3Q0VFQlxuICAgIHN0eWxlIEVuZDIgZmlsbDojRkZBNTAwXG4gICAgc3R5bGUgRW5kMyBmaWxsOiNGRkE1MDBcbiAgICBzdHlsZSBFcnJvck9sZFBhc3MgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRXJyb3JXZWFrIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIEVycm9yVXNlZCBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gVmlld1Byb2ZpbGVbVmVyIHBlcmZpbF1cbiAgICBWaWV3UHJvZmlsZSAtLT4gU2VsZWN0QWN0aW9ue0FjY2lcdTAwZjNuP31cbiAgICBcbiAgICBTZWxlY3RBY3Rpb24gLS0+fEVkaXRhcnwgRWRpdFByb2ZpbGVcbiAgICBTZWxlY3RBY3Rpb24gLS0+fFBhc3N8IENoYW5nZVBhc3NcbiAgICBTZWxlY3RBY3Rpb24gLS0+fERlYWN0aXZhdGV8IERlYWN0aXZhdGVBY2NbRGVzYWN0aXZhcl1cbiAgICBTZWxlY3RBY3Rpb24gLS0+fERlbGV0ZXwgRGVsZXRlQWNjW0VsaW1pbmFyXVxuICAgIFxuICAgICUlIEVkaXQgUHJvZmlsZVxuICAgIEVkaXRQcm9maWxlIC0tPiBJbnB1dENoYW5nZXNbSW5ncmVzYXJdXG4gICAgSW5wdXRDaGFuZ2VzIC0tPiBWYWxpZGF0ZUNoYW5nZXN7Vlx1MDBlMWxpZG8/fVxuICAgIFZhbGlkYXRlQ2hhbmdlcyAtLSBObyAtLT4gU2hvd0Vycm9yc1tFcnJvcl1cbiAgICBTaG93RXJyb3JzIC0uLT4gSW5wdXRDaGFuZ2VzXG4gICAgVmFsaWRhdGVDaGFuZ2VzIC0tPnxTXHUwMGVkfCBTYXZlQ2hhbmdlc1tHdWFyZGFyXVxuICAgIFNhdmVDaGFuZ2VzIC0tPiBTdWNjZXNzTXNnW1x1MDBjOXhpdG9dXG4gICAgU3VjY2Vzc01zZyAtLT4gVmlld1Byb2ZpbGVcbiAgICBcbiAgICAlJSBDaGFuZ2UgUGFzc1xuICAgIENoYW5nZVBhc3MgLS0+IElucHV0T2xkUGFzc1tQYXNzIGFjdHVhbF1cbiAgICBJbnB1dE9sZFBhc3MgLS0+IFZlcmlmeU9sZFBhc3N7Q29ycmVjdGE/fVxuICAgIFZlcmlmeU9sZFBhc3MgLS0gTm8gLS0+IEVycm9yT2xkUGFzc1tFcnJvcl1cbiAgICBFcnJvck9sZFBhc3MgLS4tPiBDaGFuZ2VQYXNzXG4gICAgXG4gICAgVmVyaWZ5T2xkUGFzcyAtLT58U1x1MDBlZHwgSW5wdXROZXdQYXNzW051ZXZhIHBhc3NdXG4gICAgSW5wdXROZXdQYXNzIC0tPiBDaGVja1N0cmVuZ3Roe0Z1ZXJ0ZT99XG4gICAgQ2hlY2tTdHJlbmd0aCAtLSBObyAtLT4gRXJyb3JXZWFrW0RcdTAwZTliaWxdXG4gICAgRXJyb3JXZWFrIC0uLT4gSW5wdXROZXdQYXNzXG4gICAgXG4gICAgQ2hlY2tTdHJlbmd0aCAtLT58U1x1MDBlZHwgQ2hlY2tIaXN0b3J5e1VzYWRhP31cbiAgICBDaGVja0hpc3RvcnkgLS0gU1x1MDBlZCAtLT4gRXJyb3JVc2VkW1VzYWRhXVxuICAgIEVycm9yVXNlZCAtLi0+IElucHV0TmV3UGFzc1xuICAgIFxuICAgIENoZWNrSGlzdG9yeSAtLT58Tm98IFVwZGF0ZVBhc3NbQWN0dWFsaXphcl1cbiAgICBVcGRhdGVQYXNzIC0tPiBTYXZlSGlzdG9yeVtIaXN0b3JpYWxdXG4gICAgU2F2ZUhpc3RvcnkgLS0+IExvZ291dEFsbFtMb2dvdXQgYWxsXVxuICAgIExvZ291dEFsbCAtLT4gUmVkaXJlY3RbTG9naW5dXG4gICAgUmVkaXJlY3QgLS0+IEVuZDEoW0Zpbl0pXG4gICAgXG4gICAgJSUgRGVhY3RpdmF0ZVxuICAgIERlYWN0aXZhdGVBY2MgLS0+IENvbmZpcm1EZWFjdHtDb25maXJtYXI/fVxuICAgIENvbmZpcm1EZWFjdCAtLSBObyAtLT4gVmlld1Byb2ZpbGVcbiAgICBDb25maXJtRGVhY3QgLS0+fFNcdTAwZWR8IFNldFNlbGZEZWFjdFtEZXNhY3RpdmFyXVxuICAgIFNldFNlbGZEZWFjdCAtLT4gTG9nb3V0W0xvZ291dF1cbiAgICBMb2dvdXQgLS0+IEVuZDIoW0Zpbl0pXG4gICAgXG4gICAgJSUgRGVsZXRlXG4gICAgRGVsZXRlQWNjIC0tPiBDb25maXJtRGVsZXRle0NvbmZpcm1hcj99XG4gICAgQ29uZmlybURlbGV0ZSAtLSBObyAtLT4gVmlld1Byb2ZpbGVcbiAgICBDb25maXJtRGVsZXRlIC0tPnxTXHUwMGVkfCBOb3RpZnlBZG1pbltOb3RpZmljYXIgQWRtaW5dXG4gICAgTm90aWZ5QWRtaW4gLS0+IFBlbmRpbmdSZXZpZXdbUmV2aXNpXHUwMGYzbl1cbiAgICBQZW5kaW5nUmV2aWV3IC0tPiBFbmQzKFtGaW5dKVxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZDEgZmlsbDojODdDRUVCXG4gICAgc3R5bGUgRW5kMiBmaWxsOiNGRkE1MDBcbiAgICBzdHlsZSBFbmQzIGZpbGw6I0ZGQTUwMFxuICAgIHN0eWxlIEVycm9yT2xkUGFzcyBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBFcnJvcldlYWsgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRXJyb3JVc2VkIGZpbGw6I0ZGQjZDMSIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gVmlld1Byb2ZpbGVbVmVyIHBlcmZpbF1cbiAgICBWaWV3UHJvZmlsZSAtLT4gU2VsZWN0QWN0aW9ue0FjY2lcdTAwZjNuP31cbiAgICBcbiAgICBTZWxlY3RBY3Rpb24gLS0+fEVkaXRhciBwZXJmaWx8IEVkaXRQcm9maWxlW0VkaXRhciBpbmZvcm1hY2lcdTAwZjNuXVxuICAgIFNlbGVjdEFjdGlvbiAtLT58Q2FtYmlhciBwYXNzd29yZHwgQ2hhbmdlUGFzc1tDYW1iaWFyIGNvbnRyYXNlXHUwMGYxYV1cbiAgICBTZWxlY3RBY3Rpb24gLS0+fERlc2FjdGl2YXIgY3VlbnRhfCBEZWFjdGl2YXRlQWNjW0Rlc2FjdGl2YXIgY3VlbnRhXVxuICAgIFNlbGVjdEFjdGlvbiAtLT58RWxpbWluYXIgY3VlbnRhfCBEZWxldGVBY2NbU29saWNpdGFyIGVsaW1pbmFjaVx1MDBmM25dXG4gICAgXG4gICAgRWRpdFByb2ZpbGUgLS0+IElucHV0Q2hhbmdlc1tJbmdyZXNhciBjYW1iaW9zXVxuICAgIElucHV0Q2hhbmdlcyAtLT4gVmFsaWRhdGVDaGFuZ2Vze0RhdG9zPGJyLz52XHUwMGUxbGlkb3M/fVxuICAgIFZhbGlkYXRlQ2hhbmdlcyAtLT58Tm98IFNob3dFcnJvcnNbTW9zdHJhciBlcnJvcmVzXVxuICAgIFNob3dFcnJvcnMgLS0+IElucHV0Q2hhbmdlc1xuICAgIFZhbGlkYXRlQ2hhbmdlcyAtLT58U1x1MDBlZHwgU2F2ZUNoYW5nZXNbR3VhcmRhciBjYW1iaW9zXVxuICAgIFNhdmVDaGFuZ2VzIC0tPiBTdWNjZXNzTXNnW01lbnNhamUgZGUgXHUwMGU5eGl0b11cbiAgICBTdWNjZXNzTXNnIC0tPiBWaWV3UHJvZmlsZVxuICAgIFxuICAgIENoYW5nZVBhc3MgLS0+IElucHV0T2xkUGFzc1tJbmdyZXNhciBjb250cmFzZVx1MDBmMWE8YnIvPmFjdHVhbF1cbiAgICBJbnB1dE9sZFBhc3MgLS0+IFZlcmlmeU9sZFBhc3N7Q29udHJhc2VcdTAwZjFhPGJyLz5jb3JyZWN0YT99XG4gICAgVmVyaWZ5T2xkUGFzcyAtLT58Tm98IEVycm9yT2xkUGFzc1tFcnJvcjogQ29udHJhc2VcdTAwZjFhPGJyLz5pbmNvcnJlY3RhXVxuICAgIEVycm9yT2xkUGFzcyAtLT4gQ2hhbmdlUGFzc1xuICAgIFxuICAgIFZlcmlmeU9sZFBhc3MgLS0+fFNcdTAwZWR8IElucHV0TmV3UGFzc1tJbmdyZXNhciBudWV2YTxici8+Y29udHJhc2VcdTAwZjFhXVxuICAgIElucHV0TmV3UGFzcyAtLT4gQ2hlY2tTdHJlbmd0aHtDb250cmFzZVx1MDBmMWE8YnIvPmZ1ZXJ0ZT99XG4gICAgQ2hlY2tTdHJlbmd0aCAtLT58Tm98IEVycm9yV2Vha1tFcnJvcjogQ29udHJhc2VcdTAwZjFhPGJyLz5kXHUwMGU5YmlsXVxuICAgIEVycm9yV2VhayAtLT4gSW5wdXROZXdQYXNzXG4gICAgXG4gICAgQ2hlY2tTdHJlbmd0aCAtLT58U1x1MDBlZHwgQ2hlY2tIaXN0b3J5e1lhIHVzYWRhPGJyLz5hbnRlcz99XG4gICAgQ2hlY2tIaXN0b3J5IC0tPnxTXHUwMGVkfCBFcnJvclVzZWRbRXJyb3I6IENvbnRyYXNlXHUwMGYxYTxici8+eWEgdXRpbGl6YWRhXVxuICAgIEVycm9yVXNlZCAtLT4gSW5wdXROZXdQYXNzXG4gICAgXG4gICAgQ2hlY2tIaXN0b3J5IC0tPnxOb3wgVXBkYXRlUGFzc1tBY3R1YWxpemFyIGNvbnRyYXNlXHUwMGYxYV1cbiAgICBVcGRhdGVQYXNzIC0tPiBTYXZlSGlzdG9yeVtHdWFyZGFyIGVuIGhpc3RvcmlhbF1cbiAgICBTYXZlSGlzdG9yeSAtLT4gTG9nb3V0QWxsW0NlcnJhciBzZXNpXHUwMGYzbiBlbjxici8+dG9kb3MgbG9zIGRpc3Bvc2l0aXZvc11cbiAgICBMb2dvdXRBbGwgLS0+IFJlZGlyZWN0W1JlZGlyZWN0IGEgbG9naW5dXG4gICAgUmVkaXJlY3QgLS0+IEVuZDEoW0ZpbjogUmVhdXRlbnRpY2Fyc2VdKVxuICAgIFxuICAgIERlYWN0aXZhdGVBY2MgLS0+IENvbmZpcm1EZWFjdHtDb25maXJtYXI8YnIvPmRlc2FjdGl2YWNpXHUwMGYzbj99XG4gICAgQ29uZmlybURlYWN0IC0tPnxOb3wgVmlld1Byb2ZpbGVcbiAgICBDb25maXJtRGVhY3QgLS0+fFNcdTAwZWR8IFNldFNlbGZEZWFjdFtTRVQgc2VsZl9kZWFjdGl2YXRlZD10cnVlXVxuICAgIFNldFNlbGZEZWFjdCAtLT4gTG9nb3V0W0NlcnJhciBzZXNpXHUwMGYzbl1cbiAgICBMb2dvdXQgLS0+IFNob3dJbmZvW01vc3RyYXIgaW5mbzo8YnIvPlB1ZWRlIHJlYWN0aXZhcl1cbiAgICBTaG93SW5mbyAtLT4gRW5kMihbRmluOiBDdWVudGEgZGVzYWN0aXZhZGFdKVxuICAgIFxuICAgIERlbGV0ZUFjYyAtLT4gQ29uZmlybURlbGV0ZXtDb25maXJtYXI8YnIvPmVsaW1pbmFjaVx1MDBmM24/fVxuICAgIENvbmZpcm1EZWxldGUgLS0+fE5vfCBWaWV3UHJvZmlsZVxuICAgIENvbmZpcm1EZWxldGUgLS0+fFNcdTAwZWR8IE5vdGlmeUFkbWluW05vdGlmaWNhciBhZG1pbl1cbiAgICBOb3RpZnlBZG1pbiAtLT4gUGVuZGluZ1Jldmlld1tQZW5kaWVudGUgZGUgcmV2aXNpXHUwMGYzbl1cbiAgICBQZW5kaW5nUmV2aWV3IC0tPiBFbmQzKFtGaW46IFNvbGljaXR1ZCBlbnZpYWRhXSlcbiAgICBcbiAgICBzdHlsZSBTdGFydCBmaWxsOiM5MEVFOTBcbiAgICBzdHlsZSBFbmQxIGZpbGw6Izg3Q0VFQlxuICAgIHN0eWxlIEVuZDIgZmlsbDojRkZBNTAwXG4gICAgc3R5bGUgRW5kMyBmaWxsOiNGRkE1MDBcbiAgICBzdHlsZSBFcnJvck9sZFBhc3MgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRXJyb3JXZWFrIGZpbGw6I0ZGQjZDMVxuICAgIHN0eWxlIEVycm9yVXNlZCBmaWxsOiNGRkI2QzEiLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImZsb3djaGFydCBURFxuICAgIFN0YXJ0KFtJbmljaW9dKSAtLT4gVmlld1Byb2ZpbGVbVmVyIHBlcmZpbF1cbiAgICBWaWV3UHJvZmlsZSAtLT4gU2VsZWN0QWN0aW9ue0FjY2lcdTAwZjNuP31cbiAgICBcbiAgICBTZWxlY3RBY3Rpb24gLS0+fEVkaXRhcnwgRWRpdFByb2ZpbGVcbiAgICBTZWxlY3RBY3Rpb24gLS0+fFBhc3N8IENoYW5nZVBhc3NcbiAgICBTZWxlY3RBY3Rpb24gLS0+fERlYWN0aXZhdGV8IERlYWN0aXZhdGVBY2NbRGVzYWN0aXZhcl1cbiAgICBTZWxlY3RBY3Rpb24gLS0+fERlbGV0ZXwgRGVsZXRlQWNjW0VsaW1pbmFyXVxuICAgIFxuICAgICUlIEVkaXQgUHJvZmlsZVxuICAgIEVkaXRQcm9maWxlIC0tPiBJbnB1dENoYW5nZXNbSW5ncmVzYXJdXG4gICAgSW5wdXRDaGFuZ2VzIC0tPiBWYWxpZGF0ZUNoYW5nZXN7Vlx1MDBlMWxpZG8/fVxuICAgIFZhbGlkYXRlQ2hhbmdlcyAtLSBObyAtLT4gU2hvd0Vycm9yc1tFcnJvcl1cbiAgICBTaG93RXJyb3JzIC0uLT4gSW5wdXRDaGFuZ2VzXG4gICAgVmFsaWRhdGVDaGFuZ2VzIC0tPnxTXHUwMGVkfCBTYXZlQ2hhbmdlc1tHdWFyZGFyXVxuICAgIFNhdmVDaGFuZ2VzIC0tPiBTdWNjZXNzTXNnW1x1MDBjOXhpdG9dXG4gICAgU3VjY2Vzc01zZyAtLT4gVmlld1Byb2ZpbGVcbiAgICBcbiAgICAlJSBDaGFuZ2UgUGFzc1xuICAgIENoYW5nZVBhc3MgLS0+IElucHV0T2xkUGFzc1tQYXNzIGFjdHVhbF1cbiAgICBJbnB1dE9sZFBhc3MgLS0+IFZlcmlmeU9sZFBhc3N7Q29ycmVjdGE/fVxuICAgIFZlcmlmeU9sZFBhc3MgLS0gTm8gLS0+IEVycm9yT2xkUGFzc1tFcnJvcl1cbiAgICBFcnJvck9sZFBhc3MgLS4tPiBDaGFuZ2VQYXNzXG4gICAgXG4gICAgVmVyaWZ5T2xkUGFzcyAtLT58U1x1MDBlZHwgSW5wdXROZXdQYXNzW051ZXZhIHBhc3NdXG4gICAgSW5wdXROZXdQYXNzIC0tPiBDaGVja1N0cmVuZ3Roe0Z1ZXJ0ZT99XG4gICAgQ2hlY2tTdHJlbmd0aCAtLSBObyAtLT4gRXJyb3JXZWFrW0RcdTAwZTliaWxdXG4gICAgRXJyb3JXZWFrIC0uLT4gSW5wdXROZXdQYXNzXG4gICAgXG4gICAgQ2hlY2tTdHJlbmd0aCAtLT58U1x1MDBlZHwgQ2hlY2tIaXN0b3J5e1VzYWRhP31cbiAgICBDaGVja0hpc3RvcnkgLS0gU1x1MDBlZCAtLT4gRXJyb3JVc2VkW1VzYWRhXVxuICAgIEVycm9yVXNlZCAtLi0+IElucHV0TmV3UGFzc1xuICAgIFxuICAgIENoZWNrSGlzdG9yeSAtLT58Tm98IFVwZGF0ZVBhc3NbQWN0dWFsaXphcl1cbiAgICBVcGRhdGVQYXNzIC0tPiBTYXZlSGlzdG9yeVtIaXN0b3JpYWxdXG4gICAgU2F2ZUhpc3RvcnkgLS0+IExvZ291dEFsbFtMb2dvdXQgYWxsXVxuICAgIExvZ291dEFsbCAtLT4gUmVkaXJlY3RbTG9naW5dXG4gICAgUmVkaXJlY3QgLS0+IEVuZDEoW0Zpbl0pXG4gICAgXG4gICAgJSUgRGVhY3RpdmF0ZVxuICAgIERlYWN0aXZhdGVBY2MgLS0+IENvbmZpcm1EZWFjdHtDb25maXJtYXI/fVxuICAgIENvbmZpcm1EZWFjdCAtLSBObyAtLT4gVmlld1Byb2ZpbGVcbiAgICBDb25maXJtRGVhY3QgLS0+fFNcdTAwZWR8IFNldFNlbGZEZWFjdFtEZXNhY3RpdmFyXVxuICAgIFNldFNlbGZEZWFjdCAtLT4gTG9nb3V0W0xvZ291dF1cbiAgICBMb2dvdXQgLS0+IEVuZDIoW0Zpbl0pXG4gICAgXG4gICAgJSUgRGVsZXRlXG4gICAgRGVsZXRlQWNjIC0tPiBDb25maXJtRGVsZXRle0NvbmZpcm1hcj99XG4gICAgQ29uZmlybURlbGV0ZSAtLSBObyAtLT4gVmlld1Byb2ZpbGVcbiAgICBDb25maXJtRGVsZXRlIC0tPnxTXHUwMGVkfCBOb3RpZnlBZG1pbltOb3RpZmljYXIgQWRtaW5dXG4gICAgTm90aWZ5QWRtaW4gLS0+IFBlbmRpbmdSZXZpZXdbUmV2aXNpXHUwMGYzbl1cbiAgICBQZW5kaW5nUmV2aWV3IC0tPiBFbmQzKFtGaW5dKVxuICAgIFxuICAgIHN0eWxlIFN0YXJ0IGZpbGw6IzkwRUU5MFxuICAgIHN0eWxlIEVuZDEgZmlsbDojODdDRUVCXG4gICAgc3R5bGUgRW5kMiBmaWxsOiNGRkE1MDBcbiAgICBzdHlsZSBFbmQzIGZpbGw6I0ZGQTUwMFxuICAgIHN0eWxlIEVycm9yT2xkUGFzcyBmaWxsOiNGRkI2QzFcbiAgICBzdHlsZSBFcnJvcldlYWsgZmlsbDojRkZCNkMxXG4gICAgc3R5bGUgRXJyb3JVc2VkIGZpbGw6I0ZGQjZDMSIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -877,51 +878,54 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Start([Inicio]) --> ViewProfile[Ver perfil]
                         ViewProfile --> SelectAction{Acción?}
                         
-                        SelectAction -->|Editar perfil| EditProfile[Editar información]
-                        SelectAction -->|Cambiar password| ChangePass[Cambiar contraseña]
-                        SelectAction -->|Desactivar cuenta| DeactivateAcc[Desactivar cuenta]
-                        SelectAction -->|Eliminar cuenta| DeleteAcc[Solicitar eliminación]
+                        SelectAction -->|Editar| EditProfile
+                        SelectAction -->|Pass| ChangePass
+                        SelectAction -->|Deactivate| DeactivateAcc[Desactivar]
+                        SelectAction -->|Delete| DeleteAcc[Eliminar]
                         
-                        EditProfile --> InputChanges[Ingresar cambios]
-                        InputChanges --> ValidateChanges{Datos<br/>válidos?}
-                        ValidateChanges -->|No| ShowErrors[Mostrar errores]
-                        ShowErrors --> InputChanges
-                        ValidateChanges -->|Sí| SaveChanges[Guardar cambios]
-                        SaveChanges --> SuccessMsg[Mensaje de éxito]
+                        %% Edit Profile
+                        EditProfile --> InputChanges[Ingresar]
+                        InputChanges --> ValidateChanges{Válido?}
+                        ValidateChanges -- No --> ShowErrors[Error]
+                        ShowErrors -.-> InputChanges
+                        ValidateChanges -->|Sí| SaveChanges[Guardar]
+                        SaveChanges --> SuccessMsg[Éxito]
                         SuccessMsg --> ViewProfile
                         
-                        ChangePass --> InputOldPass[Ingresar contraseña<br/>actual]
-                        InputOldPass --> VerifyOldPass{Contraseña<br/>correcta?}
-                        VerifyOldPass -->|No| ErrorOldPass[Error: Contraseña<br/>incorrecta]
-                        ErrorOldPass --> ChangePass
+                        %% Change Pass
+                        ChangePass --> InputOldPass[Pass actual]
+                        InputOldPass --> VerifyOldPass{Correcta?}
+                        VerifyOldPass -- No --> ErrorOldPass[Error]
+                        ErrorOldPass -.-> ChangePass
                         
-                        VerifyOldPass -->|Sí| InputNewPass[Ingresar nueva<br/>contraseña]
-                        InputNewPass --> CheckStrength{Contraseña<br/>fuerte?}
-                        CheckStrength -->|No| ErrorWeak[Error: Contraseña<br/>débil]
-                        ErrorWeak --> InputNewPass
+                        VerifyOldPass -->|Sí| InputNewPass[Nueva pass]
+                        InputNewPass --> CheckStrength{Fuerte?}
+                        CheckStrength -- No --> ErrorWeak[Débil]
+                        ErrorWeak -.-> InputNewPass
                         
-                        CheckStrength -->|Sí| CheckHistory{Ya usada<br/>antes?}
-                        CheckHistory -->|Sí| ErrorUsed[Error: Contraseña<br/>ya utilizada]
-                        ErrorUsed --> InputNewPass
+                        CheckStrength -->|Sí| CheckHistory{Usada?}
+                        CheckHistory -- Sí --> ErrorUsed[Usada]
+                        ErrorUsed -.-> InputNewPass
                         
-                        CheckHistory -->|No| UpdatePass[Actualizar contraseña]
-                        UpdatePass --> SaveHistory[Guardar en historial]
-                        SaveHistory --> LogoutAll[Cerrar sesión en<br/>todos los dispositivos]
-                        LogoutAll --> Redirect[Redirect a login]
-                        Redirect --> End1([Fin: Reautenticarse])
+                        CheckHistory -->|No| UpdatePass[Actualizar]
+                        UpdatePass --> SaveHistory[Historial]
+                        SaveHistory --> LogoutAll[Logout all]
+                        LogoutAll --> Redirect[Login]
+                        Redirect --> End1([Fin])
                         
-                        DeactivateAcc --> ConfirmDeact{Confirmar<br/>desactivación?}
-                        ConfirmDeact -->|No| ViewProfile
-                        ConfirmDeact -->|Sí| SetSelfDeact[SET self_deactivated=true]
-                        SetSelfDeact --> Logout[Cerrar sesión]
-                        Logout --> ShowInfo[Mostrar info:<br/>Puede reactivar]
-                        ShowInfo --> End2([Fin: Cuenta desactivada])
+                        %% Deactivate
+                        DeactivateAcc --> ConfirmDeact{Confirmar?}
+                        ConfirmDeact -- No --> ViewProfile
+                        ConfirmDeact -->|Sí| SetSelfDeact[Desactivar]
+                        SetSelfDeact --> Logout[Logout]
+                        Logout --> End2([Fin])
                         
-                        DeleteAcc --> ConfirmDelete{Confirmar<br/>eliminación?}
-                        ConfirmDelete -->|No| ViewProfile
-                        ConfirmDelete -->|Sí| NotifyAdmin[Notificar admin]
-                        NotifyAdmin --> PendingReview[Pendiente de revisión]
-                        PendingReview --> End3([Fin: Solicitud enviada])
+                        %% Delete
+                        DeleteAcc --> ConfirmDelete{Confirmar?}
+                        ConfirmDelete -- No --> ViewProfile
+                        ConfirmDelete -->|Sí| NotifyAdmin[Notificar Admin]
+                        NotifyAdmin --> PendingReview[Revisión]
+                        PendingReview --> End3([Fin])
                         
                         style Start fill:#90EE90
                         style End1 fill:#87CEEB
@@ -946,8 +950,18 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. mermaid::
 
-                    graph TB
+                    graph LR
+                        %% Actors on the Left
+                        Admin((Administrador))
+                        Proveedor((Proveedor))
+                        Logistica((Logística))
+                        Cliente((Cliente))
+                        Sistema_Ext[Sistema Externo]
+                    
+                        %% System Boundary
                         subgraph Sistema_PREXCOL["SISTEMA PREXCOL"]
+                            direction TB
+                            
                             subgraph Autenticacion["Módulo de Autenticación"]
                                 UC1[Registrarse]
                                 UC2[Iniciar Sesión]
@@ -985,36 +999,33 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                                 UC22[Generar Reportes]
                             end
                     
-                            subgraph Notificaciones["Módulo de Notificaciones"]
-                                UC23[Enviar Notificación]
-                                UC24[Ver Notificaciones]
-                                UC25[Marcar como Leída]
-                            end
-                    
                             subgraph Administracion["Módulo de Administración"]
                                 UC26[Gestionar Usuarios]
                                 UC27[Suspender Cuenta]
                                 UC28[Ver Dashboard]
                                 UC29[Configurar Sistema]
                             end
+                            
+                            subgraph Notificaciones["Módulo de Notificaciones"]
+                                UC23[Enviar Notificación]
+                                UC24[Ver Notificaciones]
+                                UC25[Marcar como Leída]
+                            end
                         end
                     
-                        Admin((Administrador))
-                        Proveedor((Proveedor))
-                        Logistica((Logística))
-                        Cliente((Cliente))
-                        Sistema_Ext[Sistema Externo]
-                    
+                        %% Relationships - Organized to reduce crossing
+                        %% Admin Connections
                         Admin --> UC1
                         Admin --> UC2
                         Admin --> UC6
                         Admin --> UC7
                         Admin --> UC8
+                        Admin --> UC22
                         Admin --> UC26
                         Admin --> UC27
                         Admin --> UC28
-                        Admin --> UC22
-                    
+                        
+                        %% Provider Connections
                         Proveedor --> UC1
                         Proveedor --> UC2
                         Proveedor --> UC7
@@ -1023,13 +1034,15 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Proveedor --> UC13
                         Proveedor --> UC14
                         Proveedor --> UC22
-                    
+                        
+                        %% Logistica Connections
                         Logistica --> UC1
                         Logistica --> UC2
                         Logistica --> UC17
                         Logistica --> UC18
                         Logistica --> UC28
-                    
+                        
+                        %% Client Connections
                         Cliente --> UC1
                         Cliente --> UC2
                         Cliente --> UC9
@@ -1039,19 +1052,20 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Cliente --> UC19
                         Cliente --> UC24
                     
-                        UC16 ..> Sistema_Ext : <<include>>
-                        UC23 ..> Sistema_Ext : <<include>>
+                        %% Include/Extend
+                        UC16 -.-> Sistema_Ext
+                        UC23 -.-> Sistema_Ext
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImdyYXBoIFRCXG4gICAgc3ViZ3JhcGggU2lzdGVtYV9QUkVYQ09MW1wiU0lTVEVNQSBQUkVYQ09MXCJdXG4gICAgICAgIHN1YmdyYXBoIEF1dGVudGljYWNpb25bXCJNXHUwMGYzZHVsbyBkZSBBdXRlbnRpY2FjaVx1MDBmM25cIl1cbiAgICAgICAgICAgIFVDMVtSZWdpc3RyYXJzZV1cbiAgICAgICAgICAgIFVDMltJbmljaWFyIFNlc2lcdTAwZjNuXVxuICAgICAgICAgICAgVUMzW1JlY3VwZXJhciBDb250cmFzZVx1MDBmMWFdXG4gICAgICAgICAgICBVQzRbQ2FtYmlhciBDb250cmFzZVx1MDBmMWFdXG4gICAgICAgICAgICBVQzVbR2VzdGlvbmFyIEN1ZW50YV1cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggUHJvZHVjdG9zW1wiTVx1MDBmM2R1bG8gZGUgUHJvZHVjdG9zXCJdXG4gICAgICAgICAgICBVQzZbR2VzdGlvbmFyIFRpZW5kYXNdXG4gICAgICAgICAgICBVQzdbR2VzdGlvbmFyIFByb2R1Y3Rvc11cbiAgICAgICAgICAgIFVDOFtBc2lnbmFyIFByb2R1Y3Rvc11cbiAgICAgICAgICAgIFVDOVtOYXZlZ2FyIENhdFx1MDBlMWxvZ29dXG4gICAgICAgICAgICBVQzEwW0J1c2NhciBQcm9kdWN0b3NdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFN0b2NrW1wiTVx1MDBmM2R1bG8gZGUgU3RvY2tcIl1cbiAgICAgICAgICAgIFVDMTFbQ29uZmlndXJhciBSZWNhcmdhIEF1dG9dXG4gICAgICAgICAgICBVQzEyW1JlY2FyZ2FyIFN0b2NrIE1hbnVhbF1cbiAgICAgICAgICAgIFVDMTNbVmVyIEhpc3RvcmlhbCBSZWNhcmdhc11cbiAgICAgICAgICAgIFVDMTRbTW9uaXRvcmVhciBTdG9ja11cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggUGVkaWRvc1tcIk1cdTAwZjNkdWxvIGRlIFBlZGlkb3NcIl1cbiAgICAgICAgICAgIFVDMTVbQ3JlYXIgUGVkaWRvXVxuICAgICAgICAgICAgVUMxNltQcm9jZXNhciBQYWdvXVxuICAgICAgICAgICAgVUMxN1tHZXN0aW9uYXIgUGVkaWRvc11cbiAgICAgICAgICAgIFVDMThbQ2FtYmlhciBFc3RhZG8gUGVkaWRvXVxuICAgICAgICAgICAgVUMxOVtWZXIgTWlzIFBlZGlkb3NdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFZlbnRhc1tcIk1cdTAwZjNkdWxvIGRlIFZlbnRhc1wiXVxuICAgICAgICAgICAgVUMyMFtHZW5lcmFyIFZlbnRhXVxuICAgICAgICAgICAgVUMyMVtWZXIgSGlzdG9yaWFsIFZlbnRhc11cbiAgICAgICAgICAgIFVDMjJbR2VuZXJhciBSZXBvcnRlc11cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggTm90aWZpY2FjaW9uZXNbXCJNXHUwMGYzZHVsbyBkZSBOb3RpZmljYWNpb25lc1wiXVxuICAgICAgICAgICAgVUMyM1tFbnZpYXIgTm90aWZpY2FjaVx1MDBmM25dXG4gICAgICAgICAgICBVQzI0W1ZlciBOb3RpZmljYWNpb25lc11cbiAgICAgICAgICAgIFVDMjVbTWFyY2FyIGNvbW8gTGVcdTAwZWRkYV1cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggQWRtaW5pc3RyYWNpb25bXCJNXHUwMGYzZHVsbyBkZSBBZG1pbmlzdHJhY2lcdTAwZjNuXCJdXG4gICAgICAgICAgICBVQzI2W0dlc3Rpb25hciBVc3Vhcmlvc11cbiAgICAgICAgICAgIFVDMjdbU3VzcGVuZGVyIEN1ZW50YV1cbiAgICAgICAgICAgIFVDMjhbVmVyIERhc2hib2FyZF1cbiAgICAgICAgICAgIFVDMjlbQ29uZmlndXJhciBTaXN0ZW1hXVxuICAgICAgICBlbmRcbiAgICBlbmRcblxuICAgIEFkbWluKChBZG1pbmlzdHJhZG9yKSlcbiAgICBQcm92ZWVkb3IoKFByb3ZlZWRvcikpXG4gICAgTG9naXN0aWNhKChMb2dcdTAwZWRzdGljYSkpXG4gICAgQ2xpZW50ZSgoQ2xpZW50ZSkpXG4gICAgU2lzdGVtYV9FeHRbU2lzdGVtYSBFeHRlcm5vXVxuXG4gICAgQWRtaW4gLS0+IFVDMVxuICAgIEFkbWluIC0tPiBVQzJcbiAgICBBZG1pbiAtLT4gVUM2XG4gICAgQWRtaW4gLS0+IFVDN1xuICAgIEFkbWluIC0tPiBVQzhcbiAgICBBZG1pbiAtLT4gVUMyNlxuICAgIEFkbWluIC0tPiBVQzI3XG4gICAgQWRtaW4gLS0+IFVDMjhcbiAgICBBZG1pbiAtLT4gVUMyMlxuXG4gICAgUHJvdmVlZG9yIC0tPiBVQzFcbiAgICBQcm92ZWVkb3IgLS0+IFVDMlxuICAgIFByb3ZlZWRvciAtLT4gVUM3XG4gICAgUHJvdmVlZG9yIC0tPiBVQzExXG4gICAgUHJvdmVlZG9yIC0tPiBVQzEyXG4gICAgUHJvdmVlZG9yIC0tPiBVQzEzXG4gICAgUHJvdmVlZG9yIC0tPiBVQzE0XG4gICAgUHJvdmVlZG9yIC0tPiBVQzIyXG5cbiAgICBMb2dpc3RpY2EgLS0+IFVDMVxuICAgIExvZ2lzdGljYSAtLT4gVUMyXG4gICAgTG9naXN0aWNhIC0tPiBVQzE3XG4gICAgTG9naXN0aWNhIC0tPiBVQzE4XG4gICAgTG9naXN0aWNhIC0tPiBVQzI4XG5cbiAgICBDbGllbnRlIC0tPiBVQzFcbiAgICBDbGllbnRlIC0tPiBVQzJcbiAgICBDbGllbnRlIC0tPiBVQzlcbiAgICBDbGllbnRlIC0tPiBVQzEwXG4gICAgQ2xpZW50ZSAtLT4gVUMxNVxuICAgIENsaWVudGUgLS0+IFVDMTZcbiAgICBDbGllbnRlIC0tPiBVQzE5XG4gICAgQ2xpZW50ZSAtLT4gVUMyNFxuXG4gICAgVUMxNiAuLj4gU2lzdGVtYV9FeHQgOiA8PGluY2x1ZGU+PlxuICAgIFVDMjMgLi4+IFNpc3RlbWFfRXh0IDogPDxpbmNsdWRlPj4iLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImdyYXBoIExSXG4gICAgJSUgQWN0b3JzIG9uIHRoZSBMZWZ0XG4gICAgQWRtaW4oKEFkbWluaXN0cmFkb3IpKVxuICAgIFByb3ZlZWRvcigoUHJvdmVlZG9yKSlcbiAgICBMb2dpc3RpY2EoKExvZ1x1MDBlZHN0aWNhKSlcbiAgICBDbGllbnRlKChDbGllbnRlKSlcbiAgICBTaXN0ZW1hX0V4dFtTaXN0ZW1hIEV4dGVybm9dXG5cbiAgICAlJSBTeXN0ZW0gQm91bmRhcnlcbiAgICBzdWJncmFwaCBTaXN0ZW1hX1BSRVhDT0xbXCJTSVNURU1BIFBSRVhDT0xcIl1cbiAgICAgICAgZGlyZWN0aW9uIFRCXG4gICAgICAgIFxuICAgICAgICBzdWJncmFwaCBBdXRlbnRpY2FjaW9uW1wiTVx1MDBmM2R1bG8gZGUgQXV0ZW50aWNhY2lcdTAwZjNuXCJdXG4gICAgICAgICAgICBVQzFbUmVnaXN0cmFyc2VdXG4gICAgICAgICAgICBVQzJbSW5pY2lhciBTZXNpXHUwMGYzbl1cbiAgICAgICAgICAgIFVDM1tSZWN1cGVyYXIgQ29udHJhc2VcdTAwZjFhXVxuICAgICAgICAgICAgVUM0W0NhbWJpYXIgQ29udHJhc2VcdTAwZjFhXVxuICAgICAgICAgICAgVUM1W0dlc3Rpb25hciBDdWVudGFdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFByb2R1Y3Rvc1tcIk1cdTAwZjNkdWxvIGRlIFByb2R1Y3Rvc1wiXVxuICAgICAgICAgICAgVUM2W0dlc3Rpb25hciBUaWVuZGFzXVxuICAgICAgICAgICAgVUM3W0dlc3Rpb25hciBQcm9kdWN0b3NdXG4gICAgICAgICAgICBVQzhbQXNpZ25hciBQcm9kdWN0b3NdXG4gICAgICAgICAgICBVQzlbTmF2ZWdhciBDYXRcdTAwZTFsb2dvXVxuICAgICAgICAgICAgVUMxMFtCdXNjYXIgUHJvZHVjdG9zXVxuICAgICAgICBlbmRcblxuICAgICAgICBzdWJncmFwaCBTdG9ja1tcIk1cdTAwZjNkdWxvIGRlIFN0b2NrXCJdXG4gICAgICAgICAgICBVQzExW0NvbmZpZ3VyYXIgUmVjYXJnYSBBdXRvXVxuICAgICAgICAgICAgVUMxMltSZWNhcmdhciBTdG9jayBNYW51YWxdXG4gICAgICAgICAgICBVQzEzW1ZlciBIaXN0b3JpYWwgUmVjYXJnYXNdXG4gICAgICAgICAgICBVQzE0W01vbml0b3JlYXIgU3RvY2tdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFBlZGlkb3NbXCJNXHUwMGYzZHVsbyBkZSBQZWRpZG9zXCJdXG4gICAgICAgICAgICBVQzE1W0NyZWFyIFBlZGlkb11cbiAgICAgICAgICAgIFVDMTZbUHJvY2VzYXIgUGFnb11cbiAgICAgICAgICAgIFVDMTdbR2VzdGlvbmFyIFBlZGlkb3NdXG4gICAgICAgICAgICBVQzE4W0NhbWJpYXIgRXN0YWRvIFBlZGlkb11cbiAgICAgICAgICAgIFVDMTlbVmVyIE1pcyBQZWRpZG9zXVxuICAgICAgICBlbmRcblxuICAgICAgICBzdWJncmFwaCBWZW50YXNbXCJNXHUwMGYzZHVsbyBkZSBWZW50YXNcIl1cbiAgICAgICAgICAgIFVDMjBbR2VuZXJhciBWZW50YV1cbiAgICAgICAgICAgIFVDMjFbVmVyIEhpc3RvcmlhbCBWZW50YXNdXG4gICAgICAgICAgICBVQzIyW0dlbmVyYXIgUmVwb3J0ZXNdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIEFkbWluaXN0cmFjaW9uW1wiTVx1MDBmM2R1bG8gZGUgQWRtaW5pc3RyYWNpXHUwMGYzblwiXVxuICAgICAgICAgICAgVUMyNltHZXN0aW9uYXIgVXN1YXJpb3NdXG4gICAgICAgICAgICBVQzI3W1N1c3BlbmRlciBDdWVudGFdXG4gICAgICAgICAgICBVQzI4W1ZlciBEYXNoYm9hcmRdXG4gICAgICAgICAgICBVQzI5W0NvbmZpZ3VyYXIgU2lzdGVtYV1cbiAgICAgICAgZW5kXG4gICAgICAgIFxuICAgICAgICBzdWJncmFwaCBOb3RpZmljYWNpb25lc1tcIk1cdTAwZjNkdWxvIGRlIE5vdGlmaWNhY2lvbmVzXCJdXG4gICAgICAgICAgICBVQzIzW0VudmlhciBOb3RpZmljYWNpXHUwMGYzbl1cbiAgICAgICAgICAgIFVDMjRbVmVyIE5vdGlmaWNhY2lvbmVzXVxuICAgICAgICAgICAgVUMyNVtNYXJjYXIgY29tbyBMZVx1MDBlZGRhXVxuICAgICAgICBlbmRcbiAgICBlbmRcblxuICAgICUlIFJlbGF0aW9uc2hpcHMgLSBPcmdhbml6ZWQgdG8gcmVkdWNlIGNyb3NzaW5nXG4gICAgJSUgQWRtaW4gQ29ubmVjdGlvbnNcbiAgICBBZG1pbiAtLT4gVUMxXG4gICAgQWRtaW4gLS0+IFVDMlxuICAgIEFkbWluIC0tPiBVQzZcbiAgICBBZG1pbiAtLT4gVUM3XG4gICAgQWRtaW4gLS0+IFVDOFxuICAgIEFkbWluIC0tPiBVQzIyXG4gICAgQWRtaW4gLS0+IFVDMjZcbiAgICBBZG1pbiAtLT4gVUMyN1xuICAgIEFkbWluIC0tPiBVQzI4XG4gICAgXG4gICAgJSUgUHJvdmlkZXIgQ29ubmVjdGlvbnNcbiAgICBQcm92ZWVkb3IgLS0+IFVDMVxuICAgIFByb3ZlZWRvciAtLT4gVUMyXG4gICAgUHJvdmVlZG9yIC0tPiBVQzdcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTFcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTJcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTNcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTRcbiAgICBQcm92ZWVkb3IgLS0+IFVDMjJcbiAgICBcbiAgICAlJSBMb2dpc3RpY2EgQ29ubmVjdGlvbnNcbiAgICBMb2dpc3RpY2EgLS0+IFVDMVxuICAgIExvZ2lzdGljYSAtLT4gVUMyXG4gICAgTG9naXN0aWNhIC0tPiBVQzE3XG4gICAgTG9naXN0aWNhIC0tPiBVQzE4XG4gICAgTG9naXN0aWNhIC0tPiBVQzI4XG4gICAgXG4gICAgJSUgQ2xpZW50IENvbm5lY3Rpb25zXG4gICAgQ2xpZW50ZSAtLT4gVUMxXG4gICAgQ2xpZW50ZSAtLT4gVUMyXG4gICAgQ2xpZW50ZSAtLT4gVUM5XG4gICAgQ2xpZW50ZSAtLT4gVUMxMFxuICAgIENsaWVudGUgLS0+IFVDMTVcbiAgICBDbGllbnRlIC0tPiBVQzE2XG4gICAgQ2xpZW50ZSAtLT4gVUMxOVxuICAgIENsaWVudGUgLS0+IFVDMjRcblxuICAgICUlIEluY2x1ZGUvRXh0ZW5kXG4gICAgVUMxNiAtLi0+IFNpc3RlbWFfRXh0XG4gICAgVUMyMyAtLi0+IFNpc3RlbWFfRXh0IiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImdyYXBoIFRCXG4gICAgc3ViZ3JhcGggU2lzdGVtYV9QUkVYQ09MW1wiU0lTVEVNQSBQUkVYQ09MXCJdXG4gICAgICAgIHN1YmdyYXBoIEF1dGVudGljYWNpb25bXCJNXHUwMGYzZHVsbyBkZSBBdXRlbnRpY2FjaVx1MDBmM25cIl1cbiAgICAgICAgICAgIFVDMVtSZWdpc3RyYXJzZV1cbiAgICAgICAgICAgIFVDMltJbmljaWFyIFNlc2lcdTAwZjNuXVxuICAgICAgICAgICAgVUMzW1JlY3VwZXJhciBDb250cmFzZVx1MDBmMWFdXG4gICAgICAgICAgICBVQzRbQ2FtYmlhciBDb250cmFzZVx1MDBmMWFdXG4gICAgICAgICAgICBVQzVbR2VzdGlvbmFyIEN1ZW50YV1cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggUHJvZHVjdG9zW1wiTVx1MDBmM2R1bG8gZGUgUHJvZHVjdG9zXCJdXG4gICAgICAgICAgICBVQzZbR2VzdGlvbmFyIFRpZW5kYXNdXG4gICAgICAgICAgICBVQzdbR2VzdGlvbmFyIFByb2R1Y3Rvc11cbiAgICAgICAgICAgIFVDOFtBc2lnbmFyIFByb2R1Y3Rvc11cbiAgICAgICAgICAgIFVDOVtOYXZlZ2FyIENhdFx1MDBlMWxvZ29dXG4gICAgICAgICAgICBVQzEwW0J1c2NhciBQcm9kdWN0b3NdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFN0b2NrW1wiTVx1MDBmM2R1bG8gZGUgU3RvY2tcIl1cbiAgICAgICAgICAgIFVDMTFbQ29uZmlndXJhciBSZWNhcmdhIEF1dG9dXG4gICAgICAgICAgICBVQzEyW1JlY2FyZ2FyIFN0b2NrIE1hbnVhbF1cbiAgICAgICAgICAgIFVDMTNbVmVyIEhpc3RvcmlhbCBSZWNhcmdhc11cbiAgICAgICAgICAgIFVDMTRbTW9uaXRvcmVhciBTdG9ja11cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggUGVkaWRvc1tcIk1cdTAwZjNkdWxvIGRlIFBlZGlkb3NcIl1cbiAgICAgICAgICAgIFVDMTVbQ3JlYXIgUGVkaWRvXVxuICAgICAgICAgICAgVUMxNltQcm9jZXNhciBQYWdvXVxuICAgICAgICAgICAgVUMxN1tHZXN0aW9uYXIgUGVkaWRvc11cbiAgICAgICAgICAgIFVDMThbQ2FtYmlhciBFc3RhZG8gUGVkaWRvXVxuICAgICAgICAgICAgVUMxOVtWZXIgTWlzIFBlZGlkb3NdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFZlbnRhc1tcIk1cdTAwZjNkdWxvIGRlIFZlbnRhc1wiXVxuICAgICAgICAgICAgVUMyMFtHZW5lcmFyIFZlbnRhXVxuICAgICAgICAgICAgVUMyMVtWZXIgSGlzdG9yaWFsIFZlbnRhc11cbiAgICAgICAgICAgIFVDMjJbR2VuZXJhciBSZXBvcnRlc11cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggTm90aWZpY2FjaW9uZXNbXCJNXHUwMGYzZHVsbyBkZSBOb3RpZmljYWNpb25lc1wiXVxuICAgICAgICAgICAgVUMyM1tFbnZpYXIgTm90aWZpY2FjaVx1MDBmM25dXG4gICAgICAgICAgICBVQzI0W1ZlciBOb3RpZmljYWNpb25lc11cbiAgICAgICAgICAgIFVDMjVbTWFyY2FyIGNvbW8gTGVcdTAwZWRkYV1cbiAgICAgICAgZW5kXG5cbiAgICAgICAgc3ViZ3JhcGggQWRtaW5pc3RyYWNpb25bXCJNXHUwMGYzZHVsbyBkZSBBZG1pbmlzdHJhY2lcdTAwZjNuXCJdXG4gICAgICAgICAgICBVQzI2W0dlc3Rpb25hciBVc3Vhcmlvc11cbiAgICAgICAgICAgIFVDMjdbU3VzcGVuZGVyIEN1ZW50YV1cbiAgICAgICAgICAgIFVDMjhbVmVyIERhc2hib2FyZF1cbiAgICAgICAgICAgIFVDMjlbQ29uZmlndXJhciBTaXN0ZW1hXVxuICAgICAgICBlbmRcbiAgICBlbmRcblxuICAgIEFkbWluKChBZG1pbmlzdHJhZG9yKSlcbiAgICBQcm92ZWVkb3IoKFByb3ZlZWRvcikpXG4gICAgTG9naXN0aWNhKChMb2dcdTAwZWRzdGljYSkpXG4gICAgQ2xpZW50ZSgoQ2xpZW50ZSkpXG4gICAgU2lzdGVtYV9FeHRbU2lzdGVtYSBFeHRlcm5vXVxuXG4gICAgQWRtaW4gLS0+IFVDMVxuICAgIEFkbWluIC0tPiBVQzJcbiAgICBBZG1pbiAtLT4gVUM2XG4gICAgQWRtaW4gLS0+IFVDN1xuICAgIEFkbWluIC0tPiBVQzhcbiAgICBBZG1pbiAtLT4gVUMyNlxuICAgIEFkbWluIC0tPiBVQzI3XG4gICAgQWRtaW4gLS0+IFVDMjhcbiAgICBBZG1pbiAtLT4gVUMyMlxuXG4gICAgUHJvdmVlZG9yIC0tPiBVQzFcbiAgICBQcm92ZWVkb3IgLS0+IFVDMlxuICAgIFByb3ZlZWRvciAtLT4gVUM3XG4gICAgUHJvdmVlZG9yIC0tPiBVQzExXG4gICAgUHJvdmVlZG9yIC0tPiBVQzEyXG4gICAgUHJvdmVlZG9yIC0tPiBVQzEzXG4gICAgUHJvdmVlZG9yIC0tPiBVQzE0XG4gICAgUHJvdmVlZG9yIC0tPiBVQzIyXG5cbiAgICBMb2dpc3RpY2EgLS0+IFVDMVxuICAgIExvZ2lzdGljYSAtLT4gVUMyXG4gICAgTG9naXN0aWNhIC0tPiBVQzE3XG4gICAgTG9naXN0aWNhIC0tPiBVQzE4XG4gICAgTG9naXN0aWNhIC0tPiBVQzI4XG5cbiAgICBDbGllbnRlIC0tPiBVQzFcbiAgICBDbGllbnRlIC0tPiBVQzJcbiAgICBDbGllbnRlIC0tPiBVQzlcbiAgICBDbGllbnRlIC0tPiBVQzEwXG4gICAgQ2xpZW50ZSAtLT4gVUMxNVxuICAgIENsaWVudGUgLS0+IFVDMTZcbiAgICBDbGllbnRlIC0tPiBVQzE5XG4gICAgQ2xpZW50ZSAtLT4gVUMyNFxuXG4gICAgVUMxNiAuLj4gU2lzdGVtYV9FeHQgOiA8PGluY2x1ZGU+PlxuICAgIFVDMjMgLi4+IFNpc3RlbWFfRXh0IDogPDxpbmNsdWRlPj4iLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAiYXV0b1N5bmMiOiB0cnVlLCAidXBkYXRlRGlhZ3JhbSI6IHRydWV9
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImdyYXBoIExSXG4gICAgJSUgQWN0b3JzIG9uIHRoZSBMZWZ0XG4gICAgQWRtaW4oKEFkbWluaXN0cmFkb3IpKVxuICAgIFByb3ZlZWRvcigoUHJvdmVlZG9yKSlcbiAgICBMb2dpc3RpY2EoKExvZ1x1MDBlZHN0aWNhKSlcbiAgICBDbGllbnRlKChDbGllbnRlKSlcbiAgICBTaXN0ZW1hX0V4dFtTaXN0ZW1hIEV4dGVybm9dXG5cbiAgICAlJSBTeXN0ZW0gQm91bmRhcnlcbiAgICBzdWJncmFwaCBTaXN0ZW1hX1BSRVhDT0xbXCJTSVNURU1BIFBSRVhDT0xcIl1cbiAgICAgICAgZGlyZWN0aW9uIFRCXG4gICAgICAgIFxuICAgICAgICBzdWJncmFwaCBBdXRlbnRpY2FjaW9uW1wiTVx1MDBmM2R1bG8gZGUgQXV0ZW50aWNhY2lcdTAwZjNuXCJdXG4gICAgICAgICAgICBVQzFbUmVnaXN0cmFyc2VdXG4gICAgICAgICAgICBVQzJbSW5pY2lhciBTZXNpXHUwMGYzbl1cbiAgICAgICAgICAgIFVDM1tSZWN1cGVyYXIgQ29udHJhc2VcdTAwZjFhXVxuICAgICAgICAgICAgVUM0W0NhbWJpYXIgQ29udHJhc2VcdTAwZjFhXVxuICAgICAgICAgICAgVUM1W0dlc3Rpb25hciBDdWVudGFdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFByb2R1Y3Rvc1tcIk1cdTAwZjNkdWxvIGRlIFByb2R1Y3Rvc1wiXVxuICAgICAgICAgICAgVUM2W0dlc3Rpb25hciBUaWVuZGFzXVxuICAgICAgICAgICAgVUM3W0dlc3Rpb25hciBQcm9kdWN0b3NdXG4gICAgICAgICAgICBVQzhbQXNpZ25hciBQcm9kdWN0b3NdXG4gICAgICAgICAgICBVQzlbTmF2ZWdhciBDYXRcdTAwZTFsb2dvXVxuICAgICAgICAgICAgVUMxMFtCdXNjYXIgUHJvZHVjdG9zXVxuICAgICAgICBlbmRcblxuICAgICAgICBzdWJncmFwaCBTdG9ja1tcIk1cdTAwZjNkdWxvIGRlIFN0b2NrXCJdXG4gICAgICAgICAgICBVQzExW0NvbmZpZ3VyYXIgUmVjYXJnYSBBdXRvXVxuICAgICAgICAgICAgVUMxMltSZWNhcmdhciBTdG9jayBNYW51YWxdXG4gICAgICAgICAgICBVQzEzW1ZlciBIaXN0b3JpYWwgUmVjYXJnYXNdXG4gICAgICAgICAgICBVQzE0W01vbml0b3JlYXIgU3RvY2tdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIFBlZGlkb3NbXCJNXHUwMGYzZHVsbyBkZSBQZWRpZG9zXCJdXG4gICAgICAgICAgICBVQzE1W0NyZWFyIFBlZGlkb11cbiAgICAgICAgICAgIFVDMTZbUHJvY2VzYXIgUGFnb11cbiAgICAgICAgICAgIFVDMTdbR2VzdGlvbmFyIFBlZGlkb3NdXG4gICAgICAgICAgICBVQzE4W0NhbWJpYXIgRXN0YWRvIFBlZGlkb11cbiAgICAgICAgICAgIFVDMTlbVmVyIE1pcyBQZWRpZG9zXVxuICAgICAgICBlbmRcblxuICAgICAgICBzdWJncmFwaCBWZW50YXNbXCJNXHUwMGYzZHVsbyBkZSBWZW50YXNcIl1cbiAgICAgICAgICAgIFVDMjBbR2VuZXJhciBWZW50YV1cbiAgICAgICAgICAgIFVDMjFbVmVyIEhpc3RvcmlhbCBWZW50YXNdXG4gICAgICAgICAgICBVQzIyW0dlbmVyYXIgUmVwb3J0ZXNdXG4gICAgICAgIGVuZFxuXG4gICAgICAgIHN1YmdyYXBoIEFkbWluaXN0cmFjaW9uW1wiTVx1MDBmM2R1bG8gZGUgQWRtaW5pc3RyYWNpXHUwMGYzblwiXVxuICAgICAgICAgICAgVUMyNltHZXN0aW9uYXIgVXN1YXJpb3NdXG4gICAgICAgICAgICBVQzI3W1N1c3BlbmRlciBDdWVudGFdXG4gICAgICAgICAgICBVQzI4W1ZlciBEYXNoYm9hcmRdXG4gICAgICAgICAgICBVQzI5W0NvbmZpZ3VyYXIgU2lzdGVtYV1cbiAgICAgICAgZW5kXG4gICAgICAgIFxuICAgICAgICBzdWJncmFwaCBOb3RpZmljYWNpb25lc1tcIk1cdTAwZjNkdWxvIGRlIE5vdGlmaWNhY2lvbmVzXCJdXG4gICAgICAgICAgICBVQzIzW0VudmlhciBOb3RpZmljYWNpXHUwMGYzbl1cbiAgICAgICAgICAgIFVDMjRbVmVyIE5vdGlmaWNhY2lvbmVzXVxuICAgICAgICAgICAgVUMyNVtNYXJjYXIgY29tbyBMZVx1MDBlZGRhXVxuICAgICAgICBlbmRcbiAgICBlbmRcblxuICAgICUlIFJlbGF0aW9uc2hpcHMgLSBPcmdhbml6ZWQgdG8gcmVkdWNlIGNyb3NzaW5nXG4gICAgJSUgQWRtaW4gQ29ubmVjdGlvbnNcbiAgICBBZG1pbiAtLT4gVUMxXG4gICAgQWRtaW4gLS0+IFVDMlxuICAgIEFkbWluIC0tPiBVQzZcbiAgICBBZG1pbiAtLT4gVUM3XG4gICAgQWRtaW4gLS0+IFVDOFxuICAgIEFkbWluIC0tPiBVQzIyXG4gICAgQWRtaW4gLS0+IFVDMjZcbiAgICBBZG1pbiAtLT4gVUMyN1xuICAgIEFkbWluIC0tPiBVQzI4XG4gICAgXG4gICAgJSUgUHJvdmlkZXIgQ29ubmVjdGlvbnNcbiAgICBQcm92ZWVkb3IgLS0+IFVDMVxuICAgIFByb3ZlZWRvciAtLT4gVUMyXG4gICAgUHJvdmVlZG9yIC0tPiBVQzdcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTFcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTJcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTNcbiAgICBQcm92ZWVkb3IgLS0+IFVDMTRcbiAgICBQcm92ZWVkb3IgLS0+IFVDMjJcbiAgICBcbiAgICAlJSBMb2dpc3RpY2EgQ29ubmVjdGlvbnNcbiAgICBMb2dpc3RpY2EgLS0+IFVDMVxuICAgIExvZ2lzdGljYSAtLT4gVUMyXG4gICAgTG9naXN0aWNhIC0tPiBVQzE3XG4gICAgTG9naXN0aWNhIC0tPiBVQzE4XG4gICAgTG9naXN0aWNhIC0tPiBVQzI4XG4gICAgXG4gICAgJSUgQ2xpZW50IENvbm5lY3Rpb25zXG4gICAgQ2xpZW50ZSAtLT4gVUMxXG4gICAgQ2xpZW50ZSAtLT4gVUMyXG4gICAgQ2xpZW50ZSAtLT4gVUM5XG4gICAgQ2xpZW50ZSAtLT4gVUMxMFxuICAgIENsaWVudGUgLS0+IFVDMTVcbiAgICBDbGllbnRlIC0tPiBVQzE2XG4gICAgQ2xpZW50ZSAtLT4gVUMxOVxuICAgIENsaWVudGUgLS0+IFVDMjRcblxuICAgICUlIEluY2x1ZGUvRXh0ZW5kXG4gICAgVUMxNiAtLi0+IFNpc3RlbWFfRXh0XG4gICAgVUMyMyAtLi0+IFNpc3RlbWFfRXh0IiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgImF1dG9TeW5jIjogdHJ1ZSwgInVwZGF0ZURpYWdyYW0iOiB0cnVlfQ==
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -1063,8 +1077,18 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. code-block:: mermaid
 
-                    graph TB
+                    graph LR
+                        %% Actors on the Left
+                        Admin((Administrador))
+                        Proveedor((Proveedor))
+                        Logistica((Logística))
+                        Cliente((Cliente))
+                        Sistema_Ext[Sistema Externo]
+                    
+                        %% System Boundary
                         subgraph Sistema_PREXCOL["SISTEMA PREXCOL"]
+                            direction TB
+                            
                             subgraph Autenticacion["Módulo de Autenticación"]
                                 UC1[Registrarse]
                                 UC2[Iniciar Sesión]
@@ -1102,36 +1126,33 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                                 UC22[Generar Reportes]
                             end
                     
-                            subgraph Notificaciones["Módulo de Notificaciones"]
-                                UC23[Enviar Notificación]
-                                UC24[Ver Notificaciones]
-                                UC25[Marcar como Leída]
-                            end
-                    
                             subgraph Administracion["Módulo de Administración"]
                                 UC26[Gestionar Usuarios]
                                 UC27[Suspender Cuenta]
                                 UC28[Ver Dashboard]
                                 UC29[Configurar Sistema]
                             end
+                            
+                            subgraph Notificaciones["Módulo de Notificaciones"]
+                                UC23[Enviar Notificación]
+                                UC24[Ver Notificaciones]
+                                UC25[Marcar como Leída]
+                            end
                         end
                     
-                        Admin((Administrador))
-                        Proveedor((Proveedor))
-                        Logistica((Logística))
-                        Cliente((Cliente))
-                        Sistema_Ext[Sistema Externo]
-                    
+                        %% Relationships - Organized to reduce crossing
+                        %% Admin Connections
                         Admin --> UC1
                         Admin --> UC2
                         Admin --> UC6
                         Admin --> UC7
                         Admin --> UC8
+                        Admin --> UC22
                         Admin --> UC26
                         Admin --> UC27
                         Admin --> UC28
-                        Admin --> UC22
-                    
+                        
+                        %% Provider Connections
                         Proveedor --> UC1
                         Proveedor --> UC2
                         Proveedor --> UC7
@@ -1140,13 +1161,15 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Proveedor --> UC13
                         Proveedor --> UC14
                         Proveedor --> UC22
-                    
+                        
+                        %% Logistica Connections
                         Logistica --> UC1
                         Logistica --> UC2
                         Logistica --> UC17
                         Logistica --> UC18
                         Logistica --> UC28
-                    
+                        
+                        %% Client Connections
                         Cliente --> UC1
                         Cliente --> UC2
                         Cliente --> UC9
@@ -1156,8 +1179,9 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
                         Cliente --> UC19
                         Cliente --> UC24
                     
-                        UC16 ..> Sistema_Ext : <<include>>
-                        UC23 ..> Sistema_Ext : <<include>>
+                        %% Include/Extend
+                        UC16 -.-> Sistema_Ext
+                        UC23 -.-> Sistema_Ext
 
     .. card::
         :class-card: sd-mb-4 sd-shadow-sm
@@ -3429,100 +3453,104 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. mermaid::
 
-                    graph TB
-                        subgraph "User Devices"
+                    graph LR
+                        subgraph Users["User Devices"]
                             Desktop[💻 Desktop Browser]
                             Mobile[📱 Mobile Browser]
                         end
                     
-                        subgraph "CDN Layer"
-                            CF[Cloudflare CDN<br/>• DDoS Protection<br/>• SSL/TLS<br/>• Caching]
+                        subgraph CDN["CDN Layer"]
+                            CF[Cloudflare CDN]
                         end
                     
-                        subgraph "Frontend Hosting - Netlify"
+                        subgraph Frontend["Frontend Hosting (Netlify)"]
                             Build[Build Process]
-                            Static[Static Assets<br/>HTML/CSS/JS]
+                            Static[Static Assets]
                             Edge[Edge Functions]
                         end
                     
-                        subgraph "Backend Hosting - Railway/Render"
+                        subgraph Backend["Backend Hosting (Railway/Render)"]
                             LB[Load Balancer]
                             
-                            subgraph "Application Servers"
-                                App1[Django Instance 1<br/>Gunicorn]
-                                App2[Django Instance 2<br/>Gunicorn]
+                            subgraph Apps["Application Servers"]
+                                App1[Django Instance 1]
+                                App2[Django Instance 2]
                             end
                     
-                            Static_Backend[Static Files Server<br/>WhiteNoise]
+                            Static_Backend[Static Files Server]
                         end
                     
-                        subgraph "Database Layer"
-                            PG[(PostgreSQL<br/>Managed DB)]
+                        subgraph Data["Database Layer"]
+                            PG[(PostgreSQL)]
                             PG_Backup[(Automated Backups)]
                         end
                     
-                        subgraph "Cache & Queue Layer"
-                            Redis_Prod[(Redis Cloud<br/>Managed)]
+                        subgraph Cache["Cache & Queue"]
+                            Redis_Prod[(Redis Cloud)]
                         end
                     
-                        subgraph "Worker Layer"
+                        subgraph Workers["Worker Layer"]
                             Worker1[Celery Worker 1]
                             Worker2[Celery Worker 2]
-                            Beat[Celery Beat<br/>Scheduler]
+                            Beat[Celery Beat]
                         end
                     
-                        subgraph "Storage Layer"
-                            S3[AWS S3 / Cloudinary<br/>Media Files]
+                        subgraph Services["External Services"]
+                            SMTP[SendGrid]
+                            Gateway[Payment Gateway]
+                            Monitoring[Sentry]
+                            S3[AWS S3 / Media]
                         end
                     
-                        subgraph "External Services"
-                            SMTP[SendGrid<br/>Email Service]
-                            Gateway[Payment Gateway<br/>PayU/PSE]
-                            Monitoring[Sentry<br/>Error Tracking]
-                        end
-                    
+                        %% Connections
                         Desktop --> CF
                         Mobile --> CF
+                        
                         CF --> Static
                         CF --> LB
                         
                         Static --> Build
+                        
                         LB --> App1
                         LB --> App2
                         
+                        %% App Connections
                         App1 --> PG
                         App2 --> PG
                         App1 --> Redis_Prod
                         App2 --> Redis_Prod
+                        
                         App1 --> S3
                         App2 --> S3
                         
+                        App1 --> Gateway
+                        App2 --> Gateway
+                        App1 --> Monitoring
+                        App2 --> Monitoring
+                    
+                        %% Database
                         PG --> PG_Backup
                         
+                        %% Workers
+                        Beat --> Redis_Prod
                         Worker1 --> Redis_Prod
                         Worker2 --> Redis_Prod
-                        Beat --> Redis_Prod
                         
                         Worker1 --> SMTP
                         Worker2 --> SMTP
-                        App1 --> Gateway
-                        App2 --> Gateway
-                        
-                        App1 --> Monitoring
-                        App2 --> Monitoring
                         Worker1 --> Monitoring
                         Worker2 --> Monitoring
 
                 .. div:: diagram-controls
 
-                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImdyYXBoIFRCXG4gICAgc3ViZ3JhcGggXCJVc2VyIERldmljZXNcIlxuICAgICAgICBEZXNrdG9wW1x1ZDgzZFx1ZGNiYiBEZXNrdG9wIEJyb3dzZXJdXG4gICAgICAgIE1vYmlsZVtcdWQ4M2RcdWRjZjEgTW9iaWxlIEJyb3dzZXJdXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBcIkNETiBMYXllclwiXG4gICAgICAgIENGW0Nsb3VkZmxhcmUgQ0ROPGJyLz5cdTIwMjIgRERvUyBQcm90ZWN0aW9uPGJyLz5cdTIwMjIgU1NML1RMUzxici8+XHUyMDIyIENhY2hpbmddXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBcIkZyb250ZW5kIEhvc3RpbmcgLSBOZXRsaWZ5XCJcbiAgICAgICAgQnVpbGRbQnVpbGQgUHJvY2Vzc11cbiAgICAgICAgU3RhdGljW1N0YXRpYyBBc3NldHM8YnIvPkhUTUwvQ1NTL0pTXVxuICAgICAgICBFZGdlW0VkZ2UgRnVuY3Rpb25zXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJCYWNrZW5kIEhvc3RpbmcgLSBSYWlsd2F5L1JlbmRlclwiXG4gICAgICAgIExCW0xvYWQgQmFsYW5jZXJdXG4gICAgICAgIFxuICAgICAgICBzdWJncmFwaCBcIkFwcGxpY2F0aW9uIFNlcnZlcnNcIlxuICAgICAgICAgICAgQXBwMVtEamFuZ28gSW5zdGFuY2UgMTxici8+R3VuaWNvcm5dXG4gICAgICAgICAgICBBcHAyW0RqYW5nbyBJbnN0YW5jZSAyPGJyLz5HdW5pY29ybl1cbiAgICAgICAgZW5kXG5cbiAgICAgICAgU3RhdGljX0JhY2tlbmRbU3RhdGljIEZpbGVzIFNlcnZlcjxici8+V2hpdGVOb2lzZV1cbiAgICBlbmRcblxuICAgIHN1YmdyYXBoIFwiRGF0YWJhc2UgTGF5ZXJcIlxuICAgICAgICBQR1soUG9zdGdyZVNRTDxici8+TWFuYWdlZCBEQildXG4gICAgICAgIFBHX0JhY2t1cFsoQXV0b21hdGVkIEJhY2t1cHMpXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJDYWNoZSAmIFF1ZXVlIExheWVyXCJcbiAgICAgICAgUmVkaXNfUHJvZFsoUmVkaXMgQ2xvdWQ8YnIvPk1hbmFnZWQpXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJXb3JrZXIgTGF5ZXJcIlxuICAgICAgICBXb3JrZXIxW0NlbGVyeSBXb3JrZXIgMV1cbiAgICAgICAgV29ya2VyMltDZWxlcnkgV29ya2VyIDJdXG4gICAgICAgIEJlYXRbQ2VsZXJ5IEJlYXQ8YnIvPlNjaGVkdWxlcl1cbiAgICBlbmRcblxuICAgIHN1YmdyYXBoIFwiU3RvcmFnZSBMYXllclwiXG4gICAgICAgIFMzW0FXUyBTMyAvIENsb3VkaW5hcnk8YnIvPk1lZGlhIEZpbGVzXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJFeHRlcm5hbCBTZXJ2aWNlc1wiXG4gICAgICAgIFNNVFBbU2VuZEdyaWQ8YnIvPkVtYWlsIFNlcnZpY2VdXG4gICAgICAgIEdhdGV3YXlbUGF5bWVudCBHYXRld2F5PGJyLz5QYXlVL1BTRV1cbiAgICAgICAgTW9uaXRvcmluZ1tTZW50cnk8YnIvPkVycm9yIFRyYWNraW5nXVxuICAgIGVuZFxuXG4gICAgRGVza3RvcCAtLT4gQ0ZcbiAgICBNb2JpbGUgLS0+IENGXG4gICAgQ0YgLS0+IFN0YXRpY1xuICAgIENGIC0tPiBMQlxuICAgIFxuICAgIFN0YXRpYyAtLT4gQnVpbGRcbiAgICBMQiAtLT4gQXBwMVxuICAgIExCIC0tPiBBcHAyXG4gICAgXG4gICAgQXBwMSAtLT4gUEdcbiAgICBBcHAyIC0tPiBQR1xuICAgIEFwcDEgLS0+IFJlZGlzX1Byb2RcbiAgICBBcHAyIC0tPiBSZWRpc19Qcm9kXG4gICAgQXBwMSAtLT4gUzNcbiAgICBBcHAyIC0tPiBTM1xuICAgIFxuICAgIFBHIC0tPiBQR19CYWNrdXBcbiAgICBcbiAgICBXb3JrZXIxIC0tPiBSZWRpc19Qcm9kXG4gICAgV29ya2VyMiAtLT4gUmVkaXNfUHJvZFxuICAgIEJlYXQgLS0+IFJlZGlzX1Byb2RcbiAgICBcbiAgICBXb3JrZXIxIC0tPiBTTVRQXG4gICAgV29ya2VyMiAtLT4gU01UUFxuICAgIEFwcDEgLS0+IEdhdGV3YXlcbiAgICBBcHAyIC0tPiBHYXRld2F5XG4gICAgXG4gICAgQXBwMSAtLT4gTW9uaXRvcmluZ1xuICAgIEFwcDIgLS0+IE1vbml0b3JpbmdcbiAgICBXb3JrZXIxIC0tPiBNb25pdG9yaW5nXG4gICAgV29ya2VyMiAtLT4gTW9uaXRvcmluZyIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
+                    .. button-link:: https://mermaid.live/view#base64:eyJjb2RlIjogImdyYXBoIExSXG4gICAgc3ViZ3JhcGggVXNlcnNbXCJVc2VyIERldmljZXNcIl1cbiAgICAgICAgRGVza3RvcFtcdWQ4M2RcdWRjYmIgRGVza3RvcCBCcm93c2VyXVxuICAgICAgICBNb2JpbGVbXHVkODNkXHVkY2YxIE1vYmlsZSBCcm93c2VyXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggQ0ROW1wiQ0ROIExheWVyXCJdXG4gICAgICAgIENGW0Nsb3VkZmxhcmUgQ0ROXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggRnJvbnRlbmRbXCJGcm9udGVuZCBIb3N0aW5nIChOZXRsaWZ5KVwiXVxuICAgICAgICBCdWlsZFtCdWlsZCBQcm9jZXNzXVxuICAgICAgICBTdGF0aWNbU3RhdGljIEFzc2V0c11cbiAgICAgICAgRWRnZVtFZGdlIEZ1bmN0aW9uc11cbiAgICBlbmRcblxuICAgIHN1YmdyYXBoIEJhY2tlbmRbXCJCYWNrZW5kIEhvc3RpbmcgKFJhaWx3YXkvUmVuZGVyKVwiXVxuICAgICAgICBMQltMb2FkIEJhbGFuY2VyXVxuICAgICAgICBcbiAgICAgICAgc3ViZ3JhcGggQXBwc1tcIkFwcGxpY2F0aW9uIFNlcnZlcnNcIl1cbiAgICAgICAgICAgIEFwcDFbRGphbmdvIEluc3RhbmNlIDFdXG4gICAgICAgICAgICBBcHAyW0RqYW5nbyBJbnN0YW5jZSAyXVxuICAgICAgICBlbmRcblxuICAgICAgICBTdGF0aWNfQmFja2VuZFtTdGF0aWMgRmlsZXMgU2VydmVyXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggRGF0YVtcIkRhdGFiYXNlIExheWVyXCJdXG4gICAgICAgIFBHWyhQb3N0Z3JlU1FMKV1cbiAgICAgICAgUEdfQmFja3VwWyhBdXRvbWF0ZWQgQmFja3VwcyldXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBDYWNoZVtcIkNhY2hlICYgUXVldWVcIl1cbiAgICAgICAgUmVkaXNfUHJvZFsoUmVkaXMgQ2xvdWQpXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggV29ya2Vyc1tcIldvcmtlciBMYXllclwiXVxuICAgICAgICBXb3JrZXIxW0NlbGVyeSBXb3JrZXIgMV1cbiAgICAgICAgV29ya2VyMltDZWxlcnkgV29ya2VyIDJdXG4gICAgICAgIEJlYXRbQ2VsZXJ5IEJlYXRdXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBTZXJ2aWNlc1tcIkV4dGVybmFsIFNlcnZpY2VzXCJdXG4gICAgICAgIFNNVFBbU2VuZEdyaWRdXG4gICAgICAgIEdhdGV3YXlbUGF5bWVudCBHYXRld2F5XVxuICAgICAgICBNb25pdG9yaW5nW1NlbnRyeV1cbiAgICAgICAgUzNbQVdTIFMzIC8gTWVkaWFdXG4gICAgZW5kXG5cbiAgICAlJSBDb25uZWN0aW9uc1xuICAgIERlc2t0b3AgLS0+IENGXG4gICAgTW9iaWxlIC0tPiBDRlxuICAgIFxuICAgIENGIC0tPiBTdGF0aWNcbiAgICBDRiAtLT4gTEJcbiAgICBcbiAgICBTdGF0aWMgLS0+IEJ1aWxkXG4gICAgXG4gICAgTEIgLS0+IEFwcDFcbiAgICBMQiAtLT4gQXBwMlxuICAgIFxuICAgICUlIEFwcCBDb25uZWN0aW9uc1xuICAgIEFwcDEgLS0+IFBHXG4gICAgQXBwMiAtLT4gUEdcbiAgICBBcHAxIC0tPiBSZWRpc19Qcm9kXG4gICAgQXBwMiAtLT4gUmVkaXNfUHJvZFxuICAgIFxuICAgIEFwcDEgLS0+IFMzXG4gICAgQXBwMiAtLT4gUzNcbiAgICBcbiAgICBBcHAxIC0tPiBHYXRld2F5XG4gICAgQXBwMiAtLT4gR2F0ZXdheVxuICAgIEFwcDEgLS0+IE1vbml0b3JpbmdcbiAgICBBcHAyIC0tPiBNb25pdG9yaW5nXG5cbiAgICAlJSBEYXRhYmFzZVxuICAgIFBHIC0tPiBQR19CYWNrdXBcbiAgICBcbiAgICAlJSBXb3JrZXJzXG4gICAgQmVhdCAtLT4gUmVkaXNfUHJvZFxuICAgIFdvcmtlcjEgLS0+IFJlZGlzX1Byb2RcbiAgICBXb3JrZXIyIC0tPiBSZWRpc19Qcm9kXG4gICAgXG4gICAgV29ya2VyMSAtLT4gU01UUFxuICAgIFdvcmtlcjIgLS0+IFNNVFBcbiAgICBXb3JrZXIxIC0tPiBNb25pdG9yaW5nXG4gICAgV29ya2VyMiAtLT4gTW9uaXRvcmluZyIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: info
                         :icon: octicon:search
                         :outline:
 
                         🔍 Zoom / Pantalla Completa
 
-                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImdyYXBoIFRCXG4gICAgc3ViZ3JhcGggXCJVc2VyIERldmljZXNcIlxuICAgICAgICBEZXNrdG9wW1x1ZDgzZFx1ZGNiYiBEZXNrdG9wIEJyb3dzZXJdXG4gICAgICAgIE1vYmlsZVtcdWQ4M2RcdWRjZjEgTW9iaWxlIEJyb3dzZXJdXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBcIkNETiBMYXllclwiXG4gICAgICAgIENGW0Nsb3VkZmxhcmUgQ0ROPGJyLz5cdTIwMjIgRERvUyBQcm90ZWN0aW9uPGJyLz5cdTIwMjIgU1NML1RMUzxici8+XHUyMDIyIENhY2hpbmddXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBcIkZyb250ZW5kIEhvc3RpbmcgLSBOZXRsaWZ5XCJcbiAgICAgICAgQnVpbGRbQnVpbGQgUHJvY2Vzc11cbiAgICAgICAgU3RhdGljW1N0YXRpYyBBc3NldHM8YnIvPkhUTUwvQ1NTL0pTXVxuICAgICAgICBFZGdlW0VkZ2UgRnVuY3Rpb25zXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJCYWNrZW5kIEhvc3RpbmcgLSBSYWlsd2F5L1JlbmRlclwiXG4gICAgICAgIExCW0xvYWQgQmFsYW5jZXJdXG4gICAgICAgIFxuICAgICAgICBzdWJncmFwaCBcIkFwcGxpY2F0aW9uIFNlcnZlcnNcIlxuICAgICAgICAgICAgQXBwMVtEamFuZ28gSW5zdGFuY2UgMTxici8+R3VuaWNvcm5dXG4gICAgICAgICAgICBBcHAyW0RqYW5nbyBJbnN0YW5jZSAyPGJyLz5HdW5pY29ybl1cbiAgICAgICAgZW5kXG5cbiAgICAgICAgU3RhdGljX0JhY2tlbmRbU3RhdGljIEZpbGVzIFNlcnZlcjxici8+V2hpdGVOb2lzZV1cbiAgICBlbmRcblxuICAgIHN1YmdyYXBoIFwiRGF0YWJhc2UgTGF5ZXJcIlxuICAgICAgICBQR1soUG9zdGdyZVNRTDxici8+TWFuYWdlZCBEQildXG4gICAgICAgIFBHX0JhY2t1cFsoQXV0b21hdGVkIEJhY2t1cHMpXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJDYWNoZSAmIFF1ZXVlIExheWVyXCJcbiAgICAgICAgUmVkaXNfUHJvZFsoUmVkaXMgQ2xvdWQ8YnIvPk1hbmFnZWQpXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJXb3JrZXIgTGF5ZXJcIlxuICAgICAgICBXb3JrZXIxW0NlbGVyeSBXb3JrZXIgMV1cbiAgICAgICAgV29ya2VyMltDZWxlcnkgV29ya2VyIDJdXG4gICAgICAgIEJlYXRbQ2VsZXJ5IEJlYXQ8YnIvPlNjaGVkdWxlcl1cbiAgICBlbmRcblxuICAgIHN1YmdyYXBoIFwiU3RvcmFnZSBMYXllclwiXG4gICAgICAgIFMzW0FXUyBTMyAvIENsb3VkaW5hcnk8YnIvPk1lZGlhIEZpbGVzXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggXCJFeHRlcm5hbCBTZXJ2aWNlc1wiXG4gICAgICAgIFNNVFBbU2VuZEdyaWQ8YnIvPkVtYWlsIFNlcnZpY2VdXG4gICAgICAgIEdhdGV3YXlbUGF5bWVudCBHYXRld2F5PGJyLz5QYXlVL1BTRV1cbiAgICAgICAgTW9uaXRvcmluZ1tTZW50cnk8YnIvPkVycm9yIFRyYWNraW5nXVxuICAgIGVuZFxuXG4gICAgRGVza3RvcCAtLT4gQ0ZcbiAgICBNb2JpbGUgLS0+IENGXG4gICAgQ0YgLS0+IFN0YXRpY1xuICAgIENGIC0tPiBMQlxuICAgIFxuICAgIFN0YXRpYyAtLT4gQnVpbGRcbiAgICBMQiAtLT4gQXBwMVxuICAgIExCIC0tPiBBcHAyXG4gICAgXG4gICAgQXBwMSAtLT4gUEdcbiAgICBBcHAyIC0tPiBQR1xuICAgIEFwcDEgLS0+IFJlZGlzX1Byb2RcbiAgICBBcHAyIC0tPiBSZWRpc19Qcm9kXG4gICAgQXBwMSAtLT4gUzNcbiAgICBBcHAyIC0tPiBTM1xuICAgIFxuICAgIFBHIC0tPiBQR19CYWNrdXBcbiAgICBcbiAgICBXb3JrZXIxIC0tPiBSZWRpc19Qcm9kXG4gICAgV29ya2VyMiAtLT4gUmVkaXNfUHJvZFxuICAgIEJlYXQgLS0+IFJlZGlzX1Byb2RcbiAgICBcbiAgICBXb3JrZXIxIC0tPiBTTVRQXG4gICAgV29ya2VyMiAtLT4gU01UUFxuICAgIEFwcDEgLS0+IEdhdGV3YXlcbiAgICBBcHAyIC0tPiBHYXRld2F5XG4gICAgXG4gICAgQXBwMSAtLT4gTW9uaXRvcmluZ1xuICAgIEFwcDIgLS0+IE1vbml0b3JpbmdcbiAgICBXb3JrZXIxIC0tPiBNb25pdG9yaW5nXG4gICAgV29ya2VyMiAtLT4gTW9uaXRvcmluZyIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
+                    .. button-link:: https://mermaid.live/edit#base64:eyJjb2RlIjogImdyYXBoIExSXG4gICAgc3ViZ3JhcGggVXNlcnNbXCJVc2VyIERldmljZXNcIl1cbiAgICAgICAgRGVza3RvcFtcdWQ4M2RcdWRjYmIgRGVza3RvcCBCcm93c2VyXVxuICAgICAgICBNb2JpbGVbXHVkODNkXHVkY2YxIE1vYmlsZSBCcm93c2VyXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggQ0ROW1wiQ0ROIExheWVyXCJdXG4gICAgICAgIENGW0Nsb3VkZmxhcmUgQ0ROXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggRnJvbnRlbmRbXCJGcm9udGVuZCBIb3N0aW5nIChOZXRsaWZ5KVwiXVxuICAgICAgICBCdWlsZFtCdWlsZCBQcm9jZXNzXVxuICAgICAgICBTdGF0aWNbU3RhdGljIEFzc2V0c11cbiAgICAgICAgRWRnZVtFZGdlIEZ1bmN0aW9uc11cbiAgICBlbmRcblxuICAgIHN1YmdyYXBoIEJhY2tlbmRbXCJCYWNrZW5kIEhvc3RpbmcgKFJhaWx3YXkvUmVuZGVyKVwiXVxuICAgICAgICBMQltMb2FkIEJhbGFuY2VyXVxuICAgICAgICBcbiAgICAgICAgc3ViZ3JhcGggQXBwc1tcIkFwcGxpY2F0aW9uIFNlcnZlcnNcIl1cbiAgICAgICAgICAgIEFwcDFbRGphbmdvIEluc3RhbmNlIDFdXG4gICAgICAgICAgICBBcHAyW0RqYW5nbyBJbnN0YW5jZSAyXVxuICAgICAgICBlbmRcblxuICAgICAgICBTdGF0aWNfQmFja2VuZFtTdGF0aWMgRmlsZXMgU2VydmVyXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggRGF0YVtcIkRhdGFiYXNlIExheWVyXCJdXG4gICAgICAgIFBHWyhQb3N0Z3JlU1FMKV1cbiAgICAgICAgUEdfQmFja3VwWyhBdXRvbWF0ZWQgQmFja3VwcyldXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBDYWNoZVtcIkNhY2hlICYgUXVldWVcIl1cbiAgICAgICAgUmVkaXNfUHJvZFsoUmVkaXMgQ2xvdWQpXVxuICAgIGVuZFxuXG4gICAgc3ViZ3JhcGggV29ya2Vyc1tcIldvcmtlciBMYXllclwiXVxuICAgICAgICBXb3JrZXIxW0NlbGVyeSBXb3JrZXIgMV1cbiAgICAgICAgV29ya2VyMltDZWxlcnkgV29ya2VyIDJdXG4gICAgICAgIEJlYXRbQ2VsZXJ5IEJlYXRdXG4gICAgZW5kXG5cbiAgICBzdWJncmFwaCBTZXJ2aWNlc1tcIkV4dGVybmFsIFNlcnZpY2VzXCJdXG4gICAgICAgIFNNVFBbU2VuZEdyaWRdXG4gICAgICAgIEdhdGV3YXlbUGF5bWVudCBHYXRld2F5XVxuICAgICAgICBNb25pdG9yaW5nW1NlbnRyeV1cbiAgICAgICAgUzNbQVdTIFMzIC8gTWVkaWFdXG4gICAgZW5kXG5cbiAgICAlJSBDb25uZWN0aW9uc1xuICAgIERlc2t0b3AgLS0+IENGXG4gICAgTW9iaWxlIC0tPiBDRlxuICAgIFxuICAgIENGIC0tPiBTdGF0aWNcbiAgICBDRiAtLT4gTEJcbiAgICBcbiAgICBTdGF0aWMgLS0+IEJ1aWxkXG4gICAgXG4gICAgTEIgLS0+IEFwcDFcbiAgICBMQiAtLT4gQXBwMlxuICAgIFxuICAgICUlIEFwcCBDb25uZWN0aW9uc1xuICAgIEFwcDEgLS0+IFBHXG4gICAgQXBwMiAtLT4gUEdcbiAgICBBcHAxIC0tPiBSZWRpc19Qcm9kXG4gICAgQXBwMiAtLT4gUmVkaXNfUHJvZFxuICAgIFxuICAgIEFwcDEgLS0+IFMzXG4gICAgQXBwMiAtLT4gUzNcbiAgICBcbiAgICBBcHAxIC0tPiBHYXRld2F5XG4gICAgQXBwMiAtLT4gR2F0ZXdheVxuICAgIEFwcDEgLS0+IE1vbml0b3JpbmdcbiAgICBBcHAyIC0tPiBNb25pdG9yaW5nXG5cbiAgICAlJSBEYXRhYmFzZVxuICAgIFBHIC0tPiBQR19CYWNrdXBcbiAgICBcbiAgICAlJSBXb3JrZXJzXG4gICAgQmVhdCAtLT4gUmVkaXNfUHJvZFxuICAgIFdvcmtlcjEgLS0+IFJlZGlzX1Byb2RcbiAgICBXb3JrZXIyIC0tPiBSZWRpc19Qcm9kXG4gICAgXG4gICAgV29ya2VyMSAtLT4gU01UUFxuICAgIFdvcmtlcjIgLS0+IFNNVFBcbiAgICBXb3JrZXIxIC0tPiBNb25pdG9yaW5nXG4gICAgV29ya2VyMiAtLT4gTW9uaXRvcmluZyIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJhdXRvU3luYyI6IHRydWUsICJ1cGRhdGVEaWFncmFtIjogdHJ1ZX0=
                         :color: secondary
                         :icon: octicon:pencil
                         :outline:
@@ -3534,87 +3562,91 @@ Explora la arquitectura y flujos de PREXCOL a través de nuestra galería intera
 
                 .. code-block:: mermaid
 
-                    graph TB
-                        subgraph "User Devices"
+                    graph LR
+                        subgraph Users["User Devices"]
                             Desktop[💻 Desktop Browser]
                             Mobile[📱 Mobile Browser]
                         end
                     
-                        subgraph "CDN Layer"
-                            CF[Cloudflare CDN<br/>• DDoS Protection<br/>• SSL/TLS<br/>• Caching]
+                        subgraph CDN["CDN Layer"]
+                            CF[Cloudflare CDN]
                         end
                     
-                        subgraph "Frontend Hosting - Netlify"
+                        subgraph Frontend["Frontend Hosting (Netlify)"]
                             Build[Build Process]
-                            Static[Static Assets<br/>HTML/CSS/JS]
+                            Static[Static Assets]
                             Edge[Edge Functions]
                         end
                     
-                        subgraph "Backend Hosting - Railway/Render"
+                        subgraph Backend["Backend Hosting (Railway/Render)"]
                             LB[Load Balancer]
                             
-                            subgraph "Application Servers"
-                                App1[Django Instance 1<br/>Gunicorn]
-                                App2[Django Instance 2<br/>Gunicorn]
+                            subgraph Apps["Application Servers"]
+                                App1[Django Instance 1]
+                                App2[Django Instance 2]
                             end
                     
-                            Static_Backend[Static Files Server<br/>WhiteNoise]
+                            Static_Backend[Static Files Server]
                         end
                     
-                        subgraph "Database Layer"
-                            PG[(PostgreSQL<br/>Managed DB)]
+                        subgraph Data["Database Layer"]
+                            PG[(PostgreSQL)]
                             PG_Backup[(Automated Backups)]
                         end
                     
-                        subgraph "Cache & Queue Layer"
-                            Redis_Prod[(Redis Cloud<br/>Managed)]
+                        subgraph Cache["Cache & Queue"]
+                            Redis_Prod[(Redis Cloud)]
                         end
                     
-                        subgraph "Worker Layer"
+                        subgraph Workers["Worker Layer"]
                             Worker1[Celery Worker 1]
                             Worker2[Celery Worker 2]
-                            Beat[Celery Beat<br/>Scheduler]
+                            Beat[Celery Beat]
                         end
                     
-                        subgraph "Storage Layer"
-                            S3[AWS S3 / Cloudinary<br/>Media Files]
+                        subgraph Services["External Services"]
+                            SMTP[SendGrid]
+                            Gateway[Payment Gateway]
+                            Monitoring[Sentry]
+                            S3[AWS S3 / Media]
                         end
                     
-                        subgraph "External Services"
-                            SMTP[SendGrid<br/>Email Service]
-                            Gateway[Payment Gateway<br/>PayU/PSE]
-                            Monitoring[Sentry<br/>Error Tracking]
-                        end
-                    
+                        %% Connections
                         Desktop --> CF
                         Mobile --> CF
+                        
                         CF --> Static
                         CF --> LB
                         
                         Static --> Build
+                        
                         LB --> App1
                         LB --> App2
                         
+                        %% App Connections
                         App1 --> PG
                         App2 --> PG
                         App1 --> Redis_Prod
                         App2 --> Redis_Prod
+                        
                         App1 --> S3
                         App2 --> S3
                         
+                        App1 --> Gateway
+                        App2 --> Gateway
+                        App1 --> Monitoring
+                        App2 --> Monitoring
+                    
+                        %% Database
                         PG --> PG_Backup
                         
+                        %% Workers
+                        Beat --> Redis_Prod
                         Worker1 --> Redis_Prod
                         Worker2 --> Redis_Prod
-                        Beat --> Redis_Prod
                         
                         Worker1 --> SMTP
                         Worker2 --> SMTP
-                        App1 --> Gateway
-                        App2 --> Gateway
-                        
-                        App1 --> Monitoring
-                        App2 --> Monitoring
                         Worker1 --> Monitoring
                         Worker2 --> Monitoring
 

@@ -13,6 +13,7 @@ import api from './api';
 export const getTiendas = async () => {
   try {
     const response = await api.get('/productos/tiendas/');
+    if (response.data && response.data.results) return response.data.results;
     return response.data;
   } catch (error) {
     console.error('[productosService] Error getting tiendas:', error);
@@ -80,6 +81,7 @@ export const eliminarTienda = async (tiendaId) => {
 export const getProductos = async () => {
   try {
     const response = await api.get('/productos/productos/');
+    if (response.data && response.data.results) return response.data.results;
     return response.data;
   } catch (error) {
     console.error('[productosService] Error getting productos:', error);
@@ -237,6 +239,7 @@ export const getMisPedidos = async () => {
 export const getPedidos = async () => {
   try {
     const response = await api.get('/productos/pedidos/');
+    if (response.data && response.data.results) return response.data.results;
     return response.data;
   } catch (error) {
     console.error('[productosService] Error getting pedidos:', error);

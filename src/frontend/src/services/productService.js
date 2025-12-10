@@ -19,6 +19,9 @@ const ProductService = {
   async listProducts() {
     try {
       const response = await axiosInstance.get("/productos/productos/");
+      if (response.data && response.data.results) {
+        return response.data.results;
+      }
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -49,6 +52,9 @@ const ProductService = {
   async searchProducts(query) {
     try {
       const response = await axiosInstance.get(`/productos/productos/?search=${query}`);
+      if (response.data && response.data.results) {
+        return response.data.results;
+      }
       return response.data;
     } catch (error) {
       console.error("Error searching products:", error);

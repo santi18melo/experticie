@@ -86,28 +86,14 @@ MIDDLEWARE.extend([
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'json': {
-            '()': 'services.observability.CustomJsonFormatter',
-            'format': '%(timestamp)s %(level)s %(name)s %(message)s'
-        },
-    },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'json',
         },
     },
     'root': {
         'handlers': ['console'],
         'level': 'INFO',
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
-        },
     },
 }
 
