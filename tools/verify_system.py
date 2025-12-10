@@ -122,7 +122,7 @@ PRÓXIMOS PASOS:
 
 DOCUMENTACIÓN:
 - Swagger UI: http://localhost:8001/swagger/
-- API Docs: docs/RESUMEN_FINAL.md
+- API Docs: docs/resumenes/RESUMEN_FINAL.md
 - Testing: docs/GUIA_PRUEBAS_COMPLETAS.md
 """)
 print("="*60)
