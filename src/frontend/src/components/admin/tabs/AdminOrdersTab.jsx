@@ -41,15 +41,25 @@ export default function AdminOrdersTab({ pedidos, loading, onUpdate }) {
           <tbody>
             {pedidosFiltrados.map(pedido => (
               <tr key={pedido.id}>
-                <td>#{pedido.id}</td>
-                <td>{pedido.usuario_nombre || 'Cliente'}</td>
+                <td>
+                   <div className="item-cell">
+                     <div className="item-icon">🧾</div>
+                     <span style={{fontWeight: 'bold', color: '#4a5568'}}>#{pedido.id}</span>
+                   </div>
+                </td>
+                <td>
+                    <div className="item-info">
+                        <span className="item-title">{pedido.usuario_nombre || 'Cliente'}</span>
+                        <span className="item-subtitle">ID: {pedido.usuario || 'N/A'}</span>
+                    </div>
+                </td>
                 <td>{pedido.tienda_nombre || 'Tienda'}</td>
-                <td>${Number(pedido.total).toLocaleString()}</td>
-                <td><span className={`badge estado-${pedido.estado}`}>{pedido.estado}</span></td>
+                <td><strong style={{color: '#2d3748'}}>${Number(pedido.total).toLocaleString()}</strong></td>
+                <td><span className={`badge badge-${pedido.estado}`} style={{textTransform: 'capitalize'}}>{pedido.estado.replace('_', ' ')}</span></td>
                 <td>{new Date(pedido.fecha_creacion).toLocaleDateString()}</td>
                 <td>
                   <div className="actions-cell">
-                    <button className="btn-icon edit" onClick={() => onUpdate(pedido, true)}>👁️</button>
+                    <button className="btn-icon edit" onClick={() => onUpdate(pedido, true)} title="Ver Detalles">👁️</button>
                   </div>
                 </td>
               </tr>

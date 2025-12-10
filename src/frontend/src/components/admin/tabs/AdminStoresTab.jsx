@@ -61,8 +61,16 @@ export default function AdminStoresTab({ tiendas, loading, onDelete, onUpdate, o
             {tiendasFiltradas.map(tienda => (
               <tr key={tienda.id}>
                 <td>#{tienda.id}</td>
-                <td>{tienda.nombre}</td>
-                <td>{tienda.direccion}</td>
+                <td>
+                  <div className="item-cell">
+                    <div className="item-icon">🏪</div>
+                    <div className="item-info">
+                      <div className="item-title">{tienda.nombre}</div>
+                      <div className="item-subtitle">{tienda.telefono}</div>
+                    </div>
+                  </div>
+                </td>
+                <td><div className="item-subtitle">{tienda.direccion}</div></td>
                 <td>
                   <span className={`badge ${tienda.activa ? 'success' : 'danger'}`}>
                     {tienda.activa ? 'Activa' : 'Inactiva'}
@@ -70,8 +78,8 @@ export default function AdminStoresTab({ tiendas, loading, onDelete, onUpdate, o
                 </td>
                 <td>
                   <div className="actions-cell">
-                    <button className="btn-icon edit" onClick={() => onUpdate(tienda, true)}>✏️</button>
-                    <button className="btn-icon delete" onClick={() => onDelete(tienda.id)}>🗑️</button>
+                    <button className="btn-icon edit" onClick={() => onUpdate(tienda, true)} title="Editar">✏️</button>
+                    <button className="btn-icon delete" onClick={() => onDelete(tienda.id)} title="Eliminar">🗑️</button>
                   </div>
                 </td>
               </tr>

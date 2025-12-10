@@ -85,21 +85,30 @@ export default function AdminProductsTab({ productos, loading, onDelete, onUpdat
             {productosFiltrados.map(producto => (
               <tr key={producto.id}>
                 <td>
-                  <div className="product-name">{producto.nombre}</div>
-                  <small>{producto.descripcion?.substring(0, 30)}...</small>
+                  <div className="item-cell">
+                    <div className="item-icon">📦</div>
+                    <div className="item-info">
+                        <div className="item-title">{producto.nombre}</div>
+                        <div className="item-subtitle">{producto.descripcion?.substring(0, 30)}...</div>
+                    </div>
+                  </div>
                 </td>
                 <td>{(tiendas || []).find(t => t.id === producto.tienda)?.nombre || producto.tienda}</td>
-                <td>${Number(producto.precio).toLocaleString()}</td>
+                <td><strong style={{color: '#2d3748'}}>${Number(producto.precio).toLocaleString()}</strong></td>
                 <td>
                   <span className={`badge ${producto.stock < 10 ? 'danger' : 'success'}`}>
                     {producto.stock} u.
                   </span>
                 </td>
-                <td>{producto.es_basico ? '🔹 Básico' : '✨ Normal'}</td>
+                <td>
+                    <span className={`badge ${producto.es_basico ? 'info' : 'warning'}`} style={{background: producto.es_basico ? '#ebf8ff' : '#fff5f5', color: producto.es_basico ? '#2b6cb0' : '#c53030'}}>
+                        {producto.es_basico ? 'Básico' : 'Premium'}
+                    </span>
+                </td>
                 <td>
                   <div className="actions-cell">
-                    <button className="btn-icon edit" onClick={() => onUpdate(producto, true)}>✏️</button>
-                    <button className="btn-icon delete" onClick={() => onDelete(producto.id)}>🗑️</button>
+                    <button className="btn-icon edit" onClick={() => onUpdate(producto, true)} title="Editar">✏️</button>
+                    <button className="btn-icon delete" onClick={() => onDelete(producto.id)} title="Eliminar">🗑️</button>
                   </div>
                 </td>
               </tr>
