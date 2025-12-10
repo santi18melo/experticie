@@ -50,6 +50,10 @@ const UserService = {
   async getAllUsers() {
     try {
       const response = await axiosInstance.get("/usuarios/");
+      // Handle pagination
+      if (response.data && response.data.results) {
+        return response.data.results;
+      }
       return response.data;
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -68,6 +72,50 @@ const UserService = {
     } catch (error) {
       console.error("Error fetching providers:", error);
       throw error;
+    }
+  },
+  /**
+   * Create a new user (Admin only)
+   * @param {Object} userData - User data
+   * @returns {Promise<Object>} Created user
+   */
+  async createUser(userData) {
+    try {
+      const response = await axiosInstance.post("/usuarios/", userData);
+      return response.data;
+    } catch (error) {
+      console.error("Error creating user:", error);
+      throw error;
+    }
+  },
+
+  /**
+   * Update a user (Admin only)
+   * @param {number} userId - User ID
+   * @param {Object} userData - User data to update
+   * @returns {Promise<Object>} Updated user
+   */
+  async updateUser(userId, userData) {
+    try {
+        const response = await axiosInstance.patch(`/usuarios/${userId}/`, userData);
+        return response.data;
+    } catch (error) {
+        console.error(`Error updating user ${userId}:`, error);
+        throw error;
+    }
+  },
+
+  /**
+   * Delete a user (Admin only)
+   * @param {number} userId - User ID
+   * @returns {Promise<void>}
+   */
+  async deleteUser(userId) {
+    try {
+        await axiosInstance.delete(`/usuarios/${userId}/`);
+    } catch (error) {
+        console.error(`Error deleting user ${userId}:`, error);
+        throw error;
     }
   },
 };

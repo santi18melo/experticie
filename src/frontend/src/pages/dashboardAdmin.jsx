@@ -59,17 +59,37 @@ export default function DashboardAdmin() {
   }, [fetchData]);
 
   // Handlers
+  // Handlers
   const handleUserCreate = async (data) => {
-      console.log("Create user not fully implemented in service", data);
-      await fetchData(); 
+    try {
+        await UserService.createUser(data);
+        await fetchData();
+    } catch (error) {
+        console.error("Failed to create user:", error);
+        alert("Error al crear usuario: " + (error.response?.data?.detail || error.message));
+    }
   };
+
   const handleUserUpdate = async (data) => {
-       console.log("Update user not fully implemented in service", data);
-       await fetchData();
+    try {
+        const { id, ...updateData } = data; // Separate ID from data
+        await UserService.updateUser(id, updateData);
+        await fetchData();
+    } catch (error) {
+        console.error("Failed to update user:", error);
+        alert("Error al actualizar usuario: " + (error.response?.data?.detail || error.message));
+    }
   };
+
    const handleUserDelete = async (id) => {
-       console.log("Delete user not fully implemented in service", id);
-       await fetchData();
+    if(!window.confirm("¿Estás seguro de eliminar este usuario?")) return;
+    try {
+        await UserService.deleteUser(id);
+        await fetchData();
+    } catch (error) {
+        console.error("Failed to delete user:", error);
+         alert("Error al eliminar usuario: " + (error.response?.data?.detail || error.message));
+    }
   };
   
   const getComponentProps = () => {
