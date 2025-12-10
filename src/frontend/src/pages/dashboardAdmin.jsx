@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import DashboardHeader from "../components/DashboardHeader";
 import AdminUsersTab from "../components/admin/tabs/AdminUsersTab";
 import AdminStoresTab from "../components/admin/tabs/AdminStoresTab";
 import AdminProductsTab from "../components/admin/tabs/AdminProductsTab";
@@ -165,9 +166,7 @@ export default function DashboardAdmin() {
 
   return (
     <div className="dashboard-admin">
-      <div className="admin-header-content">
-          <h1 className="dashboard-admin__title">Panel de Administración</h1>
-      </div>
+      <DashboardHeader title="Panel de Administración" />
       
       {/* Overview Section: Stats + Quick Actions */}
       <div className="overview-section" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px', padding: '0 40px', marginBottom: '30px' }}>
