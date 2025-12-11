@@ -1,0 +1,52 @@
+name: Post-Deploy Smoke Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  smoke:
+    name: Smoke tests after deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for service to be healthy
+        env:
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+        run: |
+          if [ -z "$DEPLOY_URL" ]; then
+            echo "ERROR: DEPLOY_URL secret is not set"; exit 1
+          fi
+          echo "Checking $DEPLOY_URL"
+          for i in {1..30}; do
+            status=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOY_URL")
+            echo "Attempt $i: HTTP $status"
+            if [ "$status" = "200" ]; then
+              echo "Service healthy"; exit 0
+            fi
+            sleep 10
+          done
+          echo "Service did not become healthy within timeout"; exit 1
+
+      - name: Run API login smoke test
+        env:
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+          TEST_USER_EMAIL: ${{ secrets.SMOKE_TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.SMOKE_TEST_USER_PASSWORD }}
+        run: |
+          if [ -z "$DEPLOY_URL" ]; then
+            echo "ERROR: DEPLOY_URL secret is not set"; exit 1
+          fi
+          if [ -z "$TEST_USER_EMAIL" ] || [ -z "$TEST_USER_PASSWORD" ]; then
+            echo "Skipping login smoke test: credentials not set"; exit 0
+          fi
+          login_url="$DEPLOY_URL/api/auth/login/"
+          echo "Attempting login at $login_url"
+          resp=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"email\": \"$TEST_USER_EMAIL\", \"password\": \"$TEST_USER_PASSWORD\"}" "$login_url")
+          echo "Response: $resp"
+          access=$(echo "$resp" | jq -r '.access' 2>/dev/null || true)
+          if [ -n "$access" ] && [ "$access" != "null" ]; then
+            echo "Login smoke test passed"
+            exit 0
+          else
+            echo "Login smoke test failed"; exit 1
+          fi
